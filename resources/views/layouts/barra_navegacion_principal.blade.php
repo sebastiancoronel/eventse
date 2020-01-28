@@ -39,7 +39,7 @@
 
   					<!-- Logo desktop -->
   					<a href="#" class="logo">
-  							<img src="images/Logo Eventse-1.svg" alt="IMG-LOGO" style="max-width: 300%; max-height:300%;">
+  							<img src="images/Logo Eventse-1 ORIGINAL.svg" alt="IMG-LOGO" style="max-width: 150%; max-height:150%;">
   					</a>
 
   					<!-- Menu desktop -->
