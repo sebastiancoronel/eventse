@@ -25,7 +25,7 @@ Route::get('/completardatos/prestador','PrestadorController@completar_datos');
 //Almacenar datos de cuenta de INMUEBLE
 Route::get('/completardatos/inmueble/guardar','InmuebleController@almacenar_datos_inmueble')->name('almacenar_datos_inmueble');
 //---------------------------------------------------------------------------------------
-
+Route::get('/publicaciones','AlquilerController@ListarPublicados');
 
 
 //Entrar a la vista de Super Administrador

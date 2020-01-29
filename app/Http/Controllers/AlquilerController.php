@@ -82,4 +82,7 @@ class AlquilerController extends Controller
     {
         //
     }
+    public function ListarPublicados(){
+      return view('Prestador.Publicaciones.Inmueble.listar');
+    }
 }

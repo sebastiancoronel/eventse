@@ -29,3 +29,4 @@
 <link rel="stylesheet" type="text/css" href="../vendor/perfect-scrollbar/perfect-scrollbar.css">
 <!--===============================================================================================-->
 <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+<link href="adminlte/dist/js/adminlte.js">
