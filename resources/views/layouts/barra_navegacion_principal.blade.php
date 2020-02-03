@@ -3,13 +3,13 @@
   <head>
     @include('head')
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="css/util.css">
-  	<link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/util.css">
+  	<link rel="stylesheet" type="text/css" href="../css/main.css">
     <!--===============================================================================================-->
-    @include('scripts')
   </head>
+  @include('scripts')
   <body>
-    <header>
+  <header>
   		<!-- Header desktop -->
   		<div class="container-menu-desktop">
   			<!-- Topbar -->
@@ -39,7 +39,7 @@
 
   					<!-- Logo desktop -->
   					<a href="#" class="logo">
-  							<img src="images/Logo Eventse-1 ORIGINAL.svg" alt="IMG-LOGO" style="max-width: 150%; max-height:150%;">
+  							<img src="../images/Logo Eventse-1 ORIGINAL.svg" alt="IMG-LOGO" style="max-width: 150%; max-height:150%;">
   					</a>
 
   					<!-- Menu desktop -->
@@ -92,7 +92,7 @@
   		<div class="wrap-header-mobile">
   			<!-- Logo moblie -->
   			<div class="logo-mobile">
-  				<a href="index.html"><img src="images/Logo Eventse-1.svg" alt="IMG-LOGO"></a>
+  				<a href="index.html"><img src="../images/Logo Eventse-1.svg" alt="IMG-LOGO"></a>
   			</div>
 
   			<!-- Icon header -->
@@ -202,7 +202,7 @@
   	                                    <h5 class="card-title" style="color:#3B4AFC; font-weight: bold; ">SOY PRESTADOR</h5>
   	                                    <p class="card-text">Dueño de salon, particular,animador, servicios de mobiliario...</p>
   	                                    <br><br>
-  	                                    <img src="/images/handshake.png" class="card-img-top" style="margin: 20px auto;  width: 80px; height: 80px;">
+  	                                    <img src="..//images/handshake.png" class="card-img-top" style="margin: 20px auto;  width: 80px; height: 80px;">
   	                                    <br><br><br>
   	                                    <button class="btn btn-primary" type="submit" style="background-color: #3B4AFC; font-weight: bold; ">REGISTRATE</button>
   	                                </div>
@@ -218,7 +218,7 @@
   										<h5 class="card-title" style="color:#1D2680; font-weight: bold;">BUSCO UN SERVICIO</h5>
   										<p class="card-text">Quiero alquilar juegos,busco un salon, necesito animación... </p>
   										<br><br>
-  										<img src="/images/happiness.png" class="card-img-top" style="margin: 20px auto; width: 80px; height: 80px;">
+  										<img src="../images/happiness.png" class="card-img-top" style="margin: 20px auto; width: 80px; height: 80px;">
   										<br><br>
   										<button class="btn btn-primary" type="button" style="background-color: #1D2680; font-weight: bold;">REGISTRATE</button>
   									</div>
@@ -257,112 +257,115 @@
   		  </script>
 
   		<!--Fin Modal Registro-->
-  	</header>
-    <div class="content-wrapper">
-      @yield('content')
-    </div>
-    {{-- Scripts --}}
-  	<!--===============================================================================================-->
-  		<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-  	<!--===============================================================================================-->
-  		<script src="vendor/animsition/js/animsition.min.js"></script>
-  	<!--===============================================================================================-->
-  		<script src="vendor/bootstrap/js/popper.js"></script>
-  		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  	<!--===============================================================================================-->
-  		<script src="vendor/select2/select2.min.js"></script>
-  		<script>
-  			$(".js-select2").each(function(){
-  				$(this).select2({
-  					minimumResultsForSearch: 20,
-  					dropdownParent: $(this).next('.dropDownSelect2')
-  				});
-  			})
-  		</script>
-  	<!--===============================================================================================-->
-  		<script src="vendor/daterangepicker/moment.min.js"></script>
-  		<script src="vendor/daterangepicker/daterangepicker.js"></script>
-  	<!--===============================================================================================-->
-  		<script src="vendor/slick/slick.min.js"></script>
-  		<script src="js/slick-custom.js"></script>
-  	<!--===============================================================================================-->
-  		<script src="vendor/parallax100/parallax100.js"></script>
-  		<script>
-  	        $('.parallax100').parallax100();
-  		</script>
-  	<!--===============================================================================================-->
-  		<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
-  		<script>
-  			$('.gallery-lb').each(function() { // the containers for all your galleries
-  				$(this).magnificPopup({
-  			        delegate: 'a', // the selector for gallery item
-  			        type: 'image',
-  			        gallery: {
-  			        	enabled:true
-  			        },
-  			        mainClass: 'mfp-fade'
-  			    });
-  			});
-  		</script>
-  	<!--===============================================================================================-->
-  		<script src="vendor/isotope/isotope.pkgd.min.js"></script>
-  	<!--===============================================================================================-->
-  		<script src="vendor/sweetalert/sweetalert.min.js"></script>
-  		<script>
-  			$('.js-addwish-b2').on('click', function(e){
-  				e.preventDefault();
-  			});
+  </header>
 
-  			$('.js-addwish-b2').each(function(){
-  				var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-  				$(this).on('click', function(){
-  					swal(nameProduct, "is added to wishlist !", "success");
+        @yield('content')
 
-  					$(this).addClass('js-addedwish-b2');
-  					$(this).off('click');
-  				});
-  			});
 
-  			$('.js-addwish-detail').each(function(){
-  				var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
-
-  				$(this).on('click', function(){
-  					swal(nameProduct, "is added to wishlist !", "success");
-
-  					$(this).addClass('js-addedwish-detail');
-  					$(this).off('click');
-  				});
-  			});
-
-  			/*---------------------------------------------*/
-
-  			$('.js-addcart-detail').each(function(){
-  				var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-  				$(this).on('click', function(){
-  					swal(nameProduct, "is added to cart !", "success");
-  				});
-  			});
-
-  		</script>
-  	<!--===============================================================================================-->
-  		<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-  		<script>
-  			$('.js-pscroll').each(function(){
-  				$(this).css('position','relative');
-  				$(this).css('overflow','hidden');
-  				var ps = new PerfectScrollbar(this, {
-  					wheelSpeed: 1,
-  					scrollingThreshold: 1000,
-  					wheelPropagation: false,
-  				});
-
-  				$(window).on('resize', function(){
-  					ps.update();
-  				})
-  			});
-  		</script>
-  	<!--===============================================================================================-->
-  		<script src="js/main.js"></script>
-  		{{-- FIN SCRIPTS --}}
   </body>
+  {{-- Scripts --}}
+  <!--===============================================================================================-->
+    {{-- <script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="../adminlte/dist/js/adminlte.js"></script>
+
+  <!--===============================================================================================-->
+    <script src="../vendor/animsition/js/animsition.min.js"></script>
+  <!--===============================================================================================-->
+    <script src="../vendor/bootstrap/js/popper.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script> --}}
+  <!--===============================================================================================-->
+    <script src="../vendor/select2/select2.min.js"></script>
+    <script>
+      $(".js-select2").each(function(){
+        $(this).select2({
+          minimumResultsForSearch: 20,
+          dropdownParent: $(this).next('.dropDownSelect2')
+        });
+      })
+    </script>
+  <!--===============================================================================================-->
+    <script src="../vendor/daterangepicker/moment.min.js"></script>
+    <script src="../vendor/daterangepicker/daterangepicker.js"></script>
+  <!--===============================================================================================-->
+    <script src="../vendor/slick/slick.min.js"></script>
+    <script src="../js/slick-custom.js"></script>
+  <!--===============================================================================================-->
+    <script src="../vendor/parallax100/parallax100.js"></script>
+    <script>
+          $('.parallax100').parallax100();
+    </script>
+  <!--===============================================================================================-->
+    <script src="../vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+    <script>
+      $('.gallery-lb').each(function() { // the containers for all your galleries
+        $(this).magnificPopup({
+              delegate: 'a', // the selector for gallery item
+              type: 'image',
+              gallery: {
+                enabled:true
+              },
+              mainClass: 'mfp-fade'
+          });
+      });
+    </script>
+  <!--===============================================================================================-->
+    <script src="../vendor/isotope/isotope.pkgd.min.js"></script>
+  <!--===============================================================================================-->
+    <script src="../vendor/sweetalert/sweetalert.min.js"></script>
+    <script>
+      $('.js-addwish-b2').on('click', function(e){
+        e.preventDefault();
+      });
+
+      $('.js-addwish-b2').each(function(){
+        var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+        $(this).on('click', function(){
+          swal(nameProduct, "is added to wishlist !", "success");
+
+          $(this).addClass('js-addedwish-b2');
+          $(this).off('click');
+        });
+      });
+
+      $('.js-addwish-detail').each(function(){
+        var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+
+        $(this).on('click', function(){
+          swal(nameProduct, "is added to wishlist !", "success");
+
+          $(this).addClass('js-addedwish-detail');
+          $(this).off('click');
+        });
+      });
+
+      /*---------------------------------------------*/
+
+      $('.js-addcart-detail').each(function(){
+        var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+        $(this).on('click', function(){
+          swal(nameProduct, "is added to cart !", "success");
+        });
+      });
+
+    </script>
+  <!--===============================================================================================-->
+    <script src="../vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+      $('.js-pscroll').each(function(){
+        $(this).css('position','relative');
+        $(this).css('overflow','hidden');
+        var ps = new PerfectScrollbar(this, {
+          wheelSpeed: 1,
+          scrollingThreshold: 1000,
+          wheelPropagation: false,
+        });
+
+        $(window).on('resize', function(){
+          ps.update();
+        })
+      });
+    </script>
+  <!--===============================================================================================-->
+    <script src="../js/main.js"></script>
+    {{-- FIN SCRIPTS --}}
 </html>

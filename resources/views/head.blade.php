@@ -5,13 +5,7 @@
 <link rel="icon" type="image/png" href="../images/Logo-Eventse-1.png"/>
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="../fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="../fonts/linearicons-v1.0.0/icon-font.min.css">
-<!--===============================================================================================-->
+
 <link rel="stylesheet" type="text/css" href="../vendor/animate/animate.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="../vendor/css-hamburgers/hamburgers.min.css">
@@ -29,4 +23,6 @@
 <link rel="stylesheet" type="text/css" href="../vendor/perfect-scrollbar/perfect-scrollbar.css">
 <!--===============================================================================================-->
 <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="adminlte/plugins/fontawesome-free/css/all.min.css">
 <link href="adminlte/dist/js/adminlte.js">
+<link rel="stylesheet" type="text/css" href=" adminlte/dist/css/adminlte.css">

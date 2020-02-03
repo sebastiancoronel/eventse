@@ -1,5 +1,6 @@
 @extends('layouts.barra_navegacion_principal')
 @section('content')
+<!--Pagina principal-->
 	<div class="animsition">
 				<!-- Modal Search -->
 			<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">

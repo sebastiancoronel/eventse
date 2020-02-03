@@ -92,4 +92,9 @@ class PrestadorController extends Controller
       dd($request);
     }
 
+
+    public function menu(){
+      return view('Prestador.panel');
+    }
+
 }
