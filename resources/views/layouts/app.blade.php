@@ -18,14 +18,30 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style media="screen">
+      *{
+        font-family: 'Raleway', sans-serif;
+      }
+        #banner{
+          background-image: url('../Images/banner_registro.png');
+          height: 200px;
+        }
+        #formulario{
+          position: absolute;
+          top: 10%;
+          left: 0%;
+          width: 100%;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+              <!-- Logo desktop -->
+    					<a href="#" class="logo">
+    							<img src="../images/Logo Eventse-1 ORIGINAL.svg" alt="IMG-LOGO" style="max-width: 40%; max-height:40%;">
+    					</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

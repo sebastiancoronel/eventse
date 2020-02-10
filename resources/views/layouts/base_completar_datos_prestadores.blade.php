@@ -13,7 +13,7 @@
     }
       #banner{
         background-image: url('../Images/banner_registro.png');
-        height: 200px; 
+        height: 200px;
       }
       #formulario{
         position: absolute;

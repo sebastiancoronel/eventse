@@ -18,19 +18,22 @@
   					<div class="left-top-bar">
   						Sumá puntos contratando tu primer servicio <a href="#">haciendo click aqui</a>
   					</div>
-                      @if (Route::has('login'))
-  										<div class="right-top-bar flex-w h-full">
-  											<a href="#" class="flex-c-m trans-04 p-lr-25">
-  												<button id="AbrirModal" type="button" class="flex-c-m trans-04 p-lr-25" data-toggle="modal" data-target="#Modal_registro" style="color:#b2b2b2;" >Registrate</button>
-  											</a>
-  					                        @auth
-  					                        <a href="{{ url('/home') }}" class="flex-c-m trans-04 p-lr-25">Mi cuenta</a>
-  					                        @endauth
-  											<a href="#" class="flex-c-m trans-04 p-lr-25">
-  												Ingresar
-  					                        </a>
-  					                    </div>
-  					           @endif
+            @guest
+              @if (Route::has('login'))
+  						<div class="right-top-bar flex-w h-full">
+  							<a id="AbrirModal" href="#" class="flex-c-m trans-04 p-lr-25 text-white">
+  								Registrate
+  							</a>
+
+  							<a href="{{url('/login')}}" class="flex-c-m trans-04 p-lr-25 text-white">
+  								Ingresar
+  	            </a>
+  	          </div>
+  	           @endif
+            @endguest
+            @auth
+            <a href="{{ url('/home') }}" class="flex-c-m trans-04 p-lr-25 text-white">Mi cuenta</a>
+            @endauth
   				</div>
   			</div>
 
@@ -51,6 +54,9 @@
   									<li><a href="index.html">Salones</a></li>
   									<li><a href="home-02.html">Animación</a></li>
   									<li><a href="home-03.html">Mobiliario</a></li>
+                    <li><a href="home-03.html">Servicios de catering</a></li>
+                    <li><a href="home-03.html">Iluminación</a></li>
+                    <li><a href="home-03.html">Música & DJ´s</a></li>
   								</ul>
   							</li>
 
@@ -63,7 +69,7 @@
   							</li>
 
   							<li>
-  								<a href="contact.html">Contacto</a>
+  								<a href="contact.html">Publicar servicios</a>
   							</li>
   						</ul>
   					</div>
@@ -86,30 +92,49 @@
   			</div>
   		</div>
 
-  				<!--------------------------------PARTE MOBIL------------------------------->
+  				<!-- PARTE MOBIL -->
 
   		<!-- Header Mobile -->
   		<div class="wrap-header-mobile">
   			<!-- Logo moblie -->
   			<div class="logo-mobile">
-  				<a href="index.html"><img src="../images/Logo Eventse-1.svg" alt="IMG-LOGO"></a>
+          <a href="#" class="logo">
+              <img src="../images/Logo Eventse-1 ORIGINAL.svg" alt="IMG-LOGO" style="max-width: 150%; max-height:150%;">
+          </a>
   			</div>
 
   			<!-- Icon header -->
+      @auth
   			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
   				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
   					<i class="zmdi zmdi-search"></i>
   				</div>
 
   				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
-  					<i class="zmdi zmdi-shopping-cart"></i>
+  					<i class="fas fa-shopping-cart"></i>
   				</div>
 
   				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
-  					<i class="zmdi zmdi-favorite-outline"></i>
+  					<i class="fas fa-heart"></i>
   				</a>
   			</div>
-
+      @endauth
+      <!-- Formulario de Registro -->
+      @guest
+        @if (Route::has('login'))
+        <div class="right-top-bar flex-w h-full">
+          <a id="AbrirModalMovil" href="#" class="flex-c-m trans-04 p-lr-25 text-dark">
+            Registrate
+          </a>
+            @auth
+            <a href="{{ url('/home') }}" class="flex-c-m trans-04 p-lr-25">Mi cuenta</a>
+            @endauth
+          <a href="{{url('/login')}}" class="flex-c-m trans-04 p-lr-25 text-dark">
+            Ingresar
+          </a>
+        </div>
+         @endif
+      @endguest
   			<!-- Button show menu -->
   			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
   				<span class="hamburger-box">
@@ -121,10 +146,10 @@
 
   		<!-- Menu Mobile -->
   		<div class="menu-mobile">
-  			<ul class="topbar-mobile">
+  			{{-- <ul class="topbar-mobile">
   				<li>
   					<div class="left-top-bar">
-  						Free shipping for standard order over $100
+  						Escribir algo aquí
   					</div>
   				</li>
 
@@ -147,15 +172,18 @@
   						</a>
   					</div>
   				</li>
-  			</ul>
+  			</ul> --}}
 
   			<ul class="main-menu-m">
   				<li>
-  					<a href="index.html">Home</a>
+  					<a href="index.html">Categorías	</a>
   					<ul class="sub-menu-m">
-  						<li><a href="index.html">Homepage 1</a></li>
-  						<li><a href="home-02.html">Homepage 2</a></li>
-  						<li><a href="home-03.html">Homepage 3</a></li>
+              <li><a href="index.html">Salones</a></li>
+              <li><a href="home-02.html">Animación</a></li>
+              <li><a href="home-03.html">Mobiliario</a></li>
+              <li><a href="home-03.html">Servicios de catering</a></li>
+              <li><a href="home-03.html">Iluminación</a></li>
+              <li><a href="home-03.html">Música & DJ´s</a></li>
   					</ul>
   					<span class="arrow-main-menu-m">
   						<i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -163,97 +191,110 @@
   				</li>
 
   				<li>
-  					<a href="product.html">Shop</a>
+  					<a href="product.html">Reservar</a>
   				</li>
 
   				<li>
-  					<a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
+  					<a href="shoping-cart.html">Ofertas de la semana</a>
   				</li>
 
   				<li>
-  					<a href="blog.html">Blog</a>
+  					<a href="blog.html">Contacto</a>
   				</li>
 
-  				<li>
-  					<a href="about.html">About</a>
-  				</li>
-
-  				<li>
-  					<a href="contact.html">Contact</a>
-  				</li>
+          <li>
+            <a href="contact.html">Publicar servicios</a>
+          </li>
   			</ul>
   		</div>
       <!--Modal Registro -->
-  		<div id="Modal_registro" class="modal fade" tabindex="1" role="dialog">
-  			<div class="modal-dialog" role="document">
-  			  <div class="modal-content">
-  				<div class="modal-header">
-  				  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-  					<span aria-hidden="true">&times;</span>
-  				  </button>
-  				</div>
-  				<div class="modal-body">
-  				  <div class="row">
-  					<div class="col-md-6">
-  	                   <form action="{{ route('register') }}">
-  	                        <div class="card-deck">
-  	                            <div class="card">
-  	                                <div class="card-body" style="text-align:center;" >
-  	                                    <h5 class="card-title" style="color:#3B4AFC; font-weight: bold; ">SOY PRESTADOR</h5>
-  	                                    <p class="card-text">Dueño de salon, particular,animador, servicios de mobiliario...</p>
-  	                                    <br><br>
-  	                                    <img src="..//images/handshake.png" class="card-img-top" style="margin: 20px auto;  width: 80px; height: 80px;">
-  	                                    <br><br><br>
-  	                                    <button class="btn btn-primary" type="submit" style="background-color: #3B4AFC; font-weight: bold; ">REGISTRATE</button>
-  	                                </div>
-  	                            </div>
-  	                        </div>
-  	                    </form>
-  					</div>
+        <div id="Modal_registro" class="modal fade" tabindex="1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="p-1">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              </button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    <form action="{{ route('register') }}">
+                      <div class="card-deck">
+                        <div class="card">
+                          <div class="card-body" style="text-align:center;" >
+                          <h5 class="card-title" style="color:#3B4AFC; font-weight: bold; ">SOY PRESTADOR</h5>
+                          <p class="card-text">Dueño de salon, particular,animador, servicios de mobiliario...</p>
+                          <br><br>
+                          <i class="far fa-handshake" style="font-size: 40px;"></i>
+                          <br><br><br>
+                            <button class="btn btn-primary" type="submit" style="background-color: #3B4AFC;border-color: #3B4AFC; font-weight: bold; ">REGISTRATE</button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
 
-  					<div class="col-md-6">
-  							<div class="card-deck">
-  								<div class="card">
-  									<div class="card-body" style="text-align:center;" >
-  										<h5 class="card-title" style="color:#1D2680; font-weight: bold;">BUSCO UN SERVICIO</h5>
-  										<p class="card-text">Quiero alquilar juegos,busco un salon, necesito animación... </p>
-  										<br><br>
-  										<img src="../images/happiness.png" class="card-img-top" style="margin: 20px auto; width: 80px; height: 80px;">
-  										<br><br>
-  										<button class="btn btn-primary" type="button" style="background-color: #1D2680; font-weight: bold;">REGISTRATE</button>
-  									</div>
-  								</div>
-  							  </div>
-
-  					  <span></span>
-  						</div>
-  				<div class="modal-footer">
-
-  				</div>
-  			  </div>
-  			</div>
-  		  </div>
+                  <div class="col-md-6">
+                    <div class="card-deck">
+                      <div class="card">
+                        <div class="card-body" style="text-align:center;" >
+                        <h5 class="card-title" style="color:#1D2680; font-weight: bold;">BUSCO UN SERVICIO</h5>
+                        <p class="card-text">Quiero alquilar juegos,busco un salon, necesito animación...</p>
+                        <br><br>
+                        <i class="fas fa-glass-cheers" style="font-size:40px;"></i>
+                        <br><br><br>
+                          <button class="btn btn-primary" type="button" style="background-color: #1D2680;border-color: #1D2680; font-weight: bold;">REGISTRATE</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
   		  <script>
   				$('#AbrirModal').on('click', function(){
 
-  				var winSize = {
-  				wheight : $(window).height(),
-  				wwidth : $(window).width()
-  				};
-  				var modSize = {
-  				mheight : $('#Modal_registro').height(),
-  				mwidth : $('#Modal_registro').width()
-  				};
-  			$('#Modal_registro').css({
-  				'padding-top' :  ((winSize.wheight - (modSize.mheight/2))/3),
+    				var winSize = {
+    				wheight : $(window).height(),
+    				wwidth : $(window).width()
+    				};
+    				var modSize = {
+    				mheight : $('#Modal_registro').height(),
+    				mwidth : $('#Modal_registro').width()
+    				};
+    			$('#Modal_registro').css({
+    				'padding-top' :  ((winSize.wheight - (modSize.mheight/2))/3),
+    			});
+
+    			$('#Modal_registro').modal({
+    				backdrop: true,
+    				keyboard : false
+    			});
   			});
 
-  			$('#Modal_registro').modal({
-  				backdrop: true,
-  				keyboard : false
-  			});
-  			});
+        $('#AbrirModalMovil').on('click', function(){
+
+        var winSize = {
+        wheight : $(window).height(),
+        wwidth : $(window).width()
+        };
+        var modSize = {
+        mheight : $('#Modal_registro').height(),
+        mwidth : $('#Modal_registro').width()
+        };
+      $('#Modal_registro').css({
+        'padding-top' :  ((winSize.wheight - (modSize.mheight/2))/3),
+      });
+
+      $('#Modal_registro').modal({
+        backdrop: true,
+        keyboard : false
+      });
+      });
   		  </script>
 
   		<!--Fin Modal Registro-->

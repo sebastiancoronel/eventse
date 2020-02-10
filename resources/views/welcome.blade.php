@@ -25,7 +25,7 @@
 			<div class="header-cart flex-col-l p-l-65 p-r-25">
 				<div class="header-cart-title flex-w flex-sb-m p-b-8">
 					<span class="mtext-103 cl2">
-						Your Cart
+						Tu carrito
 					</span>
 
 					<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
@@ -91,11 +91,11 @@
 
 						<div class="header-cart-buttons flex-w w-full">
 							<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-								View Cart
+								Ver carrito
 							</a>
 
 							<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-								Check Out
+								Continuar compra
 							</a>
 						</div>
 					</div>
@@ -269,13 +269,12 @@
 		</div>
 		<!--Fin SELECCION DE CATEGORIAS-->
 
-
 		<!-- Product -->
 		<section class="bg0 p-t-23 p-b-140">
 			<div class="container">
 				<div class="p-b-10">
 					<h3 class="ltext-103 cl5">
-						Más servicios //Los que pagan menos para aparecer
+						Desatacados
 					</h3>
 				</div>
 
@@ -303,6 +302,14 @@
 
 						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
 							Servicios de catering
+						</button>
+
+						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
+							Iluminación
+						</button>
+
+						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
+							Música & DJ´s
 						</button>
 					</div>
 
@@ -426,29 +433,24 @@
 				</div>
 
 				<div class="row isotope-grid">
-
 					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-pic hov-img0">
 								<img src="images/product-01.jpg" alt="IMG-PRODUCT">
-
 								<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 									Quick View
 								</a>
 							</div>
-
 							<div class="block2-txt flex-w flex-t p-t-14">
 								<div class="block2-txt-child1 flex-col-l ">
 									<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 										Esprit Ruffle Shirt
 									</a>
-
 									<span class="stext-105 cl3">
 										$16.64
 									</span>
 								</div>
-
 								<div class="block2-txt-child2 flex-r p-t-3">
 									<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 										<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
@@ -463,18 +465,16 @@
 				<!-- Load more -->
 				<div class="flex-c-m flex-w w-full p-t-45">
 					<a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
-						Load More
+						Cargar más
 					</a>
 				</div>
 			</div>
 		</section>
 
-
-
 		<!-- Footer -->
 		<footer class="bg3 p-t-75 p-b-32">
 			<div class="container">
-				<div class="row">
+				{{-- <div class="row">
 					<div class="col-sm-6 col-lg-3 p-b-50">
 						<h4 class="stext-301 cl0 p-b-30">
 							Categorias
@@ -576,7 +576,7 @@
 							</div>
 						</form>
 					</div>
-				</div>
+				</div> --}}
 
 				<div class="p-t-40">
 					<div class="flex-c-m flex-w p-b-18">
@@ -615,7 +615,7 @@
 		<!-- Back to top -->
 		<div class="btn-back-to-top" id="myBtn">
 			<span class="symbol-btn-back-to-top">
-				<i class="zmdi zmdi-chevron-up"></i>
+				<i class="fas fa-arrow-up"></i>
 			</span>
 		</div>
 
