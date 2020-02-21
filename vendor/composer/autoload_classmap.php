@@ -59,6 +59,7 @@ return array(
     'App\\Servicio' => $baseDir . '/app/Servicio.php',
     'App\\ServicioInmueble' => $baseDir . '/app/ServicioInmueble.php',
     'App\\User' => $baseDir . '/app/User.php',
+    'App\\UserDato' => $baseDir . '/app/UserDato.php',
     'BeyondCode\\DumpServer\\DumpServerCommand' => $vendorDir . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
     'BeyondCode\\DumpServer\\DumpServerServiceProvider' => $vendorDir . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',
     'BeyondCode\\DumpServer\\Dumper' => $vendorDir . '/beyondcode/laravel-dump-server/src/Dumper.php',

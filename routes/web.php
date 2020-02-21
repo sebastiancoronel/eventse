@@ -15,11 +15,18 @@ Route::get('panel','PrestadorController@menu');
 */
 //Completar datos de cada tipo de prestador
 Route::get('completardatos/prestador','PrestadorController@completar_datos');
+Route::post('completardatos/prestador','PrestadorController@AlmacenarDatosPrestador')->name('AlmacenarDatosPrestador');
 
 //Almacenar datos de cuenta de INMUEBLE
 Route::get('completardatos/inmueble/guardar','InmuebleController@almacenar_datos_inmueble')->name('almacenar_datos_inmueble');
 //Publicaciones
 Route::get('publicaciones','AlquilerController@ListarPublicados');
+//Diseño base
+Route::get('prestador',function(){
+  return view('Prestador.layout');
+});
+//Para Inmueble
+Route::resource('/inmueble','InmuebleController');
 /*
 |--------------------------------------------------------------------------
 | Super Admin
@@ -30,10 +37,4 @@ Route::get('admin', function(){
 });
 //Rutas de Localidad
 Route::resource('/localidad', 'LocalidadController');
-
-//Rutas del Prestador
-Route::get('prestador',function(){
-  return view('Prestador.layout');
-});
-  //Para Inmueble
-Route::resource('/inmueble','InmuebleController');
+Route::post('/listarlocalidades','LocalidadController@ListarLocalidades');

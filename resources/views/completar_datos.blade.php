@@ -1,0 +1,90 @@
+@extends('layouts.base_registro')
+
+@section('formulario_cuenta')
+  <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-md-8">
+              <div class="card">
+                  <span class="mt-4 text-uppercase" style="text-align:center; color:#3B4AFC;">Completá los datos de tu cuenta para empezar a publicar</span>
+
+                  <div class="card-body">
+                      <form method="POST" action="{{route('AlmacenarDatosPrestador')}}">
+                          @csrf
+                          <!-- Fecha de alta al sistema -->
+                          <input hidden type="text" name="" value="{{date('Y-m-d')}}">
+                        <!-- DNI -->
+                        <div class="form-group row">
+                            <label for="dni" class="col-md-4 col-form-label text-md-right">DNI</label>
+                            <input id="dni" class="form-control col-md-6" type="number" name="dni" value="">
+                        </div>
+                        <!-- Provincia -->
+                          <div class="form-group row">
+                              <label for="provincia" class="col-md-4 col-form-label text-md-right">Provincia</label>
+                              <div class="col-md-6">
+                                  <select id="provincia" class="form-control" name="provincia">
+                                    @foreach ($ProvinciasLocalidadesJson as $provincia)
+                                      <option value="{{$provincia['id']}}">{{$provincia['nombre']}}</option>
+                                    @endforeach
+                                  </select>
+                              </div>
+                          </div>
+                          <!-- Ciudad -->
+                          <div class="form-group row">
+                              <label for="ciudad" class="col-md-4 col-form-label text-md-right">Ciudad</label>
+                              <div class="col-md-6">
+                                  <select id="localidad" class="form-control" name="localidad">
+                                    @foreach ($ProvinciasLocalidadesJson as $localidad)
+
+                                    @endforeach
+                                  </select>
+                              </div>
+                          </div>
+                          <!-- Teléfono -->
+                          <div class="form-group row">
+                            <label for="telefono" class="col-md-4 col-form-label text-md-right">Teléfono</label>
+                            <input class="form-control col-md-6" type="number" name="telefono" value="">
+                          </div>
+                          <div class="text-center">
+                            <button class="btn btn-primary" style="background:#3B4AFC" type="submit" name="button">Finalizar</button>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  {{-- Scripts  --}}
+  <script>
+    $("#provincia").on('change',function(){
+      //alert("cambio");
+      var provincia_id = $(this).val();
+      var nombre_provincia = $('#provincia option:selected').text();
+      //alert(provincia_id +' '+ nombre_provincia);
+      $.ajax({
+        type: 'POST',
+        //dataType: 'JSON',
+        url : '{{url("listarlocalidades")}}', //Es la funcion Index de localidad al ser resource
+        data:{
+                nombre_provincia,
+                provincia_id,
+                _token:"{{csrf_token()}}"},
+
+        error: function(x,y,z){
+          console.log(x,y,z);
+        },
+        success: function(data){
+          $("#localidad").empty();
+          $.each(data[2],function(index, value) {
+            $("#localidad").append('<option value="'+ value['id'] +'">'+ value['nombre'] + '</option>');
+          });
+
+
+
+
+
+        },
+      });
+    });
+  </script>
+@endsection

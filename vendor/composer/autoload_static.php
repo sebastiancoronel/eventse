@@ -478,6 +478,7 @@ class ComposerStaticInita46fe10eba2c4058e6946f15aed06849
         'App\\Servicio' => __DIR__ . '/../..' . '/app/Servicio.php',
         'App\\ServicioInmueble' => __DIR__ . '/../..' . '/app/ServicioInmueble.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'App\\UserDato' => __DIR__ . '/../..' . '/app/UserDato.php',
         'BeyondCode\\DumpServer\\DumpServerCommand' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
         'BeyondCode\\DumpServer\\DumpServerServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',
         'BeyondCode\\DumpServer\\Dumper' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/Dumper.php',

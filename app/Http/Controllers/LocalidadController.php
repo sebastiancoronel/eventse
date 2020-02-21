@@ -14,9 +14,9 @@ class LocalidadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        //dd($request);
     }
 
     /**
@@ -93,5 +93,23 @@ class LocalidadController extends Controller
     public function destroy(Localidad $localidad)
     {
         //
+    }
+
+    public function ListarLocalidades(Request $request){
+      $provincia_id = $request->provincia_id;
+      $Localidades = array();
+
+      $path = storage_path() . "/json/ProvinciasLocalidades.json";
+      $ProvinciasLocalidadesJson = json_decode(file_get_contents($path),true);
+      foreach ($ProvinciasLocalidadesJson as $provincia) {
+        if ( $provincia['id'] == $provincia_id ) {
+
+          foreach ($provincia as $localidad) {
+              array_push($Localidades,$localidad);
+          }
+        }
+      }
+      //dd($Localidades);
+      return ($Localidades);
     }
 }

@@ -82,13 +82,16 @@ class PrestadorController extends Controller
     {
         //
     }
-    // ------------------------------------------ MIS FUNCIONES ------------------------------------------
+
     //completar_datos retorna la vista para crear una cuenta particual y de inmueble
     public function completar_datos(){
-      return view('Prestador.completar_datos');
+      $path = storage_path() . "/json/ProvinciasLocalidades.json";
+      $ProvinciasLocalidadesJson = json_decode(file_get_contents($path),true);
+      //dd($ProvinciasLocalidadesJson);
+      return view('completar_datos',['ProvinciasLocalidadesJson'=>$ProvinciasLocalidadesJson]);
     }
 
-    public function almacenar_datos_particular(Request $request){
+    public function AlmacenarDatosPrestador(Request $request){
       dd($request);
     }
 
