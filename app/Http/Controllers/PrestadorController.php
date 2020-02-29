@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use App\Prestador;
 use Illuminate\Http\Request;
 
@@ -83,6 +83,10 @@ class PrestadorController extends Controller
         //
     }
 
+    public function menu(){
+      return view('Prestador.panel');
+    }
+
     //completar_datos retorna la vista para crear una cuenta particual y de inmueble
     public function completar_datos(){
       $path = storage_path() . "/json/ProvinciasLocalidades.json";
@@ -92,12 +96,25 @@ class PrestadorController extends Controller
     }
 
     public function AlmacenarDatosPrestador(Request $request){
-      dd($request);
+      //dd($request);
+      $prestador = new Prestador;
+      $prestador->dni = $request->dni;
+      $prestador->email = Auth::user()->email;
+      $prestador->nombre = Auth::user()->name;
+      $prestador->apellido = Auth::user()->lastname;
+      $prestador->telefono = $request->telefono;
+      $prestador->provincia = $request->provincia_nombre;
+      $prestador->localidad = $request->localidad;
+      $prestador->nombre_fantasia = $request->nombre_fantasia;
+      $prestador->foto = $request->file('foto')->store('public');
+      $prestador->user_id = Auth::user()->id;
+      $prestador->save();
+      // Redirigiar a pagina principal
+      return redirect()->route('principal');
     }
 
+    public function ComprobarDatosPersonalesCompletos(){
 
-    public function menu(){
-      return view('Prestador.panel');
     }
 
 }

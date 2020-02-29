@@ -3,9 +3,13 @@
 Auth::routes();
 Route::get('/', function (){
     return view('welcome');
+})->name('principal');
+
+Route::middleware(['auth', 'ControlarDatosCompletos'])->group(function () {
+
+  Route::get('/home', 'HomeController@index')->name('home');
 });
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home', 'HomeController@index')->name('home');
+
 //Menú
 Route::get('panel','PrestadorController@menu');
 /*
@@ -14,8 +18,8 @@ Route::get('panel','PrestadorController@menu');
 |--------------------------------------------------------------------------
 */
 //Completar datos de cada tipo de prestador
-Route::get('completardatos/prestador','PrestadorController@completar_datos');
-Route::post('completardatos/prestador','PrestadorController@AlmacenarDatosPrestador')->name('AlmacenarDatosPrestador');
+Route::get('completardatos/prestador','PrestadorController@completar_datos')->name('CompletarDatos');
+Route::post('completardatos/prestador/AlmacenarDatosPrestador','PrestadorController@AlmacenarDatosPrestador')->name('AlmacenarDatosPrestador');
 
 //Almacenar datos de cuenta de INMUEBLE
 Route::get('completardatos/inmueble/guardar','InmuebleController@almacenar_datos_inmueble')->name('almacenar_datos_inmueble');
@@ -33,7 +37,7 @@ Route::resource('/inmueble','InmuebleController');
 |--------------------------------------------------------------------------
 */
 Route::get('admin', function(){
-	return view('SuperAdmin.layout');
+  return view('SuperAdmin.layout');
 });
 //Rutas de Localidad
 Route::resource('/localidad', 'LocalidadController');

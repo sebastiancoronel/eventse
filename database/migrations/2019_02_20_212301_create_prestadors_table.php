@@ -21,22 +21,27 @@ class CreatePrestadorsTable extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->string('telefono');
-            $table->string('telefono_opcional');
+            $table->string('provincia');
+            $table->string('localidad');
+            // $table->string('telefono_opcional');
             // Datos del negocio //
             $table->string('nombre_fantasia')->nullable();
             $table->string('foto')->nullable();
             // Relacion con localidad //
-            $table->integer('id_localidad')->unsigned()->nullable();
-            $table->foreign('id_localidad')->references('id')->on('localidads');
+            // $table->integer('id_localidad')->unsigned()->nullable();
+            // $table->foreign('id_localidad')->references('id')->on('localidads');
             // Relacion con Empleados //
-            $table->integer('id_empleados')->unsigned()->nullable();
-            $table->foreign('id_empleados')->references('id')->on('empleados');
+            // $table->integer('id_empleados')->unsigned()->nullable();
+            // $table->foreign('id_empleados')->references('id')->on('empleados');
             // Relacion con Inmuebles //
-            $table->integer('id_inmueble')->unsigned()->nullable();
-            $table->foreign('id_inmueble')->references('id')->on('inmuebles');
+            // $table->integer('id_inmueble')->unsigned()->nullable();
+            // $table->foreign('id_inmueble')->references('id')->on('inmuebles');
             // Relacion con Servicio //
-            $table->integer('id_servicio')->unsigned()->nullable();
-            $table->foreign('id_servicio')->references('id')->on('servicios');
+            // $table->integer('id_servicio')->unsigned()->nullable();
+            // $table->foreign('id_servicio')->references('id')->on('servicios');
+
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->softDeletes();
             $table->timestamps();
         });
