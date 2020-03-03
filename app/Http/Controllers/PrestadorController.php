@@ -92,7 +92,7 @@ class PrestadorController extends Controller
       $path = storage_path() . "/json/ProvinciasLocalidades.json";
       $ProvinciasLocalidadesJson = json_decode(file_get_contents($path),true);
       //dd($ProvinciasLocalidadesJson);
-      return view('completar_datos',['ProvinciasLocalidadesJson'=>$ProvinciasLocalidadesJson]);
+      return view('auth.completar_datos',['ProvinciasLocalidadesJson'=>$ProvinciasLocalidadesJson]);
     }
 
     public function AlmacenarDatosPrestador(Request $request){

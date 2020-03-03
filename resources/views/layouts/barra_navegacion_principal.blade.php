@@ -222,8 +222,8 @@
                     <form action="{{ route('register') }}">
                       <div class="card-deck">
                         <div class="card">
-                          <div class="card-body" style="text-align:center;" >
-                          <h5 class="card-title" style="color:#3B4AFC; font-weight: bold; ">SOY PRESTADOR</h5>
+                          <div class="card-body" style="text-align:center;">
+                          <h5 class="card-title" style="color:#3B4AFC; font-weight: bold;">SOY PRESTADOR</h5>
                           <p class="card-text">Dueño de salon, particular,animador, servicios de mobiliario...</p>
                           <br><br>
                           <i class="far fa-handshake" style="font-size: 40px;"></i>
@@ -236,18 +236,20 @@
                   </div>
 
                   <div class="col-md-6">
-                    <div class="card-deck">
-                      <div class="card">
-                        <div class="card-body" style="text-align:center;" >
-                        <h5 class="card-title" style="color:#1D2680; font-weight: bold;">BUSCO UN SERVICIO</h5>
-                        <p class="card-text">Quiero alquilar juegos,busco un salon, necesito animación...</p>
-                        <br><br>
-                        <i class="fas fa-glass-cheers" style="font-size:40px;"></i>
-                        <br><br><br>
-                          <button class="btn btn-primary" type="button" style="background-color: #1D2680;border-color: #1D2680; font-weight: bold;">REGISTRATE</button>
+                    <form class="" action="{{ route('RegistrarCliente') }}">
+                      <div class="card-deck">
+                        <div class="card">
+                          <div class="card-body" style="text-align:center;" >
+                            <h5 class="card-title" style="color:#1D2680; font-weight: bold;">BUSCO UN SERVICIO</h5>
+                            <p class="card-text">Quiero alquilar juegos,busco un salon, necesito animación...</p>
+                            <br><br>
+                            <i class="fas fa-glass-cheers" style="font-size:40px;"></i>
+                            <br><br><br>
+                            <button class="btn btn-primary" type="submit" style="background-color: #1D2680;border-color: #1D2680; font-weight: bold;">REGISTRATE</button>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    </form>
                   </div>
                 </div>
               </div>

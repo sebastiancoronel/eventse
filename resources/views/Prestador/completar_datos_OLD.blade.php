@@ -1,10 +1,10 @@
-@extends('layouts.base_completar_datos_prestadores')
+ {{-- @extends('layouts.base_completar_datos_prestadores')
 
-@section('formulario_prestadores')
-<div class="container">
+@section('formulario_prestadores') --}}
+<!--<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card" style="margin-top:6.25em;">
+            <div class="card mt-5" style="margin-top:6.25em;">
                 <span id="texto_cabecera" style="text-align:center; color:#3B4AFC;">COMPLETA TUS DATOS</span>
                 <br>
                 <div class="card-body">
@@ -250,5 +250,5 @@ $(document).ready(function(){
     }
   });
 });
-</script>
-@endsection
+</script>-->
+{{-- @endsection --}}

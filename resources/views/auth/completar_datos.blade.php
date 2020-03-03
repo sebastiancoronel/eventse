@@ -1,11 +1,12 @@
 @extends('layouts.base_registro')
 
+{{-- FORMULARIO PARA DATOS DE LA CUENTA --}}
 @section('formulario_cuenta')
   <div class="container">
       <div class="row justify-content-center">
           <div class="col-md-8">
-              <div class="card">
-                  <span class="m-4 text-uppercase" style="text-align:center; color:#3B4AFC;">Completá los datos de tu cuenta para empezar a publicar</span>
+              <div class="card mt-5">
+                  <span class="mt-4 text-uppercase" style="text-align:center; color:#3B4AFC;">Completá los datos de tu cuenta para empezar a publicar</span>
 
                   <div class="card-body">
                       <form method="POST" enctype="multipart/form-data" action="{{route('AlmacenarDatosPrestador')}}">

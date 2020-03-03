@@ -5,9 +5,15 @@ Route::get('/', function (){
     return view('welcome');
 })->name('principal');
 
+//Rutas que necesitan autenticacion y tener completos todos los datos de contacto
 Route::middleware(['auth', 'ControlarDatosCompletos'])->group(function () {
 
   Route::get('/home', 'HomeController@index')->name('home');
+});
+
+Route::middleware(['auth', 'ControlarDatosCompletos'])->group(function () {
+
+  Route::get('/register/cliente', 'RegisterController@RegistrarCliente')->name('RegistrarCliente');
 });
 
 //Menú

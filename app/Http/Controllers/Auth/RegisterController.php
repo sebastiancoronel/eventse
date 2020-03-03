@@ -71,4 +71,14 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    public function RegistrarCliente(Request $request){
+      dd($request);
+      return User::create([
+          'name' => $data['name'],
+          'lastname' => $data['lastname'],
+          'email' => $data['email'],
+          'password' => Hash::make($data['password']),
+      ]);
+    }
 }

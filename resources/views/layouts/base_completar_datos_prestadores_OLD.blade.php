@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="ltr">
   <head>
   @include('head')
@@ -24,7 +24,6 @@
   </style>
   </head>
   <body>
-    @yield('header_completar_datos_prestadores')
 
     <div id="banner">
       <div id="formulario">
@@ -33,4 +32,4 @@
     </div>
     <script src="../js/main.js"></script>
   </body>
-  </html>
+  </html> --}}

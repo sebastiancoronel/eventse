@@ -5,10 +5,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card mt-5">
+            <div class="card">
                 <span class="mt-4" style="text-align:center; color:#3B4AFC;">DATOS DE LA CUENTA</span>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('RegistrarCliente') }}">
                         @csrf
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Nombre</label>
