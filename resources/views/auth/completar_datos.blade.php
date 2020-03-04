@@ -6,7 +6,7 @@
       <div class="row justify-content-center">
           <div class="col-md-8">
               <div class="card mt-5">
-                  <span class="mt-4 text-uppercase" style="text-align:center; color:#3B4AFC;">Completá los datos de tu cuenta para empezar a publicar</span>
+                  <span class="mt-4 text-uppercase" style="text-align:center; color:#3B4AFC;">Completá los datos de tu cuenta para continuar</span>
 
                   <div class="card-body">
                       <form method="POST" enctype="multipart/form-data" action="{{route('AlmacenarDatosPrestador')}}">
@@ -48,7 +48,7 @@
                             <input class="form-control col-md-6" type="number" name="telefono" required>
                           </div>
                           <!-- Nombre de fantasía -->
-                          <div class="form-group row">
+                          {{-- <div class="form-group row">
                             <label for="nombre_fantasia" class="col-md-4 col-form-label text-md-right">Nombre fantasía</label>
                             <input class="form-control col-md-6" type="text" name="nombre_fantasia" placeholder="Ejemplo: El principito eventos">
                           </div>
@@ -60,7 +60,7 @@
                           <!-- Vista previa imagen -->
                           <div class="card d-flex align-items-center">
                             <img id="preview" class="rounded" src="#" alt="" width="30%" height="30%">
-                          </div>
+                          </div> --}}
                           <div class="text-center mt-4">
                             <button class="btn btn-primary" style="background:#3B4AFC; cursor:pointer;" type="submit">Finalizar</button>
                           </div>

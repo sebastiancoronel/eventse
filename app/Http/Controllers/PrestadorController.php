@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Auth;
 use App\Prestador;
+use App\UserDato;
 use Illuminate\Http\Request;
 
 class PrestadorController extends Controller
@@ -83,8 +84,8 @@ class PrestadorController extends Controller
         //
     }
 
-    public function menu(){
-      return view('Prestador.panel');
+    public function Resumen(){
+      return view('Prestador.Menu.resumen');
     }
 
     //completar_datos retorna la vista para crear una cuenta particual y de inmueble
@@ -96,21 +97,21 @@ class PrestadorController extends Controller
     }
 
     public function AlmacenarDatosPrestador(Request $request){
-      //dd($request);
-      $prestador = new Prestador;
-      $prestador->dni = $request->dni;
-      $prestador->email = Auth::user()->email;
-      $prestador->nombre = Auth::user()->name;
-      $prestador->apellido = Auth::user()->lastname;
-      $prestador->telefono = $request->telefono;
-      $prestador->provincia = $request->provincia_nombre;
-      $prestador->localidad = $request->localidad;
-      $prestador->nombre_fantasia = $request->nombre_fantasia;
-      $prestador->foto = $request->file('foto')->store('public');
-      $prestador->user_id = Auth::user()->id;
-      $prestador->save();
-      // Redirigiar a pagina principal
-      return redirect()->route('principal');
+      $ConsultarDatos = UserDato::where('user_id',Auth::user()->id);
+      if ($ConsultarDatos) {
+        return redirect()->route('principal');
+      }else{
+        $UserDato = new UserDato;
+        $UserDato->user_id = Auth::user()->id;
+        $UserDato->dni = $request->dni;
+        $UserDato->provincia = $request->provincia_nombre;
+        $UserDato->localidad = $request->localidad;
+        $UserDato->telefono = $request->telefono;
+        $UserDato->fecha_de_alta = date('Y-m-d');
+        $UserDato->save();
+        // Redirigir a pagina principal
+        return redirect()->route('principal');
+      }
     }
 
     public function ComprobarDatosPersonalesCompletos(){

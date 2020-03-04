@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Auth;
 use App\Prestador;
-
+use App\UserDato;
 class ControlarDatosCompletos
 {
     /**
@@ -19,11 +19,11 @@ class ControlarDatosCompletos
     {
       //Buscar al prestador/cliente y preguntar si tiene todos los datos completos. Si los tiene pasa sino no.
         $usuario_id = Auth::user()->id;
-        $prestador = Prestador::where('user_id',$usuario_id)
+        $UserDato = UserDato::where('user_id',$usuario_id)
                               ->select('*')
                               ->first();
 
-        if ($prestador == null) {
+        if ($UserDato == null) {
           return redirect()->route('CompletarDatos');
           // if ($prestador->dni == null && $prestador->email == null && $prestador->nombre == null && $prestador->apellido == null && $prestador->telefono == null) {
           //   //code

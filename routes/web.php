@@ -5,27 +5,20 @@ Route::get('/', function (){
     return view('welcome');
 })->name('principal');
 
-//Rutas que necesitan autenticacion y tener completos todos los datos de contacto
+//Auth + Datos completos
 Route::middleware(['auth', 'ControlarDatosCompletos'])->group(function () {
-
   Route::get('/home', 'HomeController@index')->name('home');
+  Route::get('/home/resumen','PrestadorController@Resumen')->name('Resumen');
 });
+//Solo Auth
+Route::middleware(['auth'])->group(function () {
+ //Datos de contacto
+  //Completar datos de cada tipo de prestador
+  Route::get('completardatos/prestador','PrestadorController@completar_datos')->name('CompletarDatos');
+  //Almacena datos
+  Route::post('completardatos/prestador/AlmacenarDatosPrestador','PrestadorController@AlmacenarDatosPrestador')->name('AlmacenarDatosPrestador');
 
-Route::middleware(['auth', 'ControlarDatosCompletos'])->group(function () {
-
-  Route::get('/register/cliente', 'RegisterController@RegistrarCliente')->name('RegistrarCliente');
 });
-
-//Menú
-Route::get('panel','PrestadorController@menu');
-/*
-|--------------------------------------------------------------------------
-| Prestador
-|--------------------------------------------------------------------------
-*/
-//Completar datos de cada tipo de prestador
-Route::get('completardatos/prestador','PrestadorController@completar_datos')->name('CompletarDatos');
-Route::post('completardatos/prestador/AlmacenarDatosPrestador','PrestadorController@AlmacenarDatosPrestador')->name('AlmacenarDatosPrestador');
 
 //Almacenar datos de cuenta de INMUEBLE
 Route::get('completardatos/inmueble/guardar','InmuebleController@almacenar_datos_inmueble')->name('almacenar_datos_inmueble');

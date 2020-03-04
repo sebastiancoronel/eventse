@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card mt-5">
                 <span class="mt-4" style="text-align:center; color:#3B4AFC;">INGRESAR</span>
 
                 <div class="card-body">
@@ -56,7 +56,8 @@
                                 <button type="submit" class="btn btn-primary" style="background:#3B4AFC; border-color:#3B4AFC; cursor:pointer;">
                                     {{ __('Ingresar') }}
                                 </button>
-
+                                <a href="{{route('register')}}" style="color:#3B4AFC;"> o registrate aquí</a>
+                                <br>
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}" style="color:#3B4AFC;">
                                         {{ __('Olvidaste tu contraseña?') }}

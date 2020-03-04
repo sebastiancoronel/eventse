@@ -23,6 +23,6 @@
 <link rel="stylesheet" type="text/css" href="../vendor/perfect-scrollbar/perfect-scrollbar.css">
 <!--===============================================================================================-->
 <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="adminlte/plugins/fontawesome-free/css/all.min.css">
-<link href="adminlte/dist/js/adminlte.js">
-<link rel="stylesheet" type="text/css" href=" adminlte/dist/css/adminlte.css">
+<link rel="stylesheet" href="../adminlte/plugins/fontawesome-free/css/all.min.css">
+<link href="../adminlte/dist/js/adminlte.js">
+<link rel="stylesheet" type="text/css" href="../adminlte/dist/css/adminlte.css">

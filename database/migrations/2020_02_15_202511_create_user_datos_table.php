@@ -18,7 +18,7 @@ class CreateUserDatosTable extends Migration
             $table->string('user_id');
             $table->string('dni');
             $table->string('provincia');
-            $table->string('ciudad');
+            $table->string('localidad');
             $table->string('telefono');
             $table->string('fecha_de_alta');
             $table->timestamps();

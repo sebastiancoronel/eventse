@@ -6,6 +6,11 @@
     <link rel="stylesheet" type="text/css" href="../css/util.css">
   	<link rel="stylesheet" type="text/css" href="../css/main.css">
     <!--===============================================================================================-->
+    <style media="screen">
+      /* a:hover{
+        color: red;
+      } */
+    </style>
   </head>
   @include('scripts')
   <body>
@@ -21,18 +26,30 @@
             @guest
               @if (Route::has('login'))
   						<div class="right-top-bar flex-w h-full">
-  							<a id="AbrirModal" href="#" class="flex-c-m trans-04 p-lr-25 text-white">
+  							<a id="AbrirModal" href="#" class="flex-c-m trans-04 p-lr-25" style="color:white;" onmouseover="this.style.color= '#717fe0'" onmouseout="this.style.color= 'white'" >
   								Registrate
   							</a>
 
-  							<a href="{{url('/login')}}" class="flex-c-m trans-04 p-lr-25 text-white">
+  							<a href="{{url('/login')}}" class="flex-c-m trans-04 p-lr-25" style="color:white;" onmouseover="this.style.color= '#717fe0'" onmouseout="this.style.color= 'white'" >
   								Ingresar
   	            </a>
   	          </div>
   	           @endif
             @endguest
             @auth
-            <a href="{{ url('/home') }}" class="flex-c-m trans-04 p-lr-25 text-white">Mi cuenta</a>
+              <div class="d-flex align-items-center">
+                <span>
+                  <a href="{{ url('/home') }}" class="flex-c-m trans-04 p-lr-25" style="color:white;" onmouseover="this.style.color= '#717fe0'" onmouseout="this.style.color= 'white'" >Mi cuenta</a>
+                </span>
+                <span class="ml-5">
+                  <a href="{{ route('logout') }}" class="flex-c-m trans-04 p-lr-25" style="color:white;" onmouseover="this.style.color= '#717fe0'" onmouseout="this.style.color= 'white'" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Cerrar sesión</a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      @csrf
+                  </form>
+                </span>
+              </div>
+
+
             @endauth
   				</div>
   			</div>
@@ -52,6 +69,7 @@
   								<a href="index.html">Categorías</a>
   								<ul class="sub-menu">
   									<li><a href="index.html">Salones</a></li>
+                    <li><a href="home-02.html">Juegos</a></li>
   									<li><a href="home-02.html">Animación</a></li>
   									<li><a href="home-03.html">Mobiliario</a></li>
                     <li><a href="home-03.html">Servicios de catering</a></li>
@@ -126,9 +144,9 @@
           <a id="AbrirModalMovil" href="#" class="flex-c-m trans-04 p-lr-25 text-dark">
             Registrate
           </a>
-            @auth
+            {{-- @auth
             <a href="{{ url('/home') }}" class="flex-c-m trans-04 p-lr-25">Mi cuenta</a>
-            @endauth
+            @endauth --}}
           <a href="{{url('/login')}}" class="flex-c-m trans-04 p-lr-25 text-dark">
             Ingresar
           </a>
@@ -236,7 +254,7 @@
                   </div>
 
                   <div class="col-md-6">
-                    <form class="" action="{{ route('RegistrarCliente') }}">
+                    <form class="" action="{{ route('register') }}">
                       <div class="card-deck">
                         <div class="card">
                           <div class="card-body" style="text-align:center;" >
@@ -410,5 +428,6 @@
     </script>
   <!--===============================================================================================-->
     <script src="../js/main.js"></script>
+
     {{-- FIN SCRIPTS --}}
 </html>

@@ -15,32 +15,12 @@ class CreatePrestadorsTable extends Migration
     {
         Schema::create('prestadors', function (Blueprint $table) {
             $table->increments('id');
-            // Datos personales //
             $table->string('dni');
-            $table->string('email');
-            $table->string('nombre');
-            $table->string('apellido');
-            $table->string('telefono');
             $table->string('provincia');
             $table->string('localidad');
-            // $table->string('telefono_opcional');
-            // Datos del negocio //
-            $table->string('nombre_fantasia')->nullable();
+            $table->string('nombre_fantasia');
             $table->string('foto')->nullable();
-            // Relacion con localidad //
-            // $table->integer('id_localidad')->unsigned()->nullable();
-            // $table->foreign('id_localidad')->references('id')->on('localidads');
-            // Relacion con Empleados //
-            // $table->integer('id_empleados')->unsigned()->nullable();
-            // $table->foreign('id_empleados')->references('id')->on('empleados');
-            // Relacion con Inmuebles //
-            // $table->integer('id_inmueble')->unsigned()->nullable();
-            // $table->foreign('id_inmueble')->references('id')->on('inmuebles');
-            // Relacion con Servicio //
-            // $table->integer('id_servicio')->unsigned()->nullable();
-            // $table->foreign('id_servicio')->references('id')->on('servicios');
-
-            $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->softDeletes();
             $table->timestamps();
