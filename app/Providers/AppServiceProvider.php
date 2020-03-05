@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use  Illuminate\Support\Facades\Schema;
+use Illuminate\View\View;
+use Illuminate\Support\Facades\Route;
+use App\Categoria;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,5 +28,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191); //AGREGUE ESTO POR EL ERROR DE TABLA Al HACER LA MIGRACION DE LA BASE DE DATOS
+
+        view()->composer('home',function(View $view){
+          $categorias = Categoria::all();
+          $view->with('Categorias',$categorias);
+        });
     }
 }

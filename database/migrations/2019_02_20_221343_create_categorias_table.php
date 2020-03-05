@@ -19,7 +19,33 @@ class CreateCategoriasTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
-    }
+        DB::table('categorias')->insert([
+          [
+            'nombre' => 'Salones'
+          ],
+          [
+            'nombre' => 'Juegos'
+          ],
+          [
+            'nombre' => 'Animación'
+          ],
+          [
+            'nombre' => 'Mobiliario'
+          ],
+          [
+            'nombre' => 'Catering'
+          ],
+          [
+            'nombre' => 'Iluminación'
+          ],
+          [
+            'nombre' => 'Ornamentación'
+          ],
+          [
+            'nombre' => 'Música & DJ´s'
+          ],
+        ]);
+    }//function up
 
     /**
      * Reverse the migrations.

@@ -83,9 +83,15 @@ class PrestadorController extends Controller
     {
         //
     }
-
+/*============================
+              Menú
+==============================*/
     public function Resumen(){
       return view('Prestador.Menu.resumen');
+    }
+
+    public function MisAlquileres(){
+      return view('Prestador.Menu.Alquileres_y_Reservas.mis_alquileres');
     }
 
     //completar_datos retorna la vista para crear una cuenta particual y de inmueble
@@ -97,10 +103,11 @@ class PrestadorController extends Controller
     }
 
     public function AlmacenarDatosPrestador(Request $request){
-      $ConsultarDatos = UserDato::where('user_id',Auth::user()->id);
-      if ($ConsultarDatos) {
-        return redirect()->route('principal');
-      }else{
+      $ConsultarDatos = UserDato::where('user_id',Auth::user()->id)
+                                ->select('*')
+                                ->first();
+      //dd($ConsultarDatos);
+      if ($ConsultarDatos == null ) {
         $UserDato = new UserDato;
         $UserDato->user_id = Auth::user()->id;
         $UserDato->dni = $request->dni;
@@ -109,8 +116,9 @@ class PrestadorController extends Controller
         $UserDato->telefono = $request->telefono;
         $UserDato->fecha_de_alta = date('Y-m-d');
         $UserDato->save();
-        // Redirigir a pagina principal
         return redirect()->route('principal');
+      }else{
+          return redirect()->route('principal');
       }
     }
 

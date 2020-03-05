@@ -1,11 +1,7 @@
 <!DOCTYPE html>
   <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-      @include('head')
-      <!--===============================================================================================-->
-      <link rel="stylesheet" type="text/css" href="../css/util.css">
-      <link rel="stylesheet" type="text/css" href="../css/main.css">
-      <!--===============================================================================================-->
+    @include('head')
     </head>
     @include('scripts')
     <body class="hold-transition sidebar-mini layout-fixed">
@@ -16,7 +12,7 @@
 
             <div class="wrap-menu-desktop row" style="top: 0px;">
               <!-- Logo desktop -->
-              <a href="#" class="logo ml-5 mt-3">
+              <a href="{{route('principal')}}" class="logo ml-5 mt-3">
                 <img src="../images/Logo Eventse-1 ORIGINAL.svg" style="max-width: 150%; max-height:150%;" alt="IMG-LOGO">
               </a>
               {{-- <div class="col-md-2 ml-2">
@@ -27,9 +23,9 @@
                   <li class="active-menu">
                     <a href="index.html">Categorías</a>
                     <ul class="sub-menu">
-                      <li><a href="index.html">Salones</a></li>
-                      <li><a href="home-02.html">Animación</a></li>
-                      <li><a href="home-03.html">Mobiliario</a></li>
+                      @foreach ($Categorias as $categoria)
+                        <li><a href="index.html">{{ $categoria->nombre }}</a></li>
+                      @endforeach
                     </ul>
                   </li>
                   <li>
@@ -349,7 +345,7 @@
                      </a>
                    </li>
                    <li class="nav-item">
-                     <a href="pages/charts/inline.html" class="nav-link">
+                     <a href="{{route('MisAlquileres')}}" class="nav-link">
                        <i class="nav-icon"></i>
                        <p>Mis alquileres</p>
                      </a>
@@ -475,7 +471,7 @@
                </li>
                 <!-- RESUMEN -->
                 <li class="nav-item has-treeview">
-                 <a href="#" class="nav-link">
+                 <a href="{{route('Resumen')}}" class="nav-link">
                    <i class="nav-icon fas fa-list-alt"></i>
                    <p>
                      Resumen
@@ -505,7 +501,7 @@
                  </a>
                </li>
                <li class="nav-item">
-                 <a href="pages/charts/inline.html" class="nav-link">
+                 <a href="{{route('MisAlquileres')}}" class="nav-link">
                    <i class="nav-icon"></i>
                    <p>Mis alquileres</p>
                  </a>

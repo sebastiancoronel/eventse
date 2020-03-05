@@ -2,15 +2,6 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
   <head>
     @include('head')
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="../css/util.css">
-  	<link rel="stylesheet" type="text/css" href="../css/main.css">
-    <!--===============================================================================================-->
-    <style media="screen">
-      /* a:hover{
-        color: red;
-      } */
-    </style>
   </head>
   @include('scripts')
   <body>
