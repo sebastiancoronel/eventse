@@ -240,7 +240,7 @@
             </li>
             <!-- Notifications Dropdown Menu -->
             <li class="nav-item dropdown">
-              <a class="nav-link" data-toggle="dropdown" href="#">
+              <a class="nav-link"  data-widget="control-sidebar" data-slide="true" href="#"> <!-- data-toggle="dropdown" para que abra las notifiaciones viejas -->
                 <i class="far fa-bell" style="font-size:30px;"></i>
                 <span class="badge badge-warning navbar-badge">15</span>
               </a>
@@ -425,8 +425,9 @@
          </div>
          <!-- /.sidebar -->
        </aside>
-  {{-- FIN MENÚ ESCRITORIO --}}
-  {{-- MENÙ MÓVIL --}}
+{{-- FIN MENÚ ESCRITORIO --}}
+
+{{-- MENÚ MÓVIL --}}
   <!-- Main Sidebar Container -->
     <aside class="d-md-none d-lg-none d-xl-none d-xs-block d-sm-block main-sidebar sidebar-dark-primary elevation-4">
       <ul class="navbar-nav text-left ml-2 d-none d-sm-block">
@@ -582,6 +583,66 @@
      <!-- /.sidebar -->
    </aside>
 {{-- FIN MENÚ MÓVIL --}}
+
+{{-- NOTIFICACIONES --}}
+  <aside class=" d-md-none d-lg-none d-xl-none d-xs-block d-sm-block control-sidebar control-sidebar-dark" style="top: 57px; height: 755px;">
+    <div class="p-3 control-sidebar-content os-host os-theme-dark os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-overflow os-host-overflow-y os-host-transition" style="height: 755px;">
+      <div class="os-resize-observer-host">
+        <div class="os-resize-observer observed" style="left: 0px; right: auto;">
+        </div>
+      </div>
+      <div class="os-size-auto-observer" style="height: calc(100% + 1px); float: left;">
+        <div class="os-resize-observer observed">
+        </div>
+      </div>
+      <div class="os-content-glue" style="margin: -16px;">
+      </div>
+      <div class="os-padding">
+        <div class="os-viewport os-viewport-native-scrollbars-invisible os-viewport-native-scrollbars-overlaid" style="overflow-y: scroll;">
+          <div class="os-content" style="padding: 16px; height: 100%; width: 100%;"><h5>Customize AdminLTE</h5><hr class="mb-2">
+            {{-- Contenido aqui --}}
+            <span class="dropdown-item dropdown-header">15 Notifications</span>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-envelope mr-2"></i> 4 new messages
+              <span class="float-right text-muted text-sm">3 mins</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-users mr-2"></i> 8 friend requests
+              <span class="float-right text-muted text-sm">12 hours</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-file mr-2"></i> 3 new reports
+              <span class="float-right text-muted text-sm">2 days</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="os-scrollbar os-scrollbar-horizontal os-scrollbar-unusable">
+      <div class="os-scrollbar-track">
+      <div class="os-scrollbar-handle" style="transform: translate(0px, 0px); width: 100%;">
+      </div>
+      </div>
+    </div>
+
+    <div class="os-scrollbar os-scrollbar-vertical">
+      <div class="os-scrollbar-track">
+      <div class="os-scrollbar-handle" style="transform: translate(0px, 0px); height: 58.4365%;">
+      </div>
+      </div>
+    </div>
+
+    <div class="os-scrollbar-corner">
+    </div>
+  </aside>
+
+{{-- FIN NOTIFICACIONES --}}
     <!--//Contenido-->
     <div class="content-wrapper">
       @yield('content')

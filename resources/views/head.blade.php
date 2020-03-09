@@ -26,5 +26,6 @@
 <link rel="stylesheet" href="{{asset('adminlte/plugins/fontawesome-free/css/all.min.css')}}">
 <link href="{{asset('adminlte/dist/js/adminlte.js')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('adminlte/dist/css/adminlte.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">

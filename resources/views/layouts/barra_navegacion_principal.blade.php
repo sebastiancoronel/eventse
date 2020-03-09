@@ -39,8 +39,6 @@
                   </form>
                 </span>
               </div>
-
-
             @endauth
   				</div>
   			</div>
@@ -104,9 +102,9 @@
   				<!-- PARTE MOBIL -->
 
   		<!-- Header Mobile -->
-  		<div class="wrap-header-mobile">
+  		<div class="row wrap-header-mobile">
   			<!-- Logo moblie -->
-  			<div class="logo-mobile">
+  			<div class="logo-mobile col-2">
           <a href="#" class="logo">
               <img src="../images/Logo Eventse-1 ORIGINAL.svg" alt="IMG-LOGO" style="max-width: 150%; max-height:150%;">
           </a>
@@ -114,15 +112,15 @@
 
   			<!-- Icon header -->
       @auth
-  			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
-  				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
+  			<div class=" col-8 wrap-icon-header flex-w flex-r-m m-r-15">
+  				{{-- <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
   					<i class="zmdi zmdi-search"></i>
-  				</div>
-
+  				</div> --}}
+          {{-- Carrito --}}
   				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
   					<i class="fas fa-shopping-cart"></i>
   				</div>
-
+          {{-- Favoritos --}}
   				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
   					<i class="fas fa-heart"></i>
   				</a>
@@ -131,14 +129,14 @@
       <!-- Formulario de Registro -->
       @guest
         @if (Route::has('login'))
-        <div class="right-top-bar flex-w h-full">
-          <a id="AbrirModalMovil" href="#" class="flex-c-m trans-04 p-lr-25 text-dark">
+        <div class="row col-8">
+          <a id="AbrirModalMovil" href="#" class="col-6 text-dark">
             Registrate
           </a>
             {{-- @auth
             <a href="{{ url('/home') }}" class="flex-c-m trans-04 p-lr-25">Mi cuenta</a>
             @endauth --}}
-          <a href="{{url('/login')}}" class="flex-c-m trans-04 p-lr-25 text-dark">
+          <a href="{{url('/login')}}" class="col-6 text-dark">
             Ingresar
           </a>
         </div>

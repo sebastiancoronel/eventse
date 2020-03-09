@@ -4,8 +4,8 @@
   <div class="card card-widget widget-user">
     <!-- Add the bg color to the header using any of the bg-* classes -->
     <div class="widget-user-header bg-info">
-      <h3 class="widget-user-username">Juan Perez</h3>
-      <h5 class="widget-user-desc">Lorem Ipsum</h5>
+      <h3 class="widget-user-username">JumpZone</h3>
+      
     </div>
     <div class="widget-user-image">
       <img class="img-circle elevation-2" src="https://static.wixstatic.com/media/d50824_cf5c9f47ba6c49dcbc9125ec417026c4~mv2.png/v1/fill/w_406,h_406,al_c,q_85,usm_0.66_1.00_0.01/Logo%20Jump%20zone%20Blanco2%20Transparente.webp" alt="User Avatar">

@@ -179,6 +179,13 @@
                           <!-- Datos de publicación -->
                           <section class="row mt-3">
                               <img src="https://muchosnegociosrentables.com/wp-content/uploads/2015/12/c%C3%B3mo-montar-un-negocio-de-alquiler-de-sonido-e-iluminaci%C3%B3n.jpg" width="100%" height="10%" alt="">
+                              <div class="text-warning">
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                              </div>
                               <p class="col-12 text-muted text-left ml-2 mt-2">Alquiler de sonido e iluminación para salones , casas, fincas, cumpleaños, recibidas y más..
                               <br>
                               <small class="text-muted">30 alquileres | 183 visitas</small>
