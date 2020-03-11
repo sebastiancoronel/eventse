@@ -29,3 +29,25 @@
 <link rel="stylesheet" type="text/css" href="{{asset('adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
+
+{{-- PWA --}}
+<link rel="manifest" href="{{asset('json/manifest.json')}}">
+{{-- Pintar la barra de dirección del navegador. --}}
+<meta name="theme-color" content="#717fe0">
+
+{{-- Para avisarle al navegador que el sitio está optimizado para moviles --}}
+<meta name="MobileOptimized" content="width">
+<meta name="HandheldFriendly" content="true">
+
+{{-- Etiquetas para Iphone & Ipad --}}
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+{{-- Icono en la pestaña del navegador --}}
+<link rel="shortcut icon" type="image/png" href="./img/ProgramadorFitness.png">
+
+{{-- Icono en los dispositivos --}}
+<link rel="apple-touch-icon" href="./ProgramadorFitness.png">
+
+{{-- Imagen que aparece al inicio al entrar en moviles. --}}
+<link rel="apple-touch-startup-image" href="{{asset('images/Logo-Eventse-1 ORIGINAL.png')}}">

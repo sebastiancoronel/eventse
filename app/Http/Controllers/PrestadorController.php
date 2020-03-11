@@ -94,6 +94,12 @@ class PrestadorController extends Controller
       return view('Prestador.Menu.Alquileres_y_Reservas.mis_alquileres');
     }
 
+    public function PreguntasRecibidas(){
+      return view('Prestador.Menu.Preguntas.preguntas_recibidas');
+    }
+    public function ServiciosFavoritos(){
+      return view('Prestador.Menu.Servicios_Contratados.favoritos');
+    }
     //completar_datos retorna la vista para crear una cuenta particual y de inmueble
     public function completar_datos(){
       $path = storage_path() . "/json/ProvinciasLocalidades.json";

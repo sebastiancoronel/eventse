@@ -76,7 +76,7 @@
   							</li>
 
   							<li>
-  								<a href="contact.html">Publicar servicios</a>
+  								<a href="contact.html">Publicar</a>
   							</li>
   						</ul>
   					</div>
@@ -106,7 +106,7 @@
   			<!-- Logo moblie -->
   			<div class="logo-mobile col-2">
           <a href="#" class="logo">
-              <img src="../images/Logo Eventse-1 ORIGINAL.svg" alt="IMG-LOGO" style="max-width: 150%; max-height:150%;">
+              <img src="{{asset('images/Logo Eventse-1 ORIGINAL.svg')}}" alt="IMG-LOGO" style="max-width: 150%; max-height:150%;">
           </a>
   			</div>
 
@@ -182,6 +182,9 @@
   			</ul> --}}
 
   			<ul class="main-menu-m">
+          <li>
+            <a href="{{route('home')}}">Mi cuenta</a>
+          </li>
   				<li>
   					<a href="index.html">Categorías	</a>
   					<ul class="sub-menu-m">

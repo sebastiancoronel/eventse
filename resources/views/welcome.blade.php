@@ -106,7 +106,7 @@
 
 		<!--ZONA SERVICIOS PREMIUM-->
 		<!-- Slider -->
-		<section class="section-slide">
+		<section class="section-slide d-none d-sm-block">
 			<div class="wrap-slick1">
 				<div class="slick1">
 					<div class="item-slick1" style="background-image: url(images/salon-01.jpg);">

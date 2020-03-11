@@ -13,6 +13,8 @@ Route::middleware(['auth', 'ControlarDatosCompletos'])->group(function () {
   Route::get('/home', 'HomeController@index')->name('home');
   Route::get('/home/resumen','PrestadorController@Resumen')->name('Resumen');
   Route::get('/home/alquileres-y-reservas/mis-alquileres','PrestadorController@MisAlquileres')->name('MisAlquileres');
+  Route::get('/home/alquileres-y-reservas/preguntas-recibidas','PrestadorController@PreguntasRecibidas')->name('PreguntasRecibidas');
+  Route::get('/home/servicios-contratados/favoritos','PrestadorController@ServiciosFavoritos')->name('ServiciosFavoritos');
 });
 //Solo Auth
 Route::middleware(['auth'])->group(function () {

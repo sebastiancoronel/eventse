@@ -13,7 +13,7 @@
             <div class="wrap-menu-desktop row" style="top: 0px;">
               <!-- Logo desktop -->
               <a href="{{route('principal')}}" class="logo ml-5 mt-3">
-                <img src="../images/Logo Eventse-1 ORIGINAL.svg" style="max-width: 150%; max-height:150%;" alt="IMG-LOGO">
+                <img src="{{asset('images/Logo Eventse-1 ORIGINAL.svg')}}" style="max-width: 150%; max-height:150%;" alt="IMG-LOGO">
               </a>
               {{-- <div class="col-md-2 ml-2">
               </div> --}}
@@ -339,9 +339,9 @@
                      </a>
                    </li>
                    <li class="nav-item">
-                     <a href="pages/charts/flot.html" class="nav-link">
+                     <a href="{{route('PreguntasRecibidas')}}" class="nav-link">
                        <i class="nav-icon"></i>
-                       <p>Preguntas hacia tí</p>
+                       <p>Preguntas recibidas</p>
                      </a>
                    </li>
                    <li class="nav-item">
@@ -363,7 +363,7 @@
                </a>
                <ul class="nav nav-treeview">
                  <li class="nav-item">
-                   <a href="pages/charts/chartjs.html" class="nav-link">
+                   <a href="{{route('ServiciosFavoritos')}}" class="nav-link">
                      <i class="nav-icon"></i>
                      <p>Favoritos</p>
                    </a>
@@ -371,7 +371,7 @@
                  <li class="nav-item">
                    <a href="pages/charts/flot.html" class="nav-link">
                      <i class="nav-icon"></i>
-                     <p>Preguntas que hiciste</p>
+                     <p>Preguntas realizadas</p>
                    </a>
                  </li>
                  <li class="nav-item">
@@ -463,7 +463,7 @@
                 with font-awesome or any other icon font library -->
                 <!-- INICIO -->
                 <li class="nav-item has-treeview">
-                 <a href="#" class="nav-link">
+                 <a href="{{url('/')}}" class="nav-link">
                    <i class="nav-icon fas fa-home"></i>
                    <p>
                      Inicio
@@ -496,9 +496,9 @@
                  </a>
                </li>
                <li class="nav-item">
-                 <a href="pages/charts/flot.html" class="nav-link">
+                 <a href="{{route('PreguntasRecibidas')}}" class="nav-link">
                    <i class="nav-icon"></i>
-                   <p>Preguntas hacia tí</p>
+                   <p>Preguntas recibidas</p>
                  </a>
                </li>
                <li class="nav-item">
@@ -520,7 +520,7 @@
            </a>
            <ul class="nav nav-treeview">
              <li class="nav-item">
-               <a href="pages/charts/chartjs.html" class="nav-link">
+               <a href="{{route('ServiciosFavoritos')}}" class="nav-link">
                  <i class="nav-icon"></i>
                  <p>Favoritos</p>
                </a>
@@ -528,7 +528,7 @@
              <li class="nav-item">
                <a href="pages/charts/flot.html" class="nav-link">
                  <i class="nav-icon"></i>
-                 <p>Preguntas que hiciste</p>
+                 <p>Preguntas realizadas</p>
                </a>
              </li>
              <li class="nav-item">
