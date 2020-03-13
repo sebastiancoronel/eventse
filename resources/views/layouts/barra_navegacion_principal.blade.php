@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
   <head>
-    @include('head')
+  @include('head')
   </head>
   @include('scripts')
   <body>
@@ -76,7 +76,7 @@
   							</li>
 
   							<li>
-  								<a href="contact.html">Publicar</a>
+  								<a href="contact.html" style="color:#f40082;">Publicar</a>
   							</li>
   						</ul>
   					</div>
@@ -213,7 +213,7 @@
   				</li>
 
           <li>
-            <a href="contact.html">Publicar servicios</a>
+            <a href="contact.html" class="ml-2" style="background-color:#f40082;">Publicar</a>
           </li>
   			</ul>
   		</div>

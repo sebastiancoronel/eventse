@@ -22,6 +22,11 @@
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/perfect-scrollbar/perfect-scrollbar.css')}}">
 <!--===============================================================================================-->
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{asset('vendor/fonts/iconic/css/material-design-iconic-font.min.css')}}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{asset('vendor/fonts/linearicons-v1.0.0/icon-font.min.css')}}">
+<!--===============================================================================================-->
 <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{asset('adminlte/plugins/fontawesome-free/css/all.min.css')}}">
 <link href="{{asset('adminlte/dist/js/adminlte.js')}}">

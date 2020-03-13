@@ -2,11 +2,11 @@
   "name": "#Eventse",
   "short_name": "#Eventse",
   "description": "Bienvenidos a #Eventse, tu plataforma de eventos festivos",
-  "background_color": "#2B2B2B", /*Color que predomina */
-  "theme_color": "#F0DB4F", /*Color del tema */
+  "background_color": "#2B2B2B",
+  "theme_color": "#F0DB4F",
   "orientation": "portrait",
-  "display": "standalone", /*Como se va a visualizar. Dejar Standalone, tmb puede*/
-  "start_url": "./?utm_source=web_app_manifest", /* Es un estandar */
+  "display": "standalone",
+  "start_url": "./?utm_source=web_app_manifest",
   "scope": "./",
   "lang": "es-MX",
   "icons": [

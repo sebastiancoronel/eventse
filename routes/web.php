@@ -1,14 +1,25 @@
 <?php
 
+
+/*
+|--------------------------------------------------------------------------
+| Todos
+|--------------------------------------------------------------------------
+*/
 Auth::routes();
 Route::get('/', function (){
-    return view('welcome');
+  return view('welcome');
 })->name('principal');
 
 //Traer $Categorias
 Route::get('/categorias-listar','CategoriaController@index');
+Route::get('/articulo/detalles','ServicioController@Detalles')->name('Detalles');
 
-//Auth + Datos completos
+/*
+|--------------------------------------------------------------------------
+| Auth + Datos completos
+|--------------------------------------------------------------------------
+*/
 Route::middleware(['auth', 'ControlarDatosCompletos'])->group(function () {
   Route::get('/home', 'HomeController@index')->name('home');
   Route::get('/home/resumen','PrestadorController@Resumen')->name('Resumen');
@@ -16,7 +27,11 @@ Route::middleware(['auth', 'ControlarDatosCompletos'])->group(function () {
   Route::get('/home/alquileres-y-reservas/preguntas-recibidas','PrestadorController@PreguntasRecibidas')->name('PreguntasRecibidas');
   Route::get('/home/servicios-contratados/favoritos','PrestadorController@ServiciosFavoritos')->name('ServiciosFavoritos');
 });
-//Solo Auth
+/*
+|--------------------------------------------------------------------------
+| Solo Auth
+|--------------------------------------------------------------------------
+*/
 Route::middleware(['auth'])->group(function () {
  //Datos de contacto
   //Completar datos de cada tipo de prestador
