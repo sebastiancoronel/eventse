@@ -13,25 +13,28 @@
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/animsition/css/animsition.min.css')}}">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/select2/select2.min.css')}}">
+{{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet"/> --}}
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/daterangepicker/daterangepicker.css')}}">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick.css')}}">
+{{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"/> --}}
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/MagnificPopup/magnific-popup.css')}}">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/perfect-scrollbar/perfect-scrollbar.css')}}">
 <!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{{asset('vendor/fonts/iconic/css/material-design-iconic-font.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('vendor/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('vendor/fonts/linearicons-v1.0.0/icon-font.min.css')}}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('vendor/fonts/iconic/css/material-design-iconic-font.min.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('vendor/fonts/linearicons-v1.0.0/icon-font.min.css')}}">
 <!--===============================================================================================-->
 <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{asset('adminlte/plugins/fontawesome-free/css/all.min.css')}}">
-<link href="{{asset('adminlte/dist/js/adminlte.js')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('vendor/fonts/linearicons-v1.0.0/icon-font.min.css')}}">
+<!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('adminlte/dist/css/adminlte.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.css')}}">
+<link rel="stylesheet" href="{{asset('adminlte/plugins/fontawesome-free/css/all.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
 
@@ -49,10 +52,10 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 {{-- Icono en la pestaña del navegador --}}
-<link rel="shortcut icon" type="image/png" href="./img/ProgramadorFitness.png">
+<link rel="shortcut icon" type="image/png" href="{{asset('images/Logo-Eventse-1 ORIGINAL.png')}}">
 
 {{-- Icono en los dispositivos --}}
-<link rel="apple-touch-icon" href="./ProgramadorFitness.png">
+<link rel="apple-touch-icon" href="{{asset('images/Logo-Eventse-1 ORIGINAL.png')}}">
 
 {{-- Imagen que aparece al inicio al entrar en moviles. --}}
 <link rel="apple-touch-startup-image" href="{{asset('images/Logo-Eventse-1 ORIGINAL.png')}}">
