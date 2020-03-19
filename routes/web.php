@@ -14,7 +14,7 @@ Route::get('/', function (){
 //Traer $Categorias
 Route::get('/categorias-listar','CategoriaController@index');
 Route::get('/articulo/detalles','ServicioController@Detalles')->name('Detalles');
-
+Route::get('/mi-paquete','CarritoController@ProductosAgregados')->name('ProductosAgregados');
 /*
 |--------------------------------------------------------------------------
 | Auth + Datos completos

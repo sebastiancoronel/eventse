@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Alquiler' => $baseDir . '/app/Alquiler.php',
+    'App\\Carrito' => $baseDir . '/app/Carrito.php',
     'App\\Categoria' => $baseDir . '/app/Categoria.php',
     'App\\Categoria_Servicio' => $baseDir . '/app/Categoria_Servicio.php',
     'App\\Cliente' => $baseDir . '/app/Cliente.php',
@@ -36,9 +37,11 @@ return array(
     'App\\Http\\Controllers\\ReservaController' => $baseDir . '/app/Http/Controllers/ReservaController.php',
     'App\\Http\\Controllers\\ServicioController' => $baseDir . '/app/Http/Controllers/ServicioController.php',
     'App\\Http\\Controllers\\ServicioInmuebleController' => $baseDir . '/app/Http/Controllers/ServicioInmuebleController.php',
+    'App\\Http\\Controllers\\UserDatoController' => $baseDir . '/app/Http/Controllers/UserDatoController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckForMaintenanceMode' => $baseDir . '/app/Http/Middleware/CheckForMaintenanceMode.php',
+    'App\\Http\\Middleware\\ControlarDatosCompletos' => $baseDir . '/app/Http/Middleware/ControlarDatosCompletos.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
     'App\\Http\\Middleware\\RedirectIfAuthenticated' => $baseDir . '/app/Http/Middleware/RedirectIfAuthenticated.php',
     'App\\Http\\Middleware\\TrimStrings' => $baseDir . '/app/Http/Middleware/TrimStrings.php',

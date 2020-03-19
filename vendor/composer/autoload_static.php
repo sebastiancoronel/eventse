@@ -426,6 +426,7 @@ class ComposerStaticInita46fe10eba2c4058e6946f15aed06849
 
     public static $classMap = array (
         'App\\Alquiler' => __DIR__ . '/../..' . '/app/Alquiler.php',
+        'App\\Carrito' => __DIR__ . '/../..' . '/app/Carrito.php',
         'App\\Categoria' => __DIR__ . '/../..' . '/app/Categoria.php',
         'App\\Categoria_Servicio' => __DIR__ . '/../..' . '/app/Categoria_Servicio.php',
         'App\\Cliente' => __DIR__ . '/../..' . '/app/Cliente.php',
@@ -455,9 +456,11 @@ class ComposerStaticInita46fe10eba2c4058e6946f15aed06849
         'App\\Http\\Controllers\\ReservaController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReservaController.php',
         'App\\Http\\Controllers\\ServicioController' => __DIR__ . '/../..' . '/app/Http/Controllers/ServicioController.php',
         'App\\Http\\Controllers\\ServicioInmuebleController' => __DIR__ . '/../..' . '/app/Http/Controllers/ServicioInmuebleController.php',
+        'App\\Http\\Controllers\\UserDatoController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserDatoController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
+        'App\\Http\\Middleware\\ControlarDatosCompletos' => __DIR__ . '/../..' . '/app/Http/Middleware/ControlarDatosCompletos.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',

@@ -320,7 +320,7 @@
   <!--===============================================================================================-->
   	<script src="{{asset('vendor/animsition/js/animsition.min.js')}}"></script>
   <!--===============================================================================================-->
-  <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
   	<!--===============================================================================================-->
   	<script src="{{asset('adminlte/dist/js/adminlte.js')}}"></script>
@@ -396,7 +396,7 @@
   			$('.js-addcart-detail').each(function(){
   				var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
   				$(this).on('click', function(){
-  					swal(nameProduct, "is added to cart !", "success");
+  					swal(nameProduct, "se añadió a tu paquete !", "success");
   				});
   			});
 
