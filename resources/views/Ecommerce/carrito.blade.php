@@ -222,8 +222,16 @@
                   <td class="column-2">Castillo inflable de 3x3mts</td>
                   <td class="column-3 ml-5 pl-5">$600.00</td>
                 </tr>
+
+								<table class="mt-4 d-flex justify-content-center">
+									<tr class="table_row row">
+										<td> <a href="#">Ver más servicios del prestador</a></td>
+									</tr>
+								</table>
 							</table>
+
 							<hr>
+
 							<table>
                 <tr class="table_row">
 									<!-- Botón Elipsis esquina superior derecha -->
@@ -265,9 +273,16 @@
                     </div>
                   </td>
                   <td class="column-2">Castillo inflable de 4x3mts</td>
-                  <td class="column-3 ml-5 pl-5">$900.00</td>
+                  <td class="column-3 ml-5 pl-5">Precio a convenir</td>
                 </tr>
 							</table>
+							
+							<table class="mt-4 d-flex justify-content-center">
+								<tr class="table_row row">
+									<td> <a href="#">Ver más servicios del prestador</a></td>
+								</tr>
+							</table>
+						</table>
             </div>
 
             <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">

@@ -29,14 +29,30 @@
             @endguest
             @auth
               <div class="d-flex align-items-center">
-                <span>
-                  <a href="{{ url('/home') }}" class="flex-c-m trans-04 p-lr-25" style="color:white;" onmouseover="this.style.color= '#717fe0'" onmouseout="this.style.color= 'white'" >Mi cuenta</a>
-                </span>
                 <span class="ml-5">
-                  <a href="{{ route('logout') }}" class="flex-c-m trans-04 p-lr-25" style="color:white;" onmouseover="this.style.color= '#717fe0'" onmouseout="this.style.color= 'white'" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Cerrar sesión</a>
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                      @csrf
-                  </form>
+                  <div class="dropdown" style=" z-index:1101;">
+                      <!-- Nombre del usuario -->
+                      <a id="navbarDropdown" class="nav-link dropdown-toggle" style="color:white;" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          {{ Auth::user()->name }} <span class="caret"></span>
+                      </a>
+                      <!-- Menú -->
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <!-- Mi cuenta -->
+                        <div class="dropdown-item">
+                          <a href="{{ url('/home') }}" class="trans-04 text-dark" onmouseover="this.style.color= '#717fe0'" onmouseout="this.style.color= 'white'" >Mi cuenta</a>
+                        </div>
+
+                        <!-- Logout -->
+                        <div class="dropdown-item">
+                          <a href="{{ route('logout') }}" class="trans-04 text-dark" onmouseover="this.style.color= '#717fe0'" onmouseout="this.style.color= 'white'" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Cerrar sesión</a>
+                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                          </form>
+                        </div>
+
+                      </div>
+                      <!--Fin Menú-->
+                  </div>
                 </span>
               </div>
             @endauth
@@ -87,7 +103,7 @@
   							<i class="zmdi zmdi-search"></i>
   						</div>
 
-  						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11"><!--icon-header-noti js-show-cart ES EL ICONO DE NOTIFICACIÓN data-notify="6" ES EL NUMERO DE ARTICULOS EN EL CARRITO-->
+  						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart"><!--icon-header-noti ES EL ICONO DE NOTIFICACIÓN data-notify="6" ES EL NUMERO DE ARTICULOS EN EL CARRITO. js-show-cart Es para mostrar el carrito-->
   							<i class="zmdi zmdi-shopping-cart"></i>
   						</div>
 
