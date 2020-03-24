@@ -15,6 +15,16 @@ Route::get('/', function (){
 Route::get('/categorias-listar','CategoriaController@index');
 Route::get('/articulo/detalles','ServicioController@Detalles')->name('Detalles');
 Route::get('/mi-paquete','CarritoController@ProductosAgregados')->name('ProductosAgregados');
+
+/*
+|--------------------------------------------------------------------------
+| Auth + Datos completos + Datos Negocio completos
+|--------------------------------------------------------------------------
+*/
+Route::middleware(['auth', 'ControlarDatosCompletos', 'ControlarNegocioExistente'])->group(function () {
+  Route::get('/publicar', 'ServicioController@Publicar')->name('Publicar');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Auth + Datos completos
