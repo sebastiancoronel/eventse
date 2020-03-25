@@ -1,74 +1,75 @@
-@extends('layouts.base_registro')
-
+@extends('layouts.barra_navegacion_principal')
 {{-- FORMULARIO PARA DATOS DE LA CUENTA --}}
-@section('formulario_cuenta')
-  <div class="container">
-      <div class="row justify-content-center">
-          <div class="col-md-8">
-              <div class="card mt-5">
-                  <span class="mt-4 text-uppercase" style="text-align:center; color:#3B4AFC;">Completá los datos de tu cuenta para continuar</span>
+@section('content')
+  <div class="position-relative" style="height: 50em;">
+    <div id="banner"></div>
+    <div id="formulario" class="p-t-20 d-flex justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <span class="mt-4 text-uppercase" style="text-align:center; color:#3B4AFC;">Completá los datos de tu cuenta para continuar</span>
 
-                  <div class="card-body">
-                      <form method="POST" enctype="multipart/form-data" action="{{route('AlmacenarDatosPrestador')}}">
-                          @csrf
-                          <!-- Fecha de alta al sistema -->
-                          <input hidden type="text" name="" value="{{date('Y-m-d')}}">
-                        <!-- DNI -->
-                        <div class="form-group row">
-                            <label for="dni" class="col-md-4 col-form-label text-md-right">DNI</label>
-                            <input id="dni" class="form-control col-md-6" type="number" name="dni" required>
-                        </div>
-                        <!-- Provincia -->
-                          <div class="form-group row">
-                              <label for="provincia" class="col-md-4 col-form-label text-md-right">Provincia</label>
-                              <div class="col-md-6">
-                                <input hidden id="provincia_nombre" type="text" name="provincia_nombre" value="">
-                                  <select id="provincia" class="form-control" name="provincia" required>
-                                    <option value="" selected>Elegir</option>
-                                    @foreach ($ProvinciasLocalidadesJson as $provincia)
-                                      <option value="{{ $provincia['id'] }}">{{$provincia['nombre']}}</option>
-                                    @endforeach
-                                  </select>
-                              </div>
-                          </div>
-                          <!-- Ciudad -->
-                          <div class="form-group row">
-                              <label for="ciudad" class="col-md-4 col-form-label text-md-right">Ciudad</label>
-                              <div class="col-md-6">
-                                  <select id="localidad" class="form-control" name="localidad" required>
-                                    @foreach ($ProvinciasLocalidadesJson as $localidad)
-
-                                    @endforeach
-                                  </select>
-                              </div>
-                          </div>
-                          <!-- Teléfono -->
-                          <div class="form-group row">
-                            <label for="telefono" class="col-md-4 col-form-label text-md-right">Teléfono</label>
-                            <input class="form-control col-md-6" type="number" name="telefono" required>
-                          </div>
-                          <!-- Nombre de fantasía -->
-                          {{-- <div class="form-group row">
-                            <label for="nombre_fantasia" class="col-md-4 col-form-label text-md-right">Nombre fantasía</label>
-                            <input class="form-control col-md-6" type="text" name="nombre_fantasia" placeholder="Ejemplo: El principito eventos">
-                          </div>
-                          <!-- Foto de perfil -->
-                          <div class="form-group row">
-                            <label for="foto" class="col-md-4 col-form-label text-md-right">Foto de perfil <br> <small class="">Seelccioná la foto con la que las personas te identificaran a ti y tus servicios</small> </label>
-                            <input id="foto" class="form-control col-md-6" type="file" name="foto" accept="image/*">
-                          </div>
-                          <!-- Vista previa imagen -->
-                          <div class="card d-flex align-items-center">
-                            <img id="preview" class="rounded" src="#" alt="" width="30%" height="30%">
-                          </div> --}}
-                          <div class="text-center mt-4">
-                            <button class="btn btn-primary" style="background:#3B4AFC; cursor:pointer;" type="submit">Finalizar</button>
-                          </div>
-                      </form>
-                  </div>
+          <div class="card-body">
+            <form method="POST" enctype="multipart/form-data" action="{{route('AlmacenarDatosPrestador')}}">
+              @csrf
+              <!-- Fecha de alta al sistema -->
+              <input hidden type="text" name="" value="{{date('Y-m-d')}}">
+              <!-- DNI -->
+              <div class="form-group row">
+                <label for="dni" class="col-md-4 col-form-label text-md-right">DNI</label>
+                <input id="dni" class="form-control col-md-6" type="number" name="dni" required>
               </div>
+              <!-- Provincia -->
+              <div class="form-group row">
+                <label for="provincia" class="col-md-4 col-form-label text-md-right">Provincia</label>
+                <div class="col-md-6">
+                  <input hidden id="provincia_nombre" type="text" name="provincia_nombre" value="">
+                  <select id="provincia" class="form-control" name="provincia" required>
+                    <option value="" selected>Elegir</option>
+                    @foreach ($ProvinciasLocalidadesJson as $provincia)
+                      <option value="{{ $provincia['id'] }}">{{$provincia['nombre']}}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+              <!-- Ciudad -->
+              <div class="form-group row">
+                <label for="ciudad" class="col-md-4 col-form-label text-md-right">Ciudad</label>
+                <div class="col-md-6">
+                  <select id="localidad" class="form-control" name="localidad" required>
+                    @foreach ($ProvinciasLocalidadesJson as $localidad)
+
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+              <!-- Teléfono -->
+              <div class="form-group row">
+                <label for="telefono" class="col-md-4 col-form-label text-md-right">Teléfono</label>
+                <input class="form-control col-md-6" type="number" name="telefono" required>
+              </div>
+              <!-- Nombre de fantasía -->
+              {{-- <div class="form-group row">
+              <label for="nombre_fantasia" class="col-md-4 col-form-label text-md-right">Nombre fantasía</label>
+              <input class="form-control col-md-6" type="text" name="nombre_fantasia" placeholder="Ejemplo: El principito eventos">
+            </div>
+            <!-- Foto de perfil -->
+            <div class="form-group row">
+            <label for="foto" class="col-md-4 col-form-label text-md-right">Foto de perfil <br> <small class="">Seelccioná la foto con la que las personas te identificaran a ti y tus servicios</small> </label>
+            <input id="foto" class="form-control col-md-6" type="file" name="foto" accept="image/*">
           </div>
-      </div>
+          <!-- Vista previa imagen -->
+          <div class="card d-flex align-items-center">
+          <img id="preview" class="rounded" src="#" alt="" width="30%" height="30%">
+        </div> --}}
+        <div class="text-center mt-4">
+          <button class="btn btn-primary" style="background:#3B4AFC; cursor:pointer;" type="submit">Finalizar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
   </div>
 
 {{-- Scripts  --}}

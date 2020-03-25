@@ -1,7 +1,7 @@
 <!DOCTYPE html>
   <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-    @include('Dependencias.head')
+    @include('head')
     </head>
     @include('scripts')
     <body class="hold-transition sidebar-mini layout-fixed">

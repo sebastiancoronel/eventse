@@ -4,7 +4,7 @@
     {{-- Escritorio --}}
     <div class="bg0 p-t-75 mt-3 d-none d-sm-block">
       <div class="" style="height: 200px; background:#6c7ae0;">
-        <h2 class="text-white d-flex justify-content-center p-5 m-5">¿Que desea publicar?</h2>
+        <h2 class="text-white d-flex justify-content-center p-5 m-5">¿Que deseas publicar?</h2>
       </div>
 
       <div class="row d-flex justify-content-center mt-3">
@@ -12,7 +12,7 @@
         <a  href="#"class="card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
           <div class="card-body d-flex flex-column">
             <i class="fas fa-store-alt" style="font-size: 60px;"></i>
-            <span class="mt-4">Salones</span>
+            <span class="mt-4">Inmuebles</span>
           </div>
         </a>
 
@@ -64,8 +64,33 @@
           </div>
         </a>
 
-
       </div>
     </div>
+    {{-- Fin Escritorio --}}
+
+    {{-- Formulario Inmuebles --}}
+    <form class="row d-flex justify-content-center mt-5">
+      @csrf
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input class="form-control" type="text" name="nombre" value="" placeholder="Por ej: Finca las marias">
+
+        <!-- Row Calle - Nro -->
+        <div class="row">
+          <div class="col-md-6">
+            <label class="mt-4" for="calle">Calle</label>
+            <input class="form-control" type="text" name="calle" value="">
+          </div>
+
+          <div class="col-md-6">
+            <label class="mt-4" for="numero">Nro.</label>
+            <input class="form-control" type="text" name="numero" value="">
+          </div>
+        </div>
+        <label for="info_adicional">Información adicional</label>
+        <input class="form-control" type="text" name="info_adicional" value="" placeholder="Información adicional de la ubicación">
+      </div>
+    </form>
+
   </div>
 @endsection

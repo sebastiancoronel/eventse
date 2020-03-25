@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
   <head>
-  @include('head')
+  @include('Dependencias.head')
   <script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+
+  <style media="screen">
+    *{
+      font-family: Poppins-Regular;
+    }
+      #banner{
+        background-image: url('../Images/banner_registro.png');
+        height: 300px;
+      }
+      #formulario{
+        position: absolute;
+        top: 10%;
+        left: 0%;
+        width: 100%;
+      }
+  </style>
+
   </head>
-    <body>
+<body>
   <header>
   		<!-- Header desktop -->
   		<div class="container-menu-desktop">
@@ -63,7 +80,7 @@
   				<nav class="limiter-menu-desktop container">
 
   					<!-- Logo desktop -->
-  					<a href="#" class="logo">
+  					<a href="{{route('Principal')}}" class="logo">
   							<img src="../images/Logo Eventse-1 ORIGINAL.svg" alt="IMG-LOGO" style="max-width: 150%; max-height:150%;">
   					</a>
 
@@ -121,7 +138,7 @@
   		<div class="row wrap-header-mobile">
   			<!-- Logo moblie -->
   			<div class="logo-mobile col-2">
-          <a href="#" class="logo">
+          <a href="{{route('Principal')}}" class="logo">
               <img src="{{asset('images/Logo Eventse-1 ORIGINAL.svg')}}" alt="IMG-LOGO" style="max-width: 150%; max-height:150%;">
           </a>
   			</div>
@@ -206,10 +223,7 @@
   					<ul class="sub-menu-m">
               <li><a href="index.html">Salones</a></li>
               <li><a href="home-02.html">Animación</a></li>
-              <li><a href="home-03.html">Mobiliario</a></li>
-              <li><a href="home-03.html">Servicios de catering</a></li>
-              <li><a href="home-03.html">Iluminación</a></li>
-              <li><a href="home-03.html">Música & DJ´s</a></li>
+
   					</ul>
   					<span class="arrow-main-menu-m">
   						<i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -282,53 +296,10 @@
             </div>
           </div>
         </div>
-
-<script>
-	$('#AbrirModal').on('click', function(){
-
-		var winSize = {
-		wheight : $(window).height(),
-		wwidth : $(window).width()
-		};
-		var modSize = {
-		mheight : $('#Modal_registro').height(),
-		mwidth : $('#Modal_registro').width()
-		};
-	$('#Modal_registro').css({
-		'padding-top' :  ((winSize.wheight - (modSize.mheight/2))/3),
-	});
-
-	$('#Modal_registro').modal({
-		backdrop: true,
-		keyboard : false
-	});
-});
-
-  $('#AbrirModalMovil').on('click', function(){
-
-  var winSize = {
-  wheight : $(window).height(),
-  wwidth : $(window).width()
-  };
-  var modSize = {
-  mheight : $('#Modal_registro').height(),
-  mwidth : $('#Modal_registro').width()
-  };
-  $('#Modal_registro').css({
-  'padding-top' :  ((winSize.wheight - (modSize.mheight/2))/3),
-  });
-
-  $('#Modal_registro').modal({
-  backdrop: true,
-  keyboard : false
-  });
-  });
-</script>
-
   		<!--Fin Modal Registro-->
   </header>
         @yield('content')
-  </body>
+</body>
   {{-- Scripts --}}
   <!--===============================================================================================-->
   	<!-- jQuery UI -->
@@ -437,6 +408,49 @@
   	<!--===============================================================================================-->
   		<script src="{{asset('js/main.js')}}"></script>
    <!--===============================================================================================-->
+   <script>
+   	$('#AbrirModal').on('click', function(){
+
+   		var winSize = {
+   		wheight : $(window).height(),
+   		wwidth : $(window).width()
+   		};
+   		var modSize = {
+   		mheight : $('#Modal_registro').height(),
+   		mwidth : $('#Modal_registro').width()
+   		};
+   	$('#Modal_registro').css({
+   		'padding-top' :  ((winSize.wheight - (modSize.mheight/2))/3),
+   	});
+
+   	$('#Modal_registro').modal({
+   		backdrop: true,
+   		keyboard : false
+   	});
+   });
+
+     $('#AbrirModalMovil').on('click', function(){
+
+     var winSize = {
+     wheight : $(window).height(),
+     wwidth : $(window).width()
+     };
+     var modSize = {
+     mheight : $('#Modal_registro').height(),
+     mwidth : $('#Modal_registro').width()
+     };
+     $('#Modal_registro').css({
+     'padding-top' :  ((winSize.wheight - (modSize.mheight/2))/3),
+     });
+
+     $('#Modal_registro').modal({
+     backdrop: true,
+     keyboard : false
+     });
+     });
+   </script>
+
+
 
   {{-- PWA --}}
   {{-- <script>

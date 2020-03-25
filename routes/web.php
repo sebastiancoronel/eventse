@@ -8,8 +8,8 @@
 */
 Auth::routes();
 Route::get('/', function (){
-  return view('welcome');
-})->name('principal');
+  return view('Ecommerce.welcome');
+})->name('Principal');
 
 //Traer $Categorias
 Route::get('/categorias-listar','CategoriaController@index');

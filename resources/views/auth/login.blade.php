@@ -1,7 +1,7 @@
-@extends('layouts.base_registro')
+@extends('layouts.barra_navegacion_principal')
 
-@section('formulario_cuenta')
-<div class="container">
+@section('content')
+<div class="animsition p-t-75">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card mt-5">

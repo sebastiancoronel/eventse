@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="ltr">
   <head>
-  @include('head')
+  @include('Dependencias.head')
   <!--===============================================================================================-->
   <link rel="stylesheet" type="text/css" href="../css/util.css">
   <link rel="stylesheet" type="text/css" href="../css/main.css">
   <!--===============================================================================================-->
-  @include('scripts')
+
   <style media="screen">
     *{
       font-family: 'Raleway', sans-serif;
@@ -22,6 +22,7 @@
         width: 100%;
       }
   </style>
+
   </head>
   <body>
     <div class="bg-white">
