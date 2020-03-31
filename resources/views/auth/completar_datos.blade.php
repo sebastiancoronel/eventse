@@ -1,7 +1,7 @@
 @extends('layouts.barra_navegacion_principal')
 {{-- FORMULARIO PARA DATOS DE LA CUENTA --}}
 @section('content')
-  <div class="position-relative" style="height: 50em;">
+  <div class="animsition position-relative" style="height: 50em;">
     <div id="banner"></div>
     <div id="formulario" class="p-t-20 d-flex justify-content-center">
       <div class="col-md-8">
@@ -9,7 +9,7 @@
           <span class="mt-4 text-uppercase" style="text-align:center; color:#3B4AFC;">Completá los datos de tu cuenta para continuar</span>
 
           <div class="card-body">
-            <form method="POST" enctype="multipart/form-data" action="{{route('AlmacenarDatosPrestador')}}">
+            <form method="POST" enctype="multipart/form-data" action="{{route('AlmacenarDatosCliente')}}">
               @csrf
               <!-- Fecha de alta al sistema -->
               <input hidden type="text" name="" value="{{date('Y-m-d')}}">

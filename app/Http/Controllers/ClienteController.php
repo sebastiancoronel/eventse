@@ -1,85 +1,46 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use auth;
 use App\Cliente;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+/*============================
+              Menú
+==============================*/
+      public function Resumen(){
+        return view('Perfiles.Cliente.Menu.resumen');
+      }
+/*============================
+              Fin Menú
+==============================*/
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+      public function completar_datos(){
+        $path = storage_path() . "/json/ProvinciasLocalidades.json";
+        $ProvinciasLocalidadesJson = json_decode(file_get_contents($path),true);
+        //dd($ProvinciasLocalidadesJson);
+        return view('auth.completar_datos',['ProvinciasLocalidadesJson'=>$ProvinciasLocalidadesJson]);
+      }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Cliente  $cliente
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Cliente $cliente)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Cliente  $cliente
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Cliente $cliente)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Cliente  $cliente
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Cliente $cliente)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Cliente  $cliente
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Cliente $cliente)
-    {
-        //
+      public function AlmacenarDatosCliente(Request $request){
+        $ConsultarDatos = Cliente::where('user_id',Auth::user()->id)
+                                  ->select('*')
+                                  ->first();
+        //dd($ConsultarDatos);
+        if ($ConsultarDatos == null ) {
+          $Cliente = new Cliente;
+          $Cliente->user_id = Auth::user()->id;
+          $Cliente->dni = $request->dni;
+          $Cliente->provincia = $request->provincia_nombre;
+          $Cliente->localidad = $request->localidad;
+          $Cliente->telefono = $request->telefono;
+          $Cliente->fecha_de_alta = date('Y-m-d');
+          $Cliente->save();
+          return redirect()->route('principal');
+        }else{
+            return redirect()->route('principal');
+        }
     }
 }

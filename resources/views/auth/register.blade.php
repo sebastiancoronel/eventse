@@ -2,8 +2,9 @@
 
 {{-- FORMULARIO PARA DATOS DE LA CUENTA --}}
 @section('content')
-<div class="animsition p-t-75">
-    <div class="row justify-content-center">
+<div class="animsition position-relative" style="height: 50em;">
+  <div id="banner"></div>
+    <div id="formulario" class="p-t-20 d-flex justify-content-center">
         <div class="col-md-8">
             <div class="card mt-5">
                 <span class="mt-4" style="text-align:center; color:#3B4AFC;">DATOS DE LA CUENTA</span>

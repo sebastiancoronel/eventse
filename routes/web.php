@@ -3,7 +3,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| Todos
+| Zona Ecommerce
 |--------------------------------------------------------------------------
 */
 Auth::routes();
@@ -11,7 +11,7 @@ Route::get('/', function (){
   return view('Ecommerce.welcome');
 })->name('Principal');
 
-//Traer $Categorias
+//Traer Categorias
 Route::get('/categorias-listar','CategoriaController@index');
 Route::get('/articulo/detalles','ServicioController@Detalles')->name('Detalles');
 Route::get('/mi-paquete','CarritoController@ProductosAgregados')->name('ProductosAgregados');
@@ -32,10 +32,12 @@ Route::middleware(['auth', 'ControlarDatosCompletos', 'ControlarNegocioExistente
 */
 Route::middleware(['auth', 'ControlarDatosCompletos'])->group(function () {
   Route::get('/home', 'HomeController@index')->name('home');
-  Route::get('/home/resumen','PrestadorController@Resumen')->name('Resumen');
-  Route::get('/home/alquileres-y-reservas/mis-alquileres','PrestadorController@MisAlquileres')->name('MisAlquileres');
-  Route::get('/home/alquileres-y-reservas/preguntas-recibidas','PrestadorController@PreguntasRecibidas')->name('PreguntasRecibidas');
-  Route::get('/home/servicios-contratados/favoritos','PrestadorController@ServiciosFavoritos')->name('ServiciosFavoritos');
+  // Menú Cliente
+  Route::get('/home/resumen','ClienteController@Resumen')->name('Resumen');
+  Route::get('/home/alquileres-y-reservas/mis-alquileres','ClienteController@MisAlquileres')->name('MisAlquileres');
+  Route::get('/home/servicios-contratados/favoritos','ClienteController@ServiciosFavoritos')->name('ServiciosFavoritos');
+  //Menú Empresa
+  Route::get('/home/empresa/alquileres-y-reservas/preguntas-recibidas','PerfilEmpresaController@PreguntasRecibidas')->name('PreguntasRecibidas');
 });
 /*
 |--------------------------------------------------------------------------
@@ -45,22 +47,11 @@ Route::middleware(['auth', 'ControlarDatosCompletos'])->group(function () {
 Route::middleware(['auth'])->group(function () {
  //Datos de contacto
   //Completar datos de cada tipo de prestador
-  Route::get('completardatos/prestador','PrestadorController@completar_datos')->name('CompletarDatos');
+  Route::get('completardatos/cliente','ClienteController@completar_datos')->name('CompletarDatos');
   //Almacena datos
-  Route::post('completardatos/prestador/AlmacenarDatosPrestador','PrestadorController@AlmacenarDatosPrestador')->name('AlmacenarDatosPrestador');
+Route::post('completardatos/cliente/AlmacenarDatosCliente','ClienteController@AlmacenarDatosCliente')->name('AlmacenarDatosCliente');
 
 });
-
-//Almacenar datos de cuenta de INMUEBLE
-Route::get('completardatos/inmueble/guardar','InmuebleController@almacenar_datos_inmueble')->name('almacenar_datos_inmueble');
-//Publicaciones
-Route::get('publicaciones','AlquilerController@ListarPublicados');
-//Diseño base
-Route::get('prestador',function(){
-  return view('Prestador.layout');
-});
-//Para Inmueble
-Route::resource('/inmueble','InmuebleController');
 /*
 |--------------------------------------------------------------------------
 | Super Admin

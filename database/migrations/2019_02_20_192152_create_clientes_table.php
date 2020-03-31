@@ -21,7 +21,7 @@ class CreateClientesTable extends Migration
             $table->string('localidad');
             $table->string('telefono');
             $table->string('fecha_de_alta');
-            $table->integer('puntos');
+            $table->integer('puntos')->default(0);
 
             $table->softDeletes();
             $table->timestamps();
