@@ -28,7 +28,7 @@ class ClienteController extends Controller
         $ConsultarDatos = Cliente::where('user_id',Auth::user()->id)
                                   ->select('*')
                                   ->first();
-        //dd($ConsultarDatos);
+                                  
         if ($ConsultarDatos == null ) {
           $Cliente = new Cliente;
           $Cliente->user_id = Auth::user()->id;
@@ -38,9 +38,9 @@ class ClienteController extends Controller
           $Cliente->telefono = $request->telefono;
           $Cliente->fecha_de_alta = date('Y-m-d');
           $Cliente->save();
-          return redirect()->route('principal');
+          return redirect()->route('Principal');
         }else{
-            return redirect()->route('principal');
+            return redirect()->route('Principal');
         }
     }
 }

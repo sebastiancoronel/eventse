@@ -1,6 +1,7 @@
 <title>Eventse</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <!--===============================================================================================-->
 <link rel="icon" type="image/png" href="{{asset('images/Logo-Eventse-1 ORIGINAL.png')}}"/>
 <!--===============================================================================================-->
@@ -39,8 +40,9 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
 
 
+
 {{-- PWA --}}
-<link rel="manifest" href="{{asset('json/manifest.json')}}">
+{{-- <link rel="manifest" href="{{asset('json/manifest.json')}}"> --}}
 {{-- Pintar la barra de dirección del navegador. --}}
 <meta name="theme-color" content="#717fe0">
 
