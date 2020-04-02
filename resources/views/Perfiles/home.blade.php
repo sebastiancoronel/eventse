@@ -249,7 +249,7 @@
                     <!-- INICIO -->
                     <li class="nav-item has-treeview">
                      <a href="{{url('/')}}" class="nav-link">
-                       <i class="nav-icon fas fa-home"></i>
+                       <i class="nav-icon zmdi zmdi-home"></i>
                        <p>
                          Inicio
                        </p>
@@ -258,7 +258,7 @@
                     <!-- RESUMEN -->
                     <li class="nav-item has-treeview">
                      <a href="{{route('Resumen')}}" class="nav-link">
-                       <i class="nav-icon fas fa-list-alt"></i>
+                       <i class="nav-icon zmdi zmdi-format-subject"></i>
                        <p>
                          Resumen
                        </p>
@@ -267,7 +267,7 @@
                   <!-- VENTAS -->
                <li class="nav-item has-treeview">
                  <a href="#" class="nav-link">
-                   <i class="nav-icon fas fa-store"></i>
+                   <i class="nav-icon zmdi zmdi-store"></i>
                    <p>
                      Alquileres y Reservas
                      <i class="right fas fa-angle-left"></i>
@@ -297,7 +297,7 @@
              <!-- COMPRAS -->
              <li class="nav-item has-treeview">
                <a href="#" class="nav-link">
-                 <i class="nav-icon fas fa-shopping-bag"></i>
+                 <i class="nav-icon zmdi zmdi-shopping-basket"></i>
                  <p>
                    Compras
                    <i class="right fas fa-angle-left"></i>
@@ -334,7 +334,7 @@
              <!-- Configuración -->
              <li class="nav-item has-treeview">
                <a href="#" class="nav-link">
-                 <i class="nav-icon fas fa-cog"></i>
+                 <i class="nav-icon zmdi zmdi-settings"></i>
                  <p>
                    Configuración
                    <i class="right fas fa-angle-left"></i>
@@ -410,7 +410,7 @@
                 <!-- INICIO -->
                 <li class="nav-item has-treeview">
                  <a href="{{url('/')}}" class="nav-link">
-                   <i class="nav-icon fas fa-home"></i>
+                   <i class="nav-icon zmdi zmdi-home"></i>
                    <p>
                      Inicio
                    </p>
@@ -419,7 +419,7 @@
                 <!-- RESUMEN -->
                 <li class="nav-item has-treeview">
                  <a href="{{route('Resumen')}}" class="nav-link">
-                   <i class="nav-icon fas fa-list-alt"></i>
+                   <i class="nav-icon zmdi zmdi-format-subject"></i>
                    <p>
                      Resumen
                    </p>
@@ -428,7 +428,7 @@
               <!-- VENTAS -->
            <li class="nav-item has-treeview">
              <a href="#" class="nav-link">
-               <i class="nav-icon fas fa-store"></i>
+               <i class="nav-icon zmdi zmdi-store"></i>
                <p>
                  Alquileres y Reservas
                  <i class="right fas fa-angle-left"></i>
@@ -458,7 +458,7 @@
          <!-- COMPRAS -->
          <li class="nav-item has-treeview">
            <a href="#" class="nav-link">
-             <i class="nav-icon fas fa-shopping-bag"></i>
+             <i class="nav-icon zmdi zmdi-shopping-basket"></i>
              <p>
                Compras
                <i class="right fas fa-angle-left"></i>
@@ -495,7 +495,7 @@
          <!-- Configuración -->
          <li class="nav-item has-treeview">
            <a href="#" class="nav-link">
-             <i class="nav-icon fas fa-cog"></i>
+             <i class="nav-icon zmdi zmdi-settings"></i>
              <p>
                Configuración
                <i class="right fas fa-angle-left"></i>
