@@ -5,9 +5,9 @@
   @include('Dependencias.head')
 
   <style media="screen">
-    *{
+    /* *{
       font-family: Poppins-Regular;
-    }
+    } */
       #banner{
         background-image: url('../Images/banner_registro.png');
         height: 300px;

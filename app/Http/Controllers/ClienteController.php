@@ -13,6 +13,10 @@ class ClienteController extends Controller
       public function ClienteResumen(){
         return view('Perfiles.Cliente.Menu.resumen');
       }
+
+      public function ServiciosFavoritos(){
+        return view('Perfiles.Cliente.Menu.Servicios.favoritos');
+      }
 /*============================
               Fin Menú
 ==============================*/

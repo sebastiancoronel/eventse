@@ -100,7 +100,7 @@
 
         43% { transform: rotate(0); }
         100% { transform: rotate(0); }
-}
+      }
     </style>
     </head>
     <body class="hold-transition sidebar-mini layout-fixed">
@@ -696,7 +696,7 @@
 
 {{-- FIN NOTIFICACIONES --}}
     <!--//Contenido-->
-    <div class="content-wrapper">
+    <div id="roboto" class="content-wrapper">
       @yield('content')
     </div>
     <!--//Fin Contenido-->

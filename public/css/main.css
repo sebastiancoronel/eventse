@@ -41,6 +41,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 *, span, p, input, label, div, ul, li, footer, ol ,nav{
   font-family: Poppins-Regular;
 }
+
 @font-face {
   font-family: Poppins-Regular;
   src: url('../fonts/Poppins/Poppins-Regular.ttf');

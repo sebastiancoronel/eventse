@@ -1,4 +1,4 @@
-@extends('home')
+@extends('Perfiles.home')
 @section('content')
 {{-- Escritorio --}}
   <div class="d-none d-sm-block">
@@ -21,9 +21,9 @@
                       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0lc_Lp2fYGUPo0ej70Cs4Z8Ts0KOjx231QzFBqoewr-MGQZF2og&s" width="6%"> <span class="ml-2">Alquiler de Castillo inflable acuático</span> <strong class="text-danger">$850</strong><sup class="text-danger">00</sup> <small class="ml-5 pl-5"> Publicado el 10/08/2019</small>
                   </div>
                   <div class="card-body">
-                      <i class="far fa-comment text-primary"></i> <span>¿Hola!, el castillo es para niños de 10 años mas o menos?</span> <span class="text-muted ml-5">Hace 2min</span>
+                      <i class="zmdi zmdi-comment"></i> <span>¿Hola!, el castillo es para niños de 10 años mas o menos?</span> <span class="text-muted ml-5">Hace 2min</span>
                       <br>
-                      <i class="far fa-user text-info text-truncate"></i> <span>Hola que tal, si, es para esa edad y hasta 17 años</span>
+                      <i class="zmdi zmdi-comment-alt"></i> <span>Hola que tal, si, es para esa edad y hasta 17 años</span>
                   </div>
               </div>
           </div>
@@ -34,7 +34,7 @@
                       <img src="http://stc.obolog.net/photos/4ec5/4ec502559e02fs2715743.jpg" width="6%"> <span class="ml-2">Plaza blanda de 10 elementos</span> <strong class="text-danger">$600</strong><sup class="text-danger">00</sup> <small class="ml-5 pl-5"> Publicado el 20/08/2019</small>
                   </div>
                   <div class="card-body">
-                      <i class="far fa-comment text-primary"></i> <span>¿Por cuantas horas es el alquiler?, necesito para el zanjón para el 31 a la noche</span> <span class="text-muted ml-5">Hace 10min</span>
+                      <i class="zmdi zmdi-comment"></i> <span>¿Por cuantas horas es el alquiler?, necesito para el zanjón para el 31 a la noche</span> <span class="text-muted ml-5">Hace 10min</span>
                       <br>
                       <form class="form-group d-flex align-items-self mt-3" action="index.html" method="post">
                         @csrf
@@ -71,9 +71,9 @@
                   <small class="ml-5 pl-5"> Publicado el 10/08/2019</small>
               </div>
               <div class="card-body">
-                  <i class="far fa-comment text-primary"></i> <span>¿Hola!, el castillo es para niños de 10 años mas o menos?</span> <span class="text-muted ml-2">Hace 2min</span>
+                  <i class="zmdi zmdi-comment"></i> <span>¿Hola!, el castillo es para niños de 10 años mas o menos?</span> <span class="text-muted ml-2">Hace 2min</span>
                   <br><br>
-                  <i class="far fa-user text-primary text-truncate"></i><span>Hola que tal, si, es para esa edad y hasta 17 años</span>
+                  <i class="zmdi zmdi-comment-alt"></i><span>Hola que tal, si, es para esa edad y hasta 17 años</span>
               </div>
           </div>
       </div>
@@ -87,7 +87,7 @@
                   <small class="ml-5 pl-5"> Publicado el 10/08/2019</small>
               </div>
               <div class="card-body">
-                  <i class="far fa-comment text-primary"></i> <span>¿Hola!, el castillo es para niños de 10 años mas o menos?</span> <span class="text-muted ml-2">Hace 2min</span>
+                  <i class="zmdi zmdi-comment"></i> <span>¿Hola!, el castillo es para niños de 10 años mas o menos?</span> <span class="text-muted ml-2">Hace 2min</span>
                   <br><br>
                   <form class="form-group d-flex align-items-self" action="index.html" method="post">
                     @csrf
