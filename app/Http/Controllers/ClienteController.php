@@ -10,7 +10,7 @@ class ClienteController extends Controller
 /*============================
               Menú
 ==============================*/
-      public function Resumen(){
+      public function ClienteResumen(){
         return view('Perfiles.Cliente.Menu.resumen');
       }
 /*============================
@@ -28,7 +28,7 @@ class ClienteController extends Controller
         $ConsultarDatos = Cliente::where('user_id',Auth::user()->id)
                                   ->select('*')
                                   ->first();
-                                  
+
         if ($ConsultarDatos == null ) {
           $Cliente = new Cliente;
           $Cliente->user_id = Auth::user()->id;

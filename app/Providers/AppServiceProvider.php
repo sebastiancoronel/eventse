@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191); //AGREGUE ESTO POR EL ERROR DE TABLA Al HACER LA MIGRACION DE LA BASE DE DATOS
 
-        view()->composer('home',function(View $view){
+        view()->composer('Perfiles.home',function(View $view){
           $categorias = Categoria::all();
           $view->with('Categorias',$categorias);
         });
