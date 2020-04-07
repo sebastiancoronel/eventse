@@ -1,7 +1,7 @@
 <!DOCTYPE html>
   <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-    <script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     @include('Dependencias.head')
     <style media="screen">
       #link_violeta {
@@ -243,12 +243,12 @@
       </div>
 
     <div class="wrapper">
-      <!-- Navbar escritorio -->
+      {{-- <!-- Navbar escritorio -->
       <div class="d-none d-sm-block">
         <nav class="main-header navbar navbar-expand navbar-white navbar-light border-bottom m-t-90">
           <!-- Left navbar links -->
 
-            {{-- <!-- SEARCH FORM -->
+             <!-- SEARCH FORM -->
             <form class="form-inline ml-3">
               <div class="input-group input-group-sm">
                 <!--<input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">-->
@@ -258,10 +258,10 @@
                   </button>
                 </div>
               </div>
-            </form> --}}
+            </form>
         </nav>
       </div>
-      <!-- /.navbar escritorio -->
+      <!-- /.navbar escritorio --> --}}
 
       <!-- Navbar movil -->
       <div class="d-md-none d-lg-none d-xl-none d-xs-block d-sm-block">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
   <head>
-  <script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   @include('Dependencias.head')
 
   <style media="screen">

@@ -50,7 +50,7 @@
       <article class="col-md-6 col-12 text-muted">
         <div class="card-body">
           <div class="col-md-12 col-sm-6 col-12">
-            <div class="info-box bg-white">
+            <div class="waves-effect info-box bg-white">
               <span class="info-box-icon bell"><i class="zmdi zmdi-notifications-active"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text">Solicitudes de servicios</span>
@@ -61,7 +61,7 @@
 
             <!-- Preguntas -->
             <div class="col-md-12 col-sm-6 col-12">
-              <div class="info-box bg-white">
+              <div class="waves-effect info-box bg-white">
                 <span class="info-box-icon"><i class="zmdi zmdi-comment-alert"></i></span>
                 <div class="info-box-content">Preguntas sin responder</span>
                   <span class="info-box-number text-info">19</span>
@@ -104,7 +104,7 @@
         <div class="card-body">
           <!-- Servicios publicados -->
           <div class="col-md-12 col-sm-6 col-12">
-            <div class="info-box bg-white">
+            <div class="waves-effect info-box bg-white">
               <span class="info-box-icon"><i class="zmdi zmdi-label"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text">Servicios publicados</span>
@@ -115,7 +115,7 @@
 
           <!-- Publicaciones pausadas -->
           <div class="col-md-12 col-sm-6 col-12">
-            <div class="info-box bg-white">
+            <div class="waves-effect info-box bg-white">
               <span class="info-box-icon"><i class="zmdi zmdi-pause"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text">Publicaciones pausadas</span>

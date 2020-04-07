@@ -6,9 +6,13 @@
 <link rel="icon" type="image/png" href="{{asset('images/Logo-Eventse-1 ORIGINAL.png')}}"/>
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}">
-
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/animate/animate.css')}}">
 <!--===============================================================================================-->
+<!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href="{{asset('vendor/bootstrap/css/mdb.min.css')}}">
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{{asset('vendor/bootstrap/js/mdb.min.js')}}"></script>
+  <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/css-hamburgers/hamburgers.min.css')}}">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/animsition/css/animsition.min.css')}}">
@@ -25,6 +29,8 @@
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/perfect-scrollbar/perfect-scrollbar.css')}}">
 <!--===============================================================================================-->
+<!-- Google Fonts Roboto -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/fonts/iconic/css/material-design-iconic-font.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/fonts/linearicons-v1.0.0/icon-font.min.css')}}">
