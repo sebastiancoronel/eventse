@@ -17,6 +17,10 @@ class ClienteController extends Controller
       public function ServiciosFavoritos(){
         return view('Perfiles.Cliente.Menu.Servicios.favoritos');
       }
+
+      public function PreguntasRealizadas(){
+        return view('Perfiles.Cliente.Menu.Servicios.preguntas_realizadas');
+      }
 /*============================
               Fin Menú
 ==============================*/

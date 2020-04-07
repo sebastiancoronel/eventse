@@ -101,6 +101,17 @@
         43% { transform: rotate(0); }
         100% { transform: rotate(0); }
       }
+      .my-custom-scrollbar {
+        position: relative;
+        height: 250px;
+        overflow: auto;
+      }
+      .card-img-35 {
+        width: 35px;
+      }
+      .mt-3p {
+        margin-top: 3px;
+      }
     </style>
     </head>
     <body class="hold-transition sidebar-mini layout-fixed">
@@ -417,7 +428,7 @@
                    </a>
                  </li>
                  <li class="nav-item">
-                   <a href="pages/charts/flot.html" class="nav-link">
+                   <a href="{{route('PreguntasRealizadas')}}" class="nav-link">
                      <i class="nav-icon"></i>
                      <p>Preguntas realizadas</p>
                    </a>
@@ -696,7 +707,7 @@
 
 {{-- FIN NOTIFICACIONES --}}
     <!--//Contenido-->
-    <div id="roboto" class="content-wrapper">
+    <div class="content-wrapper">
       @yield('content')
     </div>
     <!--//Fin Contenido-->

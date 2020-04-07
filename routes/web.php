@@ -32,10 +32,14 @@ Route::middleware(['auth', 'ControlarDatosCompletos', 'ControlarNegocioExistente
 */
 Route::middleware(['auth', 'ControlarDatosCompletos'])->group(function () {
   Route::get('/home', 'HomeController@index')->name('home');
+
   // Menú Cliente
   Route::get('/home/resumen','ClienteController@ClienteResumen')->name('ClienteResumen');
   Route::get('/home/alquileres-y-reservas/mis-alquileres','ClienteController@MisAlquileres')->name('MisAlquileres');
   Route::get('/home/servicios-contratados/favoritos','ClienteController@ServiciosFavoritos')->name('ServiciosFavoritos');
+  Route::get('/home/servicios-contratados/preguntas-realizadas','ClienteController@PreguntasRealizadas')->name('PreguntasRealizadas');
+
+
   //Menú Empresa
   Route::get('/home/empresa/alquileres-y-reservas/preguntas-recibidas','PerfilEmpresaController@PreguntasRecibidas')->name('PreguntasRecibidas');
 });

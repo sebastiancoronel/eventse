@@ -1,7 +1,7 @@
 @extends('Perfiles.home')
 @section('content')
   <!-- Perfil -->
-  <div class="card card-widget widget-user">
+  <div class="card card-widget widget-user mt-5 pt-5">
     <!-- Add the bg color to the header using any of the bg-* classes -->
     <div class="widget-user-header bg-info">
       <h3 class="widget-user-username">JumpZone</h3>
@@ -127,7 +127,27 @@
       </article>
 
       <!-- Publicidad -->
-      <article class="col-md-6 col-12 text-muted">
+
+      <!--Panel-->
+    <article class="card text-center col-md-6 col-12">
+    <div class=" card-header warning-color white-text">
+      Plan actual
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">Tu plan actual es ORO</h4>
+      <h4 class="d-flex justify-content-center mt-2">
+        <i class="fas fa-medal text-warning"></i>
+      </h4>
+      <p class="card-text">Todos los productos que publiques tendrán una visibilidad ALTA y apareceras en la página principal.</p>
+      <a class="btn btn-success btn-sm">Mejorar plan</a>
+    </div>
+    <div class="card-footer text-muted warning-color white-text">
+      <p class="text-white mb-0">Quedan 180 días</p>
+    </div>
+  </article>
+  <!--/.Panel-->
+
+      {{-- <article class="col-md-6 col-12 text-muted">
         <div class="card-body">
 
           <div class="col-md-12 col-sm-6 col-12">
@@ -145,7 +165,7 @@
             </div>
           </div>
         </div>
-      </article>
+      </article> --}}
     </section>
 
 <!-- Scripts -->
