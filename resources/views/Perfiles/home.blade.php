@@ -589,7 +589,7 @@
                </a>
              </li>
              <li class="nav-item">
-               <a href="pages/charts/flot.html" class="nav-link">
+               <a href="{{route('PreguntasRealizadas')}}" class="nav-link">
                  <i class="nav-icon"></i>
                  <p>Preguntas realizadas</p>
                </a>
