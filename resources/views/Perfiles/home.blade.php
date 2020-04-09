@@ -1,7 +1,6 @@
 <!DOCTYPE html>
   <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     @include('Dependencias.head')
     <style media="screen">
       #link_violeta {
@@ -120,7 +119,7 @@
           <!-- Header desktop -->
           <div class="container-menu-desktop">
 
-            <div class="wrap-menu-desktop row" style="top: 0px;">
+            <div class="wrap-menu-desktop row" style="top: 0px; width:101%;">
               <!-- Logo desktop -->
               <a href="{{route('Principal')}}" class="logo ml-5 mt-3">
                 <img src="{{asset('images/Logo Eventse-1 ORIGINAL.svg')}}" style="max-width: 150%; max-height:150%;" alt="IMG-LOGO">
@@ -327,7 +326,7 @@
 
       {{-- MENÙ ESCRITORIO --}}
       <!-- Main Sidebar Container -->
-        <aside class="d-none d-sm-block main-sidebar sidebar-dark-primary elevation-4 mt-5 pt-5">
+        <aside class="d-none d-sm-block main-sidebar sidebar-dark-primary elevation-4 mt-5 pt-5" style="background-color:#717fe0;">
           <ul class="navbar-nav text-left ml-2 d-none d-sm-block">
             <li class="nav-item">
               <a id="hamburguesa" class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars text-white"></i></a>
@@ -348,7 +347,7 @@
          </div>
 
          <!-- Sidebar -->
-         <div class="sidebar">
+         <div class="sidebar bg-white">
            <!-- Sidebar user panel (optional) -->
            <div class="mt-0 pb-0 mb-0 d-flex">
              <!-- <div class="image">
@@ -434,9 +433,9 @@
                    </a>
                  </li>
                  <li class="nav-item">
-                   <a href="pages/charts/inline.html" class="nav-link">
+                   <a href="{{route('ServiciosFinalizados')}}" class="nav-link">
                      <i class="nav-icon"></i>
-                     <p>Mis compras</p>
+                     <p>Finalizados</p>
                    </a>
                  </li>
                  <li class="nav-item">
@@ -501,10 +500,6 @@
             style="opacity: .8"> -->
        {{-- <span class="brand-text font-weight-light text-left">Mi cuenta</span> --}}
        <br>
-       @php
-         $name = Auth::user()->name;
-         $lastname = Auth::user()->lastname;
-       @endphp
        <small class="brand-text">¡Hola {{ $name }} {{ $lastname }}!</small>
      </div>
 
@@ -595,9 +590,9 @@
                </a>
              </li>
              <li class="nav-item">
-               <a href="pages/charts/inline.html" class="nav-link">
+               <a href="{{route('ServiciosFinalizados')}}" class="nav-link">
                  <i class="nav-icon"></i>
-                 <p>Mis compras</p>
+                 <p>Finalizados</p>
                </a>
              </li>
              <li class="nav-item">

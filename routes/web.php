@@ -32,15 +32,17 @@ Route::middleware(['auth', 'ControlarDatosCompletos', 'ControlarNegocioExistente
 */
 Route::middleware(['auth', 'ControlarDatosCompletos'])->group(function () {
   Route::get('/home', 'HomeController@index')->name('home');
+  Route::get('/home/resumen','ClienteController@ClienteResumen')->name('ClienteResumen');
 
   // Menú Cliente
-  Route::get('/home/resumen','ClienteController@ClienteResumen')->name('ClienteResumen');
-  Route::get('/home/alquileres-y-reservas/mis-alquileres','ClienteController@MisAlquileres')->name('MisAlquileres');
-  Route::get('/home/servicios-contratados/favoritos','ClienteController@ServiciosFavoritos')->name('ServiciosFavoritos');
-  Route::get('/home/servicios-contratados/preguntas-realizadas','ClienteController@PreguntasRealizadas')->name('PreguntasRealizadas');
-
+    //Servicios contratados
+    Route::get('/home/servicios-contratados/favoritos','ClienteController@ServiciosFavoritos')->name('ServiciosFavoritos');
+    Route::get('/home/servicios-contratados/preguntas-realizadas','ClienteController@PreguntasRealizadas')->name('PreguntasRealizadas');
+    Route::get('/home/servicios-contratados/servicios-finalizados','ClienteController@ServiciosFinalizados')->name('ServiciosFinalizados');
 
   //Menú Empresa
+  //Alquileres y reservas
+  Route::get('/home/alquileres-y-reservas/mis-alquileres','EmpresaController@MisAlquileres')->name('MisAlquileres');
   Route::get('/home/empresa/alquileres-y-reservas/preguntas-recibidas','PerfilEmpresaController@PreguntasRecibidas')->name('PreguntasRecibidas');
 });
 /*

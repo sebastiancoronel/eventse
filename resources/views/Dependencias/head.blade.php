@@ -5,25 +5,36 @@
 <!--===============================================================================================-->
 <link rel="icon" type="image/png" href="{{asset('images/Logo-Eventse-1 ORIGINAL.png')}}"/>
 <!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}">
+{{-- MDB 4.15.0 --}}
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.15.0/css/mdb.min.css" rel="stylesheet">
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.15.0/js/mdb.min.js"></script>
+{{-- Fin MDB 4.15.0 --}}
+<!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/animate/animate.css')}}">
 <!--===============================================================================================-->
-<!-- Material Design Bootstrap -->
-  <link rel="stylesheet" href="{{asset('vendor/bootstrap/css/mdb.min.css')}}">
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="{{asset('vendor/bootstrap/js/mdb.min.js')}}"></script>
-  <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/css-hamburgers/hamburgers.min.css')}}">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/animsition/css/animsition.min.css')}}">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/select2/select2.min.css')}}">
-{{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet"/> --}}
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/daterangepicker/daterangepicker.css')}}">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick.css')}}">
-{{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"/> --}}
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/MagnificPopup/magnific-popup.css')}}">
 <!--===============================================================================================-->
@@ -35,20 +46,18 @@
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/fonts/linearicons-v1.0.0/icon-font.min.css')}}">
 <!--===============================================================================================-->
-<!--===============================================================================================-->
-<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/fonts/linearicons-v1.0.0/icon-font.min.css')}}">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('adminlte/dist/css/adminlte.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.css')}}">
-<link rel="stylesheet" href="{{asset('adminlte/plugins/fontawesome-free/css/all.min.css')}}">
+<!--===============================================================================================-->
+{{-- Plantilla --}}
 <link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
 
-
-
 {{-- PWA --}}
-{{-- <link rel="manifest" href="{{asset('json/manifest.json')}}"> --}}
+{{-- <link rel="manifest" href="{{asset('json/manifest.json')}}"> Hacerlo en manifest generator --}}
+
 {{-- Pintar la barra de dirección del navegador. --}}
 <meta name="theme-color" content="#717fe0">
 

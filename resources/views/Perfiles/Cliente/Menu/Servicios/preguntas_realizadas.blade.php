@@ -3,7 +3,7 @@
   {{-- Escritorio --}}
 <div class="d-none d-sm-block">
   <!-- Si no hay preguntas -->
-  <div class="mt-5 pt-5">
+  <div class="mt-5 p-4" style="padding-top: 5em !important;">
     <h4 class="card-header text-muted">Preguntas realizadas</h4>
     <div class="card-body">
       <div class="alert alert-primary p-2 rounded">
@@ -18,12 +18,14 @@
       <section>
         <div class="card">
           <div class="card-header white d-flex justify-content-between">
-            <p class="col-md-6 h5-responsive font-weight-bold mb-0">
-              {{-- <img src="https://ss-static-01.esmsv.com/id/75202/productos/obtenerimagen/?id=60&useDensity=false&width=640&height=360&tipoEscala=contain" width="6%"> --}}
+            <p class="col-md-8 h5-responsive font-weight-bold mb-0">
+              <a href="#">
+                <img src="{{asset('images/castillo1.webp')}}" width="10%">
+              </a>
               <span class="ml-2">Alquiler de Castillo inflable acuático</span>
               <strong class="text-danger">$850</strong><sup class="text-danger">00</sup>
             </p>
-            <small class="col-md-6 d-flex justify-content-end "> Publicado el 10/08/2019</small>
+            <small class="col-md-4 d-flex justify-content-end "> Publicado el 10/08/2019</small>
           </div>
         <!-- Chat -->
         <div class="card-body my-custom-scrollbar">
@@ -94,7 +96,7 @@
           <div class="card">
             <div class="card-header white d-flex justify-content-between">
               <p class="col-12 h5-responsive font-weight-bold mb-0">
-                <img class="card" src="{{asset('images/castillo1.webp')}}" width="100%">
+                <img src="{{asset('images/castillo1.webp')}}" width="100%">
                 <span class="ml-2">Alquiler de Castillo inflable acuático</span>
                 <strong class="text-danger">$850</strong><sup class="text-danger">00</sup>
               </p>

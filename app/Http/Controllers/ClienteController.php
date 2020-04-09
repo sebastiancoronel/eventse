@@ -7,13 +7,14 @@ use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
-/*============================
+/*=============================
               Menú
 ==============================*/
+    //Resumen
       public function ClienteResumen(){
         return view('Perfiles.Cliente.Menu.resumen');
       }
-
+    //Servicios contratados
       public function ServiciosFavoritos(){
         return view('Perfiles.Cliente.Menu.Servicios.favoritos');
       }
@@ -21,8 +22,12 @@ class ClienteController extends Controller
       public function PreguntasRealizadas(){
         return view('Perfiles.Cliente.Menu.Servicios.preguntas_realizadas');
       }
-/*============================
-              Fin Menú
+
+      public function ServiciosFinalizados(){
+        return view('Perfiles.Cliente.Menu.Servicios.servicios_finalizados');
+      }
+/*=============================
+              Funciones
 ==============================*/
 
       public function completar_datos(){
