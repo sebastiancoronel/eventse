@@ -155,7 +155,6 @@
    // Si es Movil
    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
      $('.dispositivo').removeClass('mt-5');
-     $('.dispositivo').addClass('p-4');
 
     // Si es escritorio
    }else {

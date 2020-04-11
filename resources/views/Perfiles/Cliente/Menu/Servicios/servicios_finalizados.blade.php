@@ -4,7 +4,7 @@
 <div class="dispositivo">
   <h4 class="card-header text-muted">Finalizados</h4>
 
-  <div class="row d-flex mt-5">
+  <div class="row mt-5">
     {{-- Card 1 --}}
     <div class="col-md-3 mx-4">
       <div class="card">
