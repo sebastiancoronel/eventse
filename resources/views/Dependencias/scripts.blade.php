@@ -127,25 +127,26 @@
   });
  });
 
-   $('#AbrirModalMovil').on('click', function(){
+   // $('#AbrirModalMovil').on('click', function(){
+   //
+   // var winSize = {
+   // wheight : $(window).height(),
+   // wwidth : $(window).width()
+   // };
+   // var modSize = {
+   // mheight : $('#Modal_registro').height(),
+   // mwidth : $('#Modal_registro').width()
+   // };
+   // $('#Modal_registro').css({
+   // 'padding-top' :  ((winSize.wheight - (modSize.mheight/2))/3),
+   // });
+   //
+   // $('#Modal_registro').modal({
+   // backdrop: true,
+   // keyboard : false
+   // });
+   // });
 
-   var winSize = {
-   wheight : $(window).height(),
-   wwidth : $(window).width()
-   };
-   var modSize = {
-   mheight : $('#Modal_registro').height(),
-   mwidth : $('#Modal_registro').width()
-   };
-   $('#Modal_registro').css({
-   'padding-top' :  ((winSize.wheight - (modSize.mheight/2))/3),
-   });
-
-   $('#Modal_registro').modal({
-   backdrop: true,
-   keyboard : false
-   });
-   });
  </script>
 
 <!-- Detectar si se accede desde un dispositivo movil -->
@@ -154,7 +155,8 @@
    // Si es Movil
    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
      $('.dispositivo').removeClass('mt-5');
-     $('.dispositivo').attr('style', 'padding-top: 0em !important;');
+     $('.dispositivo').addClass('p-4');
+
     // Si es escritorio
    }else {
      $('.dispositivo').addClass('mt-5 p-4');
