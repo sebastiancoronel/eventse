@@ -1,10 +1,8 @@
 @extends('Perfiles.home')
 @section('content')
 {{-- Escritorio --}}
-<div class="d-none d-sm-block">
-  <div class="mt-5 p-4" style="padding-top: 5em !important;">
+<div class="d-none d-sm-block mt-5 p-4" style="padding-top: 5em !important;">
     <h4 class="card-header text-muted">Favoritos</h4>
-  </div>
     <div class="card mt-4">
         <div class="card-body">
             <table>
@@ -59,7 +57,6 @@
 {{-- Movil --}}
 <div class="d-md-none d-lg-none d-xl-none d-xs-block d-sm-block">
   <h4 class="card-header text-muted">Favoritos</h4>
-  <hr>
 </div>
 
 <div class="d-md-none d-lg-none d-xl-none d-xs-block d-sm-block mt-2">
