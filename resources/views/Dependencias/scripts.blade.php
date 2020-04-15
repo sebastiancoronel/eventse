@@ -172,6 +172,13 @@
   })
 </script>
 
+{{-- Márgenes auxiliares --}}
+<script type="text/javascript">
+// Si es Movil
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+  $('.dispositivo-mt-2').addClass('mt-2');
+}
+</script>
 
 {{-- PWA --}}
 {{-- <script>

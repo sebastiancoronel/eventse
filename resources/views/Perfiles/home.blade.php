@@ -439,7 +439,7 @@
                    </a>
                  </li>
                  <li class="nav-item">
-                   <a href="pages/charts/inline.html" class="nav-link">
+                   <a href="{{route('PresupuestosRecibidos')}}" class="nav-link">
                      <i class="nav-icon"></i>
                      <p>Presupuestos</p>
                    </a>
@@ -596,7 +596,7 @@
                </a>
              </li>
              <li class="nav-item">
-               <a href="pages/charts/inline.html" class="nav-link">
+               <a href="{{route('PresupuestosRecibidos')}}" class="nav-link">
                  <i class="nav-icon"></i>
                  <p>Presupuestos</p>
                </a>

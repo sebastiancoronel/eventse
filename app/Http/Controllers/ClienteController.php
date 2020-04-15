@@ -26,6 +26,10 @@ class ClienteController extends Controller
       public function ServiciosFinalizados(){
         return view('Perfiles.Cliente.Menu.Servicios.servicios_finalizados');
       }
+
+      public function PresupuestosRecibidos(){
+        return view('Perfiles.Cliente.Menu.Servicios.presupuestos_recibidos');
+      }
 /*=============================
               Funciones
 ==============================*/

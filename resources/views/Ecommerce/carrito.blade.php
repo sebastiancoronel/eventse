@@ -13,13 +13,13 @@
 											<img class="img-fluid" src="{{asset('images/castillo2.webp')}}" alt="IMG">
 										</div>
 										<div class="row col-md-3">
-											<span class="col-md-12">Castillo inflable de 3x3mts</span>
+											<span class="col-md-12 dispositivo-mt-2">Castillo inflable de 3x3mts</span>
 											<a class="col-md-12 text-primary mt-2"><small>Ver mas servicios del prestador</small></a>
 										</div>
-										<div class="col-md-3">
-											<span class="">$ 600.00 <small class="text-success">Presupuestado</small></span>
+										<div class="col-md-3 dispositivo-mt-2">
+											<span>$ 600.00 <small class="text-success">Presupuestado</small></span>
 										</div>
-										<div class="col-md-3">
+										<div class="col-md-3 dispositivo-mt-2">
 											<div class="flex-c-m stext-101 cl2 size-100 bg8 bor13 hov-btn4 p-lr-15 trans-04 pointer m-tb-5">
 												Eliminar
 											</div>
