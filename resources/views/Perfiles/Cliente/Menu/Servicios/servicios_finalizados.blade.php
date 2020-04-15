@@ -46,7 +46,7 @@
         </div>
         <button class="btn btn-indigo text-white btn-rounded btn-md mt-4">Contanos tu experiencia con el servicio</button>
       </div>
-    </div>
+      </div>
     </div>
 
     {{-- Card 2 --}}

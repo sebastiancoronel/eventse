@@ -59,8 +59,46 @@
   <h4 class="card-header text-muted">Favoritos</h4>
 
   <div class="row mt-5">
-    <!-- Card 1 -->
     <div class="col-md-3 mx-4">
+      <div class="card">
+      <!-- Card image -->
+      <div style="width:16.8em !important; height: 12em !important;">
+        <img class="card-img-top" src="{{asset('images/castillo2.webp')}}" alt="Card image cap">
+        <a>
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+
+      <!-- Social buttons -->
+      <div class="card-share">
+        <div class="social-reveal">
+          <!-- Ver -->
+          <a type="button" data-toggle="tooltip" title="Ir al post" class="btn-floating btn-tw mt-0 mx-1"><i class="zmdi zmdi-arrow-right"></i></a>
+          <!-- Realizar una pregunta -->
+          <a type="button" data-toggle="tooltip" title="Realizar una pregunta" class="btn-floating btn-fb mt-0 mx-1"><i class="zmdi zmdi-comments"></i></a>
+          <!-- Eliminar -->
+          <a type="button" data-toggle="tooltip" title="Eliminar de favoritos" class="btn-floating btn-gplus mt-0 mx-1"><i class="zmdi zmdi-delete"></i></a>
+        </div>
+
+        <!-- Button action -->
+        <a class="btn-floating btn-action share-toggle indigo ml-auto mr-4 float-right"><i class="zmdi zmdi-plus"></i></a>
+      </div>
+
+      <!-- Card content -->
+      <div class="card-body">
+        <!-- Title -->
+        <h4 class="card-title text-danger mt-4">$800</h4>
+        <hr>
+        <!-- Text -->
+        <div class="card-text">
+          Alquiler de castillo de 3x3
+        </div>
+        <button type="button" class="col-md-12 btn btn-indigo btn-md waves-effect waves-light text-white mt-4">Agregar al paquete</button>
+      </div>
+      </div>
+    </div>
+    <!-- Card 1 -->
+    {{-- <div class="col-md-3 mx-4">
       <div class="card">
         <!-- Card image -->
         <div class="waves-effect waves-light">
@@ -89,10 +127,10 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> --}}
 
     <!-- Card 2 -->
-    <div class="col-md-3 mx-4">
+    {{-- <div class="col-md-3 mx-4">
       <div class="card">
         <!-- Card image -->
         <div class="waves-effect waves-light">
@@ -111,7 +149,7 @@
           <!-- Button -->
           <div class="mt-4 row d-flex justify-content-start align-items-center">
             <div class="col-11">
-              <button type="button" class="btn btn-indigo btn-md waves-effect waves-light text-white">Reservar</button>
+              <button type="button" class="btn btn-indigo btn-md waves-effect waves-light text-white">Agregar al paquete</button>
               <button type="button" class="btn btn-indigo btn-md waves-effect waves-light text-white">Preguntar</button>
             </div>
             <div class="col-1 d-flex justify-content-end">
@@ -122,7 +160,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> --}}
   </div>
 </div>
 

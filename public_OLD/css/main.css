@@ -3107,7 +3107,15 @@ input.num-product::-webkit-inner-spin-button {
 .hov-btn3:hover i {
   color: #fff;
 }
-
+/*---------------------------------------------*/
+.hov-btn4:hover {
+  border-color: #dc3545;
+  background-color: #dc3545;
+  color: #fff;
+}
+.hov-btn4:hover i {
+  color: #fff;
+}
 /*---------------------------------------------*/
 .hov-tag1:hover {
   color: #717fe0;

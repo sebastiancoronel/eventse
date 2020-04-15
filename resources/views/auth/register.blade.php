@@ -4,71 +4,71 @@
 @section('content')
 <div class="animsition position-relative" style="height: 50em;">
   <div id="banner"></div>
-    <div id="formulario" class="p-t-20 d-flex justify-content-center">
+    <div id="formulario" class="mt-5 d-flex justify-content-center">
         <div class="col-md-8">
-            <div class="card mt-5">
+            <div class="card">
                 <span class="mt-4" style="text-align:center; color:#3B4AFC;">DATOS DE LA CUENTA</span>
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Nombre</label>
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        <!-- Nombre -->
+                        <div class="md-form">
+                          <i class="zmdi zmdi-account prefix text-muted"></i>
+                            <label for="name">Nombre</label>
+                              <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                              @if ($errors->has('name'))
+                                <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                              @endif
                         </div>
 
-                        <div class="form-group row">
-                            <label for="lastname" class="col-md-4 col-form-label text-md-right">Apellido</label>
-                            <div class="col-md-6">
+                        <!-- Apellido -->
+                        <div class="md-form">
+                          <i class="zmdi zmdi-account prefix text-muted"></i>
+                            <label for="lastname">Apellido</label>
                                 <input id="lastname" type="text" class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ old('lastname') }}" required autofocus>
                                 @if ($errors->has('lastname'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('lastname') }}</strong>
                                     </span>
                                 @endif
-                            </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required placeholder="nombre@ejemplo.com">
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        <!-- Email -->
+                        <div class="md-form">
+                          <i class="zmdi zmdi-email prefix text-muted"></i>
+                          <label for="email">{{ __('E-Mail') }}</label>
+                          <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+                          @if ($errors->has('email'))
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $errors->first('email') }}</strong>
+                              </span>
+                          @endif
                         </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        <!-- Contraseña -->
+                        <div class="md-form">
+                          <i class="zmdi zmdi-lock prefix text-muted"></i>
+                          <label for="password">{{ __('Contraseña') }}</label>
+                          <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                          @if ($errors->has('password'))
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $errors->first('password') }}</strong>
+                              </span>
+                          @endif
                         </div>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar contraseña') }}</label>
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
+                        <!-- Confirmar contraseña -->
+                        <div class="md-form">
+                          <i class="zmdi zmdi-lock prefix text-muted"></i>
+                          <label for="password-confirm">{{ __('Confirmar contraseña') }}</label>
+                          <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                         </div>
 
-                        <div class="form-group row mb-0">
+                        <div class="row">
                             <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary" style="background:#3B4AFC; border-color:#3B4AFC; cursor:pointer;">
+                                <button type="submit" class="btn waves-effect waves-light text-white" style="background:#3B4AFC; border-color:#3B4AFC; cursor:pointer;">
                                     {{ __('REGISTRARME') }}
                                 </button>
                             </div>
