@@ -14,7 +14,7 @@
       </div>
       <div class="row col-md-3 dispositivo-mt-2">
         <span class="col-md-12">Salon para fiestas + ornamentacion + Dj y luces led, laser y máquina de humo</span>
-        <a id="link_violeta" class="col-md-12  mt-2"> <img src="{{asset('images/Logo-Eventse-1 ORIGINAL.png')}}" width="10%" alt=""> <small>Magic kingdom</small></a>
+        <a id="link_violeta" class="col-md-12  mt-2"> <img src="{{asset('images/LOGO SOLO TRANSPARENTE.png')}}" width="10%" alt=""> <small>Jump Zone</small></a>
       </div>
       <div class="col-md-3 text-center dispositivo-mt-2">
         <span class="text-danger">$60000</span>

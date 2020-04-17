@@ -160,6 +160,8 @@
    }else {
      $('.dispositivo').addClass('mt-5 p-4');
      $('.dispositivo').attr('style', 'padding-top: 5em !important;');
+     $('.dispositivo-mt-2').addClass('mt-2');
+     $('.escritorio-mt-3-p-t-75').addClass('p-t-75 mt-3')
    }
  });
  </script>
@@ -173,12 +175,12 @@
 </script>
 
 {{-- Márgenes auxiliares --}}
-<script type="text/javascript">
+{{-- <script type="text/javascript">
 // Si es Movil
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
   $('.dispositivo-mt-2').addClass('mt-2');
 }
-</script>
+</script> --}}
 
 {{-- PWA --}}
 {{-- <script>
