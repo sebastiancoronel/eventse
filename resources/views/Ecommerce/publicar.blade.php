@@ -108,7 +108,7 @@
             <div class="md-form">
               <input hidden id="provincia_nombre" type="text" name="provincia_nombre" value="">
               <select id="provincia" class="custom-select">
-                <option value="" selected>En que provincia se encuentra tu inmueble</option>
+                <option value="" selected>En que provincia está ubicado?</option>
                 @foreach ($ProvinciasLocalidadesJson as $provincia)
                   <option value="{{ $provincia['id'] }}">{{$provincia['nombre']}}</option>
                 @endforeach
@@ -116,9 +116,10 @@
             </div>
 
             <!-- Ciudad del Inmueble -->
-            <div class="md-form">
+            <div id="seleccionar_localidad" hidden class="md-form">
+              <span>En que ciudad?</span>
               <select id="localidad" class="custom-select">
-                <option value="" selected>En que ciudad se encuentra tu inmueble</option>
+                {{-- <option value="" selected>En que ciudad?</option> --}}
                 @foreach ($ProvinciasLocalidadesJson as $localidad)
 
                 @endforeach
@@ -218,14 +219,12 @@
 </div>
 
 <script>
-$(document).ready(function() {
-$('.mdb-select').materialSelect();
-});
 //Select dinamico de provincias y localidades
   $("#provincia").on('change',function(){
     var provincia_id = $(this).val();
     var nombre_provincia = $('#provincia option:selected').text();
     $("#provincia_nombre").val(nombre_provincia);
+    $("#seleccionar_localidad").removeAttr('hidden');
     //alert(provincia_id +' '+ nombre_provincia);
     $.ajax({
       type: 'POST',
