@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
-/*=============================
-              Menú
-==============================*/
+  /*=============================
+                Menú
+  ==============================*/
     //Resumen
       public function ClienteResumen(){
         return view('Perfiles.Cliente.Menu.resumen');
@@ -30,14 +30,14 @@ class ClienteController extends Controller
       public function PresupuestosRecibidos(){
         return view('Perfiles.Cliente.Menu.Servicios.presupuestos_recibidos');
       }
-/*=============================
-              Funciones
-==============================*/
+
+  /*=============================
+                Funciones
+  ==============================*/
 
       public function completar_datos(){
         $path = storage_path() . "/json/ProvinciasLocalidades.json";
         $ProvinciasLocalidadesJson = json_decode(file_get_contents($path),true);
-        //dd($ProvinciasLocalidadesJson);
         return view('auth.completar_datos',['ProvinciasLocalidadesJson'=>$ProvinciasLocalidadesJson]);
       }
 

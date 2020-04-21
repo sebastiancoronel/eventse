@@ -166,13 +166,23 @@
  });
  </script>
 
-{{-- Inicializar Tooltip --}}
-<script type="text/javascript">
-// Tooltips Initialization
-  $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-  })
-</script>
+{{-- Inizializaciones --}}
+
+  {{-- Inicializar Tooltip --}}
+  <script type="text/javascript">
+  // Tooltips Initialization
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
+  
+  {{-- Inicializar select de material --}}
+  {{-- <script type="text/javascript">
+
+    $(document).ready(function() {
+    $('.mdb-select').materialSelect();
+    });
+  </script> --}}
 
 {{-- Márgenes auxiliares --}}
 {{-- <script type="text/javascript">

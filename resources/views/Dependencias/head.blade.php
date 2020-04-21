@@ -9,12 +9,12 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
 
 <!--===============================================================================================-->
-{{-- MDB 4.11 Pro --}}
+{{-- MDB 4.11 PRO --}}
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/bootstrap/css/mdb.min.css')}}">
+<script type="text/javascript" src="{{asset('vendor/bootstrap/js/mdb.min.js')}}"></script>
 {{-- <script type="text/javascript" src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script> --}}
 {{-- Fin MDB 4.11 Pro --}}
-<script type="text/javascript" src="{{asset('vendor/bootstrap/js/mdb.min.js')}}"></script>
 
 {{-- MDB 4.15.0 --}}
   <!-- Font Awesome -->

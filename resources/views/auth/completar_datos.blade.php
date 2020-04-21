@@ -83,7 +83,6 @@
       //alert(provincia_id +' '+ nombre_provincia);
       $.ajax({
         type: 'POST',
-        //dataType: 'JSON',
         url : '{{url("listarlocalidades")}}', //Es la funcion Index de localidad al ser resource
         data:{
                 nombre_provincia,
