@@ -33,9 +33,8 @@ const CACHE_NAME = 'v1_cache_eventse',
 //durante la fase de instalación, generalmente se almacena en caché los activos estáticos
 self.addEventListener('install', e => {
   e.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        return cache.addAll(urlsToCache)
+    caches.open(CACHE_NAME).then(cache => {
+        return cache.addAll(FILES_TO_CACHE) //Antes iba urlsToCache
           .then(() => self.skipWaiting())
       })
       .catch(err => console.log('Falló registro de cache', err))
@@ -81,5 +80,16 @@ self.addEventListener('fetch', e => {
 
 //Archivos al caché
 const FILES_TO_CACHE = [
-  '/offline.html',
+  '../resources/views/Dependencias/head.blade.php',
+  '../resources/views/Dependencias/scripts.blade.php',
+  '../resources/views/Ecommerce/welcome.blade.php',
+  '../resources/views/Ecommerce/articulo_detalle.blade.php',
+  '../resources/views/Ecommerce/carrito.blade.php',
+  '../resources/views/Ecommerce/publicar.blade.php',
+  '../resources/views/layouts/barra_navegacion_principal.blade.php',
+  '../resources/views/Perfiles/Cliente/Menu/Servicios/favoritos.blade.php',
+  '../resources/views/Perfiles/Cliente/Menu/Servicios/preguntas_realizadas.blade.php',
+  '../resources/views/Perfiles/Cliente/Menu/Servicios/presupuestos_recibidos.blade.php',
+  '../resources/views/Perfiles/Cliente/Menu/Servicios/servicios_finalizados.blade.php',
+  '../resources/views/Perfiles/Cliente/Menu/resumen.blade.php',
 ];

@@ -1,4 +1,19 @@
-{{-- Scripts --}}
+<!-- Detectar si se accede desde un dispositivo movil -->
+ <script type="text/javascript">
+ $(document).ready(function() {
+   // Si es Movil
+   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+     $('.dispositivo').removeClass('mt-5');
+
+    // Si es escritorio
+   }else {
+     $('.dispositivo').addClass('mt-5 p-4');
+     $('.dispositivo').attr('style', 'padding-top: 5em !important;');
+     $('.dispositivo-mt-2').addClass('mt-2');
+     $('.escritorio-mt-3-p-t-75').addClass('p-t-75 mt-3')
+   }
+ });
+ </script>
 <!--===============================================================================================-->
   <!-- jQuery UI -->
 <script src="{{asset('vendor/jqueryui/jquery-ui.min.js')}}"></script>
@@ -149,22 +164,7 @@
 
  </script>
 
-<!-- Detectar si se accede desde un dispositivo movil -->
- <script type="text/javascript">
- $(document).ready(function() {
-   // Si es Movil
-   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-     $('.dispositivo').removeClass('mt-5');
 
-    // Si es escritorio
-   }else {
-     $('.dispositivo').addClass('mt-5 p-4');
-     $('.dispositivo').attr('style', 'padding-top: 5em !important;');
-     $('.dispositivo-mt-2').addClass('mt-2');
-     $('.escritorio-mt-3-p-t-75').addClass('p-t-75 mt-3')
-   }
- });
- </script>
 
 {{-- Inizializaciones --}}
 
