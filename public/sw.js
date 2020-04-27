@@ -1,16 +1,33 @@
-;
 //asignar un nombre y versión al cache
 const CACHE_NAME = 'v1_cache_eventse',
   urlsToCache = [
     './',
-    'https://fonts.googleapis.com/css?family=Raleway:400,700',
-    'https://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwJYtWqZPAA.woff2',
-    'https://use.fontawesome.com/releases/v5.0.7/css/all.css',
-    'https://use.fontawesome.com/releases/v5.0.6/webfonts/fa-brands-400.woff2',
-    './style.css',
-    './script.js',
-    './img/ProgramadorFitness.png',
-    './img/favicon.png'
+    'images/Logo-Eventse-1 ORIGINAL.png',
+    'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js',
+    'vendor/bootstrap/css/bootstrap.min.css',
+    'vendor/bootstrap/css/mdb.min.css',
+    'vendor/bootstrap/js/mdb.min.js',
+    'https://use.fontawesome.com/releases/v5.8.2/css/all.css',
+    'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js',
+    'vendor/animate/animate.css',
+    'vendor/css-hamburgers/hamburgers.min.css',
+    'vendor/animsition/css/animsition.min.css',
+    'vendor/select2/select2.min.css',
+    'vendor/daterangepicker/daterangepicker.css',
+    'vendor/slick/slick.css',
+    'vendor/MagnificPopup/magnific-popup.css',
+    'vendor/perfect-scrollbar/perfect-scrollbar.css',
+    'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap',
+    'vendor/fonts/iconic/css/material-design-iconic-font.min.css',
+    'vendor/fonts/font-awesome-4.7.0/css/font-awesome.min.css',
+    'vendor/fonts/linearicons-v1.0.0/icon-font.min.css',
+    'vendor/fonts/linearicons-v1.0.0/icon-font.min.css',
+    'adminlte/dist/css/adminlte.css',
+    'adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.css',
+    'css/util.css',
+    'css/main.css',
+    'json/manifest.json',
   ]
 
 //durante la fase de instalación, generalmente se almacena en caché los activos estáticos
@@ -61,3 +78,8 @@ self.addEventListener('fetch', e => {
       })
   )
 })
+
+//Archivos al caché
+const FILES_TO_CACHE = [
+  '/offline.html',
+];
