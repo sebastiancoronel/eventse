@@ -3,7 +3,7 @@
   "short_name": "#Eventse",
   "description": "Bienvenidos a #Eventse, tu plataforma de eventos festivos",
   "background_color": "#2B2B2B",
-  "theme_color": "#F0DB4F",
+  "theme_color": "#717fe0",
   "orientation": "portrait",
   "display": "standalone",
   "start_url": "./?utm_source=web_app_manifest",
@@ -11,8 +11,9 @@
   "lang": "es-MX",
   "icons": [
     {
-      "src": "./img/icon_1024.png",
+      "src": "/images/Logo Eventse-1 ORIGINAL.svg",
       "sizes": "1024x1024",
       "type": "image/png"
     }
   ]
+}
