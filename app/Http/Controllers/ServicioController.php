@@ -12,8 +12,14 @@ class ServicioController extends Controller
     $ProvinciasLocalidadesJson = json_decode(file_get_contents($path),true);
     return view('Ecommerce.publicar', ['ProvinciasLocalidadesJson'=>$ProvinciasLocalidadesJson]);
 }
-    public function Detalles(){
-      return view('Ecommerce.articulo_detalle');
-    }
+
+  public function PublicarInmueble(){
+
+    return view('Ecommerce.Formularios_Publicacion.inmuebles');
+  }
+
+  public function Detalles(){
+    return view('Ecommerce.articulo_detalle');
+  }
 
 }

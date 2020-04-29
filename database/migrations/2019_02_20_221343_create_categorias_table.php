@@ -44,6 +44,9 @@ class CreateCategoriasTable extends Migration
           [
             'nombre' => 'Música & DJ´s'
           ],
+          [
+            'nombre' => 'Shows & Bandas'
+          ],
         ]);
     }//function up
 

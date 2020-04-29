@@ -3,7 +3,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| Zona Ecommerce
+| Ecommerce
 |--------------------------------------------------------------------------
 */
 Auth::routes();
@@ -18,11 +18,12 @@ Route::get('/mi-paquete','CarritoController@ProductosAgregados')->name('Producto
 
 /*
 |--------------------------------------------------------------------------
-| Auth + Datos completos + Datos Negocio completos
+| Auth + Datos completos + Perfil empresa
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth', 'ControlarDatosCompletos', 'ControlarNegocioExistente'])->group(function () {
   Route::get('/publicar', 'ServicioController@Publicar')->name('Publicar');
+  Route::get('/publicar/inmuebles', 'ServicioController@PublicarInmueble')->name('PublicarInmueble');
 });
 
 /*

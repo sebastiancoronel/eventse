@@ -7,10 +7,16 @@
     /* *{
       font-family: Poppins-Regular;
     } */
+    /* Banners */
       #banner{
         background-image: url('../Images/banner_registro.png');
         height: 300px;
       }
+      #inmueble{
+        background-image: url('../Images/Salon2.jpg');
+        height: 300px;
+
+      /* Fin banners */
       #formulario{
         position: absolute;
         top: 10%;
@@ -108,7 +114,7 @@
   							</li>
 
   							<li>
-  								<a href="contact.html" style="color:#f40082;">Publicar</a>
+  								<a href="{{route('Publicar')}}" style="color:#f40082;">Publicar</a>
   							</li>
   						</ul>
   					</div>
