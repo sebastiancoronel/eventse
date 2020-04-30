@@ -14,7 +14,7 @@
       }
       #inmueble{
         background-image: url('../Images/Salon2.jpg');
-        height: 300px;
+        height: 200px;
 
       /* Fin banners */
       #formulario{
