@@ -18,6 +18,16 @@ class ServicioController extends Controller
     return view('Ecommerce.Formularios_Publicacion.inmuebles');
   }
 
+  public function PublicarJuegos(){
+
+    return view('Ecommerce.Formularios_Publicacion.juegos');
+  }
+
+  public function PublicarAnimacion(){
+
+    return view('Ecommerce.Formularios_Publicacion.animacion');
+  }
+
   public function Detalles(){
     return view('Ecommerce.articulo_detalle');
   }

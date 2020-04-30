@@ -8,7 +8,7 @@
 
   <div class="row d-flex justify-content-center mt-5">
     {{-- Salones --}}
-    <a  href="#" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
+    <a  href="{{route('PublicarInmueble')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
       <div class="card-body d-flex flex-column">
         <i class="zmdi zmdi-store" style="font-size: 60px;"></i>
         <span class="mt-4">Inmuebles</span>
@@ -16,7 +16,7 @@
     </a>
 
     {{-- Juegos --}}
-    <a href="#" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
+    <a href="{{route('PublicarJuegos')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
       <div class="card-body d-flex flex-column">
         <i class="fab fa-fort-awesome" style="font-size: 60px;"></i>
         <span class="mt-4">Juegos</span>

@@ -24,6 +24,8 @@ Route::get('/mi-paquete','CarritoController@ProductosAgregados')->name('Producto
 Route::middleware(['auth', 'ControlarDatosCompletos', 'ControlarNegocioExistente'])->group(function () {
   Route::get('/publicar', 'ServicioController@Publicar')->name('Publicar');
   Route::get('/publicar/inmuebles', 'ServicioController@PublicarInmueble')->name('PublicarInmueble');
+  Route::get('/publicar/juegos', 'ServicioController@PublicarJuegos')->name('PublicarJuegos');
+  Route::get('/publicar/animacion', 'ServicioController@PublicarAnimacion')->name('PublicarAnimacion');
 });
 
 /*

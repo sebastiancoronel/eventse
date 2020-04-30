@@ -15,6 +15,17 @@
       #inmueble{
         background-image: url('../Images/Salon2.jpg');
         height: 200px;
+      }
+      #juegos{
+        background-image: url('../Images/juegos2.png');
+        height: 200px;
+        background-size: cover;
+      }
+      #animacion{
+        background-image: url('../Images/animacion2.png');
+        height: 200px;
+        background-size: cover;
+      }
 
       /* Fin banners */
       #formulario{
