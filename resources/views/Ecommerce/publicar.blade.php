@@ -52,7 +52,7 @@
     </a>
 
     {{-- Illuminación --}}
-    <a href="#" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
+    <a href="{{route('PublicarIluminacion')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
       <div class="card-body d-flex flex-column">
         <i class="far fa-lightbulb" style="font-size: 60px;"></i>
         <span class="mt-4">Illuminación</span>

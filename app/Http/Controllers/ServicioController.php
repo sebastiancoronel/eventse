@@ -38,6 +38,11 @@ class ServicioController extends Controller
     return view('Ecommerce.Formularios_Publicacion.catering');
   }
 
+  public function PublicarIluminacion(){
+
+    return view('Ecommerce.Formularios_Publicacion.iluminacion');
+  }
+
   public function Detalles(){
     return view('Ecommerce.articulo_detalle');
   }

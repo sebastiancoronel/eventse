@@ -27,7 +27,8 @@ Route::middleware(['auth', 'ControlarDatosCompletos', 'ControlarNegocioExistente
   Route::get('/publicar/juegos', 'ServicioController@PublicarJuegos')->name('PublicarJuegos');
   Route::get('/publicar/animacion', 'ServicioController@PublicarAnimacion')->name('PublicarAnimacion');
   Route::get('/publicar/mobiliario', 'ServicioController@PublicarMobiliario')->name('PublicarMobiliario');
-  Route::get('/publicar/Servicios-de-catering', 'ServicioController@PublicarCatering')->name('PublicarCatering');
+  Route::get('/publicar/servicios-de-catering', 'ServicioController@PublicarCatering')->name('PublicarCatering');
+  Route::get('/publicar/iluminacion', 'ServicioController@PublicarIluminacion')->name('PublicarIluminacion');
 });
 
 /*

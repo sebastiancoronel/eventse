@@ -4,10 +4,10 @@
   @include('Dependencias.head')
 
   <style media="screen">
-    /* *{
-      font-family: Poppins-Regular;
-    } */
-    /* Banners */
+    /*=============================
+     Banners
+     ==============================
+     */
       #banner{
         background-image: url('../Images/banner_registro.png');
         height: 300px;
@@ -36,8 +36,16 @@
         height: 200px;
         background-size: cover;
       }
+      #iluminacion{
+        background-image: url('../Images/iluminacion1.png');
+        height: 200px;
+        background-size: cover;
+      }
+      /*=============================
+       Fin Banners
+       ==============================
+       */
 
-      /* Fin banners */
       #formulario{
         position: absolute;
         top: 10%;
