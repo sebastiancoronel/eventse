@@ -21,7 +21,7 @@
     </div>
 
     {{-- Formulario Inmuebles --}}
-    <div class="card">
+    <div class="card container">
       <div class="card-header">
         <strong style="color:#717fe0;">Categoría</strong>
         >
