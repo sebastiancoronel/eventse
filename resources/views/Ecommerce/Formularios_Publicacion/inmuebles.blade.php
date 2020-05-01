@@ -5,8 +5,8 @@
       <div class="row">
         <div class="col-md-4 mt-5 purple-gradient" style="height: 8em;">
           <div class="p-5 d-flex justify-content-start">
-            <i class="zmdi zmdi-store" style="font-size: 25px;"></i>
-            <span class="ml-4" style="font-size: 25px;">INMUEBLES</span>
+            <i class="zmdi zmdi-store align-self-center" style="font-size: 25px;"></i>
+            <span class="ml-4 align-self-center" style="font-size: 25px;">INMUEBLES</span>
           </div>
         </div>
       </div>

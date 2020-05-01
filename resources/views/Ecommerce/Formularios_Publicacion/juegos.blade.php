@@ -5,8 +5,8 @@
       <div class="row">
         <div class="col-md-4 mt-5 peach-gradient" style="height: 8em;">
           <div class="p-5 d-flex justify-content-start">
-            <i class="fab fa-fort-awesome" style="font-size: 25px;"></i>
-            <span class="ml-4" style="font-size: 25px;">JUEGOS</span>
+            <i class="fab fa-fort-awesome align-self-center" style="font-size: 25px;"></i>
+            <span class="ml-4 align-self-center" style="font-size: 25px;">JUEGOS</span>
           </div>
         </div>
       </div>

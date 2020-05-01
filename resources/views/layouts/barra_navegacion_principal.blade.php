@@ -26,6 +26,16 @@
         height: 200px;
         background-size: cover;
       }
+      #mobiliario{
+        background-image: url('../Images/mobiliario3.png');
+        height: 200px;
+        background-size: cover;
+      }
+      #catering{
+        background-image: url('../Images/catering1.png');
+        height: 200px;
+        background-size: cover;
+      }
 
       /* Fin banners */
       #formulario{

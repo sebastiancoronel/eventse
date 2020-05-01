@@ -5,8 +5,8 @@
       <div class="row">
         <div class="col-md-4 mt-5 ripe-malinka-gradient" style="height: 8em;">
           <div class="p-5 d-flex justify-content-start">
-            <i class="zmdi zmdi-mood" style="font-size: 25px;"></i>
-            <span class="ml-4" style="font-size: 25px;">ANIMACIÓN</span>
+            <i class="zmdi zmdi-mood align-self-center" style="font-size: 25px;"></i>
+            <span class="ml-4 align-self-center" style="font-size: 25px;">ANIMACIÓN</span>
           </div>
         </div>
       </div>
@@ -177,6 +177,20 @@
                 <div class="form-check">
                   <input id="globologia" class="form-check-input" type="checkbox" name="info_adicional" value="">
                   <label class="form-check-label" for="globologia">Globología</label>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-check">
+                  <input id="robot_led" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                  <label class="form-check-label" for="robot_led">Robot led</label>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-check">
+                  <input id="maquillaje_fluor" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                  <label class="form-check-label" for="maquillaje_fluor">Maquillaje_fluor</label>
                 </div>
               </div>
             </div>

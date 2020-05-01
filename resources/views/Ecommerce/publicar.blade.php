@@ -2,8 +2,10 @@
 @section('content')
 <div class="animsition escritorio-mt-3-p-t-75">
 
-  <div class="purple-gradient" style="height: 200px;">
-    <h2 class="text-white d-flex justify-content-center p-5 m-5">¿Que deseas publicar?</h2>
+  <div class="purple-gradient d-flex justify-content-center" style="height: 200px;">
+    <h2 class="d-none d-sm-block text-uppercase text-white align-self-center">¿Que deseas publicar?</h2>
+    <!-- Movil -->
+    <h3 class="d-block d-sm-none text-uppercase text-white align-self-center">¿Que deseas publicar?</h3>
   </div>
 
   <div class="row d-flex justify-content-center mt-5">
@@ -34,7 +36,7 @@
 
   <div class="row d-flex justify-content-center mt-3">
     {{-- Mobiliario --}}
-    <a href="#" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
+    <a href="{{route('PublicarMobiliario')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
       <div class="card-body d-flex flex-column">
         <i class="fas fa-couch" style="font-size: 60px;"></i>
         <span class="mt-4">Mobiliario</span>
@@ -42,10 +44,10 @@
     </a>
 
     {{-- Catering --}}
-    <a href="#" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
+    <a href="{{route('PublicarCatering')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
       <div class="card-body d-flex flex-column">
         <i class="zmdi zmdi-cutlery" style="font-size: 60px;"></i>
-        <span class="mt-4">Catering</span>
+        <span class="mt-4">Servicios de Catering</span>
       </div>
     </a>
 
