@@ -25,9 +25,6 @@ class ControlarDatosCompletos
 
         if ($Cliente == null) {
           return redirect()->route('CompletarDatos');
-          // if ($prestador->dni == null && $prestador->email == null && $prestador->nombre == null && $prestador->apellido == null && $prestador->telefono == null) {
-          //   //code
-          // }
         }
         return $next($request);
     }

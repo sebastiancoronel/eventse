@@ -62,7 +62,7 @@
 
   <div class="row d-flex justify-content-center mt-3">
     {{-- Ornamentación --}}
-    <a href="#" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
+    <a href="{{route('PublicarOrnamentacion')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
       <div class="card-body d-flex flex-column">
         <i class="zmdi zmdi-flower-alt" style="font-size: 60px;"></i>
         <span class="mt-4">Ornamentación</span>
@@ -70,7 +70,7 @@
     </a>
 
     {{-- Música & DJ´s --}}
-    <a href="#" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
+    <a href="{{route('PublicarMusicaDj')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
       <div class="card-body d-flex flex-column">
         <i class="zmdi zmdi-headset" style="font-size: 60px;"></i>
         <span class="mt-4">Música & DJ´s</span>

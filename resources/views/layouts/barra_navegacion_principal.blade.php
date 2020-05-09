@@ -41,6 +41,16 @@
         height: 200px;
         background-size: cover;
       }
+      #ornamentacion{
+        background-image: url('../Images/Salon2.png');
+        height: 200px;
+        background-size: cover;
+      }
+      #musicaDj{
+        background-image: url('../Images/musicaDj2.png');
+        height: 200px;
+        background-size: cover;
+      }
       /*=============================
        Fin Banners
        ==============================

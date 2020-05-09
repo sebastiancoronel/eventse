@@ -7,6 +7,7 @@
 |--------------------------------------------------------------------------
 */
 Auth::routes();
+
 Route::get('/', function (){
   return view('Ecommerce.welcome');
 })->name('Principal');
@@ -29,6 +30,8 @@ Route::middleware(['auth', 'ControlarDatosCompletos', 'ControlarNegocioExistente
   Route::get('/publicar/mobiliario', 'ServicioController@PublicarMobiliario')->name('PublicarMobiliario');
   Route::get('/publicar/servicios-de-catering', 'ServicioController@PublicarCatering')->name('PublicarCatering');
   Route::get('/publicar/iluminacion', 'ServicioController@PublicarIluminacion')->name('PublicarIluminacion');
+  Route::get('/publicar/ornamentacion', 'ServicioController@PublicarOrnamentacion')->name('PublicarOrnamentacion');
+  Route::get('/publicar/musicaDj', 'ServicioController@PublicarMusicaDj')->name('PublicarMusicaDj');
 });
 
 /*

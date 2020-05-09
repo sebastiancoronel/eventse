@@ -84,10 +84,10 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   src: url('../fonts/PlayfairDisplay/PlayfairDisplay-Regular.ttf');
 }
 
-@font-face {
+/* @font-face {
   font-family: PlayfairDisplay-Bold;
   src: url('../fonts/PlayfairDisplay/PlayfairDisplay-Bold.ttf');
-}
+} */
 
 /*---------------------------------------------*/
 @font-face {

@@ -47,6 +47,12 @@ class CreateCategoriasTable extends Migration
           [
             'nombre' => 'Shows & Bandas'
           ],
+          [
+            'nombre' => 'Fotógrafía y ediciones'
+          ],
+          [
+            'nombre' => 'Disfraces'
+          ],
         ]);
     }//function up
 

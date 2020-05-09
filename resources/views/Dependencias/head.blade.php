@@ -66,6 +66,7 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
 
 {{-- PWA --}}
+<link rel="javascript" href="{{asset('sw.js')}}">
 <link rel="manifest" href="{{asset('json/manifest.json')}}">
 
 {{-- Pintar la barra de dirección del navegador. --}}
@@ -88,9 +89,10 @@
 {{-- Imagen que aparece al inicio al entrar en moviles. --}}
 <link rel="apple-touch-startup-image" href="{{asset('images/Logo-Eventse-1 ORIGINAL.png')}}">
 
+{{-- Iniciar Service worker --}}
 <script type="text/javascript">
   if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./sw.js')
+  navigator.serviceWorker.register('{{asset('./sw.js')}}')
     .then(reg => console.log('Registro de SW exitoso', reg))
     .catch(err => console.warn('Error al tratar de registrar el sw', err))
   }
