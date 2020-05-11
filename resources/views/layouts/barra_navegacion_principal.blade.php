@@ -51,6 +51,11 @@
         height: 200px;
         background-size: cover;
       }
+      #shows{
+        background-image: url('../Images/bandas1.png');
+        height: 200px;
+        background-size: cover;
+      }
       /*=============================
        Fin Banners
        ==============================

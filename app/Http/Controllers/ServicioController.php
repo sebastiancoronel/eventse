@@ -53,6 +53,15 @@ class ServicioController extends Controller
     return view('Ecommerce.Formularios_Publicacion.musicaDj');
   }
 
+  public function PublicarShows(){
+
+    return view('Ecommerce.Formularios_Publicacion.shows');
+  }
+
+  public function MostrarPlanes(){
+    return view('Ecommerce.planes_publicidad');
+  }
+
   public function Detalles(){
     return view('Ecommerce.articulo_detalle');
   }

@@ -78,7 +78,7 @@
     </a>
 
     {{-- Música & DJ´s --}}
-    <a href="#" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
+    <a href="{{route('PublicarShows')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
       <div class="card-body d-flex flex-column">
         <i class="fas fa-drum" style="font-size: 60px;"></i>
         <span class="mt-4">Bandas y shows en vivo</span>

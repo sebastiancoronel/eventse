@@ -32,6 +32,9 @@ Route::middleware(['auth', 'ControlarDatosCompletos', 'ControlarNegocioExistente
   Route::get('/publicar/iluminacion', 'ServicioController@PublicarIluminacion')->name('PublicarIluminacion');
   Route::get('/publicar/ornamentacion', 'ServicioController@PublicarOrnamentacion')->name('PublicarOrnamentacion');
   Route::get('/publicar/musicaDj', 'ServicioController@PublicarMusicaDj')->name('PublicarMusicaDj');
+  Route::get('/publicar/shows', 'ServicioController@PublicarShows')->name('PublicarShows');
+  // Planes
+  Route::get('/publicar/elegir-plan', 'ServicioController@MostrarPlanes')->name('MostrarPlanes');
 });
 
 /*
