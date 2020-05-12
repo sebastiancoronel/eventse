@@ -41,7 +41,7 @@
         <!--Second column-->
         <div class="col-lg-3 col-md-12 mb-4">
           <!--Card-->
-          <div class="card blue-gradient">
+          <div class="card purple-gradient">
 
             <!--Content-->
             <div class="text-center white-text" style="height:400px;">
@@ -58,7 +58,7 @@
                 <h2 class="font-weight-bold white-text mt-3"><strong>$799</strong></h2>
                 <p>Esse corporis saepe laudantium velit adipisci cumque iste ratione facere non distinctio
                   cupiditate sequi atque.</p>
-                <a class="btn btn-blue text-white font-weight-bold btn-rounded waves-effect waves-light flex-c-m stext-101 cl5 size-100 bg2 bor1 hov-btn1 p-lr-15 trans-04">Elegir plan</a>
+                <a class="btn btn-outline-white btn-rounded waves-effect waves-light font-weight-bold flex-c-m stext-101 cl5 size-100 bor1 hov-btn1 p-lr-15 trans-04">Elegir plan</a>
               </div>
             </div>
 
@@ -98,7 +98,29 @@
       </div>
     </div>
     <div class="ml-5">
-      <a href="#">Publicar gratis <i class="zmdi zmdi-arrow-right"></i> </a>
+      <a href="#">Publicar gratis <i class="zmdi zmdi-arrow-right"></i></a>
     </div>
+    <a mp-mode="dftl" href="https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=115102500-a4d8afcc-549c-4f0b-8ac0-ef900969f8d0" name="MP-payButton" class='blue-ar-l-rn-none pagar'>Pagar</a>
+    <script type="text/javascript">
+    (function(){
+      function $MPC_load(){
+        window.$MPC_loaded !== true && (function(){
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = document.location.protocol+"//secure.mlstatic.com/mptools/render.js";
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);window.$MPC_loaded = true;
+      })();
+    }
+    window.$MPC_loaded !== true ? (window.attachEvent ?window.attachEvent('onload', $MPC_load) : window.addEventListener('load', $MPC_load, false)) : null;})();
+
+    // Codigo mio
+    $(".pagar").on('click', function() {
+      $(".wrap-menu-desktop").css('z-index:', '0');
+      
+    });
+    </script>
+
   </div>
 @endsection

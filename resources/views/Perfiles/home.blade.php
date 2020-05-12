@@ -326,7 +326,7 @@
 
       {{-- MENÙ ESCRITORIO --}}
       <!-- Main Sidebar Container -->
-        <aside class="d-none d-sm-block main-sidebar sidebar-dark-primary elevation-4 mt-5 pt-5" style="background-color:#717fe0;">
+        <aside class="d-none d-sm-block main-sidebar sidebar-dark-primary elevation-4 mt-5 pt-5" style="background-color:#717fe0; z-index:0;">
           <ul class="navbar-nav text-left ml-2 d-none d-sm-block">
             <li class="nav-item">
               <a id="hamburguesa" class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars text-white"></i></a>
