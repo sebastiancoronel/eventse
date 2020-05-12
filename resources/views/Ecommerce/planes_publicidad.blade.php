@@ -29,7 +29,7 @@
                 <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa pariatur id nobis
                   accusamus
                   deleniti cumque hic laborum.</p>
-                <a class="btn btn-blue font-weight-bold waves-effect waves-light flex-c-m stext-101 cl5 size-100 bg2 bor1 hov-btn1 p-lr-15 trans-04">Elegir plan</a>
+                <a mp-mode="dftl" href="https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=115102500-a4d8afcc-549c-4f0b-8ac0-ef900969f8d0" name="MP-payButton" class="btn btn-blue text-white font-weight-bold waves-effect waves-light flex-c-m stext-101 cl5 size-100 bg2 bor1 hov-btn1 p-lr-15 trans-04">Elegir plan</a>
               </div>
             </div>
 
@@ -100,7 +100,7 @@
     <div class="ml-5">
       <a href="#">Publicar gratis <i class="zmdi zmdi-arrow-right"></i></a>
     </div>
-    <a mp-mode="dftl" href="https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=115102500-a4d8afcc-549c-4f0b-8ac0-ef900969f8d0" name="MP-payButton" class='blue-ar-l-rn-none pagar'>Pagar</a>
+    <a mp-mode="dftl" href="https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=115102500-a4d8afcc-549c-4f0b-8ac0-ef900969f8d0" name="MP-payButton" class='blue-ar-l-rn-none'>Pagar</a>
     <script type="text/javascript">
     (function(){
       function $MPC_load(){
@@ -116,10 +116,10 @@
     window.$MPC_loaded !== true ? (window.attachEvent ?window.attachEvent('onload', $MPC_load) : window.addEventListener('load', $MPC_load, false)) : null;})();
 
     // Codigo mio
-    $(".pagar").on('click', function() {
-      $(".wrap-menu-desktop").css('z-index:', '0');
-      
-    });
+    // $(".pagar").on('click', function() {
+    //   $(".wrap-menu-desktop").css('z-index:', '0');
+    //
+    // });
     </script>
 
   </div>
