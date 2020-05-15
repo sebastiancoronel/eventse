@@ -70,7 +70,7 @@
   </style>
 
   </head>
-<body class="animsition">
+  <body class="animsition">
   <header>
   		<!-- Header desktop -->
   		<div class="container-menu-desktop">
@@ -96,7 +96,7 @@
             @auth
               <div class="d-flex align-items-center">
                 <span class="ml-5">
-                  <div class="dropdown" style=" z-index:1101;">
+                  <div class="dropdown">
                       <!-- Nombre del usuario -->
                       <a id="navbarDropdown" class="nav-link dropdown-toggle" style="color:white;" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           {{ Auth::user()->name }} <span class="caret"></span>
@@ -270,7 +270,7 @@
   				</li>
 
           <li>
-            <a href="contact.html" class="ml-2" style="background-color:#f40082;">Publicar</a>
+            <a href="{{route('Publicar')}}" class="ml-2" style="background-color:#f40082;">Publicar</a>
           </li>
   			</ul>
   		</div>

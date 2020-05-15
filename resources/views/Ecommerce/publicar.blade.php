@@ -3,9 +3,9 @@
 <div class="animsition escritorio-mt-3-p-t-75">
 
   <div class="purple-gradient d-flex justify-content-center" style="height: 200px;">
-    <h2 class="d-none d-sm-block text-uppercase text-white align-self-center">¿Que deseas publicar?</h2>
+    <h2 class="d-none d-sm-block text-uppercase text-white align-self-center">¿Que servicio deseas publicar?</h2>
     <!-- Movil -->
-    <h3 class="d-block d-sm-none text-uppercase text-white align-self-center">¿Que deseas publicar?</h3>
+    <h3 class="d-block d-sm-none text-uppercase text-white align-self-center text-center">¿Que servicio deseas publicar?</h3>
   </div>
 
   <div class="row d-flex justify-content-center mt-5">

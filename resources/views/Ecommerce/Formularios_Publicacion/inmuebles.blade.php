@@ -252,9 +252,9 @@
         </div>
 
         <div class="d-flex justify-content-end">
-          <button class="col-md-3 flex-c-m stext-101 cl2 size-115 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5 mt-5">
+          <a href="{{route('MostrarPlanes')}}" class="col-md-3 flex-c-m stext-101 cl2 size-115 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5 mt-5">
             Publicar
-          </button>
+          </a>
         </div>
 
       </form>

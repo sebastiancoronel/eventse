@@ -12,29 +12,29 @@
      $('.dispositivo-mt-2').addClass('mt-2');
      $('.escritorio-mt-3-p-t-75').addClass('p-t-75 mt-3')
    }
+
  });
  </script>
 <!--===============================================================================================-->
-  <!-- jQuery UI -->
+<!-- jQuery UI -->
 <script src="{{asset('vendor/jqueryui/jquery-ui.min.js')}}"></script>
 <!--===============================================================================================-->
   <script src="{{asset('vendor/animsition/js/animsition.min.js')}}"></script>
 <!--===============================================================================================-->
+<script src="{{asset('adminlte/dist/js/adminlte.js')}}"></script>
+<!--===============================================================================================-->
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> --}}
-
-  <!--===============================================================================================-->
-  <script src="{{asset('adminlte/dist/js/adminlte.js')}}"></script>
-
-    <script src="{{asset('vendor/select2/select2.min.js')}}"></script>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script> --}}
-    <script>
-      $(".js-select2").each(function(){
-        $(this).select2({
-          minimumResultsForSearch: 20,
-          dropdownParent: $(this).next('.dropDownSelect2')
-        });
-      })
-    </script>
+<!--===============================================================================================-->
+  <script src="{{asset('vendor/select2/select2.min.js')}}"></script>
+  {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script> --}}
+  <script>
+    $(".js-select2").each(function(){
+      $(this).select2({
+        minimumResultsForSearch: 20,
+        dropdownParent: $(this).next('.dropDownSelect2')
+      });
+    })
+  </script>
   <!--===============================================================================================-->
     <script src="{{asset('vendor/daterangepicker/moment.min.js')}}"></script>
     <script src="{{asset('vendor/daterangepicker/daterangepicker.js')}}"></script>
@@ -141,27 +141,6 @@
     keyboard : false
   });
  });
-
-   // $('#AbrirModalMovil').on('click', function(){
-   //
-   // var winSize = {
-   // wheight : $(window).height(),
-   // wwidth : $(window).width()
-   // };
-   // var modSize = {
-   // mheight : $('#Modal_registro').height(),
-   // mwidth : $('#Modal_registro').width()
-   // };
-   // $('#Modal_registro').css({
-   // 'padding-top' :  ((winSize.wheight - (modSize.mheight/2))/3),
-   // });
-   //
-   // $('#Modal_registro').modal({
-   // backdrop: true,
-   // keyboard : false
-   // });
-   // });
-
  </script>
 
 

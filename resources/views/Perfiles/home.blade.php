@@ -326,7 +326,7 @@
 
       {{-- MENÙ ESCRITORIO --}}
       <!-- Main Sidebar Container -->
-        <aside class="d-none d-sm-block main-sidebar sidebar-dark-primary elevation-4 mt-5 pt-5" style="background-color:#717fe0; z-index:0;">
+        <aside class="d-none d-sm-block main-sidebar sidebar-dark-primary elevation-4 mt-5 pt-5" style="background-color:#717fe0; z-index:1;">
           <ul class="navbar-nav text-left ml-2 d-none d-sm-block">
             <li class="nav-item">
               <a id="hamburguesa" class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars text-white"></i></a>
@@ -380,6 +380,9 @@
                        </p>
                      </a>
                    </li>
+                   {{-- Perfil Empresa
+                   @if (Session::get('isTeacher', 0))
+                   @endif --}}
                   <!-- VENTAS -->
                <li class="nav-item has-treeview">
                  <a href="#" class="nav-link">
@@ -714,6 +717,7 @@
     <!-- /.control-sidebar --> --}}
     </div>
   </body>
+
   @include('Dependencias.scripts')
   </html>
 

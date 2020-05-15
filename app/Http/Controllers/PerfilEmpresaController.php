@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 class PerfilEmpresaController extends Controller
 {
+  public function CrearPerfilEmpresa(){
+    return view('Perfiles.Empresa.crear_perfil_empresa');
+  }
 /*============================
               Menú
 ==============================*/

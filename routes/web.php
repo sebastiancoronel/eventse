@@ -45,6 +45,7 @@ Route::middleware(['auth', 'ControlarDatosCompletos', 'ControlarNegocioExistente
 Route::middleware(['auth', 'ControlarDatosCompletos'])->group(function () {
   Route::get('/home', 'HomeController@index')->name('home');
   Route::get('/home/resumen','ClienteController@ClienteResumen')->name('ClienteResumen');
+  Route::get('/publicar/crear-perfil-empresa','PerfilEmpresaController@CrearPerfilEmpresa')->name('CrearPerfilEmpresa');
 
   // Menú Cliente
     //Servicios contratados
