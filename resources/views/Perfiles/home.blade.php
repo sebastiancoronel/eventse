@@ -2,6 +2,7 @@
   <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
     @include('Dependencias.head')
+    @include('Dependencias.head_adminlte')
     <style media="screen">
       #link_violeta {
         color: #717fe0 !important;

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-  <head>
+<head>
   @include('Dependencias.head')
 
   <style media="screen">
@@ -69,7 +69,8 @@
       }
   </style>
 
-  </head>
+</head>
+
   <body class="animsition">
   <header>
   		<!-- Header desktop -->
@@ -96,7 +97,7 @@
             @auth
               <div class="d-flex align-items-center">
                 <span class="ml-5">
-                  <div class="dropdown">
+                  <div class="dropdown" style="z-index: 1200;">
                       <!-- Nombre del usuario -->
                       <a id="navbarDropdown" class="nav-link dropdown-toggle" style="color:white;" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           {{ Auth::user()->name }} <span class="caret"></span>
@@ -130,7 +131,7 @@
 
   					<!-- Logo desktop -->
   					<a href="{{route('Principal')}}" class="logo">
-  							<img src="../images/Logo Eventse-1 ORIGINAL.svg" alt="IMG-LOGO" style="max-width: 150%; max-height:150%;">
+  							<img src="{{asset('images/Logo Eventse-1 ORIGINAL.svg')}}" alt="IMG-LOGO" style="max-width: 150%; max-height:150%;">
   					</a>
 
   					<!-- Menu desktop -->
@@ -274,61 +275,12 @@
           </li>
   			</ul>
   		</div>
-      {{-- <!--Modal Registro -->
-        <div id="Modal_registro" class="modal fade" tabindex="1" role="dialog">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="p-1">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-              </button>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col-md-6">
-                    <form action="{{ route('register') }}">
-                      <div class="card-deck">
-                        <div class="card">
-                          <div class="card-body" style="text-align:center;">
-                          <h5 class="card-title" style="color:#3B4AFC; font-weight: bold;">SOY PRESTADOR</h5>
-                          <p class="card-text">Dueño de salon, particular,animador, servicios de mobiliario...</p>
-                          <br><br>
-                          <i class="far fa-handshake" style="font-size: 40px;"></i>
-                          <br><br><br>
-                            <button class="btn btn-primary" type="submit" style="background-color: #3B4AFC;border-color: #3B4AFC; font-weight: bold; ">REGISTRATE</button>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-
-                  <div class="col-md-6">
-                    <form class="" action="{{ route('register') }}">
-                      <div class="card-deck">
-                        <div class="card">
-                          <div class="card-body" style="text-align:center;" >
-                            <h5 class="card-title" style="color:#1D2680; font-weight: bold;">BUSCO UN SERVICIO</h5>
-                            <p class="card-text">Quiero alquilar juegos,busco un salon, necesito animación...</p>
-                            <br><br>
-                            <i class="fas fa-glass-cheers" style="font-size:40px;"></i>
-                            <br><br><br>
-                            <button class="btn btn-primary" type="submit" style="background-color: #1D2680;border-color: #1D2680; font-weight: bold;">REGISTRATE</button>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-  		<!--Fin Modal Registro--> --}}
   </header>
-        @yield('content')
 
-        <!-- Cart -->
-    		<div class="wrap-header-cart js-panel-cart">
+@yield('content')
+
+  <!-- Cart -->
+	<div class="wrap-header-cart js-panel-cart">
     			<div class="s-full js-hide-cart"></div>
 
     			<div class="header-cart flex-col-l p-l-65 p-r-25">
@@ -411,6 +363,6 @@
     				</div>
     			</div>
     		</div>
+@include('Dependencias.scripts')
 </body>
-  @include('Dependencias.scripts')
 </html>

@@ -46,13 +46,14 @@ Route::middleware(['auth', 'ControlarDatosCompletos'])->group(function () {
   Route::get('/home', 'HomeController@index')->name('home');
   Route::get('/home/resumen','ClienteController@ClienteResumen')->name('ClienteResumen');
   Route::get('/publicar/crear-perfil-empresa','PerfilEmpresaController@CrearPerfilEmpresa')->name('CrearPerfilEmpresa');
+  Route::get('/publicar/crear-perfil-empresa/formulario','PerfilEmpresaController@FormularioPerfilEmpresa')->name('FormularioPerfilEmpresa');
 
-  // Menú Cliente
-    //Servicios contratados
-    Route::get('/home/servicios-contratados/favoritos','ClienteController@ServiciosFavoritos')->name('ServiciosFavoritos');
-    Route::get('/home/servicios-contratados/preguntas-realizadas','ClienteController@PreguntasRealizadas')->name('PreguntasRealizadas');
-    Route::get('/home/servicios-contratados/servicios-finalizados','ClienteController@ServiciosFinalizados')->name('ServiciosFinalizados');
-    Route::get('/home/servicios-contratados/presupuestos-recibidos','ClienteController@PresupuestosRecibidos')->name('PresupuestosRecibidos');
+// Menú Cliente
+  //Servicios contratados
+  Route::get('/home/servicios-contratados/favoritos','ClienteController@ServiciosFavoritos')->name('ServiciosFavoritos');
+  Route::get('/home/servicios-contratados/preguntas-realizadas','ClienteController@PreguntasRealizadas')->name('PreguntasRealizadas');
+  Route::get('/home/servicios-contratados/servicios-finalizados','ClienteController@ServiciosFinalizados')->name('ServiciosFinalizados');
+  Route::get('/home/servicios-contratados/presupuestos-recibidos','ClienteController@PresupuestosRecibidos')->name('PresupuestosRecibidos');
 
   //Menú Empresa
   //Alquileres y reservas
@@ -65,11 +66,11 @@ Route::middleware(['auth', 'ControlarDatosCompletos'])->group(function () {
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth'])->group(function () {
- //Datos de contacto
+  //Datos de contacto
   //Completar datos de cada tipo de prestador
   Route::get('completardatos/cliente','ClienteController@completar_datos')->name('CompletarDatos');
   //Almacena datos
-Route::post('completardatos/cliente/AlmacenarDatosCliente','ClienteController@AlmacenarDatosCliente')->name('AlmacenarDatosCliente');
+  Route::post('completardatos/cliente/AlmacenarDatosCliente','ClienteController@AlmacenarDatosCliente')->name('AlmacenarDatosCliente');
 
 });
 /*

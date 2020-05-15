@@ -7,7 +7,7 @@
       </div>
 
       <div class="m-auto pt-5">
-        <a id="boton" class="btn btn-blue text-white waves-effect waves-light flex-c-m stext-101 cl5 size-100 bg2 bor1 hov-btn1 p-lr-15 trans-04" href="#">Registrarme como empresa</a>
+        <a href="{{route('FormularioPerfilEmpresa')}}" class="btn btn-blue text-white waves-effect waves-light flex-c-m stext-101 cl5 size-100 bg2 bor1 hov-btn1 p-lr-15 trans-04" href="#">Registrarme como empresa</a>
       </div>
     </div>
   </div>
