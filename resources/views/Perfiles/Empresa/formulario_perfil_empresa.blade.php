@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <div class="container-fluid animsition escritorio-mt-3-p-t-75 mt-5">
+  <div class="container-fluid animsition escritorio-mt-3-p-t-75">
     <div class="row">
       <div class="col-xl-5 col-lg-6 col-md-10 col-sm-12 mx-auto mt-lg-5">
 
@@ -161,7 +161,7 @@
                 </div>
 
               <div class="row mt-5 d-flex align-items-center justify-content-center">
-                <div class="col-md-4 col-12 text-center">
+                <div class="">
                   <button type="submit" class="btn blue-gradient btn-lg waves-effect waves-light">
                     {{ __('Crear perfil') }}
                   </button>

@@ -18,8 +18,6 @@
             <!-- Login form -->
             <form method="POST" action="{{ route('login') }}">
               @csrf
-
-
               <div class="md-form">
                 <i class="zmdi zmdi-email prefix text-muted"></i>
                 <label for="email">Tu email</label>

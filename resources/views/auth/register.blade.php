@@ -77,7 +77,6 @@
                   <label for="password-confirm">{{ __('Confirmar contraseña') }}</label>
                   <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                 </div>
-            </form>
 
             <div class="text-center">
               <button type="submit" class="btn purple-gradient btn-lg waves-effect waves-light">{{ __('REGISTRARME') }}</button>
@@ -88,7 +87,7 @@
                 {{-- <a class="p-2 m-2 fa-lg ins-ic"><i class="fab fa-linkedin-in"> </i></a> --}}
               </div>
             </div>
-
+          </form>
           </div>
         </div>
         <!--/Form with header-->

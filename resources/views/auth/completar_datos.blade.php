@@ -1,7 +1,91 @@
 @extends('layouts.barra_navegacion_principal')
 {{-- FORMULARIO PARA DATOS DE LA CUENTA --}}
 @section('content')
-  <div class="animsition position-relative" style="height: 50em;">
+
+  <div class="container-fluid animsition escritorio-mt-3-p-t-75 mt-5">
+    <div class="row">
+      <div class="col-xl-5 col-lg-6 col-md-10 col-sm-12 mx-auto mt-lg-5">
+
+        <!--Form with header-->
+        <div class="card wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
+          <div class="card-body">
+
+            <!--Header-->
+            <div class="form-header purple-gradient">
+              <h3 class="text-uppercase">Datos personales</h3>
+              <small>Completá los datos de tu cuenta para continuar</small>
+            </div>
+            <!--Body-->
+            <!-- Login form -->
+            <form method="POST" enctype="multipart/form-data" action="{{route('AlmacenarDatosCliente')}}">
+              @csrf
+              <!-- Fecha de alta al sistema -->
+              <input hidden type="text" name="" value="{{date('Y-m-d')}}">
+              <!-- DNI -->
+              <div class="md-form">
+                <i class="zmdi zmdi-account-circle prefix text-muted"></i>
+                <label for="dni">DNI</label>
+                <input id="dni" class="form-control" type="number" name="dni" required>
+              </div>
+
+              <div class="text-center mb-5">
+                <h5>Ubicación</h5>
+                <small>Ésto ayudará a mostrarte servicios disponibles en tu ciudad</small>
+              </div>
+
+              <!-- Provincia -->
+              <span>Provincia</span>
+              <div class="md-form">
+                  <input hidden id="provincia_nombre" type="text" name="provincia_nombre" value="">
+                  <select id="provincia" class="custom-select" name="provincia" required>
+                    <option value="" selected>Elegir</option>
+                    @foreach ($ProvinciasLocalidadesJson as $provincia)
+                      <option value="{{ $provincia['id'] }}">{{$provincia['nombre']}}</option>
+                    @endforeach
+                  </select>
+              </div>
+              <!-- Ciudad -->
+              <span>Ciudad</span>
+              <div class="md-form">
+                  <select id="localidad" class="custom-select" name="localidad" required>
+                    @foreach ($ProvinciasLocalidadesJson as $localidad)
+
+                    @endforeach
+                  </select>
+              </div>
+              <!-- Teléfono -->
+              <div class="md-form">
+                <i class="zmdi zmdi-phone prefix text-muted"></i>
+                <label for="telefono">Teléfono</label>
+                <input class="form-control" type="number" name="telefono" required>
+              </div>
+              <!-- Nombre de fantasía -->
+              {{-- <div class="form-group row">
+              <label for="nombre_fantasia" class="col-md-4 col-form-label text-md-right">Nombre fantasía</label>
+              <input class="form-control col-md-6" type="text" name="nombre_fantasia" placeholder="Ejemplo: El principito eventos">
+            </div>
+            <!-- Foto de perfil -->
+            <div class="form-group row">
+            <label for="foto" class="col-md-4 col-form-label text-md-right">Foto de perfil <br> <small class="">Seelccioná la foto con la que las personas te identificaran a ti y tus servicios</small> </label>
+            <input id="foto" class="form-control col-md-6" type="file" name="foto" accept="image/*">
+            </div>
+            <!-- Vista previa imagen -->
+            <div class="card d-flex align-items-center">
+            <img id="preview" class="rounded" src="#" alt="" width="30%" height="30%">
+            </div> --}}
+            <div class="text-center mt-4">
+            <button class="btn btn-primary purple-gradient" type="submit">Finalizar</button>
+            </div>
+            </form>
+            <!-- Login form -->
+          </div>
+        </div>
+        <!--/Form with header-->
+      </div>
+    </div>
+  </div>
+
+  {{-- <div class="animsition position-relative" style="height: 50em;">
     <div id="banner"></div>
     <div id="formulario" class="p-t-20 d-flex justify-content-center">
       <div class="col-md-8">
@@ -61,7 +145,8 @@
           <div class="card d-flex align-items-center">
           <img id="preview" class="rounded" src="#" alt="" width="30%" height="30%">
         </div> --}}
-        <div class="text-center mt-4">
+
+        {{-- <div class="text-center mt-4">
           <button class="btn btn-primary" style="background:#3B4AFC; cursor:pointer;" type="submit">Finalizar</button>
         </div>
       </form>
@@ -70,7 +155,7 @@
 </div>
 </div>
 
-  </div>
+</div>  --}}
 
 {{-- Scripts  --}}
 

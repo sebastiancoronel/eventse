@@ -4,6 +4,9 @@
   @include('Dependencias.head')
 
   <style media="screen">
+  html{
+    overflow-x: hidden;
+  }
     /*=============================
      Banners
      ==============================
