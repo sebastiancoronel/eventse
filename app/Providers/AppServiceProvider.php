@@ -35,5 +35,12 @@ class AppServiceProvider extends ServiceProvider
           //Retornar
           $view->with('Categorias',$categorias);
         });
+
+        view()->composer('layouts.barra_navegacion_principal',function(View $view){
+          //Traer todas las categorias
+          $categorias = Categoria::all();
+          //Retornar
+          $view->with('Categorias',$categorias);
+        });
     }
 }

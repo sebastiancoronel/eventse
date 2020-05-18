@@ -17,13 +17,13 @@ class ControlarNegocioExistente
      */
     public function handle($request, Closure $next)
     {
-      // $usuario_id = Auth::user()->id;
-      // $Prestador = Prestador::where('user_id',$usuario_id)
-      //                       ->select('*')
-      //                       ->first();
-      // if ($Prestador == null) {
-      //   return redirect()->route('Publicar');
-      // }
+      $user = Auth::user();
+      $Prestador = Prestador::where('user_id',$user->id)
+                            ->select('*')
+                            ->first();
+      if ($Prestador == null) {
+        return redirect()->route('CrearPerfilEmpresa');
+      }
       return $next($request);
     }
 }

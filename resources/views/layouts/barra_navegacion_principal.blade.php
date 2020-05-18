@@ -4,7 +4,7 @@
   @include('Dependencias.head')
 
   <style media="screen">
-  html{
+  body{
     overflow-x: hidden;
   }
     /*=============================
@@ -131,7 +131,6 @@
 
   			<div class="wrap-menu-desktop">
   				<nav class="limiter-menu-desktop container">
-
   					<!-- Logo desktop -->
   					<a href="{{route('Principal')}}" class="logo">
   							<img src="{{asset('images/Logo Eventse-1 ORIGINAL.svg')}}" alt="IMG-LOGO" style="max-width: 150%; max-height:150%;">
@@ -143,13 +142,9 @@
   							<li class="active-menu">
   								<a href="index.html">Categorías</a>
   								<ul class="sub-menu">
-  									<li><a href="index.html">Salones</a></li>
-                    <li><a href="home-02.html">Juegos</a></li>
-  									<li><a href="home-02.html">Animación</a></li>
-  									<li><a href="home-03.html">Mobiliario</a></li>
-                    <li><a href="home-03.html">Servicios de catering</a></li>
-                    <li><a href="home-03.html">Iluminación</a></li>
-                    <li><a href="home-03.html">Música & DJ´s</a></li>
+                    @foreach ($Categorias as $categoria)
+                      <li><a href="index.html">{{ $categoria->nombre }}</a></li>
+                    @endforeach
   								</ul>
   							</li>
 
