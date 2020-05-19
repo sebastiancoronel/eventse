@@ -8,7 +8,6 @@
             <!--Form with header-->
             <div class="card wow fadeIn" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
                 <div class="card-body">
-
                     <!--Header-->
                     <div class="form-header blue-gradient">
                         <h3 class="text-uppercase">Perfil empresa</h3>
@@ -44,12 +43,12 @@
                         {{-- Nombre --}}
                         <div class="md-form">
                             <i class="zmdi zmdi-store prefix text-muted"></i>
-                            <label for="nombre_fantasia">Nombre de la empresa</label>
-                            <input id="nombre_fantasia" type="text" class="form-control{{ $errors->has('nombre_fantasia') ? ' is-invalid' : '' }}" name="nombre_fantasia" value="{{ old('nombre_fantasia') }}" required autofocus>
+                            <label for="nombre">Nombre de la empresa</label>
+                            <input id="nombre" type="text" class="form-control{{ $errors->has('nombre') ? ' is-invalid' : '' }}" name="nombre" value="{{ old('nombre') }}" required autofocus>
 
-                            @if ($errors->has('nombre_fantasia'))
+                            @if ($errors->has('nombre'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('nombre_fantasia') }}</strong>
+                                <strong>{{ $errors->first('nombre') }}</strong>
                             </span>
                             @endif
                         </div>
@@ -131,21 +130,21 @@
                             <div class="row">
                                 <div class="col-md-4 mt-4">
                                     <div class="form-check">
-                                        <input id="salones" class="form-check-input" type="checkbox" name="salones" value="">
+                                        <input id="salones" class="form-check-input" type="checkbox" name="categorias[]" value="1">
                                         <label class="form-check-label" for="salones">Salones y quintas</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-check">
-                                        <input id="juegos" class="form-check-input" type="checkbox" name="juegos" value="">
+                                        <input id="juegos" class="form-check-input" type="checkbox" name="categorias[]" value="2">
                                         <label class="form-check-label" for="juegos">Juegos</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-check">
-                                        <input id="animacion" class="form-check-input" type="checkbox" name="animacion" value="">
+                                        <input id="animacion" class="form-check-input" type="checkbox" name="categorias[]" value="3">
                                         <label class="form-check-label" for="animacion">Animación</label>
                                     </div>
                                 </div>
@@ -156,21 +155,21 @@
                             <div class="row">
                                 <div class="col-md-4 mt-4">
                                     <div class="form-check">
-                                        <input id="mobiliario" class="form-check-input" type="checkbox" name="mobiliario" value="">
+                                        <input id="mobiliario" class="form-check-input" type="checkbox" name="categorias[]" value="4">
                                         <label class="form-check-label" for="mobiliario">mobiliario</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-check">
-                                        <input id="catering" class="form-check-input" type="checkbox" name="catering" value="">
+                                        <input id="catering" class="form-check-input" type="checkbox" name="categorias[]" value="5">
                                         <label class="form-check-label" for="catering">Catering</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-check">
-                                        <input id="iluminacion" class="form-check-input" type="checkbox" name="iluminacion" value="">
+                                        <input id="iluminacion" class="form-check-input" type="checkbox" name="categorias[]" value="6">
                                         <label class="form-check-label" for="iluminacion">Iluminación</label>
                                     </div>
                                 </div>
@@ -181,21 +180,21 @@
                             <div class="row">
                                 <div class="col-md-4 mt-4">
                                     <div class="form-check">
-                                        <input id="ornamentacion" class="form-check-input" type="checkbox" name="ornamentacion" value="">
+                                        <input id="ornamentacion" class="form-check-input" type="checkbox" name="categorias[]" value="7">
                                         <label class="form-check-label" for="ornamentacion">Ornamentación</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-check">
-                                        <input id="musicaDj" class="form-check-input" type="checkbox" name="musicaDj" value="">
+                                        <input id="musicaDj" class="form-check-input" type="checkbox" name="categorias[]" value="8">
                                         <label class="form-check-label" for="musicaDj">Música & DJ´s</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-check">
-                                        <input id="shows" class="form-check-input" type="checkbox" name="shows" value="">
+                                        <input id="shows" class="form-check-input" type="checkbox" name="categorias[]" value="9">
                                         <label class="form-check-label" for="shows">Shows & Bandas</label>
                                     </div>
                                 </div>
@@ -206,14 +205,14 @@
                             <div class="row">
                                 <div class="col-md-4 mt-4">
                                     <div class="form-check">
-                                        <input id="fotografia_y_ediciones" class="form-check-input" type="checkbox" name="fotografia_y_ediciones" value="">
+                                        <input id="fotografia_y_ediciones" class="form-check-input" type="checkbox" name="categorias[]" value="10">
                                         <label class="form-check-label" for="fotografia_y_ediciones">Fotógrafía y ediciones</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4 mt-4">
                                     <div class="form-check">
-                                        <input id="disfraces" class="form-check-input" type="checkbox" name="disfraces" value="">
+                                        <input id="disfraces" class="form-check-input" type="checkbox" name="categorias[]" value="11">
                                         <label class="form-check-label" for="disfraces">Disfraces</label>
                                     </div>
                                 </div>

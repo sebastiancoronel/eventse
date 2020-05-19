@@ -31,7 +31,7 @@ return array(
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\InmuebleController' => $baseDir . '/app/Http/Controllers/InmuebleController.php',
     'App\\Http\\Controllers\\LocalidadController' => $baseDir . '/app/Http/Controllers/LocalidadController.php',
-    'App\\Http\\Controllers\\PerfilEmpresaController' => $baseDir . '/app/Http/Controllers/PerfilEmpresaController.php',
+    // 'App\\Http\\Controllers\\PerfilEmpresaController' => $baseDir . '/app/Http/Controllers/PerfilEmpresaController.php',
     'App\\Http\\Controllers\\PrestadorController' => $baseDir . '/app/Http/Controllers/PrestadorController.php',
     'App\\Http\\Controllers\\PromocionController' => $baseDir . '/app/Http/Controllers/PromocionController.php',
     'App\\Http\\Controllers\\ProvinciaController' => $baseDir . '/app/Http/Controllers/ProvinciaController.php',

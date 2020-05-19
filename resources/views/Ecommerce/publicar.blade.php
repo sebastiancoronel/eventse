@@ -1,6 +1,10 @@
 @extends('layouts.barra_navegacion_principal')
 @section('content')
+
 <div class="animsition escritorio-mt-3-p-t-75">
+  @if (Session::has('PerfilCreado'))
+    <div class="alert alert-success wow fadeIn">{{Session::get('message')}}</div>
+  @endif
 
   <div class="purple-gradient d-flex justify-content-center" style="height: 200px;">
     <h2 class="d-none d-sm-block text-uppercase text-white align-self-center">¿Que servicio deseas publicar?</h2>

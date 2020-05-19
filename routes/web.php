@@ -47,9 +47,9 @@ Route::middleware(['auth', 'ControlarDatosCompletos'])->group(function () {
   Route::get('/home/resumen','ClienteController@ClienteResumen')->name('ClienteResumen');
 
   // Crear Perfil Empresa
-  Route::get('/publicar/crear-perfil-empresa','PerfilEmpresaController@CrearPerfilEmpresa')->name('CrearPerfilEmpresa');
-  Route::get('/publicar/crear-perfil-empresa/formulario','PerfilEmpresaController@FormularioPerfilEmpresa')->name('FormularioPerfilEmpresa');
-  Route::post('/publicar/crear-perfil-empresa/formulario/almacenar-perfil-empresa','PerfilEmpresaController@AlmacenarPerfilEmpresa')->name('AlmacenarPerfilEmpresa');
+  Route::get('/publicar/crear-perfil-empresa','PrestadorController@CrearPerfilEmpresa')->name('CrearPerfilEmpresa');
+  Route::get('/publicar/crear-perfil-empresa/formulario','PrestadorController@FormularioPerfilEmpresa')->name('FormularioPerfilEmpresa');
+  Route::post('/publicar/crear-perfil-empresa/formulario/almacenar-perfil-empresa','PrestadorController@AlmacenarPerfilEmpresa')->name('AlmacenarPerfilEmpresa');
 
 // Menú Cliente
   //Servicios contratados
@@ -61,7 +61,7 @@ Route::middleware(['auth', 'ControlarDatosCompletos'])->group(function () {
   //Menú Empresa
   //Alquileres y reservas
   Route::get('/home/alquileres-y-reservas/mis-alquileres','EmpresaController@MisAlquileres')->name('MisAlquileres');
-  Route::get('/home/empresa/alquileres-y-reservas/preguntas-recibidas','PerfilEmpresaController@PreguntasRecibidas')->name('PreguntasRecibidas');
+  Route::get('/home/empresa/alquileres-y-reservas/preguntas-recibidas','PrestadorController@PreguntasRecibidas')->name('PreguntasRecibidas');
 });
 /*
 |--------------------------------------------------------------------------

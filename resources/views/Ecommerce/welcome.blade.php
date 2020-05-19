@@ -1,5 +1,10 @@
 @extends('layouts.barra_navegacion_principal')
 @section('content')
+	
+	@if (Session::has('PerfilExistente'))
+		<div class="alert alert-danger wow fadeIn">{{Session::get('message')}}</div>
+	@endif
+
 <!--Pagina principal-->
 	<div class="animsition">
 				<!-- Modal Search -->
