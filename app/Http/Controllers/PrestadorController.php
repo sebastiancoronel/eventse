@@ -6,6 +6,7 @@ use App\Prestador;
 use App\Prestador_por_Categoria;
 use App\Cliente;
 use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\Storage;
 
 class PrestadorController extends Controller
 {
@@ -26,7 +27,7 @@ class PrestadorController extends Controller
     $extension = $request->file('foto')->getClientOriginalExtension();
     $file_name = $user->id . '.' . $extension;
     //$user->foto = $extension;
-    $ruta_imagen = $request->file('foto')->storeAs($file_name, 'public/users/perfil_empresa');
+    $ruta_imagen = $request->file('foto')->storeAs('public/users/perfil_empresa' , $file_name);
 
     $ExistePrestador = Prestador::where('user_id',$user->id)->select('id')->first();
 
@@ -46,12 +47,13 @@ class PrestadorController extends Controller
     }
 
     $PrestadorGuardado = Prestador::where('user_id',$user->id)->select('id')->first();
-    
+
 
     $ExistePrestador_por_Categoria = Prestador_por_Categoria::where('id_prestador',$user->id)->select('id')->first();
 
     if ($ExistePrestador_por_Categoria != null) {
-      return view('Ecommerce.publicar')->with('PerfilCreado','Ya tienes un perfil de empresa');
+      //return view('Ecommerce.welcome')->with('PerfilExistente','Ya tienes un perfil de empresa');
+      return redirect()->route('Principal');
     }else {
       foreach ($request->categorias as $key => $value) {
         $PrestadorPorCategoria = new Prestador_por_Categoria();
@@ -59,7 +61,8 @@ class PrestadorController extends Controller
         $PrestadorPorCategoria->id_prestador = $PrestadorGuardado->id; //$ExistePrestador = id de prestador
         $PrestadorPorCategoria->save();
       }
-      return view('Ecommerce.welcome')->with('PerfilExistente','Ya tienes un perfil de empresa');
+      return redirect()->route('Publicar')->with('PerfilCreado','Ya puedes empezar a publicar');
+      // return view('Ecommerce.publicar')->with('PerfilCreado','Ya tienes un perfil de empresa');
     }
   }
 

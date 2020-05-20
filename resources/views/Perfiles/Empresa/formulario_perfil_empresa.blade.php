@@ -1,7 +1,6 @@
 @extends('layouts.barra_navegacion_principal')
 
 @section('content')
-
 <div class="container-fluid animsition escritorio-mt-3-p-t-75 mt-5">
     <div class="row">
         <div class="col-xl-5 col-lg-6 col-md-10 col-sm-12 m-auto">
