@@ -7,8 +7,7 @@
         <div class="card-body">
           <div class="row d-flex justify-content-center align-items-center">
             <div class="col-md-12 col-12 text-center">
-              <p class="pt-3 pr-2">{{Session::get('message')}}</p>
-              Ya puedes empezar a publicar
+              <p class="pt-3 pr-2">{{Session::get('PerfilCreado')}}</p>
             </div>
             <a id="boton_aceptar" type="button" class="btn btn-success">Aceptar</a>
           </div>

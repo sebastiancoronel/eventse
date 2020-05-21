@@ -15,6 +15,7 @@ Route::get('/', function (){
 //Traer Categorias
 Route::get('/categorias-listar','CategoriaController@index');
 Route::get('/articulo/detalles','ServicioController@Detalles')->name('Detalles');
+Route::get('/reservar/servicios-publicados','ServicioController@ServiciosPublicados')->name('ServiciosPublicados');
 Route::get('/mi-paquete','CarritoController@ProductosAgregados')->name('ProductosAgregados');
 
 /*

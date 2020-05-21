@@ -32,7 +32,7 @@ class PrestadorController extends Controller
     $ExistePrestador = Prestador::where('user_id',$user->id)->select('id')->first();
 
     if ($ExistePrestador != null) {
-      return view('Ecommerce.welcome')->with('PerfilExistente','Ya tienes un perfil de empresa');
+      return redirect()->route('Principal')->with('PerfilExistente','Ya cuentas con un perfil de empresa');
     }else {
       $Prestador = new Prestador();
       $Prestador->nombre = $request->nombre;
@@ -53,7 +53,7 @@ class PrestadorController extends Controller
 
     if ($ExistePrestador_por_Categoria != null) {
       //return view('Ecommerce.welcome')->with('PerfilExistente','Ya tienes un perfil de empresa');
-      return redirect()->route('Principal');
+      return redirect()->route('Principal')->with('PerfilExistente','Ya cuentas con un perfil de empresa');
     }else {
       foreach ($request->categorias as $key => $value) {
         $PrestadorPorCategoria = new Prestador_por_Categoria();

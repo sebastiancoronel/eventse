@@ -33,7 +33,7 @@
                             <div class="d-flex justify-content-center">
                                 <div class="btn btn-mdb-color btn-rounded float-left">
                                     <span>Subir archivo</span>
-                                    <input id="file_input" name="foto" type="file" accept="image/*">
+                                    <input id="file_input" name="foto" type="file" accept="image/*" required>
                                 </div>
                             </div>
                             <span id="nombre_archivo" class="d-flex justify-content-center mt-2"> </span>

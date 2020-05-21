@@ -139,14 +139,14 @@
   					<!-- Menu desktop -->
   					<div class="menu-desktop">
   						<ul class="main-menu">
-  							<li class="active-menu">
+  							{{-- <li class="active-menu">
   								<a href="index.html">Categorías</a>
   								<ul class="sub-menu">
                     @foreach ($Categorias as $categoria)
                       <li><a href="index.html">{{ $categoria->nombre }}</a></li>
                     @endforeach
   								</ul>
-  							</li>
+  							</li> --}}
 
   							<li>
   								<a href="product.html">Reservar</a>
@@ -244,17 +244,18 @@
           <li>
             <a href="{{route('home')}}">Mi cuenta</a>
           </li>
-  				<li>
+  				{{-- <li>
   					<a href="index.html">Categorías	</a>
   					<ul class="sub-menu-m">
-              <li><a href="index.html">Salones</a></li>
-              <li><a href="home-02.html">Animación</a></li>
+              @foreach ($Categorias as $categoria)
+                <li><a href="index.html">{{ $categoria->nombre }}</a></li>
+              @endforeach
 
   					</ul>
   					<span class="arrow-main-menu-m">
   						<i class="fa fa-angle-right" aria-hidden="true"></i>
   					</span>
-  				</li>
+  				</li> --}}
 
   				<li>
   					<a href="product.html">Reservar</a>
@@ -269,7 +270,7 @@
   				</li>
 
           <li>
-            <a href="{{route('Publicar')}}" class="ml-2" style="background-color:#f40082;">Publicar</a>
+            <a href="{{route('Publicar')}}" class="btn-rounded ml-2" style="background-color:#f40082;">Publicar</a>
           </li>
   			</ul>
   		</div>
