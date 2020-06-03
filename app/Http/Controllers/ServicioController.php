@@ -16,8 +16,10 @@ class ServicioController extends Controller
   }
 
   public function PublicarInmueble(){
-
-    return view('Ecommerce.Formularios_Publicacion.inmuebles');
+    //Traer Provincias y Localidades
+    $path = storage_path() . "/json/ProvinciasLocalidades.json";
+    $ProvinciasLocalidadesJson = json_decode(file_get_contents($path),true);
+  return view('Ecommerce.Formularios_Publicacion.inmuebles',['ProvinciasLocalidadesJson'=>$ProvinciasLocalidadesJson]);
   }
 
   public function PublicarJuegos(){
