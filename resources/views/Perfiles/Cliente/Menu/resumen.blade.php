@@ -1,7 +1,7 @@
 @extends('Perfiles.home')
 @section('content')
 <div class="dispositivo">
-  {{-- <!-- Perfil -->
+  <!-- Perfil -->
   <div class="card card-widget widget-user">
     <!-- Add the bg color to the header using any of the bg-* classes -->
     <div class="widget-user-header bg-info">
@@ -9,7 +9,7 @@
 
     </div>
     <div class="widget-user-image">
-      <img class="img-circle elevation-2" src="https://static.wixstatic.com/media/d50824_cf5c9f47ba6c49dcbc9125ec417026c4~mv2.png/v1/fill/w_406,h_406,al_c,q_85,usm_0.66_1.00_0.01/Logo%20Jump%20zone%20Blanco2%20Transparente.webp" alt="User Avatar">
+      <img class="img-circle elevation-2" src="{{asset($Prestador->foto)}}" alt="User Avatar">
     </div>
     <div class="card-footer">
       <div class="row">
@@ -41,7 +41,7 @@
       <!-- /.row -->
     </div>
   </div>
-  <!-- Fin Perfil --> --}}
+  <!-- Fin Perfil -->
 
   <!-- Resumen y Mis puntos -->
   <h4 class="card-header text-muted"> Resumen </h4>

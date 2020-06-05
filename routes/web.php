@@ -25,15 +25,18 @@ Route::get('/mi-paquete','CarritoController@ProductosAgregados')->name('Producto
 */
 Route::middleware(['auth', 'ControlarDatosCompletos', 'ControlarNegocioExistente'])->group(function () {
   Route::get('/publicar', 'ServicioController@Publicar')->name('Publicar');
-  Route::get('/publicar/inmuebles', 'ServicioController@PublicarInmueble')->name('PublicarInmueble');
-  Route::get('/publicar/juegos', 'ServicioController@PublicarJuegos')->name('PublicarJuegos');
-  Route::get('/publicar/animacion', 'ServicioController@PublicarAnimacion')->name('PublicarAnimacion');
-  Route::get('/publicar/mobiliario', 'ServicioController@PublicarMobiliario')->name('PublicarMobiliario');
-  Route::get('/publicar/servicios-de-catering', 'ServicioController@PublicarCatering')->name('PublicarCatering');
-  Route::get('/publicar/iluminacion', 'ServicioController@PublicarIluminacion')->name('PublicarIluminacion');
-  Route::get('/publicar/ornamentacion', 'ServicioController@PublicarOrnamentacion')->name('PublicarOrnamentacion');
-  Route::get('/publicar/musicaDj', 'ServicioController@PublicarMusicaDj')->name('PublicarMusicaDj');
-  Route::get('/publicar/shows', 'ServicioController@PublicarShows')->name('PublicarShows');
+  // Formularios de publicacion
+  Route::get('/publicar/inmuebles', 'ServicioController@FormularioInmueble')->name('FormularioInmueble');
+  Route::get('/publicar/juegos', 'ServicioController@FormularioJuegos')->name('FormularioJuegos');
+  Route::get('/publicar/animacion', 'ServicioController@FormularioAnimacion')->name('FormularioAnimacion');
+  Route::get('/publicar/mobiliario', 'ServicioController@FormularioMobiliario')->name('FormularioMobiliario');
+  Route::get('/publicar/servicios-de-catering', 'ServicioController@FormularioCatering')->name('FormularioCatering');
+  Route::get('/publicar/iluminacion', 'ServicioController@FormularioIluminacion')->name('FormularioIluminacion');
+  Route::get('/publicar/ornamentacion', 'ServicioController@FormularioOrnamentacion')->name('FormularioOrnamentacion');
+  Route::get('/publicar/musicaDj', 'ServicioController@FormularioMusicaDj')->name('FormularioMusicaDj');
+  Route::get('/publicar/shows', 'ServicioController@FormularioShows')->name('FormularioShows');
+  // Publicar servicios
+  Route::post('/publicar/inmuebles/almacenando-publicacion-inmueble','ServicioController@PublicarInmueble')->name('PublicarInmueble');
   // Planes
   Route::get('/publicar/elegir-plan', 'ServicioController@MostrarPlanes')->name('MostrarPlanes');
 });

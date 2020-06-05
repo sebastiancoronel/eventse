@@ -29,7 +29,8 @@
             <span class="ml-5"> <a href="{{route('Publicar')}}">Modificar</a></span>
         </div>
 
-        <form class="card-body" action="#" method="post">
+        <form class="card-body" action="{{route('PublicarInmueble')}}" method="post">
+          <input hidden type="text" name="id_categoria" value="1">
             @csrf
             {{-- Imagenes --}}
             <div class="mt-5">
@@ -118,13 +119,12 @@
             </div>
 
             <h5 class="mt-5"><strong class="text-uppercase">Que tipo de inmueble es?</strong></h5>
-            <select class="custom-select mt-5" name="categoria_inmueble" required>
+            <select class="custom-select mt-5" name="tipo_inmueble" required>
                 <option value="">Seleccionar</option>
-                <option value="">Salón</option>
-                <option value="">Quinta</option>
-                <option value="">Salón de fiestas infantil</option>
-                <option value="">Complejo</option>
-                <option value="">Otro</option>
+                <option value="Salon">Salón</option>
+                <option value="Quinta">Quinta</option>
+                <option value="Salón de fiestas infantil">Salón de fiestas infantil</option>
+                <option value="Complejo">Complejo</option>
             </select>
 
             <div class="mt-5">
@@ -134,7 +134,7 @@
                 </div>
             </div>
 
-            <!-- Calle - Nro -->
+            <!-- Ubicación -->
             <div class="row">
                 <div class="col-md-4">
                     <div class="md-form">
@@ -144,13 +144,13 @@
                 </div>
 
                 <div class="col-md-4 md-form">
-                    <label for="barrio">Barrio</label>
-                    <input class="form-control" type="text" name="barrio" value="" required>
+                  <label for="numero">Nro.</label>
+                  <input class="form-control" type="text" name="numero" value="" required>
                 </div>
 
                 <div class="col-md-4 md-form">
-                    <label for="numero">Nro.</label>
-                    <input class="form-control" type="text" name="numero" value="" required>
+                  <label for="barrio">Barrio</label>
+                  <input class="form-control" type="text" name="barrio" value="" required>
                 </div>
 
             </div>
@@ -188,21 +188,21 @@
             <div class="form-row mt-5">
                 <div class="col-md-4">
                     <div class="form-check">
-                        <input id="barra_tragos" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                        <input id="barra_tragos" class="form-check-input" type="checkbox" name="barra_tragos" value="1">
                         <label class="form-check-label" for="barra_tragos">Barra de tragos</label>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="form-check">
-                        <input id="catering" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                        <input id="catering" class="form-check-input" type="checkbox" name="catering" value="1">
                         <label class="form-check-label" for="catering">Catering</label>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="form-check">
-                        <input id="dj" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                        <input id="dj" class="form-check-input" type="checkbox" name="dj" value="1">
                         <label class="form-check-label" for="dj">Dj</label>
                     </div>
                 </div>
@@ -212,21 +212,21 @@
             <div class="form-row mt-4">
                 <div class="col-md-4">
                     <div class="form-check">
-                        <input id="mesas_sillas" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                        <input id="mesas_sillas" class="form-check-input" type="checkbox" name="mesas_sillas" value="1">
                         <label class="form-check-label" for="mesas_sillas">Mesas y sillas</label>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="form-check">
-                        <input id="mesa_dulce" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                        <input id="mesa_dulce" class="form-check-input" type="checkbox" name="mesa_dulce" value="1">
                         <label class="form-check-label" for="mesa_dulce">Mesa dulce</label>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="form-check">
-                        <input id="guardarropas" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                        <input id="guardarropas" class="form-check-input" type="checkbox" name="guardarropas" value="1">
                         <label class="form-check-label" for="guardarropas">Guardaropas</label>
                     </div>
                 </div>
@@ -235,21 +235,21 @@
             <div class="form-row mt-4">
                 <div class="col-md-4">
                     <div class="form-check">
-                        <input id="mozos_camareras" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                        <input id="mozos_camareras" class="form-check-input" type="checkbox" name="mozos_camareras" value="1">
                         <label class="form-check-label" for="mozos_camareras">Mozos y camareras</label>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="form-check">
-                        <input id="proyector_pantalla" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                        <input id="proyector_pantalla" class="form-check-input" type="checkbox" name="proyector_pantalla" value="1">
                         <label class="form-check-label" for="proyector_pantalla">Proyector y pantalla</label>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="form-check">
-                        <input id="recepcion" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                        <input id="recepcion" class="form-check-input" type="checkbox" name="recepcion" value="1">
                         <label class="form-check-label" for="recepcion">Recepción</label>
                     </div>
                 </div>
@@ -259,21 +259,21 @@
             <div class="form-row mt-4">
                 <div class="col-md-4">
                     <div class="form-check">
-                        <input id="vajillas" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                        <input id="vajillas" class="form-check-input" type="checkbox" name="vajillas" value="1">
                         <label class="form-check-label" for="vajillas">Vajillas</label>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="form-check">
-                        <input id="wifi" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                        <input id="wifi" class="form-check-input" type="checkbox" name="wifi" value="1">
                         <label class="form-check-label" for="wifi">Wifi</label>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="form-check">
-                        <input id="piscina" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                        <input id="piscina" class="form-check-input" type="checkbox" name="piscina" value="1">
                         <label class="form-check-label" for="piscina">Piscina</label>
                     </div>
                 </div>
@@ -295,7 +295,7 @@
 </div>
 </div>
 
-{{-- Imagen placeholder al seleccionar archivo --}}
+{{-- Imagen placeholder al seleccionar archivo --}}php12
 <script type="text/javascript">
     // Foto 1
     var input_1 = $("#file_input");

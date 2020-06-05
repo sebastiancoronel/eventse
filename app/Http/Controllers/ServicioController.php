@@ -15,49 +15,65 @@ class ServicioController extends Controller
     return view('Ecommerce.servicios_publicados');
   }
 
-  public function PublicarInmueble(){
+/*
+=============
+  Inmuebles
+=============
+*/
+
+  public function FormularioInmueble(){
     //Traer Provincias y Localidades
     $path = storage_path() . "/json/ProvinciasLocalidades.json";
     $ProvinciasLocalidadesJson = json_decode(file_get_contents($path),true);
   return view('Ecommerce.Formularios_Publicacion.inmuebles',['ProvinciasLocalidadesJson'=>$ProvinciasLocalidadesJson]);
   }
 
-  public function PublicarJuegos(){
+  public function PublicarInmueble(Request $req){
+    dd($req);
+    
+  }
+
+/*
+=============
+  Juegos
+=============
+*/
+  public function FormularioJuegos(){
 
     return view('Ecommerce.Formularios_Publicacion.juegos');
   }
 
-  public function PublicarAnimacion(){
+  public function FormularioAnimacion(){
 
     return view('Ecommerce.Formularios_Publicacion.animacion');
   }
 
-  public function PublicarMobiliario(){
+  public function FormularioMobiliario(){
 
     return view('Ecommerce.Formularios_Publicacion.mobiliario');
   }
 
-  public function PublicarCatering(){
+  public function FormularioCatering(){
 
     return view('Ecommerce.Formularios_Publicacion.catering');
   }
 
-  public function PublicarIluminacion(){
+  public function FormularioIluminacion(){
 
     return view('Ecommerce.Formularios_Publicacion.iluminacion');
   }
 
-  public function PublicarOrnamentacion(){
+  public function FormularioOrnamentacion(){
 
     return view('Ecommerce.Formularios_Publicacion.ornamentacion');
   }
 
-  public function PublicarMusicaDj(){
+  public function FormularioMusicaDj(){
 
     return view('Ecommerce.Formularios_Publicacion.musicaDj');
   }
 
-  public function PublicarShows(){
+  public function FormularioShows(){
 
     return view('Ecommerce.Formularios_Publicacion.shows');
   }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use auth;
 use View;
 use App\Cliente;
+use App\Prestador;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -13,7 +14,9 @@ class ClienteController extends Controller
   ==============================*/
     //Resumen
       public function ClienteResumen(){
-        return view('Perfiles.Cliente.Menu.resumen');
+        $user_id = Auth::user()->id;
+        $Prestador = Prestador::where('user_id',$user_id)->first();
+        return view('Perfiles.Cliente.Menu.resumen',['Prestador'=>$Prestador]);
       }
     //Servicios contratados
       public function ServiciosFavoritos(){

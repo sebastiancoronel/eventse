@@ -21,22 +21,23 @@ class PrestadorController extends Controller
   }
 
   public function AlmacenarPerfilEmpresa(Request $request){
-    // dd($request->all());
     //Id del usuario como nombre de la imagen para que sea unica
-    $user = Auth::user();
-    $extension = $request->file('foto')->getClientOriginalExtension();
-    $file_name = $user->id . '.' . $extension;
-    //$user->foto = $extension;
-    $ruta_imagen = $request->file('foto')->storeAs('public/users/perfil_empresa' , $file_name);
+    $user_id = Auth::user()->id;
 
-    $ExistePrestador = Prestador::where('user_id',$user->id)->select('id')->first();
+    $ImagenSubida = $request->file('foto');
+    $NombreImagen = $user_id . '.' . $ImagenSubida->getClientOriginalExtension();
+    $RutaImagen = public_path('/images');
+    $ImagenSubida->move($RutaImagen, $NombreImagen);
+
+
+    $ExistePrestador = Prestador::where('user_id',$user_id)->select('id')->first();
 
     if ($ExistePrestador != null) {
       return redirect()->route('Principal')->with('PerfilExistente','Ya cuentas con un perfil de empresa');
     }else {
       $Prestador = new Prestador();
       $Prestador->nombre = $request->nombre;
-      $Prestador->foto = $ruta_imagen;
+      $Prestador->foto = '/images/' . $NombreImagen;
       $Prestador->provincia = $request->provincia;
       $Prestador->localidad = $request->localidad;
       $Prestador->direccion = $request->direccion;
@@ -46,10 +47,10 @@ class PrestadorController extends Controller
       $Prestador->save();
     }
 
-    $PrestadorGuardado = Prestador::where('user_id',$user->id)->select('id')->first();
+    $PrestadorGuardado = Prestador::where('user_id',$user_id)->select('id')->first();
 
 
-    $ExistePrestador_por_Categoria = Prestador_por_Categoria::where('id_prestador',$user->id)->select('id')->first();
+    $ExistePrestador_por_Categoria = Prestador_por_Categoria::where('id_prestador',$user_id)->select('id')->first();
 
     if ($ExistePrestador_por_Categoria != null) {
       //return view('Ecommerce.welcome')->with('PerfilExistente','Ya tienes un perfil de empresa');
