@@ -29,7 +29,7 @@
             <span class="ml-5"> <a href="{{route('Publicar')}}">Modificar</a></span>
         </div>
 
-        <form class="card-body" action="{{route('PublicarInmueble')}}" method="post">
+        <form class="card-body" action="{{route('PublicarInmueble')}}" method="post" enctype="multipart/form-data">
           <input hidden type="text" name="id_categoria" value="1">
             @csrf
             {{-- Imagenes --}}
@@ -51,7 +51,7 @@
                         <div class="d-flex justify-content-center">
                             <div id="boton_subir_1" class="btn btn-mdb-color btn-rounded float-left">
                                 <span>Subir archivo</span>
-                                <input id="file_input" name="foto" type="file" accept="image/*" required>
+                                <input id="file_input" name="foto_1" type="file" accept="image/*" required>
                             </div>
                         </div>
                     </div>
@@ -121,10 +121,10 @@
             <h5 class="mt-5"><strong class="text-uppercase">Que tipo de inmueble es?</strong></h5>
             <select class="custom-select mt-5" name="tipo_inmueble" required>
                 <option value="">Seleccionar</option>
-                <option value="Salon">Salón</option>
-                <option value="Quinta">Quinta</option>
-                <option value="Salón de fiestas infantil">Salón de fiestas infantil</option>
-                <option value="Complejo">Complejo</option>
+                <option value="1">Salón</option>
+                <option value="2">Quinta</option>
+                <option value="3">Salón de fiestas infantil</option>
+                <option value="4">Complejo</option>
             </select>
 
             <div class="mt-5">
@@ -154,16 +154,22 @@
                 </div>
 
             </div>
+            <div class="row">
+              <div class="col-md-6 md-form">
+                <label for="superficie">Superficie en mt<sup>2</sup> </label>
+                <input id="superficie" class="form-control" type="number" name="superficie" value="" min="0" step="0.1" required>
+              </div>
 
-            <div class="md-form">
+              <div class="col-md-6 md-form">
                 <label for="capacidad">Capacidad de invitados</label>
-                <input id="capacidad" class="form-control" type="number" name="numero" value="" min="0" required>
+                <input id="capacidad" class="form-control" type="number" name="capacidad" value="" min="0" required>
+              </div>
             </div>
 
             <!-- Provincia del Inmueble -->
             <div class="md-form">
                 <h5 class="mt-5"><strong>UBICACIÓN</strong></h5>
-                <input hidden id="provincia_nombre" type="text" name="provincia_nombre" value="" required>
+                <input hidden id="provincia_nombre" type="text" name="provincia" value="" required>
                 <select id="provincia" class="custom-select mt-5">
                     <option value="" selected>En que provincia está ubicado?</option>
                     @foreach ($ProvinciasLocalidadesJson as $provincia)
@@ -175,7 +181,7 @@
             <!-- Ciudad del Inmueble -->
             <div id="seleccionar_localidad" hidden class="md-form">
                 <span>En que ciudad?</span>
-                <select id="localidad" class="custom-select" required>
+                <select id="localidad" name="localidad" class="custom-select" required>
                     <option value="" selected>En que ciudad?</option>
                     @foreach ($ProvinciasLocalidadesJson as $localidad)
 
@@ -279,6 +285,18 @@
                 </div>
             </div>
 
+            <h5 class="mt-5"><strong>PRECIO</strong></h5>
+            <div id="div_precio" class="col-12 col-md-3 md-form my-5">
+                <i class="zmdi zmdi-money prefix"></i>
+                <label for="precio">Precio</label>
+                <input id="precio" class="form-control" type="number" name="precio" value="">
+            </div>
+
+            <div class="form-check">
+                <input id="precio_a_convenir" class="form-check-input" type="checkbox" name="precio_a_convenir" value="1">
+                <label class="" for="precio_a_convenir">Precio a convenir</label>
+            </div>
+
             <div class="d-flex justify-content-end">
                 <button type="submit" class="col-md-3 flex-c-m stext-101 cl2 size-115 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5 mt-5">
                     Publicar
@@ -294,6 +312,21 @@
 </div>
 </div>
 </div>
+
+{{-- Precio a convenir --}}
+<script type="text/javascript">
+  $("#precio_a_convenir").on('change', function() {
+    if (this.checked) {
+      $("#precio").val('');
+      $("#div_precio").css("opacity","0.5");
+        $("#precio").attr('disabled', 'true');
+    } else {
+      $("#div_precio").css("opacity","1");
+        $("#precio").removeAttr('disabled');
+    }
+
+    });
+</script>
 
 {{-- Imagen placeholder al seleccionar archivo --}}php12
 <script type="text/javascript">

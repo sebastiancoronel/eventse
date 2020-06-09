@@ -26,7 +26,7 @@ class PrestadorController extends Controller
 
     $ImagenSubida = $request->file('foto');
     $NombreImagen = $user_id . '.' . $ImagenSubida->getClientOriginalExtension();
-    $RutaImagen = public_path('/images');
+    $RutaImagen = public_path('/images/foto_perfil');
     $ImagenSubida->move($RutaImagen, $NombreImagen);
 
 
@@ -37,7 +37,7 @@ class PrestadorController extends Controller
     }else {
       $Prestador = new Prestador();
       $Prestador->nombre = $request->nombre;
-      $Prestador->foto = '/images/' . $NombreImagen;
+      $Prestador->foto = '/images/foto_perfil/' . $NombreImagen;
       $Prestador->provincia = $request->provincia;
       $Prestador->localidad = $request->localidad;
       $Prestador->direccion = $request->direccion;
