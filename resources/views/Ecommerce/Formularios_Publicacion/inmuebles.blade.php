@@ -22,7 +22,7 @@
 
     {{-- Formulario Inmuebles --}}
     <div class="card container">
-        <div class="card-header">
+        <div class="card-header bg-white">
             <strong style="color:#717fe0;">Categoría</strong>
             >
             <span class="">INMUEBLES</span>
@@ -328,7 +328,7 @@
     });
 </script>
 
-{{-- Imagen placeholder al seleccionar archivo --}}php12
+{{-- Imagen placeholder al seleccionar archivo --}}
 <script type="text/javascript">
     // Foto 1
     var input_1 = $("#file_input");

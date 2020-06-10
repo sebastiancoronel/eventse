@@ -149,7 +149,7 @@
   							</li> --}}
 
   							<li>
-  								<a href="product.html">Reservar</a>
+  								<a href="{{route('ServiciosPublicados')}}">Reservar</a>
   							</li>
   							<!--class="label1" data-label1="hot"> Label "HOT" para poner arriba cuando haya alguna promo o algo asi-->
   							<li>
@@ -258,7 +258,7 @@
   				</li> --}}
 
   				<li>
-  					<a href="product.html">Reservar</a>
+  					<a href="{{route('ServiciosPublicados')}}">Reservar</a>
   				</li>
 
   				<li>

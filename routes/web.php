@@ -25,7 +25,7 @@ Route::get('/mi-paquete','CarritoController@ProductosAgregados')->name('Producto
 */
 Route::middleware(['auth', 'ControlarDatosCompletos', 'ControlarNegocioExistente'])->group(function () {
   Route::get('/publicar', 'ServicioController@Publicar')->name('Publicar');
-  // Formularios de publicacion
+// Formularios de publicacion
   Route::get('/publicar/inmuebles', 'ServicioController@FormularioInmueble')->name('FormularioInmueble');
   Route::get('/publicar/juegos', 'ServicioController@FormularioJuegos')->name('FormularioJuegos');
   Route::get('/publicar/animacion', 'ServicioController@FormularioAnimacion')->name('FormularioAnimacion');
@@ -35,8 +35,19 @@ Route::middleware(['auth', 'ControlarDatosCompletos', 'ControlarNegocioExistente
   Route::get('/publicar/ornamentacion', 'ServicioController@FormularioOrnamentacion')->name('FormularioOrnamentacion');
   Route::get('/publicar/musicaDj', 'ServicioController@FormularioMusicaDj')->name('FormularioMusicaDj');
   Route::get('/publicar/shows', 'ServicioController@FormularioShows')->name('FormularioShows');
-  // Publicar servicios
+// Publicar servicios
+  // Inmuebles
   Route::post('/publicar/inmuebles/almacenando-publicacion-inmueble','ServicioController@PublicarInmueble')->name('PublicarInmueble');
+  // Juegos
+  Route::post('/publicar/juegos/almacenando-publicacion-juegos','ServicioController@PublicarJuegos')->name('PublicarJuegos');
+  // Animaciones
+  Route::post('/publicar/animacion/almacenando-publicacion-animacion','ServicioController@PublicarAnimacion')->name('PublicarAnimacion');
+  // Mobiliario
+  Route::post('/publicar/mobiliario/almacenando-publicacion-mobiliario','ServicioController@PublicarMobiliario')->name('PublicarMobiliario');
+  // Catering
+  Route::post('/publicar/servicios-de-catering/almacenando-publicacion-servicios-de-catering','ServicioController@PublicarCatering')->name('PublicarCatering');
+  // Musica & Djs
+  Route::post('/publicar/musicaDj/almacenando-publicacion-musicaDj','ServicioController@PublicarMusicaDj')->name('PublicarMusicaDj');
   // Planes
   Route::get('/publicar/elegir-plan', 'ServicioController@MostrarPlanes')->name('MostrarPlanes');
 });

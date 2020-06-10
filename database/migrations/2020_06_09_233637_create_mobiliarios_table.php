@@ -15,6 +15,34 @@ class CreateMobiliariosTable extends Migration
     {
         Schema::create('mobiliarios', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('foto_1');
+            $table->string('foto_2');
+            $table->string('foto_3');
+            $table->string('foto_4');
+            $table->string('titulo');
+            $table->string('capacidad');
+            $table->enum('tipo',['Niños','Adultos']);
+            $table->boolean('sillones')->nullable();
+            $table->boolean('puf')->nullable();
+            $table->boolean('mesas')->nullable();
+            $table->boolean('puf_luminoso')->nullable();
+            $table->boolean('gazebos')->nullable();
+            $table->boolean('carpas')->nullable();
+            $table->boolean('caminos')->nullable();
+            $table->boolean('fanales')->nullable();
+            $table->boolean('farolas')->nullable();
+            $table->boolean('biombo')->nullable();
+            $table->boolean('mini_living')->nullable();
+            $table->boolean('lamparas_vintage')->nullable();
+            $table->boolean('camastro')->nullable();
+            $table->boolean('puf_redondo')->nullable();
+            $table->boolean('isla_circular')->nullable();
+            $table->string('descripcion');
+            $table->integer('id_categoria')->unsigned();
+            $table->foreign('id_categoria')->references('id')->on('categorias');
+            $table->integer('id_prestador')->unsigned();
+            $table->foreign('id_prestador')->references('id')->on('prestadors');
+            $table->date('fecha_publicacion');
             $table->timestamps();
         });
     }
