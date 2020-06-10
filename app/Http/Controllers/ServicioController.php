@@ -16,7 +16,9 @@ class ServicioController extends Controller
 }
 
   public function ServiciosPublicados(){
-    return view('Ecommerce.servicios_publicados');
+    $Categorias = Categoria::all();
+    $Inmuebles = Inmueble::all();
+    return view('Ecommerce.servicios_publicados',['Categorias'=>$Categorias, 'Inmuebles'=>$Inmuebles]);
   }
 
 /*
@@ -40,31 +42,35 @@ class ServicioController extends Controller
     $Categoria = Categoria::find($req->id_categoria);
     $FechaPublicacion = date('Y-m-d');
 
+    // Foto 1
     $Foto_1 = $req->file('foto_1');
     $NombreImagen_1 = 'foto 1' . '.' . $Foto_1->getClientOriginalExtension();
     $RutaImagen = public_path('/images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->nombre);
     $Foto_1->move($RutaImagen, $NombreImagen_1);
 
+    // Foto 2
     $Foto_2 = $req->file('foto_2');
     $NombreImagen_2 = 'foto 2' . '.' . $Foto_1->getClientOriginalExtension();
     $RutaImagen = public_path('/images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->nombre);
     $Foto_2->move($RutaImagen, $NombreImagen_2);
 
+    // Foto 3
     $Foto_3 = $req->file('foto_3');
     $NombreImagen_3 = 'foto 3' . '.' . $Foto_1->getClientOriginalExtension();
     $RutaImagen = public_path('/images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->nombre);
     $Foto_3->move($RutaImagen, $NombreImagen_3);
 
+    // Foto 4
     $Foto_4 = $req->file('foto_4');
     $NombreImagen_4 = 'foto 4' . '.' . $Foto_1->getClientOriginalExtension();
     $RutaImagen = public_path('/images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->nombre);
     $Foto_4->move($RutaImagen, $NombreImagen_4);
 
     $Inmueble = New Inmueble;
-    $Inmueble->foto_1 = 'images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->nombre . '/' . 'foto 1';
-    $Inmueble->foto_2 = 'images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->nombre . '/' . 'foto 2';
-    $Inmueble->foto_3 = 'images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->nombre . '/' . 'foto 3';
-    $Inmueble->foto_4 = 'images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->nombre . '/' . 'foto 4';
+    $Inmueble->foto_1 = 'images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->nombre . '/' . $NombreImagen_1;
+    $Inmueble->foto_2 = 'images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->nombre . '/' . $NombreImagen_2;
+    $Inmueble->foto_3 = 'images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->nombre . '/' . $NombreImagen_3;
+    $Inmueble->foto_4 = 'images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->nombre . '/' . $NombreImagen_4;
     $Inmueble->tipo = $req->tipo_inmueble;
     $Inmueble->nombre = $req->nombre;
     $Inmueble->calle = $req->calle;
@@ -92,6 +98,7 @@ class ServicioController extends Controller
     $Inmueble->fecha_publicacion = $FechaPublicacion;
     $Inmueble->save();
 
+    return redirect()->route('Principal');
   }
 
 /*
