@@ -26,28 +26,28 @@ Route::get('/mi-paquete','CarritoController@ProductosAgregados')->name('Producto
 Route::middleware(['auth', 'ControlarDatosCompletos', 'ControlarNegocioExistente'])->group(function () {
   Route::get('/publicar', 'ServicioController@Publicar')->name('Publicar');
 // Formularios de publicacion
-  Route::get('/publicar/inmuebles', 'ServicioController@FormularioInmueble')->name('FormularioInmueble');
-  Route::get('/publicar/juegos', 'ServicioController@FormularioJuegos')->name('FormularioJuegos');
-  Route::get('/publicar/animacion', 'ServicioController@FormularioAnimacion')->name('FormularioAnimacion');
-  Route::get('/publicar/mobiliario', 'ServicioController@FormularioMobiliario')->name('FormularioMobiliario');
-  Route::get('/publicar/servicios-de-catering', 'ServicioController@FormularioCatering')->name('FormularioCatering');
-  Route::get('/publicar/iluminacion', 'ServicioController@FormularioIluminacion')->name('FormularioIluminacion');
-  Route::get('/publicar/ornamentacion', 'ServicioController@FormularioOrnamentacion')->name('FormularioOrnamentacion');
-  Route::get('/publicar/musicaDj', 'ServicioController@FormularioMusicaDj')->name('FormularioMusicaDj');
+  Route::get('/publicar/inmuebles', 'InmuebleController@FormularioInmueble')->name('FormularioInmueble');
+  Route::get('/publicar/juegos', 'JuegoController@FormularioJuegos')->name('FormularioJuegos');
+  Route::get('/publicar/animacion', 'AnimacionController@FormularioAnimacion')->name('FormularioAnimacion');
+  Route::get('/publicar/mobiliario', 'MobiliarioController@FormularioMobiliario')->name('FormularioMobiliario');
+  Route::get('/publicar/servicios-de-catering', 'CateringController@FormularioCatering')->name('FormularioCatering');
+  Route::get('/publicar/iluminacion', 'IluminacionController@FormularioIluminacion')->name('FormularioIluminacion');
+  Route::get('/publicar/ornamentacion', 'OrnamentacionController@FormularioOrnamentacion')->name('FormularioOrnamentacion');
+  Route::get('/publicar/musicaDj', 'MusicaDjController@FormularioMusicaDj')->name('FormularioMusicaDj');
   Route::get('/publicar/shows', 'ServicioController@FormularioShows')->name('FormularioShows');
 // Publicar servicios
   // Inmuebles
-  Route::post('/publicar/inmuebles/almacenando-publicacion-inmueble','ServicioController@PublicarInmueble')->name('PublicarInmueble');
+  Route::post('/publicar/inmuebles/almacenando-publicacion-inmueble','InmuebleController@PublicarInmueble')->name('PublicarInmueble');
   // Juegos
-  Route::post('/publicar/juegos/almacenando-publicacion-juegos','ServicioController@PublicarJuegos')->name('PublicarJuegos');
+  Route::post('/publicar/juegos/almacenando-publicacion-juegos','JuegoController@PublicarJuegos')->name('PublicarJuegos');
   // Animaciones
-  Route::post('/publicar/animacion/almacenando-publicacion-animacion','ServicioController@PublicarAnimacion')->name('PublicarAnimacion');
+  Route::post('/publicar/animacion/almacenando-publicacion-animacion','AnimacionController@PublicarAnimacion')->name('PublicarAnimacion');
   // Mobiliario
-  Route::post('/publicar/mobiliario/almacenando-publicacion-mobiliario','ServicioController@PublicarMobiliario')->name('PublicarMobiliario');
+  Route::post('/publicar/mobiliario/almacenando-publicacion-mobiliario','MobiliarioController@PublicarMobiliario')->name('PublicarMobiliario');
   // Catering
-  Route::post('/publicar/servicios-de-catering/almacenando-publicacion-servicios-de-catering','ServicioController@PublicarCatering')->name('PublicarCatering');
+  Route::post('/publicar/servicios-de-catering/almacenando-publicacion-servicios-de-catering','CateringController@PublicarCatering')->name('PublicarCatering');
   // Musica & Djs
-  Route::post('/publicar/musicaDj/almacenando-publicacion-musicaDj','ServicioController@PublicarMusicaDj')->name('PublicarMusicaDj');
+  Route::post('/publicar/musicaDj/almacenando-publicacion-musicaDj','MusicaDjController@PublicarMusicaDj')->name('PublicarMusicaDj');
   // Planes
   Route::get('/publicar/elegir-plan', 'ServicioController@MostrarPlanes')->name('MostrarPlanes');
 });
