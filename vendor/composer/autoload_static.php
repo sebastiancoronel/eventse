@@ -466,6 +466,7 @@ class ComposerStaticInita46fe10eba2c4058e6946f15aed06849
         'App\\Http\\Controllers\\JuegoController' => __DIR__ . '/../..' . '/app/Http/Controllers/JuegoController.php',
         'App\\Http\\Controllers\\LocalidadController' => __DIR__ . '/../..' . '/app/Http/Controllers/LocalidadController.php',
         'App\\Http\\Controllers\\MobiliarioController' => __DIR__ . '/../..' . '/app/Http/Controllers/MobiliarioController.php',
+        'App\\Http\\Controllers\\MusicaDjController' => __DIR__ . '/../..' . '/app/Http/Controllers/MusicaDjController.php',
         'App\\Http\\Controllers\\PrestadorController' => __DIR__ . '/../..' . '/app/Http/Controllers/PrestadorController.php',
         'App\\Http\\Controllers\\PrestadorPorCategoriaController' => __DIR__ . '/../..' . '/app/Http/Controllers/PrestadorPorCategoriaController.php',
         'App\\Http\\Controllers\\PromocionController' => __DIR__ . '/../..' . '/app/Http/Controllers/PromocionController.php',

@@ -37,6 +37,7 @@ return array(
     'App\\Http\\Controllers\\JuegoController' => $baseDir . '/app/Http/Controllers/JuegoController.php',
     'App\\Http\\Controllers\\LocalidadController' => $baseDir . '/app/Http/Controllers/LocalidadController.php',
     'App\\Http\\Controllers\\MobiliarioController' => $baseDir . '/app/Http/Controllers/MobiliarioController.php',
+    'App\\Http\\Controllers\\MusicaDjController' => $baseDir . '/app/Http/Controllers/MusicaDjController.php',
     'App\\Http\\Controllers\\PrestadorController' => $baseDir . '/app/Http/Controllers/PrestadorController.php',
     'App\\Http\\Controllers\\PrestadorPorCategoriaController' => $baseDir . '/app/Http/Controllers/PrestadorPorCategoriaController.php',
     'App\\Http\\Controllers\\PromocionController' => $baseDir . '/app/Http/Controllers/PromocionController.php',
