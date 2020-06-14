@@ -22,6 +22,11 @@ class ServicioController extends Controller
   public function ServiciosPublicados(){
     $Categorias = Categoria::all();
     $Inmuebles = Inmueble::all();
+    $Juegos = Juego::all();
+    $Animaciones = Animacion::all();
+    $Mobiliarios = Mobiliario::all();
+    $Caterings = Catering::all();
+    $MusicaDjs = MusicaDj::all();
     return view('Ecommerce.servicios_publicados',['Categorias'=>$Categorias, 'Inmuebles'=>$Inmuebles]);
   }
 
