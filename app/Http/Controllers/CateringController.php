@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Catering;
 use Illuminate\Http\Request;
-
+use Auth;
+use App\Prestador;
+use App\Categoria;
 class CateringController extends Controller
 {
     public function FormularioCatering(){

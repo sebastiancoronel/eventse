@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Inmueble;
 use Illuminate\Http\Request;
-
+use App\Prestador;
+use App\Categoria;
 class InmuebleController extends Controller
 {
     public function FormularioInmueble(){

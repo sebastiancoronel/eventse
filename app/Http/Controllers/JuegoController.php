@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Juego;
 use Illuminate\Http\Request;
-
+use Auth;
+use App\Prestador;
+use App\Categoria;
 class JuegoController extends Controller
 {
     public function FormularioJuegos(){

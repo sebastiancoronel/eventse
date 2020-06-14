@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\MusicaDj;
+use Auth;
+use App\Prestador;
+use App\Categoria;
 class MusicaDjController extends Controller
 {
     public function FormularioMusicaDj(){
@@ -13,7 +16,7 @@ class MusicaDjController extends Controller
         return view('Ecommerce.Formularios_Publicacion.musicaDj',['ProvinciasLocalidadesJson'=>$ProvinciasLocalidadesJson]);
       }
     
-      public function PublicarMusicaDj(){
+      public function PublicarMusicaDj(Request $req){
         $user_id = Auth::user()->id;
         $id_Prestador = Prestador::where('user_id', $user_id)->first();
         $Empresa = Prestador::where('user_id',$user_id)->first();
@@ -45,7 +48,35 @@ class MusicaDjController extends Controller
         $Foto_4->move($RutaImagen, $NombreImagen_4);
     
         $MusicaDj = new MusicaDj;
-        
+        $MusicaDj->foto_1 = 'images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->nombre . '/' . $NombreImagen_1;
+        $MusicaDj->foto_2 = 'images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->nombre . '/' . $NombreImagen_2;
+        $MusicaDj->foto_3 = 'images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->nombre . '/' . $NombreImagen_3;
+        $MusicaDj->foto_4 = 'images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->nombre . '/' . $NombreImagen_4;
+        $MusicaDj->titulo = $req->titulo;
+        $MusicaDj->cumpleaños_infantiles = $req->cumpleaños_infantiles;
+        $MusicaDj->cumpleaños_adultos = $req->cumpleaños_adultos;
+        $MusicaDj->fiestas_tematicas = $req->fiestas_tematicas;
+        $MusicaDj->comuniones = $req->comuniones;
+        $MusicaDj->bodas_y_aniversarios = $req->bodas_y_aniversarios;
+        $MusicaDj->musica_70 = $req->musica_70;
+        $MusicaDj->musica_80 = $req->musica_80;
+        $MusicaDj->musica_90 = $req->musica_90;
+        $MusicaDj->musica_2000 = $req->musica_2000;
+        $MusicaDj->clasicos = $req->clasicos;
+        $MusicaDj->cumbia = $req->cumbia;
+        $MusicaDj->cuarteto = $req->cuarteto;
+        $MusicaDj->reggaeton = $req->reggaeton;
+        $MusicaDj->bachata = $req->bachata;
+        $MusicaDj->descripcion = $req->descripcion;
+        $MusicaDj->provincia = $req->provincia;
+        $MusicaDj->localidad = $req->localidad;
+        $MusicaDj->precio = $req->precio;
+        $MusicaDj->precio_a_convenir = $req->precio_a_convenir;
+        $MusicaDj->id_categoria = $req->id_categoria;
+        $MusicaDj->id_prestador = $req->id_prestador;
+        $MusicaDj->fecha_publicacion = $FechaPublicacion;
+        $MusicaDj->save();
+       
         return redirect()->route('Principal');
       }
 }
