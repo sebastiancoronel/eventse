@@ -16,7 +16,7 @@ class MobiliarioController extends Controller
       public function PublicarMobiliario(){
     
         $user_id = Auth::user()->id;
-        $id_Prestador = Prestador::where('user_id', $user_id)->first();
+        $id_Prestador = Prestador::where('user_id',$user_id)->pluck('id')->first();
         $Empresa = Prestador::where('user_id',$user_id)->first();
         $Categoria = Categoria::find($req->id_categoria);
         $FechaPublicacion = date('Y-m-d');
@@ -78,6 +78,7 @@ class MobiliarioController extends Controller
         $Mobiliario->isla_circular = $req->isla_circular;
         $Mobiliario->descripcion = $req->descripcion;
         $Mobiliario->save();
+        return redirect()->route('Principal');
       }
     
 }

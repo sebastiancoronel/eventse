@@ -27,7 +27,7 @@ class ServicioController extends Controller
     $Mobiliarios = Mobiliario::all();
     $Caterings = Catering::all();
     $MusicaDjs = MusicaDj::all();
-    return view('Ecommerce.servicios_publicados',['Categorias'=>$Categorias, 'Inmuebles'=>$Inmuebles]);
+    return view('Ecommerce.servicios_publicados',['Categorias'=>$Categorias, 'Inmuebles'=>$Inmuebles,'Juegos'=>$Juegos,'Animaciones'=>$Animaciones,'Mobiliarios'=>$Mobiliarios,'Caterings'=>$Caterings,'MusicaDjs'=>$MusicaDjs]);
   }
 
   // public function FormularioIluminacion(){

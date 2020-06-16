@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use App\Inmueble;
 use Illuminate\Http\Request;
 use App\Prestador;
@@ -18,10 +18,11 @@ class InmuebleController extends Controller
       public function PublicarInmueble(Request $req){
     
         $user_id = Auth::user()->id;
-        $id_Prestador = Prestador::where('user_id',$user_id)->first();
+        $id_Prestador = Prestador::where('user_id',$user_id)->pluck('id')->first();
         $Empresa = Prestador::where('user_id',$user_id)->first();
         $Categoria = Categoria::find($req->id_categoria);
         $FechaPublicacion = date('Y-m-d');
+        
     
         // Foto 1
         $Foto_1 = $req->file('foto_1');

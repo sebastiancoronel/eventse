@@ -44,6 +44,7 @@ class CreateMusicaDjsTable extends Migration
             $table->integer('id_prestador')->unsigned();
             $table->foreign('id_prestador')->references('id')->on('prestadors');
             $table->date('fecha_publicacion');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

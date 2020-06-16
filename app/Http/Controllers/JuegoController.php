@@ -17,9 +17,8 @@ class JuegoController extends Controller
       }
     
       public function PublicarJuegos(Request $req){
-        dd($req);
         $user_id = Auth::user()->id;
-        $id_Prestador = Prestador::where('user_id', $user_id)->first();
+        $id_Prestador = Prestador::where('user_id',$user_id)->pluck('id')->first();
         $Empresa = Prestador::where('user_id',$user_id)->first();
         $Categoria = Categoria::find($req->id_categoria);
         $FechaPublicacion = date('Y-m-d');
@@ -61,6 +60,7 @@ class JuegoController extends Controller
         $Juego->provincia = $req->provincia;
         $Juego->localidad = $req->localidad;
         $Juego->fecha_publicacion = $FechaPublicacion;
+        $Juego->id_categoria = $req->id_categoria;
         $Juego->id_prestador = $id_Prestador;
         $Juego->save();
         return redirect()->route('Principal');

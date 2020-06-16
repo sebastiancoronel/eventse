@@ -24,7 +24,7 @@ class CreateInmueblesTable extends Migration
             $table->string('calle');
             $table->string('numero');
             $table->string('barrio');
-            $table->double('superficie', 8, 2);
+            $table->string('superficie');
             $table->integer('capacidad');
             $table->string('provincia');
             $table->string('localidad');
@@ -42,11 +42,11 @@ class CreateInmueblesTable extends Migration
             $table->boolean('piscina')->nullable();
             $table->integer('precio')->nullable();
             $table->boolean('precio_a_convenir')->nullable();
-            $table->date('fecha_publicacion');
             $table->integer('id_categoria')->unsigned();
             $table->foreign('id_categoria')->references('id')->on('categorias');
             $table->integer('id_prestador')->unsigned();
             $table->foreign('id_prestador')->references('id')->on('prestadors');
+            $table->date('fecha_publicacion');
             $table->softDeletes();
             $table->timestamps();
         });

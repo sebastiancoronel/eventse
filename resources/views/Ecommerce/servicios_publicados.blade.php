@@ -239,7 +239,7 @@
                     <!-- Block2 -->
                     <div class="block2">
                       <div class="block2-pic hov-img0">
-                        <img src="{{$inmueble->foto_1}}.jpg" alt="IMG-PRODUCT">
+                        <img src="{{$inmueble->foto_1}}" alt="IMG-PRODUCT">
 
                         <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
                           Quick View
@@ -279,7 +279,7 @@
                     <!-- Block2 -->
                     <div class="block2">
                         <div class="block2-pic hov-img0">
-                            <img src="images/product-02.jpg" alt="IMG-PRODUCT">
+                        <img src="{{$juego->foto_1}}" alt="IMG-PRODUCT">
 
                             <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
                                 Quick View
@@ -318,7 +318,7 @@
                     <!-- Block2 -->
                     <div class="block2">
                         <div class="block2-pic hov-img0">
-                            <img src="images/product-03.jpg" alt="IMG-PRODUCT">
+                        <img src="{{$animacion->foto_1}}" alt="IMG-PRODUCT">
 
                             <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
                                 Quick View
@@ -328,12 +328,12 @@
                         <div class="block2-txt flex-w flex-t p-t-14">
                             <div class="block2-txt-child1 flex-col-l ">
                                 <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Only Check Trouser
+                                    {{$animacion->nombre}}
                                 </a>
 
                                 <span class="stext-105 cl3">
-                                    @if ($juego->precio != null)
-                                      {{$juego->precio}}
+                                    @if ($animacion->precio != null)
+                                      {{$animacion->precio}}
                                     @else
                                       Precio a convenir
                                     @endif
@@ -357,7 +357,7 @@
                     @foreach($Mobiliarios as $mobiliario)
                     <div class="block2">
                         <div class="block2-pic hov-img0">
-                            <img src="images/product-04.jpg" alt="IMG-PRODUCT">
+                        <img src="{{$mobiliario->foto_1}}" alt="IMG-PRODUCT">
 
                             <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
                                 Quick View
@@ -371,8 +371,8 @@
                                 </a>
 
                                 <span class="stext-105 cl3">
-                                    @if ($musicaDj->precio != null)
-                                      {{$musicaDj->precio}}
+                                    @if ($mobiliario->precio != null)
+                                      {{$mobiliario->precio}}
                                     @else
                                       Precio a convenir
                                     @endif
@@ -396,7 +396,7 @@
                     <!-- Block2 -->
                     <div class="block2">
                         <div class="block2-pic hov-img0">
-                            <img src="images/product-05.jpg" alt="IMG-PRODUCT">
+                        <img src="{{$catering->foto_1}}" alt="IMG-PRODUCT">
 
                             <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
                                 Quick View
@@ -432,7 +432,7 @@
 
                 {{-- MusicaDj --}}
                 <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Mobiliario" style="position: absolute; left: 25%; top: 429px;">
-                    @foreach($Mobiliarios as $mobiliario)
+                    @foreach($MusicaDjs as $musicaDj)
                     <!-- Block2 -->
                     <div class="block2">
                         <div class="block2-pic hov-img0">
@@ -446,12 +446,12 @@
                         <div class="block2-txt flex-w flex-t p-t-14">
                             <div class="block2-txt-child1 flex-col-l ">
                                 <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Vintage Inspired Classic
+                                    {{$musicaDj->nombre}}
                                 </a>
 
                                 <span class="stext-105 cl3">
-                                    @if ($juego->precio != null)
-                                      {{$juego->precio}}
+                                    @if ($musicaDj->precio != null)
+                                      {{$musicaDj->precio}}
                                     @else
                                       Precio a convenir
                                     @endif

@@ -15,7 +15,7 @@ class AnimacionController extends Controller
     
       public function PublicarAnimacion(){
         $user_id = Auth::user()->id;
-        $id_Prestador = Prestador::where('user_id', $user_id)->first();
+        $id_Prestador = Prestador::where('user_id',$user_id)->pluck('id')->first();
         $Empresa = Prestador::where('user_id',$user_id)->first();
         $Categoria = Categoria::find($req->id_categoria);
         $FechaPublicacion = date('Y-m-d');

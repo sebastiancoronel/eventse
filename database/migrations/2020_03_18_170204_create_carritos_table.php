@@ -15,6 +15,8 @@ class CreateCarritosTable extends Migration
     {
         Schema::create('carritos', function (Blueprint $table) {
             $table->increments('id');
+            
+            $table->softDeletes();
             $table->timestamps();
         });
     }
