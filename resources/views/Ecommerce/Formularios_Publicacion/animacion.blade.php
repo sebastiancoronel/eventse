@@ -52,6 +52,9 @@
                                 <input id="file_input" name="foto_1" type="file" accept="image/*" required>
                             </div>
                         </div>
+                        <div class="text-center">
+                            <small>Foto principal</small>
+                        </div>
                     </div>
 
                     <!-- Foto 2 -->
@@ -118,35 +121,37 @@
 
             {{-- Titulo e inputs --}}
             <div class="mt-5">
+                {{-- Titulo --}}
                 <div class="col md-form">
                     <label for="titulo">Título</label>
-                    <input class="form-control" type="text" name="titulo" value="">
+                    <input class="form-control" type="text" name="titulo" value="" maxlength="200">
                 </div>
+                {{-- Can. Anim - Años experiencias --}}
                 <div class="form-row">
                     <div class="col-md-4 md-form">
                         <label for="cantidad_animadores">Cantidad de animadores</label>
-                        <input class="form-control" type="number" name="cantidad_animadores" value="">
+                        <input class="form-control" type="number" name="cantidad_animadores" value="" maxlength="99">
                     </div>
 
                     <div class="col-md-4 md-form">
                         <label for="años_experiencia">Años de experiencia</label>
-                        <input class="form-control" type="number" name="años_experiencia" value="">
+                        <input class="form-control" type="number" name="años_experiencia" value="" maxlength="99">
                     </div>
 
                     <div class="col-md-4 md-form">
                         <select class="custom-select" name="edades">
-                            <option value="">Todas las edades</option>
-                            <option value="">1-6 años</option>
-                            <option value="">6-12 años</option>
-                            <option value="">13-17 años</option>
-                            <option value="">+18 años</option>
+                            <option value="1">Todas las edades</option>
+                            <option value="2">1-6 años</option>
+                            <option value="3">6-12 años</option>
+                            <option value="4">13-17 años</option>
+                            <option value="5">+18 años</option>
                         </select>
                     </div>
                 </div>
-
+                {{-- Descripcion adicional --}}
                 <div class="col md-form">
                     <label for="titulo">Descripción adicional (Que incluye y que no incluye)</label>
-                    <textarea class="md-textarea form-control" name="descripcion" rows="3"></textarea>
+                    <textarea class="md-textarea form-control" name="descripcion" rows="3" maxlength="1000"></textarea>
                 </div>
             </div>
             <div class="md-form">
@@ -170,27 +175,28 @@
                     @endforeach
                 </select>
             </div>
+
             {{-- Tiene --}}
             <h5 class="text-uppercase mb-3"><strong>TIENE</strong></h5>
             <div class="">
                 <div class="row mt-5">
                     <div class="col-md-4">
                         <div class="form-check">
-                            <input id="magos" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                            <input id="magos" class="form-check-input" type="checkbox" name="magos" value="1">
                             <label class="form-check-label" for="magos">Magos</label>
                         </div>
                     </div>
 
                     <div class="col-md-4">
                         <div class="form-check">
-                            <input id="maquillaje" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                            <input id="maquillaje" class="form-check-input" type="checkbox" name="maquillaje" value="1">
                             <label class="form-check-label" for="maquillaje">Maquillaje</label>
                         </div>
                     </div>
 
                     <div class="col-md-4">
                         <div class="form-check">
-                            <input id="karaoke" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                            <input id="karaoke" class="form-check-input" type="checkbox" name="karaoke" value="1">
                             <label class="form-check-label" for="karaoke">Karaoke</label>
                         </div>
                     </div>
@@ -199,21 +205,21 @@
                 <div class="form-row mt-5">
                     <div class="col-md-4">
                         <div class="form-check">
-                            <input id="payasos" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                            <input id="payasos" class="form-check-input" type="checkbox" name="payasos" value="1">
                             <label class="form-check-label" for="payasos">Payasos</label>
                         </div>
                     </div>
 
                     <div class="col-md-4">
                         <div class="form-check">
-                            <input id="personajes" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                            <input id="personajes" class="form-check-input" type="checkbox" name="personajes" value="1">
                             <label class="form-check-label" for="personajes">Personajes</label>
                         </div>
                     </div>
 
                     <div class="col-md-4">
                         <div class="form-check">
-                            <input id="titeres" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                            <input id="titeres" class="form-check-input" type="checkbox" name="titeres" value="1">
                             <label class="form-check-label" for="titeres">Títeres</label>
                         </div>
                     </div>
@@ -222,21 +228,21 @@
                 <div class="form-row mt-5">
                     <div class="col-md-4">
                         <div class="form-check">
-                            <input id="globologia" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                            <input id="globologia" class="form-check-input" type="checkbox" name="globologia" value="1">
                             <label class="form-check-label" for="globologia">Globología</label>
                         </div>
                     </div>
 
                     <div class="col-md-4">
                         <div class="form-check">
-                            <input id="robot_led" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                            <input id="robot_led" class="form-check-input" type="checkbox" name="robot_led" value="1">
                             <label class="form-check-label" for="robot_led">Robot led</label>
                         </div>
                     </div>
 
                     <div class="col-md-4">
                         <div class="form-check">
-                            <input id="maquillaje_fluor" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                            <input id="maquillaje_fluor" class="form-check-input" type="checkbox" name="maquillaje_fluor" value="1">
                             <label class="form-check-label" for="maquillaje_fluor">Maquillaje_fluor</label>
                         </div>
                     </div>
@@ -252,11 +258,10 @@
               </div>
 
               <div class="form-check">
-                <input id="precio_a_convenir" class="form-check-input" type="checkbox" name="precio_a_convenir" value="">
+                <input id="precio_a_convenir" class="form-check-input" type="checkbox" name="precio_a_convenir" value="1">
                 <label class="" for="precio_a_convenir">Precio a convenir</label>
               </div>
             </div>
-
 
             <div class="d-flex justify-content-end">
                 <button type="submit" class="col-md-3 flex-c-m stext-101 cl2 size-115 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5 mt-5">
@@ -284,83 +289,96 @@
 {{-- Imagen placeholder al seleccionar archivo --}}
 <script type="text/javascript">
     // Foto 1
-    var input_1 = $("#file_input");
-    $("#file_input").click(function() {
-        function readURL(input_1) {
-            console.log(input_1.files);
-            $("#icono_imagen").hide();
-            if (input_1.files && input_1.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#preview').attr('src', e.target.result);
-                    $('#preview').addClass('border');
-                }
-                reader.readAsDataURL(input_1.files[0]);
-            }
+    $("#file_input").change(function() {
+        if (this.files.length > 0) {
+            if (this.files[0].size > 2000000) {
+                     swal("El archivo pesa mas de 2MB","Seleccione otro archivo","error");
+                     //this.value = ''; //Borra el valor del input
+                     console.log(this.value);
+                 }else{
+                     if (this.files[0].size < 2000000) {
+                        console.log(this.value);
+                     $("#icono_imagen").hide();
+                         if (this.files && this.files[0]) {
+                             var reader = new FileReader();
+                             reader.onload = function(e) {
+                                 $('#preview').attr('src', e.target.result);
+                                 $('#preview').addClass('border');
+                             }
+                             reader.readAsDataURL(this.files[0]);
+                         }
+                     }
+                 }
         }
-        $("#file_input").change(function() {
-            readURL(this);
-        });
-
     });
 
     // Foto 2
-    var input_2 = $("#file_input_2");
-    $("#file_input_2").click(function() {
-        function readURL(input_2) {
-            $("#icono_imagen_2").hide();
-            if (input_2.files && input_2.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#preview_2').attr('src', e.target.result);
-                    $('#preview_2').addClass('border');
-                }
-                reader.readAsDataURL(input_2.files[0]);
-            }
+    $("#file_input_2").change(function() {
+        if (this.files.length > 0) {
+            if (this.files[0].size > 2000000) {
+                     swal("El archivo pesa mas de 2MB","Seleccione otro archivo","error");
+                     //this.value = ''; //Borra el valor del input
+                     console.log(this.value);
+                 }else{
+                     if (this.files[0].size < 2000000) {
+                     $("#icono_imagen_2").hide();
+                         if (this.files && this.files[0]) {
+                             var reader = new FileReader();
+                             reader.onload = function(e) {
+                                 $('#preview_2').attr('src', e.target.result);
+                                 $('#preview_2').addClass('border');
+                             }
+                             reader.readAsDataURL(this.files[0]);
+                         }
+                     }
+                 }
         }
-        $("#file_input_2").change(function() {
-            readURL(this);
-        });
     });
 
     //Foto 3
-    var input_3 = $("#file_input_3");
-    console.log(input_3);
-    $("#file_input_3").click(function() {
-        function readURL(input_3) {
-            $("#icono_imagen_3").hide();
-            if (input_3.files && input_3.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#preview_3').attr('src', e.target.result);
-                    $('#preview_3').addClass('border');
-                }
-                reader.readAsDataURL(input_3.files[0]);
-            }
+    $("#file_input_3").change(function() {
+        if (this.files.length > 0) {
+            if (this.files[0].size > 2000000) {
+                     swal("El archivo pesa mas de 2MB","Seleccione otro archivo","error");
+                     //this.value = ''; //Borra el valor del input
+                     console.log(this.value);
+                 }else{
+                     if (this.files[0].size < 2000000) {
+                     $("#icono_imagen_3").hide();
+                         if (this.files && this.files[0]) {
+                             var reader = new FileReader();
+                             reader.onload = function(e) {
+                                 $('#preview_3').attr('src', e.target.result);
+                                 $('#preview_3').addClass('border');
+                             }
+                             reader.readAsDataURL(this.files[0]);
+                         }
+                     }
+                 }
         }
-        $("#file_input_3").change(function() {
-            readURL(this);
-        });
     });
 
     //Foto 4
-    var input_4 = $("#file_input_4");
-    console.log(input_4);
-    $("#file_input_4").click(function() {
-        function readURL(input_4) {
-            $("#icono_imagen_4").hide();
-            if (input_4.files && input_4.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#preview_4').attr('src', e.target.result);
-                    $('#preview_4').addClass('border');
-                }
-                reader.readAsDataURL(input_4.files[0]);
-            }
+    $("#file_input_4").change(function() {
+        if (this.files.length > 0) {
+            if (this.files[0].size > 2000000) {
+                     swal("El archivo pesa mas de 2MB","Seleccione otro archivo","error");
+                     //this.value = ''; //Borra el valor del input
+                     console.log(this.value);
+                 }else{
+                     if (this.files[0].size < 2000000) {
+                     $("#icono_imagen_4").hide();
+                         if (this.files && this.files[0]) {
+                             var reader = new FileReader();
+                             reader.onload = function(e) {
+                                 $('#preview_4').attr('src', e.target.result);
+                                 $('#preview_4').addClass('border');
+                             }
+                             reader.readAsDataURL(this.files[0]);
+                         }
+                     }
+                 }
         }
-        $("#file_input_4").change(function() {
-            readURL(this);
-        });
     });
 </script>
 

@@ -19,8 +19,8 @@ class CreateJuegosTable extends Migration
             $table->string('foto_2');
             $table->string('foto_3');
             $table->string('foto_4');
-            $table->string('titulo');
-            $table->string('descripcion');
+            $table->string('titulo',200);
+            $table->string('descripcion',1000);
             $table->string('provincia');
             $table->string('localidad');
             $table->integer('precio')->nullable();

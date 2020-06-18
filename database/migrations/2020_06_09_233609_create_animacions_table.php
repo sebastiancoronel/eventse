@@ -19,11 +19,11 @@ class CreateAnimacionsTable extends Migration
             $table->string('foto_2');
             $table->string('foto_3');
             $table->string('foto_4');
-            $table->string('titulo');
+            $table->string('titulo',200);
             $table->string('cant_animadores');
             $table->string('años_experiencia');
-            $table->string('edades');
-            $table->string('descripcion');
+            $table->enum('edades',['1-6 años','6-12 años','13-17 años','+18 años']);
+            $table->string('descripcion',1000);
             $table->string('magos')->nullable();
             $table->string('maquillaje')->nullable();
             $table->string('karaoke')->nullable();
@@ -33,6 +33,8 @@ class CreateAnimacionsTable extends Migration
             $table->string('globologia')->nullable();
             $table->string('robot_led')->nullable();
             $table->string('maquillaje_fluor')->nullable();
+            $table->integer('precio')->nullable();
+            $table->boolean('precio_a_convenir')->nullable();
             $table->integer('id_categoria')->unsigned();
             $table->foreign('id_categoria')->references('id')->on('categorias');
             $table->integer('id_prestador')->unsigned();

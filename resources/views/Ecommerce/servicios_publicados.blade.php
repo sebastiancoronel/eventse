@@ -234,15 +234,15 @@
             <div class="row isotope-grid" style="position: relative; height: 1717.38px;">
 
                 {{-- Inmuebles --}}
+                @foreach ($Inmuebles as $inmueble)
                 <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Salones" style="position: absolute; left: 0%; top: 0px;">
-                  @foreach ($Inmuebles as $inmueble)
                     <!-- Block2 -->
                     <div class="block2">
                       <div class="block2-pic hov-img0">
                         <img src="{{$inmueble->foto_1}}" alt="IMG-PRODUCT">
 
                         <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                          Quick View
+                          Reservar
                         </a>
                       </div>
 
@@ -259,69 +259,74 @@
                               Precio a convenir
                             @endif
                           </span>
+                        <span class="mt-2">
+                            <i class="zmdi zmdi-pin"></i> <small>{{$inmueble->provincia}}</small>
+                        </span>
                         </div>
 
                         <div class="block2-txt-child2 flex-r p-t-3">
                           <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                            <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-                            <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+                            <img class="icon-heart1 dis-block trans-04" src="{{asset('images/icons/icon-heart-01.png')}}" alt="ICON">
+                            <img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('images/icons/icon-heart-02.png')}}" alt="ICON">
                           </a>
                         </div>
                       </div>
                     </div>
-
-                  @endforeach
                 </div>
+                @endforeach
 
                 {{-- Juegos --}}
+                @foreach ($Juegos as $juego)
                 <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Juegos" style="position: absolute; left: 25%; top: 0px;">
-                    @foreach ($Juegos as $juego)
                     <!-- Block2 -->
                     <div class="block2">
                         <div class="block2-pic hov-img0">
-                        <img src="{{$juego->foto_1}}" alt="IMG-PRODUCT">
+                        <img src="{{$juego->foto_2}}" alt="IMG-PRODUCT">
 
                             <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
+                                Reservar
                             </a>
                         </div>
 
                         <div class="block2-txt flex-w flex-t p-t-14">
                             <div class="block2-txt-child1 flex-col-l ">
                                 <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    {{$juego->nombre}}
+                                    {{$juego->titulo}}
                                 </a>
 
-                                <span class="stext-105 cl3">
+                                <span class="stext-105 cl3 mt-2">
                                     @if ($juego->precio != null)
-                                      {{$juego->precio}}
+                                      $ {{$juego->precio}}
                                     @else
                                       Precio a convenir
                                     @endif
+                                  </span>
+                                  <span class="mt-2">
+                                      <i class="zmdi zmdi-pin"></i> <small>{{$juego->provincia}}</small>
                                   </span>
                             </div>
 
                             <div class="block2-txt-child2 flex-r p-t-3">
                                 <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                    <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+                                    <img class="icon-heart1 dis-block trans-04" src="{{asset('images/icons/icon-heart-01.png')}}" alt="ICON">
+                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('images/icons/icon-heart-02.png')}}" alt="ICON">
                                 </a>
                             </div>
                         </div>
                     </div>
-                    @endforeach
                 </div>
+                @endforeach
 
                 {{-- Animacion --}}
+                @foreach ($Animaciones as $animacion)
                 <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Animacion" style="position: absolute; left: 50%; top: 0px;">
-                    @foreach ($Animaciones as $animacion)
                     <!-- Block2 -->
                     <div class="block2">
                         <div class="block2-pic hov-img0">
                         <img src="{{$animacion->foto_1}}" alt="IMG-PRODUCT">
 
                             <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
+                                Reservar
                             </a>
                         </div>
 
@@ -338,29 +343,32 @@
                                       Precio a convenir
                                     @endif
                                   </span>
+                                <span class="mt-2">
+                                    <i class="zmdi zmdi-pin"></i> <small>{{$Animacion->provincia}}</small>
+                                </span>
                             </div>
 
                             <div class="block2-txt-child2 flex-r p-t-3">
                                 <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                    <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+                                    <img class="icon-heart1 dis-block trans-04" src="{{asset('images/icons/icon-heart-01.png')}}" alt="ICON">
+                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('images/icons/icon-heart-02.png')}}" alt="ICON">
                                 </a>
                             </div>
                         </div>
                     </div>
-                    @endforeach
                 </div>
+                @endforeach
 
                 {{-- Mobiliario --}}
+                @foreach($Mobiliarios as $mobiliario)
                 <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Mobiliario" style="position: absolute; left: 75%; top: 0px;">
                     <!-- Block2 -->
-                    @foreach($Mobiliarios as $mobiliario)
                     <div class="block2">
                         <div class="block2-pic hov-img0">
                         <img src="{{$mobiliario->foto_1}}" alt="IMG-PRODUCT">
 
                             <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
+                                Reservar
                             </a>
                         </div>
 
@@ -381,25 +389,25 @@
 
                             <div class="block2-txt-child2 flex-r p-t-3">
                                 <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                    <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+                                    <img class="icon-heart1 dis-block trans-04" src="{{asset('images/icons/icon-heart-01.png')}}" alt="ICON">
+                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('images/icons/icon-heart-02.png')}}" alt="ICON">
                                 </a>
                             </div>
                         </div>
                     </div>
-                    @endforeach
                 </div>
+                @endforeach
 
                  {{-- Catering --}}
+                 @foreach ($Caterings as $catering)
                 <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Catering" style="position: absolute; left: 0%; top: 429px;">
-                    @foreach ($Caterings as $catering)
                     <!-- Block2 -->
                     <div class="block2">
                         <div class="block2-pic hov-img0">
                         <img src="{{$catering->foto_1}}" alt="IMG-PRODUCT">
 
                             <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
+                                Reservar
                             </a>
                         </div>
 
@@ -421,25 +429,25 @@
 
                             <div class="block2-txt-child2 flex-r p-t-3">
                                 <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                    <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+                                    <img class="icon-heart1 dis-block trans-04" src="{{asset('images/icons/icon-heart-01.png')}}" alt="ICON">
+                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('images/icons/icon-heart-02.png')}}" alt="ICON">
                                 </a>
                             </div>
                         </div>
                     </div>
-                    @endforeach
                 </div>
+                @endforeach
 
                 {{-- MusicaDj --}}
+                @foreach($MusicaDjs as $musicaDj)
                 <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Mobiliario" style="position: absolute; left: 25%; top: 429px;">
-                    @foreach($MusicaDjs as $musicaDj)
                     <!-- Block2 -->
                     <div class="block2">
                         <div class="block2-pic hov-img0">
                             <img src="images/product-06.jpg" alt="IMG-PRODUCT">
 
                             <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
+                                Reservar
                             </a>
                         </div>
 
@@ -460,14 +468,14 @@
 
                             <div class="block2-txt-child2 flex-r p-t-3">
                                 <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                    <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+                                    <img class="icon-heart1 dis-block trans-04" src="{{asset('images/icons/icon-heart-01.png')}}" alt="ICON">
+                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('images/icons/icon-heart-02.png')}}" alt="ICON">
                                 </a>
                             </div>
                         </div>
                     </div>
-                    @endforeach
                 </div>
+                @endforeach
 
             </div>
 
