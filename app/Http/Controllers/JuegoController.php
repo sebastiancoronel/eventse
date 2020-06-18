@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Validator;
 
 use App\Juego;
 use Illuminate\Http\Request;
@@ -17,18 +18,26 @@ class JuegoController extends Controller
       }
     
       public function PublicarJuegos(Request $req){
+
+        $validator = Validator::make($req->all(),[
+          'foto_1' => 'max:10240',
+          'foto_2' => 'max:10240',
+          'foto_3' => 'max:10240',
+          'foto_4' => 'max:10240',
+        ]);
+
         $user_id = Auth::user()->id;
         $id_Prestador = Prestador::where('user_id',$user_id)->pluck('id')->first();
         $Empresa = Prestador::where('user_id',$user_id)->first();
         $Categoria = Categoria::find($req->id_categoria);
         $FechaPublicacion = date('Y-m-d');
-    
-        // Foto 1
+
+        // Foto 1 
         $Foto_1 = $req->file('foto_1');
         $NombreImagen_1 = 'foto 1' . '.' . $Foto_1->getClientOriginalExtension();
         $RutaImagen = public_path('/images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->nombre);
         $Foto_1->move($RutaImagen, $NombreImagen_1);
-    
+
         // Foto 2
         $Foto_2 = $req->file('foto_2');
         $NombreImagen_2 = 'foto 2' . '.' . $Foto_1->getClientOriginalExtension();
@@ -63,6 +72,6 @@ class JuegoController extends Controller
         $Juego->id_categoria = $req->id_categoria;
         $Juego->id_prestador = $id_Prestador;
         $Juego->save();
-        return redirect()->route('Principal');
+        return redirect()->route('FormularioJuegos');
       }
 }

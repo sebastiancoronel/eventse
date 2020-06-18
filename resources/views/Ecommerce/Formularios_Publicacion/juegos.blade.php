@@ -1,5 +1,16 @@
 @extends('layouts.barra_navegacion_principal')
 @section('content')
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div class="escritorio-mt-3-p-t-75">
     <div id="juegos" class="text-white d-none d-sm-block">
         <div class="row">
@@ -53,7 +64,9 @@
                                 <input id="file_input" name="foto_1" type="file" accept="image/*" required>
                             </div>
                         </div>
+                        <span id="foto_1_alert"></span>
                     </div>
+                    
 
                     <!-- Foto 2 -->
                     <div class="col-md-3 file-field">
@@ -189,30 +202,58 @@
 {{-- Imagen placeholder al seleccionar archivo --}}
 <script type="text/javascript">
     // Foto 1
-    var input_1 = $("#file_input");
-    $("#file_input").click(function() {
-        function readURL(input_1) {
-            console.log(input_1.files);
-            $("#icono_imagen").hide();
-            if (input_1.files && input_1.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#preview').attr('src', e.target.result);
-                    $('#preview').addClass('border');
-                }
-                reader.readAsDataURL(input_1.files[0]);
-            }
+    //var input_1 = $("#file_input");
+    $("#file_input").change(function() {
+        if (this.files.length > 0) {
+            if (this.files[0].size > 2000000) {
+                     alert("El archivo pesa mas de 2MB");
+                     this.value = ''; //Borra el valor del input
+                     console.log(this.value);
+                 }else{
+                     if (this.files[0].size < 2000000) {
+                     $("#icono_imagen").hide();
+                         if (this.files && this.files[0]) {
+                             var reader = new FileReader();
+                             reader.onload = function(e) {
+                                 $('#preview').attr('src', e.target.result);
+                                 $('#preview').addClass('border');
+                             }
+                             reader.readAsDataURL(this.files[0]);
+                         }
+                     }//2 if
+                 }//else
         }
-        $("#file_input").change(function() {
-            readURL(this);
-        });
-
+        // function readURL(input_1){
+            
+        //     if (input_1.files.length > 0) {
+        //         if (input_1.files[0].size > 2000000) {
+        //             alert("El archivo pesa mas de 2MB");
+        //             return false;
+        //         }else{
+        //             if (input_1.files[0].size < 2000000) {
+        //             $("#icono_imagen").hide();
+        //                 if (input_1.files && input_1.files[0]) {
+        //                     var reader = new FileReader();
+        //                     reader.onload = function(e) {
+        //                         $('#preview').attr('src', e.target.result);
+        //                         $('#preview').addClass('border');
+        //                     }
+        //                     reader.readAsDataURL(input_1.files[0]);
+        //                 }
+        //             }//2 if
+        //         }//else
+        //     }//if length
+        // }//readURL
+        // $("#file_input").change(function() {
+        //     readURL(this);
+        // });
     });
 
     // Foto 2
     var input_2 = $("#file_input_2");
     $("#file_input_2").click(function() {
         function readURL(input_2) {
+            console.log(input_2.files);
             $("#icono_imagen_2").hide();
             if (input_2.files && input_2.files[0]) {
                 var reader = new FileReader();
@@ -230,7 +271,7 @@
 
     //Foto 3
     var input_3 = $("#file_input_3");
-    console.log(input_3);
+    
     $("#file_input_3").click(function() {
         function readURL(input_3) {
             $("#icono_imagen_3").hide();
@@ -250,7 +291,7 @@
 
     //Foto 4
     var input_4 = $("#file_input_4");
-    console.log(input_4);
+    
     $("#file_input_4").click(function() {
         function readURL(input_4) {
             $("#icono_imagen_4").hide();
