@@ -66,7 +66,7 @@ class AnimacionController extends Controller
         $Animacion->precio = $req->precio;
         $Animacion->precio_a_convenir = $req->precio_a_convenir;
         $Animacion->id_categoria = $req->id_categoria;
-        $Animacion->prestador_id = $id_Prestador;
+        $Animacion->id_prestador = $id_Prestador;
         $Animacion->fecha_publicacion = $FechaPublicacion;
         $Animacion->save();
         return redirect()->route('Principal');

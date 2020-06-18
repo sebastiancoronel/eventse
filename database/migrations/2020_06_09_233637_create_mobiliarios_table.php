@@ -38,6 +38,8 @@ class CreateMobiliariosTable extends Migration
             $table->boolean('puf_redondo')->nullable();
             $table->boolean('isla_circular')->nullable();
             $table->string('descripcion');
+            $table->integer('precio')->nullable();
+            $table->boolean('precio_a_convenir')->nullable();
             $table->integer('id_categoria')->unsigned();
             $table->foreign('id_categoria')->references('id')->on('categorias');
             $table->integer('id_prestador')->unsigned();

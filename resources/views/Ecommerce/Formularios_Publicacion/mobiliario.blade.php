@@ -125,38 +125,39 @@
             <div class="form-row">
               <div class="col-md-6 md-form">
                 <label for="cantidad_animadores">Capacidad máxima de personas</label>
-                <input class="form-control" type="number" name="cantidad_animadores" value="">
+                <input class="form-control" type="number" name="cantidad_animadores" value="" maxlength="99">
               </div>
 
               <div class="col-md-6 md-form">
-                <select class="custom-select" name="edades">
+                <select class="custom-select" name="edades" required>
                   <option value="">Tipo de mobiliario</option>
-                  <option value="">Niños</option>
-                  <option value="">Adultos</option>
+                  <option value="1">Niños</option>
+                  <option value="2">Adultos</option>
                 </select>
               </div>
             </div>
+
             {{-- Tiene --}}
             <h5 class="text-uppercase mb-3"><strong>TIENE</strong></h5>
             <div class="">
               <div class="row mt-2">
                 <div class="col-md-4">
                   <div class="form-check">
-                    <input id="sillones" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                    <input id="sillones" class="form-check-input" type="checkbox" name="sillones" value="1">
                     <label class="form-check-label" for="sillones">Sillones</label>
                   </div>
                 </div>
 
                 <div class="col-md-4">
                   <div class="form-check">
-                    <input id="puf" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                    <input id="puf" class="form-check-input" type="checkbox" name="puf" value="1">
                     <label class="form-check-label" for="puf">Puf</label>
                   </div>
                 </div>
 
                 <div class="col-md-4">
                   <div class="form-check">
-                    <input id="mesas" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                    <input id="mesas" class="form-check-input" type="checkbox" name="mesas" value="1">
                     <label class="form-check-label" for="mesas">Mesas</label>
                   </div>
                 </div>
@@ -165,21 +166,21 @@
               <div class="form-row mt-2">
                 <div class="col-md-4">
                   <div class="form-check">
-                    <input id="puf_luminoso" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                    <input id="puf_luminoso" class="form-check-input" type="checkbox" name="puf_luminoso" value="1">
                     <label class="form-check-label" for="puf_luminoso">Puf luminoso</label>
                   </div>
                 </div>
 
                 <div class="col-md-4">
                   <div class="form-check">
-                    <input id="gazebos" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                    <input id="gazebos" class="form-check-input" type="checkbox" name="gazebos" value="1">
                     <label class="form-check-label" for="gazebos">Gazebos</label>
                   </div>
                 </div>
 
                 <div class="col-md-4">
                   <div class="form-check">
-                    <input id="carpas" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                    <input id="carpas" class="form-check-input" type="checkbox" name="carpas" value="1">
                     <label class="form-check-label" for="carpas">Carpas</label>
                   </div>
                 </div>
@@ -188,21 +189,21 @@
               <div class="form-row mt-2">
                 <div class="col-md-4">
                   <div class="form-check">
-                    <input id="caminos" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                    <input id="caminos" class="form-check-input" type="checkbox" name="caminos" value="1">
                     <label class="form-check-label" for="caminos">Caminos</label>
                   </div>
                 </div>
 
                 <div class="col-md-4">
                   <div class="form-check">
-                    <input id="fanales_y_marcasenderos" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                    <input id="fanales_y_marcasenderos" class="form-check-input" type="checkbox" name="fanales_y_marcasenderos" value="1">
                     <label class="form-check-label" for="fanales_y_marcasenderos">Fanales y marcasenderos</label>
                   </div>
                 </div>
 
                 <div class="col-md-4">
                   <div class="form-check">
-                    <input id="farolas" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                    <input id="farolas" class="form-check-input" type="checkbox" name="farolas" value="1">
                     <label class="form-check-label" for="farolas">Farolas</label>
                   </div>
                 </div>
@@ -211,21 +212,21 @@
               <div class="form-row mt-2">
                 <div class="col-md-4">
                   <div class="form-check">
-                    <input id="biombo" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                    <input id="biombo" class="form-check-input" type="checkbox" name="biombo" value="1">
                     <label class="form-check-label" for="biombo">Biombo</label>
                   </div>
                 </div>
 
                 <div class="col-md-4">
                   <div class="form-check">
-                    <input id="mini_living" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                    <input id="mini_living" class="form-check-input" type="checkbox" name="mini_living" value="1">
                     <label class="form-check-label" for="mini_living">Mini Living</label>
                   </div>
                 </div>
 
                 <div class="col-md-4">
                   <div class="form-check">
-                    <input id="lamparas_vintage" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                    <input id="lamparas_vintage" class="form-check-input" type="checkbox" name="lamparas_vintage" value="1">
                     <label class="form-check-label" for="lamparas_vintage">Lamparas vintage</label>
                   </div>
                 </div>
@@ -234,21 +235,21 @@
               <div class="form-row mt-2">
                 <div class="col-md-4">
                   <div class="form-check">
-                    <input id="camastro" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                    <input id="camastro" class="form-check-input" type="checkbox" name="camastro" value="1">
                     <label class="form-check-label" for="camastro">Camastro</label>
                   </div>
                 </div>
 
                 <div class="col-md-4">
                   <div class="form-check">
-                    <input id="puf_redondo" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                    <input id="puf_redondo" class="form-check-input" type="checkbox" name="puf_redondo" value="1">
                     <label class="form-check-label" for="puf_redondo">Puf redondo</label>
                   </div>
                 </div>
 
                 <div class="col-md-4">
                   <div class="form-check">
-                    <input id="isla_circular" class="form-check-input" type="checkbox" name="info_adicional" value="">
+                    <input id="isla_circular" class="form-check-input" type="checkbox" name="isla_circular" value="1">
                     <label class="form-check-label" for="isla_circular">Isla circular</label>
                   </div>
                 </div>

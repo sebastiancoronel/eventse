@@ -74,11 +74,11 @@ class InmuebleController extends Controller
         $Inmueble->vajillas = $req->vajillas;
         $Inmueble->wifi = $req->wifi;
         $Inmueble->piscina = $req->piscina;
-        $Inmueble->id_categoria = $req->id_categoria;
         $Inmueble->precio = $req->precio;
         $Inmueble->precio_a_convenir = $req->precio_a_convenir;
-        $Inmueble->fecha_publicacion = $FechaPublicacion;
+        $Inmueble->id_categoria = $req->id_categoria;
         $Inmueble->id_prestador = $id_Prestador;
+        $Inmueble->fecha_publicacion = $FechaPublicacion;
         $Inmueble->save();
     
         //Cambiar para que retorne un mensaje de éxito
