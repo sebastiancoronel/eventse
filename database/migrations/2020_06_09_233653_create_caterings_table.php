@@ -19,7 +19,8 @@ class CreateCateringsTable extends Migration
             $table->string('foto_2');
             $table->string('foto_3');
             $table->string('foto_4');
-            $table->string('titulo');
+            $table->string('titulo',200);
+            $table->string('descripcion',1000);
             $table->string('cantidad_invitados');
             $table->boolean('servicio_pizza')->nullable();
             $table->boolean('mesa_dulce')->nullable();
@@ -29,6 +30,8 @@ class CreateCateringsTable extends Migration
             $table->boolean('servicio_gourmet')->nullable();
             $table->string('provincia');
             $table->string('localidad');
+            $table->integer('precio')->nullable();
+            $table->boolean('precio_a_convenir')->nullable();
             $table->integer('id_categoria')->unsigned();
             $table->foreign('id_categoria')->references('id')->on('categorias');
             $table->integer('id_prestador')->unsigned();

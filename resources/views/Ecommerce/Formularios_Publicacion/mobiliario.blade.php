@@ -22,7 +22,7 @@
 
     {{-- Formulario Juegos --}}
     <div class="card container">
-      <div class="card-header">
+      <div class="card-header bg-white">
         <strong style="color:#717fe0;">Categoría</strong>
         >
         <span class="">MOBILIARIO</span>
@@ -51,6 +51,9 @@
                             <span>Subir archivo</span>
                             <input id="file_input" name="foto_1" type="file" accept="image/*" required>
                         </div>
+                        <div class="text-center">
+                          <small>Foto principal</small>
+                      </div>
                     </div>
                 </div>
 

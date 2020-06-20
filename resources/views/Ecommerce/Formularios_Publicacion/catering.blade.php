@@ -20,9 +20,9 @@
       </div>
     </div>
 
-    {{-- Formulario Juegos --}}
+    {{-- Formulario Catering --}}
     <div class="card container">
-      <div class="card-header row"> <!-- TUve que agregarle row para alinear el link "Modificar"-->
+      <div class="card-header row bg-white"> <!-- TUve que agregarle row para alinear el link "Modificar"-->
         <strong style="color:#717fe0;">Categoría</strong>
         <span class="mx-1"> > </span>
         <span class="">SERVICIOS DE CATERING</span>
@@ -128,7 +128,7 @@
             <div class="form-row">
               <div class="col-md-6 md-form">
                 <label for="cantidad_invitados">Cantidad de invitados</label>
-                <input class="form-control" type="number" name="cantidad_invitados" value="">
+                <input class="form-control" type="number" name="cantidad_invitados" value="" required>
               </div>
 
             </div>
@@ -207,8 +207,8 @@
           </div>
 
           <div class="col md-form mt-5">
-            <label for="titulo">Descripción adicional (Que incluye y que no incluye)</label>
-            <textarea class="md-textarea form-control" name="descripcion" rows="3"></textarea>
+            <label for="descripcion">Descripción adicional (Que incluye y que no incluye)</label>
+            <textarea class="md-textarea form-control" name="descripcion" rows="3" maxlength="1000"></textarea>
           </div>
 
 
@@ -236,88 +236,102 @@
       });
   </script>
 
-  {{-- Imagen placeholder al seleccionar archivo --}}
-  <script type="text/javascript">
-      // Foto 1
-      var input_1 = $("#file_input");
-      $("#file_input").click(function() {
-          function readURL(input_1) {
-            console.log(input_1.files);
-              $("#icono_imagen").hide();
-              if (input_1.files && input_1.files[0]) {
-                  var reader = new FileReader();
-                  reader.onload = function(e) {
-                      $('#preview').attr('src', e.target.result);
-                      $('#preview').addClass('border');
-                  }
-                  reader.readAsDataURL(input_1.files[0]);
-              }
-          }
-          $("#file_input").change(function() {
-              readURL(this);
-          });
+  
+{{-- Imagen placeholder al seleccionar archivo --}}
+<script type="text/javascript">
+  // Foto 1
+  $("#file_input").change(function() {
+      if (this.files.length > 0) {
+          if (this.files[0].size > 2000000) {
+                   swal("El archivo pesa mas de 2MB","Seleccione otro archivo","error");
+                   //this.value = ''; //Borra el valor del input
+                   console.log(this.value);
+               }else{
+                   if (this.files[0].size < 2000000) {
+                      console.log(this.value);
+                   $("#icono_imagen").hide();
+                       if (this.files && this.files[0]) {
+                           var reader = new FileReader();
+                           reader.onload = function(e) {
+                               $('#preview').attr('src', e.target.result);
+                               $('#preview').addClass('border');
+                           }
+                           reader.readAsDataURL(this.files[0]);
+                       }
+                   }
+               }
+      }
+  });
 
-      });
+  // Foto 2
+  $("#file_input_2").change(function() {
+      if (this.files.length > 0) {
+          if (this.files[0].size > 2000000) {
+                   swal("El archivo pesa mas de 2MB","Seleccione otro archivo","error");
+                   //this.value = ''; //Borra el valor del input
+                   console.log(this.value);
+               }else{
+                   if (this.files[0].size < 2000000) {
+                   $("#icono_imagen_2").hide();
+                       if (this.files && this.files[0]) {
+                           var reader = new FileReader();
+                           reader.onload = function(e) {
+                               $('#preview_2').attr('src', e.target.result);
+                               $('#preview_2').addClass('border');
+                           }
+                           reader.readAsDataURL(this.files[0]);
+                       }
+                   }
+               }
+      }
+  });
 
-      // Foto 2
-      var input_2 = $("#file_input_2");
-      $("#file_input_2").click(function() {
-          function readURL(input_2) {
-              $("#icono_imagen_2").hide();
-              if (input_2.files && input_2.files[0]) {
-                  var reader = new FileReader();
-                  reader.onload = function(e) {
-                      $('#preview_2').attr('src', e.target.result);
-                      $('#preview_2').addClass('border');
-                  }
-                  reader.readAsDataURL(input_2.files[0]);
-              }
-          }
-          $("#file_input_2").change(function() {
-              readURL(this);
-          });
-      });
+  //Foto 3
+  $("#file_input_3").change(function() {
+      if (this.files.length > 0) {
+          if (this.files[0].size > 2000000) {
+                   swal("El archivo pesa mas de 2MB","Seleccione otro archivo","error");
+                   //this.value = ''; //Borra el valor del input
+                   console.log(this.value);
+               }else{
+                   if (this.files[0].size < 2000000) {
+                   $("#icono_imagen_3").hide();
+                       if (this.files && this.files[0]) {
+                           var reader = new FileReader();
+                           reader.onload = function(e) {
+                               $('#preview_3').attr('src', e.target.result);
+                               $('#preview_3').addClass('border');
+                           }
+                           reader.readAsDataURL(this.files[0]);
+                       }
+                   }
+               }
+      }
+  });
 
-      //Foto 3
-      var input_3 = $("#file_input_3");
-      console.log(input_3);
-      $("#file_input_3").click(function() {
-          function readURL(input_3) {
-              $("#icono_imagen_3").hide();
-              if (input_3.files && input_3.files[0]) {
-                  var reader = new FileReader();
-                  reader.onload = function(e) {
-                      $('#preview_3').attr('src', e.target.result);
-                      $('#preview_3').addClass('border');
-                  }
-                  reader.readAsDataURL(input_3.files[0]);
-              }
-          }
-          $("#file_input_3").change(function() {
-              readURL(this);
-          });
-      });
-
-      //Foto 4
-      var input_4 = $("#file_input_4");
-      console.log(input_4);
-      $("#file_input_4").click(function() {
-          function readURL(input_4) {
-              $("#icono_imagen_4").hide();
-              if (input_4.files && input_4.files[0]) {
-                  var reader = new FileReader();
-                  reader.onload = function(e) {
-                      $('#preview_4').attr('src', e.target.result);
-                      $('#preview_4').addClass('border');
-                  }
-                  reader.readAsDataURL(input_4.files[0]);
-              }
-          }
-          $("#file_input_4").change(function() {
-              readURL(this);
-          });
-      });
-  </script>
+  //Foto 4
+  $("#file_input_4").change(function() {
+      if (this.files.length > 0) {
+          if (this.files[0].size > 2000000) {
+                   swal("El archivo pesa mas de 2MB","Seleccione otro archivo","error");
+                   //this.value = ''; //Borra el valor del input
+                   console.log(this.value);
+               }else{
+                   if (this.files[0].size < 2000000) {
+                   $("#icono_imagen_4").hide();
+                       if (this.files && this.files[0]) {
+                           var reader = new FileReader();
+                           reader.onload = function(e) {
+                               $('#preview_4').attr('src', e.target.result);
+                               $('#preview_4').addClass('border');
+                           }
+                           reader.readAsDataURL(this.files[0]);
+                       }
+                   }
+               }
+      }
+  });
+</script>
 
   {{-- Listar Localidades --}}
   <script type="text/javascript">

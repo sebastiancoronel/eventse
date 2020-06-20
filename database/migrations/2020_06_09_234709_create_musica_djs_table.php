@@ -19,7 +19,7 @@ class CreateMusicaDjsTable extends Migration
             $table->string('foto_2');
             $table->string('foto_3');
             $table->string('foto_4');
-            $table->string('titulo');
+            $table->string('titulo',200);
             $table->boolean('cumpleaños_infantiles')->nullable();
             $table->boolean('cumpleaños_adultos')->nullable();
             $table->boolean('fiestas_tematicas')->nullable();
@@ -34,7 +34,7 @@ class CreateMusicaDjsTable extends Migration
             $table->boolean('cuarteto')->nullable();
             $table->boolean('reggaeton')->nullable();
             $table->boolean('bachata')->nullable();
-            $table->string('descripcion');
+            $table->string('descripcion',1000);
             $table->string('provincia');
             $table->string('localidad');
             $table->integer('precio')->nullable();
