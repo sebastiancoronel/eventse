@@ -319,7 +319,7 @@
 
                 {{-- Animacion --}}
                 @foreach ($Animaciones as $animacion)
-                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Animacion" style="position: absolute; left: 50%; top: 0px;">
+                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Animación" style="position: absolute; left: 50%; top: 0px;">
                     <!-- Block2 -->
                     <div class="block2">
                         <div class="block2-pic hov-img0">
@@ -344,7 +344,7 @@
                                     @endif
                                   </span>
                                 <span class="mt-2">
-                                    <i class="zmdi zmdi-pin"></i> <small>{{$Animacion->provincia}}</small>
+                                    <i class="zmdi zmdi-pin"></i> <small>{{$animacion->provincia}}</small>
                                 </span>
                             </div>
 
@@ -398,8 +398,8 @@
                 </div>
                 @endforeach
 
-                 {{-- Catering --}}
-                 @foreach ($Caterings as $catering)
+                {{-- Catering --}}
+                @foreach ($Caterings as $catering)
                 <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Catering" style="position: absolute; left: 0%; top: 429px;">
                     <!-- Block2 -->
                     <div class="block2">
@@ -440,14 +440,14 @@
 
                 {{-- MusicaDj --}}
                 @foreach($MusicaDjs as $musicaDj)
-                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Mobiliario" style="position: absolute; left: 25%; top: 429px;">
+                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Música-DJ´s" style="position: absolute; left: 25%; top: 429px;">
                     <!-- Block2 -->
                     <div class="block2">
                         <div class="block2-pic hov-img0">
-                            <img src="images/product-06.jpg" alt="IMG-PRODUCT">
+                            <img src="{{$musicaDj->foto_1}}" alt="IMG-PRODUCT">
 
                             <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Reservar
+                                Reservar MUsica
                             </a>
                         </div>
 
@@ -476,13 +476,12 @@
                     </div>
                 </div>
                 @endforeach
-
             </div>
 
             <!-- Load more -->
             <div class="flex-c-m flex-w w-full p-t-45">
                 <a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
-                    Load More
+                    Cargar más
                 </a>
             </div>
         </div>

@@ -30,7 +30,7 @@
         <!-- Movil (Por los margenes)-->
         <span class="d-block d-sm-none"><br> <a href="{{route('Publicar')}}">Modificar</a></span>
       </div>
-      <form class="card-body" action="#" method="post">
+    <form class="card-body" action="{{route('PublicarCatering')}}" method="post" enctype="multipart/form-data">
           <input hidden type="text" name="id_categoria" value="5">
         @csrf
         {{-- Imagenes --}}

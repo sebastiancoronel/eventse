@@ -29,7 +29,7 @@
         <span class="">Música & DJ´s</span>
         <span class="ml-5"> <a href="{{route('Publicar')}}">Modificar</a></span>
       </div>
-      <form class="card-body" action="#" method="post">
+    <form class="card-body" action="{{route('PublicarMusicaDj')}}" method="post" enctype="multipart/form-data">
         @csrf
         {{-- Imagenes --}}
         <div class="mt-5">

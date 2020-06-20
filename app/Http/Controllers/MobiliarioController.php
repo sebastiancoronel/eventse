@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Mobiliario;
+use Auth;
+use App\Prestador;
+use App\Categoria;
 
 class MobiliarioController extends Controller
 {
@@ -13,7 +17,7 @@ class MobiliarioController extends Controller
         return view('Ecommerce.Formularios_Publicacion.mobiliario',['ProvinciasLocalidadesJson'=>$ProvinciasLocalidadesJson]);
       }
     
-      public function PublicarMobiliario(){
+      public function PublicarMobiliario(Request $req){
     
         $user_id = Auth::user()->id;
         $id_Prestador = Prestador::where('user_id',$user_id)->pluck('id')->first();
@@ -29,19 +33,19 @@ class MobiliarioController extends Controller
     
         // Foto 2
         $Foto_2 = $req->file('foto_2');
-        $NombreImagen_2 = 'foto 2' . '.' . $Foto_1->getClientOriginalExtension();
+        $NombreImagen_2 = 'foto 2' . '.' . $Foto_2->getClientOriginalExtension();
         $RutaImagen = public_path('/images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->titulo);
         $Foto_2->move($RutaImagen, $NombreImagen_2);
     
         // Foto 3
         $Foto_3 = $req->file('foto_3');
-        $NombreImagen_3 = 'foto 3' . '.' . $Foto_1->getClientOriginalExtension();
+        $NombreImagen_3 = 'foto 3' . '.' . $Foto_3->getClientOriginalExtension();
         $RutaImagen = public_path('/images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->titulo);
         $Foto_3->move($RutaImagen, $NombreImagen_3);
     
         // Foto 4
         $Foto_4 = $req->file('foto_4');
-        $NombreImagen_4 = 'foto 4' . '.' . $Foto_1->getClientOriginalExtension();
+        $NombreImagen_4 = 'foto 4' . '.' . $Foto_4->getClientOriginalExtension();
         $RutaImagen = public_path('/images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->titulo);
         $Foto_4->move($RutaImagen, $NombreImagen_4);
     
@@ -69,11 +73,11 @@ class MobiliarioController extends Controller
         $Mobiliario->puf_redondo = $req->puf_redondo;
         $Mobiliario->isla_circular = $req->isla_circular;
         $Mobiliario->descripcion = $req->descripcion;
-        $Inmueble->precio = $req->precio;
-        $Inmueble->precio_a_convenir = $req->precio_a_convenir;
-        $Inmueble->id_categoria = $req->id_categoria;
-        $Inmueble->id_prestador = $id_Prestador;
-        $Inmueble->fecha_publicacion = $FechaPublicacion;
+        $Mobiliario->precio = $req->precio;
+        $Mobiliario->precio_a_convenir = $req->precio_a_convenir;
+        $Mobiliario->id_categoria = $req->id_categoria;
+        $Mobiliario->id_prestador = $id_Prestador;
+        $Mobiliario->fecha_publicacion = $FechaPublicacion;
         $Mobiliario->save();
         return redirect()->route('Principal');
       }

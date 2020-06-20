@@ -29,6 +29,7 @@
             <span class="ml-5"> <a href="{{route('Publicar')}}">Modificar</a></span>
         </div>
         <form class="card-body" action="{{route('PublicarAnimacion')}}" method="post" enctype="multipart/form-data">
+            <input hidden type="text" name="id_categoria" value="2">
             @csrf
             {{-- Imagenes --}}
             <div class="mt-5">

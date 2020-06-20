@@ -33,19 +33,19 @@ class JuegoController extends Controller
 
         // Foto 2
         $Foto_2 = $req->file('foto_2');
-        $NombreImagen_2 = 'foto 2' . '.' . $Foto_1->getClientOriginalExtension();
+        $NombreImagen_2 = 'foto 2' . '.' . $Foto_2->getClientOriginalExtension();
         $RutaImagen = public_path('/images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->titulo);
         $Foto_2->move($RutaImagen, $NombreImagen_2);
     
         // Foto 3
         $Foto_3 = $req->file('foto_3');
-        $NombreImagen_3 = 'foto 3' . '.' . $Foto_1->getClientOriginalExtension();
+        $NombreImagen_3 = 'foto 3' . '.' . $Foto_3->getClientOriginalExtension();
         $RutaImagen = public_path('/images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->titulo);
         $Foto_3->move($RutaImagen, $NombreImagen_3);
     
         // Foto 4
         $Foto_4 = $req->file('foto_4');
-        $NombreImagen_4 = 'foto 4' . '.' . $Foto_1->getClientOriginalExtension();
+        $NombreImagen_4 = 'foto 4' . '.' . $Foto_4->getClientOriginalExtension();
         $RutaImagen = public_path('/images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->titulo);
         $Foto_4->move($RutaImagen, $NombreImagen_4);
     

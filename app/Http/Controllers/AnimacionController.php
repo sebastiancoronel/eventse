@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Animacion;
+use Auth;
+use App\Prestador;
+use App\Categoria;
 
 class AnimacionController extends Controller
 {
@@ -13,12 +17,13 @@ class AnimacionController extends Controller
         return view('Ecommerce.Formularios_Publicacion.animacion',['ProvinciasLocalidadesJson'=>$ProvinciasLocalidadesJson]);
       }
     
-      public function PublicarAnimacion(){
+      public function PublicarAnimacion(Request $req){
         $user_id = Auth::user()->id;
         $id_Prestador = Prestador::where('user_id',$user_id)->pluck('id')->first();
         $Empresa = Prestador::where('user_id',$user_id)->first();
         $Categoria = Categoria::find($req->id_categoria);
         $FechaPublicacion = date('Y-m-d');
+        
     
         // Foto 1
         $Foto_1 = $req->file('foto_1');
@@ -50,7 +55,7 @@ class AnimacionController extends Controller
         $Animacion->foto_3 = '/images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->titulo . '/' . $NombreImagen_3;
         $Animacion->foto_4 = '/images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->titulo . '/' . $NombreImagen_4;
         $Animacion->titulo = $req->titulo;
-        $Animacion->cant_animadores = $req->cant_animadores;
+        $Animacion->cant_animadores = $req->cantidad_animadores;
         $Animacion->años_experiencia = $req->años_experiencia;
         $Animacion->edades = $req->edades;
         $Animacion->descripcion = $req->descripcion;
