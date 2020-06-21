@@ -1,4 +1,5 @@
 <?php
+Auth::routes();
 
 
 /*
@@ -6,7 +7,6 @@
 | Ecommerce
 |--------------------------------------------------------------------------
 */
-Auth::routes();
 
 Route::get('/', function (){
   return view('Ecommerce.welcome');
@@ -14,9 +14,21 @@ Route::get('/', function (){
 
 //Traer Categorias
 Route::get('/categorias-listar','CategoriaController@index');
-Route::get('/articulo/detalles','ServicioController@Detalles')->name('Detalles');
+
+//Listar todos los servicios publicados
 Route::get('/reservar/servicios-publicados','ServicioController@ServiciosPublicados')->name('ServiciosPublicados');
 Route::get('/mi-paquete','CarritoController@ProductosAgregados')->name('ProductosAgregados');
+
+//Articulos-Detalles
+  //Inmuebles
+  Route::get('/reservar/servicios-publicados/Inmueble','InmuebleController@MostrarInmueble')->name('MostrarInmueble');
+
+  //Juegos
+  //Animacion
+  //Mobiliario
+  //Catering
+  //MusicaDjs
+
 
 /*
 |--------------------------------------------------------------------------

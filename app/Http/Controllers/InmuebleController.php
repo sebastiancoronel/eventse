@@ -83,5 +83,13 @@ class InmuebleController extends Controller
     
         //Cambiar para que retorne un mensaje de éxito
         return redirect()->route('Principal');
-      }   
+      }
+
+      public function MostrarInmueble(Request $req){
+        $Inmueble = Inmueble::where('id',$req->id_inmueble)->where('id_categoria',$req->id_categoria)
+                            ->select('*')
+                            ->first();
+        //dd($Inmueble);
+        return view('Ecommerce.Articulos.Detalles.Inmuebles.articulo',['Inmueble' => $Inmueble]);
+      }
 }

@@ -11,13 +11,13 @@
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
 
-			<a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
-				Articulo
+		<a href="{{route('ServiciosPublicados')}}" class="stext-109 cl8 hov-cl1 trans-04">
+				Reservar
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
 
 			<span class="stext-109 cl4">
-				Alquiler de castillos inflables
+				{{$Inmueble->nombre}}
 			</span>
 		</div>
 	</div>
@@ -35,7 +35,7 @@
 			</a>
 
 			<span class="stext-109 cl4">
-				Alquiler de castillos inflables
+				{{$Inmueble->nombre}}
 			</span>
 		</div>
 	</div>
@@ -57,28 +57,37 @@
 
 							<div class="slick3 gallery-lb d-none d-sm-block">
 
-								<div class="item-slick3" data-thumb="{{asset('images/castillo1.webp')}}">
+								<div class="item-slick3" data-thumb="{{$Inmueble->foto_1}}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="{{asset('images/castillo1.webp')}}" alt="IMG-PRODUCT">
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{asset('images/castillo1.webp')}}">
+										<img src="{{$Inmueble->foto_1}}" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Inmueble->foto_1}}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
 
-								<div class="item-slick3" data-thumb="{{asset('images/castillo2.webp')}}">
+								<div class="item-slick3" data-thumb="{{$Inmueble->foto_2}}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="{{asset('images/castillo2.webp')}}" alt="IMG-PRODUCT">
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{asset('images/castillo2.webp')}}">
+										<img src="{{$Inmueble->foto_2}}" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Inmueble->foto_2}}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
 
-								<div class="item-slick3" data-thumb="{{asset('images/castillo3.webp')}}">
+								<div class="item-slick3" data-thumb="{{$Inmueble->foto_3}}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="{{asset('images/castillo3.webp')}}" alt="IMG-PRODUCT">
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{asset('images/castillo3.webp')}}">
+										<img src="{{$Inmueble->foto_3}}" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Inmueble->foto_3}}">
+											<i class="fa fa-expand"></i>
+										</a>
+									</div>
+								</div>
+
+								<div class="item-slick3" data-thumb="{{$Inmueble->foto_4}}">
+									<div class="wrap-pic-w pos-relative">
+										<img src="{{$Inmueble->foto_4}}" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Inmueble->foto_4}}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
@@ -129,15 +138,19 @@
 				<div class="col-md-6 col-lg-5 p-b-30">
 					<div class="p-r-50 p-t-5 p-lr-0-lg">
 						<h4 class="mtext-105 cl2 js-name-detail p-b-14">
-							Alquiler de castillo inflable
+							{{$Inmueble->nombre}}
 						</h4>
 
 						<span class="mtext-106 cl2" style="color:#f40082;">
-							$1000
+							@if ($Inmueble->precio != null)
+								{{$Inmueble->precio}}
+							@else
+								Precio a convenir
+							@endif
 						</span>
 
 						<p class="stext-102 cl3 p-t-23">
-							Alquiler de castillo inflable de 3x3mts ideal para cumpleaños, bautismos o para entretener a los niños en cualquier reunion familiar.
+							{{$Inmueble->localidad}}, {{$Inmueble->provincia}}
 						</p>
 
 						<!--  -->

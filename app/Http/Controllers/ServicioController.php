@@ -12,7 +12,7 @@ use App\MusicaDj;
 use App\Prestador;
 use App\Categoria;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
 class ServicioController extends Controller
 {
     public function Publicar(){
@@ -49,10 +49,6 @@ class ServicioController extends Controller
 
   public function MostrarPlanes(){
     return view('Ecommerce.planes_publicidad');
-  }
-
-  public function Detalles(){
-    return view('Ecommerce.articulo_detalle');
   }
 
 }

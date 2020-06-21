@@ -235,44 +235,50 @@
 
                 {{-- Inmuebles --}}
                 @foreach ($Inmuebles as $inmueble)
-                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Salones" style="position: absolute; left: 0%; top: 0px;">
-                    <!-- Block2 -->
-                    <div class="block2">
-                      <div class="block2-pic hov-img0">
-                        <img src="{{$inmueble->foto_1}}" alt="IMG-PRODUCT">
+                <form action="{{route('MostrarInmueble')}}">
 
-                        <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                          Reservar
-                        </a>
-                      </div>
+                    @csrf
+                    <input hidden type="text" name="id_inmueble" value="{{$inmueble->id}}">
+                    <input hidden type="text" name="id_categoria" value="1">
+                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Salones" style="position: absolute; left: 0%; top: 0px;">
+                            <!-- Block2 -->
+                            <div class="block2">
+                            <div class="block2-pic hov-img0">
+                                <img src="{{$inmueble->foto_1}}" alt="IMG-PRODUCT">
 
-                      <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
-                          <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                            {{$inmueble->nombre}}
-                          </a>
+                                <button href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+                                Reservar
+                                </button>
+                            </div>
 
-                          <span class="stext-105 cl3">
-                            @if ($inmueble->precio != null)
-                              {{$inmueble->precio}}
-                            @else
-                              Precio a convenir
-                            @endif
-                          </span>
-                        <span class="mt-2">
-                            <i class="zmdi zmdi-pin"></i> <small>{{$inmueble->provincia}}</small>
-                        </span>
+                            <div class="block2-txt flex-w flex-t p-t-14">
+                                <div class="block2-txt-child1 flex-col-l ">
+                                <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                    {{$inmueble->nombre}}
+                                </a>
+
+                                <span class="stext-105 cl3">
+                                    @if ($inmueble->precio != null)
+                                    {{$inmueble->precio}}
+                                    @else
+                                    Precio a convenir
+                                    @endif
+                                </span>
+                                <span class="mt-2">
+                                    <i class="zmdi zmdi-pin"></i> <small>{{$inmueble->provincia}}</small>
+                                </span>
+                                </div>
+
+                                <div class="block2-txt-child2 flex-r p-t-3">
+                                <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                    <img class="icon-heart1 dis-block trans-04" src="{{asset('images/icons/icon-heart-01.png')}}" alt="ICON">
+                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('images/icons/icon-heart-02.png')}}" alt="ICON">
+                                </a>
+                                </div>
+                            </div>
+                            </div>
                         </div>
-
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                          <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                            <img class="icon-heart1 dis-block trans-04" src="{{asset('images/icons/icon-heart-01.png')}}" alt="ICON">
-                            <img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('images/icons/icon-heart-02.png')}}" alt="ICON">
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                </div>
+                </form>
                 @endforeach
 
                 {{-- Juegos --}}
@@ -400,83 +406,98 @@
 
                 {{-- Catering --}}
                 @foreach ($Caterings as $catering)
-                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Catering" style="position: absolute; left: 0%; top: 429px;">
-                    <!-- Block2 -->
-                    <div class="block2">
-                        <div class="block2-pic hov-img0">
-                        <img src="{{$catering->foto_1}}" alt="IMG-PRODUCT">
+                <form action="">
 
-                            <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Reservar
-                            </a>
-                        </div>
+                    @csrf
+                    <input hidden type="text" name="id_catering" value="{{$catering->id}}">
+                    <input hidden type="text" name="id_categoria" value="5">
+                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Catering" style="position: absolute; left: 0%; top: 429px;">
+                            <!-- Block2 -->
+                            <div class="block2">
+                                <div class="block2-pic hov-img0">
+                                <img src="{{$catering->foto_1}}" alt="IMG-PRODUCT">
 
-                        <div class="block2-txt flex-w flex-t p-t-14">
-                            <div class="block2-txt-child1 flex-col-l">
-                                <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    {{$catering->nombre}}
-                                </a>
+                                    <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                        Reservar
+                                    </a>
+                                </div>
 
-                                <span class="stext-105 cl3">
-                                    @if ($catering->precio != null)
-                                      {{$catering->precio}}
-                                    @else
-                                      Precio a convenir
-                                    @endif
-                                </span>
+                                <div class="block2-txt flex-w flex-t p-t-14">
+                                    <div class="block2-txt-child1 flex-col-l">
+                                        <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                            {{$catering->titulo}}
+                                        </a>
 
+                                        <span class="stext-105 cl3">
+                                            @if ($catering->precio != null)
+                                            {{$catering->precio}}
+                                            @else
+                                            Precio a convenir
+                                            @endif
+                                        </span>
+
+                                    </div>
+
+                                    <div class="block2-txt-child2 flex-r p-t-3">
+                                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                            <img class="icon-heart1 dis-block trans-04" src="{{asset('images/icons/icon-heart-01.png')}}" alt="ICON">
+                                            <img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('images/icons/icon-heart-02.png')}}" alt="ICON">
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-
-                            <div class="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                    <img class="icon-heart1 dis-block trans-04" src="{{asset('images/icons/icon-heart-01.png')}}" alt="ICON">
-                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('images/icons/icon-heart-02.png')}}" alt="ICON">
-                                </a>
-                            </div>
                         </div>
-                    </div>
-                </div>
+                
+                </form>
                 @endforeach
 
                 {{-- MusicaDj --}}
                 @foreach($MusicaDjs as $musicaDj)
-                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Música-DJ´s" style="position: absolute; left: 25%; top: 429px;">
-                    <!-- Block2 -->
-                    <div class="block2">
-                        <div class="block2-pic hov-img0">
-                            <img src="{{$musicaDj->foto_1}}" alt="IMG-PRODUCT">
 
-                            <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Reservar
-                            </a>
-                        </div>
+                <form action="">
 
-                        <div class="block2-txt flex-w flex-t p-t-14">
-                            <div class="block2-txt-child1 flex-col-l ">
-                                <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    {{$musicaDj->nombre}}
-                                </a>
+                    @csrf
+                    <input hidden type="text" name="id_musicaDj" value="{{$musicaDj->id}}">
+                    <input hidden type="text" name="id_categoria" value="6">
+                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Música-DJ´s" style="position: absolute; left: 25%; top: 429px;">
+                            <!-- Block2 -->
+                            <div class="block2">
+                                <div class="block2-pic hov-img0">
+                                    <img src="{{$musicaDj->foto_1}}" alt="IMG-PRODUCT">
 
-                                <span class="stext-105 cl3">
-                                    @if ($musicaDj->precio != null)
-                                      {{$musicaDj->precio}}
-                                    @else
-                                      Precio a convenir
-                                    @endif
-                                </span>
+                                    <button type="submit" name="button_reservar" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+                                        Reservar
+                                    </button>
+                                </div>
+
+                                <div class="block2-txt flex-w flex-t p-t-14">
+                                    <div class="block2-txt-child1 flex-col-l ">
+                                        <button type="submit" name="button_titulo" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                            {{$musicaDj->titulo}}
+                                        </button>
+                                            
+                                            <span class="stext-105 cl3">
+                                                @if ($musicaDj->precio != null)
+                                                {{$musicaDj->precio}}
+                                                @else
+                                                Precio a convenir
+                                                @endif
+                                            </span>
+                                        </div>
+
+                                    <div class="block2-txt-child2 flex-r p-t-3">
+                                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                            <img class="icon-heart1 dis-block trans-04" src="{{asset('images/icons/icon-heart-01.png')}}" alt="ICON">
+                                            <img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('images/icons/icon-heart-02.png')}}" alt="ICON">
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-
-                            <div class="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                    <img class="icon-heart1 dis-block trans-04" src="{{asset('images/icons/icon-heart-01.png')}}" alt="ICON">
-                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('images/icons/icon-heart-02.png')}}" alt="ICON">
-                                </a>
-                            </div>
                         </div>
-                    </div>
-                </div>
+                </form>
                 @endforeach
-            </div>
+
+            </div> <!-- row isotope-grid -->
 
             <!-- Load more -->
             <div class="flex-c-m flex-w w-full p-t-45">
