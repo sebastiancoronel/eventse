@@ -26,6 +26,18 @@ class CreateClientesTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
+        DB::table('clientes')->insert([
+            [
+                'user_id' => '1',
+                'dni' => '38365229',
+                'provincia' => 'Santiago Del Estero',
+                'localidad' => 'Santiago Del Estero',
+                'telefono' => '3855826093',
+                'fecha_de_alta' => '2020-06-21',
+                'puntos' => '0',
+            ],
+        ]);
     }
 
     /**

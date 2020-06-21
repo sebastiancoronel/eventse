@@ -26,10 +26,10 @@
         <strong style="color:#717fe0;">Categoría</strong>
         >
         <span class="">MOBILIARIO</span>
-        <span class="ml-5"> <a href="{{route('PublicarMobiliario')}}">Modificar</a></span>
+        <span class="ml-5"> <a href="{{route('Publicar')}}">Modificar</a></span>
       </div>
     <form class="card-body" action="{{route('PublicarMobiliario')}}" method="post" enctype="multipart/form-data">
-        <input hidden type="text" name="id_categoria" value="2">
+        <input hidden type="text" name="id_categoria" value="4">
         @csrf
         {{-- Imagenes --}}
         <div class="mt-5">
@@ -124,7 +124,7 @@
           <div class="mt-5">
             <div class="col md-form">
               <label for="titulo">Título</label>
-              <input class="form-control" type="text" name="titulo" value="">
+              <input class="form-control" type="text" name="titulo" value="" maxlength="200">
             </div>
             <div class="form-row">
               <div class="col-md-6 md-form">
@@ -263,8 +263,31 @@
 
           <div class="col md-form mt-5">
             <label for="titulo">Descripción adicional (Que incluye y que no incluye)</label>
-            <textarea class="md-textarea form-control" name="descripcion" rows="3"></textarea>
+            <textarea class="md-textarea form-control" name="descripcion" rows="3" maxlength="1000"></textarea>
           </div>
+
+          <!-- Provincia -->
+          <div class="md-form">
+            <h5 class="mt-5"><strong>UBICACIÓN</strong></h5>
+            <input hidden id="provincia_nombre" type="text" name="provincia" value="" required>
+            <select id="provincia" class="custom-select mt-5">
+                <option value="" selected>En que provincia está ubicado?</option>
+                @foreach ($ProvinciasLocalidadesJson as $provincia)
+                <option value="{{ $provincia['id'] }}">{{$provincia['nombre']}}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <!-- localidad -->
+        <div id="seleccionar_localidad" hidden class="md-form">
+            <span>En que ciudad?</span>
+            <select id="localidad" name="localidad" class="custom-select" required>
+                <option value="" selected>En que ciudad?</option>
+                @foreach ($ProvinciasLocalidadesJson as $localidad)
+
+                @endforeach
+            </select>
+        </div>
 
           <h5 class="mt-5"><strong>PRECIO</strong></h5>
           <div id="div_precio" class="col-12 col-md-3 md-form my-5">
@@ -288,7 +311,7 @@
     </div>
   </div>
 
-  {{-- Precio a convenir --}}
+{{-- Precio a convenir --}}
   <script type="text/javascript">
     $("#precio_a_convenir").on('change', function() {
       if (this.checked) {
@@ -400,7 +423,7 @@
   });
 </script>
 
-  {{-- Listar Localidades --}}
+{{-- Listar Localidades --}}
   <script type="text/javascript">
       $("#provincia").on('change', function() {
           var provincia_id = $(this).val();

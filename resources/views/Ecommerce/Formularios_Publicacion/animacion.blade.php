@@ -29,7 +29,7 @@
             <span class="ml-5"> <a href="{{route('Publicar')}}">Modificar</a></span>
         </div>
         <form class="card-body" action="{{route('PublicarAnimacion')}}" method="post" enctype="multipart/form-data">
-            <input hidden type="text" name="id_categoria" value="2">
+            <input hidden type="text" name="id_categoria" value="3">
             @csrf
             {{-- Imagenes --}}
             <div class="mt-5">
@@ -125,7 +125,7 @@
                 {{-- Titulo --}}
                 <div class="col md-form">
                     <label for="titulo">Título</label>
-                    <input class="form-control" type="text" name="titulo" value="" maxlength="200">
+                    <input class="form-control" type="text" name="titulo" value="" maxlength="200" required>
                 </div>
                 {{-- Can. Anim - Años experiencias --}}
                 <div class="form-row">

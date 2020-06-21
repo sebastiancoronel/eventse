@@ -73,6 +73,8 @@ class MobiliarioController extends Controller
         $Mobiliario->puf_redondo = $req->puf_redondo;
         $Mobiliario->isla_circular = $req->isla_circular;
         $Mobiliario->descripcion = $req->descripcion;
+        $Mobiliario->provincia = $req->provincia;
+        $Mobiliario->localidad = $req->localidad;
         $Mobiliario->precio = $req->precio;
         $Mobiliario->precio_a_convenir = $req->precio_a_convenir;
         $Mobiliario->id_categoria = $req->id_categoria;

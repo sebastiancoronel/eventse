@@ -25,90 +25,91 @@
 </div> --}}
 @endif
 
-<div class="purple-gradient d-flex justify-content-center" style="height: 200px;">
-    <h2 class="d-none d-sm-block text-uppercase text-white align-self-center">¿Que servicio deseas publicar?</h2>
-    <!-- Movil -->
-    <h3 class="d-block d-sm-none text-uppercase text-white align-self-center text-center">¿Que servicio deseas publicar?</h3>
-</div>
+    <div class="purple-gradient d-flex justify-content-center" style="height: 200px;">
+        <h2 class="d-none d-sm-block text-uppercase text-white align-self-center">¿Que servicio deseas publicar?</h2>
+        <!-- Movil -->
+        <h3 class="d-block d-sm-none text-uppercase text-white align-self-center text-center">¿Que servicio deseas publicar?</h3>
+    </div>
 
-<div class="row d-flex justify-content-center mt-5">
-    {{-- Salones --}}
-    <a href="{{route('FormularioInmueble')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
-        <div class="card-body d-flex flex-column">
-            <i class="zmdi zmdi-store" style="font-size: 60px;"></i>
-            <span class="mt-4">Inmuebles</span>
-        </div>
-    </a>
+    <div class="row d-flex justify-content-center mt-5">
+        {{-- Salones --}}
+        <a href="{{route('FormularioInmueble')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
+            <div class="card-body d-flex flex-column">
+                <i class="zmdi zmdi-store" style="font-size: 60px;"></i>
+                <span class="mt-4">Inmuebles</span>
+            </div>
+        </a>
 
-    {{-- Juegos --}}
-    <a href="{{route('FormularioJuegos')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
-        <div class="card-body d-flex flex-column">
-            <i class="fab fa-fort-awesome" style="font-size: 60px;"></i>
-            <span class="mt-4">Juegos</span>
-        </div>
-    </a>
-    {{-- Animación --}}
-    <a href="{{route('FormularioAnimacion')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
-        <div class="card-body d-flex flex-column">
-            <i class="zmdi zmdi-mood" style="font-size: 60px;"></i>
-            <span class="mt-4">Animación</span>
-        </div>
-    </a>
+        {{-- Juegos --}}
+        <a href="{{route('FormularioJuegos')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
+            <div class="card-body d-flex flex-column">
+                <i class="fab fa-fort-awesome" style="font-size: 60px;"></i>
+                <span class="mt-4">Juegos</span>
+            </div>
+        </a>
+        {{-- Animación --}}
+        <a href="{{route('FormularioAnimacion')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
+            <div class="card-body d-flex flex-column">
+                <i class="zmdi zmdi-mood" style="font-size: 60px;"></i>
+                <span class="mt-4">Animación</span>
+            </div>
+        </a>
 
-</div>
+    </div>
 
-<div class="row d-flex justify-content-center mt-3">
-    {{-- Mobiliario --}}
-    <a href="{{route('FormularioMobiliario')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
-        <div class="card-body d-flex flex-column">
-            <i class="fas fa-couch" style="font-size: 60px;"></i>
-            <span class="mt-4">Mobiliario</span>
-        </div>
-    </a>
+    <div class="row d-flex justify-content-center mt-3 mb-5 pb-5">
+        {{-- Mobiliario --}}
+        <a href="{{route('FormularioMobiliario')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
+            <div class="card-body d-flex flex-column">
+                <i class="fas fa-couch" style="font-size: 60px;"></i>
+                <span class="mt-4">Mobiliario</span>
+            </div>
+        </a>
 
-    {{-- Catering --}}
-    <a href="{{route('FormularioCatering')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
-        <div class="card-body d-flex flex-column">
-            <i class="zmdi zmdi-cutlery" style="font-size: 60px;"></i>
-            <span class="mt-4">Servicios de Catering</span>
-        </div>
-    </a>
+        {{-- Catering --}}
+        <a href="{{route('FormularioCatering')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
+            <div class="card-body d-flex flex-column">
+                <i class="zmdi zmdi-cutlery" style="font-size: 60px;"></i>
+                <span class="mt-4">Servicios de Catering</span>
+            </div>
+        </a>
 
-    {{-- Illuminación --}}
-    <a href="{{route('FormularioIluminacion')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
-        <div class="card-body d-flex flex-column">
-            <i class="far fa-lightbulb" style="font-size: 60px;"></i>
-            <span class="mt-4">Illuminación</span>
-        </div>
-    </a>
-</div>
+          {{-- Música & DJ´s --}}
+          <a href="{{route('FormularioMusicaDj')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
+            <div class="card-body d-flex flex-column">
+                <i class="zmdi zmdi-headset" style="font-size: 60px;"></i>
+                <span class="mt-4">Música & DJ´s</span>
+            </div>
+        </a>
 
-<div class="row d-flex justify-content-center mt-3">
-    {{-- Ornamentación --}}
-    <a href="{{route('FormularioOrnamentacion')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
-        <div class="card-body d-flex flex-column">
-            <i class="zmdi zmdi-flower-alt" style="font-size: 60px;"></i>
-            <span class="mt-4">Ornamentación</span>
-        </div>
-    </a>
+        {{-- Illuminación --}}
+        {{-- <a href="{{route('FormularioIluminacion')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
+            <div class="card-body d-flex flex-column">
+                <i class="far fa-lightbulb" style="font-size: 60px;"></i>
+                <span class="mt-4">Illuminación</span>
+            </div>
+        </a> --}}
+    </div>
 
-    {{-- Música & DJ´s --}}
-    <a href="{{route('FormularioMusicaDj')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
-        <div class="card-body d-flex flex-column">
-            <i class="zmdi zmdi-headset" style="font-size: 60px;"></i>
-            <span class="mt-4">Música & DJ´s</span>
-        </div>
-    </a>
+    <div class="row d-flex justify-content-center mt-3">
+        {{-- Ornamentación --}}
+        {{-- <a href="{{route('FormularioOrnamentacion')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
+            <div class="card-body d-flex flex-column">
+                <i class="zmdi zmdi-flower-alt" style="font-size: 60px;"></i>
+                <span class="mt-4">Ornamentación</span>
+            </div>
+        </a> --}}
 
-    {{-- Música & DJ´s --}}
-    <a href="{{route('FormularioShows')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
-        <div class="card-body d-flex flex-column">
-            <i class="fas fa-drum" style="font-size: 60px;"></i>
-            <span class="mt-4">Bandas y shows en vivo</span>
-        </div>
-    </a>
+        {{-- Shows --}}
+        {{-- <a href="{{route('FormularioShows')}}" class="col-md-3 ml-3 card text-center" style="color: grey;" onmouseover="this.style.color='#f40082'" onmouseout="this.style.color='grey'">
+            <div class="card-body d-flex flex-column">
+                <i class="fas fa-drum" style="font-size: 60px;"></i>
+                <span class="mt-4">Bandas y shows en vivo</span>
+            </div>
+        </a> --}}
 
-</div>
+    </div>
+
 </div>
 
 <script>

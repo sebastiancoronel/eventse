@@ -19,7 +19,7 @@ class CreateMobiliariosTable extends Migration
             $table->string('foto_2');
             $table->string('foto_3');
             $table->string('foto_4');
-            $table->string('titulo');
+            $table->string('titulo',200);
             $table->string('capacidad');
             $table->enum('tipo',['Niños','Adultos']);
             $table->boolean('sillones')->nullable();
@@ -37,7 +37,9 @@ class CreateMobiliariosTable extends Migration
             $table->boolean('camastro')->nullable();
             $table->boolean('puf_redondo')->nullable();
             $table->boolean('isla_circular')->nullable();
-            $table->string('descripcion');
+            $table->string('descripcion',1000);
+            $table->string('provincia');
+            $table->string('localidad');
             $table->integer('precio')->nullable();
             $table->boolean('precio_a_convenir')->nullable();
             $table->integer('id_categoria')->unsigned();

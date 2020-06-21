@@ -26,8 +26,8 @@ class CreatePrestadorsTable extends Migration
             $table->integer('id_categoria')->nullable();
             $table->foreign('id_categoria')->references('id')->on('categorias');
 
-            $table->integer('id_empleados')->nullable();
-            $table->foreign('id_empleados')->references('id')->on('empleados');
+            // $table->integer('id_empleados')->nullable();
+            // $table->foreign('id_empleados')->references('id')->on('empleados');
 
             $table->integer('id_servicios')->nullable();
             $table->foreign('id_servicios')->references('id')->on('servicios');
@@ -38,6 +38,22 @@ class CreatePrestadorsTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
+        DB::table('prestadors')->insert([
+            [
+                'nombre' => 'JumpZone',
+                'foto' => '/images/foto_perfil/1.png',
+                'provincia' => '86',
+                'Localidad' => 'Santiago Del Estero',
+                'Direccion' => '',
+                'email' => 'jumpzoneinflables@gmail.com',
+                'telefono' => '3855000000',
+                'id_servicios' => null,
+                'user_id' => 1,
+                
+            ],
+
+        ]);
     }
 
     /**

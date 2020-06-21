@@ -30,6 +30,7 @@
         <span class="ml-5"> <a href="{{route('Publicar')}}">Modificar</a></span>
       </div>
     <form class="card-body" action="{{route('PublicarMusicaDj')}}" method="post" enctype="multipart/form-data">
+      <input hidden type="text" name="id_categoria" value="6">
         @csrf
         {{-- Imagenes --}}
         <div class="mt-5">
@@ -53,6 +54,9 @@
                             <input id="file_input" name="foto_1" type="file" accept="image/*" required>
                         </div>
                     </div>
+                    <div class="text-center">
+                      <small>Foto principal</small>
+                  </div>
                 </div>
 
                 <!-- Foto 2 -->
@@ -244,6 +248,29 @@
               <textarea class="md-textarea form-control" name="descripcion" rows="3" required maxlength="1000"></textarea>
             </div>
           </div>
+
+          <!-- Provincia -->
+          <div class="md-form">
+            <h5 class="mt-5"><strong>UBICACIÓN</strong></h5>
+            <input hidden id="provincia_nombre" type="text" name="provincia" value="" required>
+            <select id="provincia" class="custom-select mt-5">
+                <option value="" selected>En que provincia está ubicado?</option>
+                @foreach ($ProvinciasLocalidadesJson as $provincia)
+                <option value="{{ $provincia['id'] }}">{{$provincia['nombre']}}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <!-- Localidad -->
+        <div id="seleccionar_localidad" hidden class="md-form">
+            <span>En que ciudad?</span>
+            <select id="localidad" name="localidad" class="custom-select" required>
+                <option value="" selected>En que ciudad?</option>
+                @foreach ($ProvinciasLocalidadesJson as $localidad)
+
+                @endforeach
+            </select>
+        </div>
 
           <h5 class="mt-5"><strong>PRECIO</strong></h5>
           <div id="div_precio" class="col-12 col-md-3 md-form my-5">

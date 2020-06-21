@@ -50,7 +50,7 @@ class CreateCategoriasTable extends Migration
           //   'foto' => 'Pegar URL de la foto en public'
           // ],
           [
-            'nombre' => 'Música & DJ´s',
+            'nombre' => 'Música-DJ´s',
             'foto' => 'Pegar URL de la foto en public'
           ],
           // [

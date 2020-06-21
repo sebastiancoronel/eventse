@@ -246,20 +246,30 @@
 </div>
 {{-- Previsualizar imagen --}}
 <script>
-    function readURL(input) {
-        $("#icono_subir").hide();
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#preview').attr('src', e.target.result);
-                $('#preview').addClass('border');
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-    $("#file_input").change(function() {
-        readURL(this);
-    });
+      // Foto 1
+  $("#file_input").change(function() {
+    $("#icono_subir").hide();
+      if (this.files.length > 0) {
+          if (this.files[0].size > 2000000) {
+                   swal("El archivo pesa mas de 2MB","Seleccione otro archivo","error");
+                   //this.value = ''; //Borra el valor del input
+                   console.log(this.value);
+               }else{
+                   if (this.files[0].size < 2000000) {
+                      console.log(this.value);
+                   $("#icono_imagen").hide();
+                       if (this.files && this.files[0]) {
+                           var reader = new FileReader();
+                           reader.onload = function(e) {
+                               $('#preview').attr('src', e.target.result);
+                               $('#preview').addClass('border');
+                           }
+                           reader.readAsDataURL(this.files[0]);
+                       }
+                   }
+               }
+      }
+  });
 </script>
 
 {{-- Mostrar nombre del archivo --}}

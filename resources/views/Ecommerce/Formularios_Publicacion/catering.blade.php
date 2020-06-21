@@ -55,6 +55,9 @@
                             <input id="file_input" name="foto_1" type="file" accept="image/*" required>
                         </div>
                     </div>
+                    <div class="text-center">
+                      <small>Foto principal</small>
+                  </div>
                 </div>
 
                 <!-- Foto 2 -->

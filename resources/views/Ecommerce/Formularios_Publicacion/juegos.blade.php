@@ -143,19 +143,7 @@
                     <textarea class="md-textarea form-control" name="descripcion" rows="3" maxlength="1000"></textarea>
                 </div>
 
-                <div id="div_precio" class="col-12 col-md-2 md-form mt-5">
-                    <i class="zmdi zmdi-money prefix"></i>
-                    <label for="precio">Precio</label>
-                    <input id="precio" class="form-control" type="number" name="precio" value="" maxlength="999">
-                </div>
-
-                <div class="form-check">
-                    <input id="precio_a_convenir" class="form-check-input" type="checkbox" name="precio_a_convenir" value="">
-                    <label class="" for="precio_a_convenir">Precio a convenir</label>
-                </div>
-            </div>
-
-            <!-- Provincia del Inmueble -->
+            <!-- Provincia -->
             <div class="md-form">
                 <h5 class="mt-5"><strong>UBICACIÓN</strong></h5>
                 <input hidden id="provincia_nombre" type="text" name="provincia" value="" required>
@@ -167,7 +155,7 @@
                 </select>
             </div>
 
-            <!-- Ciudad del Inmueble -->
+            <!-- localidad -->
             <div id="seleccionar_localidad" hidden class="md-form">
                 <span>En que ciudad?</span>
                 <select id="localidad" name="localidad" class="custom-select" required>
@@ -176,6 +164,18 @@
 
                     @endforeach
                 </select>
+            </div>
+
+                <div id="div_precio" class="col-12 col-md-2 md-form mt-5">
+                    <i class="zmdi zmdi-money prefix"></i>
+                    <label for="precio">Precio</label>
+                    <input id="precio" class="form-control" type="number" name="precio" value="" maxlength="999">
+                </div>
+
+                <div class="form-check">
+                    <input id="precio_a_convenir" class="form-check-input" type="checkbox" name="precio_a_convenir" value="">
+                    <label class="" for="precio_a_convenir">Precio a convenir</label>
+                </div>
             </div>
 
             <div class="d-flex justify-content-end">
