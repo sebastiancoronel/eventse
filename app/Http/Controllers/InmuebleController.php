@@ -89,7 +89,10 @@ class InmuebleController extends Controller
         $Inmueble = Inmueble::where('id',$req->id_inmueble)->where('id_categoria',$req->id_categoria)
                             ->select('*')
                             ->first();
-        //dd($Inmueble);
-        return view('Ecommerce.Articulos.Detalles.Inmuebles.articulo',['Inmueble' => $Inmueble]);
+        
+        $Prestador = Prestador::where('id', $Inmueble->id_prestador)
+                                ->select('*')
+                                ->first();
+        return view('Ecommerce.Articulos.Detalles.Inmuebles.articulo',['Inmueble' => $Inmueble, 'Prestador'=>$Prestador]);
       }
 }

@@ -162,9 +162,15 @@
 							{{$Inmueble->localidad}}, {{$Inmueble->provincia}}
 						</p>
 
+						<p class="stext-102 cl3 p-t-23  mt-5 d-flex align-items-center">
+							<img src="{{$Prestador->foto}}" class="" width="10%" alt="IMG-PRESTADOR">
+							<small class="ml-3">
+								Publicado por <a href="" class="stext-104 cl4 hov-cl1"> {{$Prestador->nombre}} </a> 
+							</small>
+						</p>
 						<!--  -->
 						<div class="p-t-33">
-							<div class="flex-w flex-r-m p-b-10">
+							{{-- <div class="flex-w flex-r-m p-b-10">
 								<div class="size-203 flex-c-m respon6">
 									Select 1
 								</div>
@@ -200,11 +206,11 @@
 										<div class="dropDownSelect2"></div>
 									</div>
 								</div>
-							</div>
+							</div> --}}
 
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-204 flex-w flex-m respon6-next">
-									<div class="wrap-num-product flex-w m-r-20 m-tb-10">
+									{{-- <div class="wrap-num-product flex-w m-r-20 m-tb-10">
 										<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
 											<i class="fs-16 zmdi zmdi-minus"></i>
 										</div>
@@ -214,7 +220,7 @@
 										<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
 											<i class="fs-16 zmdi zmdi-plus"></i>
 										</div>
-									</div>
+									</div> --}}
 
 									<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
 										Agregar al paquete
@@ -223,7 +229,7 @@
 							</div>
 						</div>
 
-						<!--  -->
+						<!-- Favoritos y redes sociales -->
 						<div class="flex-w flex-m p-l-100 p-t-40 respon7">
 							<div class="flex-m bor9 p-r-10 m-r-11">
 								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
@@ -231,17 +237,17 @@
 								</a>
 							</div>
 
-							<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
+							<a href="https://www.facebook.com/sharer/sharer.php?u=example.org" target="_blank" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
 								<i class="fa fa-facebook"></i>
 							</a>
 
-							<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
+							{{-- <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
 								<i class="fa fa-twitter"></i>
 							</a>
 
 							<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
 								<i class="fa fa-google-plus"></i>
-							</a>
+							</a> --}}
 						</div>
 					</div>
 				</div>
@@ -270,15 +276,18 @@
 
 					<!-- Tab panes -->
 					<div class="tab-content p-t-43">
-						<!-- - -->
+						<!-- Descripcion -->
 						<div class="tab-pane fade show active" id="description" role="tabpanel">
 							<div class="how-pos2 p-lr-15-md text-center row">
 								<p class="stext-102 cl6 text-left row col-md-6">
-								<span class="text-uppercase col-md-12"> Superficie: {{ $Inmueble->superficie }} </span>
-								<span class="text-uppercase col-md-12"> Capacidad de invitados: {{ $Inmueble->capacidad }} </span>
+									<span class="text-uppercase col-md-12 mt-4"> Superficie: {{ $Inmueble->superficie }} </span>
+									<span class="text-uppercase col-md-12 mt-4"> Capacidad de invitados: {{ $Inmueble->capacidad }} </span>
 								</p>
 
 								<p class="stext-102 cl6 text-left row col-md-6">
+									<span class="text-uppercase col-md-12 mt-4"> Calle: {{ $Inmueble->calle }} </span>
+									<span class="text-uppercase col-md-12 mt-4"> Número: {{ $Inmueble->numero }} </span>
+									<span class="text-uppercase col-md-12 mt-4"> Barrio: {{ $Inmueble->barrio }} </span>
 
 								</p>
 
@@ -458,6 +467,20 @@
 											</span>
 										</li>
 
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Piscina
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Inmueble->piscina == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
 									</ul>
 								</div>
 							</div>
@@ -575,12 +598,12 @@
 		</div>
 
 		<div class="bg6 flex-c-m flex-w size-302 m-t-73 p-tb-15">
-			<span class="stext-107 cl6 p-lr-25">
+			{{-- <span class="stext-107 cl6 p-lr-25">
 				SKU: JAK-01
-			</span>
+			</span> --}}
 
 			<span class="stext-107 cl6 p-lr-25">
-				Categorias: Juegos
+			Categoria: Inmuebles
 			</span>
 		</div>
 	</section>
