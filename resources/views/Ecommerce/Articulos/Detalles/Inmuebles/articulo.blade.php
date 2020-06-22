@@ -29,8 +29,8 @@
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
 
-			<a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
-				Articulo
+			<a href="{{route('ServiciosPublicados')}}" class="stext-109 cl8 hov-cl1 trans-04">
+				Reservar
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
 
@@ -102,28 +102,37 @@
 
 							<div class="slick3 gallery-lb d-md-none d-lg-none d-xl-none d-xs-block d-sm-block">
 
-								<div class="item-slick3" data-thumb="{{asset('images/castillo1.webp')}}">
+								<div class="item-slick3" data-thumb="{{$Inmueble->foto_1}}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="{{asset('images/castillo1.webp')}}" alt="IMG-PRODUCT">
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{asset('images/castillo1.webp')}}">
+										<img src="{{$Inmueble->foto_1}}" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Inmueble->foto_1}}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
 
-								<div class="item-slick3" data-thumb="{{asset('images/castillo2.webp')}}">
+								<div class="item-slick3" data-thumb="{{$Inmueble->foto_2}}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="{{asset('images/castillo2.webp')}}" alt="IMG-PRODUCT">
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{asset('images/castillo2.webp')}}">
+										<img src="{{$Inmueble->foto_2}}" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Inmueble->foto_2}}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
 
-								<div class="item-slick3" data-thumb="{{asset('images/castillo3.webp')}}">
+								<div class="item-slick3" data-thumb="{{$Inmueble->foto_3}}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="{{asset('images/castillo3.webp')}}" alt="IMG-PRODUCT">
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{asset('images/castillo3.webp')}}">
+										<img src="{{$Inmueble->foto_3}}" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Inmueble->foto_3}}">
+											<i class="fa fa-expand"></i>
+										</a>
+									</div>
+								</div>
+
+								<div class="item-slick3" data-thumb="{{$Inmueble->foto_4}}">
+									<div class="wrap-pic-w pos-relative">
+										<img src="{{$Inmueble->foto_4}}" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Inmueble->foto_4}}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
@@ -263,13 +272,16 @@
 					<div class="tab-content p-t-43">
 						<!-- - -->
 						<div class="tab-pane fade show active" id="description" role="tabpanel">
-							<div class="how-pos2 p-lr-15-md">
-								<p class="stext-102 cl6">
-									Aenean sit amet gravida nisi. Nam fermentum est felis, quis feugiat nunc fringilla sit amet. Ut in blandit ipsum. Quisque luctus dui at ante aliquet, in hendrerit lectus interdum. Morbi elementum sapien rhoncus
-									pretium maximus. Nulla lectus enim, cursus et elementum sed, sodales vitae eros. Ut ex quam, porta consequat interdum in, faucibus eu velit. Quisque rhoncus ex ac libero varius molestie. Aenean tempor sit amet orci
-									nec iaculis. Cras sit amet nulla libero. Curabitur dignissim, nunc nec laoreet consequat, purus nunc porta lacus, vel efficitur tellus augue in ipsum. Cras in arcu sed metus rutrum iaculis. Nulla non tempor erat.
-									Duis in egestas nunc.
+							<div class="how-pos2 p-lr-15-md text-center row">
+								<p class="stext-102 cl6 text-left row col-md-6">
+								<span class="text-uppercase col-md-12"> Superficie: {{ $Inmueble->superficie }} </span>
+								<span class="text-uppercase col-md-12"> Capacidad de invitados: {{ $Inmueble->capacidad }} </span>
 								</p>
+
+								<p class="stext-102 cl6 text-left row col-md-6">
+
+								</p>
+
 							</div>
 						</div>
 
@@ -280,53 +292,172 @@
 									<ul class="p-lr-28 p-lr-15-sm">
 										<li class="flex-w flex-t p-b-7">
 											<span class="stext-102 cl3 size-205">
-												Weight
+												Barra de tragos:
 											</span>
 
 											<span class="stext-102 cl6 size-206">
-												0.79 kg
+												@if ( $Inmueble->barra_tragos == 1 )
+													SI
+												@else
+													NO
+												@endif
 											</span>
 										</li>
 
 										<li class="flex-w flex-t p-b-7">
 											<span class="stext-102 cl3 size-205">
-												Dimensions
+												Catering:
 											</span>
 
 											<span class="stext-102 cl6 size-206">
-												110 x 33 x 100 cm
+												@if ( $Inmueble->catering == 1 )
+													SI
+												@else
+													NO
+												@endif
 											</span>
 										</li>
 
 										<li class="flex-w flex-t p-b-7">
 											<span class="stext-102 cl3 size-205">
-												Materials
+												DJ:
 											</span>
 
 											<span class="stext-102 cl6 size-206">
-												60% cotton
+												@if ( $Inmueble->dj == 1 )
+													SI
+												@else
+													NO
+												@endif
 											</span>
 										</li>
 
 										<li class="flex-w flex-t p-b-7">
 											<span class="stext-102 cl3 size-205">
-												Color
+												Mesas y sillas:
 											</span>
 
 											<span class="stext-102 cl6 size-206">
-												Black, Blue, Grey, Green, Red, White
+												@if ( $Inmueble->mesas_sillas == 1 )
+													SI
+												@else
+													NO
+												@endif
 											</span>
 										</li>
 
 										<li class="flex-w flex-t p-b-7">
 											<span class="stext-102 cl3 size-205">
-												Select 1
+												Mesa dulce:
 											</span>
 
 											<span class="stext-102 cl6 size-206">
-												XL, L, M, S
+												@if ( $Inmueble->mesa_dulce == 1 )
+													SI
+												@else
+													NO
+												@endif
 											</span>
 										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Guardarropas:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Inmueble->guardarropas == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Guardarropas:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Inmueble->guardarropas == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Mozos y camareras:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Inmueble->mozos_camareras == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Proyector y pantalla:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Inmueble->proyector_pantalla == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Recepción:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Inmueble->recepcion == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Vajillas
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Inmueble->vajillas == 1 )
+													SI
+												@else
+													NO
+												@endif												
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												WiFi
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Inmueble->wifi == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
 									</ul>
 								</div>
 							</div>
