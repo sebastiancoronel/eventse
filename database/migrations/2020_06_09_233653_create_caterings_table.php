@@ -41,6 +41,31 @@ class CreateCateringsTable extends Migration
 
             $table->timestamps();
         });
+
+        DB::table('caterings')->insert([
+            [
+                'foto_1' => '/images/publicaciones/JumpZone/Catering/2020-06-21/Servicio Catering - Pernil Para Eventos 50 Personas/foto 1.jpg',
+                'foto_2' => '/images/publicaciones/JumpZone/Catering/2020-06-21/Servicio Catering - Pernil Para Eventos 50 Personas/foto 2.jpg',
+                'foto_3' => '/images/publicaciones/JumpZone/Catering/2020-06-21/Servicio Catering - Pernil Para Eventos 50 Personas/foto 3.jpg',
+                'foto_4' => '/images/publicaciones/JumpZone/Catering/2020-06-21/Servicio Catering - Pernil Para Eventos 50 Personas/foto 4.jpg',
+                'titulo' => 'Servicio Catering - Pernil Para Eventos 50 Personas',
+                'descripcion' => 'Servicio Catering - Pernil Para Eventos 50 PersonasServicio Catering - Pernil Para Eventos 50 PersonasServicio Catering - Pernil Para Eventos 50 PersonasServicio Catering - Pernil Para Eventos 50 PersonasServicio Catering - Pernil Para Eventos 50 PersonasServicio Catering - Pernil Para Eventos 50 PersonasServicio Catering - Pernil Para Eventos 50 PersonasServicio Catering - Pernil Para Eventos 50 PersonasServicio Catering - Pernil Para Eventos 50 PersonasServicio Catering - Pernil Para Eventos 50 PersonasServicio Catering - Pernil Para Eventos 50 PersonasServicio Catering - Pernil Para Eventos 50 PersonasServicio Catering - Pernil Para Eventos 50 PersonasServicio Catering - Pernil Para Eventos 50 PersonasServicio Catering - Pernil Para Eventos 50 PersonasServicio Catering - Pernil Para Eventos 50 PersonasServicio Catering - Pernil Para Eventos 50 PersonasServicio Catering - Pernil Para Eventos 50 PersonasServicio Catering - Pernil Para Eventos 50 PersonasServicio Catering',
+                'cantidad_invitados' => '50',
+                'servicio_pizza' => null,
+                'mesa_dulce' => 1,
+                'pernil' => 1,
+                'coffee_break' => 1,
+                'servicio_lunch' => null,
+                'servicio_gourmet' => null,
+                'provincia' => 'La Pampa',
+                'localidad' => 'Colonia San Jose',
+                'precio' => null,
+                'precio_a_convenir' => 1,
+                'id_categoria' => 5,
+                'id_prestador' => 1,
+                'fecha_publicacion' => '2020-06-24',
+            ]
+        ]);
     }
 
     /**

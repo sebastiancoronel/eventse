@@ -50,6 +50,41 @@ class CreateInmueblesTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
+        DB::table('inmuebles')->insert([
+            [
+                'foto_1' => '/images/publicaciones/JumpZone/Salones/2020-06-21/Casa quinta monte grande/foto 1.jpg',
+                'foto_2' => '/images/publicaciones/JumpZone/Salones/2020-06-21/Casa quinta monte grande/foto 2.jpg',
+                'foto_3' => '/images/publicaciones/JumpZone/Salones/2020-06-21/Casa quinta monte grande/foto 3.jpg',
+                'foto_4' => '/images/publicaciones/JumpZone/Salones/2020-06-21/Casa quinta monte grande/foto 4.jpg',
+                'tipo' => 'Salon',
+                'nombre' => 'Casa quinta monte grande',
+                'calle' => 'Las Heras',
+                'numero' => '1760',
+                'barrio' => 'El Bosque',
+                'superficie' => '100',
+                'capacidad' => '60',
+                'provincia' => 'Rio Negro',
+                'localidad' => 'Barrio Colonia Conesa',
+                'barra_tragos' => null,
+                'catering' => 1,
+                'dj' => 1,
+                'mesas_sillas' => 1,
+                'mesa_dulce' => null,
+                'guardarropas' => null,
+                'mozos_camareras' => 1,
+                'proyector_pantalla' => null,
+                'recepcion' => null,
+                'vajillas' => 1,
+                'wifi' => 1,
+                'piscina' => null,
+                'precio' => null,
+                'precio_a_convenir' => 1,
+                'id_categoria' => 1,
+                'id_prestador' => 1,
+                'fecha_publicacion' => '2020-06-21',
+            ]
+        ]);
     }
 
     /**

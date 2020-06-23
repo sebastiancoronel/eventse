@@ -50,6 +50,38 @@ class CreateMobiliariosTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
+        DB::table('mobiliarios')->insert([
+            [
+                'foto_1' => '/images/publicaciones/JumpZone/Mobiliario/2020-06-21/Mobiliario - Puff mesas islas y más/foto 1.jpg',
+                'foto_2' => '/images/publicaciones/JumpZone/Mobiliario/2020-06-21/Mobiliario - Puff mesas islas y más/foto 2.jpg',
+                'foto_3' => '/images/publicaciones/JumpZone/Mobiliario/2020-06-21/Mobiliario - Puff mesas islas y más/foto 3.jpg',
+                'foto_4' => '/images/publicaciones/JumpZone/Mobiliario/2020-06-21/Mobiliario - Puff mesas islas y más/foto 4.jpg',
+                'titulo' => 'Alquiler Muebles Luminosos - Catarata De Luz Mesas Piña',
+                'capacidad' => '44',
+                'tipo' => 'adultos',
+                'sillones' => null,
+                'puf' => 1,
+                'gazebos' => 1,
+                'carpas' => 1,
+                'fanales' => null,
+                'farolas' => null,
+                'biombo' => 1,
+                'mini_living' => null,
+                'lamparas_vintage' => null,
+                'camastro' => null,
+                'puf_redondo' => null,
+                'isla_circular' => null,
+                'provincia' => 'Santiago Del Esteor',
+                'localidad' => 'La Banda',
+                'descripcion' => 'EL COMBO INCLUYE: - 1 Catarata Luminosa (Blanca Cálida 3 Metros de ancho x 2,80 metros de alto; Blanca Fría o Azul 4 Metros de Ancho x 2,80 metros de alto). - 4 Mesas Ratonas de Piña (50 cm de ancho x 50 cm de alto). - 1 Hielera (Grande 36 cm de ancho x 28 cm de alto; Chica 26 cm de ancho x 30 cm de alto) *ENTRAN TODOS EN TU AUTO; TE AHORRAS EL FLETE!',
+                'precio' => 2700,
+                'precio_a_convenir' => null,
+                'id_categoria' => 4,
+                'id_prestador' => 1,
+                'fecha_publicacion' => '2020-06-21',
+            ]
+        ]);
     }
 
     /**

@@ -43,6 +43,34 @@ class CreateAnimacionsTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
+        DB::table('animacions')->insert([
+            [
+                'foto_1' => '/images/publicaciones/JumpZone/Animación/2020-06-21/Animacion los peques/foto 1.jpg',
+                'foto_2' => '/images/publicaciones/JumpZone/Animación/2020-06-21/Animacion los peques/foto 2.jpg',
+                'foto_3' => '/images/publicaciones/JumpZone/Animación/2020-06-21/Animacion los peques/foto 3.jpg',
+                'foto_4' => '/images/publicaciones/JumpZone/Animación/2020-06-21/Animacion los peques/foto 4.jpg',
+                'titulo' => 'Alquiler Inflables Castillo Tobogan Juegos Cama Zona Norte',
+                'cant_animadores' => '13',
+                'años_experiencia' => '10',
+                'edades' => '1-6 años',
+                'descripcion' => 'ANIMACIÓN: Las animaciones consisten en bailes, karaoke, juegos para chicos y adultos, dinámicas, concursos, integraciones grupales, cantamos cumpleaños y los organizamos para el momento de la piñata!!',
+                'magos' => null,
+                'maquillaje' => 1,
+                'karaoke' => 1,
+                'payasos' => 1,
+                'personajes' => null,
+                'titeres' => null,
+                'globologia' => 1,
+                'robot_led' => null,
+                'maquillaje_fluor' => null,
+                'precio' => 6000,
+                'precio_a_convenir' => null,
+                'id_categoria' => 3,
+                'id_prestador' => 1,
+                'fecha_publicacion' => '2020-06-21',
+            ]
+        ]);
     }
 
     /**

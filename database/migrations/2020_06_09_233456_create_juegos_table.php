@@ -33,6 +33,24 @@ class CreateJuegosTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
+        DB::table('juegos')->insert([
+            [
+                'foto_1' => '/images/publicaciones/JumpZone/Juegos/2020-06-21/Alquiler de castillos Inflables/foto 1.jpg',
+                'foto_2' => '/images/publicaciones/JumpZone/Juegos/2020-06-21/Alquiler de castillos Inflables/foto 2.jpg',
+                'foto_3' => '/images/publicaciones/JumpZone/Juegos/2020-06-21/Alquiler de castillos Inflables/foto 3.jpg',
+                'foto_4' => '/images/publicaciones/JumpZone/Juegos/2020-06-21/Alquiler de castillos Inflables/foto 4.jpg',
+                'titulo' => 'Alquiler Inflables Castillo Tobogan Juegos Cama Zona Norte',
+                'descripcion' => 'PROMO DIVERSION 20% Off + 2 Días GRATIS !!! Alquiler de Inflables, Arcade, PlayStation, Karaoke, Metegol y mas!',
+                'provincia' => 'Santa Fe',
+                'localidad' => 'Angeloni',
+                'precio' => 1600,
+                'precio_a_convenir' => null,
+                'id_categoria' => 2,
+                'id_prestador' => 1,
+                'fecha_publicacion' => '2020-06-21',
+            ]
+        ]);
     }
 
     /**
