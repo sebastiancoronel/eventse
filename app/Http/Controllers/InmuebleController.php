@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Prestador;
 use App\Cliente;
 use App\Categoria;
+use App\PreguntaInmueble;
 class InmuebleController extends Controller
 {
 
@@ -89,6 +90,7 @@ class InmuebleController extends Controller
       }
 
       public function MostrarInmueble(Request $req) {
+
         $Inmueble = Inmueble::where('id',$req->id_inmueble)->where('id_categoria',$req->id_categoria)
                             ->select('*')
                             ->first();
@@ -97,16 +99,44 @@ class InmuebleController extends Controller
                                 ->select('*')
                                 ->first();
 
-        // $id = Auth::user()->id;
-        // dd($id);
-        // $Cliente = Cliente::where('user_id', $id )
-        //                     ->select('*')                         
-        //                     ->first();
+        //Traer todas las preguntas
+        $PreguntasInmueble = PreguntaInmueble::where('id_prestador',$Prestador->id)
+                                              ->where('id_inmueble',$Inmueble->id)
+                                              ->select('*')
+                                              ->orderBy('created_at', 'DESC')
+                                              ->get();
+        
 
-        return view('Ecommerce.Articulos.Detalles.Inmuebles.articulo',['Inmueble' => $Inmueble, 'Prestador'=>$Prestador]);
+        return view('Ecommerce.Articulos.Detalles.Inmuebles.articulo',[ 'Inmueble' => $Inmueble, 'Prestador' => $Prestador, 'PreguntasInmueble' => $PreguntasInmueble ]);
       }
 
       public function PublicarPregunta(Request $req){
-        dd($req);
+        
+        $Pregunta = New PreguntaInmueble;
+        $Pregunta->id_prestador = $req->id_prestador;
+        $Pregunta->id_inmueble = $req->id_inmueble;
+        $Pregunta->id_cliente = $req->id_cliente;
+        $Pregunta->pregunta = $req->textarea_pregunta;
+        $Pregunta->save();
+        return 'Pregunta realizada';
+
+        return redirect()->route('MostrarInmueble')->with('PreguntaRealizadaConExito','Su pregunta fue realizada con éxito');
+      }
+
+      public function ActualizarPreguntasAjax(Request $req){
+
+        $ActualizarPreguntas = PreguntaInmueble::where('id_prestador',$req->id_prestador)
+                                              ->where('id_inmueble',$req->id_inmueble)
+                                              ->select('*')
+                                              ->orderBy('created_at', 'DESC')
+                                              ->get();
+
+        return $ActualizarPreguntas;
+        //return json_encode($ActualizarPreguntas);
+        // return response()->json([
+
+        //   'pregunta' => $ActualizarPreguntas->pregunta,
+        //   'respuesta' => $ActualizarPreguntas->respuesta,
+        // ]);
       }
 }

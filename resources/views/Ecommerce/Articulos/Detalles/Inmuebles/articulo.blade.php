@@ -590,13 +590,13 @@
 									@endphp
 
 									@if ($Cliente && $Usuario != null)
-									<form action="{{route('PublicarPregunta')}}">
+									<form id="form_pregunta" action="{{route('PublicarPregunta')}}">
 										<input id="id_prestador" hidden type="text" name="id_prestador" value="{{$Prestador->id}}">
 										<input id="id_inmueble" hidden type="text" name="id_inmueble" value="{{$Inmueble->id}}">
 										<input id="id_cliente" hidden type="text" name="id_cliente" value="{{$Cliente->id}}">
 									
-										<textarea class="form-control" name="pregunta" rows="4" cols="4" maxlength="300"></textarea>
-										<button id="boton_preguntar" type="button" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+										<textarea id="textarea_pregunta" class="form-control" name="pregunta" rows="4" cols="4" maxlength="300" required></textarea>
+										<button id="boton_preguntar" type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
 											Preguntar
 										</button>
 									</form>
@@ -620,7 +620,7 @@
 
 								{{-- Traer todas las preguntas --}}
 								@foreach ($PreguntasInmueble as $pregunta_inmueble)
-									<div class="row mt-5 rounded">
+									<div id="mostrar_preguntas" class="row mt-5 rounded">
 										<span class="col-md-12 col-12"> <i class="zmdi zmdi-comment-text"></i> {{$pregunta_inmueble->pregunta}} </span><br>
 										<span class="col-md-12 col-12 mt-3" ><i class="zmdi zmdi-comment-alt-text"></i> {{$pregunta_inmueble->respuesta}} </span><br><br><br>
 									</div>
@@ -647,11 +647,13 @@
 </div>
 
 <script>
-	$('#boton_preguntar').click(function(){
+	$('#form_pregunta').submit( function(e){
+		e.preventDefault();
 		var id_prestador = $('#id_prestador').val();
 		var id_inmueble = $('#id_inmueble').val();
 		var id_cliente = $('#id_cliente').val();
-		console.log(id_prestador, id_inmueble, id_cliente);
+		var textarea_pregunta = $('#textarea_pregunta').val();
+
 		$.ajax({
 	
 			method: 'POST',
@@ -660,6 +662,7 @@
 				id_prestador,
 				id_inmueble,
 				id_cliente,
+				textarea_pregunta,
 				_token: "{{csrf_token()}}"
 				
 	
@@ -670,12 +673,39 @@
 			},
 	
 			success: function(data){
-				console.log(data);
+				$('#textarea_pregunta').val('');
 				swal('Listo!','Su pregunta fue realizada con éxito','success');
-	
 			}
 	
 		}); //ajax
+
+		//Actualizar preguntas
+		$.ajax({
+		
+			method: 'GET',
+			url: '{{url('/reservar/servicios-publicados/Inmueble/almacenando-pregunta')}}',
+			data: {
+				id_prestador,
+				id_inmueble,
+				_token: "{{csrf_token()}}"
+			},
+
+			error: function(x,y,z){
+				console.log(x,y,z);
+			},
+
+			success: function(data){
+				console.log(data);
+				$('#mostrar_preguntas').empty();
+
+				$.each(data[0], function(index, value) {
+					var mostrar_preguntas = `<span class="col-md-12 col-12"> <i class="zmdi zmdi-comment-text"></i> `+ value['pregunta'] +` </span><br>`
+					$('#mostrar_preguntas').append(mostrar_preguntas);
+                    // $('#localidad').append('<option value="' + value['nombre'] + '"> ' + value['nombre'] + ' </option>');
+                });
+			}//success
+
+		})
 
 	}); //on click
 	
