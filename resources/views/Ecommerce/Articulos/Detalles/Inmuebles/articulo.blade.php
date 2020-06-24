@@ -2,7 +2,6 @@
 @section('content')
 {{-- Detalle de producto --}}
 <div class="animsition">
-
 	<!-- breadcrumb escritorio -->
 	<div class="container mt-5 pt-5 d-none d-sm-block">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
@@ -486,6 +485,7 @@
 							</div>
 						</div>
 
+						<!-- Opiniones -->
 						<div class="tab-pane fade" id="reviews" role="tabpanel">
 							<div class="row">
 								<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
@@ -570,11 +570,42 @@
 
 						<div class="tab-pane fade how-pos2 p-lr-15-md" id="preguntas" role="tabpanel">
 							{{-- Input para preguntar --}}
-								<div class="md-form row ">
-									<textarea class="form-control" name="name" rows="4" cols="4"></textarea>
-									<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-										Preguntar
-									</button>
+							<div class="md-form row">
+								@auth
+									{{-- Comprueba que el usuario tenga una cuenta de cliente y esté logueado --}}
+									@php
+										$Usuario = Auth::user()->id;
+										$Cliente = DB::table('clientes')
+													->where('user_id', Auth::user()->id)
+													->select('*')                         
+													->first();
+									@endphp
+
+									@if ($Cliente && $Usuario != null)
+									<form action="{{route('PublicarPregunta')}}">
+										<input hidden type="text" name="id_prestador" value="">
+										<input hidden type="text" name="id_cliente" value="">
+										<textarea class="form-control" name="pregunta" rows="4" cols="4"></textarea>
+										<button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+											Preguntar
+										</button>
+									</form>
+										@else
+										<div class="alert alert-warning m-auto text-center">
+											<i class="zmdi zmdi-alert-triangle"></i> 
+											Debes <a href="{{route('login')}}" class=""> completar tus datos como cliente </a> para hacer una pregunta
+										</div>
+									@endif
+								@endauth
+
+									@guest
+										<div class="alert alert-warning m-auto text-center">
+											<i class="zmdi zmdi-alert-triangle"></i> 
+											Debes <a href="{{route('login')}}" class=""> iniciar sesión </a> y <a href="{{route('login')}}" class=""> completar tus datos como cliente </a> para hacer una pregunta
+										</div>
+									@endguest
+
+								
 								</div>
 								{{-- Traer todas las preguntas --}}
 								<div class="row mt-5 rounded">
