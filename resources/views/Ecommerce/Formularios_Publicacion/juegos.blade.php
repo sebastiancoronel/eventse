@@ -305,7 +305,7 @@
         $("#provincia_nombre").val(nombre_provincia);
         $.ajax({
             type: 'POST',
-            url: '{{url('listarlocalidades ')}}',
+            url: '{{url('listarlocalidades')}}',
             data: {
                 provincia_id,
                 nombre_provincia,
