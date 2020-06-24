@@ -29,7 +29,8 @@ Route::get('/mi-paquete','CarritoController@ProductosAgregados')->name('Producto
   //Catering
   //MusicaDjs
 
-
+  //Preguntas
+  Route::get('/reservar/servicios-publicados/Inmueble/almacenando-pregunta','InmuebleController@PublicarPregunta')->name('PublicarPregunta')->middleware('ControlarDatosCompletos');
 /*
 |--------------------------------------------------------------------------
 | Auth + Datos completos + Perfil empresa

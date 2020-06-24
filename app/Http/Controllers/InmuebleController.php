@@ -1,14 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Auth;
 use App\Inmueble;
 use Illuminate\Http\Request;
 use App\Prestador;
+use App\Cliente;
 use App\Categoria;
 class InmuebleController extends Controller
 {
-    public function FormularioInmueble(){
+
+      public function FormularioInmueble() {
         //Traer Provincias y Localidades
         $path = storage_path() . "/json/ProvinciasLocalidades.json";
         $ProvinciasLocalidadesJson = json_decode(file_get_contents($path),true);
@@ -85,7 +88,7 @@ class InmuebleController extends Controller
         return redirect()->route('Principal');
       }
 
-      public function MostrarInmueble(Request $req){
+      public function MostrarInmueble(Request $req) {
         $Inmueble = Inmueble::where('id',$req->id_inmueble)->where('id_categoria',$req->id_categoria)
                             ->select('*')
                             ->first();
@@ -93,6 +96,17 @@ class InmuebleController extends Controller
         $Prestador = Prestador::where('id', $Inmueble->id_prestador)
                                 ->select('*')
                                 ->first();
+
+        // $id = Auth::user()->id;
+        // dd($id);
+        // $Cliente = Cliente::where('user_id', $id )
+        //                     ->select('*')                         
+        //                     ->first();
+
         return view('Ecommerce.Articulos.Detalles.Inmuebles.articulo',['Inmueble' => $Inmueble, 'Prestador'=>$Prestador]);
+      }
+
+      public function PublicarPregunta(Request $req){
+        dd($req);
       }
 }

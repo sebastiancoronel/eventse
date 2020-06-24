@@ -570,7 +570,7 @@
 
 						<div class="tab-pane fade how-pos2 p-lr-15-md" id="preguntas" role="tabpanel">
 							{{-- Input para preguntar --}}
-							<div class="md-form row">
+							<div class="md-form">
 								@auth
 									{{-- Comprueba que el usuario tenga una cuenta de cliente y esté logueado --}}
 									@php
@@ -585,7 +585,7 @@
 									<form action="{{route('PublicarPregunta')}}">
 										<input hidden type="text" name="id_prestador" value="">
 										<input hidden type="text" name="id_cliente" value="">
-										<textarea class="form-control" name="pregunta" rows="4" cols="4"></textarea>
+										<textarea class="form-control" name="pregunta" rows="4" cols="4" maxlength="300"></textarea>
 										<button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
 											Preguntar
 										</button>
