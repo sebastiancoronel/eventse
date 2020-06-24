@@ -1,5 +1,13 @@
 @extends('layouts.barra_navegacion_principal')
 @section('content')
+
+{{-- @if (Session::has('PreguntaRealizadaConExito')){
+	<script>
+		swal('Listo!',{{Session::get('PreguntaRealizadaConExito')}},'success');
+	</script>
+}
+	
+@endif --}}
 {{-- Detalle de producto --}}
 <div class="animsition">
 	<!-- breadcrumb escritorio -->
@@ -583,10 +591,12 @@
 
 									@if ($Cliente && $Usuario != null)
 									<form action="{{route('PublicarPregunta')}}">
-										<input hidden type="text" name="id_prestador" value="">
-										<input hidden type="text" name="id_cliente" value="">
+										<input id="id_prestador" hidden type="text" name="id_prestador" value="{{$Prestador->id}}">
+										<input id="id_inmueble" hidden type="text" name="id_inmueble" value="{{$Inmueble->id}}">
+										<input id="id_cliente" hidden type="text" name="id_cliente" value="{{$Cliente->id}}">
+									
 										<textarea class="form-control" name="pregunta" rows="4" cols="4" maxlength="300"></textarea>
-										<button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+										<button id="boton_preguntar" type="button" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
 											Preguntar
 										</button>
 									</form>
@@ -607,21 +617,16 @@
 
 								
 								</div>
+
 								{{-- Traer todas las preguntas --}}
-								<div class="row mt-5 rounded">
-									<span class="col-md-12 col-12"> <i class="zmdi zmdi-comment-text"></i> ¿Hola, el alquiler del inflable es por 4 horas nada más o puedo agregar más?</span><br>
-									<span class="col-md-12 col-12 mt-3" ><i class="zmdi zmdi-comment-alt-text"></i> Hola. La hora adicional la puede elegir arriba cambiando el tiempo en el campo de horario. Son $100 más por hora adicional.</span><br><br><br>
-								</div>
+								@foreach ($PreguntasInmueble as $pregunta_inmueble)
+									<div class="row mt-5 rounded">
+										<span class="col-md-12 col-12"> <i class="zmdi zmdi-comment-text"></i> {{$pregunta_inmueble->pregunta}} </span><br>
+										<span class="col-md-12 col-12 mt-3" ><i class="zmdi zmdi-comment-alt-text"></i> {{$pregunta_inmueble->respuesta}} </span><br><br><br>
+									</div>
 								<hr>
-								<div class="row mt-5 rounded">
-									<span class="col-md-12 col-12"> <i class="zmdi zmdi-comment-text"></i> ¿Hola, el alquiler del inflable es por 4 horas nada más o puedo agregar más?</span><br>
-									<span class="col-md-12 col-12 mt-3" ><i class="zmdi zmdi-comment-alt-text"></i> Hola. La hora adicional la puede elegir arriba cambiando el tiempo en el campo de horario. Son $100 más por hora adicional.</span><br><br><br>
-								</div>
-								<hr>
-								<div class="row mt-5 rounded">
-									<span class="col-md-12 col-12"> <i class="zmdi zmdi-comment-text"></i> ¿Hola, el alquiler del inflable es por 4 horas nada más o puedo agregar más?</span><br>
-									<span class="col-md-12 col-12 mt-3" ><i class="zmdi zmdi-comment-alt-text"></i> Hola. La hora adicional la puede elegir arriba cambiando el tiempo en el campo de horario. Son $100 más por hora adicional.</span><br><br><br>
-								</div>
+								@endforeach
+								
 						</div>
 					</div>
 				</div>
@@ -640,5 +645,40 @@
 	</section>
 
 </div>
+
+<script>
+	$('#boton_preguntar').click(function(){
+		var id_prestador = $('#id_prestador').val();
+		var id_inmueble = $('#id_inmueble').val();
+		var id_cliente = $('#id_cliente').val();
+		console.log(id_prestador, id_inmueble, id_cliente);
+		$.ajax({
+	
+			method: 'POST',
+			url: '{{url('/reservar/servicios-publicados/Inmueble/almacenando-pregunta')}}',
+			data: {
+				id_prestador,
+				id_inmueble,
+				id_cliente,
+				_token: "{{csrf_token()}}"
+				
+	
+			},
+			error: function(x,y,z){
+	
+				console.log(x,y,z);
+			},
+	
+			success: function(data){
+				console.log(data);
+				swal('Listo!','Su pregunta fue realizada con éxito','success');
+	
+			}
+	
+		}); //ajax
+
+	}); //on click
+	
+</script>
 
 @endsection
