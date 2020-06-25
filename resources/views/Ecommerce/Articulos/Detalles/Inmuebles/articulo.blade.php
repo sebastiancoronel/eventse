@@ -498,35 +498,38 @@
 							<div class="row">
 								<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
 									<div class="p-b-30 m-lr-15-sm">
+										@foreach ($OpinionesInmueble as $opinion_inmueble)
 										<!-- Review -->
 										<div class="flex-w flex-t p-b-68">
-											<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
+											{{-- <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
 												<img src="{{asset('images/avatar-01.jpg')}}" alt="AVATAR">
-											</div>
-
+											</div> --}}
+											
 											<div class="size-207">
 												<div class="flex-w flex-sb-m p-b-17">
 													<span class="mtext-107 cl2 p-r-20">
-														Ariana Grande
+														{{$opinion_inmueble->name}}
 													</span>
-
-													<span class="fs-18 cl11">
+													
+													{{-- <span class="fs-18 cl11">
 														<i class="zmdi zmdi-star"></i>
 														<i class="zmdi zmdi-star"></i>
 														<i class="zmdi zmdi-star"></i>
 														<i class="zmdi zmdi-star"></i>
 														<i class="zmdi zmdi-star-half"></i>
-													</span>
+													</span> --}}
 												</div>
-
+												
 												<p class="stext-102 cl6">
-													Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos
+													{{$opinion_inmueble->opinion}}
 												</p>
 											</div>
 										</div>
 
+										@endforeach
+
 										<!-- Add review -->
-										<form class="w-full">
+										{{-- <form class="w-full">
 											<h5 class="mtext-108 cl2 p-b-7">
 												Add a review
 											</h5>
@@ -570,7 +573,8 @@
 											<button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
 												Submit
 											</button>
-										</form>
+										</form> --}}
+
 									</div>
 								</div>
 							</div>
@@ -595,8 +599,8 @@
 										<input id="id_inmueble" hidden type="text" name="id_inmueble" value="{{$Inmueble->id}}">
 										<input id="id_cliente" hidden type="text" name="id_cliente" value="{{$Cliente->id}}">
 									
-										<textarea id="textarea_pregunta" class="form-control" name="pregunta" rows="4" cols="4" maxlength="300" required></textarea>
-										<button id="boton_preguntar" type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+										<textarea id="textarea_pregunta" class="form-control size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" name="pregunta" rows="4" cols="4" maxlength="300" required></textarea>
+										<button id="boton_preguntar" type="submit" class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
 											Preguntar
 										</button>
 									</form>

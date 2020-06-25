@@ -32,6 +32,7 @@ Route::get('/mi-paquete','CarritoController@ProductosAgregados')->name('Producto
   //Preguntas
   Route::post('/reservar/servicios-publicados/Inmueble/almacenando-pregunta','InmuebleController@PublicarPregunta')->name('PublicarPregunta')->middleware('ControlarDatosCompletos');
   Route::get('/reservar/servicios-publicados/Inmueble/almacenando-pregunta','InmuebleController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('ControlarDatosCompletos');
+  
 /*
 |--------------------------------------------------------------------------
 | Auth + Datos completos + Perfil empresa

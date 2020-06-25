@@ -9,6 +9,8 @@ use App\Prestador;
 use App\Cliente;
 use App\Categoria;
 use App\PreguntaInmueble;
+use App\OpinionInmueble;
+
 class InmuebleController extends Controller
 {
 
@@ -106,8 +108,16 @@ class InmuebleController extends Controller
                                               ->orderBy('created_at', 'DESC')
                                               ->get();
         
+        //Traer todas las opiniones
+        $OpinionesInmueble = OpinionInmueble::where('id_prestador',$Prestador->id)
+                                            ->where('id_inmueble',$Inmueble->id)
+                                            ->join('clientes','opinion_inmuebles.id_cliente','=','clientes.id')
+                                            ->join('users','clientes.user_id','=','users.id')
+                                            ->select('*')
+                                            ->orderBy('opinion_inmuebles.created_at', 'DESC')
+                                            ->get();
 
-        return view('Ecommerce.Articulos.Detalles.Inmuebles.articulo',[ 'Inmueble' => $Inmueble, 'Prestador' => $Prestador, 'PreguntasInmueble' => $PreguntasInmueble ]);
+        return view('Ecommerce.Articulos.Detalles.Inmuebles.articulo',[ 'Inmueble' => $Inmueble, 'Prestador' => $Prestador, 'PreguntasInmueble' => $PreguntasInmueble, 'OpinionesInmueble' => $OpinionesInmueble ]);
       }
 
       public function PublicarPregunta(Request $req){
@@ -132,11 +142,5 @@ class InmuebleController extends Controller
                                               ->get();
 
         return $ActualizarPreguntas;
-        //return json_encode($ActualizarPreguntas);
-        // return response()->json([
-
-        //   'pregunta' => $ActualizarPreguntas->pregunta,
-        //   'respuesta' => $ActualizarPreguntas->respuesta,
-        // ]);
       }
 }
