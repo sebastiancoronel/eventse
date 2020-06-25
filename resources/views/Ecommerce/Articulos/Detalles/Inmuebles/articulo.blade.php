@@ -702,8 +702,8 @@
 				$('#mostrar_preguntas').empty();
 
 				$.each(data, function(index, value) {
-					if( value[respuesta] == ){
-
+					if( value['respuesta'] == null ){
+						value['respuesta'] = '';
 					}
 					var mostrar_preguntas = `
 												<div class="row mt-5 rounded">
