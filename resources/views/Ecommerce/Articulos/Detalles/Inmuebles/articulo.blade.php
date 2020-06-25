@@ -619,13 +619,15 @@
 								</div>
 
 								{{-- Traer todas las preguntas --}}
-								@foreach ($PreguntasInmueble as $pregunta_inmueble)
-									<div id="mostrar_preguntas" class="row mt-5 rounded">
+								<div id="mostrar_preguntas" >
+									@foreach ($PreguntasInmueble as $pregunta_inmueble)
+									<div class="row mt-5 rounded">
 										<span class="col-md-12 col-12"> <i class="zmdi zmdi-comment-text"></i> {{$pregunta_inmueble->pregunta}} </span><br>
 										<span class="col-md-12 col-12 mt-3" ><i class="zmdi zmdi-comment-alt-text"></i> {{$pregunta_inmueble->respuesta}} </span><br><br><br>
 									</div>
+									@endforeach
+								</div>
 								<hr>
-								@endforeach
 								
 						</div>
 					</div>
@@ -675,6 +677,7 @@
 			success: function(data){
 				$('#textarea_pregunta').val('');
 				swal('Listo!','Su pregunta fue realizada con éxito','success');
+				
 			}
 	
 		}); //ajax
@@ -698,10 +701,17 @@
 				console.log(data);
 				$('#mostrar_preguntas').empty();
 
-				$.each(data[0], function(index, value) {
-					var mostrar_preguntas = `<span class="col-md-12 col-12"> <i class="zmdi zmdi-comment-text"></i> `+ value['pregunta'] +` </span><br>`
+				$.each(data, function(index, value) {
+					if( value[respuesta] == ){
+
+					}
+					var mostrar_preguntas = `
+												<div class="row mt-5 rounded">
+													<span class="col-md-12 col-12"> <i class="zmdi zmdi-comment-text"></i> `+ value['pregunta'] +` </span><br>
+													<span class="col-md-12 col-12 mt-3" ><i class="zmdi zmdi-comment-alt-text"></i> `+ value['respuesta'] +` </span><br><br><br>
+												</div>
+											`;
 					$('#mostrar_preguntas').append(mostrar_preguntas);
-                    // $('#localidad').append('<option value="' + value['nombre'] + '"> ' + value['nombre'] + ' </option>');
                 });
 			}//success
 
