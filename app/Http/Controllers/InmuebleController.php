@@ -117,7 +117,9 @@ class InmuebleController extends Controller
                                             ->orderBy('opinion_inmuebles.created_at', 'DESC')
                                             ->get();
 
-        return view('Ecommerce.Articulos.Detalles.Inmuebles.articulo',[ 'Inmueble' => $Inmueble, 'Prestador' => $Prestador, 'PreguntasInmueble' => $PreguntasInmueble, 'OpinionesInmueble' => $OpinionesInmueble ]);
+        $CantidadOpiniones = $OpinionesInmueble->count();
+
+        return view('Ecommerce.Articulos.Detalles.Inmuebles.articulo',[ 'Inmueble' => $Inmueble, 'Prestador' => $Prestador, 'PreguntasInmueble' => $PreguntasInmueble, 'OpinionesInmueble' => $OpinionesInmueble, 'CantidadOpiniones' => $CantidadOpiniones ]);
       }
 
       public function PublicarPregunta(Request $req){
