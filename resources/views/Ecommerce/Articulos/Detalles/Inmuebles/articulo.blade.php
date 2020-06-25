@@ -621,10 +621,13 @@
 								{{-- Traer todas las preguntas --}}
 								<div id="mostrar_preguntas" >
 									@foreach ($PreguntasInmueble as $pregunta_inmueble)
-									<div class="row mt-5 rounded">
-										<span class="col-md-12 col-12"> <i class="zmdi zmdi-comment-text"></i> {{$pregunta_inmueble->pregunta}} </span><br>
-										<span class="col-md-12 col-12 mt-3" ><i class="zmdi zmdi-comment-alt-text"></i> {{$pregunta_inmueble->respuesta}} </span><br><br><br>
+									<div class="row mt-4 rounded">
+										<span class="col-md-12 col-12 text-dark"> <i class="zmdi zmdi-comment-text"></i> {{$pregunta_inmueble->pregunta}} </span><br>
+										@if ( $pregunta_inmueble->respuesta != null)
+											<span class="col-md-12 col-12 mt-3 text-black-50" ><i class="zmdi zmdi-comment-alt-text"></i> {{$pregunta_inmueble->respuesta}} </span><br><br><br>
+										@endif
 									</div>
+									<hr>
 									@endforeach
 								</div>
 								<hr>
@@ -704,14 +707,22 @@
 				$.each(data, function(index, value) {
 					if( value['respuesta'] == null ){
 						value['respuesta'] = '';
+						var mostrar_preguntas = `
+													<div class="row mt-4 rounded">
+														<span class="col-md-12 col-12 text-dark"> <i class="zmdi zmdi-comment-text"></i> `+ value['pregunta'] +` </span><br>
+													</div>
+												`;
+						$('#mostrar_preguntas').append(mostrar_preguntas);
+					}else{
+
+						var mostrar_preguntas_y_respuestas = `
+																<div class="row mt-4 rounded">
+																	<span class="col-md-12 col-12 text-dark"> <i class="zmdi zmdi-comment-text"></i> `+ value['pregunta'] +` </span><br>
+																	<span class="col-md-12 col-12 mt-3 text-black-50"><i class="zmdi zmdi-comment-alt-text"></i> `+ value['respuesta'] +` </span><br><br><br>
+																</div>
+															`;
+							$('#mostrar_preguntas').append(mostrar_preguntas_y_respuestas);
 					}
-					var mostrar_preguntas = `
-												<div class="row mt-5 rounded">
-													<span class="col-md-12 col-12"> <i class="zmdi zmdi-comment-text"></i> `+ value['pregunta'] +` </span><br>
-													<span class="col-md-12 col-12 mt-3" ><i class="zmdi zmdi-comment-alt-text"></i> `+ value['respuesta'] +` </span><br><br><br>
-												</div>
-											`;
-					$('#mostrar_preguntas').append(mostrar_preguntas);
                 });
 			}//success
 
