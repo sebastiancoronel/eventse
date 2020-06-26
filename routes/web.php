@@ -17,7 +17,10 @@ Route::get('/categorias-listar','CategoriaController@index');
 
 //Listar todos los servicios publicados
 Route::get('/reservar/servicios-publicados','ServicioController@ServiciosPublicados')->name('ServiciosPublicados');
-Route::get('/mi-paquete','CarritoController@ProductosAgregados')->name('ProductosAgregados');
+
+//Carrito
+Route::get('/mi-paquete','CarritoController@ServiciosAgregados')->name('ServiciosAgregados');
+Route::get('/mi-paquete/agregando-servicio','CarritoController@AgregarServicio')->name('AgregarServicio')->middleware('ControlarDatosCompletos');
 
 //Articulos-Detalles
   //Inmuebles
@@ -40,7 +43,7 @@ Route::get('/mi-paquete','CarritoController@ProductosAgregados')->name('Producto
 */
 Route::middleware(['auth', 'ControlarDatosCompletos', 'ControlarNegocioExistente'])->group(function () {
   Route::get('/publicar', 'ServicioController@Publicar')->name('Publicar');
-// Formularios de publicacion
+  // Formularios de publicacion
   Route::get('/publicar/inmuebles', 'InmuebleController@FormularioInmueble')->name('FormularioInmueble');
   Route::get('/publicar/juegos', 'JuegoController@FormularioJuegos')->name('FormularioJuegos');
   Route::get('/publicar/animacion', 'AnimacionController@FormularioAnimacion')->name('FormularioAnimacion');
@@ -50,7 +53,7 @@ Route::middleware(['auth', 'ControlarDatosCompletos', 'ControlarNegocioExistente
   Route::get('/publicar/ornamentacion', 'OrnamentacionController@FormularioOrnamentacion')->name('FormularioOrnamentacion');
   Route::get('/publicar/musicaDj', 'MusicaDjController@FormularioMusicaDj')->name('FormularioMusicaDj');
   Route::get('/publicar/shows', 'ServicioController@FormularioShows')->name('FormularioShows');
-// Publicar servicios
+  // Publicar servicios
   // Inmuebles
   Route::post('/publicar/inmuebles/almacenando-publicacion-inmueble','InmuebleController@PublicarInmueble')->name('PublicarInmueble');
   // Juegos
@@ -72,6 +75,7 @@ Route::middleware(['auth', 'ControlarDatosCompletos', 'ControlarNegocioExistente
 | Auth + Datos completos
 |--------------------------------------------------------------------------
 */
+
 Route::middleware(['auth', 'ControlarDatosCompletos'])->group(function () {
   Route::get('/home', 'HomeController@index')->name('home');
   Route::get('/home/resumen','ClienteController@ClienteResumen')->name('ClienteResumen');
@@ -81,7 +85,7 @@ Route::middleware(['auth', 'ControlarDatosCompletos'])->group(function () {
   Route::get('/publicar/crear-perfil-empresa/formulario','PrestadorController@FormularioPerfilEmpresa')->name('FormularioPerfilEmpresa');
   Route::post('/publicar/crear-perfil-empresa/formulario/almacenar-perfil-empresa','PrestadorController@AlmacenarPerfilEmpresa')->name('AlmacenarPerfilEmpresa');
 
-// Menú Cliente
+  // Menú Cliente
   //Servicios contratados
   Route::get('/home/servicios-contratados/favoritos','ClienteController@ServiciosFavoritos')->name('ServiciosFavoritos');
   Route::get('/home/servicios-contratados/preguntas-realizadas','ClienteController@PreguntasRealizadas')->name('PreguntasRealizadas');
