@@ -10,6 +10,7 @@ use App\Cliente;
 use App\Categoria;
 use App\PreguntaInmueble;
 use App\OpinionInmueble;
+use App\Carrito;
 
 class InmuebleController extends Controller
 {
@@ -117,9 +118,22 @@ class InmuebleController extends Controller
                                             ->orderBy('opinion_inmuebles.created_at', 'DESC')
                                             ->get();
 
+        //Contar numero de opiniones para mostrar
         $CantidadOpiniones = $OpinionesInmueble->count();
 
+        //Traer Cliente logueado
+        if (Auth::user()) {
+          $user_id = Auth::user()->id;
+  
+          $Cliente = Cliente::where('user_id', $user_id)
+                            ->select('*')
+                            ->first();
+          //dd($Cliente);
+          return view('Ecommerce.Articulos.Detalles.Inmuebles.articulo',[ 'Inmueble' => $Inmueble, 'Prestador' => $Prestador, 'PreguntasInmueble' => $PreguntasInmueble, 'OpinionesInmueble' => $OpinionesInmueble, 'CantidadOpiniones' => $CantidadOpiniones, 'Cliente' => $Cliente ]);
+        }
+        
         return view('Ecommerce.Articulos.Detalles.Inmuebles.articulo',[ 'Inmueble' => $Inmueble, 'Prestador' => $Prestador, 'PreguntasInmueble' => $PreguntasInmueble, 'OpinionesInmueble' => $OpinionesInmueble, 'CantidadOpiniones' => $CantidadOpiniones ]);
+
       }
 
       public function PublicarPregunta(Request $req){
@@ -144,5 +158,25 @@ class InmuebleController extends Controller
                                               ->get();
 
         return $ActualizarPreguntas;
+      }
+
+      public function AgregarAlCarrito(Request $req){
+
+        $Carrito = new Carrito;
+        $Carrito->id_cliente = $req->id_cliente;
+        $Carrito->id_inmueble = $req->id_inmueble;
+        $Carrito->id_juego = null;
+        $Carrito->id_animacion = null;
+        $Carrito->id_mobiliario = null;
+        $Carrito->id_catering = null;
+        $Carrito->id_musicaDj = null;
+        $Carrito->total = null;
+        $Carrito->save();
+
+        return response()->json([
+
+          '1' => 'Agregado'
+        ]);
+
       }
 }

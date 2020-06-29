@@ -20,11 +20,13 @@ Route::get('/reservar/servicios-publicados','ServicioController@ServiciosPublica
 
 //Carrito
 Route::get('/mi-paquete','CarritoController@ServiciosAgregados')->name('ServiciosAgregados');
-Route::get('/mi-paquete/agregando-servicio','CarritoController@AgregarServicio')->name('AgregarServicio')->middleware('ControlarDatosCompletos');
+
 
 //Articulos-Detalles
   //Inmuebles
   Route::get('/reservar/servicios-publicados/Inmueble','InmuebleController@MostrarInmueble')->name('MostrarInmueble');
+  //Agregar Inmueble al carrito
+  Route::get('/mi-paquete/agregando-inmueble','InmuebleController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
 
   //Juegos
   //Animacion

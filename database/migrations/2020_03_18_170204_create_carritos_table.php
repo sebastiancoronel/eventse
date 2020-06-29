@@ -37,7 +37,7 @@ class CreateCarritosTable extends Migration
             $table->integer('id_musicaDj')->nullable();
             $table->foreign('id_musicaDj')->references('id')->on('musica_djs');
 
-            $table->integer('total');
+            $table->integer('total')->nullable();
 
             $table->softDeletes();
             $table->timestamps();

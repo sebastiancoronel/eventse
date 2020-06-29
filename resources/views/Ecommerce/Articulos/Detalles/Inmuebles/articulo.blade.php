@@ -228,15 +228,22 @@
 											<i class="fs-16 zmdi zmdi-plus"></i>
 										</div>
 									</div> --}}
-
-								<form action="{{route('AgregarServicio')}}">
-									<input hidden type="text" name="id_inmueble" value="{{$Inmueble->id}}">
-									<input hidden type="text" name="id_inmueble" value="{{$Cliente->id}}">
-									<button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+								@if ( Auth::user() )
+								<form action="{{route('AgregarAlCarrito')}}">
+									<input id="id_inmueble" hidden type="text" name="id_inmueble" value="{{$Inmueble->id}}">
+									<input id="id_cliente" hidden type="text" name="id_cliente" value="{{$Cliente->id}}">
+									<button id="btn_agregar_servicio" type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
 										Agregar al paquete
 									</button>
 								</form>
+								@endif
 
+								@guest
+									<button id="btn_agregar_servicio_guest" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+										Agregar al paquete
+									</button>
+								@endguest
+								
 								</div>
 							</div>
 						</div>
@@ -265,6 +272,7 @@
 				</div>
 			</div>
 
+			{{-- Toda la informacion del articulo --}}
 			<div class="bor10 m-t-50 p-t-43 p-b-40">
 				<!-- Tab01 -->
 				<div class="tab01">
@@ -288,6 +296,7 @@
 
 					<!-- Tab panes -->
 					<div class="tab-content p-t-43">
+						
 						<!-- Descripcion -->
 						<div class="tab-pane fade show active" id="description" role="tabpanel">
 							<div class="how-pos2 p-lr-15-md text-center row">
@@ -306,7 +315,7 @@
 							</div>
 						</div>
 
-						<!-- - -->
+						<!-- Informacion adicional -->
 						<div class="tab-pane fade" id="information" role="tabpanel">
 							<div class="row">
 								<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
@@ -585,6 +594,7 @@
 							</div>
 						</div>
 
+						{{-- Preguntas --}}
 						<div class="tab-pane fade how-pos2 p-lr-15-md" id="preguntas" role="tabpanel">
 							{{-- Input para preguntar --}}
 							<div class="md-form">
@@ -623,7 +633,6 @@
 											Debes <a href="{{route('login')}}" class=""> iniciar sesión </a> y <a href="{{route('login')}}" class=""> completar tus datos como cliente </a> para hacer una pregunta
 										</div>
 									@endguest
-
 								
 								</div>
 
@@ -658,6 +667,42 @@
 
 </div>
 
+{{-- Botón agregar al paquete @Guest --}}
+<script>
+$("#btn_agregar_servicio_guest").click(function(){
+	swal('Debes iniciar sesión y completar tus datos primero', '','error');
+});
+
+$("#btn_agregar_servicio").submit(function(e){
+	e.preventDefault();
+	
+	var id_inmueble = $('#id_inmueble').val();
+	var id_cliente = $('#id_cliente').val();
+
+	$.ajax({
+
+		method: 'POST',
+		url: '{{url('/mi-paquete/agregando-inmueble')}}',
+		data: {
+			id_inmueble,
+			id_cliente,
+			_token: '{{csrf_token()}}'
+		},
+
+		error: function(x,y,z){
+			console.log(x,y,z);
+		},
+
+		success: function(data){
+			
+			console.log(data);
+		}
+
+	});
+});
+</script>
+
+{{-- Agregar pregunta --}}
 <script>
 	$('#form_pregunta').submit( function(e){
 		e.preventDefault();
@@ -728,7 +773,7 @@
 																	<span class="col-md-12 col-12 mt-3 text-black-50"><i class="zmdi zmdi-comment-alt-text"></i> `+ value['respuesta'] +` </span><br><br><br>
 																</div>
 															`;
-							$('#mostrar_preguntas').append(mostrar_preguntas_y_respuestas);
+						$('#mostrar_preguntas').append(mostrar_preguntas_y_respuestas);
 					}
                 });
 			}//success
