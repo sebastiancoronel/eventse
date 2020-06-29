@@ -32,12 +32,12 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191); //AGREGUE ESTO POR EL ERROR DE TABLA Al HACER LA MIGRACION DE LA BASE DE DATOS
 
-        view()->composer('Perfiles.home',function(View $view){
-          //Traer todas las categorias
-          $categorias = Categoria::all();
-          //Retornar
-          $view->with('Categorias',$categorias);
-        });
+        // view()->composer('Perfiles.home',function(View $view){
+        //   //Traer todas las categorias
+        //   $categorias = Categoria::all();
+        //   //Retornar
+        //   $view->with('Categorias',$categorias);
+        // });
 
         view()->composer('layouts.barra_navegacion_principal',function(View $view){
           //Traer Categorias
@@ -46,10 +46,11 @@ class AppServiceProvider extends ServiceProvider
           if (Auth::user()) {
             //Traer Carrito para cliente logueado
             $user_id = Auth::user()->id;
+
             $Cliente = Cliente::where('user_id', $user_id)
                               ->select('*')
                               ->first();
-  
+            //dd($Cliente);
             $Carrito = Carrito::where('id_cliente', $Cliente->id_cliente)
                               ->join('inmuebles','carritos.id_inmueble','=','inmuebles.id')
                               ->join('juegos','carritos.id_juego','=','juegos.id')
@@ -62,12 +63,12 @@ class AppServiceProvider extends ServiceProvider
             //dd($Carrito);
             $CantidadServicios = $Carrito->count();
             //dd($CantidadServicios);
-            
-            
+                    
             //Retornar
-            $view->with('Categorias',$categorias)->with('Carrito',$Carrito)->with('CantidadServicios', $CantidadServicios);
+             $view->with('Categorias',$categorias)->with('Cliente',$Cliente)->with('Carrito',$Carrito)->with('CantidadServicios', $CantidadServicios);
+            //$view->with( compact(['Categorias',$categorias],['Cliente',$Cliente],['Carrito',$Carrito],['CantidadServicios', $CantidadServicios])); 
           }else{
-            $view->with('Categorias',$categorias);
+            //$view->with('Categorias',$categorias);
           }
 
 
