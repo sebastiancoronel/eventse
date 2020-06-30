@@ -50,17 +50,46 @@ class AppServiceProvider extends ServiceProvider
             $Cliente = Cliente::where('user_id', $user_id)
                               ->select('*')
                               ->first();
-            //dd($Cliente);
-            $Carrito = Carrito::where('id_cliente', $Cliente->id_cliente)
-                              ->join('inmuebles','carritos.id_inmueble','=','inmuebles.id')
-                              ->join('juegos','carritos.id_juego','=','juegos.id')
-                              ->join('animacions','carritos.id_animacion','=','animacions.id')
-                              ->join('mobiliarios','carritos.id_mobiliario','=','mobiliarios.id')
-                              ->join('caterings','carritos.id_catering','=','caterings.id')
-                              ->join('musica_djs','carritos.id_musicaDj','=','musica_djs.id')
+            //dd($Cliente->id);
+            $Carrito = Carrito::where('id_cliente', $Cliente->id)
                               ->select('*')
                               ->get();
-            //dd($Carrito);
+
+          $ElementosCarrito = array();
+
+          foreach ( $Carrito as $carrito ) {
+            switch ($carrito) {
+              case $carrito->id_inmueble != null:
+                dd('HAY INMUEBLE');
+                break;
+
+              case $carrito->id_juego != null:
+                dd('HAY Juego');
+                break;
+              
+              case $carrito->id_animacion != null:
+                dd('HAY Animacion');
+                break;
+              
+              case $carrito->id_mobiliario != null:
+                dd('HAY Mobiliario');
+                break;
+
+              case $carrito->id_catering != null:
+                dd('HAY Catering');
+                break;
+
+              case $carrito->id_musicaDj != null:
+                dd('HAY MusicaDj');
+                break;
+
+              default:
+                # code...
+                break;
+            }                              
+          }
+                              
+            dd($Carrito);
             $CantidadServicios = $Carrito->count();
             //dd($CantidadServicios);
                     
