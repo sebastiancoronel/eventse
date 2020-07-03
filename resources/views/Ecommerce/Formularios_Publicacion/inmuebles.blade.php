@@ -132,8 +132,8 @@
 
             <div class="mt-5">
                 <div class="col md-form">
-                    <label for="nombre">Nombre del inmueble o salon</label>
-                    <input class="form-control" type="text" name="nombre" value="" required>
+                    <label for="titulo">Título</label>
+                    <input class="form-control" type="text" name="titulo" value="" maxlength="200" required>
                 </div>
             </div>
 

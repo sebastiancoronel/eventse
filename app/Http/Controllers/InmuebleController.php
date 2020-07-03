@@ -61,7 +61,7 @@ class InmuebleController extends Controller
         $Inmueble->foto_3 = '/images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->nombre . '/' . $NombreImagen_3;
         $Inmueble->foto_4 = '/images/publicaciones/' . $Empresa->nombre . '/' . $Categoria->nombre . '/' . $FechaPublicacion . '/' . $req->nombre . '/' . $NombreImagen_4;
         $Inmueble->tipo = $req->tipo_inmueble;
-        $Inmueble->nombre = $req->nombre;
+        $Inmueble->titulo = $req->titulo;
         $Inmueble->calle = $req->calle;
         $Inmueble->numero = $req->numero;
         $Inmueble->barrio = $req->barrio;

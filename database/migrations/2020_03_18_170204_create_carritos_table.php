@@ -42,6 +42,41 @@ class CreateCarritosTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
+        DB::table('carritos')->insert([
+            [
+                'id_cliente' => 1,
+                'id_inmueble' => null,
+                'id_juego' => 1,
+                'id_animacion' => null,
+                'id_mobiliario' => null,
+                'id_catering' => null,
+                'id_musicaDj' => null,
+                'total' => null,
+            ],
+
+            [
+                'id_cliente' => 1,
+                'id_inmueble' => 1,
+                'id_juego' => null,
+                'id_animacion' => null,
+                'id_mobiliario' => null,
+                'id_catering' => null,
+                'id_musicaDj' => null,
+                'total' => null,
+            ],
+
+            [
+                'id_cliente' => 1,
+                'id_inmueble' => null,
+                'id_juego' => null,
+                'id_animacion' => 1,
+                'id_mobiliario' => null,
+                'id_catering' => null,
+                'id_musicaDj' => null,
+                'total' => null,
+            ],
+        ]);
     }
 
     /**

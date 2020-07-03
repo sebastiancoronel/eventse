@@ -20,7 +20,7 @@ class CreateInmueblesTable extends Migration
             $table->string('foto_3');
             $table->string('foto_4');
             $table->enum('tipo',['Salon','Quinta','Salon infantil','Complejo']);
-            $table->string('nombre');
+            $table->string('titulo', 200);
             $table->string('calle');
             $table->string('numero');
             $table->string('barrio');
@@ -58,7 +58,7 @@ class CreateInmueblesTable extends Migration
                 'foto_3' => '/images/publicaciones/JumpZone/Salones/2020-06-21/Casa quinta monte grande/foto 3.jpg',
                 'foto_4' => '/images/publicaciones/JumpZone/Salones/2020-06-21/Casa quinta monte grande/foto 4.jpg',
                 'tipo' => 'Salon',
-                'nombre' => 'Casa quinta monte grande',
+                'titulo' => 'Casa quinta monte grande',
                 'calle' => 'Las Heras',
                 'numero' => '1760',
                 'barrio' => 'El Bosque',
