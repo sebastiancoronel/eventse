@@ -108,15 +108,11 @@ class AppServiceProvider extends ServiceProvider
                 break;
             }                              
           }
-          
-            dd($ServiciosCarrito); //Recorrer en la vista barra_nav_princ. con un foreach para listar lo que Está en el carro.
 
             $CantidadServicios = $Carrito->count();
-            //dd($CantidadServicios);
-                    
-            //Retornar
-             $view->with('Categorias',$categorias)->with('Cliente',$Cliente)->with('Carrito',$Carrito)->with('CantidadServicios', $CantidadServicios);
-            //$view->with( compact(['Categorias',$categorias],['Cliente',$Cliente],['Carrito',$Carrito],['CantidadServicios', $CantidadServicios])); 
+            
+             $view->with('Categorias',$categorias)->with('Cliente',$Cliente)->with('Carrito',$Carrito)->with('CantidadServicios', $CantidadServicios)->with( 'ServiciosCarrito', $ServiciosCarrito );
+          
           }else{
             //$view->with('Categorias',$categorias);
           }
