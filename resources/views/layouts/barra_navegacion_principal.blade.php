@@ -167,18 +167,18 @@
   						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
   							<i class="zmdi zmdi-search"></i>
   						</div>
-              			{{-- Carrito --}}
-  						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart" data-notify="1"><!--icon-header-noti ES EL ICONO DE NOTIFICACIÓN data-notify="6" ES EL NUMERO DE ARTICULOS EN EL CARRITO. js-show-cart Es para mostrar el carrito-->
-  							<i class="zmdi zmdi-shopping-cart"></i>
-  						</div>
-						{{-- Favoritos --}}
-  						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11" data-notify="2">
-  							<i class="zmdi zmdi-favorite"></i>
-  						</a>
-              {{-- Notificaciones --}}
-              <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11" data-notify="3">
-  							<i class="zmdi zmdi-notifications"></i>
-  						</a>
+					{{-- Carrito --}}
+					<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 {{ $CantidadServicios != 0 ? 'icon-header-noti' : '' }}  js-show-cart" data-notify="{{ $CantidadServicios }}">
+  						<i class="zmdi zmdi-shopping-cart"></i>
+					</div>
+					{{-- Favoritos --}}
+					<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
+						<i class="zmdi zmdi-favorite"></i>
+					</a>
+					{{-- Notificaciones --}}
+					<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
+						<i class="zmdi zmdi-notifications"></i>
+					</a>
   					</div>
   				</nav>
   			</div>
@@ -200,7 +200,7 @@
   					<i class="zmdi zmdi-search"></i>
   				</div> --}}
           {{-- Carrito --}}
-  				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
+  				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="{{ $CantidadServicios }}">
   					<i class="zmdi zmdi-shopping-cart"></i>
   				</div>
           {{-- Favoritos --}}
