@@ -690,7 +690,7 @@
 
 			success: function(data){
 				
-				console.log(data);
+				//console.log(data);
 				if (data == 'Existe') {
 
 					swal('Error!','Ya agregaste este servicio a tu paquete','error');
@@ -719,6 +719,38 @@
 
 					success: function(data){
 						console.log(data);
+						$('#carrito_escritorio').attr('data-notify', data.CantidadServicios );
+						$('#carrito_movil').attr('data-notify', data.CantidadServicios );
+						$('#servicios_carrito').empty();
+
+						$.each( data.ServiciosCarrito , function( index , value ) {
+						console.log(value);	
+						var servicios_carrito = ` <li class="header-cart-item flex-w flex-t m-b-12">
+													{{-- Imagen de Servicio --}}
+													<div class="header-cart-item-img">
+													<img src=" ` + value['foto_1'] + ` " class="rounded" alt="IMG">
+													</div>
+													{{-- Nombre de Servicio --}}
+													<div class="header-cart-item-txt p-t-8">
+														<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+														` + value['titulo'] + `
+														</a>
+														{{-- Precio de Servicio --}}
+														<span class="header-cart-item-info">
+														` + (value['precio'] != null ? + '$' +value['precio'] : value['precio_a_convenir'] ) +`
+															
+														</span>
+													</div>
+												</li>
+												<hr>
+												`;
+						$('#servicios_carrito').append(servicios_carrito);
+							
+						});
+
+						
+						
+
 					}
 				});
 	});
