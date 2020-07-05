@@ -737,8 +737,8 @@
 														</a>
 														{{-- Precio de Servicio --}}
 														<span class="header-cart-item-info">
-														` + (value['precio'] != null ? + '$' +value['precio'] : value['precio_a_convenir'] ) +`
-															
+															$
+														` + (value['precio'] != null ?  value['precio'] : 'Precio a convenir' ) +`
 														</span>
 													</div>
 												</li>
@@ -747,10 +747,6 @@
 						$('#servicios_carrito').append(servicios_carrito);
 							
 						});
-
-						
-						
-
 					}
 				});
 	});
