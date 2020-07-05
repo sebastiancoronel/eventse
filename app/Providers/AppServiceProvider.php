@@ -48,7 +48,7 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('layouts.barra_navegacion_principal',function(View $view){
           //Traer Categorias
-          $categorias = Categoria::all();
+          //$categorias = Categoria::all();
 
           if (Auth::user()) {
             //Traer Carrito para cliente logueado
@@ -111,7 +111,7 @@ class AppServiceProvider extends ServiceProvider
 
             $CantidadServicios = $Carrito->count();
             
-             $view->with('Categorias',$categorias)->with('Cliente',$Cliente)->with('Carrito',$Carrito)->with('CantidadServicios', $CantidadServicios)->with( 'ServiciosCarrito', $ServiciosCarrito );
+             $view->with('Cliente',$Cliente)->with('Carrito',$Carrito)->with('CantidadServicios', $CantidadServicios)->with( 'ServiciosCarrito', $ServiciosCarrito );
           
           }else{
             //$view->with('Categorias',$categorias);

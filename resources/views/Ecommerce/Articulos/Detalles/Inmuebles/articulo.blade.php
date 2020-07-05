@@ -1,13 +1,6 @@
 @extends('layouts.barra_navegacion_principal')
 @section('content')
 
-{{-- @if (Session::has('PreguntaRealizadaConExito')){
-	<script>
-		swal('Listo!',{{Session::get('PreguntaRealizadaConExito')}},'success');
-	</script>
-}
-	
-@endif --}}
 {{-- Detalle de producto --}}
 <div class="animsition">
 	<!-- breadcrumb escritorio -->
@@ -24,7 +17,7 @@
 			</a>
 
 			<span class="stext-109 cl4">
-				{{$Inmueble->nombre}}
+				{{$Inmueble->titulo}}
 			</span>
 		</div>
 	</div>
@@ -229,10 +222,11 @@
 										</div>
 									</div> --}}
 								@if ( Auth::user() )
-								<form action="{{route('AgregarAlCarrito')}}">
+								<form id="form_agregar_servicio" action="{{route('AgregarAlCarrito')}}" method="POST">
+									@csrf
 									<input id="id_inmueble" hidden type="text" name="id_inmueble" value="{{$Inmueble->id}}">
 									<input id="id_cliente" hidden type="text" name="id_cliente" value="{{$Cliente->id}}">
-									<button id="btn_agregar_servicio" type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+									<button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
 										Agregar al paquete
 									</button>
 								</form>
@@ -666,40 +660,68 @@
 	</section>
 
 </div>
-
-{{-- Botón agregar al paquete @Guest --}}
+{{-- Agregar al carrito --}}
 <script>
-$("#btn_agregar_servicio_guest").click(function(){
-	swal('Debes iniciar sesión y completar tus datos primero', '','error');
-});
+	//Botón agregar al paquete @ Guest
 
-$("#btn_agregar_servicio").submit(function(e){
-	e.preventDefault();
-	
-	var id_inmueble = $('#id_inmueble').val();
-	var id_cliente = $('#id_cliente').val();
-
-	$.ajax({
-
-		method: 'POST',
-		url: '{{url('/mi-paquete/agregando-inmueble')}}',
-		data: {
-			id_inmueble,
-			id_cliente,
-			_token: '{{csrf_token()}}'
-		},
-
-		error: function(x,y,z){
-			console.log(x,y,z);
-		},
-
-		success: function(data){
-			
-			console.log(data);
-		}
-
+	$("#btn_agregar_servicio_guest").click(function(){
+		swal('Debes iniciar sesión y completar tus datos primero', '','error');
 	});
-});
+
+	//Agregar al paquete
+	$("#form_agregar_servicio").submit(function(e){
+		e.preventDefault();
+		
+		var id_inmueble = $('#id_inmueble').val();
+		var id_cliente = $('#id_cliente').val();
+
+		$.ajax({
+			method: 'POST',
+			url: '{{url('/mi-paquete/agregando-inmueble')}}',
+			data: {
+				id_inmueble,
+				id_cliente,
+				_token: '{{csrf_token()}}'
+			},
+
+			error: function(x,y,z){
+				console.log(x,y,z);
+			},
+
+			success: function(data){
+				
+				console.log(data);
+				if (data == 'Existe') {
+
+					swal('Error!','Ya agregaste este servicio a tu paquete','error');
+
+					//ActualizarCarrito();
+				}else{
+					swal('Listo!','Se agregó el servicio al paquete con éxito','success');
+				}
+			}
+
+		});
+
+		$.ajax({
+					method: 'GET',
+					url: '{{ url( '/mi-paquete/agregando-inmueble/actualizando-carrito' ) }}',
+					data: {
+
+						id_cliente,
+						_token: '{{ csrf_token() }}'
+
+					},
+
+					error: function error(x,y,z){
+						console.log(x,y,z);
+					},
+
+					success: function(data){
+						console.log(data);
+					}
+				});
+	});
 </script>
 
 {{-- Agregar pregunta --}}
