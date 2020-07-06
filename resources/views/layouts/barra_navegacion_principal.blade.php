@@ -168,9 +168,19 @@
   							<i class="zmdi zmdi-search"></i>
   						</div>
 					{{-- Carrito --}}
+					@auth
 					<div id="carrito_escritorio" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 {{ $CantidadServicios != 0 ? 'icon-header-noti' : '' }}  js-show-cart" data-notify="{{ $CantidadServicios }}">
   						<i class="zmdi zmdi-shopping-cart"></i>
 					</div>
+					@endauth
+
+					@guest
+
+					<div id="carrito_escritorio" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart" data-notify="">
+						<i class="zmdi zmdi-shopping-cart"></i>
+				  </div>
+						
+					@endguest
 					{{-- Favoritos --}}
 					<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
 						<i class="zmdi zmdi-favorite"></i>
