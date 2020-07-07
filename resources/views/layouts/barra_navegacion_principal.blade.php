@@ -186,7 +186,7 @@
 						<i class="zmdi zmdi-favorite"></i>
 					</a>
 					{{-- Notificaciones --}}
-					<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
+					<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-notification " data-notify="0">
 						<i class="zmdi zmdi-notifications"></i>
 					</a>
   					</div>
@@ -218,7 +218,7 @@
   					<i class="zmdi zmdi-favorite"></i>
   				</a>
           {{-- Notificaciones --}}
-  				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
+  				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-notification" data-notify="0">
   					<i class="zmdi zmdi-notifications"></i>
   				</a>
   			</div>
@@ -288,7 +288,7 @@
 
 @yield('content')
 
-  <!-- Cart -->
+  	<!-- Cart -->
   	<div class="wrap-header-cart js-panel-cart">
 		<div class="s-full js-hide-cart"></div>
 
@@ -347,6 +347,73 @@
 						</a>
 
 						{{-- <a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+							Continuar compra
+						</a> --}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	 <!-- Notificaciones -->
+	 <div class="wrap-header-notification js-panel-notification">
+		<div class="s-full js-hide-notification"></div>
+
+		<div class="header-notification flex-col-l p-l-65 p-r-25">
+			<div class="header-notification-title flex-w flex-sb-m p-b-8">
+				<span class="mtext-103 cl2">
+					Notificaciones
+				</span>
+				{{-- Boton cerrar ( X ) --}}
+				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-notification">
+					<i class="zmdi zmdi-close"></i>
+				</div>
+			</div>
+
+			<div class="header-notification-content flex-w js-pscroll">
+				<ul id="servicios_carrito" class="header-notification-wrapitem w-full">
+				@auth
+
+					@foreach ($ServiciosCarrito as $servicio)
+					{{-- Servicio --}}
+					<li class="header-notification-item flex-w flex-t m-b-12">
+						{{-- Imagen de Servicio --}}
+						<div class="header-notification-item-img">
+						<img src="{{asset($servicio->foto_1)}}" class="rounded" alt="IMG">
+						</div>
+						{{-- Nombre de Servicio --}}
+						<div class="header-notification-item-txt p-t-8">
+							<a href="#" class="header-notification-item-name m-b-18 hov-cl1 trans-04">
+						 	  {{$servicio->titulo}}
+							</a>
+							{{-- Precio de Servicio --}}
+							<span class="header-notification-item-info">
+								@if ( $servicio->precio != null )
+									$ {{$servicio->precio}}
+								@else
+
+									Precio a convenir
+								
+								@endif
+							</span>
+						</div>
+					</li>
+					<hr>
+					@endforeach
+				@endauth
+				</ul>
+
+				<div class="w-full">
+					{{-- <div class="header-notification-total w-full p-tb-40">
+						Total: $75.00
+					</div> --}}
+
+					<div class="header-notification-buttons flex-w w-full">
+						<a href="shoping-notification.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+							Ver paquete
+						</a>
+
+						{{-- <a href="shoping-notification.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
 							Continuar compra
 						</a> --}}
 					</div>

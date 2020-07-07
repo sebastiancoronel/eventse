@@ -190,8 +190,6 @@
     });
 
 
-
-
     /*==================================================================
     [ Cart ]*/
     $('.js-show-cart').on('click',function(){
@@ -213,6 +211,29 @@
     });
 
     /*==================================================================
+
+    [ notification ]*/
+    $('.js-show-notification').on('click',function(){
+        $('.js-panel-notification').addClass('show-header-notification');
+    });
+
+    $('.js-hide-notification').on('click',function(){
+        $('.js-panel-notification').removeClass('show-header-notification');
+    });
+
+    /*==================================================================
+    [ notification ]*/
+    $('.js-show-sidebar').on('click',function(){
+        $('.js-sidebar').addClass('show-sidebar');
+    });
+
+    $('.js-hide-sidebar').on('click',function(){
+        $('.js-sidebar').removeClass('show-sidebar');
+    });
+
+    /*==================================================================
+
+
     [ +/- num product ]*/
     $('.btn-num-product-down').on('click', function(){
         var numProduct = Number($(this).next().val());
