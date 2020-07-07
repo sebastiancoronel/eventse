@@ -373,33 +373,23 @@
 			<div class="header-notification-content flex-w js-pscroll">
 				<ul id="servicios_carrito" class="header-notification-wrapitem w-full">
 				@auth
-
-					@foreach ($ServiciosCarrito as $servicio)
-					{{-- Servicio --}}
+					
+					{{-- Notificacion --}}
 					<li class="header-notification-item flex-w flex-t m-b-12">
-						{{-- Imagen de Servicio --}}
-						<div class="header-notification-item-img">
-						<img src="{{asset($servicio->foto_1)}}" class="rounded" alt="IMG">
-						</div>
-						{{-- Nombre de Servicio --}}
+						
+						{{-- Titulo --}}
 						<div class="header-notification-item-txt p-t-8">
 							<a href="#" class="header-notification-item-name m-b-18 hov-cl1 trans-04">
-						 	  {{$servicio->titulo}}
+						 	  
 							</a>
-							{{-- Precio de Servicio --}}
+							{{-- Info --}}
 							<span class="header-notification-item-info">
-								@if ( $servicio->precio != null )
-									$ {{$servicio->precio}}
-								@else
-
-									Precio a convenir
 								
-								@endif
 							</span>
 						</div>
 					</li>
 					<hr>
-					@endforeach
+					{{-- @endforeach --}}
 				@endauth
 				</ul>
 
@@ -409,9 +399,9 @@
 					</div> --}}
 
 					<div class="header-notification-buttons flex-w w-full">
-						<a href="shoping-notification.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-							Ver paquete
-						</a>
+						{{-- <a href="shoping-notification.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+							Ver todas / marcar como leidas
+						</a> --}}
 
 						{{-- <a href="shoping-notification.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
 							Continuar compra
