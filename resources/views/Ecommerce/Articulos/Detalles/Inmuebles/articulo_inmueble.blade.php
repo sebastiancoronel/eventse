@@ -152,14 +152,14 @@
 
 						<span class="mtext-106 cl2" style="color:#f40082;">
 							@if ($Inmueble->precio != null)
-								{{$Inmueble->precio}}
+								$ {{$Inmueble->precio}}
 							@else
 								Precio a convenir
 							@endif
 						</span>
 
 						<p class="stext-102 cl3 p-t-23">
-							{{$Inmueble->localidad}}, {{$Inmueble->provincia}}
+							<i class="zmdi zmdi-pin"></i>	{{$Inmueble->localidad}}, {{$Inmueble->provincia}}
 						</p>
 
 						<p class="stext-102 cl3 p-t-23  mt-5 d-flex align-items-center">

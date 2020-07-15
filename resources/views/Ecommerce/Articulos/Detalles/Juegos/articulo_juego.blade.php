@@ -152,14 +152,14 @@
 
 						<span class="mtext-106 cl2" style="color:#f40082;">
 							@if ($Juego->precio != null)
-								{{$Juego->precio}}
+								$ {{$Juego->precio}}
 							@else
 								Precio a convenir
 							@endif
 						</span>
 
 						<p class="stext-102 cl3 p-t-23">
-							{{$Juego->localidad}}, {{$Juego->provincia}}
+                            <i class="zmdi zmdi-pin"></i> {{$Juego->localidad}}, {{$Juego->provincia}}
 						</p>
 
 						<p class="stext-102 cl3 p-t-23  mt-5 d-flex align-items-center">
@@ -224,7 +224,7 @@
 								@if ( Auth::user() )
 								<form id="form_agregar_servicio" action="{{route('AgregarAlCarrito')}}" method="POST">
 									@csrf
-									<input id="id_inmueble" hidden type="text" name="id_inmueble" value="{{$Juego->id}}">
+									<input id="id_juego" hidden type="text" name="id_juego" value="{{$Juego->id}}">
 									<input id="id_cliente" hidden type="text" name="id_cliente" value="{{$Cliente->id}}">
 									<button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
 										Agregar al paquete
@@ -275,10 +275,7 @@
 						<li class="nav-item p-b-10">
 							<a class="nav-link active" data-toggle="tab" href="#description" role="tab">Descripción</a>
 						</li>
-
-						<li class="nav-item p-b-10">
-							<a class="nav-link" data-toggle="tab" href="#information" role="tab">Información adicional</a>
-						</li>
+						
 						<li class="nav-item p-b-10">
 							<a class="nav-link" data-toggle="tab" href="#preguntas" role="tab">Preguntas</a>
 						</li>
@@ -294,210 +291,7 @@
 						<!-- Descripcion -->
 						<div class="tab-pane fade show active" id="description" role="tabpanel">
 							<div class="how-pos2 p-lr-15-md text-center row">
-								<p class="stext-102 cl6 text-left row col-md-6">
-									<span class="text-uppercase col-md-12 mt-4"> Superficie: {{ $Juego->superficie }} </span>
-									<span class="text-uppercase col-md-12 mt-4"> Capacidad de invitados: {{ $Juego->capacidad }} </span>
-								</p>
-
-								<p class="stext-102 cl6 text-left row col-md-6">
-									<span class="text-uppercase col-md-12 mt-4"> Calle: {{ $Juego->calle }} </span>
-									<span class="text-uppercase col-md-12 mt-4"> Número: {{ $Juego->numero }} </span>
-									<span class="text-uppercase col-md-12 mt-4"> Barrio: {{ $Juego->barrio }} </span>
-
-								</p>
-
-							</div>
-						</div>
-
-						<!-- Informacion adicional -->
-						<div class="tab-pane fade" id="information" role="tabpanel">
-							<div class="row">
-								<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-									<ul class="p-lr-28 p-lr-15-sm">
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Barra de tragos:
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												@if ( $Juego->barra_tragos == 1 )
-													SI
-												@else
-													NO
-												@endif
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Catering:
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												@if ( $Juego->catering == 1 )
-													SI
-												@else
-													NO
-												@endif
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												DJ:
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												@if ( $Juego->dj == 1 )
-													SI
-												@else
-													NO
-												@endif
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Mesas y sillas:
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												@if ( $Juego->mesas_sillas == 1 )
-													SI
-												@else
-													NO
-												@endif
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Mesa dulce:
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												@if ( $Juego->mesa_dulce == 1 )
-													SI
-												@else
-													NO
-												@endif
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Guardarropas:
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												@if ( $Juego->guardarropas == 1 )
-													SI
-												@else
-													NO
-												@endif
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Guardarropas:
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												@if ( $Juego->guardarropas == 1 )
-													SI
-												@else
-													NO
-												@endif
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Mozos y camareras:
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												@if ( $Juego->mozos_camareras == 1 )
-													SI
-												@else
-													NO
-												@endif
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Proyector y pantalla:
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												@if ( $Juego->proyector_pantalla == 1 )
-													SI
-												@else
-													NO
-												@endif
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Recepción:
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												@if ( $Juego->recepcion == 1 )
-													SI
-												@else
-													NO
-												@endif
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Vajillas
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												@if ( $Juego->vajillas == 1 )
-													SI
-												@else
-													NO
-												@endif												
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												WiFi
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												@if ( $Juego->wifi == 1 )
-													SI
-												@else
-													NO
-												@endif
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Piscina
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												@if ( $Juego->piscina == 1 )
-													SI
-												@else
-													NO
-												@endif
-											</span>
-										</li>
-
-									</ul>
-								</div>
+								{{ $Juego->descripcion }}
 							</div>
 						</div>
 
@@ -679,7 +473,7 @@
 			method: 'POST',
 			url: '{{url('/mi-paquete/agregando-articulo')}}',
 			data: {
-				id_inmueble,
+				id_juego,
 				id_cliente,
 				_token: '{{csrf_token()}}'
 			},
@@ -783,17 +577,17 @@
 	$('#form_pregunta').submit( function(e){
 		e.preventDefault();
 		var id_prestador = $('#id_prestador').val();
-		var id_inmueble = $('#id_inmueble').val();
+		var id_juego = $('#id_juego').val();
 		var id_cliente = $('#id_cliente').val();
 		var textarea_pregunta = $('#textarea_pregunta').val();
 
 		$.ajax({
 	
 			method: 'POST',
-			url: '{{url('/reservar/servicios-publicados/Inmueble/almacenando-pregunta')}}',
+			url: '{{url('/reservar/servicios-publicados/Juego/almacenando-pregunta')}}',
 			data: {
 				id_prestador,
-				id_inmueble,
+				id_juego,
 				id_cliente,
 				textarea_pregunta,
 				_token: "{{csrf_token()}}"
@@ -817,10 +611,10 @@
 		$.ajax({
 		
 			method: 'GET',
-			url: '{{url('/reservar/servicios-publicados/Inmueble/almacenando-pregunta')}}',
+			url: '{{url('/reservar/servicios-publicados/Juego/almacenando-pregunta')}}',
 			data: {
 				id_prestador,
-				id_inmueble,
+				id_juego,
 				_token: "{{csrf_token()}}"
 			},
 

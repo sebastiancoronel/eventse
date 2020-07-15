@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Auth;
 use App\Inmueble;
 use App\Juego;
@@ -9,13 +10,12 @@ use App\Animacion;
 use App\Mobiliario;
 use App\Catering;
 use App\MusicaDj;
-use Illuminate\Http\Request;
 use App\Prestador;
 use App\Cliente;
 use App\Categoria;
 use App\PreguntaInmueble;
 use App\OpinionInmueble;
-use App\Carrito;
+
 
 class InmuebleController extends Controller
 {

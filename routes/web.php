@@ -18,29 +18,26 @@ Route::get('/categorias-listar','CategoriaController@index');
 //Listar todos los servicios publicados
 Route::get('/reservar/servicios-publicados','ServicioController@ServiciosPublicados')->name('ServiciosPublicados');
 
-//Carrito
-Route::get('/mi-paquete','CarritoController@ServiciosAgregados')->name('ServiciosAgregados');
+//--- Carrito ---
+  Route::get('/mi-paquete','CarritoController@ServiciosAgregados')->name('ServiciosAgregados');
+  Route::post('/mi-paquete/agregando-articulo','CarritoController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
+  Route::get('/mi-paquete/actualizando-carrito','CarritoController@ActualizarCarrito')->name('ActualizarCarrito')->middleware('ControlarDatosCompletos');
 
-//Agregar Inmueble al carrito
-Route::post('/mi-paquete/agregando-articulo','CarritoController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
-Route::get('/mi-paquete/actualizando-carrito','CarritoController@ActualizarCarrito')->name('ActualizarCarrito')->middleware('ControlarDatosCompletos');
-
-//Articulos-Detalles
-  //Inmuebles
-  Route::get('/reservar/servicios-publicados/Inmueble','InmuebleController@MostrarInmueble')->name('MostrarInmueble');
-  //Juegos
-  Route::get('/reservar/servicios-publicados/Juego','JuegoController@MostrarJuego')->name('MostrarJuego');
-  
-
-  //Animacion
-  //Mobiliario
-  //Catering
-  //MusicaDjs
-
-  //Preguntas
+//--- Preguntas inmueble
   Route::post('/reservar/servicios-publicados/Inmueble/almacenando-pregunta','InmuebleController@PublicarPregunta')->name('PublicarPregunta')->middleware('ControlarDatosCompletos');
   Route::get('/reservar/servicios-publicados/Inmueble/almacenando-pregunta','InmuebleController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('ControlarDatosCompletos');
+  //--- Preguntas juego
+  Route::post('/reservar/servicios-publicados/Juego/almacenando-pregunta','JuegoController@PublicarPregunta')->name('PublicarPregunta')->middleware('ControlarDatosCompletos');
+  Route::get('/reservar/servicios-publicados/Juego/almacenando-pregunta','JuegoController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('ControlarDatosCompletos');
+
+
   
+
+//Articulos-Detalles
+  
+  Route::get('/reservar/servicios-publicados/Inmueble','InmuebleController@MostrarInmueble')->name('MostrarInmueble');
+  Route::get('/reservar/servicios-publicados/Juego','JuegoController@MostrarJuego')->name('MostrarJuego');
+
 /*
 |--------------------------------------------------------------------------
 | Auth + Datos completos + Perfil empresa

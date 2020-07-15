@@ -3,11 +3,20 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
 
-use App\Juego;
 use Illuminate\Http\Request;
 use Auth;
+use App\Inmueble;
+use App\Juego;
+use App\Animacion;
+use App\Mobiliario;
+use App\Catering;
+use App\MusicaDj;
 use App\Prestador;
+use App\Cliente;
 use App\Categoria;
+use App\PreguntaJuego;
+use App\OpinionJuego;
+
 class JuegoController extends Controller
 {
     public function FormularioJuegos(){
@@ -69,7 +78,7 @@ class JuegoController extends Controller
       }
 
       public function MostrarJuego(Request $req) {
-
+        
         $Juego = Juego::where('id',$req->id_juego)->where('id_categoria',$req->id_categoria)
                             ->select('*')
                             ->first();

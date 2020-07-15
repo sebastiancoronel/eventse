@@ -284,6 +284,9 @@
                 {{-- Juegos --}}
                 @foreach ($Juegos as $juego)
                 <form action="{{route('MostrarJuego')}}" method="GET">
+                    @csrf
+                    <input hidden type="text" name="id_juego" value="{{$juego->id}}">
+                    <input hidden type="text" name="id_categoria" value="2">
                     <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Juegos" style="position: absolute; left: 25%; top: 0px;">
                         <!-- Block2 -->
                         <div class="block2">
