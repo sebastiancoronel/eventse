@@ -14,7 +14,7 @@ class CreateNotificacionsTable extends Migration
     public function up()
     {
         Schema::create('notificacions', function (Blueprint $table) {
-            $table->increments('id');ww
+            $table->increments('id');
             $table->integer('id_cliente');
             $table->foreign('id_cliente')->references('id')->on('clientes');
             $table->integer('id_prestador');
