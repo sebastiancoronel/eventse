@@ -67,4 +67,75 @@ class JuegoController extends Controller
         $Juego->save();
         return redirect()->route('FormularioJuegos');
       }
+
+      public function MostrarJuego(Request $req) {
+
+        $Juego = Juego::where('id',$req->id_juego)->where('id_categoria',$req->id_categoria)
+                            ->select('*')
+                            ->first();
+        
+        $Prestador = Prestador::where('id', $Juego->id_prestador)
+                                ->select('*')
+                                ->first();
+
+        //Traer todas las preguntas
+        $PreguntasJuego = PreguntaJuego::where('id_prestador',$Prestador->id)
+                                              ->where('id_juego',$Juego->id)
+                                              ->select('*')
+                                              ->orderBy('created_at', 'DESC')
+                                              ->get();
+        
+        //Traer todas las opiniones
+        $OpinionesJuego = OpinionJuego::where('id_prestador',$Prestador->id)
+                                            ->where('id_juego',$Juego->id)
+                                            ->join('clientes','opinion_juegos.id_cliente','=','clientes.id')
+                                            ->join('users','clientes.user_id','=','users.id')
+                                            ->select('*')
+                                            ->orderBy('opinion_juegos.created_at', 'DESC')
+                                            ->get();
+
+        //Contar numero de opiniones para mostrar
+        $CantidadOpiniones = $OpinionesJuego->count();
+
+        //Traer Cliente logueado
+        if (Auth::user()) {
+          $user_id = Auth::user()->id;
+  
+          $Cliente = Cliente::where('user_id', $user_id)
+                            ->select('*')
+                            ->first();
+          //dd($Cliente);
+          return view('Ecommerce.Articulos.Detalles.Juegos.articulo_Juego',[ 'Juego' => $Juego, 'Prestador' => $Prestador, 'PreguntasJuego' => $PreguntasJuego, 'OpinionesJuego' => $OpinionesJuego, 'CantidadOpiniones' => $CantidadOpiniones, 'Cliente' => $Cliente ]);
+        }
+        
+        return view('Ecommerce.Articulos.Detalles.Juegos.articulo_Juego',[ 'Juego' => $Juego, 'Prestador' => $Prestador, 'PreguntasJuego' => $PreguntasJuego, 'OpinionesJuego' => $OpinionesJuego, 'CantidadOpiniones' => $CantidadOpiniones ]);
+
+      }
+
+      public function PublicarPregunta(Request $req){
+        
+        $Pregunta = New PreguntaJuego;
+        $Pregunta->id_prestador = $req->id_prestador;
+        $Pregunta->id_juego = $req->id_juego;
+        $Pregunta->id_cliente = $req->id_cliente;
+        $Pregunta->pregunta = $req->textarea_pregunta;
+        $Pregunta->save();
+
+        return 'Pregunta realizada';
+
+      }
+
+      public function ActualizarPreguntasAjax(Request $req){
+
+        $ActualizarPreguntas = PreguntaJuego::where('id_prestador',$req->id_prestador)
+                                              ->where('id_juego',$req->id_juego)
+                                              ->select('*')
+                                              ->orderBy('created_at', 'DESC')
+                                              ->get();
+
+        return $ActualizarPreguntas;
+      }
+
+
+
 }

@@ -134,10 +134,10 @@ class InmuebleController extends Controller
                             ->select('*')
                             ->first();
           //dd($Cliente);
-          return view('Ecommerce.Articulos.Detalles.Inmuebles.articulo',[ 'Inmueble' => $Inmueble, 'Prestador' => $Prestador, 'PreguntasInmueble' => $PreguntasInmueble, 'OpinionesInmueble' => $OpinionesInmueble, 'CantidadOpiniones' => $CantidadOpiniones, 'Cliente' => $Cliente ]);
+          return view('Ecommerce.Articulos.Detalles.Inmuebles.articulo_inmueble',[ 'Inmueble' => $Inmueble, 'Prestador' => $Prestador, 'PreguntasInmueble' => $PreguntasInmueble, 'OpinionesInmueble' => $OpinionesInmueble, 'CantidadOpiniones' => $CantidadOpiniones, 'Cliente' => $Cliente ]);
         }
         
-        return view('Ecommerce.Articulos.Detalles.Inmuebles.articulo',[ 'Inmueble' => $Inmueble, 'Prestador' => $Prestador, 'PreguntasInmueble' => $PreguntasInmueble, 'OpinionesInmueble' => $OpinionesInmueble, 'CantidadOpiniones' => $CantidadOpiniones ]);
+        return view('Ecommerce.Articulos.Detalles.Inmuebles.articulo_inmueble',[ 'Inmueble' => $Inmueble, 'Prestador' => $Prestador, 'PreguntasInmueble' => $PreguntasInmueble, 'OpinionesInmueble' => $OpinionesInmueble, 'CantidadOpiniones' => $CantidadOpiniones ]);
 
       }
 
@@ -163,95 +163,5 @@ class InmuebleController extends Controller
                                               ->get();
 
         return $ActualizarPreguntas;
-      }
-
-      public function AgregarAlCarrito(Request $req){
-        //Comprobar que si el servicio ya existe en el carrito
-        $ComprobarItemsAgregados = Carrito::where( 'id_cliente' , $req->id_cliente )
-                                          ->where( 'id_inmueble' , $req->id_inmueble )
-                                          ->first();
-
-        if( $ComprobarItemsAgregados != null ){
-          return 'Existe';
-          
-        }else{
-
-          $Carrito = new Carrito;
-          $Carrito->id_cliente = $req->id_cliente;
-          $Carrito->id_inmueble = $req->id_inmueble;
-          $Carrito->id_juego = null;
-          $Carrito->id_animacion = null;
-          $Carrito->id_mobiliario = null;
-          $Carrito->id_catering = null;
-          $Carrito->id_musicaDj = null;
-          $Carrito->total = null;
-          $Carrito->save();
-
-          return 'Agregado';
-        }
-
-
-      }
-
-      public function ActualizarCarrito(Request $req){
-
-        $Carrito = Carrito::where('id_cliente', $req->id_cliente)
-                              ->select('*')
-                              ->get();
-
-        $ServiciosCarrito = array();
-
-          foreach ( $Carrito as $carrito ) {
-            
-            switch ($carrito) {  
-              case $carrito->id_inmueble != null:
-                $InmuebleAgregado = Inmueble::find($carrito->id_inmueble);
-                array_push( $ServiciosCarrito , $InmuebleAgregado );
-                //dd($InmuebleAgregado);
-                break;
-
-              case $carrito->id_juego != null:
-                $JuegoAgregado = Juego::find($carrito->id_juego);
-                array_push($ServiciosCarrito , $JuegoAgregado );
-                //dd($JuegoAgregado);
-                break;
-              
-              case $carrito->id_animacion != null:
-                $AnimacionAgregado = Animacion::find($carrito->id_animacion);
-                array_push($ServiciosCarrito , $AnimacionAgregado );
-                //dd('HAY Animacion');
-                break;
-              
-              case $carrito->id_mobiliario != null:
-                $MobiliarioAgregado = Mobiliario::find($carrito->id_mobiliario);
-                array_push($ServiciosCarrito , $MobiliarioAgregado );
-                //dd('HAY Mobiliario');
-                break;
-
-              case $carrito->id_catering != null:
-                $CateringAgregado = Catering::find($carrito->id_catering);
-                array_push($ServiciosCarrito , $CateringAgregado );
-                //dd('HAY Catering');
-                break;
-
-              case $carrito->id_musicaDj != null:
-                $MusicaDjAgregado = MusicaDj::find($carrito->id_musicaDj);
-                array_push($ServiciosCarrito , $MusicaDjAgregado );
-                //dd('HAY MusicaDj');
-                break;
-
-              default: 
-              'El paquete está vacío';
-                break;
-            }                              
-          }
-
-          $CantidadServicios = $Carrito->count();
-          
-          return response()->json([
-            'CantidadServicios' => $CantidadServicios,
-            'ServiciosCarrito' => $ServiciosCarrito
-        ]);
-        
       }
 }

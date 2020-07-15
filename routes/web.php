@@ -21,15 +21,17 @@ Route::get('/reservar/servicios-publicados','ServicioController@ServiciosPublica
 //Carrito
 Route::get('/mi-paquete','CarritoController@ServiciosAgregados')->name('ServiciosAgregados');
 
+//Agregar Inmueble al carrito
+Route::post('/mi-paquete/agregando-articulo','CarritoController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
+Route::get('/mi-paquete/actualizando-carrito','CarritoController@ActualizarCarrito')->name('ActualizarCarrito')->middleware('ControlarDatosCompletos');
 
 //Articulos-Detalles
   //Inmuebles
   Route::get('/reservar/servicios-publicados/Inmueble','InmuebleController@MostrarInmueble')->name('MostrarInmueble');
-  //Agregar Inmueble al carrito
-  Route::post('/mi-paquete/agregando-inmueble','InmuebleController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
-  Route::get('/mi-paquete/agregando-inmueble/actualizando-carrito','InmuebleController@ActualizarCarrito')->name('ActualizarCarrito')->middleware('ControlarDatosCompletos');
-
   //Juegos
+  Route::get('/reservar/servicios-publicados/Juego','JuegoController@MostrarJuego')->name('MostrarJuego');
+  
+
   //Animacion
   //Mobiliario
   //Catering

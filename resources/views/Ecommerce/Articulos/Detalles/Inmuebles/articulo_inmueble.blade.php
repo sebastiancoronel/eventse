@@ -677,7 +677,7 @@
 
 		$.ajax({
 			method: 'POST',
-			url: '{{url('/mi-paquete/agregando-inmueble')}}',
+			url: '{{url('/mi-paquete/agregando-articulo')}}',
 			data: {
 				id_inmueble,
 				id_cliente,
@@ -705,7 +705,7 @@
 
 		$.ajax({
 					method: 'GET',
-					url: '{{ url( '/mi-paquete/agregando-inmueble/actualizando-carrito' ) }}',
+					url: '{{ url( '/mi-paquete/actualizando-carrito' ) }}',
 					data: {
 
 						id_cliente,
