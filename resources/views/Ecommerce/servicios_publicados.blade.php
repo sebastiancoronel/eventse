@@ -253,7 +253,7 @@
 
                             <div class="block2-txt flex-w flex-t p-t-14">
                                 <div class="block2-txt-child1 flex-col-l ">
-                                <button type="submit" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                <button type="submit" class="text-left cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                     {{$inmueble->titulo}}
                                 </button>
 
@@ -300,7 +300,7 @@
 
                             <div class="block2-txt flex-w flex-t p-t-14">
                                 <div class="block2-txt-child1 flex-col-l ">
-                                    <button type="submit" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                    <button type="submit" class="text-left cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                         {{$juego->titulo}}
                                     </button>
 
@@ -349,13 +349,13 @@
 
                                 <span class="stext-105 cl3">
                                     @if ($animacion->precio != null)
-                                      {{$animacion->precio}}
+                                      $ {{$animacion->precio}}
                                     @else
                                       Precio a convenir
                                     @endif
                                   </span>
                                 <span class="mt-2">
-                                    <i class="zmdi zmdi-pin"></i> <small>{{$animacion->provincia}}</small>
+                                    <i class="zmdi zmdi-pin"></i> <small>{{ $animacion->provincia }}</small>
                                 </span>
                             </div>
 
@@ -391,7 +391,7 @@
 
                                 <span class="stext-105 cl3">
                                     @if ($mobiliario->precio != null)
-                                      {{$mobiliario->precio}}
+                                      $ {{$mobiliario->precio}}
                                     @else
                                       Precio a convenir
                                     @endif

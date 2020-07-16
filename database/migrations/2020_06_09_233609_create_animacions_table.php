@@ -24,6 +24,8 @@ class CreateAnimacionsTable extends Migration
             $table->string('años_experiencia');
             $table->enum('edades',['1-6 años','6-12 años','13-17 años','+18 años']);
             $table->string('descripcion',1000);
+            $table->string('provincia');
+            $table->string('localidad');
             $table->string('magos')->nullable();
             $table->string('maquillaje')->nullable();
             $table->string('karaoke')->nullable();
@@ -55,6 +57,8 @@ class CreateAnimacionsTable extends Migration
                 'años_experiencia' => '10',
                 'edades' => '1-6 años',
                 'descripcion' => 'ANIMACIÓN: Las animaciones consisten en bailes, karaoke, juegos para chicos y adultos, dinámicas, concursos, integraciones grupales, cantamos cumpleaños y los organizamos para el momento de la piñata!!',
+                'provincia' => 'Santa Fe',
+                'localidad' => 'Rosario',
                 'magos' => null,
                 'maquillaje' => 1,
                 'karaoke' => 1,

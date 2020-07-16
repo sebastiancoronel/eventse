@@ -102,6 +102,8 @@ class JuegoController extends Controller
                                             ->select('*')
                                             ->orderBy('opinion_juegos.created_at', 'DESC')
                                             ->get();
+        
+        //dd($OpinionesJuego);
 
         //Contar numero de opiniones para mostrar
         $CantidadOpiniones = $OpinionesJuego->count();
