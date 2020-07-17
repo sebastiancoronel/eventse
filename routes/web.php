@@ -18,10 +18,17 @@ Route::get('/categorias-listar','CategoriaController@index');
 //Listar todos los servicios publicados
 Route::get('/reservar/servicios-publicados','ServicioController@ServiciosPublicados')->name('ServiciosPublicados');
 
-//--- Carrito ---
-  Route::get('/mi-paquete','CarritoController@ServiciosAgregados')->name('ServiciosAgregados');
-  Route::post('/mi-paquete/agregando-articulo','CarritoController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
-  Route::get('/mi-paquete/actualizando-carrito','CarritoController@ActualizarCarrito')->name('ActualizarCarrito')->middleware('ControlarDatosCompletos');
+//--- Carrito --//
+Route::get('/mi-paquete','CarritoController@ServiciosAgregados')->name('ServiciosAgregados');
+//Inmueble carrito
+  Route::post('/mi-paquete/agregando-inmueble','CarritoController@AgregarInmuebleAlCarrito')->name('AgregarInmuebleAlCarrito')->middleware('ControlarDatosCompletos');
+  Route::get('/mi-paquete/actualizando-carrito-inmueble','CarritoController@ActualizarInmuebleCarrito')->name('ActualizarInmuebleCarrito')->middleware('ControlarDatosCompletos');
+  //Juego carrito
+  Route::post('/mi-paquete/agregando-juego','CarritoController@AgregarJuegoAlCarrito')->name('AgregarJuegoAlCarrito')->middleware('ControlarDatosCompletos');
+  Route::get('/mi-paquete/actualizando-carrito-juego','CarritoController@ActualizarJuegoCarrito')->name('ActualizarJuegoCarrito')->middleware('ControlarDatosCompletos');
+  //Animacion carrito
+  Route::post('/mi-paquete/agregando-animacion','CarritoController@AgregarAnimacionAlCarrito')->name('AgregarAnimacionAlCarrito')->middleware('ControlarDatosCompletos');
+  Route::get('/mi-paquete/actualizando-carrito-animacion','CarritoController@ActualizarAnimacionCarrito')->name('ActualizarAnimacionCarrito')->middleware('ControlarDatosCompletos');
 
 //--- Preguntas inmueble
   Route::post('/reservar/servicios-publicados/Inmueble/almacenando-pregunta','InmuebleController@PublicarPregunta')->name('PublicarPregunta')->middleware('ControlarDatosCompletos');
@@ -29,6 +36,9 @@ Route::get('/reservar/servicios-publicados','ServicioController@ServiciosPublica
   //--- Preguntas juego
   Route::post('/reservar/servicios-publicados/Juego/almacenando-pregunta','JuegoController@PublicarPregunta')->name('PublicarPregunta')->middleware('ControlarDatosCompletos');
   Route::get('/reservar/servicios-publicados/Juego/almacenando-pregunta','JuegoController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('ControlarDatosCompletos');
+  //--- Preguntas animacion
+  Route::post('/reservar/servicios-publicados/Animacion/almacenando-pregunta','AnimacionController@PublicarPregunta')->name('PublicarPregunta')->middleware('ControlarDatosCompletos');
+  Route::get('/reservar/servicios-publicados/Animacion/almacenando-pregunta','AnimacionController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('ControlarDatosCompletos');
 
 
   
@@ -37,6 +47,7 @@ Route::get('/reservar/servicios-publicados','ServicioController@ServiciosPublica
   
   Route::get('/reservar/servicios-publicados/Inmueble','InmuebleController@MostrarInmueble')->name('MostrarInmueble');
   Route::get('/reservar/servicios-publicados/Juego','JuegoController@MostrarJuego')->name('MostrarJuego');
+  Route::get('/reservar/servicios-publicados/Animacion','AnimacionController@MostrarAnimacion')->name('MostrarAnimacion');
 
 /*
 |--------------------------------------------------------------------------

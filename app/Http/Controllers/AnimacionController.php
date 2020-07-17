@@ -3,21 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Animacion;
 use Auth;
+use App\Inmueble;
+use App\Juego;
+use App\Animacion;
+use App\Mobiliario;
+use App\Catering;
+use App\MusicaDj;
 use App\Prestador;
+use App\Cliente;
 use App\Categoria;
+use App\PreguntaAnimacion;
+use App\OpinionAnimacion;
 
 class AnimacionController extends Controller
 {
-    public function FormularioAnimacion(){
+  public function FormularioAnimacion() {
         //Traer Provincias y Localidades
         $path = storage_path() . "/json/ProvinciasLocalidades.json";
         $ProvinciasLocalidadesJson = json_decode(file_get_contents($path),true);
         return view('Ecommerce.Formularios_Publicacion.animacion',['ProvinciasLocalidadesJson'=>$ProvinciasLocalidadesJson]);
-      }
+  }
     
-      public function PublicarAnimacion(Request $req){
+  public function PublicarAnimacion(Request $req){
         $user_id = Auth::user()->id;
         $id_Prestador = Prestador::where('user_id',$user_id)->pluck('id')->first();
         $Empresa = Prestador::where('user_id',$user_id)->first();
@@ -75,6 +83,74 @@ class AnimacionController extends Controller
         $Animacion->fecha_publicacion = $FechaPublicacion;
         $Animacion->save();
         return redirect()->route('Principal');
-    
-      }
+  }
+
+  public function MostrarAnimacion(Request $req) {
+
+        $Animacion = Animacion::where('id',$req->id_animacion)->where('id_categoria',$req->id_categoria)
+                            ->select('*')
+                            ->first();
+        
+        $Prestador = Prestador::where('id', $Animacion->id_prestador)
+                                ->select('*')
+                                ->first();
+
+        //Traer todas las preguntas
+        $PreguntasAnimacion = PreguntaAnimacion::where('id_prestador',$Prestador->id)
+                                              ->where('id_animacion',$Animacion->id)
+                                              ->select('*')
+                                              ->orderBy('created_at', 'DESC')
+                                              ->get();
+        
+        //Traer todas las opiniones
+        $OpinionesAnimacion = OpinionAnimacion::where('id_prestador',$Prestador->id)
+                                            ->where('id_animacion',$Animacion->id)
+                                            ->join('clientes','opinion_animacions.id_cliente','=','clientes.id')
+                                            ->join('users','clientes.user_id','=','users.id')
+                                            ->select('*')
+                                            ->orderBy('opinion_animacions.created_at', 'DESC')
+                                            ->get();
+
+        //Contar numero de opiniones para mostrar
+        $CantidadOpiniones = $OpinionesAnimacion->count();
+
+        //Traer Cliente logueado
+        if (Auth::user()) {
+          $user_id = Auth::user()->id;
+  
+          $Cliente = Cliente::where('user_id', $user_id)
+                            ->select('*')
+                            ->first();
+          //dd($Cliente);
+          return view('Ecommerce.Articulos.Detalles.Animacion.articulo_animacion',[ 'Animacion' => $Animacion, 'Prestador' => $Prestador, 'PreguntasAnimacion' => $PreguntasAnimacion, 'OpinionesAnimacion' => $OpinionesAnimacion, 'CantidadOpiniones' => $CantidadOpiniones, 'Cliente' => $Cliente ]);
+        }
+        
+        return view('Ecommerce.Articulos.Detalles.Animacion.articulo_animacion',[ 'Animacion' => $Animacion, 'Prestador' => $Prestador, 'PreguntasAnimacion' => $PreguntasAnimacion, 'OpinionesAnimacion' => $OpinionesAnimacion, 'CantidadOpiniones' => $CantidadOpiniones ]);
+
+  }
+
+  public function PublicarPregunta(Request $req){
+        
+        $Pregunta = New PreguntaAnimacion;
+        $Pregunta->id_prestador = $req->id_prestador;
+        $Pregunta->id_animacion = $req->id_animacion;
+        $Pregunta->id_cliente = $req->id_cliente;
+        $Pregunta->pregunta = $req->textarea_pregunta;
+        $Pregunta->save();
+
+        return 'Pregunta realizada';
+
+  }
+
+  public function ActualizarPreguntasAjax(Request $req){
+
+        $ActualizarPreguntas = PreguntaAnimacion::where('id_prestador',$req->id_prestador)
+                                              ->where('id_animacion',$req->id_animacion)
+                                              ->select('*')
+                                              ->orderBy('created_at', 'DESC')
+                                              ->get();
+
+        return $ActualizarPreguntas;
+  }
+      
 }

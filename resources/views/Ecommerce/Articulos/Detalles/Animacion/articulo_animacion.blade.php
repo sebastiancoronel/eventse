@@ -17,7 +17,7 @@
 			</a>
 
 			<span class="stext-109 cl4">
-				{{$Juego->titulo}}
+				{{$Animacion->titulo}}
 			</span>
 		</div>
 	</div>
@@ -35,7 +35,7 @@
 			</a>
 
 			<span class="stext-109 cl4">
-				{{$Juego->titulo}}
+				{{$Animacion->titulo}}
 			</span>
 		</div>
 	</div>
@@ -57,37 +57,37 @@
 
 							<div class="slick3 gallery-lb d-none d-sm-block">
 
-								<div class="item-slick3" data-thumb="{{$Juego->foto_1}}">
+								<div class="item-slick3" data-thumb="{{$Animacion->foto_1}}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="{{$Juego->foto_1}}" alt="IMG-PRODUCT">
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Juego->foto_1}}">
+										<img src="{{$Animacion->foto_1}}" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Animacion->foto_1}}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
 
-								<div class="item-slick3" data-thumb="{{$Juego->foto_2}}">
+								<div class="item-slick3" data-thumb="{{$Animacion->foto_2}}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="{{$Juego->foto_2}}" alt="IMG-PRODUCT">
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Juego->foto_2}}">
+										<img src="{{$Animacion->foto_2}}" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Animacion->foto_2}}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
 
-								<div class="item-slick3" data-thumb="{{$Juego->foto_3}}">
+								<div class="item-slick3" data-thumb="{{$Animacion->foto_3}}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="{{$Juego->foto_3}}" alt="IMG-PRODUCT">
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Juego->foto_3}}">
+										<img src="{{$Animacion->foto_3}}" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Animacion->foto_3}}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
 
-								<div class="item-slick3" data-thumb="{{$Juego->foto_4}}">
+								<div class="item-slick3" data-thumb="{{$Animacion->foto_4}}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="{{$Juego->foto_4}}" alt="IMG-PRODUCT">
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Juego->foto_4}}">
+										<img src="{{$Animacion->foto_4}}" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Animacion->foto_4}}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
@@ -102,37 +102,37 @@
 
 							<div class="slick3 gallery-lb d-md-none d-lg-none d-xl-none d-xs-block d-sm-block">
 
-								<div class="item-slick3" data-thumb="{{$Juego->foto_1}}">
+								<div class="item-slick3" data-thumb="{{$Animacion->foto_1}}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="{{$Juego->foto_1}}" alt="IMG-PRODUCT">
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Juego->foto_1}}">
+										<img src="{{$Animacion->foto_1}}" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Animacion->foto_1}}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
 
-								<div class="item-slick3" data-thumb="{{$Juego->foto_2}}">
+								<div class="item-slick3" data-thumb="{{$Animacion->foto_2}}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="{{$Juego->foto_2}}" alt="IMG-PRODUCT">
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Juego->foto_2}}">
+										<img src="{{$Animacion->foto_2}}" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Animacion->foto_2}}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
 
-								<div class="item-slick3" data-thumb="{{$Juego->foto_3}}">
+								<div class="item-slick3" data-thumb="{{$Animacion->foto_3}}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="{{$Juego->foto_3}}" alt="IMG-PRODUCT">
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Juego->foto_3}}">
+										<img src="{{$Animacion->foto_3}}" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Animacion->foto_3}}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
 
-								<div class="item-slick3" data-thumb="{{$Juego->foto_4}}">
+								<div class="item-slick3" data-thumb="{{$Animacion->foto_4}}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="{{$Juego->foto_4}}" alt="IMG-PRODUCT">
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Juego->foto_4}}">
+										<img src="{{$Animacion->foto_4}}" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Animacion->foto_4}}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
@@ -147,19 +147,19 @@
 				<div class="col-md-6 col-lg-5 p-b-30">
 					<div class="p-r-50 p-t-5 p-lr-0-lg">
 						<h4 class="mtext-105 cl2 js-name-detail p-b-14">
-							{{$Juego->titulo}}
+							{{$Animacion->titulo}}
 						</h4>
 
 						<span class="mtext-106 cl2" style="color:#f40082;">
-							@if ($Juego->precio != null)
-								$ {{$Juego->precio}}
+							@if ($Animacion->precio != null)
+								$ {{$Animacion->precio}}
 							@else
 								Precio a convenir
 							@endif
 						</span>
 
 						<p class="stext-102 cl3 p-t-23">
-                            <i class="zmdi zmdi-pin"></i> {{$Juego->localidad}}, {{$Juego->provincia}}
+							<i class="zmdi zmdi-pin"></i>	{{$Animacion->localidad}}, {{$Animacion->provincia}}
 						</p>
 
 						<p class="stext-102 cl3 p-t-23  mt-5 d-flex align-items-center">
@@ -222,9 +222,9 @@
 										</div>
 									</div> --}}
 								@if ( Auth::user() )
-								<form id="form_agregar_servicio" action="{{route('AgregarJuegoAlCarrito')}}" method="POST">
+								<form id="form_agregar_servicio" action="{{route('AgregarAnimacionAlCarrito')}}" method="POST">
 									@csrf
-									<input id="id_juego" hidden type="text" name="id_juego" value="{{$Juego->id}}">
+									<input id="id_animacion" hidden type="text" name="id_animacion" value="{{$Animacion->id}}">
 									<input id="id_cliente" hidden type="text" name="id_cliente" value="{{$Cliente->id}}">
 									<button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
 										Agregar al paquete
@@ -275,7 +275,10 @@
 						<li class="nav-item p-b-10">
 							<a class="nav-link active" data-toggle="tab" href="#description" role="tab">Descripción</a>
 						</li>
-						
+
+						<li class="nav-item p-b-10">
+							<a class="nav-link" data-toggle="tab" href="#information" role="tab">Información adicional</a>
+						</li>
 						<li class="nav-item p-b-10">
 							<a class="nav-link" data-toggle="tab" href="#preguntas" role="tab">Preguntas</a>
 						</li>
@@ -290,8 +293,172 @@
 						
 						<!-- Descripcion -->
 						<div class="tab-pane fade show active" id="description" role="tabpanel">
-							<div class="how-pos2 p-lr-15-md text-center row">
-								{{ $Juego->descripcion }}
+							{{ $Animacion->descripcion }}
+						</div>
+
+						<!-- Informacion adicional -->
+						<div class="tab-pane fade" id="information" role="tabpanel">
+							<div class="row">
+								<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
+									<ul class="p-lr-28 p-lr-15-sm">
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Cantidad de animadores:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												{{$Animacion->cant_animadores}}
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Años de experiencia:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												{{$Animacion->años_experiencia}}
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Para edades de:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												{{$Animacion->edades}}
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Magos:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Animacion->magos == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Maquillaje:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Animacion->maquillaje == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Karaoke:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Animacion->karaoke == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Payasos:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Animacion->payasos == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Personajes:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Animacion->personajes == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Títeres:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Animacion->titeres == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Globología:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Animacion->globologia == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Robot Led
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Animacion->robot_led == 1 )
+													SI
+												@else
+													NO
+												@endif												
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Maquillaje Fluor
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Animacion->maquillaje_fluor == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+									</ul>
+								</div>
 							</div>
 						</div>
 
@@ -300,7 +467,7 @@
 							<div class="row">
 								<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
 									<div class="p-b-30 m-lr-15-sm">
-										@foreach ($OpinionesJuego as $opinion_juego)
+										@foreach ($OpinionesAnimacion as $opinion_animacion)
 										<!-- Review -->
 										<div class="flex-w flex-t p-b-68">
 											{{-- <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
@@ -310,7 +477,7 @@
 											<div class="size-207">
 												<div class="flex-w flex-sb-m p-b-17">
 													<span class="mtext-107 cl2 p-r-20">
-														{{$opinion_juego->name}} {{$opinion_juego->lastname}}
+														{{$opinion_animacion->name}} {{$opinion_animacion->lastname}}
 													</span>
 													
 													{{-- <span class="fs-18 cl11">
@@ -323,7 +490,7 @@
 												</div>
 												
 												<p class="stext-102 cl6">
-													{{$opinion_juego->opinion}}
+													{{$opinion_animacion->opinion}}
 												</p>
 											</div>
 										</div>
@@ -399,7 +566,7 @@
 									@if ($Cliente && $Usuario != null)
 									<form id="form_pregunta" action="{{route('PublicarPregunta')}}">
 										<input id="id_prestador" hidden type="text" name="id_prestador" value="{{$Prestador->id}}">
-										<input id="id_juego" hidden type="text" name="id_juego" value="{{$Juego->id}}">
+										<input id="id_animacion" hidden type="text" name="id_animacion" value="{{$Animacion->id}}">
 										<input id="id_cliente" hidden type="text" name="id_cliente" value="{{$Cliente->id}}">
 									
 										<textarea id="textarea_pregunta" class="form-control size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" name="pregunta" rows="4" cols="4" maxlength="300" required></textarea>
@@ -426,11 +593,11 @@
 
 								{{-- Traer todas las preguntas --}}
 								<div id="mostrar_preguntas" >
-									@foreach ($PreguntasJuego as $pregunta_juego)
+									@foreach ($PreguntasAnimacion as $pregunta_animacion)
 									<div class="row mt-4 rounded">
-										<span class="col-md-12 col-12 text-dark"> <i class="zmdi zmdi-comment-text"></i> {{$pregunta_juego->pregunta}} </span><br>
-										@if ( $pregunta_juego->respuesta != null)
-											<span class="col-md-12 col-12 mt-3 text-black-50" ><i class="zmdi zmdi-comment-alt-text"></i> {{$pregunta_juego->respuesta}} </span><br><br><br>
+										<span class="col-md-12 col-12 text-dark"> <i class="zmdi zmdi-comment-text"></i> {{$pregunta_animacion->pregunta}} </span><br>
+										@if ( $pregunta_animacion->respuesta != null)
+											<span class="col-md-12 col-12 mt-3 text-black-50" ><i class="zmdi zmdi-comment-alt-text"></i> {{$pregunta_animacion->respuesta}} </span><br><br><br>
 										@endif
 									</div>
 									<hr>
@@ -448,7 +615,7 @@
 			</span> --}}
 
 			<span class="stext-107 cl6 p-lr-25">
-			Categoria: Juegos
+			Categoria: Animaciones
 			</span>
 		</div>
 	</section>
@@ -466,14 +633,14 @@
 	$("#form_agregar_servicio").submit(function(e){
 		e.preventDefault();
 		
-		var id_juego = $('#id_juego').val();
+		var id_animacion = $('#id_animacion').val();
 		var id_cliente = $('#id_cliente').val();
 
 		$.ajax({
 			method: 'POST',
-			url: '{{url('/mi-paquete/agregando-juego')}}',
+			url: '{{url('/mi-paquete/agregando-articulo')}}',
 			data: {
-				id_juego,
+				id_animacion,
 				id_cliente,
 				_token: '{{csrf_token()}}'
 			},
@@ -489,17 +656,17 @@
 
 					swal('Error!','Ya agregaste este servicio a tu paquete','error');
 
+					//ActualizarCarrito();
 				}else{
 					swal('Listo!','Se agregó el servicio al paquete con éxito','success');
 				}
 			}
 
 		});
-		
-		//Actualizar
+
 		$.ajax({
 					method: 'GET',
-					url: '{{ url( '/mi-paquete/actualizando-carrito-juego' ) }}',
+					url: '{{ url( '/mi-paquete/actualizando-carrito' ) }}',
 					data: {
 
 						id_cliente,
@@ -577,17 +744,17 @@
 	$('#form_pregunta').submit( function(e){
 		e.preventDefault();
 		var id_prestador = $('#id_prestador').val();
-		var id_juego = $('#id_juego').val();
+		var id_animacion = $('#id_animacion').val();
 		var id_cliente = $('#id_cliente').val();
 		var textarea_pregunta = $('#textarea_pregunta').val();
 
 		$.ajax({
 	
 			method: 'POST',
-			url: '{{url('/reservar/servicios-publicados/Juego/almacenando-pregunta')}}',
+			url: '{{url('/reservar/servicios-publicados/Animacion/almacenando-pregunta')}}',
 			data: {
 				id_prestador,
-				id_juego,
+				id_animacion,
 				id_cliente,
 				textarea_pregunta,
 				_token: "{{csrf_token()}}"
@@ -611,10 +778,10 @@
 		$.ajax({
 		
 			method: 'GET',
-			url: '{{url('/reservar/servicios-publicados/Juego/almacenando-pregunta')}}',
+			url: '{{url('/reservar/servicios-publicados/Animacion/almacenando-pregunta')}}',
 			data: {
 				id_prestador,
-				id_juego,
+				id_animacion,
 				_token: "{{csrf_token()}}"
 			},
 
