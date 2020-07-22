@@ -40,6 +40,9 @@ Route::get('/reservar/servicios-publicados','ServicioController@ServiciosPublica
 
   //Catering carrito
   Route::post('/mi-paquete/agregando-catering','CateringController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
+
+  //Catering musicaDj
+  Route::post('/mi-paquete/agregando-musicaDj','MusicaDjController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
   
 
   // --Preguntas --//
@@ -59,6 +62,10 @@ Route::get('/reservar/servicios-publicados','ServicioController@ServiciosPublica
   //--- Preguntas catering
   Route::post('/reservar/servicios-publicados/Catering/almacenando-pregunta','CateringController@PublicarPregunta')->name('PublicarPregunta')->middleware('ControlarDatosCompletos');
   Route::get('/reservar/servicios-publicados/Catering/almacenando-pregunta','CateringController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('ControlarDatosCompletos');
+
+  //--- Preguntas musicaDj
+  Route::post('/reservar/servicios-publicados/MusicaDj/almacenando-pregunta','MusicaDjController@PublicarPregunta')->name('PublicarPregunta')->middleware('ControlarDatosCompletos');
+  Route::get('/reservar/servicios-publicados/MusicaDj/almacenando-pregunta','MusicaDjController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('ControlarDatosCompletos');
 
 //Articulos-Detalles
   

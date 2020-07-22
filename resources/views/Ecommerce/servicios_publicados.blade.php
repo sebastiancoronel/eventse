@@ -469,7 +469,7 @@
                 @foreach($MusicaDjs as $musicaDj)
                     <form action="{{route('MostrarMusicaDj')}}" method="GET">
                         @csrf
-                        <input hidden type="text" name="id_mobiliario" value="{{$musicaDj->id}}">
+                        <input hidden type="text" name="id_musicaDj" value="{{$musicaDj->id}}">
                         <input hidden type="text" name="id_categoria" value="6">
                             <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Música-DJ´s" style="position: absolute; left: 25%; top: 429px;">
                                 <!-- Block2 -->
