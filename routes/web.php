@@ -24,8 +24,8 @@ Route::get('/mi-paquete','CarritoController@ServiciosAgregados')->name('Servicio
   Route::post('/mi-paquete/agregando-inmueble','CarritoController@AgregarInmuebleAlCarrito')->name('AgregarInmuebleAlCarrito')->middleware('ControlarDatosCompletos');
   Route::get('/mi-paquete/actualizando-carrito-inmueble','CarritoController@ActualizarInmuebleCarrito')->name('ActualizarInmuebleCarrito')->middleware('ControlarDatosCompletos');
   //Juego carrito
-  Route::post('/mi-paquete/agregando-juego','CarritoController@AgregarJuegoAlCarrito')->name('AgregarJuegoAlCarrito')->middleware('ControlarDatosCompletos');
-  Route::get('/mi-paquete/actualizando-carrito-juego','CarritoController@ActualizarJuegoCarrito')->name('ActualizarJuegoCarrito')->middleware('ControlarDatosCompletos');
+  Route::post('/mi-paquete/agregando-juego','JuegoController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
+  Route::get('/mi-paquete/actualizando-carrito-juego','JuegoController@ActualizarCarrito')->name('ActualizarCarrito')->middleware('ControlarDatosCompletos');
   //Animacion carrito
   Route::post('/mi-paquete/agregando-animacion','CarritoController@AgregarAnimacionAlCarrito')->name('AgregarAnimacionAlCarrito')->middleware('ControlarDatosCompletos');
   Route::get('/mi-paquete/actualizando-carrito-animacion','CarritoController@ActualizarAnimacionCarrito')->name('ActualizarAnimacionCarrito')->middleware('ControlarDatosCompletos');

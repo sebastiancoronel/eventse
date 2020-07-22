@@ -222,7 +222,7 @@
 										</div>
 									</div> --}}
 								@if ( Auth::user() )
-								<form id="form_agregar_servicio" action="{{route('AgregarJuegoAlCarrito')}}" method="POST">
+								<form id="form_agregar_servicio" action="{{route('AgregarAlCarrito')}}" method="POST">
 									@csrf
 									<input id="id_juego" hidden type="text" name="id_juego" value="{{$Juego->id}}">
 									<input id="id_cliente" hidden type="text" name="id_cliente" value="{{$Cliente->id}}">
@@ -513,6 +513,7 @@
 
 					success: function(data){
 						console.log(data);
+						$('#carrito_escritorio').addClass('icon-header-noti');
 						$('#carrito_escritorio').attr('data-notify', data.CantidadServicios );
 						$('#carrito_movil').attr('data-notify', data.CantidadServicios );
 						$('#servicios_carrito').empty();
