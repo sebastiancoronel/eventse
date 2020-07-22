@@ -37,6 +37,9 @@ Route::get('/reservar/servicios-publicados','ServicioController@ServiciosPublica
   
   //Mobiliario carrito
   Route::post('/mi-paquete/agregando-mobiliario','MobiliarioController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
+
+  //Catering carrito
+  Route::post('/mi-paquete/agregando-catering','CateringController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
   
 
   // --Preguntas --//
@@ -44,12 +47,18 @@ Route::get('/reservar/servicios-publicados','ServicioController@ServiciosPublica
   //--- Preguntas inmueble
   Route::post('/reservar/servicios-publicados/Inmueble/almacenando-pregunta','InmuebleController@PublicarPregunta')->name('PublicarPregunta')->middleware('ControlarDatosCompletos');
   Route::get('/reservar/servicios-publicados/Inmueble/almacenando-pregunta','InmuebleController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('ControlarDatosCompletos');
+
   //--- Preguntas juego
   Route::post('/reservar/servicios-publicados/Juego/almacenando-pregunta','JuegoController@PublicarPregunta')->name('PublicarPregunta')->middleware('ControlarDatosCompletos');
   Route::get('/reservar/servicios-publicados/Juego/almacenando-pregunta','JuegoController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('ControlarDatosCompletos');
+
   //--- Preguntas animacion
   Route::post('/reservar/servicios-publicados/Animacion/almacenando-pregunta','AnimacionController@PublicarPregunta')->name('PublicarPregunta')->middleware('ControlarDatosCompletos');
   Route::get('/reservar/servicios-publicados/Animacion/almacenando-pregunta','AnimacionController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('ControlarDatosCompletos');
+
+  //--- Preguntas catering
+  Route::post('/reservar/servicios-publicados/Catering/almacenando-pregunta','CateringController@PublicarPregunta')->name('PublicarPregunta')->middleware('ControlarDatosCompletos');
+  Route::get('/reservar/servicios-publicados/Catering/almacenando-pregunta','CateringController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('ControlarDatosCompletos');
 
 //Articulos-Detalles
   
@@ -57,6 +66,8 @@ Route::get('/reservar/servicios-publicados','ServicioController@ServiciosPublica
   Route::get('/reservar/servicios-publicados/Juego','JuegoController@MostrarJuego')->name('MostrarJuego');
   Route::get('/reservar/servicios-publicados/Animacion','AnimacionController@MostrarAnimacion')->name('MostrarAnimacion');
   Route::get('/reservar/servicios-publicados/Mobiliario','MobiliarioController@MostrarMobiliario')->name('MostrarMobiliario');
+  Route::get('/reservar/servicios-publicados/Catering','CateringController@MostrarCatering')->name('MostrarCatering');
+  Route::get('/reservar/servicios-publicados/MusicaDj','MusicaDjController@MostrarMusicaDj')->name('MostrarMusicaDj');
 
 /*
 |--------------------------------------------------------------------------

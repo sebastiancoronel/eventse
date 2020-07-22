@@ -195,9 +195,9 @@ class AnimacionController extends Controller
             foreach ( $Carrito as $carrito ) {
             
             switch ($carrito) {  
-                  case $carrito->id_Juego != null:
-                  $JuegoAgregado = Juego::find($carrito->id_Juego);
-                  array_push( $ServiciosCarrito , $JuegoAgregado );
+                  case $carrito->id_inmueble != null:
+                  $InmuebleAgregado = Inmueble::find($carrito->id_inmueble);
+                  array_push( $ServiciosCarrito , $InmuebleAgregado );
                   //dd($JuegoAgregado);
                   break;
 

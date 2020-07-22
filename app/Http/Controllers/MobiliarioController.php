@@ -135,7 +135,7 @@ class MobiliarioController extends Controller
       
       return view('Ecommerce.Articulos.Detalles.Mobiliario.articulo_mobiliario',[ 'Mobiliario' => $Mobiliario, 'Prestador' => $Prestador, 'PreguntasMobiliario' => $PreguntasMobiliario, 'OpinionesMobiliario' => $OpinionesMobiliario, 'CantidadOpiniones' => $CantidadOpiniones ]);
 
-}
+    }
 
     public function AgregarAlCarrito(Request $req){
 
@@ -153,7 +153,7 @@ class MobiliarioController extends Controller
       $Carrito->id_cliente = $req->id_cliente;
       $Carrito->id_Inmueble = null;
       $Carrito->id_juego = null;
-      $Carrito->id_mobiliario = null;
+      $Carrito->id_animacion = null;
       $Carrito->id_mobiliario = $req->id_mobiliario;
       $Carrito->id_catering = null;
       $Carrito->id_musicaDj = null;
@@ -165,8 +165,5 @@ class MobiliarioController extends Controller
 
 
     }
-
-
-    
     
 }
