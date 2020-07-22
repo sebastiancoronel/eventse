@@ -274,6 +274,10 @@
 					<ul class="nav nav-tabs" role="tablist">
 						<li class="nav-item p-b-10">
 							<a class="nav-link active" data-toggle="tab" href="#description" role="tab">Descripción</a>
+                        </li>
+                        
+                        <li class="nav-item p-b-10">
+							<a class="nav-link" data-toggle="tab" href="#information" role="tab">Información adicional</a>
 						</li>
 						
 						<li class="nav-item p-b-10">
@@ -292,6 +296,214 @@
 						<div class="tab-pane fade show active" id="description" role="tabpanel">
 							<div class="how-pos2 p-lr-15-md text-center row">
 								{{ $MusicaDj->descripcion }}
+							</div>
+                        </div>
+                        
+                        <!-- Informacion adicional -->
+						<div class="tab-pane fade" id="information" role="tabpanel">
+							<div class="row">
+								<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
+									<ul class="p-lr-28 p-lr-15-sm">
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Para cumpleaños Infantiles:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $MusicaDj->cumpleaños_infantiles == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Cumpleaños para adultos:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $MusicaDj->cumpleaños_adultos == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Para fiestas temáticas:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $MusicaDj->fiestas_tematicas == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Comuniones:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $MusicaDj->comuniones == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Bodas y Aniversarios:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $MusicaDj->bodas_y_aniversarios == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+                                        </li>
+                                        
+                                        <h3> GÉNEROS MUSICALES </h3>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Música de los 70':
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $MusicaDj->musica_70 == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Música de los 80':
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $MusicaDj->musica_80 == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Música de los 90':
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $MusicaDj->musiac_90 == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Música de los 2000:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $MusicaDj->musica_2000 == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Clasicos:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $MusicaDj->clasicos == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Cumbia:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $MusicaDj->cumbia == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Cuarteto:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $MusicaDj->cuarteto == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+                                        </li>
+                                        
+                                        <li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Reggaeton:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $MusicaDj->reggaeton == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+                                        </li>
+                                        
+                                        <li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Bachata:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $MusicaDj->bachata == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+									</ul>
+								</div>
 							</div>
 						</div>
 
