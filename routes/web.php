@@ -19,18 +19,26 @@ Route::get('/categorias-listar','CategoriaController@index');
 Route::get('/reservar/servicios-publicados','ServicioController@ServiciosPublicados')->name('ServiciosPublicados');
 
 //--- Carrito --//
-Route::get('/mi-paquete','CarritoController@ServiciosAgregados')->name('ServiciosAgregados');
-//Inmueble carrito
-  Route::post('/mi-paquete/agregando-inmueble','CarritoController@AgregarInmuebleAlCarrito')->name('AgregarInmuebleAlCarrito')->middleware('ControlarDatosCompletos');
-  Route::get('/mi-paquete/actualizando-carrito-inmueble','CarritoController@ActualizarInmuebleCarrito')->name('ActualizarInmuebleCarrito')->middleware('ControlarDatosCompletos');
+
+  //Traer productos del carrito
+  Route::get('/mi-paquete','CarritoController@ServiciosAgregados')->name('ServiciosAgregados');
+
+  //Inmueble carrito
+  Route::post('/mi-paquete/agregando-inmueble','InmuebleController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
+  Route::get('/mi-paquete/actualizando-carrito-inmueble','InmuebleController@ActualizarCarrito')->name('ActualizarCarrito')->middleware('ControlarDatosCompletos');
+
   //Juego carrito
   Route::post('/mi-paquete/agregando-juego','JuegoController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
   Route::get('/mi-paquete/actualizando-carrito-juego','JuegoController@ActualizarCarrito')->name('ActualizarCarrito')->middleware('ControlarDatosCompletos');
-  //Animacion carrito
-  Route::post('/mi-paquete/agregando-animacion','CarritoController@AgregarAnimacionAlCarrito')->name('AgregarAnimacionAlCarrito')->middleware('ControlarDatosCompletos');
-  Route::get('/mi-paquete/actualizando-carrito-animacion','CarritoController@ActualizarAnimacionCarrito')->name('ActualizarAnimacionCarrito')->middleware('ControlarDatosCompletos');
 
-//--- Preguntas inmueble
+  //Animacion carrito
+  Route::post('/mi-paquete/agregando-animacion','AnimacionController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
+  Route::get('/mi-paquete/actualizando-carrito-animacion','AnimacionController@ActualizarCarrito')->name('ActualizarCarrito')->middleware('ControlarDatosCompletos');
+
+
+  // --Preguntas --//
+
+  //--- Preguntas inmueble
   Route::post('/reservar/servicios-publicados/Inmueble/almacenando-pregunta','InmuebleController@PublicarPregunta')->name('PublicarPregunta')->middleware('ControlarDatosCompletos');
   Route::get('/reservar/servicios-publicados/Inmueble/almacenando-pregunta','InmuebleController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('ControlarDatosCompletos');
   //--- Preguntas juego
@@ -39,9 +47,6 @@ Route::get('/mi-paquete','CarritoController@ServiciosAgregados')->name('Servicio
   //--- Preguntas animacion
   Route::post('/reservar/servicios-publicados/Animacion/almacenando-pregunta','AnimacionController@PublicarPregunta')->name('PublicarPregunta')->middleware('ControlarDatosCompletos');
   Route::get('/reservar/servicios-publicados/Animacion/almacenando-pregunta','AnimacionController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('ControlarDatosCompletos');
-
-
-  
 
 //Articulos-Detalles
   

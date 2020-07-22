@@ -325,6 +325,7 @@
 												<p class="stext-102 cl6">
 													{{$opinion_juego->opinion}}
 												</p>
+												<hr>
 											</div>
 										</div>
 

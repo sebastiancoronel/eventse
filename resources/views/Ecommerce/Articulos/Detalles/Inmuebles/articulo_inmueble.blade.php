@@ -531,9 +531,10 @@
 												<p class="stext-102 cl6">
 													{{$opinion_inmueble->opinion}}
 												</p>
+												<hr>
 											</div>
 										</div>
-
+										
 										@endforeach
 
 										<!-- Add review -->
@@ -677,7 +678,7 @@
 
 		$.ajax({
 			method: 'POST',
-			url: '{{url('/mi-paquete/agregando-articulo')}}',
+			url: '{{url('/mi-paquete/agregando-inmueble')}}',
 			data: {
 				id_inmueble,
 				id_cliente,
@@ -705,7 +706,7 @@
 
 		$.ajax({
 					method: 'GET',
-					url: '{{ url( '/mi-paquete/actualizando-carrito' ) }}',
+					url: '{{ url( '/mi-paquete/actualizando-carrito-inmueble' ) }}',
 					data: {
 
 						id_cliente,
@@ -719,6 +720,7 @@
 
 					success: function(data){
 						console.log(data);
+						$('#carrito_escritorio').addClass('icon-header-noti');
 						$('#carrito_escritorio').attr('data-notify', data.CantidadServicios );
 						$('#carrito_movil').attr('data-notify', data.CantidadServicios );
 						$('#servicios_carrito').empty();

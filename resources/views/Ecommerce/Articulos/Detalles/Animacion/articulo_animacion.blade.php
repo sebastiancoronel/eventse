@@ -159,7 +159,7 @@
 						</span>
 
 						<p class="stext-102 cl3 p-t-23">
-							<i class="zmdi zmdi-pin"></i>	{{$Animacion->localidad}}, {{$Animacion->provincia}}
+                            <i class="zmdi zmdi-pin"></i> {{$Animacion->localidad}}, {{$Animacion->provincia}}
 						</p>
 
 						<p class="stext-102 cl3 p-t-23  mt-5 d-flex align-items-center">
@@ -222,7 +222,7 @@
 										</div>
 									</div> --}}
 								@if ( Auth::user() )
-								<form id="form_agregar_servicio" action="{{route('AgregarAnimacionAlCarrito')}}" method="POST">
+								<form id="form_agregar_servicio" action="{{route('AgregarAlCarrito')}}" method="POST">
 									@csrf
 									<input id="id_animacion" hidden type="text" name="id_animacion" value="{{$Animacion->id}}">
 									<input id="id_cliente" hidden type="text" name="id_cliente" value="{{$Cliente->id}}">
@@ -275,10 +275,7 @@
 						<li class="nav-item p-b-10">
 							<a class="nav-link active" data-toggle="tab" href="#description" role="tab">Descripción</a>
 						</li>
-
-						<li class="nav-item p-b-10">
-							<a class="nav-link" data-toggle="tab" href="#information" role="tab">Información adicional</a>
-						</li>
+						
 						<li class="nav-item p-b-10">
 							<a class="nav-link" data-toggle="tab" href="#preguntas" role="tab">Preguntas</a>
 						</li>
@@ -293,172 +290,8 @@
 						
 						<!-- Descripcion -->
 						<div class="tab-pane fade show active" id="description" role="tabpanel">
-							{{ $Animacion->descripcion }}
-						</div>
-
-						<!-- Informacion adicional -->
-						<div class="tab-pane fade" id="information" role="tabpanel">
-							<div class="row">
-								<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-									<ul class="p-lr-28 p-lr-15-sm">
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Cantidad de animadores:
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												{{$Animacion->cant_animadores}}
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Años de experiencia:
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												{{$Animacion->años_experiencia}}
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Para edades de:
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												{{$Animacion->edades}}
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Magos:
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												@if ( $Animacion->magos == 1 )
-													SI
-												@else
-													NO
-												@endif
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Maquillaje:
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												@if ( $Animacion->maquillaje == 1 )
-													SI
-												@else
-													NO
-												@endif
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Karaoke:
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												@if ( $Animacion->karaoke == 1 )
-													SI
-												@else
-													NO
-												@endif
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Payasos:
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												@if ( $Animacion->payasos == 1 )
-													SI
-												@else
-													NO
-												@endif
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Personajes:
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												@if ( $Animacion->personajes == 1 )
-													SI
-												@else
-													NO
-												@endif
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Títeres:
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												@if ( $Animacion->titeres == 1 )
-													SI
-												@else
-													NO
-												@endif
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Globología:
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												@if ( $Animacion->globologia == 1 )
-													SI
-												@else
-													NO
-												@endif
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Robot Led
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												@if ( $Animacion->robot_led == 1 )
-													SI
-												@else
-													NO
-												@endif												
-											</span>
-										</li>
-
-										<li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Maquillaje Fluor
-											</span>
-
-											<span class="stext-102 cl6 size-206">
-												@if ( $Animacion->maquillaje_fluor == 1 )
-													SI
-												@else
-													NO
-												@endif
-											</span>
-										</li>
-
-									</ul>
-								</div>
+							<div class="how-pos2 p-lr-15-md text-center row">
+								{{ $Animacion->descripcion }}
 							</div>
 						</div>
 
@@ -492,6 +325,7 @@
 												<p class="stext-102 cl6">
 													{{$opinion_animacion->opinion}}
 												</p>
+												<hr>
 											</div>
 										</div>
 
@@ -638,7 +472,7 @@
 
 		$.ajax({
 			method: 'POST',
-			url: '{{url('/mi-paquete/agregando-articulo')}}',
+			url: '{{url('/mi-paquete/agregando-animacion')}}',
 			data: {
 				id_animacion,
 				id_cliente,
@@ -656,17 +490,17 @@
 
 					swal('Error!','Ya agregaste este servicio a tu paquete','error');
 
-					//ActualizarCarrito();
 				}else{
 					swal('Listo!','Se agregó el servicio al paquete con éxito','success');
 				}
 			}
 
 		});
-
+		
+		//Actualizar
 		$.ajax({
 					method: 'GET',
-					url: '{{ url( '/mi-paquete/actualizando-carrito' ) }}',
+					url: '{{ url( '/mi-paquete/actualizando-carrito-animacion' ) }}',
 					data: {
 
 						id_cliente,
@@ -680,6 +514,7 @@
 
 					success: function(data){
 						console.log(data);
+						$('#carrito_escritorio').addClass('icon-header-noti');
 						$('#carrito_escritorio').attr('data-notify', data.CantidadServicios );
 						$('#carrito_movil').attr('data-notify', data.CantidadServicios );
 						$('#servicios_carrito').empty();
