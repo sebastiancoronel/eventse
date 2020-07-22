@@ -696,7 +696,7 @@
 
 					swal('Error!','Ya agregaste este servicio a tu paquete','error');
 
-					//ActualizarCarrito();
+					
 				}else{
 					swal('Listo!','Se agregó el servicio al paquete con éxito','success');
 				}
@@ -704,9 +704,10 @@
 
 		});
 
+		//Actualizar
 		$.ajax({
 					method: 'GET',
-					url: '{{ url( '/mi-paquete/actualizando-carrito-inmueble' ) }}',
+					url: '{{ url( '/mi-paquete/actualizando-carrito' ) }}',
 					data: {
 
 						id_cliente,

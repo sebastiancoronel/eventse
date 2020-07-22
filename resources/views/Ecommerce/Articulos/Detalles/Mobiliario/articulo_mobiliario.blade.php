@@ -17,7 +17,7 @@
 			</a>
 
 			<span class="stext-109 cl4">
-				{{$Juego->titulo}}
+				{{$Mobiliario->titulo}}
 			</span>
 		</div>
 	</div>
@@ -35,7 +35,7 @@
 			</a>
 
 			<span class="stext-109 cl4">
-				{{$Juego->titulo}}
+				{{$Mobiliario->titulo}}
 			</span>
 		</div>
 	</div>
@@ -57,37 +57,37 @@
 
 							<div class="slick3 gallery-lb d-none d-sm-block">
 
-								<div class="item-slick3" data-thumb="{{$Juego->foto_1}}">
+								<div class="item-slick3" data-thumb="{{$Mobiliario->foto_1}}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="{{$Juego->foto_1}}" alt="IMG-PRODUCT">
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Juego->foto_1}}">
+										<img src="{{$Mobiliario->foto_1}}" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Mobiliario->foto_1}}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
 
-								<div class="item-slick3" data-thumb="{{$Juego->foto_2}}">
+								<div class="item-slick3" data-thumb="{{$Mobiliario->foto_2}}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="{{$Juego->foto_2}}" alt="IMG-PRODUCT">
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Juego->foto_2}}">
+										<img src="{{$Mobiliario->foto_2}}" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Mobiliario->foto_2}}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
 
-								<div class="item-slick3" data-thumb="{{$Juego->foto_3}}">
+								<div class="item-slick3" data-thumb="{{$Mobiliario->foto_3}}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="{{$Juego->foto_3}}" alt="IMG-PRODUCT">
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Juego->foto_3}}">
+										<img src="{{$Mobiliario->foto_3}}" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Mobiliario->foto_3}}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
 
-								<div class="item-slick3" data-thumb="{{$Juego->foto_4}}">
+								<div class="item-slick3" data-thumb="{{$Mobiliario->foto_4}}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="{{$Juego->foto_4}}" alt="IMG-PRODUCT">
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Juego->foto_4}}">
+										<img src="{{$Mobiliario->foto_4}}" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Mobiliario->foto_4}}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
@@ -102,37 +102,37 @@
 
 							<div class="slick3 gallery-lb d-md-none d-lg-none d-xl-none d-xs-block d-sm-block">
 
-								<div class="item-slick3" data-thumb="{{$Juego->foto_1}}">
+								<div class="item-slick3" data-thumb="{{$Mobiliario->foto_1}}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="{{$Juego->foto_1}}" alt="IMG-PRODUCT">
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Juego->foto_1}}">
+										<img src="{{$Mobiliario->foto_1}}" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Mobiliario->foto_1}}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
 
-								<div class="item-slick3" data-thumb="{{$Juego->foto_2}}">
+								<div class="item-slick3" data-thumb="{{$Mobiliario->foto_2}}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="{{$Juego->foto_2}}" alt="IMG-PRODUCT">
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Juego->foto_2}}">
+										<img src="{{$Mobiliario->foto_2}}" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Mobiliario->foto_2}}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
 
-								<div class="item-slick3" data-thumb="{{$Juego->foto_3}}">
+								<div class="item-slick3" data-thumb="{{$Mobiliario->foto_3}}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="{{$Juego->foto_3}}" alt="IMG-PRODUCT">
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Juego->foto_3}}">
+										<img src="{{$Mobiliario->foto_3}}" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Mobiliario->foto_3}}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
 
-								<div class="item-slick3" data-thumb="{{$Juego->foto_4}}">
+								<div class="item-slick3" data-thumb="{{$Mobiliario->foto_4}}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="{{$Juego->foto_4}}" alt="IMG-PRODUCT">
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Juego->foto_4}}">
+										<img src="{{$Mobiliario->foto_4}}" alt="IMG-PRODUCT">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{$Mobiliario->foto_4}}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
@@ -147,19 +147,19 @@
 				<div class="col-md-6 col-lg-5 p-b-30">
 					<div class="p-r-50 p-t-5 p-lr-0-lg">
 						<h4 class="mtext-105 cl2 js-name-detail p-b-14">
-							{{$Juego->titulo}}
+							{{$Mobiliario->titulo}}
 						</h4>
 
 						<span class="mtext-106 cl2" style="color:#f40082;">
-							@if ($Juego->precio != null)
-								$ {{$Juego->precio}}
+							@if ($Mobiliario->precio != null)
+								$ {{$Mobiliario->precio}}
 							@else
 								Precio a convenir
 							@endif
 						</span>
 
 						<p class="stext-102 cl3 p-t-23">
-                            <i class="zmdi zmdi-pin"></i> {{$Juego->localidad}}, {{$Juego->provincia}}
+                            <i class="zmdi zmdi-pin"></i> {{$Mobiliario->localidad}}, {{$Mobiliario->provincia}}
 						</p>
 
 						<p class="stext-102 cl3 p-t-23  mt-5 d-flex align-items-center">
@@ -224,7 +224,7 @@
 								@if ( Auth::user() )
 								<form id="form_agregar_servicio" action="{{route('AgregarAlCarrito')}}" method="POST">
 									@csrf
-									<input id="id_juego" hidden type="text" name="id_juego" value="{{$Juego->id}}">
+									<input id="id_mobiliario" hidden type="text" name="id_mobiliario" value="{{$Mobiliario->id}}">
 									<input id="id_cliente" hidden type="text" name="id_cliente" value="{{$Cliente->id}}">
 									<button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
 										Agregar al paquete
@@ -291,7 +291,7 @@
 						<!-- Descripcion -->
 						<div class="tab-pane fade show active" id="description" role="tabpanel">
 							<div class="how-pos2 p-lr-15-md text-center row">
-								{{ $Juego->descripcion }}
+								{{ $Mobiliario->descripcion }}
 							</div>
 						</div>
 
@@ -300,7 +300,7 @@
 							<div class="row">
 								<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
 									<div class="p-b-30 m-lr-15-sm">
-										@foreach ($OpinionesJuego as $opinion_juego)
+										@foreach ($OpinionesMobiliario as $opinion_mobiliario)
 										<!-- Review -->
 										<div class="flex-w flex-t p-b-68">
 											{{-- <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
@@ -310,7 +310,7 @@
 											<div class="size-207">
 												<div class="flex-w flex-sb-m p-b-17">
 													<span class="mtext-107 cl2 p-r-20">
-														{{$opinion_juego->name}} {{$opinion_juego->lastname}}
+														{{$opinion_mobiliario->name}} {{$opinion_mobiliario->lastname}}
 													</span>
 													
 													{{-- <span class="fs-18 cl11">
@@ -323,7 +323,7 @@
 												</div>
 												
 												<p class="stext-102 cl6">
-													{{$opinion_juego->opinion}}
+													{{$opinion_mobiliario->opinion}}
 												</p>
 												<hr>
 											</div>
@@ -400,7 +400,7 @@
 									@if ($Cliente && $Usuario != null)
 									<form id="form_pregunta" action="{{route('PublicarPregunta')}}">
 										<input id="id_prestador" hidden type="text" name="id_prestador" value="{{$Prestador->id}}">
-										<input id="id_juego" hidden type="text" name="id_juego" value="{{$Juego->id}}">
+										<input id="id_mobiliario" hidden type="text" name="id_mobiliario" value="{{$Mobiliario->id}}">
 										<input id="id_cliente" hidden type="text" name="id_cliente" value="{{$Cliente->id}}">
 									
 										<textarea id="textarea_pregunta" class="form-control size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" name="pregunta" rows="4" cols="4" maxlength="300" required></textarea>
@@ -427,11 +427,11 @@
 
 								{{-- Traer todas las preguntas --}}
 								<div id="mostrar_preguntas" >
-									@foreach ($PreguntasJuego as $pregunta_juego)
+									@foreach ($PreguntasMobiliario as $pregunta_mobiliario)
 									<div class="row mt-4 rounded">
-										<span class="col-md-12 col-12 text-dark"> <i class="zmdi zmdi-comment-text"></i> {{$pregunta_juego->pregunta}} </span><br>
-										@if ( $pregunta_juego->respuesta != null)
-											<span class="col-md-12 col-12 mt-3 text-black-50" ><i class="zmdi zmdi-comment-alt-text"></i> {{$pregunta_juego->respuesta}} </span><br><br><br>
+										<span class="col-md-12 col-12 text-dark"> <i class="zmdi zmdi-comment-text"></i> {{$pregunta_mobiliario->pregunta}} </span><br>
+										@if ( $pregunta_mobiliario->respuesta != null)
+											<span class="col-md-12 col-12 mt-3 text-black-50" ><i class="zmdi zmdi-comment-alt-text"></i> {{$pregunta_mobiliario->respuesta}} </span><br><br><br>
 										@endif
 									</div>
 									<hr>
@@ -449,7 +449,7 @@
 			</span> --}}
 
 			<span class="stext-107 cl6 p-lr-25">
-			Categoria: Juegos
+			Categoria: Mobiliarios
 			</span>
 		</div>
 	</section>
@@ -467,14 +467,14 @@
 	$("#form_agregar_servicio").submit(function(e){
 		e.preventDefault();
 		
-		var id_juego = $('#id_juego').val();
+		var id_mobiliario = $('#id_mobiliario').val();
 		var id_cliente = $('#id_cliente').val();
 
 		$.ajax({
 			method: 'POST',
-			url: '{{url('/mi-paquete/agregando-juego')}}',
+			url: '{{url('/mi-paquete/agregando-mobiliario')}}',
 			data: {
-				id_juego,
+				id_mobiliario,
 				id_cliente,
 				_token: '{{csrf_token()}}'
 			},
@@ -500,7 +500,7 @@
 		//Actualizar
 		$.ajax({
 					method: 'GET',
-					url: '{{ url( '/mi-paquete/actualizando-carrito' ) }}',
+					url: '{{ url( '/mi-paquete/actualizando-carrito-mobiliario' ) }}',
 					data: {
 
 						id_cliente,
@@ -579,17 +579,17 @@
 	$('#form_pregunta').submit( function(e){
 		e.preventDefault();
 		var id_prestador = $('#id_prestador').val();
-		var id_juego = $('#id_juego').val();
+		var id_mobiliario = $('#id_mobiliario').val();
 		var id_cliente = $('#id_cliente').val();
 		var textarea_pregunta = $('#textarea_pregunta').val();
 
 		$.ajax({
 	
 			method: 'POST',
-			url: '{{url('/reservar/servicios-publicados/Juego/almacenando-pregunta')}}',
+			url: '{{url('/reservar/servicios-publicados/Mobiliario/almacenando-pregunta')}}',
 			data: {
 				id_prestador,
-				id_juego,
+				id_mobiliario,
 				id_cliente,
 				textarea_pregunta,
 				_token: "{{csrf_token()}}"
@@ -613,10 +613,10 @@
 		$.ajax({
 		
 			method: 'GET',
-			url: '{{url('/reservar/servicios-publicados/Juego/almacenando-pregunta')}}',
+			url: '{{url('/reservar/servicios-publicados/Mobiliario/almacenando-pregunta')}}',
 			data: {
 				id_prestador,
-				id_juego,
+				id_mobiliario,
 				_token: "{{csrf_token()}}"
 			},
 
