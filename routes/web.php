@@ -23,22 +23,21 @@ Route::get('/reservar/servicios-publicados','ServicioController@ServiciosPublica
   //Traer productos del carrito
   Route::get('/mi-paquete','CarritoController@ServiciosAgregados')->name('ServiciosAgregados');
 
+  //Actualizar carrito
+  Route::get('/mi-paquete/actualizando-carrito','CarritoController@ActualizarCarrito')->name('ActualizarCarrito')->middleware('ControlarDatosCompletos');
+
   //Inmueble carrito
   Route::post('/mi-paquete/agregando-inmueble','InmuebleController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
-  Route::get('/mi-paquete/actualizando-carrito','CarritoController@ActualizarCarrito')->name('ActualizarCarrito')->middleware('ControlarDatosCompletos');
 
   //Juego carrito
   Route::post('/mi-paquete/agregando-juego','JuegoController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
-  //Route::get('/mi-paquete/actualizando-carrito-juego','JuegoController@ActualizarCarrito')->name('ActualizarCarrito')->middleware('ControlarDatosCompletos');
-
+  
   //Animacion carrito
   Route::post('/mi-paquete/agregando-animacion','AnimacionController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
-  //Route::get('/mi-paquete/actualizando-carrito-animacion','AnimacionController@ActualizarCarrito')->name('ActualizarCarrito')->middleware('ControlarDatosCompletos');
-
+  
   //Mobiliario carrito
   Route::post('/mi-paquete/agregando-mobiliario','MobiliarioController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
-  //Route::get('/mi-paquete/actualizando-carrito-mobiliario','MobiliarioController@ActualizarCarrito')->name('ActualizarCarrito')->middleware('ControlarDatosCompletos');
-
+  
 
   // --Preguntas --//
 
@@ -57,6 +56,7 @@ Route::get('/reservar/servicios-publicados','ServicioController@ServiciosPublica
   Route::get('/reservar/servicios-publicados/Inmueble','InmuebleController@MostrarInmueble')->name('MostrarInmueble');
   Route::get('/reservar/servicios-publicados/Juego','JuegoController@MostrarJuego')->name('MostrarJuego');
   Route::get('/reservar/servicios-publicados/Animacion','AnimacionController@MostrarAnimacion')->name('MostrarAnimacion');
+  Route::get('/reservar/servicios-publicados/Mobiliario','MobiliarioController@MostrarMobiliario')->name('MostrarMobiliario');
 
 /*
 |--------------------------------------------------------------------------

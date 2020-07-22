@@ -279,6 +279,7 @@
 						<li class="nav-item p-b-10">
 							<a class="nav-link" data-toggle="tab" href="#information" role="tab">Información adicional</a>
 						</li>
+						
 						<li class="nav-item p-b-10">
 							<a class="nav-link" data-toggle="tab" href="#preguntas" role="tab">Preguntas</a>
 						</li>

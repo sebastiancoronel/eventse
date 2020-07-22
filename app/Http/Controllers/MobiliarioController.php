@@ -3,10 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Mobiliario;
 use Auth;
+use App\Inmueble;
+use App\Juego;
+use App\Animacion;
+use App\Mobiliario;
+use App\Catering;
+use App\MusicaDj;
 use App\Prestador;
+use App\Cliente;
 use App\Categoria;
+use App\PreguntaMobiliario;
+use App\OpinionMobiliario;
+use App\Carrito;
 
 class MobiliarioController extends Controller
 {
@@ -84,6 +93,50 @@ class MobiliarioController extends Controller
       return redirect()->route('Principal');
     }
 
+    public function MostrarMobiliario(Request $req) {
+
+      $Mobiliario = Mobiliario::where('id',$req->id_mobiliario)->where('id_categoria',$req->id_categoria)
+                        ->select('*')
+                        ->first();
+
+      $Prestador = Prestador::where('id', $Mobiliario->id_prestador)
+                              ->select('*')
+                              ->first();
+
+      //Traer todas las preguntas
+      $PreguntasMobiliario = PreguntaMobiliario::where('id_prestador',$Prestador->id)
+                                          ->where('id_mobiliario',$Mobiliario->id)
+                                          ->select('*')
+                                          ->orderBy('created_at', 'DESC')
+                                          ->get();
+      
+      //Traer todas las opiniones
+      $OpinionesMobiliario = OpinionMobiliario::where('id_prestador',$Prestador->id)
+                                          ->where('id_mobiliario',$Mobiliario->id)
+                                          ->join('clientes','opinion_mobiliarios.id_cliente','=','clientes.id')
+                                          ->join('users','clientes.user_id','=','users.id')
+                                          ->select('*')
+                                          ->orderBy('opinion_mobiliarios.created_at', 'DESC')
+                                          ->get();
+
+      //Contar numero de opiniones para mostrar
+      $CantidadOpiniones = $OpinionesMobiliario->count();
+
+      //Traer Cliente logueado
+      if (Auth::user()) {
+      $user_id = Auth::user()->id;
+
+      $Cliente = Cliente::where('user_id', $user_id)
+                        ->select('*')
+                        ->first();
+      //dd($Cliente);
+      return view('Ecommerce.Articulos.Detalles.Mobiliario.articulo_mobiliario',[ 'Mobiliario' => $Mobiliario, 'Prestador' => $Prestador, 'PreguntasMobiliario' => $PreguntasMobiliario, 'OpinionesMobiliario' => $OpinionesMobiliario, 'CantidadOpiniones' => $CantidadOpiniones, 'Cliente' => $Cliente ]);
+      }
+      
+      return view('Ecommerce.Articulos.Detalles.Mobiliario.articulo_mobiliario',[ 'Mobiliario' => $Mobiliario, 'Prestador' => $Prestador, 'PreguntasMobiliario' => $PreguntasMobiliario, 'OpinionesMobiliario' => $OpinionesMobiliario, 'CantidadOpiniones' => $CantidadOpiniones ]);
+
+}
+
     public function AgregarAlCarrito(Request $req){
 
       //Comprobar que si el servicio ya existe en el carrito
@@ -100,7 +153,7 @@ class MobiliarioController extends Controller
       $Carrito->id_cliente = $req->id_cliente;
       $Carrito->id_Inmueble = null;
       $Carrito->id_juego = null;
-      $Carrito->id_animacion = null;
+      $Carrito->id_mobiliario = null;
       $Carrito->id_mobiliario = $req->id_mobiliario;
       $Carrito->id_catering = null;
       $Carrito->id_musicaDj = null;

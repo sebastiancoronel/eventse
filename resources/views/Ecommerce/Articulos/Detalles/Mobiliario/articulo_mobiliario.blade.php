@@ -500,7 +500,7 @@
 		//Actualizar
 		$.ajax({
 					method: 'GET',
-					url: '{{ url( '/mi-paquete/actualizando-carrito-mobiliario' ) }}',
+					url: '{{ url( '/mi-paquete/actualizando-carrito' ) }}',
 					data: {
 
 						id_cliente,

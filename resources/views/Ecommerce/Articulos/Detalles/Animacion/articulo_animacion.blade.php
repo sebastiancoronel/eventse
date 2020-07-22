@@ -275,6 +275,10 @@
 						<li class="nav-item p-b-10">
 							<a class="nav-link active" data-toggle="tab" href="#description" role="tab">Descripción</a>
 						</li>
+
+						<li class="nav-item p-b-10">
+							<a class="nav-link" data-toggle="tab" href="#information" role="tab">Información adicional</a>
+						</li>
 						
 						<li class="nav-item p-b-10">
 							<a class="nav-link" data-toggle="tab" href="#preguntas" role="tab">Preguntas</a>
@@ -292,6 +296,186 @@
 						<div class="tab-pane fade show active" id="description" role="tabpanel">
 							<div class="how-pos2 p-lr-15-md text-center row">
 								{{ $Animacion->descripcion }}
+							</div>
+						</div>
+
+						<!-- Informacion adicional -->
+						<div class="tab-pane fade" id="information" role="tabpanel">
+							<div class="row">
+								<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
+									<ul class="p-lr-28 p-lr-15-sm">
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Cantidad de animadores:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Animacion->cant_animadores == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Años de experiencia:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Animacion->años_experiencia == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Edades:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Animacion->edades == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Magos:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Animacion->magos == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Maquillaje:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Animacion->maquillaje == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Karaoke:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Animacion->karaoke == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Payasos:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Animacion->payasos == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Personajes:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Animacion->personajes == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Títeres:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Animacion->titeres == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Globología:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Animacion->globologia == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Robot led:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Animacion->robot_led == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+										<li class="flex-w flex-t p-b-7">
+											<span class="stext-102 cl3 size-205">
+												Maquillaje flúor:
+											</span>
+
+											<span class="stext-102 cl6 size-206">
+												@if ( $Animacion->maquillaje_fluor == 1 )
+													SI
+												@else
+													NO
+												@endif
+											</span>
+										</li>
+
+									
+
+									</ul>
+								</div>
 							</div>
 						</div>
 
@@ -500,7 +684,7 @@
 		//Actualizar
 		$.ajax({
 					method: 'GET',
-					url: '{{ url( '/mi-paquete/actualizando-carrito-animacion' ) }}',
+					url: '{{ url( '/mi-paquete/actualizando-carrito' ) }}',
 					data: {
 
 						id_cliente,
