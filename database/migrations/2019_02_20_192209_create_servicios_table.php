@@ -17,11 +17,11 @@ class CreateServiciosTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('descripcion');
+            $table->string('foto_1');
+            $table->string('foto_2');
+            $table->string('foto_3');
+            $table->string('foto_4');
             $table->integer('precio');
-            $table->string('foto');
-            
-            $table->integer('id_estado')->unsigned();
-            $table->foreign('id_estado')->references('id')->on('estados');
 
             $table->integer('id_categoria')->unsigned();
             $table->foreign('id_categoria')->references('id')->on('categorias');

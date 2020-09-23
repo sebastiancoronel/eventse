@@ -46,78 +46,78 @@ class AppServiceProvider extends ServiceProvider
         //   $view->with('Categorias',$categorias);
         // });
 
-        view()->composer('layouts.barra_navegacion_principal',function(View $view){
+        //view()->composer('layouts.barra_navegacion_principal',function(View $view){
           //Traer Categorias
           //$categorias = Categoria::all();
 
-          if (Auth::user()) {
-            //Traer Carrito para cliente logueado
-            $user_id = Auth::user()->id;
+          // if (Auth::user()) {
+          //   //Traer Carrito para cliente logueado
+          //   $user_id = Auth::user()->id;
 
-            $Cliente = Cliente::where('user_id', $user_id)
-                              ->select('*')
-                              ->first();
-            //dd($Cliente->id);
-            $Carrito = Carrito::where('id_cliente', $Cliente->id)
-                              ->select('*')
-                              ->get();
+          //   $Cliente = Cliente::where('user_id', $user_id)
+          //                     ->select('*')
+          //                     ->first();
+          //   //dd($Cliente->id);
+          //   $Carrito = Carrito::where('id_cliente', $Cliente->id)
+          //                     ->select('*')
+          //                     ->get();
 
-          $ServiciosCarrito = array();
+          // $ServiciosCarrito = array();
 
-          foreach ( $Carrito as $carrito ) {
+          // foreach ( $Carrito as $carrito ) {
             
-            switch ($carrito) {  
-              case $carrito->id_inmueble != null:
-                $InmuebleAgregado = Inmueble::find($carrito->id_inmueble);
-                array_push( $ServiciosCarrito , $InmuebleAgregado );
-                //dd($InmuebleAgregado);
-                break;
+          //   switch ($carrito) {  
+          //     case $carrito->id_inmueble != null:
+          //       $InmuebleAgregado = Inmueble::find($carrito->id_inmueble);
+          //       array_push( $ServiciosCarrito , $InmuebleAgregado );
+          //       //dd($InmuebleAgregado);
+          //       break;
 
-              case $carrito->id_juego != null:
-                $JuegoAgregado = Juego::find($carrito->id_juego);
-                array_push($ServiciosCarrito , $JuegoAgregado );
-                //dd($JuegoAgregado);
-                break;
+          //     case $carrito->id_juego != null:
+          //       $JuegoAgregado = Juego::find($carrito->id_juego);
+          //       array_push($ServiciosCarrito , $JuegoAgregado );
+          //       //dd($JuegoAgregado);
+          //       break;
               
-              case $carrito->id_animacion != null:
-                $AnimacionAgregado = Animacion::find($carrito->id_animacion);
-                array_push($ServiciosCarrito , $AnimacionAgregado );
-                //dd('HAY Animacion');
-                break;
+          //     case $carrito->id_animacion != null:
+          //       $AnimacionAgregado = Animacion::find($carrito->id_animacion);
+          //       array_push($ServiciosCarrito , $AnimacionAgregado );
+          //       //dd('HAY Animacion');
+          //       break;
               
-              case $carrito->id_mobiliario != null:
-                $MobiliarioAgregado = Mobiliario::find($carrito->id_mobiliario);
-                array_push($ServiciosCarrito , $MobiliarioAgregado );
-                //dd('HAY Mobiliario');
-                break;
+          //     case $carrito->id_mobiliario != null:
+          //       $MobiliarioAgregado = Mobiliario::find($carrito->id_mobiliario);
+          //       array_push($ServiciosCarrito , $MobiliarioAgregado );
+          //       //dd('HAY Mobiliario');
+          //       break;
 
-              case $carrito->id_catering != null:
-                $CateringAgregado = Catering::find($carrito->id_catering);
-                array_push($ServiciosCarrito , $CateringAgregado );
-                //dd('HAY Catering');
-                break;
+          //     case $carrito->id_catering != null:
+          //       $CateringAgregado = Catering::find($carrito->id_catering);
+          //       array_push($ServiciosCarrito , $CateringAgregado );
+          //       //dd('HAY Catering');
+          //       break;
 
-              case $carrito->id_musicaDj != null:
-                $MusicaDjAgregado = MusicaDj::find($carrito->id_musicaDj);
-                array_push($ServiciosCarrito , $MusicaDjAgregado );
-                //dd('HAY MusicaDj');
-                break;
+          //     case $carrito->id_musicaDj != null:
+          //       $MusicaDjAgregado = MusicaDj::find($carrito->id_musicaDj);
+          //       array_push($ServiciosCarrito , $MusicaDjAgregado );
+          //       //dd('HAY MusicaDj');
+          //       break;
 
-              default: 
-              'El paquete está vacío';
-                break;
-            }                              
-          }
+          //     default: 
+          //     'El paquete está vacío';
+          //       break;
+          //   }                              
+          // }
 
-            $CantidadServicios = $Carrito->count();
+          //   $CantidadServicios = $Carrito->count();
             
-             $view->with('Cliente',$Cliente)->with('Carrito',$Carrito)->with('CantidadServicios', $CantidadServicios)->with( 'ServiciosCarrito', $ServiciosCarrito );
+          //    $view->with('Cliente',$Cliente)->with('Carrito',$Carrito)->with('CantidadServicios', $CantidadServicios)->with( 'ServiciosCarrito', $ServiciosCarrito );
           
-          }else{
-            //$view->with('Categorias',$categorias);
-          }
+          // }else{
+          //   //$view->with('Categorias',$categorias);
+          // }
 
 
-        });
+        //});
     }
 }

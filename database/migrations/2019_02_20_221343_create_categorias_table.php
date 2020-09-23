@@ -41,30 +41,30 @@ class CreateCategoriasTable extends Migration
             'nombre' => 'Catering',
             'foto' => 'Pegar URL de la foto en public'
           ],
-          // [
-          //   'nombre' => 'Iluminación',
-          //   'foto' => 'Pegar URL de la foto en public'
-          // ],
-          // [
-          //   'nombre' => 'Ornamentación',
-          //   'foto' => 'Pegar URL de la foto en public'
-          // ],
+          [
+            'nombre' => 'Iluminación',
+            'foto' => 'Pegar URL de la foto en public'
+          ],
+          [
+            'nombre' => 'Ornamentación',
+            'foto' => 'Pegar URL de la foto en public'
+          ],
           [
             'nombre' => 'Música-DJ´s',
             'foto' => 'Pegar URL de la foto en public'
           ],
-          // [
-          //   'nombre' => 'Shows & Bandas',
-          //   'foto' => 'Pegar URL de la foto en public'
-          // ],
-          // [
-          //   'nombre' => 'Fotógrafía y ediciones',
-          //   'foto' => 'Pegar URL de la foto en public'
-          // ],
-          // [
-          //   'nombre' => 'Disfraces',
-          //   'foto' => 'Pegar URL de la foto en public'
-          // ]
+          [
+            'nombre' => 'Shows & Bandas',
+            'foto' => 'Pegar URL de la foto en public'
+          ],
+          [
+            'nombre' => 'Fotógrafía y ediciones',
+            'foto' => 'Pegar URL de la foto en public'
+          ],
+          [
+            'nombre' => 'Disfraces',
+            'foto' => 'Pegar URL de la foto en public'
+          ]
         ]);
     }//function up
 

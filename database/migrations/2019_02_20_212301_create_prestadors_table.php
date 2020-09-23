@@ -23,14 +23,11 @@ class CreatePrestadorsTable extends Migration
             $table->string('email');
             $table->string('telefono');
 
-            $table->integer('id_categoria')->nullable();
-            $table->foreign('id_categoria')->references('id')->on('categorias');
-
-            // $table->integer('id_empleados')->nullable();
-            // $table->foreign('id_empleados')->references('id')->on('empleados');
-
             $table->integer('id_servicios')->nullable();
             $table->foreign('id_servicios')->references('id')->on('servicios');
+
+            $table->integer('id_categoria')->nullable();
+            $table->foreign('id_categoria')->references('id')->on('categorias');
 
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePreguntaInmueblesTable extends Migration
+class CreateOpinionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,18 @@ class CreatePreguntaInmueblesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pregunta_inmuebles', function (Blueprint $table) {
+        Schema::create('opinions', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('opinion',1000)->nullable();
+
+            $table->integer('id_servicio');
+            $table->foreign('id_servicio')->references('id')->on('servicios');
+            
             $table->integer('id_prestador');
             $table->foreign('id_prestador')->references('id')->on('prestadors');
 
-            $table->integer('id_inmueble');
-            $table->foreign('id_inmueble')->references('id')->on('inmuebles');
-
-            $table->integer('id_cliente');
-            $table->foreign('id_cliente')->references('id')->on('clientes')
-            ;
-            $table->string('pregunta',300)->nullable();
-            $table->string('respuesta',300)->nullable();
+            $table->integer('id_user');
+            $table->foreign('id_user')->references('id')->on('users');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -38,6 +37,6 @@ class CreatePreguntaInmueblesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pregunta_inmuebles');
+        Schema::dropIfExists('opinions');
     }
 }

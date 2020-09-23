@@ -169,7 +169,8 @@
   						</div>
 					{{-- Carrito --}}
 					@auth
-					<div id="carrito_escritorio" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 {{ $CantidadServicios != 0 ? 'icon-header-noti' : '' }}  js-show-cart" data-notify="{{ $CantidadServicios }}">
+					<div id="carrito_escritorio" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart" data-notify="AQUI VA LA CANTIDAD"> 
+						{{-- {{ $CantidadServicios != 0 ? 'icon-header-noti' : '' }} --}}
   						<i class="zmdi zmdi-shopping-cart"></i>
 					</div>
 					@endauth
@@ -210,7 +211,7 @@
   					<i class="zmdi zmdi-search"></i>
   				</div> --}}
           {{-- Carrito --}}
-  				<div id="carrito_movil" class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="{{ $CantidadServicios }}">
+  				<div id="carrito_movil" class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="AQUI VA LA CANTIDAD">
   					<i class="zmdi zmdi-shopping-cart"></i>
   				</div>
           {{-- Favoritos --}}
@@ -306,33 +307,35 @@
 			<div class="header-cart-content flex-w js-pscroll">
 				<ul id="servicios_carrito" class="header-cart-wrapitem w-full">
 				@auth
-
-					@foreach ($ServiciosCarrito as $servicio)
+					{{-- AQUI VA EL FOREACH DE SERVICIOS DEL CARRITO --}}
+					{{-- @foreach ( as ) --}}
 					{{-- Servicio --}}
 					<li class="header-cart-item flex-w flex-t m-b-12">
 						{{-- Imagen de Servicio --}}
 						<div class="header-cart-item-img">
-						<img src="{{asset($servicio->foto_1)}}" class="rounded" alt="IMG">
+						<img src="" class="rounded" alt="IMG">
 						</div>
 						{{-- Nombre de Servicio --}}
 						<div class="header-cart-item-txt p-t-8">
 							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-						 	  {{$servicio->titulo}}
+						 	  
 							</a>
 							{{-- Precio de Servicio --}}
 							<span class="header-cart-item-info">
-								@if ( $servicio->precio != null )
+								<!-- Aqui va un if para poner precio o mostrar "Precio a convenir" -->
+								{{-- @if ( $servicio->precio != null )
 									$ {{$servicio->precio}}
 								@else
 
 									Precio a convenir
 								
-								@endif
+								@endif --}}
 							</span>
 						</div>
 					</li>
+					{{-- Fin Servicio --}}
 					<hr>
-					@endforeach
+					{{-- @endforeach --}}
 				@endauth
 				</ul>
 
