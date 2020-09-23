@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateServicioInmueblesTable extends Migration
+class CreateCaracteristicaPorCategoriasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,14 @@ class CreateServicioInmueblesTable extends Migration
      */
     public function up()
     {
-        Schema::create('servicio_inmuebles', function (Blueprint $table) {
+        Schema::create('caracteristica_por_categorias', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
-            $table->string('descripcion');
-            $table->string('foto');
 
-            $table->integer('id_estado_inmueble')->unsigned();
-            $table->foreign('id_estado_inmueble')->references('id')->on('estados');
-
-            $table->integer('id_categoria')->unsigned();
+            $table->integer('id_categoria');
             $table->foreign('id_categoria')->references('id')->on('categorias');
+
+            $table->integer('id_caracteristica');
+            $table->foreign('id_caracteristica')->references('id')->on('caracteristicas');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -36,6 +33,6 @@ class CreateServicioInmueblesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('servicio_inmuebles');
+        Schema::dropIfExists('caracteristica_por_categorias');
     }
 }

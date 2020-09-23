@@ -21,17 +21,18 @@ class CreateReservasTable extends Migration
             $table->time('hora_hasta');
             $table->string('direccion');
             $table->integer('monto');
-            $table->string('tipo_pago');
-            $table->boolean('estado_pago');
+            $table->enum('tipo_pago',['Efectivo','Home Banking'])->nullable();
+            $table->enum('estado_pago',['Pagado','Pendiente'])->nullable();
+            $table->boolean('concretado')->nullable();
 
             $table->integer('id_servicio')->unsigned();
             $table->foreign('id_servicio')->references('id')->on('servicios');
             
-            $table->integer('id_promocion')->unsigned();
-            $table->foreign('id_promocion')->references('id')->on('promocions');
+            $table->integer('id_prestador')->unsigned();
+            $table->foreign('id_prestador')->references('id')->on('prestadors');
 
-            $table->integer('id_cliente')->unsigned();
-            $table->foreign('id_cliente')->references('id')->on('clientes');
+            $table->integer('id_user')->unsigned();
+            $table->foreign('id_user')->references('id')->on('users');
             $table->softDeletes();
             $table->timestamps();
         });
