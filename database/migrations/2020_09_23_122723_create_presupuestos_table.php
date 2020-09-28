@@ -21,8 +21,8 @@ class CreatePresupuestosTable extends Migration
             $table->integer('id_prestador');
             $table->foreign('id_prestador')->references('id')->on('prestadors');
 
-            $table->integer('id_user');
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->integer('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
 
             $table->date('fecha');
             $table->time('hora_desde');

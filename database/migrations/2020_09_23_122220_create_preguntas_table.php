@@ -21,8 +21,8 @@ class CreatePreguntasTable extends Migration
             $table->integer('id_servicio');
             $table->foreign('id_servicio')->references('id')->on('servicios');
 
-            $table->integer('id_user');
-            $table->foreign('id_user')->references('id')->on('users')
+            $table->integer('user_id');
+            $table->foreign('user_id')->references('id')->on('users')
             ;
             $table->string('pregunta',300)->nullable();
             $table->string('respuesta',300)->nullable();
