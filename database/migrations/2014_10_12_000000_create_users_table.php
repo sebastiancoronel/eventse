@@ -34,6 +34,11 @@ class CreateUsersTable extends Migration
                 'name' => 'Sebastian',
                 'lastname' => 'Coronel',
                 'email' => 'seba_c94@hotmail.com',
+                'dni' => '38365229',
+                'provincia' => 'Santiago del Estero',
+                'localidad' => 'Capital',
+                'telefono' => '3855826093',
+                'rol' => 'Administrador',
                 'password' => bcrypt('123456789')
             ],
         ]);

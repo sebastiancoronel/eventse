@@ -29,8 +29,8 @@ class CreatePrestadorsTable extends Migration
             $table->integer('id_categoria')->nullable();
             $table->foreign('id_categoria')->references('id')->on('categorias');
 
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('id_user')->unsigned();
+            $table->foreign('id_user')->references('id')->on('users');
 
             $table->softDeletes();
             $table->timestamps();
@@ -46,7 +46,7 @@ class CreatePrestadorsTable extends Migration
                 'email' => 'jumpzoneinflables@gmail.com',
                 'telefono' => '3855000000',
                 'id_servicios' => null,
-                'user_id' => 1,
+                'id_user' => 1,
                 
             ],
 
