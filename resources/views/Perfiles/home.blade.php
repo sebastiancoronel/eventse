@@ -414,7 +414,7 @@
                    </li>
                  </ul>
                </li>
-             <!-- COMPRAS -->
+             <!-- Servicios contratados -->
              <li class="nav-item has-treeview">
                <a href="#" class="nav-link">
                  <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
@@ -450,6 +450,45 @@
                  </li>
                </ul>
              </li>
+
+             {{-- Admin --}}
+             <!-- Categorías -->
+             <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
+                <p>
+                  Categorías
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('CrearCategorias')}}" class="nav-link">
+                    <i class="nav-icon"></i>
+                    <p>Gestionar</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Características -->
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
+                <p>
+                  Características
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('CrearCaracteristicas')}}" class="nav-link">
+                    <i class="nav-icon"></i>
+                    <p>Gestionar</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
 
              <!-- Configuración -->
              <li class="nav-item has-treeview">
@@ -500,9 +539,9 @@
      <!-- Brand Logo -->
      <div class="brand-link text-left text-white" style="background: #717fe0;">
 
-       <!-- <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+       {{-- <!-- <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
             style="opacity: .8"> -->
-       {{-- <span class="brand-text font-weight-light text-left">Mi cuenta</span> --}}
+       <span class="brand-text font-weight-light text-left">Mi cuenta</span> --}}
        <br>
        <small class="brand-text">¡Hola {{ $name }} {{ $lastname }}!</small>
      </div>

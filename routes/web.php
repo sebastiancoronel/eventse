@@ -152,12 +152,17 @@ Route::middleware(['auth'])->group(function () {
 });
 /*
 |--------------------------------------------------------------------------
-| Super Admin
+| Admin
 |--------------------------------------------------------------------------
 */
 Route::get('admin', function(){
-  return view('SuperAdmin.layout');
-});
-//Rutas de Localidad
+  return view('admin');
+}); //Creo que habria que borrar esto una vez unificado el admin lte para mostrar contenido segun el rol del usuario.
+//Rutas de Localidad CREO QUE DEBERIA BORRAR ESTO YA QUE BUSCO POR UN JSON, NO HACE FALTA CREAR NADA
 Route::resource('/localidad', 'LocalidadController');
 Route::post('/listarlocalidades','LocalidadController@ListarLocalidades');
+
+//Crear categorias
+Route::get('/home/categorias', 'CategoriaController@CrearCategorias')->name('CrearCategorias');
+//Gestionar caracteristicas
+Route::get('/home/caracteristicas', 'CaracteristicaController@CrearCaracteristicas')->name('CrearCaracteristicas');
