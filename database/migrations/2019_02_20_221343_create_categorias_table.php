@@ -23,47 +23,47 @@ class CreateCategoriasTable extends Migration
         DB::table('categorias')->insert([
           [
             'nombre' => 'Salones',
-            'foto' => 'Pegar URL de la foto en public'
+            'foto' => 'images/categorias/Salon-01.jpg'
           ],
           [
             'nombre' => 'Juegos',
-            'foto' => 'Pegar URL de la foto en public'
+            'foto' => 'images/categorias/Juegos-01.jpg'
           ],
           [
             'nombre' => 'Animación',
-            'foto' => 'Pegar URL de la foto en public'
+            'foto' => 'images/categorias/Animacion-01.jpg'
           ],
           [
             'nombre' => 'Mobiliario',
-            'foto' => 'Pegar URL de la foto en public'
+            'foto' => 'images/categorias/mobiliario1.jpg'
           ],
           [
             'nombre' => 'Catering',
-            'foto' => 'Pegar URL de la foto en public'
+            'foto' => 'images/categorias/catering.jpg'
           ],
           [
             'nombre' => 'Iluminación',
-            'foto' => 'Pegar URL de la foto en public'
+            'foto' => 'images/categorias/iluminacion1.jpg'
           ],
           [
             'nombre' => 'Ornamentación',
-            'foto' => 'Pegar URL de la foto en public'
+            'foto' => 'images/categorias/decoracion1.jpg'
           ],
           [
             'nombre' => 'Música-DJ´s',
-            'foto' => 'Pegar URL de la foto en public'
+            'foto' => 'images/categorias/musicaDj2.jpg'
           ],
           [
             'nombre' => 'Shows & Bandas',
-            'foto' => 'Pegar URL de la foto en public'
+            'foto' => 'images/categorias/bandas1.jpg'
           ],
           [
             'nombre' => 'Fotógrafía y ediciones',
-            'foto' => 'Pegar URL de la foto en public'
+            'foto' => 'images/categorias/'
           ],
           [
             'nombre' => 'Disfraces',
-            'foto' => 'Pegar URL de la foto en public'
+            'foto' => 'images/categorias/'
           ]
         ]);
     }//function up

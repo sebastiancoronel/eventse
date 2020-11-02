@@ -8,10 +8,11 @@ Auth::routes();
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', function (){
-  return view('Ecommerce.welcome');
-})->name('Principal');
+// Route::get('/', function (){
+//   return view('Ecommerce.welcome');
+// })->name('Principal');
 
+Route::get( '/' , 'CategoriaController@index' )->name('Principal');
 //Traer Categorias
 Route::get('/categorias-listar','CategoriaController@index');
 
@@ -20,30 +21,8 @@ Route::get('/reservar/servicios-publicados','ServicioController@ServiciosPublica
 
 //--- Carrito --//
 
-  //Traer productos del carrito
-  Route::get('/mi-paquete','CarritoController@ServiciosAgregados')->name('ServiciosAgregados');
-
-  //Actualizar carrito
-  Route::get('/mi-paquete/actualizando-carrito','CarritoController@ActualizarCarrito')->name('ActualizarCarrito')->middleware('ControlarDatosCompletos');
-
   //Inmueble carrito
   Route::post('/mi-paquete/agregando-inmueble','InmuebleController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
-
-  //Juego carrito
-  Route::post('/mi-paquete/agregando-juego','JuegoController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
-  
-  //Animacion carrito
-  Route::post('/mi-paquete/agregando-animacion','AnimacionController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
-  
-  //Mobiliario carrito
-  Route::post('/mi-paquete/agregando-mobiliario','MobiliarioController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
-
-  //Catering carrito
-  Route::post('/mi-paquete/agregando-catering','CateringController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
-
-  //Catering musicaDj
-  Route::post('/mi-paquete/agregando-musicaDj','MusicaDjController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
-  
 
   // --Preguntas --//
 
@@ -51,31 +30,9 @@ Route::get('/reservar/servicios-publicados','ServicioController@ServiciosPublica
   Route::post('/reservar/servicios-publicados/Inmueble/almacenando-pregunta','InmuebleController@PublicarPregunta')->name('PublicarPregunta')->middleware('ControlarDatosCompletos');
   Route::get('/reservar/servicios-publicados/Inmueble/almacenando-pregunta','InmuebleController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('ControlarDatosCompletos');
 
-  //--- Preguntas juego
-  Route::post('/reservar/servicios-publicados/Juego/almacenando-pregunta','JuegoController@PublicarPregunta')->name('PublicarPregunta')->middleware('ControlarDatosCompletos');
-  Route::get('/reservar/servicios-publicados/Juego/almacenando-pregunta','JuegoController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('ControlarDatosCompletos');
-
-  //--- Preguntas animacion
-  Route::post('/reservar/servicios-publicados/Animacion/almacenando-pregunta','AnimacionController@PublicarPregunta')->name('PublicarPregunta')->middleware('ControlarDatosCompletos');
-  Route::get('/reservar/servicios-publicados/Animacion/almacenando-pregunta','AnimacionController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('ControlarDatosCompletos');
-
-  //--- Preguntas catering
-  Route::post('/reservar/servicios-publicados/Catering/almacenando-pregunta','CateringController@PublicarPregunta')->name('PublicarPregunta')->middleware('ControlarDatosCompletos');
-  Route::get('/reservar/servicios-publicados/Catering/almacenando-pregunta','CateringController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('ControlarDatosCompletos');
-
-  //--- Preguntas musicaDj
-  Route::post('/reservar/servicios-publicados/MusicaDj/almacenando-pregunta','MusicaDjController@PublicarPregunta')->name('PublicarPregunta')->middleware('ControlarDatosCompletos');
-  Route::get('/reservar/servicios-publicados/MusicaDj/almacenando-pregunta','MusicaDjController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('ControlarDatosCompletos');
-
 //Articulos-Detalles
   
   Route::get('/reservar/servicios-publicados/Inmueble','InmuebleController@MostrarInmueble')->name('MostrarInmueble');
-  Route::get('/reservar/servicios-publicados/Juego','JuegoController@MostrarJuego')->name('MostrarJuego');
-  Route::get('/reservar/servicios-publicados/Animacion','AnimacionController@MostrarAnimacion')->name('MostrarAnimacion');
-  Route::get('/reservar/servicios-publicados/Mobiliario','MobiliarioController@MostrarMobiliario')->name('MostrarMobiliario');
-  Route::get('/reservar/servicios-publicados/Catering','CateringController@MostrarCatering')->name('MostrarCatering');
-  Route::get('/reservar/servicios-publicados/MusicaDj','MusicaDjController@MostrarMusicaDj')->name('MostrarMusicaDj');
-
 /*
 |--------------------------------------------------------------------------
 | Auth + Datos completos + Perfil empresa
@@ -85,29 +42,10 @@ Route::middleware(['auth', 'ControlarDatosCompletos', 'ControlarNegocioExistente
   Route::get('/publicar', 'ServicioController@Publicar')->name('Publicar');
   // Formularios de publicacion
   Route::get('/publicar/inmuebles', 'InmuebleController@FormularioInmueble')->name('FormularioInmueble');
-  Route::get('/publicar/juegos', 'JuegoController@FormularioJuegos')->name('FormularioJuegos');
-  Route::get('/publicar/animacion', 'AnimacionController@FormularioAnimacion')->name('FormularioAnimacion');
-  Route::get('/publicar/mobiliario', 'MobiliarioController@FormularioMobiliario')->name('FormularioMobiliario');
-  Route::get('/publicar/servicios-de-catering', 'CateringController@FormularioCatering')->name('FormularioCatering');
-  Route::get('/publicar/iluminacion', 'IluminacionController@FormularioIluminacion')->name('FormularioIluminacion');
-  Route::get('/publicar/ornamentacion', 'OrnamentacionController@FormularioOrnamentacion')->name('FormularioOrnamentacion');
-  Route::get('/publicar/musicaDj', 'MusicaDjController@FormularioMusicaDj')->name('FormularioMusicaDj');
-  Route::get('/publicar/shows', 'ServicioController@FormularioShows')->name('FormularioShows');
+
   // Publicar servicios
   // Inmuebles
   Route::post('/publicar/inmuebles/almacenando-publicacion-inmueble','InmuebleController@PublicarInmueble')->name('PublicarInmueble');
-  // Juegos
-  Route::post('/publicar/juegos/almacenando-publicacion-juegos','JuegoController@PublicarJuegos')->name('PublicarJuegos');
-  // Animaciones
-  Route::post('/publicar/animacion/almacenando-publicacion-animacion','AnimacionController@PublicarAnimacion')->name('PublicarAnimacion');
-  // Mobiliario
-  Route::post('/publicar/mobiliario/almacenando-publicacion-mobiliario','MobiliarioController@PublicarMobiliario')->name('PublicarMobiliario');
-  // Catering
-  Route::post('/publicar/servicios-de-catering/almacenando-publicacion-servicios-de-catering','CateringController@PublicarCatering')->name('PublicarCatering');
-  // Musica & Djs
-  Route::post('/publicar/musicaDj/almacenando-publicacion-musicaDj','MusicaDjController@PublicarMusicaDj')->name('PublicarMusicaDj');
-  // Planes
-  Route::get('/publicar/elegir-plan', 'ServicioController@MostrarPlanes')->name('MostrarPlanes');
 });
 
 /*
@@ -134,12 +72,12 @@ Route::middleware(['auth', 'ControlarDatosCompletos'])->group(function () {
 
   //Menú Empresa
   //Alquileres y reservas
-  Route::get('/home/alquileres-y-reservas/mis-alquileres','EmpresaController@MisAlquileres')->name('MisAlquileres');
   Route::get('/home/empresa/alquileres-y-reservas/preguntas-recibidas','PrestadorController@PreguntasRecibidas')->name('PreguntasRecibidas');
 });
+
 /*
 |--------------------------------------------------------------------------
-| Solo Auth
+| Auth
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth'])->group(function () {

@@ -123,281 +123,34 @@
 	<div class="sec-banner bg0 p-b-50 mt-5">
 		<div class="container">
 			<div class="row">
-				{{-- Salones --}}
-				<div class="col-md-4 p-b-30">
-					<!-- Block1 -->
-					<div class="block1 wrap-pic-w">
-						<img src="images/Salon-01.jpg" alt="IMG-BANNER">
+				@forelse ($Categorias as $categoria)
+					<div class="col-md-4 p-b-30">
+						<!-- Block1 -->
+					<div class="block1 wrap-pic-w background-img" style="background-image: url( '{{ asset($categoria->foto) }}' );">
+						{{-- <img src="" alt="{{ $categoria->nombre }}"> --}}
 
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8" style="color: white;">
-									Salones
-								</span>
+							<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+								<div class="block1-txt-child1 flex-col-l">
+									<span class="block1-name ltext-102 trans-04 p-b-8" style="color: white;">
+										{{ $categoria->nombre }}
+									</span>
 
-								<span class="block1-info stext-102 trans-04" style="color: white;">
-									MAYO 2019
-								</span>
-							</div>
-
-							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">
-									Reservar ahora
+									<span class="block1-info stext-102 trans-04" style="color: white;">
+										MAYO 2019
+									</span>
 								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-				{{-- Juegos --}}
-				<div class="col-md-4 p-b-30">
-					<!-- Block1 -->
-					<div class="block1 wrap-pic-w">
-						<img src="images/Juegos-01.jpg" alt="IMG-BANNER">
 
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8" style="color: white;">
-									Juegos
-								</span>
-
-								<span class="block1-info stext-102 trans-04" style="color: white;">
-									{{-- Infantiles & adultos --}}
-								</span>
-							</div>
-
-							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">
-									Reservar ahora
+								<div class="block1-txt-child2 p-b-4 trans-05">
+									<div class="block1-link stext-101 cl0 trans-09">
+										Reservar ahora
+									</div>
 								</div>
-							</div>
-						</a>
+							</a>
+						</div>
 					</div>
-				</div>
-				{{-- Animación --}}
-				<div class="col-md-4 p-b-30">
-					<!-- Block1 -->
-					<div class="block1 wrap-pic-w">
-						<img src="images/Animacion-01.jpg" alt="IMG-BANNER">
-
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8" style="color: white;">
-									Animación
-								</span>
-
-								<span class="block1-info stext-102 trans-04" style="color: white;">
-									{{-- XV & Infantiles --}}
-								</span>
-							</div>
-
-							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">
-									Reservar ahora
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-				{{-- Mobiliario --}}
-				<div class="col-md-4 p-b-30">
-					<!-- Block1 -->
-					<div class="block1 wrap-pic-w">
-						<img src="images/mobiliario3.jpg" alt="IMG-BANNER">
-
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8" style="color: white;">
-									Mobiliario
-								</span>
-
-								<span class="block1-info stext-102 trans-04" style="color: white;">
-									{{-- Juegos, mesas, sillas, manteles, vajillas --}}
-								</span>
-							</div>
-
-							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">
-									Reservar ahora
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-				{{-- Catering --}}
-				<div class="col-md-4 p-b-30">
-					<!-- Block1 -->
-					<div class="block1 wrap-pic-w">
-						<img src="images/catering.jpg" alt="IMG-BANNER">
-
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8" style="color: white;">
-									Catering
-								</span>
-
-								<span class="block1-info stext-102 trans-04" style="color: white;">
-									{{-- Servicio de catering --}}
-								</span>
-							</div>
-
-							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">
-									Reservar ahora
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-				{{-- Iluminación --}}
-				<div class="col-md-4 p-b-30">
-					<!-- Block1 -->
-					<div class="block1 wrap-pic-w">
-						<img src="images/iluminacion1.jpg" alt="IMG-BANNER">
-
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8" style="color: white;">
-									Iluminación
-								</span>
-
-								<span class="block1-info stext-102 trans-04" style="color: white;">
-
-								</span>
-							</div>
-
-							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">
-									Reservar ahora
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-				{{-- Ornamentación --}}
-				<div class="col-md-4 p-b-30">
-					<!-- Block1 -->
-					<div class="block1 wrap-pic-w">
-						<img src="images/galeria8.jpg" alt="IMG-BANNER">
-
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8" style="color: white;">
-									Ornamentación
-								</span>
-
-								<span class="block1-info stext-102 trans-04" style="color: white;">
-
-								</span>
-							</div>
-
-							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">
-									Reservar ahora
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-				{{-- Musica & DJ´s --}}
-				<div class="col-md-4 p-b-30">
-					<!-- Block1 -->
-					<div class="block1 wrap-pic-w">
-						<img src="images/musicaDj2.jpg" alt="IMG-BANNER">
-
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8" style="color: white;">
-									Música & DJ´s
-								</span>
-
-								<span class="block1-info stext-102 trans-04" style="color: white;">
-
-								</span>
-							</div>
-
-							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">
-									Reservar ahora
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-				{{-- Shows & Bandas --}}
-				<div class="col-md-4 p-b-30">
-					<!-- Block1 -->
-					<div class="block1 wrap-pic-w">
-						<img src="images/galeria7.jpg" alt="IMG-BANNER">
-
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8" style="color: white;">
-									Shows & Bandas
-								</span>
-
-								<span class="block1-info stext-102 trans-04" style="color: white;">
-
-								</span>
-							</div>
-
-							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">
-									Reservar ahora
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-				{{-- Fotografía y Ediciones --}}
-				{{-- <div class="col-md-4 p-b-30">
-					<!-- Block1 -->
-					<div class="block1 wrap-pic-w">
-						<img src="images/Animacion-01.jpg" alt="IMG-BANNER">
-
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8" style="color: white;">
-									Fotografía y Ediciones
-								</span>
-
-								<span class="block1-info stext-102 trans-04" style="color: white;">
-
-								</span>
-							</div>
-
-							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">
-									Reservar ahora
-								</div>
-							</div>
-						</a>
-					</div>
-				</div> --}}
-				{{-- Disfraces --}}
-				{{-- <div class="col-md-4 p-b-30">
-					<!-- Block1 -->
-					<div class="block1 wrap-pic-w">
-						<img src="images/Animacion-01.jpg" alt="IMG-BANNER">
-
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8" style="color: white;">
-									Disfraces
-								</span>
-
-								<span class="block1-info stext-102 trans-04" style="color: white;">
-
-								</span>
-							</div>
-
-							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">
-									Reservar ahora
-								</div>
-							</div>
-						</a>
-					</div>
-				</div> --}}
+				@empty
+					<div> No hay categorias creadas</div>	
+				@endforelse
 			</div>
 		</div>
 	</div>

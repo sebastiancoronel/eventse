@@ -14,7 +14,8 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-      
+        $Categorias = Categoria::all();
+        return view('Ecommerce.welcome',[ 'Categorias' => $Categorias ]);
     }
 
     /**

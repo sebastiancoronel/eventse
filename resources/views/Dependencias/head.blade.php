@@ -56,9 +56,11 @@
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/fonts/linearicons-v1.0.0/icon-font.min.css')}}">
 <!--===============================================================================================-->
 
+
 {{-- Plantilla --}}
 <link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/estilos.css')}}">
 
 {{-- PWA --}}
 {{-- <link rel="javascript" href="{{asset('sw.js')}}"> --}}

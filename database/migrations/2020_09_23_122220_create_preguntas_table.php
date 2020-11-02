@@ -15,6 +15,9 @@ class CreatePreguntasTable extends Migration
     {
         Schema::create('preguntas', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('pregunta',1000)->nullable();
+            $table->string('respuesta',1000)->nullable();
+            
             $table->integer('id_prestador');
             $table->foreign('id_prestador')->references('id')->on('prestadors');
 
@@ -22,10 +25,7 @@ class CreatePreguntasTable extends Migration
             $table->foreign('id_servicio')->references('id')->on('servicios');
 
             $table->integer('user_id');
-            $table->foreign('user_id')->references('id')->on('users')
-            ;
-            $table->string('pregunta',300)->nullable();
-            $table->string('respuesta',300)->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->softDeletes();
             $table->timestamps();
         });
