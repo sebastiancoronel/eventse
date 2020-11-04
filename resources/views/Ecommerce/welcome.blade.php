@@ -1,5 +1,6 @@
 @extends('layouts.barra_navegacion_principal')
 @section('content')
+
 <!--Pagina principal-->
 <div class="escritorio-mt-3-p-t-75">
 	@if (Session::has('PerfilExistente'))
@@ -22,6 +23,7 @@
 		});
 	</script>
 	@endif
+	
 	<!-- Modal Search -->
 	<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
 		<div class="container-search-header">
@@ -126,9 +128,7 @@
 				@forelse ($Categorias as $categoria)
 					<div class="col-md-4 p-b-30">
 						<!-- Block1 -->
-					<div class="block1 wrap-pic-w background-img" style="background-image: url( '{{ asset($categoria->foto) }}' );">
-						{{-- <img src="" alt="{{ $categoria->nombre }}"> --}}
-
+						<div class="block1 wrap-pic-w background-img" style="background-image: url( '{{ asset($categoria->foto) }}' );">
 							<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 								<div class="block1-txt-child1 flex-col-l">
 									<span class="block1-name ltext-102 trans-04 p-b-8" style="color: white;">

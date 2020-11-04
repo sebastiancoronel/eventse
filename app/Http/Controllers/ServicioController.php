@@ -16,7 +16,8 @@ use Illuminate\Support\Str;
 class ServicioController extends Controller
 {
     public function Publicar(){
-      return view('Ecommerce.publicar');
+      $Categorias = Categoria::all();
+      return view('Ecommerce.publicar' , [ 'Categorias' => $Categorias ]);
 }
 
   public function ServiciosPublicados(){

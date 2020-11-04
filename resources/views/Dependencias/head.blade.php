@@ -35,17 +35,12 @@
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/css-hamburgers/hamburgers.min.css')}}">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/animsition/css/animsition.min.css')}}">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="{{asset('vendor/select2/select2.min.css')}}">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="{{asset('vendor/daterangepicker/daterangepicker.css')}}">
-<!--===============================================================================================-->
+
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick.css')}}">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/MagnificPopup/magnific-popup.css')}}">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{{asset('vendor/perfect-scrollbar/perfect-scrollbar.css')}}">
-<!--===============================================================================================-->
 <!--===============================================================================================-->
 <!-- Google Fonts Roboto -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
