@@ -23,9 +23,9 @@ class CategoriaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function CrearCategorias()
     {
-        //
+        return view('AdminLTE.Admin.gestionar_categorias');
     }
 
     /**

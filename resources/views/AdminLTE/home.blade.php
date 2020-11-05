@@ -349,7 +349,7 @@
                      </a>
                    </li>
                    <li class="nav-item">
-                     <a href="{{route('MisAlquileres')}}" class="nav-link">
+                     <a href="" class="nav-link">
                        <i class="nav-icon"></i>
                        <p>Mis alquileres</p>
                      </a>
@@ -545,7 +545,7 @@
                  </a>
                </li>
                <li class="nav-item">
-                 <a href="{{route('MisAlquileres')}}" class="nav-link">
+                 <a href="" class="nav-link">
                    <i class="nav-icon"></i>
                    <p>Mis alquileres</p>
                  </a>
