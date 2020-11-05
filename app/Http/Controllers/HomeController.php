@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
       $categorias = Categoria::all();
-      return view('Perfiles.home',['Categorias'=>$categorias]);
+      return view('AdminLTE.home',['Categorias'=>$categorias]);
     }
 
 }

@@ -16,23 +16,23 @@ class ClienteController extends Controller
       public function ClienteResumen(){
         $user_id = Auth::user()->id;
         $Prestador = Prestador::where('user_id',$user_id)->first();
-        return view('Perfiles.Cliente.Menu.resumen',['Prestador'=>$Prestador]);
+        return view('AdminLTE.Cliente.Menu.resumen',['Prestador'=>$Prestador]);
       }
     //Servicios contratados
       public function ServiciosFavoritos(){
-        return view('Perfiles.Cliente.Menu.Servicios.favoritos');
+        return view('AdminLTE.Cliente.Menu.Servicios.favoritos');
       }
 
       public function PreguntasRealizadas(){
-        return view('Perfiles.Cliente.Menu.Servicios.preguntas_realizadas');
+        return view('AdminLTE.Cliente.Menu.Servicios.preguntas_realizadas');
       }
 
       public function ServiciosFinalizados(){
-        return view('Perfiles.Cliente.Menu.Servicios.servicios_finalizados');
+        return view('AdminLTE.Cliente.Menu.Servicios.servicios_finalizados');
       }
 
       public function PresupuestosRecibidos(){
-        return view('Perfiles.Cliente.Menu.Servicios.presupuestos_recibidos');
+        return view('AdminLTE.Cliente.Menu.Servicios.presupuestos_recibidos');
       }
 
   /*=============================
