@@ -133,9 +133,9 @@
                   <li class="active-menu">
                     <a href="index.html">Categorías</a>
                     <ul class="sub-menu">
-                      @foreach ($Categorias as $categoria)
+                      {{-- @foreach ($Categorias as $categoria)
                         <li><a href="index.html">{{ $categoria->nombre }}</a></li>
-                      @endforeach
+                      @endforeach HACAERLO EN APPSERVICE PROVIDER BOOT --}}
                     </ul>
                   </li>
                   <li>
