@@ -1,10 +1,11 @@
 @extends('AdminLTE.home')
 @section('content')
 <div class="dispositivo">
-    <h4 class="card-header text-muted text-uppercase"> Categorías </h4>
+    <h4 class="card-header text-muted text-uppercase"> Categorías <a class="btn btn-primary pull-right"> + Agregar </a>  </h4>
     <div class="card">
         <div class="card-body">
             <table class="table">
+            
                 <thead>
                     <tr>
                         <th>Nombre</th>
