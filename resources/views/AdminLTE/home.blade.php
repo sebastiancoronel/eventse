@@ -196,26 +196,6 @@
       </div>
 
     <div class="wrapper">
-      {{-- <!-- Navbar escritorio -->
-      <div class="d-none d-sm-block">
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light border-bottom m-t-90">
-          <!-- Left navbar links -->
-
-             <!-- SEARCH FORM -->
-            <form class="form-inline ml-3">
-              <div class="input-group input-group-sm">
-                <!--<input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">-->
-                <div class="input-group-append">
-                  <button class="btn btn-navbar" type="submit">
-                    <i class="fas fa-search"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
-        </nav>
-      </div>
-      <!-- /.navbar escritorio --> --}}
-
       <!-- Navbar movil -->
       <div class="d-md-none d-lg-none d-xl-none d-xs-block d-sm-block">
         <nav class="main-header navbar navbar-expand navbar-white navbar-light border-bottom text-white" style="background:#717fe0;">
