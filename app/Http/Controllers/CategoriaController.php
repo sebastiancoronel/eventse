@@ -15,7 +15,7 @@ class CategoriaController extends Controller
     public function index()
     {
         $Categorias = Categoria::all();
-        return view('Ecommerce.welcome',[ 'Categorias' => $Categorias ]);
+        return view('Principal.principal',[ 'Categorias' => $Categorias ]);
     }
 
     /**
@@ -25,7 +25,8 @@ class CategoriaController extends Controller
      */
     public function CrearCategorias()
     {
-        return view('AdminLTE.Admin.gestionar_categorias');
+        $Categorias = Categoria::all();
+        return view('AdminLTE.Admin.gestionar_categorias',[ 'Categorias' => $Categorias ]);
     }
 
     /**

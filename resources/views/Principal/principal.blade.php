@@ -1,4 +1,4 @@
-@extends('layouts.barra_navegacion_principal')
+@extends('Principal.partials.master')
 @section('content')
 
 <!--Pagina principal-->

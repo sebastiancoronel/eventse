@@ -1,8 +1,8 @@
 <!DOCTYPE html>
   <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-    @include('Dependencias.head')
-    @include('Dependencias.head_adminlte')
+    @include('Principal.partials.head')
+    @include('AdminLTE.partials.head_adminlte')
     <style media="screen">
       #link_violeta {
         color: #717fe0 !important;
@@ -283,134 +283,133 @@
            <!-- Sidebar Menu -->
            <nav class="mt-2">
              <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-               <!-- Add icons to the links using the .nav-icon class
-                    with font-awesome or any other icon font library -->
-                    <!-- INICIO -->
-                    <li class="nav-item has-treeview">
-                     <a href="{{url('/')}}" class="nav-link">
-                       <i class="nav-icon zmdi zmdi-home"></i>
-                       <p>
-                         Inicio
-                       </p>
-                     </a>
-                   </li>
-                    <!-- RESUMEN -->
-                    <li class="nav-item has-treeview">
-                     <a href="{{route('ClienteResumen')}}" class="nav-link">
-                       <i class="nav-icon zmdi zmdi-format-subject"></i>
-                       <p>
-                         Resumen
-                       </p>
-                     </a>
-                   </li>
-                   {{-- Perfil Empresa
-                   @if (Session::get('isTeacher', 0))
-                   @endif --}}
-                  <!-- VENTAS -->
-               <li class="nav-item has-treeview">
-                 <a href="#" class="nav-link">
-                   <i class="nav-icon zmdi zmdi-store"></i>
-                   <p>
-                     Alquileres y Reservas
-                     <i class="right fas fa-angle-left"></i>
-                   </p>
-                 </a>
-                 <ul class="nav nav-treeview">
-                   <li class="nav-item">
-                     <a href="pages/charts/chartjs.html" class="nav-link">
-                       <i class="nav-icon"></i>
-                       <p>Publicaciones</p>
-                     </a>
-                   </li>
-                   <li class="nav-item">
-                     <a href="{{route('PreguntasRecibidas')}}" class="nav-link">
-                       <i class="nav-icon"></i>
-                       <p>Preguntas recibidas</p>
-                     </a>
-                   </li>
-                   <li class="nav-item">
-                     <a href="" class="nav-link">
-                       <i class="nav-icon"></i>
-                       <p>Mis alquileres</p>
-                     </a>
-                   </li>
-                 </ul>
-               </li>
-             <!-- Servicios contratados -->
-             <li class="nav-item has-treeview">
-               <a href="#" class="nav-link">
-                 <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
-                 <p>
-                   Servicios contratados
-                   <i class="right fas fa-angle-left"></i>
-                 </p>
-               </a>
-               <ul class="nav nav-treeview">
-                 <li class="nav-item">
-                   <a href="{{route('ServiciosFavoritos')}}" class="nav-link">
-                     <i class="nav-icon"></i>
-                     <p>Favoritos</p>
-                   </a>
-                 </li>
-                 <li class="nav-item">
-                   <a href="{{route('PreguntasRealizadas')}}" class="nav-link">
-                     <i class="nav-icon"></i>
-                     <p>Preguntas realizadas</p>
-                   </a>
-                 </li>
-                 <li class="nav-item">
-                   <a href="{{route('ServiciosFinalizados')}}" class="nav-link">
-                     <i class="nav-icon"></i>
-                     <p>Finalizados</p>
-                   </a>
-                 </li>
-                 <li class="nav-item">
-                   <a href="{{route('PresupuestosRecibidos')}}" class="nav-link">
-                     <i class="nav-icon"></i>
-                     <p>Presupuestos</p>
-                   </a>
-                 </li>
-               </ul>
-             </li>
+                <!-- INICIO -->
+                <li class="nav-item has-treeview">
+                    <a href="{{url('/')}}" class="nav-link">
+                      <i class="nav-icon zmdi zmdi-home"></i>
+                      <p>
+                        Inicio
+                      </p>
+                    </a>
+                </li>
+                <!-- RESUMEN -->
+                <li class="nav-item has-treeview">
+                  <a href="{{route('ClienteResumen')}}" class="nav-link">
+                    <i class="nav-icon zmdi zmdi-format-subject"></i>
+                    <p>
+                      Resumen
+                    </p>
+                  </a>
+                </li>
+                  
+                <!-- VENTAS -->
+                <li class="nav-item has-treeview">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon zmdi zmdi-store"></i>
+                    <p>
+                      Alquileres y Reservas
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="pages/charts/chartjs.html" class="nav-link">
+                        <i class="nav-icon"></i>
+                        <p>Publicaciones</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{route('PreguntasRecibidas')}}" class="nav-link">
+                        <i class="nav-icon"></i>
+                        <p>Preguntas recibidas</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="" class="nav-link">
+                        <i class="nav-icon"></i>
+                        <p>Mis alquileres</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <!-- Servicios contratados -->
+                <li class="nav-item has-treeview">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
+                    <p>
+                      Servicios contratados
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="{{route('ServiciosFavoritos')}}" class="nav-link">
+                        <i class="nav-icon"></i>
+                        <p>Favoritos</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{route('PreguntasRealizadas')}}" class="nav-link">
+                        <i class="nav-icon"></i>
+                        <p>Preguntas realizadas</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{route('ServiciosFinalizados')}}" class="nav-link">
+                        <i class="nav-icon"></i>
+                        <p>Finalizados</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{route('PresupuestosRecibidos')}}" class="nav-link">
+                        <i class="nav-icon"></i>
+                        <p>Presupuestos</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
 
              {{-- Admin --}}
-             <!-- Categorías -->
-             <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
-                <p>
-                  Categorías
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{route('CrearCategorias')}}" class="nav-link">
-                    <i class="nav-icon"></i>
-                    <p>Gestionar</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
+             @if ( Auth::user()->rol == 'Administrador' )
+              <!-- Categorías -->
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
+                  <p>
+                    Categorías
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{route('CrearCategorias')}}" class="nav-link">
+                      <i class="nav-icon"></i>
+                      <p>Gestionar</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
 
-            <!-- Características -->
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
-                <p>
-                  Características
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{route('CrearCaracteristicas')}}" class="nav-link">
-                    <i class="nav-icon"></i>
-                    <p>Gestionar</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
+              <!-- Características -->
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
+                  <p>
+                    Características
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{route('CrearCaracteristicas')}}" class="nav-link">
+                      <i class="nav-icon"></i>
+                      <p>Gestionar</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+             @endif
 
              <!-- Configuración -->
              <li class="nav-item has-treeview">
@@ -680,7 +679,7 @@
     </div>
   </body>
 
-  @include('Dependencias.scripts')
+  @include('Principal.Partials.scripts')
   </html>
 
   {{-- FIN BARRA NAV --}}

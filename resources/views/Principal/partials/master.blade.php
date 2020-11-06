@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-  @include('Dependencias.head')
+  @include('Principal.Partials.head')
 
   <style media="screen">
   body{
@@ -415,6 +415,6 @@
 		</div>
 	</div>
 			
-@include('Dependencias.scripts')
+@include('Principal.partials.scripts')
 </body>
 </html>
