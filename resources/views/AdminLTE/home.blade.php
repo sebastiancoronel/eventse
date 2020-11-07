@@ -682,6 +682,7 @@
   </body>
 
   @include('Principal.Partials.scripts')
+  @stack('js')
   </html>
 
   {{-- FIN BARRA NAV --}}

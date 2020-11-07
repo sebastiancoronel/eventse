@@ -26,13 +26,20 @@ class CategoriaController extends Controller
      */
     public function CrearCategorias()
     {
-        $Categorias = Categoria::all();
-        return view('AdminLTE.Admin.gestionar_categorias',[ 'Categorias' => $Categorias ]);
+        $Categorias = Categoria::where('deleted_at', NULL)
+                                ->select('*')
+                                ->get();
+
+        return view('AdminLTE.Admin.crear_categorias',[ 'Categorias' => $Categorias ]);
     }
 
     public function AlmacenarCategoria( Request $request ){
 
-        
+        $request->validate([
+            'nombre_categoria' => 'required|max:60',
+            'foto' => 'required'
+        ]);
+
         $Categoria = new Categoria;
         $Categoria->nombre = $request->nombre_categoria;
 
@@ -45,13 +52,46 @@ class CategoriaController extends Controller
         $Categoria->foto = 'images/categorias/' . $NombreImagen;
         $Categoria->save();
 
-        return redirect()->route('CrearCategorias')->with('CategoriaCreada','Se creó una nueva categoria con éxito');
+        return redirect()->route('CrearCategorias')->with('Success','Éxito');
 
     }
 
-    public function ModificarCategoria( Request $request ){
+    public function EditarCategoria( Request $id ){
+        
+        $Categoria = Categoria::findOrfail($id)->first();
+
+        return view('AdminLTE.Admin.editar_categoria',[ 'Categoria' => $Categoria ]);
     }
 
-    public function EliminarCategoria( Request $request ){
+    public function ActualizarCategoria( Request $request ){
+
+        $Categoria = Categoria::where( 'id' ,$request->id )->select('*')->first();
+
+        if ( $request->hasFile('foto') ) {
+            $random_string = Str::random(20);
+            $Foto = $request->file('foto');
+            $NombreImagen = $random_string . '.' . $Foto->getClientOriginalExtension();
+            $RutaImagen = public_path('/images/categorias/');
+            $Foto->move($RutaImagen, $NombreImagen);
+            $Categoria->foto = 'images/categorias/' . $NombreImagen;
+        }
+
+        $Categoria->nombre = $request->nombre_categoria;
+        $Categoria->update();
+
+        return redirect()->route('CrearCategorias')->with('Success','Éxito');
+
+
+    }
+
+    public function EliminarCategoria( Request $request ){ //FALTA BORRAR LOS SERVICIOS EN CASCADA
+
+        $Categoria = Categoria::where( 'id' , $request->id )
+                                ->select('*')
+                                ->first();
+        $Categoria->delete();
+
+        return redirect()->route('CrearCategorias')->with('Success','Éxito');
+
     }
 }

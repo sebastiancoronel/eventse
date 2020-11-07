@@ -102,7 +102,8 @@ Route::middleware(['auth'])->group(function () {
   //Categorias
   Route::get('/home/categorias/crear', 'CategoriaController@CrearCategorias')->name('CrearCategorias');
   Route::post('/home/categorias/almacenar', 'CategoriaController@AlmacenarCategoria')->name('AlmacenarCategoria');
-  Route::post('/home/categorias/modificar', 'CategoriaController@ModificarCategoria')->name('ModificarCategoria');
+  Route::get('/home/categorias/editar', 'CategoriaController@EditarCategoria')->name('EditarCategoria');
+  Route::post('/home/categorias/actualizar', 'CategoriaController@ActualizarCategoria')->name('ActualizarCategoria');
   Route::post('/home/categorias/eliminar', 'CategoriaController@EliminarCategoria')->name('EliminarCategoria');
   
   //Caracteristicas
