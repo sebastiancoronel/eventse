@@ -96,11 +96,16 @@ Route::middleware(['auth'])->group(function () {
 Route::get('admin', function(){
   return view('admin');
 });
-//Categorias
-Route::get('/home/categorias/crear', 'CategoriaController@CrearCategorias')->name('CrearCategorias');
-Route::post('/home/categorias/almacenar', 'CategoriaController@AlmacenarCategoria')->name('AlmacenarCategoria');
-Route::post('/home/categorias/modificar', 'CategoriaController@ModificarCategoria')->name('ModificarCategoria');
-Route::post('/home/categorias/eliminar', 'CategoriaController@EliminarCategoria')->name('EliminarCategoria');
 
-//Caracteristicas
-Route::get('/home/caracteristicas', 'CaracteristicaController@CrearCaracteristicas')->name('CrearCaracteristicas');
+Route::middleware(['auth'])->group(function () {
+  
+  //Categorias
+  Route::get('/home/categorias/crear', 'CategoriaController@CrearCategorias')->name('CrearCategorias');
+  Route::post('/home/categorias/almacenar', 'CategoriaController@AlmacenarCategoria')->name('AlmacenarCategoria');
+  Route::post('/home/categorias/modificar', 'CategoriaController@ModificarCategoria')->name('ModificarCategoria');
+  Route::post('/home/categorias/eliminar', 'CategoriaController@EliminarCategoria')->name('EliminarCategoria');
+  
+  //Caracteristicas
+  Route::get('/home/caracteristicas', 'CaracteristicaController@CrearCaracteristicas')->name('CrearCaracteristicas');
+  
+});

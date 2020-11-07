@@ -370,46 +370,48 @@
                   </ul>
                 </li>
 
-             {{-- Admin --}}
-             @if ( Auth::user()->rol == 'Administrador' )
-              <!-- Categorías -->
-              <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
-                  <p>
-                    Categorías
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="{{route('CrearCategorias')}}" class="nav-link">
-                      <i class="nav-icon"></i>
-                      <p>Gestionar</p>
+              {{-- Admin --}}
+              @if ( Auth::check() )
+                @if ( Auth::user()->rol == 'Administrador' )
+                  <!-- Categorías -->
+                  <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                      <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
+                      <p>
+                        Categorías
+                        <i class="right fas fa-angle-left"></i>
+                      </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="{{route('CrearCategorias')}}" class="nav-link">
+                          <i class="nav-icon"></i>
+                          <p>Gestionar</p>
+                        </a>
+                      </li>
+                    </ul>
                   </li>
-                </ul>
-              </li>
 
-              <!-- Características -->
-              <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
-                  <p>
-                    Características
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="{{route('CrearCaracteristicas')}}" class="nav-link">
-                      <i class="nav-icon"></i>
-                      <p>Gestionar</p>
+                  <!-- Características -->
+                  <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                      <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
+                      <p>
+                        Características
+                        <i class="right fas fa-angle-left"></i>
+                      </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="{{route('CrearCaracteristicas')}}" class="nav-link">
+                          <i class="nav-icon"></i>
+                          <p>Gestionar</p>
+                        </a>
+                      </li>
+                    </ul>
                   </li>
-                </ul>
-              </li>
-             @endif
+                @endif
+              @endif
 
              <!-- Configuración -->
              <li class="nav-item has-treeview">

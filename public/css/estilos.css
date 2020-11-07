@@ -1,6 +1,14 @@
+/* Fondos */
 .background-img{
     height: 250px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
+
+/* Imagenes */
+.img-tabla{
+    width: 20%;
+    height: 20%;
+}
+
