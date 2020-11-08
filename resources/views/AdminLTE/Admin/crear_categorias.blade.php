@@ -49,6 +49,8 @@
                                     <input hidden type="text" name="id" value="{{ $categoria->id }}">
                                     <button class="btn btn-danger"> <i class="fa fa-trash"></i> </button>
                                 </form>
+
+                                <a href=" {{ route('CrearCaracteristicas', ['id' => $categoria->id]) }} " class="btn btn-secondary"> <i class="fa fa-th-list"></i> </a>
                             </td>
                         </tr>
                     @empty
