@@ -2,7 +2,10 @@
 @section('content')
 <div class="dispositivo container">
     @if ( Session::has('Success') )
-        <div class="alert alert-success"> {{ Session::get('Success') }} </div>
+        <div class="alert alert-success alerta">
+            <span> {{ Session::get('Success') }} </span> 
+            <button class="text-white pull-right" onclick="$('.alerta').addClass('d-none')"> &times; </button>
+        </div>
     @endif
     
     <h4 class="text-muted text-uppercase"> Categorías <a class="btn btn-primary pull-right boton_agregar_categoria"> + Agregar </a>  </h4>
