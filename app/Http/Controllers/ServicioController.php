@@ -17,7 +17,7 @@ class ServicioController extends Controller
 {
     public function Publicar(){
       $Categorias = Categoria::all();
-      return view('Ecommerce.publicar' , [ 'Categorias' => $Categorias ]);
+      return view('Principal.publicar' , [ 'Categorias' => $Categorias ]);
 }
 
   public function ServiciosPublicados(){
@@ -31,22 +31,10 @@ class ServicioController extends Controller
     return view('Ecommerce.servicios_publicados',['Categorias'=>$Categorias, 'Inmuebles'=>$Inmuebles,'Juegos'=>$Juegos,'Animaciones'=>$Animaciones,'Mobiliarios'=>$Mobiliarios,'Caterings'=>$Caterings,'MusicaDjs'=>$MusicaDjs]);
   }
 
-  // public function FormularioIluminacion(){
-  //
-  //   return view('Ecommerce.Formularios_Publicacion.iluminacion');
-  // }
+  public function CrearServicio(Request $id){
 
-  // public function FormularioOrnamentacion(){
-  //
-  //   return view('Ecommerce.Formularios_Publicacion.ornamentacion');
-  // }
-
-  
-
-  // public function FormularioShows(){
-  //
-  //   return view('Ecommerce.Formularios_Publicacion.shows');
-  // }
+    return view('Principal.crear_servicio');
+  }
 
   public function MostrarPlanes(){
     return view('Ecommerce.planes_publicidad');

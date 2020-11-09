@@ -19,6 +19,18 @@ class CreateCaracteristicasTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
+        DB::table('caracteristicas')->insert([
+            ['nombre' => 'Mozos y camareras' ],
+            ['nombre' => 'Proyector' ],
+            ['nombre' => 'Maquina de humo' ],
+            ['nombre' => 'Máquina de espuma' ],
+            ['nombre' => 'Pelotero' ],
+            ['nombre' => 'Servicio de pizzas' ],
+            ['nombre' => 'Pinta caritas' ],
+            ['nombre' => 'Bolsitas' ],
+            
+        ]);
     }
 
     /**

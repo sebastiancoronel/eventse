@@ -41,7 +41,7 @@ Route::get('/reservar/servicios-publicados','ServicioController@ServiciosPublica
 Route::middleware(['auth', 'ControlarDatosCompletos', 'ControlarNegocioExistente'])->group(function () {
   Route::get('/publicar', 'ServicioController@Publicar')->name('Publicar');
   // Formularios de publicacion
-  Route::get('/publicar/inmuebles', 'InmuebleController@FormularioInmueble')->name('FormularioInmueble');
+  Route::get('/publicar/servicio/crear', 'ServicioController@CrearServicio')->name('CrearServicio');
 
   // Publicar servicios
   // Inmuebles

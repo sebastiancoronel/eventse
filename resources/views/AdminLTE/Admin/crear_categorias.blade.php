@@ -19,8 +19,12 @@
             <div class="md-form">
                 <form action=" {{ route('AlmacenarCategoria') }} " method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="text" class="form-control" name="nombre_categoria" id="nombre_categoria" maxlength="60">
-                    <input type="file" class="form-control mt-5" name="foto" id="" accept=".jpg, .png">
+                    <input type="text" class="form-control" name="nombre_categoria" id="nombre_categoria" maxlength="60" required>
+                    <div class="text-danger"> {{ $errors->first('nombre_categoria')}} </div>
+                    <input type="file" class="form-control mt-5" name="foto" id="" accept=".jpg, .png" required>
+                    @if ($errors->any())
+                        <div class="text-danger"> {{ $errors->first('foto')}} </div>
+                    @endif
                     <label for="form1">Nombre de la categoria</label>
                     <button class="btn btn-primary"> Aceptar </button>
                 </form>

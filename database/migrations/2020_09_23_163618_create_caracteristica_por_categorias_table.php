@@ -24,6 +24,42 @@ class CreateCaracteristicaPorCategoriasTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
+        DB::table('caracteristica_por_categorias')->insert([
+            [
+                'id_categoria' => 1,
+                'id_caracteristica' => 1
+            ],
+            [
+                'id_categoria' => 1,
+                'id_caracteristica' => 2
+            ],
+            [
+                'id_categoria' => 1,
+                'id_caracteristica' => 3
+            ],
+            [
+                'id_categoria' => 1,
+                'id_caracteristica' => 4
+            ],
+            [
+                'id_categoria' => 1,
+                'id_caracteristica' => 5
+            ],
+            [
+                'id_categoria' => 1,
+                'id_caracteristica' => 6
+            ],
+            [
+                'id_categoria' => 1,
+                'id_caracteristica' => 7
+            ],
+            [
+                'id_categoria' => 1,
+                'id_caracteristica' => 8
+            ],
+            
+        ]);
     }
 
     /**

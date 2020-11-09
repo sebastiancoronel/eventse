@@ -1,4 +1,4 @@
-@extends('layouts.barra_navegacion_principal')
+@extends('Principal.Partials.master')
 @section('content')
 
 <div class="escritorio-mt-3-p-t-75">
@@ -25,11 +25,11 @@
 </div> --}}
 @endif
 
-    <div class="purple-gradient d-flex justify-content-center" style="height: 200px;">
-        <h2 class="d-none d-sm-block text-uppercase text-white align-self-center">¿Que servicio deseas publicar?</h2>
-        <!-- Movil -->
-        <h3 class="d-block d-sm-none text-uppercase text-white align-self-center text-center">¿Que servicio deseas publicar?</h3>
-    </div>
+  <div class="purple-gradient d-flex justify-content-center" style="height: 200px;">
+      <h2 class="d-none d-sm-block text-uppercase text-white align-self-center">¿Que servicio deseas publicar?</h2>
+      <!-- Movil -->
+      <h3 class="d-block d-sm-none text-uppercase text-white align-self-center text-center">¿Que servicio deseas publicar?</h3>
+  </div>
 
     <!--SELECCION DE CATEGORIAS-->
 	<div class="sec-banner bg0 p-b-50 mt-5">
@@ -39,7 +39,7 @@
 					<div class="col-md-4 p-b-30">
 						<!-- Block1 -->
 						<div class="block1 wrap-pic-w background-img" style="background-image: url( '{{ asset($categoria->foto) }}' );">
-							<a href="#" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+							<a href=" {{ route('CrearServicio',[ 'id_categoria' => $categoria->id  ]) }} " class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 								<div class="block1-txt-child1 flex-col-l">
 									<span class="block1-name ltext-102 trans-04 p-b-8" style="color: white;">
 										{{ $categoria->nombre }}
@@ -57,7 +57,7 @@
 	<!--Fin SELECCION DE CATEGORIAS-->
 </div>
 
-<script>
+{{-- <script>
     //Select dinamico de provincias y localidades
     $("#provincia").on('change', function() {
         var provincia_id = $(this).val();
@@ -85,5 +85,5 @@
             },
         });
     });
-</script>
+</script> --}}
 @endsection

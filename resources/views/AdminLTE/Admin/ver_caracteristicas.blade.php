@@ -22,7 +22,7 @@
                     <input hidden type="text" name="id_categoria" value="{{ $Categoria->id }}">
 
                     <label for="nombre_caracteristica">Nombre</label>
-                    <input type="text" class="form-control" name="nombre_caracteristica" id="nombre_caracteristica" maxlength="60">
+                    <input type="text" class="form-control" name="nombre_caracteristica" id="nombre_caracteristica" maxlength="60" required>
                     <button type="submit" class="btn btn-primary"> Aceptar </button>
                 </form>
             </div>
