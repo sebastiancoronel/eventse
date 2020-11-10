@@ -414,7 +414,7 @@
 			</div>
 		</div>
 	</div>
-			
+@stack('js')			
 @include('Principal.partials.scripts')
 </body>
 </html>
