@@ -1,9 +1,9 @@
 @extends('Principal.Partials.master')
 @section('content')
 <div class="escritorio-mt-3-p-t-75">
-<div id="inmueble" class="text-white d-none d-sm-block" style="background-image: url('{{ asset($Categoria->foto) }}'); background-size:cover; background-repeat: no-repeat; background-position:center;">
+    <div id="inmueble" class="text-white d-none d-sm-block" style="background-image: url('{{ asset($Categoria->foto) }}'); background-size:cover; background-repeat: no-repeat; background-position:center;">
         <div class="row">
-            <div class="col-md-4 mt-5 purple-gradient" style="height: 8em;">
+            <div class="col-md-4 mt-5 {{$ClaseRandom}}" style="height: 8em;">
                 <div class="p-5 d-flex justify-content-start">
                     <i class="zmdi zmdi-store align-self-center" style="font-size: 25px;"></i>
                     <span class="ml-4 align-self-center text-uppercase" style="font-size: 25px;">{{ $Categoria->nombre }}</span>
@@ -13,7 +13,7 @@
     </div>
 
     {{-- Titulo móvil --}}
-    <div class="purple-gradient col-md-4 text-white d-block d-sm-none" style="height: 10em;">
+    <div class="{{$ClaseRandom}} col-md-4 text-white d-block d-sm-none" style="height: 10em;">
         <div class="p-5 d-flex align-items-center">
             <i class="zmdi zmdi-store" style="font-size: 60px;"></i>
             <span class="ml-4" style="font-size: 25px;"> {{ $Categoria->nombre }} </span>
@@ -55,6 +55,7 @@
                         </div>
                         <div class="text-center">
                             <small>Foto principal</small>
+                            <div class="text-danger"> {{ $errors->first('foto_1') }} </div>
                         </div>
                     </div>
 
@@ -74,7 +75,7 @@
                                 <input id="file_input_2" name="foto_2" type="file" accept="image/*" required>
                             </div>
                         </div>
-
+                        <div class="text-danger"> {{ $errors->first('foto_2') }} </div>
                     </div>
 
                     <!-- Foto 3 -->
@@ -93,7 +94,7 @@
                                 <input id="file_input_3" name="foto_3" type="file" accept="image/*" required>
                             </div>
                         </div>
-
+                        <div class="text-danger"> {{ $errors->first('foto_3') }} </div>
                     </div>
 
                     <!-- Foto 4 -->
@@ -112,7 +113,7 @@
                                 <input id="file_input_4" name="foto_4" type="file" accept="image/*" required>
                             </div>
                         </div>
-
+                        <div class="text-danger"> {{ $errors->first('foto_4') }} </div>
                     </div>
                 </div>
             </div>
@@ -120,14 +121,15 @@
             <div class="mt-5">
                 <div class="col md-form">
                     <label for="nombre">Nombre</label>
-                    <input class="form-control" type="text" name="nombre" value="" maxlength="200" required>
+                    <input class="form-control" type="text" name="nombre" value=" {{old('nombre')}} " maxlength="200" required>
                 </div>
             </div>
 
-            <div class="mt-5" contenteditable >
+            <div class="mt-5">
                 <div class="col md-form">
                     <label for="descripcion">Descripción</label>
-                    <textarea id="descripcion" class="md-textarea form-control" type="text" name="descripcion" value="" maxlength="3000" cols="30" rows="10"  required></textarea>
+                    <textarea id="descripcion" class="md-textarea form-control" type="text" name="descripcion" value="" maxlength="3000" cols="30" rows="10"  required> {{old('descripcion')}}</textarea>
+                    <div class="text-danger"> {{ $errors->first('descripcion') }} </div>
                 </div>
             </div>
 
@@ -150,7 +152,8 @@
             <div id="div_precio" class="col-12 col-md-3 md-form my-5">
                 <i class="zmdi zmdi-money prefix"></i>
                 <label for="precio">Precio</label>
-                <input id="precio" class="form-control" type="number" name="precio" value="">
+            <input id="precio" class="form-control" type="number" name="precio" value="{{old('precio')}}">
+                <div class="text-danger"> {{ $errors->first('precio') }} </div>
             </div>
 
             <div class="form-check">
