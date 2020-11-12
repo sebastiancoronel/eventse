@@ -1,0 +1,14 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "build-all",
+			"path": "public/adminlte/plugins/raphael/",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "npm: build-all - public/adminlte/plugins/raphael",
+			"detail": "yarn build-dev && yarn build-no-deps && yarn build-no-deps-min && yarn build-prod"
+		}
+	]
+}

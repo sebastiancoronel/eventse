@@ -21,7 +21,8 @@ class CreateServiciosTable extends Migration
             $table->string('foto_2');
             $table->string('foto_3');
             $table->string('foto_4');
-            $table->integer('precio');
+            $table->integer('precio')->nullable();
+            $table->boolean('precio_a_convenir')->nullable();
 
             $table->integer('id_categoria')->unsigned();
             $table->foreign('id_categoria')->references('id')->on('categorias');

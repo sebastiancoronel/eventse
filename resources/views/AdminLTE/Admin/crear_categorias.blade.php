@@ -45,19 +45,27 @@
                 </thead>
                 <tbody>
                     @forelse ($Categorias as $categoria)
-                        <tr class="text-center">
+                        <tr class="text-center" data-id=" {{ $categoria->id }} ">
                             <td> {{ $categoria->nombre }} </td>
                             <td class="w-50"> <img class="img-fluid img-tabla" src="{{ asset($categoria->foto) }}" alt="{{ asset($categoria->foto) }}"> </td>
                             <td class="d-flex align-items-center">
                                 <a href=" {{ route('EditarCategoria', ['id' => $categoria->id]) }} " class="btn btn-warning"> <i class="fa fa-edit"></i> </a>
+                                <a href=" {{ route('CrearCaracteristicas', ['id' => $categoria->id]) }} " class="btn btn-secondary mx-auto"> <i class="fa fa-th-list"></i> </a>
 
-                                <form id="form-eliminar-categoria" action="{{ route('EliminarCategoria') }}" method="POST" style="display: block;">
+                                <!-- Material switch -->
+                                <div class="switch">
+                                    <label>
+                                        <input type="checkbox" class="switch-categoria" {{ $categoria->deleted_at == null ? 'checked' : ' ' }}>
+                                        <span class="lever"></span>
+                                    </label>
+                                </div>
+
+                                {{-- <form id="form-eliminar-categoria" action="{{ route('EliminarCategoria') }}" method="POST" style="display: block;">
                                     @csrf
                                     <input hidden type="text" name="id" value="{{ $categoria->id }}">
                                     <button class="btn btn-danger"> <i class="fa fa-trash"></i> </button>
-                                </form>
+                                </form> --}}
 
-                                <a href=" {{ route('CrearCaracteristicas', ['id' => $categoria->id]) }} " class="btn btn-secondary"> <i class="fa fa-th-list"></i> </a>
                             </td>
                         </tr>
                     @empty
@@ -70,6 +78,8 @@
 </div>
 
 @push('js')
+
+    {{-- Mostrar formulario agregar categoria --}}
     <script>
         $(document).on('click','.boton_agregar_categoria',function(){
             $('.form-agregar-categoria').removeClass('d-none');
@@ -79,6 +89,39 @@
         $(document).on('click','.cerrar-formulario-nueva-categoria',function(){
             $('.form-agregar-categoria').removeClass('d-block');
             $('.form-agregar-categoria').addClass('d-none');
+        });
+    </script>
+
+    {{-- Deshabilitar/habilitar categoria --}}
+    <script>
+        $(document).on('change','.switch-categoria', function(){
+
+            var id_categoria = $(this).closest('tr').data('id');
+
+            console.log(id_categoria);
+
+            if ( $(this).is(':checked') ) { //Si se habilita
+                var switch_categoria = 'Habilitar';
+                
+            }else{ //Si se deshabilita
+                var switch_categoria = 'Deshabilitar';
+            }
+
+            $.ajax({
+                    type: 'POST',
+                    url: '{{ url('/home/categorias/habilitar-deshabilitar') }}',
+                    data: {
+                        id_categoria,
+                        switch_categoria,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    error: function(x,y,z){
+                        console.log(x,y,z);
+                    },
+                    success: function(data){
+                        console.log(data);
+                    }
+                });
         });
     </script>
 @endpush

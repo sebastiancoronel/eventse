@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Caracteristica_por_categoria;
+use App\CaracteristicasPorServicio;
 use App\Caracteristica;
 use App\Prestador;
 use App\Servicio;
@@ -40,6 +41,7 @@ class ServicioController extends Controller
 
     $Caracteristicas = Caracteristica_por_categoria::where( 'id_categoria' , $request->id_categoria )
                                                   ->Join( 'caracteristicas' , 'caracteristica_por_categorias.id_caracteristica' , '=' , 'caracteristicas.id' )
+                                                  ->where( 'caracteristicas.deleted_at', null )
                                                   ->select('caracteristicas.*')
                                                   ->get();
     return view('Principal.crear_servicio' , [ 'Caracteristicas' => $Caracteristicas, 'Categoria' => $Categoria, 'ClaseRandom' => $ClaseRandom ] );
@@ -115,7 +117,15 @@ class ServicioController extends Controller
     $Servicio->id_prestador = $Prestador->id;
     $Servicio->save();
 
-    return redirect()->route('')->with('Success','Servicio publicado con éxito');
+    foreach ( $request->caracteristica as $caracteristica ) {
+      $CaracteristicasPorServicio = new CaracteristicasPorServicio;
+      $CaracteristicasPorServicio->id_servicio = $Servicio->id;
+      $CaracteristicasPorServicio->id_caracteristica = $caracteristica;
+      $CaracteristicasPorServicio->save();
+    }
+
+
+    //return redirect()->route('')->with('Success','Servicio publicado con éxito');
   }
 
   public function MostrarPlanes(){

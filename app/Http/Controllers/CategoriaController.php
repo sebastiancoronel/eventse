@@ -3,30 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Categoria;
+use App\Caracteristica;
+use App\Caracteristica_por_categoria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class CategoriaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+    public function index(){
         $Categorias = Categoria::all();
         return view('Principal.principal',[ 'Categorias' => $Categorias ]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function CrearCategorias()
-    {
-        $Categorias = Categoria::where('deleted_at', NULL)
+   
+    public function CrearCategorias(){
+        $Categorias = Categoria::withTrashed()
                                 ->select('*')
                                 ->get();
 
@@ -86,10 +76,47 @@ class CategoriaController extends Controller
 
     public function EliminarCategoria( Request $request ){ //FALTA BORRAR LOS SERVICIOS EN CASCADA
 
-        $Categoria = Categoria::where( 'id' , $request->id )
-                                ->select('*')
-                                ->first();
-        $Categoria->delete();
+        if ( $request->switch_categoria == 'Habilitar') {
+            $Categoria = Categoria::withTrashed()
+                                    ->where('id', $request->id_categoria )
+                                    ->first();
+            $Categoria->restore();
+
+            $CaracteristicasPorCategoria = Caracteristica_por_categoria::withTrashed()
+                                                                        ->where( 'id_categoria' , $request->id_categoria )
+                                                                        ->Join( 'caracteristicas' , 'caracteristica_por_categorias.id_caracteristica' , '=' , 'caracteristicas.id' )
+                                                                        ->select('caracteristicas.id')
+                                                                        ->get();
+
+        foreach ($CaracteristicasPorCategoria as $caracteristica_por_categoria) {
+            $Caracteristica = Caracteristica::withTrashed()
+                                            ->where('id', $caracteristica_por_categoria->id)
+                                            ->first();
+            $Caracteristica->restore();
+        }                                                    
+            return 'Habilitada';
+            
+        }else{
+            if ( $request->switch_categoria == 'Deshabilitar') {
+
+                $Categoria = Categoria::find($request->id_categoria);
+
+                $Categoria->delete();
+
+                $CaracteristicasPorCategoria = Caracteristica_por_categoria::withTrashed()
+                                                    ->where( 'id_categoria' , $request->id_categoria )
+                                                    ->Join( 'caracteristicas' , 'caracteristica_por_categorias.id_caracteristica' , '=' , 'caracteristicas.id' )
+                                                    ->select('caracteristicas.id')
+                                                    ->get();
+
+                foreach ($CaracteristicasPorCategoria as $caracteristica_por_categoria) {
+                    $Caracteristica = Caracteristica::find($caracteristica_por_categoria->id);
+                    $Caracteristica->delete();
+                }
+                
+                return 'Deshabilitada';
+            }
+        }    
 
         return redirect()->route('CrearCategorias')->with('Success','Éxito');
 

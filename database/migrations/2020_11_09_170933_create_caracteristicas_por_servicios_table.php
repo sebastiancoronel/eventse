@@ -19,8 +19,8 @@ class CreateCaracteristicasPorServiciosTable extends Migration
             $table->integer('id_servicio');
             $table->foreign('id_servicio')->references('id')->on('servicios');
             
-            $table->integer('id_categoria');
-            $table->foreign('id_categoria')->references('id')->on('servicios');
+            $table->integer('id_caracteristica');
+            $table->foreign('id_caracteristica')->references('id')->on('servicios');
             $table->softDeletes();
             $table->timestamps();
         });
