@@ -50,7 +50,9 @@
                             <td class="w-50"> <img class="img-fluid img-tabla" src="{{ asset($categoria->foto) }}" alt="{{ asset($categoria->foto) }}"> </td>
                             <td class="d-flex align-items-center">
                                 <a href=" {{ route('EditarCategoria', ['id' => $categoria->id]) }} " class="btn btn-warning"> <i class="fa fa-edit"></i> </a>
-                                <a href=" {{ route('CrearCaracteristicas', ['id' => $categoria->id]) }} " class="btn btn-secondary mx-auto"> <i class="fa fa-th-list"></i> </a>
+                                    <div class="boton-ver-caracteristicas mx-auto">
+                                        <a href=" {{ route('CrearCaracteristicas', ['id' => $categoria->id]) }} " class="btn btn-secondary"> <i class="fa fa-th-list"></i> </a>
+                                    </div>
 
                                 <!-- Material switch -->
                                 <div class="switch">
@@ -59,13 +61,6 @@
                                         <span class="lever"></span>
                                     </label>
                                 </div>
-
-                                {{-- <form id="form-eliminar-categoria" action="{{ route('EliminarCategoria') }}" method="POST" style="display: block;">
-                                    @csrf
-                                    <input hidden type="text" name="id" value="{{ $categoria->id }}">
-                                    <button class="btn btn-danger"> <i class="fa fa-trash"></i> </button>
-                                </form> --}}
-
                             </td>
                         </tr>
                     @empty
@@ -97,8 +92,7 @@
         $(document).on('change','.switch-categoria', function(){
 
             var id_categoria = $(this).closest('tr').data('id');
-
-            console.log(id_categoria);
+            var checkbox_switch = $(this);
 
             if ( $(this).is(':checked') ) { //Si se habilita
                 var switch_categoria = 'Habilitar';
@@ -119,7 +113,10 @@
                         console.log(x,y,z);
                     },
                     success: function(data){
-                        console.log(data);
+                        // if ( data == 'Deshabilitada' ) {
+                        //     $(checkbox_switch).closest('td').find('.boton-ver-caracteristicas').hide();
+                        // }
+                        
                     }
                 });
         });

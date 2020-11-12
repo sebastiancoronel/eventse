@@ -12,13 +12,13 @@ class CaracteristicaController extends Controller
 {
     public function CrearCaracteristicas(Request $id){
 
-        $Categoria = Categoria::findOrfail($id)->first();
+        $Categoria = Categoria::withTrashed($id)->first();
 
         $Caracteristicas = Caracteristica_por_categoria::withTrashed()
-                                                    ->where( 'id_categoria' , $Categoria->id )
-                                                    ->Join( 'caracteristicas' , 'caracteristica_por_categorias.id_caracteristica' , '=' , 'caracteristicas.id' )
-                                                    ->select('caracteristicas.nombre as nombre_caracteristica', 'caracteristicas.deleted_at','caracteristicas.id as id_caracteristica')
-                                                    ->get();
+                                                        ->where( 'id_categoria' , $Categoria->id )
+                                                        ->Join( 'caracteristicas' , 'caracteristica_por_categorias.id_caracteristica' , '=' , 'caracteristicas.id' )
+                                                        ->select('caracteristicas.nombre as nombre_caracteristica', 'caracteristicas.deleted_at','caracteristicas.id as id_caracteristica','caracteristicas.id as id_caracteristica')
+                                                        ->get();
         // dd($Caracteristicas);
         return view('AdminLTE.Admin.ver_caracteristicas',[ 'Categoria' => $Categoria, 'Caracteristicas' => $Caracteristicas ]);
     }
@@ -37,6 +37,21 @@ class CaracteristicaController extends Controller
         return redirect()->route('CrearCaracteristicas', ['id' => $request->id_categoria])->with('Success','Éxito');
 
     }
+
+    public function EditarCaracteristica( Request $id ){
+        $Caracteristica = Caracteristica::withTrashed($id)->first();
+
+        return view('AdminLTE.Admin.editar_caracteristica',[ 'Caracteristica' => $Caracteristica ] );
+    }
+
+    public function ActualizarCaracteristica( Request $request ){
+        $Caracteristica = Caracteristica::where( 'id' ,$request->id )->select('*')->first();
+        $Caracteristica->nombre = $request->nombre;
+        $Caracteristica->update();
+
+        return redirect()->route('CrearCaracteristicas', ['id' => $request->id] )->with('Success','Caracteristica actualizada');
+    }
+
 
     public function HabilitarDeshabilitarCaracteristica( Request $request ){
         if ( $request->switch_caracteristica == 'Habilitar') {

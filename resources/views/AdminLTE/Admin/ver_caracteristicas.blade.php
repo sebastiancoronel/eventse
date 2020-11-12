@@ -9,7 +9,10 @@
     @endif
     
     <h4 class="text-muted text-uppercase"> Caracteristicas de {{ $Categoria->nombre }} <a class="btn btn-primary pull-right boton_agregar_categoria"> + Agregar </a>  </h4>
-    
+    @if ( $Categoria->deleted_at != null )
+        <div class="alert alert-danger mt-4"> <i class="fa fa-info-circle"></i> Ésta categoría se encuentra deshabilitada</div>
+    @endif
+
     {{-- Formulario agregar caracteristica --}}
     <div class="card mt-5 form-agregar-caracteristica d-none">
         <div class="card-header">
@@ -40,7 +43,8 @@
                     @forelse ($Caracteristicas as $caracteristica)
                         <tr data-id=" {{ $caracteristica->id_caracteristica }} ">
                             <td> {{ $caracteristica->nombre_caracteristica }} </td>
-                            <td>
+                            <td class="row">
+                                <a href=" {{ route('EditarCaracteristica', ['id' => $caracteristica->id_caracteristica]) }} " class="btn btn-warning mx-4"> <i class="fa fa-edit"></i> </a>
                                 <!-- Material switch -->
                                 <div class="switch">
                                     <label>

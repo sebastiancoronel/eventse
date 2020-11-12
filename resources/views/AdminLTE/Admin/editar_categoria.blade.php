@@ -25,7 +25,7 @@
                     </div>
                     <input type="file" name="foto" id="foto" class="form-control">
                 </div>
-                    <button class="btn btn-primary">Actualizar</button>
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
             </form>
         </div>
     </div>
