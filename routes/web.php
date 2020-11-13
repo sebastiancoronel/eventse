@@ -45,6 +45,7 @@ Route::middleware(['auth', 'ControlarDatosCompletos', 'ControlarNegocioExistente
 
   // Publicar servicios
   Route::post('/publicar/servicio/almacenando','ServicioController@AlmacenarServicio')->name('AlmacenarServicio');
+  Route::get('/publicar/servicio/publicado-con-exito','ServicioController@ServicioPublicadoConExito')->name('ServicioPublicadoConExito');
 });
 
 /*

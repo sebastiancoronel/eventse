@@ -113,6 +113,7 @@
                         console.log(x,y,z);
                     },
                     success: function(data){
+                        console.log(data);
                         // if ( data == 'Deshabilitada' ) {
                         //     $(checkbox_switch).closest('td').find('.boton-ver-caracteristicas').hide();
                         // }

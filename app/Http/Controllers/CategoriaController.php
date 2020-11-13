@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Servicio;
 use App\Categoria;
 use App\Caracteristica;
 use App\Caracteristica_por_categoria;
@@ -93,13 +94,19 @@ class CategoriaController extends Controller
                                             ->where('id', $caracteristica_por_categoria->id)
                                             ->first();
             $Caracteristica->restore();
-        }                                                    
-            return 'Habilitada';
+        }
+
+        $Servicios = Servicio::withTrashed()->where( 'id_categoria' , $request->id_categoria )->get();
+                foreach ($Servicios as $servicio) {
+                    $servicio->restore();
+                }
+
+        return 'Habilitada';
             
         }else{
             if ( $request->switch_categoria == 'Deshabilitar') {
 
-                $Categoria = Categoria::find($request->id_categoria);
+                $Categoria = Categoria::find( $request->id_categoria );
 
                 $Categoria->delete();
 
@@ -112,6 +119,11 @@ class CategoriaController extends Controller
                 foreach ($CaracteristicasPorCategoria as $caracteristica_por_categoria) {
                     $Caracteristica = Caracteristica::find($caracteristica_por_categoria->id);
                     $Caracteristica->delete();
+                }
+                
+                $Servicios = Servicio::where( 'id_categoria' , $request->id_categoria )->get();
+                foreach ($Servicios as $servicio) {
+                    $servicio->delete();
                 }
                 
                 return 'Deshabilitada';

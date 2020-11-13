@@ -48,7 +48,7 @@ class ServicioController extends Controller
   }
 
   public function AlmacenarServicio( Request $request ){
-    
+
     $request->validate([      
       'nombre' => 'required',
       'descripcion' => 'required',
@@ -117,15 +117,25 @@ class ServicioController extends Controller
     $Servicio->id_prestador = $Prestador->id;
     $Servicio->save();
 
-    foreach ( $request->caracteristica as $caracteristica ) {
-      $CaracteristicasPorServicio = new CaracteristicasPorServicio;
-      $CaracteristicasPorServicio->id_servicio = $Servicio->id;
-      $CaracteristicasPorServicio->id_caracteristica = $caracteristica;
-      $CaracteristicasPorServicio->save();
+    if ($request->caracteristica) {
+      foreach ( $request->caracteristica as $caracteristica ) {
+        $CaracteristicasPorServicio = new CaracteristicasPorServicio;
+        $CaracteristicasPorServicio->id_servicio = $Servicio->id;
+        $CaracteristicasPorServicio->id_caracteristica = $caracteristica;
+        $CaracteristicasPorServicio->save();
+      }
     }
 
+    //Array de clases para variar el fondo del titulo con diferentes gradientes
+    $ClasesDeFondoEnGradiente = array("purple-gradient", "blue-gradient", "aqua-gradient", "peach-gradient", "young-passion-gradient", "lady-lips-gradient","morpheus-den-gradient");
+    $RandomKey = array_rand( $ClasesDeFondoEnGradiente, 1 );
+    $ClaseRandom = $ClasesDeFondoEnGradiente[$RandomKey];
 
-    //return redirect()->route('')->with('Success','Servicio publicado con éxito');
+    return redirect()->route('ServicioPublicadoConExito')->with('Success','Servicio publicado con éxito')->with('ClaseRandom',$ClaseRandom);
+  }
+
+  public function ServicioPublicadoConExito(){
+    return view('Principal.servicio_publicado_exitosamente');
   }
 
   public function MostrarPlanes(){

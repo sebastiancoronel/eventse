@@ -30,7 +30,7 @@
         </div>
 
         <form class="card-body" action="{{route('AlmacenarServicio')}}" method="post" enctype="multipart/form-data">
-            <input hidden type="text" name="id_categoria" value="1">
+            <input hidden type="text" name="id_categoria" value=" {{$Categoria->id}} ">
             @csrf
             {{-- Imagenes --}}
             <div class="mt-5">
