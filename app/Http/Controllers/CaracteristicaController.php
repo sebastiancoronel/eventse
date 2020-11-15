@@ -60,11 +60,11 @@ class CaracteristicaController extends Controller
                                             ->first();
             $Caracteristica->restore();
 
-            $CaracteristicaPorCategoria = Caracteristica_por_categoria::withTrashed()
-                                                                        ->where('id_categoria', $request->id_categoria )
-                                                                        ->where('id_caracteristica', $request->id_caracteristica )
-                                                                        ->first();
-            $CaracteristicaPorCategoria->restore();
+            // $CaracteristicaPorCategoria = Caracteristica_por_categoria::withTrashed()
+            //                                                             ->where('id_categoria', $request->id_categoria )
+            //                                                             ->where('id_caracteristica', $request->id_caracteristica )
+            //                                                             ->first();
+            // $CaracteristicaPorCategoria->restore();
 
             return 'Habilitada';
             
@@ -74,11 +74,11 @@ class CaracteristicaController extends Controller
                 
                 $Caracteristica->delete();
                 
-                $CaracteristicaPorCategoria = Caracteristica_por_categoria::where('id_categoria', $request->id_categoria )
-                                                                            ->where('id_caracteristica', $request->id_caracteristica )
-                                                                            ->first();
+                // $CaracteristicaPorCategoria = Caracteristica_por_categoria::where('id_categoria', $request->id_categoria )
+                //                                                             ->where('id_caracteristica', $request->id_caracteristica )
+                //                                                             ->first();
                                                                             
-                $CaracteristicaPorCategoria->delete();
+                // $CaracteristicaPorCategoria->delete();
 
                 return 'Deshabilitada';
             }

@@ -8,31 +8,23 @@ Auth::routes();
 |--------------------------------------------------------------------------
 */
 
-// Route::get('/', function (){
-//   return view('Ecommerce.welcome');
-// })->name('Principal');
-
 Route::get( '/' , 'CategoriaController@index' )->name('Principal');
 //Traer Categorias
 Route::get('/categorias-listar','CategoriaController@index');
 
-//Listar todos los servicios publicados
+//Listar servicios publicados
 Route::get('/reservar/servicios-publicados','ServicioController@ServiciosPublicados')->name('ServiciosPublicados');
 
-//--- Carrito --//
+//Mostrar servicio
+Route::get('/reservar/servicios-publicados/{id}','ServicioController@MostrarServicio')->name('MostrarServicio');
 
-  //Inmueble carrito
-  Route::post('/mi-paquete/agregando-inmueble','InmuebleController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
+//Inmueble carrito
+Route::post('/mi-paquete/agregando-inmueble','InmuebleController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
 
-  // --Preguntas --//
+//--- Preguntas inmueble
+Route::post('/reservar/servicios-publicados/Inmueble/almacenando-pregunta','InmuebleController@PublicarPregunta')->name('PublicarPregunta')->middleware('ControlarDatosCompletos');
+Route::get('/reservar/servicios-publicados/Inmueble/almacenando-pregunta','InmuebleController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('ControlarDatosCompletos');
 
-  //--- Preguntas inmueble
-  Route::post('/reservar/servicios-publicados/Inmueble/almacenando-pregunta','InmuebleController@PublicarPregunta')->name('PublicarPregunta')->middleware('ControlarDatosCompletos');
-  Route::get('/reservar/servicios-publicados/Inmueble/almacenando-pregunta','InmuebleController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('ControlarDatosCompletos');
-
-//Articulos-Detalles
-  
-  Route::get('/reservar/servicios-publicados/Inmueble','InmuebleController@MostrarInmueble')->name('MostrarInmueble');
 /*
 |--------------------------------------------------------------------------
 | Auth + Datos completos + Perfil empresa

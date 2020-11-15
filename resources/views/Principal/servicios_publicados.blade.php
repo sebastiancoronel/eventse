@@ -1,4 +1,4 @@
-@extends('layouts.barra_navegacion_principal')
+@extends('Principal.partials.master')
 @section('content')
 <div class="escritorio-mt-3-p-t-75">
     <div class="bg0 m-t-23 p-b-140">
@@ -16,7 +16,7 @@
 
                 </div>
 
-                <div class="flex-w flex-c-m m-tb-10">
+                {{-- <div class="flex-w flex-c-m m-tb-10">
                     <div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
                         <i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
                         <i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
@@ -39,10 +39,10 @@
 
                         <input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Filter -->
-                <div class="dis-none panel-filter w-full p-t-10">
+                {{-- <div class="dis-none panel-filter w-full p-t-10">
                     <div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
                         <div class="filter-col1 p-r-15 p-b-27">
                             <div class="mtext-102 cl2 p-b-15">
@@ -228,287 +228,51 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
             <div class="row isotope-grid" style="position: relative; height: 1717.38px;">
+                @foreach ($Servicios as $servicio)
+                    <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$servicio->nombre_categoria}}" style="position: absolute; left: 0%; top: 0px;">
+                        <!-- Block2 -->
+                        <div class="block2">
+                        <div class="block2-pic hov-img0">
+                            <img src="{{ asset($servicio->foto_1) }}" alt="IMG-PRODUCT">
 
-                {{-- Inmuebles --}}
-                @foreach ($Inmuebles as $inmueble)
-                    <form action="{{route('MostrarInmueble')}}" method="GET">
-
-                        @csrf
-                        <input hidden type="text" name="id_inmueble" value="{{$inmueble->id}}">
-                        <input hidden type="text" name="id_categoria" value="1">
-                            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Salones" style="position: absolute; left: 0%; top: 0px;">
-                                <!-- Block2 -->
-                                <div class="block2">
-                                <div class="block2-pic hov-img0">
-                                    <img src="{{$inmueble->foto_1}}" alt="IMG-PRODUCT">
-
-                                    <button href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
-                                    Reservar
-                                    </button>
-                                </div>
-
-                                <div class="block2-txt flex-w flex-t p-t-14">
-                                    <div class="block2-txt-child1 flex-col-l ">
-                                    <button type="submit" class="text-left cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                        {{$inmueble->titulo}}
-                                    </button>
-
-                                    <span class="stext-105 cl3">
-                                        @if ($inmueble->precio != null)
-                                        {{$inmueble->precio}}
-                                        @else
-                                        Precio a convenir
-                                        @endif
-                                    </span>
-                                    <span class="mt-2">
-                                        <i class="zmdi zmdi-pin"></i> <small>{{$inmueble->provincia}}</small>
-                                    </span>
-                                    </div>
-
-                                    <div class="block2-txt-child2 flex-r p-t-3">
-                                    <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                        <img class="icon-heart1 dis-block trans-04" src="{{asset('images/icons/icon-heart-01.png')}}" alt="ICON">
-                                        <img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('images/icons/icon-heart-02.png')}}" alt="ICON">
-                                    </a>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                    </form>
-                @endforeach
-
-                {{-- Juegos --}}
-                @foreach ($Juegos as $juego)
-                    <form action="{{route('MostrarJuego')}}" method="GET">
-                        @csrf
-                        <input hidden type="text" name="id_juego" value="{{$juego->id}}">
-                        <input hidden type="text" name="id_categoria" value="2">
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Juegos" style="position: absolute; left: 25%; top: 0px;">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-pic hov-img0">
-                                <img src="{{$juego->foto_2}}" alt="IMG-PRODUCT">
-
-                                <button type="submit" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
-                                        Reservar
-                                </button>
-                                </div>
-
-                                <div class="block2-txt flex-w flex-t p-t-14">
-                                    <div class="block2-txt-child1 flex-col-l ">
-                                        <button type="submit" class="text-left cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                            {{$juego->titulo}}
-                                        </button>
-
-                                        <span class="stext-105 cl3 mt-2">
-                                            @if ($juego->precio != null)
-                                            $ {{$juego->precio}}
-                                            @else
-                                            Precio a convenir
-                                            @endif
-                                        </span>
-                                        <span class="mt-2">
-                                            <i class="zmdi zmdi-pin"></i> <small>{{$juego->provincia}}</small>
-                                        </span>
-                                    </div>
-
-                                    <div class="block2-txt-child2 flex-r p-t-3">
-                                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                            <img class="icon-heart1 dis-block trans-04" src="{{asset('images/icons/icon-heart-01.png')}}" alt="ICON">
-                                            <img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('images/icons/icon-heart-02.png')}}" alt="ICON">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                            <a href=" {{route('MostrarServicio',[ 'id' => $servicio  ])}} " class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+                            Reservar
+                            </a>
                         </div>
-                    </form>
-                @endforeach
 
-                {{-- Animacion --}}
-                @foreach ($Animaciones as $animacion)
-                    <form action="{{route('MostrarAnimacion')}}" method="GET">
-                        @csrf
-                        <input hidden type="text" name="id_animacion" value="{{$animacion->id}}">
-                        <input hidden type="text" name="id_categoria" value="3">
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Animación" style="position: absolute; left: 50%; top: 0px;">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-pic hov-img0">
-                                <img src="{{$animacion->foto_1}}" alt="IMG-PRODUCT">
+                        <div class="block2-txt flex-w flex-t p-t-14">
+                            <div class="block2-txt-child1 flex-col-l ">
+                            <a href="{{route('MostrarServicio',[ 'id' => $servicio  ])}}" class="text-left cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                {{$servicio->nombre}}
+                            </a>
 
-                                    <button type="submit" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
-                                        Reservar
-                                    </button>
-                                </div>
-
-                                <div class="block2-txt flex-w flex-t p-t-14">
-                                    <div class="block2-txt-child1 flex-col-l ">
-                                        <button type="submit" class=" text-left cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                            {{$animacion->titulo}}
-                                        </button>
-
-                                        <span class="stext-105 cl3">
-                                            @if ($animacion->precio != null)
-                                            $ {{$animacion->precio}}
-                                            @else
-                                            Precio a convenir
-                                            @endif
-                                        </span>
-                                        <span class="mt-2">
-                                            <i class="zmdi zmdi-pin"></i> <small>{{ $animacion->provincia }}</small>
-                                        </span>
-                                    </div>
-
-                                    <div class="block2-txt-child2 flex-r p-t-3">
-                                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                            <img class="icon-heart1 dis-block trans-04" src="{{asset('images/icons/icon-heart-01.png')}}" alt="ICON">
-                                            <img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('images/icons/icon-heart-02.png')}}" alt="ICON">
-                                        </a>
-                                    </div>
-                                </div>
+                            <span class="stext-105 cl3">
+                                @if ($servicio->precio != null)
+                                {{$servicio->precio}}
+                                @else
+                                Precio a convenir
+                                @endif
+                            </span>
+                            <span class="mt-2">
+                                <i class="zmdi zmdi-pin"></i> <small> {{ $servicio->provincia }} </small>
+                            </span>
                             </div>
+
+                            {{-- <div class="block2-txt-child2 flex-r p-t-3">
+                                <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                    <img class="icon-heart1 dis-block trans-04" src="{{asset('images/icons/icon-heart-01.png')}}" alt="ICON">
+                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('images/icons/icon-heart-02.png')}}" alt="ICON">
+                                </a>
+                            </div> --}}
                         </div>
-                    </form>
-                @endforeach
-
-                {{-- Mobiliario --}}
-                @foreach($Mobiliarios as $mobiliario)
-                    <form action="{{route('MostrarMobiliario')}}" method="GET">
-                        @csrf
-                        <input hidden type="text" name="id_mobiliario" value="{{$mobiliario->id}}">
-                        <input hidden type="text" name="id_categoria" value="4">
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Mobiliario" style="position: absolute; left: 75%; top: 0px;">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-pic hov-img0">
-                                <img src="{{$mobiliario->foto_1}}" alt="IMG-PRODUCT">
-
-                                    <button type="submit" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
-                                        Reservar
-                                    </button>
-                                </div>
-
-                                <div class="block2-txt flex-w flex-t p-t-14">
-                                    <div class="block2-txt-child1 flex-col-l ">
-                                        <button type="submit" class="text-left cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                            {{$mobiliario->titulo}}
-                                        </button>
-
-                                        <span class="stext-105 cl3">
-                                            @if ($mobiliario->precio != null)
-                                            $ {{$mobiliario->precio}}
-                                            @else
-                                            Precio a convenir
-                                            @endif
-                                        </span>
-                                    </div>
-
-                                    <div class="block2-txt-child2 flex-r p-t-3">
-                                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                            <img class="icon-heart1 dis-block trans-04" src="{{asset('images/icons/icon-heart-01.png')}}" alt="ICON">
-                                            <img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('images/icons/icon-heart-02.png')}}" alt="ICON">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                    </form>
+                    </div>
                 @endforeach
-
-                {{-- Catering --}}
-                @foreach ($Caterings as $catering)
-                    <form action="{{route('MostrarCatering')}}" method="GET">
-                        @csrf
-                        <input hidden type="text" name="id_catering" value="{{$catering->id}}">
-                        <input hidden type="text" name="id_categoria" value="5">
-                            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Catering" style="position: absolute; left: 0%; top: 429px;">
-                                <!-- Block2 -->
-                                <div class="block2">
-                                    <div class="block2-pic hov-img0">
-                                    <img src="{{$catering->foto_1}}" alt="IMG-PRODUCT">
-
-                                        <button type="submit" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
-                                            Reservar
-                                        </button>
-                                    </div>
-
-                                    <div class="block2-txt flex-w flex-t p-t-14">
-                                        <div class="block2-txt-child1 flex-col-l">
-                                            <button href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                                {{$catering->titulo}}
-                                            </button>
-
-                                            <span class="stext-105 cl3">
-                                                @if ($catering->precio != null)
-                                                {{$catering->precio}}
-                                                @else
-                                                Precio a convenir
-                                                @endif
-                                            </span>
-
-                                        </div>
-
-                                        <div class="block2-txt-child2 flex-r p-t-3">
-                                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                                <img class="icon-heart1 dis-block trans-04" src="{{asset('images/icons/icon-heart-01.png')}}" alt="ICON">
-                                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('images/icons/icon-heart-02.png')}}" alt="ICON">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    
-                    </form>
-                @endforeach
-
-                {{-- MusicaDj --}}
-                @foreach($MusicaDjs as $musicaDj)
-                    <form action="{{route('MostrarMusicaDj')}}" method="GET">
-                        @csrf
-                        <input hidden type="text" name="id_musicaDj" value="{{$musicaDj->id}}">
-                        <input hidden type="text" name="id_categoria" value="6">
-                            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item Música-DJ´s" style="position: absolute; left: 25%; top: 429px;">
-                                <!-- Block2 -->
-                                <div class="block2">
-                                    <div class="block2-pic hov-img0">
-                                        <img src="{{$musicaDj->foto_1}}" alt="IMG-PRODUCT">
-
-                                        <button type="submit" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
-                                            Reservar
-                                        </button>
-                                    </div>
-
-                                    <div class="block2-txt flex-w flex-t p-t-14">
-                                        <div class="block2-txt-child1 flex-col-l ">
-                                            <button type="submit" name="button_titulo" class="text-left stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                                {{$musicaDj->titulo}}
-                                            </button>
-                                                
-                                                <span class="stext-105 cl3">
-                                                    @if ($musicaDj->precio != null)
-                                                    {{$musicaDj->precio}}
-                                                    @else
-                                                    Precio a convenir
-                                                    @endif
-                                                </span>
-                                            </div>
-
-                                        <div class="block2-txt-child2 flex-r p-t-3">
-                                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                                <img class="icon-heart1 dis-block trans-04" src="{{asset('images/icons/icon-heart-01.png')}}" alt="ICON">
-                                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('images/icons/icon-heart-02.png')}}" alt="ICON">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </form>
-                @endforeach
-
+               
             </div> <!-- row isotope-grid -->
 
             <!-- Load more -->

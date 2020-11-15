@@ -89,7 +89,7 @@
                                     <select id="provincia" class="custom-select" name="provincia" required>
                                         <option value="" selected>Elegir</option>
                                         @foreach ($ProvinciasLocalidadesJson as $provincia)
-                                        <option value="{{ $provincia['id'] }}">{{$provincia['nombre']}}</option>
+                                            <option value="{{ $provincia['id'] }}">{{$provincia['nombre']}}</option>
                                         @endforeach
                                     </select>
                                 </div>

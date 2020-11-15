@@ -9,6 +9,8 @@ use App\Caracteristica;
 use App\Prestador;
 use App\Servicio;
 use App\Categoria;
+use App\Opinion;
+use App\Pregunta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -21,13 +23,14 @@ class ServicioController extends Controller
 
   public function ServiciosPublicados(){
     $Categorias = Categoria::all();
-    $Inmuebles = Inmueble::all();
-    $Juegos = Juego::all();
-    $Animaciones = Animacion::all();
-    $Mobiliarios = Mobiliario::all();
-    $Caterings = Catering::all();
-    $MusicaDjs = MusicaDj::all();
-    return view('Ecommerce.servicios_publicados',['Categorias'=>$Categorias, 'Inmuebles'=>$Inmuebles,'Juegos'=>$Juegos,'Animaciones'=>$Animaciones,'Mobiliarios'=>$Mobiliarios,'Caterings'=>$Caterings,'MusicaDjs'=>$MusicaDjs]);
+
+    $Servicios = Servicio::where( 'servicios.deleted_at' , null )
+                          ->Join( 'categorias' , 'servicios.id_categoria' , '=' , 'categorias.id' )
+                          ->Join( 'prestadors' , 'servicios.id_prestador' , '=' , 'prestadors.id' )
+                          ->select('servicios.*','categorias.nombre as nombre_categoria','prestadors.provincia')
+                          ->get();
+    
+    return view('Principal.servicios_publicados',['Categorias'=>$Categorias, 'Servicios' => $Servicios ]);
   }
 
   public function CrearServicio(Request $request){
@@ -45,6 +48,53 @@ class ServicioController extends Controller
                                                   ->select('caracteristicas.*')
                                                   ->get();
     return view('Principal.crear_servicio' , [ 'Caracteristicas' => $Caracteristicas, 'Categoria' => $Categoria, 'ClaseRandom' => $ClaseRandom ] );
+  }
+
+  public function MostrarServicio($id){
+
+    $Servicio = Servicio::findOrfail($id);
+    $Prestador = Prestador::where('id', $Servicio->id_prestador)
+                          ->select('*')
+                          ->first();
+                          
+    $User_id = Auth::user()->id;
+
+    $NombreCategoria = Categoria::where( 'id' , $Servicio->id_categoria)->pluck('nombre')->first();
+
+    $Opiniones = Opinion::where('id_servicio', $Servicio->id)
+                        ->where('id_prestador', $Prestador->id)
+                        ->Join( 'users' , 'opinions.user_id' , '=' , 'users.id' )
+                        ->select('users.id as user_id', 'users.name','users.lastname', 'opinions.*')
+                        ->get();
+
+    $Preguntas = Pregunta::where('id_servicio', $Servicio->id)
+                        ->where('id_prestador', $Prestador->id)
+                        ->Join( 'users' , 'preguntas.user_id' , '=' , 'users.id' )
+                        ->select('users.id as user_id', 'users.name','users.lastname', 'preguntas.*')
+                        ->get();                          
+                        
+    // Traer todas las caracteristicas e indicar las que posee el servicio
+    $Caracteristicas = Caracteristica_por_categoria::where( 'id_categoria' , $Servicio->id_categoria )
+                                  ->Join( 'caracteristicas' , 'caracteristica_por_categorias.id_caracteristica' , '=' , 'caracteristicas.id' )
+                                  ->select('caracteristicas.*')
+                                  ->get();
+
+    $CaracteristicasPorServicio = CaracteristicasPorServicio::where( 'id_servicio' , $Servicio->id )
+                                  ->select('*')
+                                  ->get();
+  
+    $CaracteristicasDelServicio = array();
+
+    foreach ( $Caracteristicas as $caracteristica ) {
+      if ( $CaracteristicasPorServicio->contains( 'id_caracteristica' , $caracteristica->id ) ) {
+        array_push( $CaracteristicasDelServicio , [ $caracteristica->nombre => 'SI' ] );
+      }else{
+        array_push( $CaracteristicasDelServicio , [ $caracteristica->nombre => 'NO' ] );
+      }
+    }
+    // dd($CaracteristicasDelServicio);
+    return view('Principal.mostrar_servicio', ['Servicio' => $Servicio, 'Prestador' => $Prestador, 'User_id' => $User_id, 'Opiniones' => $Opiniones, 
+                                              'Preguntas' => $Preguntas, 'CaracteristicasDelServicio' => $CaracteristicasDelServicio, 'NombreCategoria' => $NombreCategoria]);
   }
 
   public function AlmacenarServicio( Request $request ){
@@ -138,6 +188,7 @@ class ServicioController extends Controller
     return view('Principal.servicio_publicado_exitosamente');
   }
 
+  
   public function MostrarPlanes(){
     return view('Ecommerce.planes_publicidad');
   }
