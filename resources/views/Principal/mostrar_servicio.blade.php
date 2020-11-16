@@ -223,8 +223,8 @@
 								@if ( Auth::user() )
 								<form id="form_agregar_servicio" action="{{route('AgregarAlCarrito')}}" method="POST">
 									@csrf
-									<input id="id_inmueble" hidden type="text" name="id_inmueble" value="{{$Servicio->id}}">
-									<input id="id_cliente" hidden type="text" name="id_cliente" value="{{$User_id}}">
+									<input id="id_servicio" hidden type="text" name="id_servicio" value="{{$Servicio->id}}">
+									<input id="id_usuario" hidden type="text" name="id_usuario" value="{{$User_id}}">
 									<button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
 										Agregar al paquete
 									</button>
@@ -284,7 +284,7 @@
 						</li>
 
 						<li class="nav-item p-b-10">
-							<a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Opiniones 4 </a>
+							<a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Opiniones {{ $CantidadOpiniones }} </a>
 						</li>
 					</ul>
 
@@ -415,43 +415,13 @@
 						<div class="tab-pane fade how-pos2 p-lr-15-md" id="preguntas" role="tabpanel">
 							{{-- Input para preguntar --}}
 							<div class="md-form">
-								@auth
-									{{-- Comprueba que el usuario tenga una cuenta de cliente y esté logueado --}}
-									@php
-										$Usuario = Auth::user()->id;
-										$Cliente = DB::table('clientes')
-													->where('user_id', Auth::user()->id)
-													->select('*')                         
-													->first();
-									@endphp
-
-									@if (Auth::user())
-									<form id="form_pregunta" action="{{route('PublicarPregunta')}}">
-										<input id="id_prestador" hidden type="text" name="id_prestador" value="{{$Prestador->id}}">
-										<input id="id_inmueble" hidden type="text" name="id_servicio" value="{{$Servicio->id}}">
-										<input id="id_cliente" hidden type="text" name="id_cliente" value="{{$User_id}}">
-									
-										<textarea id="textarea_pregunta" class="form-control size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" name="pregunta" rows="4" cols="4" maxlength="300" required></textarea>
-										<button id="boton_preguntar" type="submit" class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
-											Preguntar
-										</button>
-									</form>
-										@else
-										<div class="alert alert-warning m-auto text-center">
-											<i class="zmdi zmdi-alert-triangle"></i> 
-											Debes <a href="{{route('login')}}" class=""> completar tus datos como cliente </a> para hacer una pregunta
-										</div>
-									@endif
-								@endauth
-
-									@guest
-										<div class="alert alert-warning m-auto text-center">
-											<i class="zmdi zmdi-alert-triangle"></i> 
-											Debes <a href="{{route('login')}}" class=""> iniciar sesión </a> y <a href="{{route('login')}}" class=""> completar tus datos como cliente </a> para hacer una pregunta
-										</div>
-									@endguest
-								
-								</div>
+								@guest
+									<div class="alert alert-warning m-auto text-center">
+										<i class="zmdi zmdi-alert-triangle"></i> 
+										Debes <a href="{{route('login')}}" class=""> iniciar sesión </a> para hacer una pregunta
+									</div>
+								@endguest
+							</div>
 
 								{{-- Traer todas las preguntas --}}
 								<div id="mostrar_preguntas" >
@@ -495,15 +465,15 @@
 	$("#form_agregar_servicio").submit(function(e){
 		e.preventDefault();
 		
-		var id_inmueble = $('#id_inmueble').val();
-		var id_cliente = $('#id_cliente').val();
+		var id_servicio = $('#id_servicio').val();
+		var id_usuario = $('#id_usuario').val();
 
 		$.ajax({
 			method: 'POST',
 			url: '{{url('/mi-paquete/agregando-inmueble')}}',
 			data: {
-				id_inmueble,
-				id_cliente,
+				id_servicio,
+				id_usuario,
 				_token: '{{csrf_token()}}'
 			},
 
@@ -532,7 +502,7 @@
 					url: '{{ url( '/mi-paquete/actualizando-carrito' ) }}',
 					data: {
 
-						id_cliente,
+						id_usuario,
 						_token: '{{ csrf_token() }}'
 
 					},
@@ -608,22 +578,20 @@
 	$('#form_pregunta').submit( function(e){
 		e.preventDefault();
 		var id_prestador = $('#id_prestador').val();
-		var id_inmueble = $('#id_inmueble').val();
-		var id_cliente = $('#id_cliente').val();
-		var textarea_pregunta = $('#textarea_pregunta').val();
+		var id_servicio = $('#id_servicio').val();
+		var id_usuario = $('#id_usuario').val();
+		var pregunta = $('#textarea_pregunta').val();
 
 		$.ajax({
 	
 			method: 'POST',
-			url: '{{url('/reservar/servicios-publicados/Inmueble/almacenando-pregunta')}}',
+			url: '{{url('/reservar/servicios-publicados/almacenando-pregunta')}}',
 			data: {
 				id_prestador,
-				id_inmueble,
-				id_cliente,
-				textarea_pregunta,
+				id_servicio,
+				id_usuario,
+				pregunta,
 				_token: "{{csrf_token()}}"
-				
-	
 			},
 			error: function(x,y,z){
 	
@@ -633,27 +601,7 @@
 			success: function(data){
 				$('#textarea_pregunta').val('');
 				swal('Listo!','Su pregunta fue realizada con éxito','success');
-				
-			}
-	
-		}); //ajax
 
-		//Actualizar preguntas
-		$.ajax({
-		
-			method: 'GET',
-			url: '{{url('/reservar/servicios-publicados/Inmueble/almacenando-pregunta')}}',
-			data: {
-				id_prestador,
-				id_inmueble,
-				_token: "{{csrf_token()}}"
-			},
-
-			error: function(x,y,z){
-				console.log(x,y,z);
-			},
-
-			success: function(data){
 				console.log(data);
 				$('#mostrar_preguntas').empty();
 
@@ -677,8 +625,50 @@
 						$('#mostrar_preguntas').append(mostrar_preguntas_y_respuestas);
 					}
                 });
-			}//success
-		})
+			}
+		}); //ajax
+
+		// //Actualizar preguntas
+		// $.ajax({
+		
+		// 	method: 'GET',
+		// 	url: '{{url('/reservar/servicios-publicados/Inmueble/almacenando-pregunta')}}',
+		// 	data: {
+		// 		id_prestador,
+		// 		id_servicio,
+		// 		_token: "{{csrf_token()}}"
+		// 	},
+
+		// 	error: function(x,y,z){
+		// 		console.log(x,y,z);
+		// 	},
+
+		// 	success: function(data){
+		// 		console.log(data);
+		// 		$('#mostrar_preguntas').empty();
+
+		// 		$.each(data, function(index, value) {
+		// 			if( value['respuesta'] == null ){
+		// 				value['respuesta'] = '';
+		// 				var mostrar_preguntas = `
+		// 											<div class="row mt-4 rounded">
+		// 												<span class="col-md-12 col-12 text-dark"> <i class="zmdi zmdi-comment-text"></i> `+ value['pregunta'] +` </span><br>
+		// 											</div>
+		// 										`;
+		// 				$('#mostrar_preguntas').append(mostrar_preguntas);
+		// 			}else{
+
+		// 				var mostrar_preguntas_y_respuestas = `
+		// 														<div class="row mt-4 rounded">
+		// 															<span class="col-md-12 col-12 text-dark"> <i class="zmdi zmdi-comment-text"></i> `+ value['pregunta'] +` </span><br>
+		// 															<span class="col-md-12 col-12 mt-3 text-black-50"><i class="zmdi zmdi-comment-alt-text"></i> `+ value['respuesta'] +` </span><br><br><br>
+		// 														</div>
+		// 													`;
+		// 				$('#mostrar_preguntas').append(mostrar_preguntas_y_respuestas);
+		// 			}
+        //         });
+		// 	}//success
+		// })
 	}); //on click
 	
 </script>

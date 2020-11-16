@@ -21,9 +21,10 @@ Route::get('/reservar/servicios-publicados/{id}','ServicioController@MostrarServ
 //Inmueble carrito
 Route::post('/mi-paquete/agregando-inmueble','InmuebleController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
 
-//--- Preguntas inmueble
-Route::post('/reservar/servicios-publicados/Inmueble/almacenando-pregunta','InmuebleController@PublicarPregunta')->name('PublicarPregunta')->middleware('ControlarDatosCompletos');
-Route::get('/reservar/servicios-publicados/Inmueble/almacenando-pregunta','InmuebleController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('ControlarDatosCompletos');
+//--- Preguntas
+Route::post('/reservar/servicios-publicados/almacenando-pregunta','ServicioController@AlmacenarPregunta')->name('AlmacenarPregunta')->middleware('auth');
+// Route::get('/reservar/servicios-publicados/almacenando-pregunta','ServicioController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('auth');  
+
 
 /*
 |--------------------------------------------------------------------------

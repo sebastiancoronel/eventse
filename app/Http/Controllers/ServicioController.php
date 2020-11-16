@@ -56,8 +56,6 @@ class ServicioController extends Controller
     $Prestador = Prestador::where('id', $Servicio->id_prestador)
                           ->select('*')
                           ->first();
-                          
-    $User_id = Auth::user()->id;
 
     $NombreCategoria = Categoria::where( 'id' , $Servicio->id_categoria)->pluck('nombre')->first();
 
@@ -66,6 +64,10 @@ class ServicioController extends Controller
                         ->Join( 'users' , 'opinions.user_id' , '=' , 'users.id' )
                         ->select('users.id as user_id', 'users.name','users.lastname', 'opinions.*')
                         ->get();
+
+    $CantidadOpiniones = Opinion::where('id_servicio', $Servicio->id)
+                                  ->where('id_prestador', $Prestador->id)
+                                  ->count();
 
     $Preguntas = Pregunta::where('id_servicio', $Servicio->id)
                         ->where('id_prestador', $Prestador->id)
@@ -92,9 +94,17 @@ class ServicioController extends Controller
         array_push( $CaracteristicasDelServicio , [ $caracteristica->nombre => 'NO' ] );
       }
     }
-    // dd($CaracteristicasDelServicio);
-    return view('Principal.mostrar_servicio', ['Servicio' => $Servicio, 'Prestador' => $Prestador, 'User_id' => $User_id, 'Opiniones' => $Opiniones, 
-                                              'Preguntas' => $Preguntas, 'CaracteristicasDelServicio' => $CaracteristicasDelServicio, 'NombreCategoria' => $NombreCategoria]);
+    
+    if ( Auth::user() ) {
+      $User_id = Auth::user()->id;
+      return view('Principal.mostrar_servicio', ['Servicio' => $Servicio, 'Prestador' => $Prestador, 'User_id' => $User_id, 'Opiniones' => $Opiniones, 
+                                              'Preguntas' => $Preguntas, 'CaracteristicasDelServicio' => $CaracteristicasDelServicio, 
+                                              'NombreCategoria' => $NombreCategoria, 'CantidadOpiniones' => $CantidadOpiniones ]);
+    }   
+
+    return view('Principal.mostrar_servicio', ['Servicio' => $Servicio, 'Prestador' => $Prestador, 'Opiniones' => $Opiniones, 
+                                              'Preguntas' => $Preguntas, 'CaracteristicasDelServicio' => $CaracteristicasDelServicio, 
+                                              'NombreCategoria' => $NombreCategoria, 'CantidadOpiniones' => $CantidadOpiniones ]);
   }
 
   public function AlmacenarServicio( Request $request ){
@@ -188,6 +198,23 @@ class ServicioController extends Controller
     return view('Principal.servicio_publicado_exitosamente');
   }
 
+  public function AlmacenarPregunta(Request $request){
+
+    $Pregunta = New Pregunta;
+    $Pregunta->id_prestador = $request->id_prestador;
+    $Pregunta->id_servicio = $request->id_servicio;
+    $Pregunta->user_id = $request->id_usuario;
+    $Pregunta->pregunta = $request->pregunta;
+    $Pregunta->save();
+
+    $ActualizarPreguntas = Pregunta::where('id_prestador',$request->id_prestador)
+                                              ->where('id_servicio',$request->id_servicio)
+                                              ->select('*')
+                                              ->orderBy('created_at', 'DESC')
+                                              ->get();
+
+    return $ActualizarPreguntas;
+  }
   
   public function MostrarPlanes(){
     return view('Ecommerce.planes_publicidad');

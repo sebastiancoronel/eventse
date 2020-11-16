@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'completardatos/cliente';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -52,6 +52,11 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'dni' => ['required', 'unique'],
+            'provincia' => ['required'],
+            'localidad' => ['required'],
+            'telefono' => ['required'],
+            'rol' => ['required'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
@@ -68,17 +73,12 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'lastname' => $data['lastname'],
             'email' => $data['email'],
+            'dni' => $data['dni'],
+            'provincia' => $data['provincia'],
+            'localidad' => $data['localidad'],
+            'telefono' => $data['telefono'],
+            'rol' => $data['rol'],
             'password' => Hash::make($data['password']),
         ]);
-    }
-
-    public function RegistrarCliente(Request $request){
-      dd($request);
-      return User::create([
-          'name' => $data['name'],
-          'lastname' => $data['lastname'],
-          'email' => $data['email'],
-          'password' => Hash::make($data['password']),
-      ]);
     }
 }
