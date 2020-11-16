@@ -1,7 +1,8 @@
 <?php
+
 Auth::routes();
 
-
+Route::get( 'register/traer-localidades' , 'LocalidadController@TraerLocalidades' )->name('TraerLocalidades');
 /*
 |--------------------------------------------------------------------------
 | Ecommerce
