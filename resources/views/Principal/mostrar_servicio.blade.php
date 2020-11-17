@@ -158,68 +158,20 @@
 						</span>
 
 						<p class="stext-102 cl3 p-t-23">
-							<i class="zmdi zmdi-pin"></i>	{{$Prestador->localidad}}, {{$Prestador->provincia}}
+							<i class="zmdi zmdi-pin"></i>	{{$Ubicacion->localidad}}, {{$Ubicacion->provincia}}
 						</p>
 
 						<p class="stext-102 cl3 p-t-23  mt-5 d-flex align-items-center">
 							<img src="{{$Prestador->foto}}" class="" width="10%" alt="IMG-PRESTADOR">
-							<small class="ml-3">
-								Publicado por <a href="" class="stext-104 cl4 hov-cl1"> {{$Prestador->nombre}} </a> 
-							</small>
+							<span class="ml-3">
+								Publicado por {{$Prestador->nombre}}
+								{{-- <a href="" class="stext-104 cl4 hov-cl1"> {{$Prestador->nombre}} </a>  --}}
+							</span>
 						</p>
-						<!--  -->
-						<div class="p-t-33">
-							{{-- <div class="flex-w flex-r-m p-b-10">
-								<div class="size-203 flex-c-m respon6">
-									Select 1
-								</div>
 
-								<div class="size-204 respon6-next">
-									<div class="rs1-select2 bor8 bg0">
-										<select class="js-select2" name="time">
-											<option>Elegir una opción</option>
-											<option>Size S</option>
-											<option>Size M</option>
-											<option>Size L</option>
-											<option>Size XL</option>
-										</select>
-										<div class="dropDownSelect2"></div>
-									</div>
-								</div>
-							</div>
-
-							<div class="flex-w flex-r-m p-b-10">
-								<div class="size-203 flex-c-m respon6">
-									Select 2
-								</div>
-
-								<div class="size-204 respon6-next">
-									<div class="rs1-select2 bor8 bg0">
-										<select class="js-select2" name="time">
-											<option>Elegir una opción</option>
-											<option>Red</option>
-											<option>Blue</option>
-											<option>White</option>
-											<option>Grey</option>
-										</select>
-										<div class="dropDownSelect2"></div>
-									</div>
-								</div>
-							</div> --}}
-
+						<div class="p-t-33 mt-5">
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-204 flex-w flex-m respon6-next">
-									{{-- <div class="wrap-num-product flex-w m-r-20 m-tb-10">
-										<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-											<i class="fs-16 zmdi zmdi-minus"></i>
-										</div>
-
-										<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
-
-										<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-											<i class="fs-16 zmdi zmdi-plus"></i>
-										</div>
-									</div> --}}
 								@if ( Auth::user() )
 								<form id="form_agregar_servicio" action="{{route('AgregarAlCarrito')}}" method="POST">
 									@csrf
@@ -249,9 +201,9 @@
 								</a> --}}
 							</div>
 
-							<a href="https://www.facebook.com/sharer/sharer.php?u=example.org" target="_blank" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
+							{{-- <a href="https://www.facebook.com/sharer/sharer.php?u=example.org" target="_blank" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
 								<i class="fa fa-facebook"></i>
-							</a>
+							</a> --}}
 
 							{{-- <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
 								<i class="fa fa-twitter"></i>
@@ -415,13 +367,26 @@
 						<div class="tab-pane fade how-pos2 p-lr-15-md" id="preguntas" role="tabpanel">
 							{{-- Input para preguntar --}}
 							<div class="md-form">
-								@guest
-									<div class="alert alert-warning m-auto text-center">
-										<i class="zmdi zmdi-alert-triangle"></i> 
-										Debes <a href="{{route('login')}}" class=""> iniciar sesión </a> para hacer una pregunta
-									</div>
+								@auth
+									
+									<form id="form_pregunta" action="{{route('AlmacenarPregunta')}}">	
+										<input id="id_prestador" hidden type="text" name="id_prestador" value="{{$Prestador->id}}">	
+										<input id="id_inmueble" hidden type="text" name="id_servicio" value="{{$Servicio->id}}">	
+										<input id="id_cliente" hidden type="text" name="id_cliente" value="{{Auth::user()->id}}">	
+
+										<textarea id="textarea_pregunta" class="form-control size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" name="pregunta" rows="4" cols="4" maxlength="300" required></textarea>	
+										<button id="boton_preguntar" type="submit" class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">	
+											Preguntar	
+										</button>	
+									</form>	
+								@endauth	
+
+								@guest	
+									<div class="alert alert-warning m-auto text-center">	
+										<i class="zmdi zmdi-alert-triangle"></i> 	
+										Debes <a href="{{route('login')}}" class=""> Iniciar sesión </a> para hacer una pregunta	
+									</div>	
 								@endguest
-							</div>
 
 								{{-- Traer todas las preguntas --}}
 								<div id="mostrar_preguntas" >

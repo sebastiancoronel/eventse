@@ -95,17 +95,23 @@ class ServicioController extends Controller
         array_push( $CaracteristicasDelServicio , [ $caracteristica->nombre => 'NO' ] );
       }
     }
+
+    $Ubicacion = Servicio::where( 'servicios.id' , $id )
+                          ->Join( 'prestadors' , 'servicios.id_prestador' , '=' , 'prestadors.id' )
+                          ->Join( 'users' , 'prestadors.user_id' , '=' , 'users.id' )
+                          ->select('users.provincia', 'users.localidad')
+                          ->first();
     
     if ( Auth::user() ) {
       $User_id = Auth::user()->id;
       return view('Principal.mostrar_servicio', ['Servicio' => $Servicio, 'Prestador' => $Prestador, 'User_id' => $User_id, 'Opiniones' => $Opiniones, 
                                               'Preguntas' => $Preguntas, 'CaracteristicasDelServicio' => $CaracteristicasDelServicio, 
-                                              'NombreCategoria' => $NombreCategoria, 'CantidadOpiniones' => $CantidadOpiniones ]);
+                                              'NombreCategoria' => $NombreCategoria, 'CantidadOpiniones' => $CantidadOpiniones, 'Ubicacion' => $Ubicacion ]);
     }   
 
     return view('Principal.mostrar_servicio', ['Servicio' => $Servicio, 'Prestador' => $Prestador, 'Opiniones' => $Opiniones, 
                                               'Preguntas' => $Preguntas, 'CaracteristicasDelServicio' => $CaracteristicasDelServicio, 
-                                              'NombreCategoria' => $NombreCategoria, 'CantidadOpiniones' => $CantidadOpiniones ]);
+                                              'NombreCategoria' => $NombreCategoria, 'CantidadOpiniones' => $CantidadOpiniones, 'Ubicacion' => $Ubicacion ]);
   }
 
   public function AlmacenarServicio( Request $request ){
