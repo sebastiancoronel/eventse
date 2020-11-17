@@ -252,13 +252,13 @@
 
                             <span class="stext-105 cl3">
                                 @if ($servicio->precio != null)
-                                {{$servicio->precio}}
+                                $ {{$servicio->precio}}
                                 @else
                                 Precio a convenir
                                 @endif
                             </span>
                             <span class="mt-2">
-                                <i class="zmdi zmdi-pin"></i> <small> {{ $servicio->provincia }} </small>
+                                <i class="zmdi zmdi-pin"></i> <small> {{ $servicio->localidad }} , {{ $servicio->provincia }} </small>
                             </span>
                             </div>
 

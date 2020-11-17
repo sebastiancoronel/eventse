@@ -9,25 +9,19 @@
                 <div class="card-body">
                     <!--Header-->
                     <div class="form-header blue-gradient">
-                        <h3 class="text-uppercase">Perfil de prestador de servicios</h3>
+                        <h3 class="text-uppercase">Perfil empresa</h3>
                     </div>
-                    <!--Body-->
-                    <!-- Login form -->
+                    
                     <form method="POST" action="{{route('AlmacenarPrestador')}}" enctype="multipart/form-data">
                         @csrf
-                        @php
-                          $user_id = Auth::user()->id;
-                        @endphp
-                        <input hidden type="text" name="user_id" value="{{$user_id}}">
                         {{-- Imagen de perfil --}}
                         <div class="file-field">
                             <div class="mb-4">
                                 <div class="text-center">
                                     <!-- Vista previa imagen -->
                                     <div class="d-flex justify-content-center">
-                                        <img id="preview" class="rounded-circle" src="#" alt="" width="30%" height="30%">
+                                        <img id="preview" class="rounded" src=" {{asset('images/placeholder.png')}} " alt="" width="30%" height="30%">
                                     </div>
-                                    <i id="icono_subir" class="zmdi zmdi-cloud-upload" style="font-size:8rem;"></i>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center">
@@ -78,147 +72,6 @@
                             @endif
                         </div>
 
-                        {{-- Dirección --}}
-                        <div class="mt-5">
-                            <h5 class="d-flex justify-content-center">Ubicación</h5>
-                            <!-- Provincia -->
-                            <div class="mt-3">
-                                <span>Provincia</span>
-                                <div class="md-form">
-                                    <input hidden id="provincia_nombre" type="text" name="provincia_nombre" value="">
-                                    <select id="provincia" class="custom-select" name="provincia" required>
-                                        <option value="" selected>Elegir</option>
-                                        @foreach ($ProvinciasLocalidadesJson as $provincia)
-                                            <option value="{{ $provincia['id'] }}">{{$provincia['nombre']}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="mt-3">
-                                <!-- Ciudad -->
-                                <span>Ciudad</span>
-                                <div class="md-form">
-                                    <select id="localidad" class="custom-select" name="localidad" required>
-                                        @foreach ($ProvinciasLocalidadesJson as $localidad)
-
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="md-form">
-                            <i class="zmdi zmdi zmdi-pin prefix text-muted"></i>
-                            <label for="ubicacion">Dirección física</label>
-                            <input id="ubicacion" type="text" class="form-control{{ $errors->has('ubicacion') ? ' is-invalid' : '' }}" name="ubicacion" value="{{ old('ubicacion') }}" required autofocus>
-                            <small class="text-info">Si tu empresa no cuenta con un local deja este campo vacío</small>
-
-                            @if ($errors->has('ubicacion'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('ubicacion') }}</strong>
-                            </span>
-                            @endif
-                        </div>
-
-                        {{-- Rubro --}}
-                        <div class="md-form">
-                            <h5 class="d-flex justify-content-center">Rubro</h5>
-                            <br>
-                            <small class="d-flex justify-content-center">Esto te ayudará a aparecer en las busquedas con mas frecuencia</small>
-                            {{-- 1 row --}}
-                            <div class="row">
-                                <div class="col-md-4 mt-4">
-                                    <div class="form-check">
-                                        <input id="salones" class="form-check-input" type="checkbox" name="categorias[]" value="1">
-                                        <label class="form-check-label" for="salones">Salones y quintas</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 mt-4">
-                                    <div class="form-check">
-                                        <input id="juegos" class="form-check-input" type="checkbox" name="categorias[]" value="2">
-                                        <label class="form-check-label" for="juegos">Juegos</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 mt-4">
-                                    <div class="form-check">
-                                        <input id="animacion" class="form-check-input" type="checkbox" name="categorias[]" value="3">
-                                        <label class="form-check-label" for="animacion">Animación</label>
-                                    </div>
-                                </div>
-                            </div>
-                            {{-- 1 row --}}
-
-                            {{-- 2 row --}}
-                            <div class="row">
-                                <div class="col-md-4 mt-4">
-                                    <div class="form-check">
-                                        <input id="mobiliario" class="form-check-input" type="checkbox" name="categorias[]" value="4">
-                                        <label class="form-check-label" for="mobiliario">mobiliario</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 mt-4">
-                                    <div class="form-check">
-                                        <input id="catering" class="form-check-input" type="checkbox" name="categorias[]" value="5">
-                                        <label class="form-check-label" for="catering">Catering</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 mt-4">
-                                    <div class="form-check">
-                                        <input id="iluminacion" class="form-check-input" type="checkbox" name="categorias[]" value="6">
-                                        <label class="form-check-label" for="iluminacion">Iluminación</label>
-                                    </div>
-                                </div>
-                            </div>
-                            {{-- 2 row --}}
-
-                            {{-- 3 row --}}
-                            <div class="row">
-                                <div class="col-md-4 mt-4">
-                                    <div class="form-check">
-                                        <input id="ornamentacion" class="form-check-input" type="checkbox" name="categorias[]" value="7">
-                                        <label class="form-check-label" for="ornamentacion">Ornamentación</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 mt-4">
-                                    <div class="form-check">
-                                        <input id="musicaDj" class="form-check-input" type="checkbox" name="categorias[]" value="8">
-                                        <label class="form-check-label" for="musicaDj">Música & DJ´s</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 mt-4">
-                                    <div class="form-check">
-                                        <input id="shows" class="form-check-input" type="checkbox" name="categorias[]" value="9">
-                                        <label class="form-check-label" for="shows">Shows & Bandas</label>
-                                    </div>
-                                </div>
-                            </div>
-                            {{-- 3 row --}}
-
-                            {{-- 4 row --}}
-                            <div class="row">
-                                <div class="col-md-4 mt-4">
-                                    <div class="form-check">
-                                        <input id="fotografia_y_ediciones" class="form-check-input" type="checkbox" name="categorias[]" value="10">
-                                        <label class="form-check-label" for="fotografia_y_ediciones">Fotógrafía y ediciones</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 mt-4">
-                                    <div class="form-check">
-                                        <input id="disfraces" class="form-check-input" type="checkbox" name="categorias[]" value="11">
-                                        <label class="form-check-label" for="disfraces">Disfraces</label>
-                                    </div>
-                                </div>
-                            </div>
-                            {{-- 4 row --}}
-                        </div>
-
                         <div class="row mt-5 d-flex align-items-center justify-content-center">
                             <div class="">
                                 <button type="submit" class="btn blue-gradient btn-lg waves-effect waves-light">
@@ -227,14 +80,12 @@
                             </div>
                         </div>
                     </form>
-                    <!-- Login form -->
 
                     <div class="text-center">
                         <hr>
                         <div class="inline-ul text-center d-flex justify-content-center">
                             <a class="p-2 m-2 fa-lg tw-ic"><i class="fab fa-facebook"></i></a>
                             <a class="p-2 m-2 fa-lg li-ic"><i class="fab fa-google"> </i></a>
-                            {{-- <a class="p-2 m-2 fa-lg ins-ic"><i class="fab fa-linkedin-in"> </i></a> --}}
                         </div>
                     </div>
 
@@ -248,7 +99,6 @@
 <script>
       // Foto 1
   $("#file_input").change(function() {
-    $("#icono_subir").hide();
       if (this.files.length > 0) {
           if (this.files[0].size > 2000000) {
                    swal("El archivo pesa mas de 2MB","Seleccione otro archivo","error");

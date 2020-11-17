@@ -27,7 +27,8 @@ class ServicioController extends Controller
     $Servicios = Servicio::where( 'servicios.deleted_at' , null )
                           ->Join( 'categorias' , 'servicios.id_categoria' , '=' , 'categorias.id' )
                           ->Join( 'prestadors' , 'servicios.id_prestador' , '=' , 'prestadors.id' )
-                          ->select('servicios.*','categorias.nombre as nombre_categoria','prestadors.provincia')
+                          ->Join( 'users' , 'prestadors.user_id' , '=' , 'users.id' )
+                          ->select('servicios.*','categorias.nombre as nombre_categoria','users.provincia', 'users.localidad')
                           ->get();
     
     return view('Principal.servicios_publicados',['Categorias'=>$Categorias, 'Servicios' => $Servicios ]);
@@ -118,10 +119,10 @@ class ServicioController extends Controller
       'foto_4' => 'required'
     ]);
 
-    $Prestador = Prestador::where('id', Auth::user()->id)
+    $Prestador = Prestador::where('user_id', Auth::user()->id)
                           ->select('*')
                           ->first();
-
+    
     $Servicio = new Servicio;
     $Servicio->nombre = $request->nombre;
     $Servicio->descripcion = $request->descripcion;

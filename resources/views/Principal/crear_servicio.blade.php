@@ -1,9 +1,9 @@
 @extends('Principal.Partials.master')
 @section('content')
 <div class="escritorio-mt-3-p-t-75">
-    <div id="inmueble" class="text-white d-none d-sm-block" style="background-image: url('{{ asset($Categoria->foto) }}'); background-size:cover; background-repeat: no-repeat; background-position:center;">
+    <div id="inmueble" class="text-white position-relative d-none d-sm-block" style="background-image: url('{{ asset($Categoria->foto) }}'); background-size:cover; background-repeat: no-repeat; background-position:center; height: 40vh;">
         <div class="row">
-            <div class="col-md-4 mt-5 {{$ClaseRandom}}" style="height: 8em;">
+            <div class="col-md-4 position-absolute {{$ClaseRandom}}" style="height: 8em; top:5rem; bottom:0px;">
                 <div class="p-5 d-flex justify-content-start">
                     <i class="zmdi zmdi-store align-self-center" style="font-size: 25px;"></i>
                     <span class="ml-4 align-self-center text-uppercase" style="font-size: 25px;">{{ $Categoria->nombre }}</span>
