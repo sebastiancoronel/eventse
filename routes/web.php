@@ -75,11 +75,11 @@ Route::middleware(['auth', 'ControlarDatosCompletos'])->group(function () {
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth'])->group(function () {
-  //Datos de contacto
+
   //Completar datos de cada tipo de prestador
-  Route::get('completardatos/cliente','ClienteController@completar_datos')->name('CompletarDatos');
-  //Almacena datos
-  Route::post('completardatos/cliente/AlmacenarDatosCliente','ClienteController@AlmacenarDatosCliente')->name('AlmacenarDatosCliente');
+  Route::get('completardatos/cliente','PrestadorController@CrearPrestador')->name('CrearPrestador');
+  //Almacenar prestador
+  Route::post('completardatos/cliente/AlmacenarDatosCliente','PrestadorController@AlmacenarPrestador')->name('AlmacenarPrestador');
 
 });
 /*

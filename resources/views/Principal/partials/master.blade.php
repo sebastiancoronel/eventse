@@ -4,66 +4,9 @@
   @include('Principal.Partials.head')
 
   <style media="screen">
-  body{
-    overflow-x: hidden;
-  }
-    /*=============================
-     Banners
-     ==============================
-     */
-      #banner{
-        background-image: url('../Images/banner_registro.png');
-        height: 300px;
-      }
-      #inmueble{
-        background-image: url('../Images/Salon2.jpg');
-        height: 200px;
-      }
-      #juegos{
-        background-image: url('../Images/juegos2.png');
-        height: 200px;
-        background-size: cover;
-      }
-      #animacion{
-        background-image: url('../Images/animacion2.png');
-        height: 200px;
-        background-size: cover;
-      }
-      #mobiliario{
-        background-image: url('../Images/mobiliario3.png');
-        height: 200px;
-        background-size: cover;
-      }
-      #catering{
-        background-image: url('../Images/catering1.png');
-        height: 200px;
-        background-size: cover;
-      }
-      #iluminacion{
-        background-image: url('../Images/iluminacion1.png');
-        height: 200px;
-        background-size: cover;
-      }
-      #ornamentacion{
-        background-image: url('../Images/Salon2.png');
-        height: 200px;
-        background-size: cover;
-      }
-      #musicaDj{
-        background-image: url('../Images/musicaDj2.png');
-        height: 200px;
-        background-size: cover;
-      }
-      #shows{
-        background-image: url('../Images/bandas1.png');
-        height: 200px;
-        background-size: cover;
-      }
-      /*=============================
-       Fin Banners
-       ==============================
-       */
-
+	body{
+		overflow-x: hidden;
+	}
       #formulario{
         position: absolute;
         top: 10%;
@@ -71,7 +14,6 @@
         width: 100%;
       }
   </style>
-
 </head>
 
   <body class="animsition">

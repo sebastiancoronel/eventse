@@ -17,17 +17,14 @@ class CreatePrestadorsTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('foto');
-            $table->string('provincia');
-            $table->string('localidad');
-            $table->string('direccion')->nullable();
+            // $table->string('provincia');
+            // $table->string('localidad');
             $table->string('email');
             $table->string('telefono');
 
-            $table->integer('id_servicios')->nullable();
-            $table->foreign('id_servicios')->references('id')->on('servicios');
-
-            $table->integer('id_categoria')->nullable();
-            $table->foreign('id_categoria')->references('id')->on('categorias');
+            // Esto va en la tabla de Servicios por prestadores por si necesito consultar todos los servicios que tiene un prestador.
+            // $table->integer('id_servicios')->nullable();
+            // $table->foreign('id_servicios')->references('id')->on('servicios');
 
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
@@ -40,12 +37,10 @@ class CreatePrestadorsTable extends Migration
             [
                 'nombre' => 'JumpZone',
                 'foto' => '/images/foto_perfil/1.png',
-                'provincia' => '86',
-                'Localidad' => 'Santiago Del Estero',
-                'Direccion' => '',
+                // 'provincia' => 'Santiago Del Estero',
+                // 'Localidad' => 'Santiago Del Estero',
                 'email' => 'jumpzoneinflables@gmail.com',
                 'telefono' => '3855000000',
-                'id_servicios' => null,
                 'user_id' => 1,
                 
             ],

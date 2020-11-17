@@ -1,6 +1,6 @@
-@extends('layouts.barra_navegacion_principal')
-
+@extends('Principal.Partials.master')
 @section('content')
+
 <div class="container-fluid animsition escritorio-mt-3-p-t-75 mt-5">
     <div class="row">
         <div class="col-xl-5 col-lg-6 col-md-10 col-sm-12 m-auto">
@@ -9,11 +9,11 @@
                 <div class="card-body">
                     <!--Header-->
                     <div class="form-header blue-gradient">
-                        <h3 class="text-uppercase">Perfil empresa</h3>
+                        <h3 class="text-uppercase">Perfil de prestador de servicios</h3>
                     </div>
                     <!--Body-->
                     <!-- Login form -->
-                    <form method="POST" action="{{route('AlmacenarPerfilEmpresa')}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('AlmacenarPrestador')}}" enctype="multipart/form-data">
                         @csrf
                         @php
                           $user_id = Auth::user()->id;

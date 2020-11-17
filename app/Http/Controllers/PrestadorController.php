@@ -3,26 +3,25 @@
 namespace App\Http\Controllers;
 use Auth;
 use App\Prestador;
-use App\Prestador_por_Categoria;
-use App\Cliente;
 use Illuminate\Http\Request;
 // use Illuminate\Support\Facades\Storage;
 
 class PrestadorController extends Controller
 {
+
   public function CrearPerfilEmpresa(){
     return view('Perfiles.Empresa.crear_perfil_empresa');
   }
 
-  public function FormularioPerfilEmpresa(){
+  public function CrearPrestador(){
     $path = storage_path() . "/json/ProvinciasLocalidades.json";
     $ProvinciasLocalidadesJson = json_decode(file_get_contents($path),true);
-    return view('Perfiles.Empresa.formulario_perfil_empresa',['ProvinciasLocalidadesJson'=>$ProvinciasLocalidadesJson]);
+    return view('Principal.formulario_perfil_empresa',['ProvinciasLocalidadesJson'=>$ProvinciasLocalidadesJson]);
   }
 
-  public function AlmacenarPerfilEmpresa(Request $request){
-    //Id del usuario como nombre de la imagen para que sea unica
-    $user_id = Auth::user()->id;
+  public function AlmacenarPrestador(Request $request){
+    
+    Auth::user()->id;
 
     $ImagenSubida = $request->file('foto');
     $NombreImagen = $user_id . '.' . $ImagenSubida->getClientOriginalExtension();
@@ -40,7 +39,6 @@ class PrestadorController extends Controller
       $Prestador->foto = '/images/foto_perfil/' . $NombreImagen;
       $Prestador->provincia = $request->provincia;
       $Prestador->localidad = $request->localidad;
-      $Prestador->direccion = $request->direccion;
       $Prestador->email = $request->email;
       $Prestador->telefono = $request->telefono;
       $Prestador->user_id = $request->user_id;

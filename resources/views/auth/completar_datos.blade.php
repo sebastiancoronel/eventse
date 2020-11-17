@@ -1,5 +1,4 @@
-@extends('layouts.barra_navegacion_principal')
-{{-- FORMULARIO PARA DATOS DE LA CUENTA --}}
+@extends('Principal.master')
 @section('content')
 
 <div class="container-fluid animsition escritorio-mt-3-p-t-75 mt-5">
