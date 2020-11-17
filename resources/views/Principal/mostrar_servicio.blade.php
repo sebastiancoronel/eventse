@@ -294,7 +294,7 @@
 						<!-- Descripcion -->
 						<div class="tab-pane fade show active" id="description" role="tabpanel">
 							<div class="how-pos2 p-lr-15-md text-center">
-								<p class="stext-102 cl6 text-left col-md-6">
+								<p class="stext-102 cl6 text-left">
 									<span class="text-uppercase mt-4"> {{ $Servicio->descripcion }} </span>
 								</p>
 							</div>
