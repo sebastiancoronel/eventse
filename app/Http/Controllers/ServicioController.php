@@ -234,7 +234,7 @@ class ServicioController extends Controller
     $NombreServicio = $Servicio->nombre;
 
     if ( $Servicio->precio_a_convenir != null ) {
-      $Precio = $Servicio->precio_a_convenir;
+      $Precio = 'Precio a convenir';
     }else{
       $Precio = $Servicio->precio;
     }
@@ -243,7 +243,7 @@ class ServicioController extends Controller
     if ( Session::has('Servicio') ) { //Si existe la variable Session Servicio hay que agregar los items.
         
         $ServicioSession = $request->session()->get('Servicio'); //Trae Servicio de la session
-        $PrecioFinal = Session::get('PrecioFinal'); //Trae el Precio final del carrito en la sesison
+        // $PrecioFinal = Session::get('PrecioFinal'); //Trae el Precio final del carrito en la sesison
 
         // Comprobar que no exista el servicio en el paquete
         foreach ($ServicioSession as $servicio) {
@@ -253,8 +253,8 @@ class ServicioController extends Controller
         }
 
         // Calcula el precio final a pagar de todo el paquete
-        $PrecioFinal = $PrecioFinal + $Precio;
-        $request->session()->put('PrecioFinal', $PrecioFinal); //Agrega a la session
+        // $PrecioFinal = $PrecioFinal + $Precio;
+        // $request->session()->put('PrecioFinal', $PrecioFinal); //Agrega a la session
 
         //Agrega el nuevo elemento a un array para luego agregarlo a session
         array_push( $ServicioSession, [   'id_servicio' => $id_servicio,
@@ -273,8 +273,8 @@ class ServicioController extends Controller
         $request->session()->put('Servicio', $ServicioSession); //Agrega a la Session
 
         // Calcula el precio final a pagar de todo el paquete
-        $PrecioFinal = $Precio;
-        $request->session()->put('PrecioFinal', $PrecioFinal); //Agrega a la Session
+        // $PrecioFinal = $Precio;
+        // $request->session()->put('PrecioFinal', $PrecioFinal); //Agrega a la Session
     }
 
     return redirect()->route('MostrarServicio', [ 'id' => $id_servicio ])->with( 'Agregado', 'Servicio agregado al paquete con éxito' );
