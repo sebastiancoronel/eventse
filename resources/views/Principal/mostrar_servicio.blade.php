@@ -425,9 +425,9 @@
 	<script>
 		// //Botón agregar al paquete @ Guest
 
-		// $("#btn_agregar_servicio_guest").click(function(){
-		// 	swal('Debes iniciar sesión primero', '','error');
-		// });
+		$("#btn_agregar_servicio_guest").click(function(){
+			swal('Debes iniciar sesión primero', '','error');
+		});
 
 		// //Agregar al paquete
 		// $("#form_agregar_servicio").submit(function(e){
@@ -642,13 +642,17 @@
 	@if ( Session::has('Existe') ) 
 	{{-- NO esta andando el Sweet alert por alguna razon pero si anda en un ready function --}}
 		<script>
-			swal('Error!','Ya agregaste este servicio a tu paquete','error');
+			$(document).ready(function(){
+				swal('Error!','Ya agregaste este servicio a tu paquete','error');
+			});
 		</script>
 	@endif
 
 	@if ( Session::has('Agregado') )
 		<script>
-			swal('Listo!','Servicio agregado al paquete con éxito','success');
+			$(document).ready(function(){
+				swal('Listo!','Servicio agregado al paquete con éxito','success');
+			});
 		</script>
 	@endif
 @endpush
