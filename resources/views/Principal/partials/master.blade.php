@@ -121,7 +121,7 @@
 
 					<div id="carrito_escritorio" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart" data-notify="">
 						<i class="zmdi zmdi-shopping-cart"></i>
-				  </div>
+				  	</div>
 						
 					@endguest
 					{{-- Favoritos --}}
@@ -249,14 +249,15 @@
 			<div class="header-cart-content flex-w js-pscroll">
 				<ul id="servicios_carrito" class="header-cart-wrapitem w-full">
 				@auth
-					{{-- AQUI VA EL FOREACH DE SERVICIOS DEL CARRITO --}}
+
 					{{-- @foreach ( as ) --}}
+
 					{{-- Servicio --}}
 					<li class="header-cart-item flex-w flex-t m-b-12">
 						{{-- Imagen de Servicio --}}
-						<div class="header-cart-item-img">
-						<img src="" class="rounded" alt="IMG">
-						</div>
+						{{-- <div class="header-cart-item-img">
+							<img src="" class="rounded" alt="IMG">
+						</div> --}}
 						{{-- Nombre de Servicio --}}
 						<div class="header-cart-item-txt p-t-8">
 							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
@@ -264,13 +265,11 @@
 							</a>
 							{{-- Precio de Servicio --}}
 							<span class="header-cart-item-info">
-								<!-- Aqui va un if para poner precio o mostrar "Precio a convenir" -->
+								<!-- Poner precio o mostrar "Precio a convenir" -->
 								{{-- @if ( $servicio->precio != null )
 									$ {{$servicio->precio}}
 								@else
-
 									Precio a convenir
-								
 								@endif --}}
 							</span>
 						</div>

@@ -6,7 +6,7 @@ use Closure;
 use Auth;
 use App\Prestador;
 
-class ControlarNegocioExistente
+class ControlarPerfilPrestador
 {
     /**
      * Handle an incoming request.
@@ -17,12 +17,13 @@ class ControlarNegocioExistente
      */
     public function handle($request, Closure $next)
     {
-      $user = Auth::user();
-      $Prestador = Prestador::where('user_id',$user->id)
+      //Buscar al prestador/cliente y preguntar si tiene todos los datos completos. Si los tiene pasa sino no.
+      $Prestador = Prestador::where( 'user_id', Auth::user()->id )
                             ->select('*')
                             ->first();
+
       if ($Prestador == null) {
-        return redirect()->route('CrearPerfilEmpresa');
+        return redirect()->route('CrearPrestador');
       }
       return $next($request);
     }

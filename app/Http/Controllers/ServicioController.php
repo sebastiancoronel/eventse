@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Session;
 use App\Caracteristica_por_categoria;
 use App\CaracteristicasPorServicio;
 use App\Caracteristica;
@@ -16,10 +17,10 @@ use Illuminate\Support\Str;
 
 class ServicioController extends Controller
 {
-    public function Publicar(){
-      $Categorias = Categoria::all();
-      return view('Principal.publicar' , [ 'Categorias' => $Categorias ]);
-    }
+  public function Publicar(){
+    $Categorias = Categoria::all();
+    return view('Principal.publicar' , [ 'Categorias' => $Categorias ]);
+  }
 
   public function ServiciosPublicados(){
     $Categorias = Categoria::all();
@@ -222,9 +223,69 @@ class ServicioController extends Controller
 
     return $ActualizarPreguntas;
   }
+
+  public function AgregarAlPaquete( Request $request ){
+    // $Session = Session::all();
+    // dd($Session);
+
+    $Servicio = Servicio::findOrfail( $request->id_servicio );
+
+    $id_servicio = $request->id_servicio;
+    $NombreServicio = $Servicio->nombre;
+
+    if ( $Servicio->precio_a_convenir != null ) {
+      $Precio = $Servicio->precio_a_convenir;
+    }else{
+      $Precio = $Servicio->precio;
+    }
+
+    //Session
+    if ( Session::has('Servicio') ) { //Si existe la variable Session Servicio hay que agregar los items.
+        
+        $ServicioSession = $request->session()->get('Servicio'); //Trae Servicio de la session
+        $PrecioFinal = Session::get('PrecioFinal'); //Trae el Precio final del carrito en la sesison
+
+        // Comprobar que no exista el servicio en el paquete
+        foreach ($ServicioSession as $servicio) {
+            if ($servicio['id_servicio'] == $id_servicio ) {
+                return redirect()->route('MostrarServicio', [ 'id' => $id_servicio ])->with( 'Existe', ' ' );
+            }
+        }
+
+        // Calcula el precio final a pagar de todo el paquete
+        $PrecioFinal = $PrecioFinal + $Precio;
+        $request->session()->put('PrecioFinal', $PrecioFinal); //Agrega a la session
+
+        //Agrega el nuevo elemento a un array para luego agregarlo a session
+        array_push( $ServicioSession, [   'id_servicio' => $id_servicio,
+                                        'NombreServicio' => $NombreServicio,
+                                        'Precio' => $Precio ] );
+
+        
+        $request->session()->put('Servicio', $ServicioSession); //Agrega a la Session
+
+    } else { //Si no existe se crea un array, se agrega el item al array y se hace un put(Agregar) en una nueva variable Session 'Servicio'
+        $ServicioSession = array();
+        array_push( $ServicioSession, [ 'id_servicio' => $id_servicio,
+                                'NombreServicio' => $NombreServicio,
+                                'Precio' => $Precio ] );
+
+        $request->session()->put('Servicio', $ServicioSession); //Agrega a la Session
+
+        // Calcula el precio final a pagar de todo el paquete
+        $PrecioFinal = $Precio;
+        $request->session()->put('PrecioFinal', $PrecioFinal); //Agrega a la Session
+    }
+
+    return redirect()->route('MostrarServicio', [ 'id' => $id_servicio ])->with( 'Agregado', 'Servicio agregado al paquete con éxito' );
+
+    //Se trae Session otra vez con los nuevos datos CREO QUE AL SER POR HTTP POST NO ES NECESARIO ESTO YA QUE SE ACTUALIZA SOLO
+    // $ServicioSession = Session::get('Servicio');
+    // return $ServicioSession; //Retorna Session con el nuevo dato 
+}
   
-  public function MostrarPlanes(){
-    return view('Ecommerce.planes_publicidad');
-  }
+  // public function MostrarPlanes(){
+  //   return view('Ecommerce.planes_publicidad');
+  // }
 
 }

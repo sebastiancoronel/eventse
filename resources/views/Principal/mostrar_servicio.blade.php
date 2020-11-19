@@ -1,5 +1,7 @@
 @extends('Principal.partials.master')
 @section('content')
+
+{{-- Fin alertas --}}
 {{-- Detalle de producto --}}
 <div class="animsition">
 	<!-- breadcrumb escritorio -->
@@ -173,7 +175,7 @@
 							<div class="flex-w flex-r-m p-b-10">
 								<div class="size-204 flex-w flex-m respon6-next">
 								@if ( Auth::user() )
-								<form id="form_agregar_servicio" action="{{route('AgregarAlCarrito')}}" method="POST">
+								<form id="form_agregar_servicio" action="{{route('AgregarAlPaquete')}}" method="POST">
 									@csrf
 									<input id="id_servicio" hidden type="text" name="id_servicio" value="{{$Servicio->id}}">
 									<input id="id_usuario" hidden type="text" name="id_usuario" value="{{$User_id}}">
@@ -416,225 +418,238 @@
 			</span>
 		</div>
 	</section>
-
 </div>
-{{-- Agregar al carrito --}}
-<script>
-	//Botón agregar al paquete @ Guest
 
-	$("#btn_agregar_servicio_guest").click(function(){
-		swal('Debes iniciar sesión y completar tus datos primero', '','error');
-	});
+@push('js')
+	{{-- Agregar al carrito --}}
+	<script>
+		// //Botón agregar al paquete @ Guest
 
-	//Agregar al paquete
-	$("#form_agregar_servicio").submit(function(e){
-		e.preventDefault();
-		
-		var id_servicio = $('#id_servicio').val();
-		var id_usuario = $('#id_usuario').val();
+		// $("#btn_agregar_servicio_guest").click(function(){
+		// 	swal('Debes iniciar sesión primero', '','error');
+		// });
 
-		$.ajax({
-			method: 'POST',
-			url: '{{url('/mi-paquete/agregando-inmueble')}}',
-			data: {
-				id_servicio,
-				id_usuario,
-				_token: '{{csrf_token()}}'
-			},
+		// //Agregar al paquete
+		// $("#form_agregar_servicio").submit(function(e){
+		// 	e.preventDefault();
+			
+		// 	var id_servicio = $('#id_servicio').val();
+		// 	var id_usuario = $('#id_usuario').val();
+			
 
-			error: function(x,y,z){
-				console.log(x,y,z);
-			},
+		// 	$.ajax({
+		// 		method: 'POST',
+		// 		url: url,
+		// 		data: {
+		// 			id_servicio,
+		// 			id_usuario,
+		// 			_token: '{{csrf_token()}}'
+		// 		},
 
-			success: function(data){
-				
-				//console.log(data);
-				if (data == 'Existe') {
+		// 		error: function(x,y,z){
+		// 			console.log(x,y,z);
+		// 		},
+		// 		success: function(data){
+		// 			console.log(data);
+		// 			if (data == 'Existe') {
 
-					swal('Error!','Ya agregaste este servicio a tu paquete','error');
+		// 				swal('Error!','Ya agregaste este servicio a tu paquete','error');
 
-					
-				}else{
-					swal('Listo!','Se agregó el servicio al paquete con éxito','success');
-				}
-			}
-
-		});
-
-		//Actualizar
-		$.ajax({
-					method: 'GET',
-					url: '{{ url( '/mi-paquete/actualizando-carrito' ) }}',
-					data: {
-
-						id_usuario,
-						_token: '{{ csrf_token() }}'
-
-					},
-
-					error: function error(x,y,z){
-						console.log(x,y,z);
-					},
-
-					success: function(data){
-						console.log(data);
-						$('#carrito_escritorio').addClass('icon-header-noti');
-						$('#carrito_escritorio').attr('data-notify', data.CantidadServicios );
-						$('#carrito_movil').attr('data-notify', data.CantidadServicios );
-						$('#servicios_carrito').empty();
-
-						$.each( data.ServiciosCarrito , function( index , value ) {
-						console.log(value);	
-						if( value['precio'] != null ){
-
-							var serv_carr_precio = ` <li class="header-cart-item flex-w flex-t m-b-12">
-													{{-- Imagen de Servicio --}}
-													<div class="header-cart-item-img">
-													<img src=" ` + value['foto_1'] + ` " class="rounded" alt="IMG">
-													</div>
-													{{-- Nombre de Servicio --}}
-													<div class="header-cart-item-txt p-t-8">
-														<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-														` + value['titulo'] + `
-														</a>
-														{{-- Precio de Servicio --}}
-														<span class="header-cart-item-info">
-															$
-														` + value['precio'] +`
-														</span>
-													</div>
-												</li>
-												<hr>
-												`;
-						$('#servicios_carrito').append(serv_carr_precio);	
-						} else{
-
-							var serv_carr_convenir = ` <li class="header-cart-item flex-w flex-t m-b-12">
-													{{-- Imagen de Servicio --}}
-													<div class="header-cart-item-img">
-													<img src=" ` + value['foto_1'] + ` " class="rounded" alt="IMG">
-													</div>
-													{{-- Nombre de Servicio --}}
-													<div class="header-cart-item-txt p-t-8">
-														<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-														` + value['titulo'] + `
-														</a>
-														{{-- Precio de Servicio --}}
-														<span class="header-cart-item-info">
-															Precio a convenir
-														</span>
-													</div>
-												</li>
-												<hr>
-												`;
-						$('#servicios_carrito').append(serv_carr_convenir);	
-
-						}
 						
-							
-						});
-					}
-				});
-	});
-</script>
-
-{{-- Agregar pregunta --}}
-<script>
-	$('#form_pregunta').submit( function(e){
-		e.preventDefault();
-		var id_prestador = $('#id_prestador').val();
-		var id_servicio = $('#id_servicio').val();
-		var id_usuario = $('#id_usuario').val();
-		var pregunta = $('#textarea_pregunta').val();
-
-		$.ajax({
-	
-			method: 'POST',
-			url: '{{url('/reservar/servicios-publicados/almacenando-pregunta')}}',
-			data: {
-				id_prestador,
-				id_servicio,
-				id_usuario,
-				pregunta,
-				_token: "{{csrf_token()}}"
-			},
-			error: function(x,y,z){
-	
-				console.log(x,y,z);
-			},
-	
-			success: function(data){
-				$('#textarea_pregunta').val('');
-				swal('Listo!','Su pregunta fue realizada con éxito','success');
-
-				console.log(data);
-				$('#mostrar_preguntas').empty();
-
-				$.each(data, function(index, value) {
-					if( value['respuesta'] == null ){
-						value['respuesta'] = '';
-						var mostrar_preguntas = `
-													<div class="row mt-4 rounded">
-														<span class="col-md-12 col-12 text-dark"> <i class="zmdi zmdi-comment-text"></i> `+ value['pregunta'] +` </span><br>
-													</div>
-												`;
-						$('#mostrar_preguntas').append(mostrar_preguntas);
-					}else{
-
-						var mostrar_preguntas_y_respuestas = `
-																<div class="row mt-4 rounded">
-																	<span class="col-md-12 col-12 text-dark"> <i class="zmdi zmdi-comment-text"></i> `+ value['pregunta'] +` </span><br>
-																	<span class="col-md-12 col-12 mt-3 text-black-50"><i class="zmdi zmdi-comment-alt-text"></i> `+ value['respuesta'] +` </span><br><br><br>
-																</div>
-															`;
-						$('#mostrar_preguntas').append(mostrar_preguntas_y_respuestas);
-					}
-                });
-			}
-		}); //ajax
-
-		// //Actualizar preguntas
-		// $.ajax({
-		
-		// 	method: 'GET',
-		// 	url: '{{url('/reservar/servicios-publicados/Inmueble/almacenando-pregunta')}}',
-		// 	data: {
-		// 		id_prestador,
-		// 		id_servicio,
-		// 		_token: "{{csrf_token()}}"
-		// 	},
-
-		// 	error: function(x,y,z){
-		// 		console.log(x,y,z);
-		// 	},
-
-		// 	success: function(data){
-		// 		console.log(data);
-		// 		$('#mostrar_preguntas').empty();
-
-		// 		$.each(data, function(index, value) {
-		// 			if( value['respuesta'] == null ){
-		// 				value['respuesta'] = '';
-		// 				var mostrar_preguntas = `
-		// 											<div class="row mt-4 rounded">
-		// 												<span class="col-md-12 col-12 text-dark"> <i class="zmdi zmdi-comment-text"></i> `+ value['pregunta'] +` </span><br>
-		// 											</div>
-		// 										`;
-		// 				$('#mostrar_preguntas').append(mostrar_preguntas);
 		// 			}else{
-
-		// 				var mostrar_preguntas_y_respuestas = `
-		// 														<div class="row mt-4 rounded">
-		// 															<span class="col-md-12 col-12 text-dark"> <i class="zmdi zmdi-comment-text"></i> `+ value['pregunta'] +` </span><br>
-		// 															<span class="col-md-12 col-12 mt-3 text-black-50"><i class="zmdi zmdi-comment-alt-text"></i> `+ value['respuesta'] +` </span><br><br><br>
-		// 														</div>
-		// 													`;
-		// 				$('#mostrar_preguntas').append(mostrar_preguntas_y_respuestas);
+		// 				swal('Listo!','Se agregó el servicio al paquete con éxito','success');
 		// 			}
-        //         });
-		// 	}//success
-		// })
-	}); //on click
+		// 		}
+
+		// 	});
+
+		// 	Actualizar
+		// 		$.ajax({
+		// 			method: 'GET',
+		// 			url: '{{ url( '/mi-paquete/actualizando-carrito' ) }}',
+		// 			data: {
+
+		// 				id_usuario,
+		// 				_token: '{{ csrf_token() }}'
+
+		// 			},
+
+		// 			error: function error(x,y,z){
+		// 				console.log(x,y,z);
+		// 			},
+
+		// 			success: function(data){
+		// 				console.log(data);
+		// 				$('#carrito_escritorio').addClass('icon-header-noti');
+		// 				$('#carrito_escritorio').attr('data-notify', data.CantidadServicios );
+		// 				$('#carrito_movil').attr('data-notify', data.CantidadServicios );
+		// 				$('#servicios_carrito').empty();
+
+		// 				$.each( data.ServiciosCarrito , function( index , value ) {
+		// 				console.log(value);	
+		// 				if( value['precio'] != null ){
+
+		// 					var serv_carr_precio = ` <li class="header-cart-item flex-w flex-t m-b-12">
+		// 											{{-- Imagen de Servicio --}}
+		// 											<div class="header-cart-item-img">
+		// 											<img src=" ` + value['foto_1'] + ` " class="rounded" alt="IMG">
+		// 											</div>
+		// 											{{-- Nombre de Servicio --}}
+		// 											<div class="header-cart-item-txt p-t-8">
+		// 												<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+		// 												` + value['titulo'] + `
+		// 												</a>
+		// 												{{-- Precio de Servicio --}}
+		// 												<span class="header-cart-item-info">
+		// 													$
+		// 												` + value['precio'] +`
+		// 												</span>
+		// 											</div>
+		// 										</li>
+		// 										<hr>
+		// 										`;
+		// 				$('#servicios_carrito').append(serv_carr_precio);	
+		// 				} else{
+
+		// 					var serv_carr_convenir = ` <li class="header-cart-item flex-w flex-t m-b-12">
+		// 											{{-- Imagen de Servicio --}}
+		// 											<div class="header-cart-item-img">
+		// 											<img src=" ` + value['foto_1'] + ` " class="rounded" alt="IMG">
+		// 											</div>
+		// 											{{-- Nombre de Servicio --}}
+		// 											<div class="header-cart-item-txt p-t-8">
+		// 												<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+		// 												` + value['titulo'] + `
+		// 												</a>
+		// 												{{-- Precio de Servicio --}}
+		// 												<span class="header-cart-item-info">
+		// 													Precio a convenir
+		// 												</span>
+		// 											</div>
+		// 										</li>
+		// 										<hr>
+		// 										`;
+		// 				$('#servicios_carrito').append(serv_carr_convenir);	
+
+		// 				}
+		// 				});
+		// 			}
+		// 		});
+		// 	});
+	</script>
+
+	{{-- Agregar pregunta --}}
+	<script>
+		$('#form_pregunta').submit( function(e){
+			e.preventDefault();
+			var id_prestador = $('#id_prestador').val();
+			var id_servicio = $('#id_servicio').val();
+			var id_usuario = $('#id_usuario').val();
+			var pregunta = $('#textarea_pregunta').val();
+
+			$.ajax({
+		
+				method: 'POST',
+				url: '{{url('/reservar/servicios-publicados/almacenando-pregunta')}}',
+				data: {
+					id_prestador,
+					id_servicio,
+					id_usuario,
+					pregunta,
+					_token: "{{csrf_token()}}"
+				},
+				error: function(x,y,z){
+		
+					console.log(x,y,z);
+				},
+		
+				success: function(data){
+					$('#textarea_pregunta').val('');
+					swal('Listo!','Su pregunta fue realizada con éxito','success');
+
+					console.log(data);
+					$('#mostrar_preguntas').empty();
+
+					$.each(data, function(index, value) {
+						if( value['respuesta'] == null ){
+							value['respuesta'] = '';
+							var mostrar_preguntas = `
+														<div class="row mt-4 rounded">
+															<span class="col-md-12 col-12 text-dark"> <i class="zmdi zmdi-comment-text"></i> `+ value['pregunta'] +` </span><br>
+														</div>
+													`;
+							$('#mostrar_preguntas').append(mostrar_preguntas);
+						}else{
+
+							var mostrar_preguntas_y_respuestas = `
+																	<div class="row mt-4 rounded">
+																		<span class="col-md-12 col-12 text-dark"> <i class="zmdi zmdi-comment-text"></i> `+ value['pregunta'] +` </span><br>
+																		<span class="col-md-12 col-12 mt-3 text-black-50"><i class="zmdi zmdi-comment-alt-text"></i> `+ value['respuesta'] +` </span><br><br><br>
+																	</div>
+																`;
+							$('#mostrar_preguntas').append(mostrar_preguntas_y_respuestas);
+						}
+					});
+				}
+			}); //ajax
+
+			// //Actualizar preguntas
+			// $.ajax({
+			
+			// 	method: 'GET',
+			// 	url: '{{url('/reservar/servicios-publicados/Inmueble/almacenando-pregunta')}}',
+			// 	data: {
+			// 		id_prestador,
+			// 		id_servicio,
+			// 		_token: "{{csrf_token()}}"
+			// 	},
+
+			// 	error: function(x,y,z){
+			// 		console.log(x,y,z);
+			// 	},
+
+			// 	success: function(data){
+			// 		console.log(data);
+			// 		$('#mostrar_preguntas').empty();
+
+			// 		$.each(data, function(index, value) {
+			// 			if( value['respuesta'] == null ){
+			// 				value['respuesta'] = '';
+			// 				var mostrar_preguntas = `
+			// 											<div class="row mt-4 rounded">
+			// 												<span class="col-md-12 col-12 text-dark"> <i class="zmdi zmdi-comment-text"></i> `+ value['pregunta'] +` </span><br>
+			// 											</div>
+			// 										`;
+			// 				$('#mostrar_preguntas').append(mostrar_preguntas);
+			// 			}else{
+
+			// 				var mostrar_preguntas_y_respuestas = `
+			// 														<div class="row mt-4 rounded">
+			// 															<span class="col-md-12 col-12 text-dark"> <i class="zmdi zmdi-comment-text"></i> `+ value['pregunta'] +` </span><br>
+			// 															<span class="col-md-12 col-12 mt-3 text-black-50"><i class="zmdi zmdi-comment-alt-text"></i> `+ value['respuesta'] +` </span><br><br><br>
+			// 														</div>
+			// 													`;
+			// 				$('#mostrar_preguntas').append(mostrar_preguntas_y_respuestas);
+			// 			}
+			//         });
+			// 	}//success
+			// })
+		}); //on click
+		
+	</script>
 	
-</script>
+	{{-- Alertas --}}
+	@if ( Session::has('Existe') ) 
+	{{-- NO esta andando el Sweet alert por alguna razon pero si anda en un ready function --}}
+		<script>
+			swal('Error!','Ya agregaste este servicio a tu paquete','error');
+		</script>
+	@endif
+
+	@if ( Session::has('Agregado') )
+		<script>
+			swal('Listo!','Servicio agregado al paquete con éxito','success');
+		</script>
+	@endif
+@endpush
 @endsection

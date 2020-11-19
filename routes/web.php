@@ -19,9 +19,6 @@ Route::get('/reservar/servicios-publicados','ServicioController@ServiciosPublica
 //Mostrar servicio
 Route::get('/reservar/servicios-publicados/{id}','ServicioController@MostrarServicio')->name('MostrarServicio');
 
-//Inmueble carrito
-Route::post('/mi-paquete/agregando-inmueble','InmuebleController@AgregarAlCarrito')->name('AgregarAlCarrito')->middleware('ControlarDatosCompletos');
-
 //--- Preguntas
 Route::post('/reservar/servicios-publicados/almacenando-pregunta','ServicioController@AlmacenarPregunta')->name('AlmacenarPregunta')->middleware('auth');
 // Route::get('/reservar/servicios-publicados/almacenando-pregunta','ServicioController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('auth');  
@@ -29,10 +26,10 @@ Route::post('/reservar/servicios-publicados/almacenando-pregunta','ServicioContr
 
 /*
 |--------------------------------------------------------------------------
-| Auth + Datos completos + Perfil empresa
+| Auth + Perfil empresa
 |--------------------------------------------------------------------------
 */
-Route::middleware(['auth', 'ControlarDatosCompletos', 'ControlarNegocioExistente'])->group(function () {
+Route::middleware(['auth', 'ControlarPerfilPrestador'])->group(function () {
   Route::get('/publicar', 'ServicioController@Publicar')->name('Publicar');
 
   Route::get('/publicar/servicio/crear', 'ServicioController@CrearServicio')->name('CrearServicio');
@@ -40,6 +37,9 @@ Route::middleware(['auth', 'ControlarDatosCompletos', 'ControlarNegocioExistente
   // Publicar servicios
   Route::post('/publicar/servicio/almacenando','ServicioController@AlmacenarServicio')->name('AlmacenarServicio');
   Route::get('/publicar/servicio/publicado-con-exito','ServicioController@ServicioPublicadoConExito')->name('ServicioPublicadoConExito');
+
+  //Agregar al paquete
+  Route::post('/reservar/servicios-publicados/agregando-al-paquete','ServicioController@AgregarAlPaquete')->name('AgregarAlPaquete');
 });
 
 /*
@@ -48,7 +48,7 @@ Route::middleware(['auth', 'ControlarDatosCompletos', 'ControlarNegocioExistente
 |--------------------------------------------------------------------------
 */
 
-Route::middleware(['auth', 'ControlarDatosCompletos'])->group(function () {
+Route::middleware(['auth', ])->group(function () {
   Route::get('/home', 'HomeController@index')->name('home');
   Route::get('/home/resumen','ClienteController@ClienteResumen')->name('ClienteResumen');
 
