@@ -28,15 +28,15 @@
   					</div>
             @guest
               @if (Route::has('login'))
-  						<div class="right-top-bar flex-w h-full">
-  							<a href="{{url('/register')}}" class="flex-c-m trans-04 p-lr-25" style="color:white;" onmouseover="this.style.color= '#717fe0'" onmouseout="this.style.color= 'white'" >
-  								Registrate
-  							</a>
+					<div class="right-top-bar flex-w h-full">
+						<a href="{{url('/register')}}" class="flex-c-m trans-04 p-lr-25" style="color:white;" onmouseover="this.style.color= '#717fe0'" onmouseout="this.style.color= 'white'" >
+							Registrate
+						</a>
 
-  							<a href="{{url('/login')}}" class="flex-c-m trans-04 p-lr-25" style="color:white;" onmouseover="this.style.color= '#717fe0'" onmouseout="this.style.color= 'white'" >
-  								Ingresar
-  	            </a>
-  	          </div>
+						<a href="{{url('/login')}}" class="flex-c-m trans-04 p-lr-25" style="color:white;" onmouseover="this.style.color= '#717fe0'" onmouseout="this.style.color= 'white'" >
+							Ingresar
+						</a>
+					</div>
   	           @endif
             @endguest
             @auth
@@ -110,20 +110,10 @@
   							<i class="zmdi zmdi-search"></i>
   						</div>
 					{{-- Carrito --}}
-					@auth
-					<div id="carrito_escritorio" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart" data-notify="AQUI VA LA CANTIDAD"> 
-						{{-- {{ $CantidadServicios != 0 ? 'icon-header-noti' : '' }} --}}
-  						<i class="zmdi zmdi-shopping-cart"></i>
-					</div>
-					@endauth
-
-					@guest
-
-					<div id="carrito_escritorio" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart" data-notify="">
+					<div id="carrito_escritorio" class="icon-header-item icon-header-noti cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart" data-notify="{{ $CantidadServicios }}"> 
 						<i class="zmdi zmdi-shopping-cart"></i>
-				  	</div>
-						
-					@endguest
+					</div>
+
 					{{-- Favoritos --}}
 					{{-- <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
 						<i class="zmdi zmdi-favorite"></i>
@@ -147,13 +137,13 @@
   			</div>
 
   			<!-- Icon header -->
-      @auth
+      
   			<div class=" col-8 wrap-icon-header flex-w flex-r-m m-r-15">
   				{{-- <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
   					<i class="zmdi zmdi-search"></i>
   				</div> --}}
           {{-- Carrito --}}
-  				<div id="carrito_movil" class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="AQUI VA LA CANTIDAD">
+  				<div id="carrito_movil" class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="{{ $CantidadServicios }}">
   					<i class="zmdi zmdi-shopping-cart"></i>
   				</div>
           {{-- Favoritos --}}
@@ -165,7 +155,7 @@
   					<i class="zmdi zmdi-notifications"></i>
   				</a>
   			</div>
-      @endauth
+      
       <!-- Formulario de Registro -->
       @guest
         @if (Route::has('login'))
@@ -248,36 +238,38 @@
 
 			<div class="header-cart-content flex-w js-pscroll">
 				<ul id="servicios_carrito" class="header-cart-wrapitem w-full">
-				@auth
 
-					{{-- @foreach ( as ) --}}
-
-					{{-- Servicio --}}
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						{{-- Imagen de Servicio --}}
-						{{-- <div class="header-cart-item-img">
-							<img src="" class="rounded" alt="IMG">
-						</div> --}}
-						{{-- Nombre de Servicio --}}
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-						 	  
-							</a>
-							{{-- Precio de Servicio --}}
-							<span class="header-cart-item-info">
-								<!-- Poner precio o mostrar "Precio a convenir" -->
-								{{-- @if ( $servicio->precio != null )
-									$ {{$servicio->precio}}
-								@else
-									Precio a convenir
-								@endif --}}
-							</span>
-						</div>
-					</li>
-					{{-- Fin Servicio --}}
-					<hr>
-					{{-- @endforeach --}}
-				@endauth
+					@if ( is_array($Paquete) )
+						@forelse ( $Paquete as $servicio )
+							{{-- Servicio --}}
+							<li class="header-cart-item flex-w flex-t m-b-12">
+								{{-- Imagen de Servicio --}}
+								{{-- <div class="header-cart-item-img">
+									<img src="" class="rounded" alt="IMG">
+								</div> --}}
+								{{-- Nombre de Servicio --}}
+								<div class="header-cart-item-txt p-t-8">
+									<a href=" {{ route('MostrarServicio',[ 'id' => $servicio['id_servicio']  ]) }} " class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+											{{ $servicio['NombreServicio'] }}
+									</a>
+									{{-- Precio de Servicio --}}
+									<span class="header-cart-item-info">
+										<!-- Poner precio o mostrar "Precio a convenir" -->
+										@if ( $servicio['Precio'] == 'Precio a convenir' )
+											Precio a convenir
+										@else
+											$ {{$servicio['Precio']}}
+										@endif
+									</span>
+								</div>
+							</li>
+							{{-- Fin Servicio --}}
+						<hr>
+						@empty
+							<span> No tienes servicios agregados aún </span>
+						@endforelse
+						
+					@endif
 				</ul>
 
 				<div class="w-full">
