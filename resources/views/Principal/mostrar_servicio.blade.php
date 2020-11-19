@@ -1,4 +1,4 @@
-@extends('Principal.partials.master')
+@extends('Principal.Partials.master')
 @section('content')
 
 {{-- Fin alertas --}}
