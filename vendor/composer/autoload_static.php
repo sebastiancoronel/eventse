@@ -440,7 +440,6 @@ class ComposerStaticInita46fe10eba2c4058e6946f15aed06849
         'App\\CaracteristicasPorServicio' => __DIR__ . '/../..' . '/app/CaracteristicasPorServicio.php',
         'App\\Categoria' => __DIR__ . '/../..' . '/app/Categoria.php',
         'App\\Categoria_Servicio' => __DIR__ . '/../..' . '/app/Categoria_Servicio.php',
-        'App\\Cliente' => __DIR__ . '/../..' . '/app/Cliente.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Estado' => __DIR__ . '/../..' . '/app/Estado.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',

@@ -11,7 +11,6 @@ return array(
     'App\\CaracteristicasPorServicio' => $baseDir . '/app/CaracteristicasPorServicio.php',
     'App\\Categoria' => $baseDir . '/app/Categoria.php',
     'App\\Categoria_Servicio' => $baseDir . '/app/Categoria_Servicio.php',
-    'App\\Cliente' => $baseDir . '/app/Cliente.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Estado' => $baseDir . '/app/Estado.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
