@@ -224,6 +224,12 @@ class ServicioController extends Controller
     return $ActualizarPreguntas;
   }
 
+  public function MostrarPaquete(){
+    $Paquete = Session::get('Servicio');
+    
+    return view('Principal.carrito');
+  }
+
   public function AgregarAlPaquete( Request $request ){
     // $Session = Session::all();
     // dd($Session);
@@ -282,7 +288,32 @@ class ServicioController extends Controller
     //Se trae Session otra vez con los nuevos datos CREO QUE AL SER POR HTTP POST NO ES NECESARIO ESTO YA QUE SE ACTUALIZA SOLO
     // $ServicioSession = Session::get('Servicio');
     // return $ServicioSession; //Retorna Session con el nuevo dato 
-}
+  }
+
+  public function EliminarDelPaquete( Request $request ){
+
+    if ( Session::has('Servicio') ) {
+      $Paquete = $request->session()->get('Servicio');
+
+      foreach ( $Paquete as $key => $servicio ) {   //Recorrer el array
+
+          if ( $servicio['id_servicio'] == $request->id_servicio ) { //Comprueba que el id_servicio enviado desde el front coincida con el produto en la session para poder borrarlo.
+              $key_str = strval($key); //Es necesario convertir a string para la funcion unset
+              
+              unset($Paquete[$key_str]); //Borramos el item usando la key que convertimos en string
+          }
+      }
+      $request->session()->put('Servicio', $Paquete); //Guarda el array modificado en Session nuevamente.
+
+      $Paquete = Session::get('Servicio'); //Trae lo nuevo de session para mostrar
+      
+      
+    }else{
+      $Paquete = null;
+    }
+    return redirect()->route('MostrarPaquete');
+
+  }
   
   // public function MostrarPlanes(){
   //   return view('Ecommerce.planes_publicidad');

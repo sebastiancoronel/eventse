@@ -1,15 +1,15 @@
 <?php
 
-Auth::routes();
-
-Route::get( 'register/traer-localidades' , 'LocalidadController@TraerLocalidades' )->name('TraerLocalidades');
 /*
 |--------------------------------------------------------------------------
 | Ecommerce
 |--------------------------------------------------------------------------
 */
-
 Route::get( '/' , 'CategoriaController@index' )->name('Principal');
+
+Auth::routes();
+Route::get( 'register/traer-localidades' , 'LocalidadController@TraerLocalidades' )->name('TraerLocalidades');
+
 //Traer Categorias
 Route::get('/categorias-listar','CategoriaController@index');
 
@@ -23,10 +23,9 @@ Route::get('/reservar/servicios-publicados/{id}','ServicioController@MostrarServ
 Route::post('/reservar/servicios-publicados/almacenando-pregunta','ServicioController@AlmacenarPregunta')->name('AlmacenarPregunta')->middleware('auth');
 // Route::get('/reservar/servicios-publicados/almacenando-pregunta','ServicioController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('auth');  
 
-
 /*
 |--------------------------------------------------------------------------
-| Auth + Perfil empresa
+| Auth + Perfil prestador
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth', 'ControlarPerfilPrestador'])->group(function () {
@@ -38,8 +37,14 @@ Route::middleware(['auth', 'ControlarPerfilPrestador'])->group(function () {
   Route::post('/publicar/servicio/almacenando','ServicioController@AlmacenarServicio')->name('AlmacenarServicio');
   Route::get('/publicar/servicio/publicado-con-exito','ServicioController@ServicioPublicadoConExito')->name('ServicioPublicadoConExito');
 
+  //Mostrar paquete
+  Route::get('/reservar/mi-paquete','ServicioController@MostrarPaquete')->name('MostrarPaquete');
+
   //Agregar al paquete
   Route::post('/reservar/servicios-publicados/agregando-al-paquete','ServicioController@AgregarAlPaquete')->name('AgregarAlPaquete');
+
+  //Eliminar del paquete
+  Route::post('/reservar/servicios-publicados/eliminando-del-paquete','ServicioController@EliminarDelPaquete')->name('EliminarDelPaquete');
 });
 
 /*
