@@ -29,14 +29,23 @@ Route::post('/reservar/servicios-publicados/almacenando-pregunta','ServicioContr
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth', 'ControlarPerfilPrestador'])->group(function () {
+  // Seleccionar categoria para publicar
   Route::get('/publicar', 'ServicioController@Publicar')->name('Publicar');
 
+  // Crear Servicios
   Route::get('/publicar/servicio/crear', 'ServicioController@CrearServicio')->name('CrearServicio');
 
   // Publicar servicios
   Route::post('/publicar/servicio/almacenando','ServicioController@AlmacenarServicio')->name('AlmacenarServicio');
   Route::get('/publicar/servicio/publicado-con-exito','ServicioController@ServicioPublicadoConExito')->name('ServicioPublicadoConExito');
+});
 
+/*
+|--------------------------------------------------------------------------
+| Auth
+|--------------------------------------------------------------------------
+*/
+Route::middleware(['auth', ])->group(function () {
   //Mostrar paquete
   Route::get('/reservar/mi-paquete','ServicioController@MostrarPaquete')->name('MostrarPaquete');
 
@@ -45,15 +54,12 @@ Route::middleware(['auth', 'ControlarPerfilPrestador'])->group(function () {
 
   //Eliminar del paquete
   Route::post('/reservar/servicios-publicados/eliminando-del-paquete','ServicioController@EliminarDelPaquete')->name('EliminarDelPaquete');
-});
 
-/*
-|--------------------------------------------------------------------------
-| Auth + Datos completos
-|--------------------------------------------------------------------------
-*/
+  //Enviar solicitud de presupuesto
+  Route::post('/reservar/servicios-publicados/enviando-solicitud-presupuesto','ServicioController@EnviarSolicitudPresupuesto')->name('EnviarSolicitudPresupuesto');
 
-Route::middleware(['auth', ])->group(function () {
+
+  // ADMIN LTE
   Route::get('/home', 'HomeController@index')->name('home');
   Route::get('/home/resumen','ClienteController@ClienteResumen')->name('ClienteResumen');
 
