@@ -38,7 +38,7 @@
 										</div>
 
 										<div class="bor8 bg0 m-b-12">
-											<textarea class="stext-111 cl8 plh3 size-111 p-lr-15 h-100" name="comentario_adicional[]" maxlength="500" cols="100" rows="5"></textarea>
+											<textarea class="stext-111 cl8 plh3 size-111 p-lr-15 h-100" name="comentario_adicional[{{ $servicio['id_servicio'] }}]" maxlength="500" cols="100" rows="5"></textarea>
 										</div>
 									</div>
 									<hr>
@@ -56,6 +56,9 @@
 								<h4 class="mtext-109 cl2 p-b-30">
 									Datos de traslado
 								</h4>
+								<p class="stext-111 cl6 p-t-2">
+									Indicanos la direccion para enviar los servicios que requieran traslado
+								</p>
 								{{-- <div class="flex-w flex-t bor12 p-b-13">
 									<div class="size-208">
 										<span class="stext-110 cl2">
@@ -69,57 +72,74 @@
 										</span>
 									</div>
 								</div> --}}
-								<div class="flex-w flex-t bor12 p-t-15 p-b-30">
+								<div class="flex-w flex-t bor12 p-t-15 p-b-30 mt-5">
 									<div class="size-208 w-full-ssm">
 										<span class="stext-110 cl2">
 											Envío:
 										</span>
 									</div>
 
+									{{-- Localidad --}}
 									<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
-										<p class="stext-111 cl6 p-t-2">
-											Indicanos la direccion para enviar los servicios que requieran traslado
-										</p>
+										<div class="form-group">
+											<span>{{ Auth::user()->provincia }} , {{ Auth::user()->localidad }} </span>
+										</div>
+									{{-- Dirección --}}
+										<div class="bor8 bg0 m-b-12">
+											<textarea class="stext-111 cl8 plh3 size-111 p-lr-15" name="direccion" maxlength="100" id="" cols="30" rows="10" placeholder="Dirección" required></textarea>
+										</div>
+
+									{{-- Barrio --}}
+										<div class="bor8 bg0 m-b-22">
+											<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="barrio" maxlength="100" placeholder="Barrio" required>
+										</div>
+									</div>
+
+									{{-- Horario --}}
+									<div class="size-208 w-full-ssm">
+										<span class="stext-110 cl2">
+											Día y Horario:
+										</span>
+									</div>
+
+									<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
+
+										<div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker">
+											<input placeholder="Fecha" name="fecha" type="date" id="example" class="form-control" required>
+										</div>
 
 										<div class="p-t-15">
-											{{-- <span class="stext-112 cl8">
-												Calcular envío
-											</span> --}}
 											<div class="form-group">
-												<span>{{ Auth::user()->provincia }} , {{ Auth::user()->localidad }} </span>
+												{{-- Desde --}}
+												<div class="md-form">
+													<input placeholder="Desde" name="desde" type="text" id="input_starttime" class="form-control timepicker" required>
+												 </div>
+												{{-- Hasta --}}
+												 <div class="md-form">
+													<input placeholder="Hasta" name="hasta" type="text" id="input_starttime" class="form-control timepicker" required>
+												 </div>
 											</div>
-
-											<div class="bor8 bg0 m-b-12">
-												<textarea class="stext-111 cl8 plh3 size-111 p-lr-15" name="direccion" maxlength="100" id="" cols="30" rows="10" placeholder="Dirección"></textarea>
-											</div>
-
-											<div class="bor8 bg0 m-b-22">
-												<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="barrio" maxlength="100" placeholder="Barrio">
-											</div>
-
 											{{-- <div class="flex-w">
 												<div class="flex-c-m stext-101 cl2 size-115 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer">
 													Actualizar total
 												</div>
 											</div> --}}
-
 										</div>
 									</div>
 								</div>
-									
-									{{-- <div class="flex-w flex-t p-t-27 p-b-33">
-									<div class="size-208">
-										<span class="mtext-101 cl2">
-											Total:
-										</span>
-									</div>
-									
-									<div class="size-209 p-t-1">
-										<span class="mtext-110 cl2"style="color:#f40082;">
-											<strong>$79.65</strong>
-										</span>
-									</div>
-								</div> --}}
+								{{-- <div class="flex-w flex-t p-t-27 p-b-33">
+								<div class="size-208">
+									<span class="mtext-101 cl2">
+										Total:
+									</span>
+								</div>
+								
+								<div class="size-209 p-t-1">
+									<span class="mtext-110 cl2"style="color:#f40082;">
+										<strong>$79.65</strong>
+									</span>
+								</div>
+							</div> --}}
 								<button type="submit" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
 									Enviar solicitud
 								</button>
@@ -150,6 +170,14 @@
 					location.reload();
 				}
 			});
+		});
+	</script>
+
+	{{-- TimePicker --}}
+	<script>
+		$('.timepicker').pickatime({
+			// 12 or 24 hour
+			twelvehour: false,
 		});
 	</script>
 @endpush
