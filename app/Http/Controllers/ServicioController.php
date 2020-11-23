@@ -12,6 +12,7 @@ use App\Servicio;
 use App\Categoria;
 use App\Opinion;
 use App\Pregunta;
+use App\Presupuesto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -316,7 +317,44 @@ class ServicioController extends Controller
   }
 
   public function EnviarSolicitudPresupuesto(Request $request){
-    dd($request);
+    //dd( $request->session()->all() );
+    dd($request->all());
+
+    $request->validate([
+      'hora_desde' => 'required',
+      'hora_hasta' => 'required',
+      'direccion' => 'required',
+      'barrio' => 'required',
+      'pregunta' => 'required'
+    ]);
+    $Paquete = Session::get('Servicio');
+
+    foreach ($Paquete as $servicio) {
+      $id_prestador = Servicio::findOrfail($servicio['id_servicio'])->pluck('id_prestador')->first();
+
+      if (  key_exists( $servicio['id_servicio'] , $request->comentario_adicional )) { //La key representa el id de servicio y el valor es el comentario adicional o pregunta que se le hace al prestador.
+         $Pregunta = $request->comentario_adicional[ $servicio['id_servicio'] ];
+      }else{
+        return false;
+      }
+
+      return Presupuesto::create([
+        'id_servicio' => $request->id_servicio,
+        'id_prestador' => $id_prestador,
+        'user_id' => Auth::user()->id,
+        'fecha' => $request->fecha,
+        'hora_desde' => $request->desde,
+        'hora_hasta' => $request->hasta,
+        'direccion' => $request->direccion,
+        'barrio' => $request->barrio,
+        //'monto' => ,
+        'estado' => 'Aceptado',
+        'pregunta' => $Pregunta ,
+        //'respuesta' => ,
+        ]
+      );
+
+    }
   }
   
   // public function MostrarPlanes(){
