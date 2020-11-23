@@ -314,6 +314,10 @@ class ServicioController extends Controller
     return redirect()->route('MostrarPaquete');
 
   }
+
+  public function EnviarSolicitudPresupuesto(Request $request){
+    dd($request);
+  }
   
   // public function MostrarPlanes(){
   //   return view('Ecommerce.planes_publicidad');
