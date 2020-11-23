@@ -28,8 +28,9 @@ class CreatePresupuestosTable extends Migration
             $table->time('hora_desde');
             $table->time('hora_hasta');
             $table->string('direccion');
-            $table->integer('monto');
-            $table->enum('estado',['Disponible','No disponible','Sin respuesta']);
+            $table->string('barrio');
+            $table->integer('monto')->nullable();
+            $table->enum('estado',['Aceptado','Disponible','No disponible','Sin respuesta']);
             $table->string('pregunta',1000)->nullable();
             $table->string('respuesta',1000)->nullable();
             $table->softDeletes();
