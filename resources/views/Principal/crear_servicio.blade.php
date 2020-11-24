@@ -128,7 +128,7 @@
             <div class="mt-5">
                 <div class="col md-form">
                     <label for="descripcion">Descripción</label>
-                    <textarea id="descripcion" class="md-textarea form-control" type="text" name="descripcion" value="" maxlength="3000" cols="30" rows="10"  required> {{old('descripcion')}}</textarea>
+                    <textarea id="descripcion" class="md-textarea form-control" type="text" name="descripcion" value="" maxlength="2000" cols="30" rows="10"  required> {{old('descripcion')}}</textarea>
                     <div class="text-danger"> {{ $errors->first('descripcion') }} </div>
                 </div>
             </div>
