@@ -318,15 +318,15 @@ class ServicioController extends Controller
 
   public function EnviarSolicitudPresupuesto(Request $request){
     //dd( $request->session()->all() );
-    dd($request->all());
+    //dd($request->all());
 
-    $request->validate([
-      'hora_desde' => 'required',
-      'hora_hasta' => 'required',
-      'direccion' => 'required',
-      'barrio' => 'required',
-      'pregunta' => 'required'
-    ]);
+    // $request->validate([
+    //   'desde' => 'required',
+    //   'hasta' => 'required',
+    //   'direccion' => 'required|max:100',
+    //   'barrio' => 'required|max:100',
+    //   'pregunta' => 'required'
+    // ]);
     $Paquete = Session::get('Servicio');
 
     foreach ($Paquete as $servicio) {
@@ -338,8 +338,8 @@ class ServicioController extends Controller
         return false;
       }
 
-      return Presupuesto::create([
-        'id_servicio' => $request->id_servicio,
+      Presupuesto::create([
+        'id_servicio' => $servicio['id_servicio'],
         'id_prestador' => $id_prestador,
         'user_id' => Auth::user()->id,
         'fecha' => $request->fecha,
@@ -355,6 +355,8 @@ class ServicioController extends Controller
       );
 
     }
+    //$request->session()->forget(['Servicio']);
+    return redirect()->route('Principal')->with( 'PresupuestoEnviado' , ' ' );
   }
   
   // public function MostrarPlanes(){
