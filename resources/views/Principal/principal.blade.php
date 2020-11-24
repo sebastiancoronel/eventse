@@ -662,6 +662,14 @@
 		</div>
 	</div>
 </div>
-
+@push('js')
+	@if ( Session::has('PresupuestoEnviado') )
+		<script>
+			$(document).ready(function(){
+				swal( 'Listo!' , 'Enviamos tu presupuesto' , 'success' );
+			});
+		</script>
+	@endif
+@endpush
 
 @endsection

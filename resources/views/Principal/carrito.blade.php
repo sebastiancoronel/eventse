@@ -87,12 +87,14 @@
 									{{-- Dirección --}}
 										<div class="bor8 bg0 m-b-12">
 											<textarea class="stext-111 cl8 plh3 size-111 p-lr-15" name="direccion" maxlength="100" id="" cols="30" rows="10" placeholder="Dirección" required></textarea>
+											<div class="text-danger"> {{ $errors->first('direccion') }} </div>
 										</div>
 
 									{{-- Barrio --}}
 										<div class="bor8 bg0 m-b-22">
 											<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="barrio" maxlength="100" placeholder="Barrio" required>
 										</div>
+										<div class="text-danger"> {{ $errors->first('barrio') }} </div>
 									</div>
 
 									{{-- Horario --}}
