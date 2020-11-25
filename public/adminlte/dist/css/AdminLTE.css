@@ -10087,7 +10087,7 @@ body,
 
 [class*="sidebar-dark"] .brand-link {
   color: rgba(255, 255, 255, 0.8);
-  border-bottom: 1px solid #4b545c;
+  /* border-bottom: 1px solid #4b545c; */
 }
 
 [class*="sidebar-light"] .brand-link {
