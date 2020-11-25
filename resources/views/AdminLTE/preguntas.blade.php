@@ -20,22 +20,31 @@
         <div class="card-body">
           <div class="row">
             <div class="col-lg-12 col-12">
-            <strong> {{ $pregunta->name }} {{ $pregunta->lastname }}: </strong> {{ $pregunta->pregunta }}
+            <strong> {{ $pregunta->name }} {{ $pregunta->lastname }}: </strong> 
+            <p class="mb-0 font-weight-light small grey lighten-2 p-2 rounded">
+              {{ $pregunta->pregunta }}
+            </p>
             </div>
             <div class="col-lg-12 col-12 mt-5">
-              <strong> Respuesta: </strong> {{ ($pregunta->respuesta ? : ' ') }}
+              <strong> Respuesta: </strong> 
+              @if ($pregunta->respuesta)
+                <p class="mb-0 font-weight-light small primary-color text-white p-2 rounded">
+                  {{$pregunta->respuesta}}
+                </p>
+              @endif
             </div>
           </div>
         </div>
         <div class="card-footer">
-          <div class="bor8 bg0 m-b-12">
-            <textarea class="stext-111 cl8 plh3 size-111 p-lr-15 h-100" name="respuesta" maxlength="1000" cols="100" rows="2" placeholder="Escribir una respuesta" required></textarea>
-          </div>
+          @if ($pregunta->respuesta == null)
+            <div class="bor8 bg0 m-b-12">
+              <textarea class="stext-111 cl8 plh3 size-111 p-lr-15 h-100" name="respuesta" maxlength="1000" cols="100" rows="2" placeholder="Escribir una respuesta" required></textarea>
+            </div>
 
-          <div class="pull-right">
-            <button type="submit" class="btn btn-primary">Enviar</button>
-          </div>
-
+            <div class="pull-right">
+              <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+          @endif
         </div>
       </div>
     </form>
