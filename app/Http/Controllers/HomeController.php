@@ -61,9 +61,11 @@ class HomeController extends Controller
 
     public function MostrarRespuestasRecibidas(){
       $Respuestas = Pregunta::where( 'user_id' , Auth::user()->id )
-                              ->select('*')
-                              ->get();
-      
+                            ->Join( 'servicios' , 'preguntas.id_servicio' , '=' , 'servicios.id' )
+                            ->select('preguntas.*','servicios.nombre as nombre_servicio','servicios.id as id_servicio')
+                            ->orderBy('updated_at' , 'DESC')
+                            ->get();
+
       return view('AdminLTE.respuestas', [ 'Respuestas' => $Respuestas ]);
     }
 
