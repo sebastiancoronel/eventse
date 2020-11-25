@@ -214,7 +214,7 @@
                 
                 {{-- SOLO CLIENTE Respuestas de preguntas (mostrarla en una vista y un poner link para redirigir al post del servicio) --}}
                 <li class="nav-item has-treeview">
-                  <a href=" " class="nav-link">
+                  <a href=" {{route('MostrarRespuestasRecibidas')}} " class="nav-link">
                     <i class="nav-icon zmdi zmdi-format-subject"></i>
                     <p>
                       Respuestas
@@ -368,7 +368,7 @@
               
               {{-- SOLO CLIENTE Respuestas de preguntas (mostrarla en una vista y un poner link para redirigir al post del servicio) --}}
               <li class="nav-item has-treeview">
-                <a href=" " class="nav-link">
+                <a href=" {{route('MostrarRespuestasRecibidas')}} " class="nav-link">
                   <i class="nav-icon zmdi zmdi-format-subject"></i>
                   <p>
                     Respuestas

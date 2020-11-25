@@ -67,26 +67,11 @@ Route::middleware(['auth', ])->group(function () {
   //Enviar solicitud de presupuesto
   Route::post('/reservar/servicios-publicados/enviando-solicitud-presupuesto','ServicioController@EnviarSolicitudPresupuesto')->name('EnviarSolicitudPresupuesto');
 
-
   // ADMIN LTE
   Route::get('/home', 'HomeController@index')->name('home');
   Route::get('/home/resumen','ClienteController@ClienteResumen')->name('ClienteResumen');
 
-  // Crear Perfil Empresa
-  Route::get('/publicar/crear-perfil-empresa','PrestadorController@CrearPerfilEmpresa')->name('CrearPerfilEmpresa');
-  Route::get('/publicar/crear-perfil-empresa/formulario','PrestadorController@FormularioPerfilEmpresa')->name('FormularioPerfilEmpresa');
-  Route::post('/publicar/crear-perfil-empresa/formulario/almacenar-perfil-empresa','PrestadorController@AlmacenarPerfilEmpresa')->name('AlmacenarPerfilEmpresa');
-
-  // Menú Cliente
-  //Servicios contratados
-  Route::get('/home/servicios-contratados/favoritos','ClienteController@ServiciosFavoritos')->name('ServiciosFavoritos');
-  Route::get('/home/servicios-contratados/preguntas-realizadas','ClienteController@PreguntasRealizadas')->name('PreguntasRealizadas');
-  Route::get('/home/servicios-contratados/servicios-finalizados','ClienteController@ServiciosFinalizados')->name('ServiciosFinalizados');
-  Route::get('/home/servicios-contratados/presupuestos-recibidos','ClienteController@PresupuestosRecibidos')->name('PresupuestosRecibidos');
-
-  //Menú Empresa
-  //Alquileres y reservas
-  Route::get('/home/empresa/alquileres-y-reservas/preguntas-recibidas','PrestadorController@PreguntasRecibidas')->name('PreguntasRecibidas');
+  Route::get('/home/respuestas-recibidas','HomeController@MostrarRespuestasRecibidas')->name('MostrarRespuestasRecibidas');
 });
 
 /*

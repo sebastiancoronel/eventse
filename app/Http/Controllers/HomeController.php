@@ -35,7 +35,6 @@ class HomeController extends Controller
       $id_prestador = Prestador::where( 'user_id' , Auth::user()->id )->pluck('id')->first();
 
       $Preguntas = Pregunta::where( 'preguntas.id_prestador' , $id_prestador )
-                            // ->where( 'respuesta' , '=' , NULL )
                             ->Join( 'users' , 'preguntas.user_id' , '=' , 'users.id' )
                             ->Join( 'servicios' , 'preguntas.id_servicio' , '=' , 'servicios.id' )
                             ->select('preguntas.*','users.id as user_id', 'users.name','users.lastname','servicios.nombre as nombre_servicio')
@@ -58,6 +57,14 @@ class HomeController extends Controller
 
       return redirect()->route('MostrarPreguntasRecibidas')->with( 'Respondido' , ' ' );
       
+    }
+
+    public function MostrarRespuestasRecibidas(){
+      $Respuestas = Pregunta::where( 'user_id' , Auth::user()->id )
+                              ->select('*')
+                              ->get();
+      
+      return view('AdminLTE.respuestas', [ 'Respuestas' => $Respuestas ]);
     }
 
 }
