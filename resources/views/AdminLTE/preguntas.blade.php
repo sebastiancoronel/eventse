@@ -1,4 +1,4 @@
-@extends('Perfiles.home')
+@extends('AdminLTE.home')
 @section('content')
   {{-- Escritorio --}}
 <div class="dispositivo">
@@ -27,7 +27,7 @@
             <small class="col-md-4 d-flex justify-content-end "> Publicado el 10/08/2019</small>
           </div>
         <!-- Chat -->
-        <div class="card-body my-custom-scrollbar">
+        <div class="card-body my-custom-scrollbar" style="height: 60vh;">
           <div class="media">
             <img class="avatar rounded-circle card-img-35 z-depth-1 d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(32).jpg" alt="Generic placeholder image">
             <div class="media-body">

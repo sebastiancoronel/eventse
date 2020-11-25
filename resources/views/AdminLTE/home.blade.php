@@ -137,14 +137,8 @@
 
     {{-- MENÙ ESCRITORIO --}}
       <aside class="d-none d-sm-block main-sidebar sidebar-dark-primary elevation-4 mt-5 pt-5" style="background-color:#717fe0; z-index:1;">
-          <ul class="navbar-nav text-left ml-2 d-none d-sm-block">
-            <li class="nav-item">
-              <a id="hamburguesa" class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars text-white"></i></a>
-            </li>
-          </ul>
          <!-- Brand Logo -->
          <div class="brand-link text-left">
-
            <!-- <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                 style="opacity: .8"> -->
            <span class="brand-text font-weight-light text-left">Mi cuenta</span>
@@ -154,6 +148,10 @@
              $lastname = Auth::user()->lastname;
            @endphp
            <small class="brand-text">¡Hola {{ $name }} {{ $lastname }}!</small>
+         </div>
+
+         <div class="d-flex justify-content-end">
+            <a id="hamburguesa" class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars text-white"></i></a>
          </div>
 
          <!-- Sidebar -->
@@ -169,7 +167,7 @@
            </div>
            <!-- Sidebar Menu -->
            <nav class="mt-2">
-             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- INICIO -->
                 <li class="nav-item has-treeview">
                     <a href="{{url('/')}}" class="nav-link">
@@ -179,83 +177,213 @@
                       </p>
                     </a>
                 </li>
-                <!-- RESUMEN -->
-                <li class="nav-item has-treeview">
-                  <a href="{{route('ClienteResumen')}}" class="nav-link">
-                    <i class="nav-icon zmdi zmdi-format-subject"></i>
-                    <p>
-                      Resumen
-                    </p>
-                  </a>
-                </li>
-                  
-                <!-- VENTAS -->
+
+                {{-- Presupuestos --}}
                 <li class="nav-item has-treeview">
                   <a href="#" class="nav-link">
-                    <i class="nav-icon zmdi zmdi-store"></i>
+                    <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
                     <p>
-                      Alquileres y Reservas
+                      Presupuestos
                       <i class="right fas fa-angle-left"></i>
                     </p>
                   </a>
                   <ul class="nav nav-treeview">
                     <li class="nav-item">
-                      <a href="pages/charts/chartjs.html" class="nav-link">
+                      <a href="" class="nav-link">
                         <i class="nav-icon"></i>
-                        <p>Publicaciones</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="{{route('PreguntasRecibidas')}}" class="nav-link">
-                        <i class="nav-icon"></i>
-                        <p>Preguntas recibidas</p>
+                        <p> Solicitados </p>
                       </a>
                     </li>
                     <li class="nav-item">
                       <a href="" class="nav-link">
                         <i class="nav-icon"></i>
-                        <p>Mis alquileres</p>
+                        <p> Recibidos </p>
                       </a>
                     </li>
                   </ul>
                 </li>
 
-                <!-- Servicios contratados -->
                 <li class="nav-item has-treeview">
-                  <a href="#" class="nav-link">
-                    <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
+                  <a href="{{ route('MostrarPreguntasRecibidas') }}" class="nav-link">
+                    <i class="nav-icon zmdi zmdi-format-subject"></i>
                     <p>
-                      Servicios contratados
-                      <i class="right fas fa-angle-left"></i>
+                      Preguntas
                     </p>
                   </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="{{route('ServiciosFavoritos')}}" class="nav-link">
-                        <i class="nav-icon"></i>
-                        <p>Favoritos</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="{{route('PreguntasRealizadas')}}" class="nav-link">
-                        <i class="nav-icon"></i>
-                        <p>Preguntas realizadas</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="{{route('ServiciosFinalizados')}}" class="nav-link">
-                        <i class="nav-icon"></i>
-                        <p>Finalizados</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="{{route('PresupuestosRecibidos')}}" class="nav-link">
-                        <i class="nav-icon"></i>
-                        <p>Presupuestos</p>
-                      </a>
-                    </li>
-                  </ul>
                 </li>
+                
+                {{-- SOLO CLIENTE Respuestas de preguntas (mostrarla en una vista y un poner link para redirigir al post del servicio) --}}
+                <li class="nav-item has-treeview">
+                  <a href=" " class="nav-link">
+                    <i class="nav-icon zmdi zmdi-format-subject"></i>
+                    <p>
+                      Respuestas
+                    </p>
+                  </a>
+                </li>
+
+                <li class="nav-item has-treeview">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon zmdi zmdi-format-subject"></i>
+                    <p>
+                      Publicaciones
+                    </p>
+                  </a>
+                </li>
+
+                {{-- Admin --}}
+                @if ( Auth::check() )
+                  @if ( Auth::user()->rol == 'Administrador' )
+                    <!-- Categorías -->
+                    <li class="nav-item has-treeview">
+                      <a href="#" class="nav-link">
+                        <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
+                        <p>
+                          Categorías
+                          <i class="right fas fa-angle-left"></i>
+                        </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                          <a href="{{route('CrearCategorias')}}" class="nav-link">
+                            <i class="nav-icon"></i>
+                            <p>Gestionar</p>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+
+                    <!-- Características -->
+                    <li class="nav-item has-treeview">
+                      <a href="#" class="nav-link">
+                        <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
+                        <p>
+                          Características
+                          <i class="right fas fa-angle-left"></i>
+                        </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                          <a href="{{route('CrearCaracteristicas')}}" class="nav-link">
+                            <i class="nav-icon"></i>
+                            <p>Gestionar</p>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                  @endif
+                @endif
+
+                <li class="nav-item has-treeview">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon zmdi zmdi-settings"></i>
+                    <p>
+                    Modificar datos
+                    </p>
+                  </a>
+                </li>
+              </ul>
+           </nav>
+           <!-- /.sidebar-menu -->
+         </div>
+         <!-- /.sidebar -->
+      </aside>
+    {{-- FIN MENÚ ESCRITORIO --}}
+
+    {{-- MENÚ MÓVIL --}}
+      <!-- Main Sidebar Container -->
+        <aside class="d-md-none d-lg-none d-xl-none d-xs-block d-sm-block main-sidebar sidebar-dark-primary elevation-4">
+          <ul class="navbar-nav text-left ml-2 d-none d-sm-block">
+            <li class="nav-item">
+              <a id="hamburguesa" class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars text-white"></i></a>
+            </li>
+          </ul>
+        <!-- Brand Logo -->
+        <div class="brand-link text-left text-white" style="background: #717fe0;">
+
+          {{-- <!-- <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                style="opacity: .8"> -->
+          <span class="brand-text font-weight-light text-left">Mi cuenta</span> --}}
+          <br>
+          <small class="brand-text">¡Hola {{ $name }} {{ $lastname }}!</small>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar bg-white">
+          <!-- Sidebar user panel (optional) -->
+          <div class="mt-0 pb-0 mb-0 d-flex">
+            <!-- <div class="image">
+              <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+              <a href="#" class="d-block">Usuario</a>
+            </div> -->
+          </div>
+          <!-- Sidebar Menu -->
+          <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              <!-- INICIO -->
+              <li class="nav-item has-treeview">
+                  <a href="{{url('/')}}" class="nav-link">
+                    <i class="nav-icon zmdi zmdi-home"></i>
+                    <p>
+                      Inicio
+                    </p>
+                  </a>
+              </li>
+
+              {{-- Presupuestos --}}
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
+                  <p>
+                    Presupuestos
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="" class="nav-link">
+                      <i class="nav-icon"></i>
+                      <p> Solicitados </p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="" class="nav-link">
+                      <i class="nav-icon"></i>
+                      <p> Recibidos </p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-treeview">
+                <a href="{{ route('MostrarPreguntasRecibidas') }}" class="nav-link">
+                  <i class="nav-icon zmdi zmdi-format-subject"></i>
+                  <p>
+                    Preguntas
+                  </p>
+                </a>
+              </li>
+              
+              {{-- SOLO CLIENTE Respuestas de preguntas (mostrarla en una vista y un poner link para redirigir al post del servicio) --}}
+              <li class="nav-item has-treeview">
+                <a href=" " class="nav-link">
+                  <i class="nav-icon zmdi zmdi-format-subject"></i>
+                  <p>
+                    Respuestas
+                  </p>
+                </a>
+              </li>
+
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon zmdi zmdi-format-subject"></i>
+                  <p>
+                    Publicaciones
+                  </p>
+                </a>
+              </li>
 
               {{-- Admin --}}
               @if ( Auth::check() )
@@ -300,195 +428,16 @@
                 @endif
               @endif
 
-             <!-- Configuración -->
-             <li class="nav-item has-treeview">
-               <a href="#" class="nav-link">
-                 <i class="nav-icon zmdi zmdi-settings"></i>
-                 <p>
-                   Configuración
-                   <i class="right fas fa-angle-left"></i>
-                 </p>
-               </a>
-               <ul class="nav nav-treeview">
-                 <li class="nav-item">
-                   <a href="pages/charts/chartjs.html" class="nav-link">
-                     <i class="nav-icon"></i>
-                     <p>Mis datos</p>
-                   </a>
-                 </li>
-                 <li class="nav-item">
-                   <a href="pages/charts/flot.html" class="nav-link">
-                     <i class="nav-icon"></i>
-                     <p>Preferencias de venta</p>
-                   </a>
-                 </li>
-                 <li class="nav-item">
-                   <a href="pages/charts/inline.html" class="nav-link">
-                     <i class="nav-icon"></i>
-                     <p>Datos de mis colaboradores</p>
-                   </a>
-                 </li>
-               </ul>
-             </li>
-           </ul>
-           </nav>
-           <!-- /.sidebar-menu -->
-         </div>
-         <!-- /.sidebar -->
-      </aside>
-    {{-- FIN MENÚ ESCRITORIO --}}
-
-    {{-- MENÚ MÓVIL --}}
-      <!-- Main Sidebar Container -->
-        <aside class="d-md-none d-lg-none d-xl-none d-xs-block d-sm-block main-sidebar sidebar-dark-primary elevation-4">
-          <ul class="navbar-nav text-left ml-2 d-none d-sm-block">
-            <li class="nav-item">
-              <a id="hamburguesa" class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars text-white"></i></a>
-            </li>
-          </ul>
-        <!-- Brand Logo -->
-        <div class="brand-link text-left text-white" style="background: #717fe0;">
-
-          {{-- <!-- <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                style="opacity: .8"> -->
-          <span class="brand-text font-weight-light text-left">Mi cuenta</span> --}}
-          <br>
-          <small class="brand-text">¡Hola {{ $name }} {{ $lastname }}!</small>
-        </div>
-
-        <!-- Sidebar -->
-        <div class="sidebar bg-white">
-          <!-- Sidebar user panel (optional) -->
-          <div class="mt-0 pb-0 mb-0 d-flex">
-            <!-- <div class="image">
-              <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-            </div>
-            <div class="info">
-              <a href="#" class="d-block">Usuario</a>
-            </div> -->
-          </div>
-          <!-- Sidebar Menu -->
-          <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-              <!-- Add icons to the links using the .nav-icon class
-                    with font-awesome or any other icon font library -->
-                    <!-- INICIO -->
-                    <li class="nav-item has-treeview">
-                    <a href="{{url('/')}}" class="nav-link">
-                      <i class="nav-icon zmdi zmdi-home"></i>
-                      <p>
-                        Inicio
-                      </p>
-                    </a>
-                  </li>
-                    <!-- RESUMEN -->
-                    <li class="nav-item has-treeview">
-                    <a href="{{route('ClienteResumen')}}" class="nav-link">
-                      <i class="nav-icon zmdi zmdi-format-subject"></i>
-                      <p>
-                        Resumen
-                      </p>
-                    </a>
-                  </li>
-                  <!-- VENTAS -->
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
-                  <i class="nav-icon zmdi zmdi-store"></i>
+                  <i class="nav-icon zmdi zmdi-settings"></i>
                   <p>
-                    Alquileres y Reservas
-                    <i class="right fas fa-angle-left"></i>
+                  Modificar datos
                   </p>
                 </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="pages/charts/chartjs.html" class="nav-link">
-                      <i class="nav-icon"></i>
-                      <p>Publicaciones</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="{{route('PreguntasRecibidas')}}" class="nav-link">
-                      <i class="nav-icon"></i>
-                      <p>Preguntas recibidas</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="" class="nav-link">
-                      <i class="nav-icon"></i>
-                      <p>Mis alquileres</p>
-                    </a>
-                  </li>
-                </ul>
               </li>
-            <!-- COMPRAS -->
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
-                <p>
-                  Servicios contratados
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{route('ServiciosFavoritos')}}" class="nav-link">
-                    <i class="nav-icon"></i>
-                    <p>Favoritos</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{route('PreguntasRealizadas')}}" class="nav-link">
-                    <i class="nav-icon"></i>
-                    <p>Preguntas realizadas</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{route('ServiciosFinalizados')}}" class="nav-link">
-                    <i class="nav-icon"></i>
-                    <p>Finalizados</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{route('PresupuestosRecibidos')}}" class="nav-link">
-                    <i class="nav-icon"></i>
-                    <p>Presupuestos</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            <!-- Configuración -->
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon zmdi zmdi-settings"></i>
-                <p>
-                  Configuración
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="pages/charts/chartjs.html" class="nav-link">
-                    <i class="nav-icon"></i>
-                    <p>Mis datos</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="pages/charts/flot.html" class="nav-link">
-                    <i class="nav-icon"></i>
-                    <p>Preferencias de venta</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="pages/charts/inline.html" class="nav-link">
-                    <i class="nav-icon"></i>
-                    <p>Datos de mis colaboradores</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          </nav>
+            </ul>
+         </nav>
           <!-- /.sidebar-menu -->
         </div>
         <!-- /.sidebar -->

@@ -29,4 +29,8 @@ class HomeController extends Controller
       return view('AdminLTE.home',['Categorias'=>$Categorias]);
     }
 
+    public function MostrarPreguntasRecibidas(){
+      return view('AdminLTE.preguntas');
+    }
+
 }

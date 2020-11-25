@@ -38,6 +38,8 @@ Route::middleware(['auth', 'ControlarPerfilPrestador'])->group(function () {
   // Publicar servicios
   Route::post('/publicar/servicio/almacenando','ServicioController@AlmacenarServicio')->name('AlmacenarServicio');
   Route::get('/publicar/servicio/publicado-con-exito','ServicioController@ServicioPublicadoConExito')->name('ServicioPublicadoConExito');
+
+  Route::get('/home/preguntas-recibidas','HomeController@MostrarPreguntasRecibidas')->name('MostrarPreguntasRecibidas');
 });
 
 /*
@@ -46,6 +48,11 @@ Route::middleware(['auth', 'ControlarPerfilPrestador'])->group(function () {
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth', ])->group(function () {
+  //Completar datos de cada tipo de prestador
+  Route::get('completardatos/cliente','PrestadorController@CrearPrestador')->name('CrearPrestador');
+  //Almacenar prestador
+  Route::post('completardatos/cliente/AlmacenarDatosCliente','PrestadorController@AlmacenarPrestador')->name('AlmacenarPrestador');
+
   //Mostrar paquete
   Route::get('/reservar/mi-paquete','ServicioController@MostrarPaquete')->name('MostrarPaquete');
 
@@ -80,19 +87,6 @@ Route::middleware(['auth', ])->group(function () {
   Route::get('/home/empresa/alquileres-y-reservas/preguntas-recibidas','PrestadorController@PreguntasRecibidas')->name('PreguntasRecibidas');
 });
 
-/*
-|--------------------------------------------------------------------------
-| Auth
-|--------------------------------------------------------------------------
-*/
-Route::middleware(['auth'])->group(function () {
-
-  //Completar datos de cada tipo de prestador
-  Route::get('completardatos/cliente','PrestadorController@CrearPrestador')->name('CrearPrestador');
-  //Almacenar prestador
-  Route::post('completardatos/cliente/AlmacenarDatosCliente','PrestadorController@AlmacenarPrestador')->name('AlmacenarPrestador');
-
-});
 /*
 |--------------------------------------------------------------------------
 | Admin
