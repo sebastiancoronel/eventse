@@ -116,83 +116,7 @@
     </head>
     <body class="hold-transition sidebar-mini layout-fixed">
       <div>
-      <header>
-          <!-- Header desktop -->
-          <div class="container-menu-desktop">
-
-            <div class="wrap-menu-desktop row" style="top: 0px; width:101%;">
-              <!-- Logo desktop -->
-              <a href="{{route('Principal')}}" class="logo ml-5 mt-3">
-                <img src="{{asset('images/Logo Eventse-1 ORIGINAL.svg')}}" style="max-width: 150%; max-height:150%;" alt="IMG-LOGO">
-              </a>
-              {{-- <div class="col-md-2 ml-2">
-              </div> --}}
-              <!-- Menu desktop -->
-              <div class="row col-md-8 menu-desktop d-flex justify-content-start">
-                <ul class="main-menu">
-                  <li class="active-menu">
-                    <a href="index.html">Categorías</a>
-                    <ul class="sub-menu">
-                      {{-- @foreach ($Categorias as $categoria)
-                        <li><a href="index.html">{{ $categoria->nombre }}</a></li>
-                      @endforeach HACAERLO EN APPSERVICE PROVIDER BOOT --}}
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="product.html">Reservar</a>
-                  </li>
-                  <!--class="label1" data-label1="hot"> Label "HOT" para poner arriba cuando haya alguna promo o algo asi-->
-                  <li>
-                    <a href="shoping-cart.html">Ofertas de la semana</a>
-                  </li>
-
-                  <li>
-                    <a href="contact.html">Contacto</a>
-                  </li>
-                </ul>
-              </div>
-              <!-- Right navbar links -->
-              <div class="row col-md-2 mt-4">
-                  <ul class="ml-auto row">
-                    <!-- Notifications Dropdown Menu -->
-                    <li class="nav-item dropdown col-md-6">
-                      <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="zmdi zmdi-notifications text-muted" style="font-size:20px;"></i>
-                        <span class="badge badge-warning navbar-badge">15</span>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                          <i class="fas fa-envelope mr-2"></i> 4 new messages
-                          <span class="float-right text-muted text-sm">3 mins</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                          <i class="fas fa-users mr-2"></i> 8 friend requests
-                          <span class="float-right text-muted text-sm">12 hours</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                          <i class="fas fa-file mr-2"></i> 3 new reports
-                          <span class="float-right text-muted text-sm">2 days</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                      </div>
-                    </li>
-                    <!-- Carrito -->
-                    <li class="nav-item dropdown col-md-6">
-                      <a class="nav-link" href="#">
-                        <i class="zmdi zmdi-shopping-cart text-muted" style="font-size:20px;"></i>
-                        <span class="badge badge-danger navbar-badge">3</span>
-                      </a>
-                    </li>
-                  </ul>
-              </div>
-            </div>
-          </div>
-      </header>
+        @include('Principal.Partials.header')
       </div>
 
     <div class="wrapper">
@@ -207,49 +131,12 @@
              <li class="mt-2">Mi cuenta</li>
           </ul>
         <!-- Right navbar links -->
-          {{-- <ul class="navbar-nav ml-auto">
-            <!-- Notifications -->
-            <li class="nav-item dropdown">
-              <a class="nav-link"  data-widget="control-sidebar" data-slide="true" href="#"> <!-- data-toggle="dropdown" para que abra las notifiaciones viejas -->
-                <i class="zmdi zmdi-notifications" style="font-size:30px;"></i>
-                <span class="badge badge-warning navbar-badge">15</span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <span class="dropdown-item dropdown-header">15 Notifications</span>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                  <i class="fas fa-envelope mr-2"></i> 4 new messages
-                  <span class="float-right text-muted text-sm">3 mins</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                  <i class="fas fa-users mr-2"></i> 8 friend requests
-                  <span class="float-right text-muted text-sm">12 hours</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                  <i class="fas fa-file mr-2"></i> 3 new reports
-                  <span class="float-right text-muted text-sm">2 days</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-              </div>
-            </li>
-            <!-- Carrito -->
-            <li>
-              <a class="nav-link" data-toggle="dropdown" href="#" data-notify="7">
-                <i class="zmdi zmdi-shopping-cart" style="font-size:30px;"></i>
-              </a>
-            </li>
-          </ul> --}}
         </nav>
       </div>
-
       <!-- /.navbar movil -->
 
-      {{-- MENÙ ESCRITORIO --}}
-      <!-- Main Sidebar Container -->
-        <aside class="d-none d-sm-block main-sidebar sidebar-dark-primary elevation-4 mt-5 pt-5" style="background-color:#717fe0; z-index:1;">
+    {{-- MENÙ ESCRITORIO --}}
+      <aside class="d-none d-sm-block main-sidebar sidebar-dark-primary elevation-4 mt-5 pt-5" style="background-color:#717fe0; z-index:1;">
           <ul class="navbar-nav text-left ml-2 d-none d-sm-block">
             <li class="nav-item">
               <a id="hamburguesa" class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars text-white"></i></a>
@@ -448,230 +335,234 @@
            <!-- /.sidebar-menu -->
          </div>
          <!-- /.sidebar -->
-       </aside>
-{{-- FIN MENÚ ESCRITORIO --}}
+      </aside>
+    {{-- FIN MENÚ ESCRITORIO --}}
 
-{{-- MENÚ MÓVIL --}}
-  <!-- Main Sidebar Container -->
-    <aside class="d-md-none d-lg-none d-xl-none d-xs-block d-sm-block main-sidebar sidebar-dark-primary elevation-4">
-      <ul class="navbar-nav text-left ml-2 d-none d-sm-block">
-        <li class="nav-item">
-          <a id="hamburguesa" class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars text-white"></i></a>
-        </li>
-      </ul>
-     <!-- Brand Logo -->
-     <div class="brand-link text-left text-white" style="background: #717fe0;">
+    {{-- MENÚ MÓVIL --}}
+      <!-- Main Sidebar Container -->
+        <aside class="d-md-none d-lg-none d-xl-none d-xs-block d-sm-block main-sidebar sidebar-dark-primary elevation-4">
+          <ul class="navbar-nav text-left ml-2 d-none d-sm-block">
+            <li class="nav-item">
+              <a id="hamburguesa" class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars text-white"></i></a>
+            </li>
+          </ul>
+        <!-- Brand Logo -->
+        <div class="brand-link text-left text-white" style="background: #717fe0;">
 
-       {{-- <!-- <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-            style="opacity: .8"> -->
-       <span class="brand-text font-weight-light text-left">Mi cuenta</span> --}}
-       <br>
-       <small class="brand-text">¡Hola {{ $name }} {{ $lastname }}!</small>
-     </div>
-
-     <!-- Sidebar -->
-     <div class="sidebar bg-white">
-       <!-- Sidebar user panel (optional) -->
-       <div class="mt-0 pb-0 mb-0 d-flex">
-         <!-- <div class="image">
-           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-         </div>
-         <div class="info">
-           <a href="#" class="d-block">Usuario</a>
-         </div> -->
-       </div>
-       <!-- Sidebar Menu -->
-       <nav class="mt-2">
-         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-           <!-- Add icons to the links using the .nav-icon class
-                with font-awesome or any other icon font library -->
-                <!-- INICIO -->
-                <li class="nav-item has-treeview">
-                 <a href="{{url('/')}}" class="nav-link">
-                   <i class="nav-icon zmdi zmdi-home"></i>
-                   <p>
-                     Inicio
-                   </p>
-                 </a>
-               </li>
-                <!-- RESUMEN -->
-                <li class="nav-item has-treeview">
-                 <a href="{{route('ClienteResumen')}}" class="nav-link">
-                   <i class="nav-icon zmdi zmdi-format-subject"></i>
-                   <p>
-                     Resumen
-                   </p>
-                 </a>
-               </li>
-              <!-- VENTAS -->
-           <li class="nav-item has-treeview">
-             <a href="#" class="nav-link">
-               <i class="nav-icon zmdi zmdi-store"></i>
-               <p>
-                 Alquileres y Reservas
-                 <i class="right fas fa-angle-left"></i>
-               </p>
-             </a>
-             <ul class="nav nav-treeview">
-               <li class="nav-item">
-                 <a href="pages/charts/chartjs.html" class="nav-link">
-                   <i class="nav-icon"></i>
-                   <p>Publicaciones</p>
-                 </a>
-               </li>
-               <li class="nav-item">
-                 <a href="{{route('PreguntasRecibidas')}}" class="nav-link">
-                   <i class="nav-icon"></i>
-                   <p>Preguntas recibidas</p>
-                 </a>
-               </li>
-               <li class="nav-item">
-                 <a href="" class="nav-link">
-                   <i class="nav-icon"></i>
-                   <p>Mis alquileres</p>
-                 </a>
-               </li>
-             </ul>
-           </li>
-         <!-- COMPRAS -->
-         <li class="nav-item has-treeview">
-           <a href="#" class="nav-link">
-             <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
-             <p>
-               Servicios contratados
-               <i class="right fas fa-angle-left"></i>
-             </p>
-           </a>
-           <ul class="nav nav-treeview">
-             <li class="nav-item">
-               <a href="{{route('ServiciosFavoritos')}}" class="nav-link">
-                 <i class="nav-icon"></i>
-                 <p>Favoritos</p>
-               </a>
-             </li>
-             <li class="nav-item">
-               <a href="{{route('PreguntasRealizadas')}}" class="nav-link">
-                 <i class="nav-icon"></i>
-                 <p>Preguntas realizadas</p>
-               </a>
-             </li>
-             <li class="nav-item">
-               <a href="{{route('ServiciosFinalizados')}}" class="nav-link">
-                 <i class="nav-icon"></i>
-                 <p>Finalizados</p>
-               </a>
-             </li>
-             <li class="nav-item">
-               <a href="{{route('PresupuestosRecibidos')}}" class="nav-link">
-                 <i class="nav-icon"></i>
-                 <p>Presupuestos</p>
-               </a>
-             </li>
-           </ul>
-         </li>
-
-         <!-- Configuración -->
-         <li class="nav-item has-treeview">
-           <a href="#" class="nav-link">
-             <i class="nav-icon zmdi zmdi-settings"></i>
-             <p>
-               Configuración
-               <i class="right fas fa-angle-left"></i>
-             </p>
-           </a>
-           <ul class="nav nav-treeview">
-             <li class="nav-item">
-               <a href="pages/charts/chartjs.html" class="nav-link">
-                 <i class="nav-icon"></i>
-                 <p>Mis datos</p>
-               </a>
-             </li>
-             <li class="nav-item">
-               <a href="pages/charts/flot.html" class="nav-link">
-                 <i class="nav-icon"></i>
-                 <p>Preferencias de venta</p>
-               </a>
-             </li>
-             <li class="nav-item">
-               <a href="pages/charts/inline.html" class="nav-link">
-                 <i class="nav-icon"></i>
-                 <p>Datos de mis colaboradores</p>
-               </a>
-             </li>
-           </ul>
-         </li>
-       </ul>
-       </nav>
-       <!-- /.sidebar-menu -->
-     </div>
-     <!-- /.sidebar -->
-   </aside>
-{{-- FIN MENÚ MÓVIL --}}
-
-{{-- NOTIFICACIONES --}}
-  <aside class=" d-md-none d-lg-none d-xl-none d-xs-block d-sm-block control-sidebar control-sidebar-dark" style="top: 57px; height: 755px;">
-    <div class="p-3 control-sidebar-content os-host os-theme-dark os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-overflow os-host-overflow-y os-host-transition" style="height: 755px;">
-      <div class="os-resize-observer-host">
-        <div class="os-resize-observer observed" style="left: 0px; right: auto;">
+          {{-- <!-- <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                style="opacity: .8"> -->
+          <span class="brand-text font-weight-light text-left">Mi cuenta</span> --}}
+          <br>
+          <small class="brand-text">¡Hola {{ $name }} {{ $lastname }}!</small>
         </div>
-      </div>
-      <div class="os-size-auto-observer" style="height: calc(100% + 1px); float: left;">
-        <div class="os-resize-observer observed">
+
+        <!-- Sidebar -->
+        <div class="sidebar bg-white">
+          <!-- Sidebar user panel (optional) -->
+          <div class="mt-0 pb-0 mb-0 d-flex">
+            <!-- <div class="image">
+              <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+              <a href="#" class="d-block">Usuario</a>
+            </div> -->
+          </div>
+          <!-- Sidebar Menu -->
+          <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              <!-- Add icons to the links using the .nav-icon class
+                    with font-awesome or any other icon font library -->
+                    <!-- INICIO -->
+                    <li class="nav-item has-treeview">
+                    <a href="{{url('/')}}" class="nav-link">
+                      <i class="nav-icon zmdi zmdi-home"></i>
+                      <p>
+                        Inicio
+                      </p>
+                    </a>
+                  </li>
+                    <!-- RESUMEN -->
+                    <li class="nav-item has-treeview">
+                    <a href="{{route('ClienteResumen')}}" class="nav-link">
+                      <i class="nav-icon zmdi zmdi-format-subject"></i>
+                      <p>
+                        Resumen
+                      </p>
+                    </a>
+                  </li>
+                  <!-- VENTAS -->
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon zmdi zmdi-store"></i>
+                  <p>
+                    Alquileres y Reservas
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="pages/charts/chartjs.html" class="nav-link">
+                      <i class="nav-icon"></i>
+                      <p>Publicaciones</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{route('PreguntasRecibidas')}}" class="nav-link">
+                      <i class="nav-icon"></i>
+                      <p>Preguntas recibidas</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="" class="nav-link">
+                      <i class="nav-icon"></i>
+                      <p>Mis alquileres</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <!-- COMPRAS -->
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
+                <p>
+                  Servicios contratados
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('ServiciosFavoritos')}}" class="nav-link">
+                    <i class="nav-icon"></i>
+                    <p>Favoritos</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('PreguntasRealizadas')}}" class="nav-link">
+                    <i class="nav-icon"></i>
+                    <p>Preguntas realizadas</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('ServiciosFinalizados')}}" class="nav-link">
+                    <i class="nav-icon"></i>
+                    <p>Finalizados</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('PresupuestosRecibidos')}}" class="nav-link">
+                    <i class="nav-icon"></i>
+                    <p>Presupuestos</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Configuración -->
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon zmdi zmdi-settings"></i>
+                <p>
+                  Configuración
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="pages/charts/chartjs.html" class="nav-link">
+                    <i class="nav-icon"></i>
+                    <p>Mis datos</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/charts/flot.html" class="nav-link">
+                    <i class="nav-icon"></i>
+                    <p>Preferencias de venta</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/charts/inline.html" class="nav-link">
+                    <i class="nav-icon"></i>
+                    <p>Datos de mis colaboradores</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          </nav>
+          <!-- /.sidebar-menu -->
         </div>
-      </div>
-      <div class="os-content-glue" style="margin: -16px;">
-      </div>
-      <div class="os-padding">
-        <div class="os-viewport os-viewport-native-scrollbars-invisible os-viewport-native-scrollbars-overlaid" style="overflow-y: scroll;">
-          <div class="os-content" style="padding: 16px; height: 100%; width: 100%;"><h5>Customize AdminLTE</h5><hr class="mb-2">
-            {{-- Contenido aqui --}}
-            <span class="dropdown-item dropdown-header">15 Notifications</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">3 mins</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 8 friend requests
-              <span class="float-right text-muted text-sm">12 hours</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        <!-- /.sidebar -->
+      </aside>
+    {{-- FIN MENÚ MÓVIL --}}
+
+    {{-- NOTIFICACIONES --}}
+      {{-- <aside class=" d-md-none d-lg-none d-xl-none d-xs-block d-sm-block control-sidebar control-sidebar-dark" style="top: 57px; height: 755px;">
+        <div class="p-3 control-sidebar-content os-host os-theme-dark os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-overflow os-host-overflow-y os-host-transition" style="height: 755px;">
+          <div class="os-resize-observer-host">
+            <div class="os-resize-observer observed" style="left: 0px; right: auto;">
+            </div>
+          </div>
+          <div class="os-size-auto-observer" style="height: calc(100% + 1px); float: left;">
+            <div class="os-resize-observer observed">
+            </div>
+          </div>
+          <div class="os-content-glue" style="margin: -16px;">
+          </div>
+          <div class="os-padding">
+            <div class="os-viewport os-viewport-native-scrollbars-invisible os-viewport-native-scrollbars-overlaid" style="overflow-y: scroll;">
+              <div class="os-content" style="padding: 16px; height: 100%; width: 100%;"><h5>Customize AdminLTE</h5><hr class="mb-2">
+                <!-- Contenido aqui -->
+                <span class="dropdown-item dropdown-header">15 Notifications</span>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-envelope mr-2"></i> 4 new messages
+                  <span class="float-right text-muted text-sm">3 mins</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-users mr-2"></i> 8 friend requests
+                  <span class="float-right text-muted text-sm">12 hours</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-file mr-2"></i> 3 new reports
+                  <span class="float-right text-muted text-sm">2 days</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <div class="os-scrollbar os-scrollbar-horizontal os-scrollbar-unusable">
-      <div class="os-scrollbar-track">
-      <div class="os-scrollbar-handle" style="transform: translate(0px, 0px); width: 100%;">
-      </div>
-      </div>
-    </div>
+        <div class="os-scrollbar os-scrollbar-horizontal os-scrollbar-unusable">
+          <div class="os-scrollbar-track">
+          <div class="os-scrollbar-handle" style="transform: translate(0px, 0px); width: 100%;">
+          </div>
+          </div>
+        </div>
 
-    <div class="os-scrollbar os-scrollbar-vertical">
-      <div class="os-scrollbar-track">
-      <div class="os-scrollbar-handle" style="transform: translate(0px, 0px); height: 58.4365%;">
-      </div>
-      </div>
-    </div>
+        <div class="os-scrollbar os-scrollbar-vertical">
+          <div class="os-scrollbar-track">
+          <div class="os-scrollbar-handle" style="transform: translate(0px, 0px); height: 58.4365%;">
+          </div>
+          </div>
+        </div>
 
-    <div class="os-scrollbar-corner">
-    </div>
-  </aside>
+        <div class="os-scrollbar-corner">
+        </div>
+      </aside> --}}
+    {{-- FIN NOTIFICACIONES --}}
 
-{{-- FIN NOTIFICACIONES --}}
-    <!--//Contenido-->
+    <!-- Paquete -->
+    @include('Principal.Partials.paquete')
+
+    <!-- Notificaciones -->
+    @include('Principal.Partials.notificaciones')
+
     <div class="content-wrapper">
       @yield('content')
     </div>
-    <!--//Fin Contenido-->
 
     {{-- <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
@@ -684,5 +575,3 @@
   @include('Principal.Partials.scripts')
   @stack('js')
   </html>
-
-  {{-- FIN BARRA NAV --}}
