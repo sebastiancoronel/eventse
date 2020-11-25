@@ -7,6 +7,7 @@ use auth;
 use App\Categoria;
 use App\Prestador;
 use App\Pregunta;
+use App\Presupuesto;
 
 class HomeController extends Controller
 {
@@ -69,4 +70,16 @@ class HomeController extends Controller
       return view('AdminLTE.respuestas', [ 'Respuestas' => $Respuestas ]);
     }
 
+    public function MostrarPresupuestosSolicitados(){
+
+      $id_prestador = Prestador::where( 'user_id' , Auth::user()->id )->pluck('id')->first();
+      $Presupuestos = Presupuesto::where('presupuestos.id_prestador' , $id_prestador )
+                                ->where( 'monto' , null )
+                                ->where( 'estado' , 'Aceptado' )
+                                ->Join( 'servicios' , 'presupuestos.id_servicio' , '=' , 'servicios.id' )
+                                ->select( 'presupuestos.*' ,'servicios.nombre', 'servicios.id as id_servicio' )
+                                ->get();
+      
+      return view('AdminLTE.presupuestos_solicitados' , [ 'Presupuestos' => $Presupuestos ]);
+    } 
 }

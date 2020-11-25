@@ -39,9 +39,12 @@ Route::middleware(['auth', 'ControlarPerfilPrestador'])->group(function () {
   Route::post('/publicar/servicio/almacenando','ServicioController@AlmacenarServicio')->name('AlmacenarServicio');
   Route::get('/publicar/servicio/publicado-con-exito','ServicioController@ServicioPublicadoConExito')->name('ServicioPublicadoConExito');
 
+  // Preguntas
   Route::get('/home/preguntas-recibidas','HomeController@MostrarPreguntasRecibidas')->name('MostrarPreguntasRecibidas');
-
   Route::post('/home/preguntas-recibidas/almacenando-respuesta','HomeController@AlmacenarRespuesta')->name('AlmacenarRespuesta');
+
+  // Presupuestos
+  Route::get('/home/presupuestos-recibidos','HomeController@MostrarPresupuestosSolicitados')->name('MostrarPresupuestosSolicitados');
 });
 
 /*
@@ -49,7 +52,7 @@ Route::middleware(['auth', 'ControlarPerfilPrestador'])->group(function () {
 | Auth
 |--------------------------------------------------------------------------
 */
-Route::middleware(['auth', ])->group(function () {
+Route::middleware(['auth'])->group(function () {
   //Completar datos de cada tipo de prestador
   Route::get('completardatos/cliente','PrestadorController@CrearPrestador')->name('CrearPrestador');
   //Almacenar prestador
