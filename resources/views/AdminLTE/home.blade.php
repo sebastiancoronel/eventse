@@ -254,7 +254,7 @@
                     </li>
 
                     <!-- Características -->
-                    <li class="nav-item has-treeview">
+                    {{-- <li class="nav-item has-treeview">
                       <a href="#" class="nav-link">
                         <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
                         <p>
@@ -270,7 +270,7 @@
                           </a>
                         </li>
                       </ul>
-                    </li>
+                    </li> --}}
                   @endif
                 @endif
 
@@ -408,7 +408,7 @@
                   </li>
 
                   <!-- Características -->
-                  <li class="nav-item has-treeview">
+                  {{-- <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                       <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
                       <p>
@@ -424,7 +424,7 @@
                         </a>
                       </li>
                     </ul>
-                  </li>
+                  </li> --}}
                 @endif
               @endif
 
