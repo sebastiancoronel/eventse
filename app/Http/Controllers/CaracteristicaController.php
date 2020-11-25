@@ -10,9 +10,9 @@ use App\Caracteristica_por_categoria;
 
 class CaracteristicaController extends Controller
 {
-    public function CrearCaracteristicas(Request $id){
+    public function CrearCaracteristicas($id){
 
-        $Categoria = Categoria::withTrashed($id)->first();
+        $Categoria = Categoria::withTrashed()->where( 'id' , $id )->first();
 
         $Caracteristicas = Caracteristica_por_categoria::withTrashed()
                                                         ->where( 'id_categoria' , $Categoria->id )
