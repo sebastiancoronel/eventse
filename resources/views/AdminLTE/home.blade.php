@@ -119,7 +119,7 @@
         @include('Principal.Partials.header')
       </div>
 
-    <div class="wrapper">
+    <div class="wrapper" style="background:#f4f6f9;">
       <!-- Navbar movil -->
       <div class="d-md-none d-lg-none d-xl-none d-xs-block d-sm-block">
         <nav class="main-header navbar navbar-expand navbar-white navbar-light border-bottom text-white" style="background:#717fe0;">
