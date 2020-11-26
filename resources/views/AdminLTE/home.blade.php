@@ -181,7 +181,7 @@
                 {{-- Presupuestos --}}
                 <li class="nav-item has-treeview">
                   <a href="#" class="nav-link">
-                    <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
+                    <i class="zmdi zmdi-assignment"></i>
                     <p>
                       Presupuestos
                       <i class="right fas fa-angle-left"></i>
@@ -335,7 +335,7 @@
               {{-- Presupuestos --}}
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
-                  <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
+                  <i class="zmdi zmdi-assignment"></i>
                   <p>
                     Presupuestos
                     <i class="right fas fa-angle-left"></i>
