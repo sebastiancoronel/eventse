@@ -1,7 +1,7 @@
 @extends('AdminLTE.home')
 @section('content')
 <div class="dispositivo">
-  <h4 class="text-muted">Solicitudes de presupuestos</h4>
+  <h4 class="text-muted"> <i class="zmdi zmdi-assignment"></i> Solicitudes de presupuestos</h4>
   <hr>
   
   @if ( count($Presupuestos) )
@@ -12,35 +12,55 @@
         </div>
         <div class="card-body">
           <div class="row">
-            <div class="col-lg-12 col-12">
-            <strong> Tu: </strong>
-            <p class="mb-0 font-weight-light small grey lighten-2 p-2 rounded">
-              {{ $presupuesto->pregunta }}
-            </p>
+
+            {{-- Fecha - Desde - Hasta --}}
+            <div class="col-lg-4 col-12">
+              <strong> Fecha: </strong><span>{{ date( 'd-m-Y' , strtotime($presupuesto->fecha)) }}</span>
             </div>
-            <div class="col-lg-12 col-12 mt-5">
-              <strong> Respuesta: </strong> 
-              @if ($presupuesto->respuesta)
-                <p class="mb-0 font-weight-light small primary-color text-white p-2 rounded">
-                  {{$presupuesto->respuesta}}
-                </p>
-              @endif
+            <div class="col-lg-4 col-12">
+              <strong> Desde: </strong><span>{{ date( 'H:i' , strtotime($presupuesto->hora_desde)) }}</span>
+            </div>
+            <div class="col-lg-4 col-12">
+              <strong> Hasta: </strong><span>{{ date( 'H:i' , strtotime($presupuesto->hora_hasta)) }}</span>
+            </div>
+          </div>
+
+          {{-- Dirección --}}
+          <div class="row mt-5">
+            <div class="col-lg-12 col-12">
+              <strong> Direccion: </strong> <span>{{ $presupuesto->direccion }}</span>
+            </div>
+          </div>
+
+          {{-- Respuesta --}}
+          <div class="row mt-5">
+            <div class="col-lg-12 col-12">
+              <strong> Aclaración: </strong> <span>{{ $presupuesto->pregunta }}</span>
             </div>
           </div>
         </div>
 
-        {{-- <div class="card-footer">
+        {{-- Importe --}}
+        <div class="d-flex justify-content-end">
+          <div class="md-form w-25">
+            <i class="fas fa-dollar prefix"></i>
+            <input type="number" id="monto" class="form-control" length="10">
+            <label for="monto">Monto</label>
+          </div>
+        </div>
+        
+
+        <div class="card-footer">
           @if ($presupuesto->respuesta == null)
             <div class="bor8 bg0 m-b-12">
-              <textarea class="stext-111 cl8 plh3 size-111 p-lr-15 h-100" name="respuesta" maxlength="1000" cols="100" rows="2" placeholder="Escribir otra pregunta" required></textarea>
+              <textarea class="stext-111 cl8 plh3 size-111 p-lr-15 h-100" name="respuesta" maxlength="1000" cols="100" rows="2" placeholder="Escribir respuesta a la aclaración" required></textarea>
             </div>
 
             <div class="pull-right">
               <button type="submit" class="btn btn-primary">Enviar</button>
             </div>
           @endif
-        </div> --}}
-        
+        </div>
       </div>
     @endforeach
   @else
