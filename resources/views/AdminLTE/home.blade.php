@@ -223,7 +223,7 @@
                 </li>
 
                 <li class="nav-item has-treeview">
-                  <a href="#" class="nav-link">
+                  <a href=" {{route('MostrarMisServicios')}} " class="nav-link">
                     <i class="nav-icon zmdi zmdi-format-subject"></i>
                     <p>
                       Publicaciones
@@ -377,7 +377,7 @@
               </li>
 
               <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
+              <a href="{{ route('MostrarMisServicios') }}" class="nav-link">
                   <i class="nav-icon zmdi zmdi-format-subject"></i>
                   <p>
                     Publicaciones

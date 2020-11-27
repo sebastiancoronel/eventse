@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use auth;
 use App\Categoria;
 use App\Prestador;
+use App\Servicio;
 use App\Pregunta;
 use App\Presupuesto;
 
@@ -98,6 +99,35 @@ class HomeController extends Controller
       $Presupuesto->update();
 
       return redirect()->route( 'MostrarPresupuestosSolicitados' )->with( 'Exito' , ' ' );
+    }
 
+    public function MostrarMisServicios(){
+      $id_prestador = Prestador::where( 'user_id' , Auth::user()->id )->pluck('id')->first();
+      $Servicios = Servicio::withTrashed()
+                            ->where('id_prestador', $id_prestador)
+                            ->Join( 'categorias' , 'servicios.id_categoria' , '=' , 'categorias.id' )
+                            ->select('*', 'categorias.nombre as nombre_categoria')
+                            ->get();
+
+      return view('AdminLTE.mis_servicios' , ['Servicios' => $Servicios]);
+
+    }
+
+    public function HabilitarDeshabilitarServicio( Request $request ){
+
+      if ( $request->switch_servicio == 'Habilitar'){
+        $Servicio = Servicio::withTrashed()
+                            ->where('id', $request->id_servicio)
+                            ->first();
+        $Servicio->restore();
+        return 'Habilitado';
+
+      }else{
+        if ( $request->switch_servicio == 'Deshabilitar'){
+          $Servicio = Servicio::findOrfail($request->id_servicio);
+          $Servicio->delete();
+          return 'Deshabilitado';
+        }
+      }
     }
 }

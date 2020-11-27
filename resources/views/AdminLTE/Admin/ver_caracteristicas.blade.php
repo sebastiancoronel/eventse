@@ -34,10 +34,12 @@
 
     <div class="card mt-5">
         <div class="card-body">
-            <table class="table tabla-caracteristicas" categoria-id="{{$Categoria->id}}">
+            <table class="table table-bordered table-responsive-md table-striped text-center tabla-caracteristicas" categoria-id="{{$Categoria->id}}">
                 <thead>
-                    <th>Nombre</th>
-                    <th></th>
+                    <tr>
+                        <th>Nombre</th>
+                        <th></th>
+                    </tr>
                 </thead>
                 <tbody>
                     @forelse ($Caracteristicas as $caracteristica)

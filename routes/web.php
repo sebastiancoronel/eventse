@@ -46,6 +46,10 @@ Route::middleware(['auth', 'ControlarPerfilPrestador'])->group(function () {
   // Presupuestos
   Route::get('/home/presupuestos-recibidos','HomeController@MostrarPresupuestosSolicitados')->name('MostrarPresupuestosSolicitados');
   Route::post('/home/presupuestos-recibidos','HomeController@ResponderSolicitudPresupuesto')->name('ResponderSolicitudPresupuesto');
+
+  // Servicios
+  Route::get('/home/servicios','HomeController@MostrarMisServicios')->name('MostrarMisServicios');
+  Route::post('/home/servicios/habilitar-deshabilitar','HomeController@HabilitarDeshabilitarServicio')->name('HabilitarDeshabilitarServicio');
 });
 
 /*

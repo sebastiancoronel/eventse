@@ -35,7 +35,7 @@
     {{-- Tabla de categorias --}}
     <div class="card mt-5">
         <div class="card-body">
-            <table class="table">
+            <table class="table table-bordered table-responsive-md table-striped text-center">
                 <thead>
                     <tr class="text-center">
                         <th>Nombre</th>
@@ -48,7 +48,7 @@
                         <tr class="text-center" data-id=" {{ $categoria->id }} ">
                             <td> {{ $categoria->nombre }} </td>
                             <td class="w-50"> <img class="img-fluid img-tabla" src="{{ asset($categoria->foto) }}" alt="{{ asset($categoria->foto) }}"> </td>
-                            <td class="d-flex align-items-center">
+                            <td class="d-flex align-items-center" style="border-bottom: none;">
                                 <a href=" {{ route('EditarCategoria', ['id' => $categoria->id]) }} " class="btn btn-warning"> <i class="fa fa-edit"></i> </a>
                                     <div class="boton-ver-caracteristicas mx-auto">
                                         <a href=" {{ route('CrearCaracteristicas', ['id' => $categoria->id]) }} " class="btn btn-secondary"> <i class="fa fa-th-list"></i> </a>
