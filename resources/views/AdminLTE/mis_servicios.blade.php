@@ -82,5 +82,14 @@
                 });
         });
     </script>
+
+    {{-- Alertas --}}
+    @if ( Session::has('ServicioModificado') )
+        <script>
+            $(document).ready(function(){
+                swal( 'Listo!', ' Servicio modificado ' , 'success');
+            });
+        </script>
+    @endif
 @endpush
 @endsection

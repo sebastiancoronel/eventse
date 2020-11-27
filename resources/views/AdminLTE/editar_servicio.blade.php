@@ -4,131 +4,138 @@
     <h4 class="text-muted"> Editar </h4>
     <hr>
 
-    <div class="card">
-        @if ( $Servicio->deleted_at == null )
-        <div class="card-header bg-success">
-            <span class="text-uppercase"> Servicio habilitado </span>
-        </div>
-        @else
-            <div class="card-header bg-danger">
-                <span class="text-uppercase"> Servicio deshabilitado </span>
+    <form action=" {{ route('ModificarServicio') }} " method="POST" enctype="multipart/form-data">
+        @csrf
+        <input hidden type="text" name="id_servicio" id="" value=" {{ $Servicio->id }} ">
+        <div class="card">
+            @if ( $Servicio->deleted_at == null )
+            <div class="card-header bg-success">
+                <span class="text-uppercase"> Servicio habilitado </span>
             </div>
-        @endif
-        <div class="card-body">
-            {{-- Fotos --}}
-            <div class="mt-5">
-                <h5 class="text-uppercase mb-3"><strong>Fotos</strong></h5>
-                <div class="row">
-
-                    <!-- Foto 1 -->
-                    <div class="col-md-3 file-field">
-                        <div class="mb-4">
-                            <div class="text-center">
-                                <!-- Vista previa imagen -->
-                                <div class="d-flex justify-content-center">
-                                <img id="preview" class="rounded" src="{{ asset($Servicio->foto_1) }}" alt="" width="50%" height="50%">
+            @else
+                <div class="card-header bg-danger">
+                    <span class="text-uppercase"> Servicio deshabilitado </span>
+                </div>
+            @endif
+            <div class="card-body">
+                {{-- Fotos --}}
+                <div class="mt-5">
+                    <h5 class="text-uppercase mb-3"><strong>Fotos</strong></h5>
+                    <div class="row">
+    
+                        <!-- Foto 1 -->
+                        <div class="col-md-3 file-field">
+                            <div class="mb-4">
+                                <div class="text-center">
+                                    <!-- Vista previa imagen -->
+                                    <div class="d-flex justify-content-center">
+                                    <img id="preview" class="rounded" src="{{ asset($Servicio->foto_1) }}" alt="" width="50%" height="50%">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <div id="boton_subir_1" class="btn btn-mdb-color btn-rounded float-left">
-                                <span class="text-white">Subir archivo</span>
-                                <input id="file_input" name="foto_1" type="file" accept="image/*" required>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <small>Foto principal</small>
-                            <div class="text-danger"> {{ $errors->first('foto_1') }} </div>
-                        </div>
-                    </div>
-
-                    <!-- Foto 2 -->
-                    <div class="col-md-3 file-field">
-                        <div class="mb-4">
-                            <div class="text-center">
-                                <!-- Vista previa imagen -->
-                                <div class="d-flex justify-content-center">
-                                    <img id="preview_2" class="rounded" src="{{ asset($Servicio->foto_2) }}" alt="" width="50%" height="50%">
+                            <div class="d-flex justify-content-center">
+                                <div id="boton_subir_1" class="btn btn-mdb-color btn-rounded float-left">
+                                    <span class="text-white">Subir archivo</span>
+                                    <input id="file_input" name="foto_1" type="file" accept="image/*" >
                                 </div>
                             </div>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <div class="btn btn-mdb-color btn-rounded float-left">
-                                <span class="text-white">Subir archivo</span>
-                                <input id="file_input_2" name="foto_2" type="file" accept="image/*" required>
+                            <div class="text-center">
+                                <small>Foto principal</small>
+                                <div class="text-danger"> {{ $errors->first('foto_1') }} </div>
                             </div>
                         </div>
-                        <div class="text-danger"> {{ $errors->first('foto_2') }} </div>
-                    </div>
-
-                    <!-- Foto 3 -->
-                    <div class="col-md-3 file-field">
-                        <div class="mb-4">
-                            <div class="text-center">
-                                <!-- Vista previa imagen -->
-                                <div class="d-flex justify-content-center">
-                                    <img id="preview_3" class="rounded" src="{{ asset($Servicio->foto_3) }}" alt="" width="50%" height="50%">
+    
+                        <!-- Foto 2 -->
+                        <div class="col-md-3 file-field">
+                            <div class="mb-4">
+                                <div class="text-center">
+                                    <!-- Vista previa imagen -->
+                                    <div class="d-flex justify-content-center">
+                                        <img id="preview_2" class="rounded" src="{{ asset($Servicio->foto_2) }}" alt="" width="50%" height="50%">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <div class="btn btn-mdb-color btn-rounded float-left">
-                                <span class="text-white">Subir archivo</span>
-                                <input id="file_input_3" name="foto_3" type="file" accept="image/*" required>
-                            </div>
-                        </div>
-                        <div class="text-danger"> {{ $errors->first('foto_3') }} </div>
-                    </div>
-
-                    <!-- Foto 4 -->
-                    <div class="col-md-3 file-field">
-                        <div class="mb-4">
-                            <div class="text-center">
-                                <!-- Vista previa imagen -->
-                                <div class="d-flex justify-content-center">
-                                    <img id="preview_4" class="rounded" src="{{ asset($Servicio->foto_4) }}" alt="" width="50%" height="50%">
+                            <div class="d-flex justify-content-center">
+                                <div class="btn btn-mdb-color btn-rounded float-left">
+                                    <span class="text-white">Subir archivo</span>
+                                    <input id="file_input_2" name="foto_2" type="file" accept="image/*" >
                                 </div>
                             </div>
+                            <div class="text-danger"> {{ $errors->first('foto_2') }} </div>
                         </div>
-                        <div class="d-flex justify-content-center">
-                            <div class="btn btn-mdb-color btn-rounded float-left">
-                                <span class="text-white">Subir archivo</span>
-                                <input id="file_input_4" name="foto_4" type="file" accept="image/*" required>
+    
+                        <!-- Foto 3 -->
+                        <div class="col-md-3 file-field">
+                            <div class="mb-4">
+                                <div class="text-center">
+                                    <!-- Vista previa imagen -->
+                                    <div class="d-flex justify-content-center">
+                                        <img id="preview_3" class="rounded" src="{{ asset($Servicio->foto_3) }}" alt="" width="50%" height="50%">
+                                    </div>
+                                </div>
                             </div>
+                            <div class="d-flex justify-content-center">
+                                <div class="btn btn-mdb-color btn-rounded float-left">
+                                    <span class="text-white">Subir archivo</span>
+                                    <input id="file_input_3" name="foto_3" type="file" accept="image/*" >
+                                </div>
+                            </div>
+                            <div class="text-danger"> {{ $errors->first('foto_3') }} </div>
                         </div>
-                        <div class="text-danger"> {{ $errors->first('foto_4') }} </div>
+    
+                        <!-- Foto 4 -->
+                        <div class="col-md-3 file-field">
+                            <div class="mb-4">
+                                <div class="text-center">
+                                    <!-- Vista previa imagen -->
+                                    <div class="d-flex justify-content-center">
+                                        <img id="preview_4" class="rounded" src="{{ asset($Servicio->foto_4) }}" alt="" width="50%" height="50%">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <div class="btn btn-mdb-color btn-rounded float-left">
+                                    <span class="text-white">Subir archivo</span>
+                                    <input id="file_input_4" name="foto_4" type="file" accept="image/*" >
+                                </div>
+                            </div>
+                            <div class="text-danger"> {{ $errors->first('foto_4') }} </div>
+                        </div>
                     </div>
                 </div>
+    
+                {{-- Nombre --}}
+                <div class="md-form">
+                    <input type="text" id="form1" name="nombre" class="form-control" value="{{ $Servicio->nombre }}">
+                    <label for="form1" class="active">Nombre</label>
+                </div>
+    
+                {{-- Descripción --}}
+                <div class="md-form">
+                    <input type="text" id="form1" name="descripcion" class="form-control" value="{{ $Servicio->descripcion }}">
+                    <label for="form1" class="active">Descripcion</label>
+                </div>
+    
+                {{-- Precio --}}
+                <div id="div_precio" class="col-12 col-md-3 md-form my-5">
+                    <i class="zmdi zmdi-money prefix"></i>
+                    <label for="precio" class="active">Precio</label>
+                    <input id="precio" class="form-control" type="number" name="precio" value="{{ $Servicio->precio ? $Servicio->precio : ' ' }}" {{ $Servicio->precio_a_convenir ? 'disabled' : ' ' }}>
+                    <div class="text-danger"> {{ $errors->first('precio') }} </div>
+                </div>
+    
+                {{-- Precio a convenir --}}
+                <div class="form-check">
+                    <input id="precio_a_convenir" class="form-check-input" type="checkbox" name="precio_a_convenir" {{ $Servicio->precio_a_convenir ? 'checked' : ' ' }} value="1">
+                    <label class="" for="precio_a_convenir">Precio a convenir</label>
+                </div>
+    
             </div>
-            {{-- Nombre --}}
-            <div class="md-form">
-                <input type="text" id="form1" class="form-control" value="{{ $Servicio->nombre }}">
-                <label for="form1" class="active">Nombre</label>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-warning pull-right"> Actualizar </button>
             </div>
-
-            {{-- Descripción --}}
-            <div class="md-form">
-                <input type="text" id="form1" class="form-control" value="{{ $Servicio->descripcion }}">
-                <label for="form1" class="active">Descripcion</label>
-            </div>
-
-            {{-- Precio --}}
-            <div id="div_precio" class="col-12 col-md-3 md-form my-5">
-                <i class="zmdi zmdi-money prefix"></i>
-                <label for="precio" class="active">Precio</label>
-                <input id="precio" class="form-control" type="number" name="precio" value="{{ $Servicio->precio ? $Servicio->precio : ' ' }}">
-                <div class="text-danger"> {{ $errors->first('precio') }} </div>
-            </div>
-
-            {{-- Precio a convenir --}}
-            <div class="form-check">
-                <input id="precio_a_convenir" class="form-check-input" type="checkbox" name="precio_a_convenir" value="1">
-                <label class="" for="precio_a_convenir">Precio a convenir</label>
-            </div>
-
         </div>
-        <div class="card-footer"></div>
-    </div>
+    </form>
 </div>
 
 @push('js')
@@ -140,6 +147,7 @@
             $("#div_precio").css("opacity","0.5");
                 $("#precio").attr('disabled', 'true');
             } else {
+                $(this).removeAttr('checked');
             $("#div_precio").css("opacity","1");
                 $("#precio").removeAttr('disabled');
             }

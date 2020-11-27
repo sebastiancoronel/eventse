@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use auth;
 use App\Categoria;
 use App\Prestador;
@@ -132,8 +133,74 @@ class HomeController extends Controller
     }
 
     public function EditarServicio($id){
-      $Servicio = Servicio::findOrfail($id);
+      $Servicio = Servicio::withTrashed()
+                            ->where('id', $id)
+                            ->first();
 
       return view( 'AdminLTE.editar_servicio', [ 'Servicio' => $Servicio] );
+    }
+
+    public function ModificarServicio( Request $request ){
+      // dd($request);
+      $request->validate([      
+        'nombre' => 'required',
+        'descripcion' => 'required',
+      ]);
+
+      $Servicio = Servicio::findOrfail( $request->id_servicio );
+      $Servicio->nombre = $request->nombre;
+      $Servicio->descripcion = $request->descripcion;
+
+      if ( $request->hasFile('foto_1') ) {
+      $random_string_1 = Str::random(20);
+      $Foto = $request->file('foto_1');
+      $NombreImagen = $random_string_1 . '.' . $Foto->getClientOriginalExtension();
+      $RutaImagen = public_path('images/servicios');
+      $Foto->move($RutaImagen, $NombreImagen);
+      $Servicio->foto_1 = 'images/servicios/' . $NombreImagen;
+      }
+
+      if ($request->hasFile('foto_2')) {
+      $random_string_2 = Str::random(20);
+      $Foto = $request->file('foto_2');
+      $NombreImagen = $random_string_2 . '.' . $Foto->getClientOriginalExtension();
+      $RutaImagen = public_path('images/servicios');
+      $Foto->move($RutaImagen, $NombreImagen);
+      $Servicio->foto_2 = 'images/servicios/' . $NombreImagen;
+      }
+
+      if ($request->hasFile('foto_3')) {
+      $random_string_3 = Str::random(20);
+      $Foto = $request->file('foto_3');
+      $NombreImagen = $random_string_3 . '.' . $Foto->getClientOriginalExtension();
+      $RutaImagen = public_path('images/servicios');
+      $Foto->move($RutaImagen, $NombreImagen);
+      $Servicio->foto_3 = 'images/servicios/' . $NombreImagen;
+      }
+
+      if( $request->hasFile('foto_4') ) {
+      $random_string_4 = Str::random(20);
+      $Foto = $request->file('foto_4');
+      $NombreImagen = $random_string_4 . '.' . $Foto->getClientOriginalExtension();
+      $RutaImagen = public_path('images/servicios');
+      $Foto->move($RutaImagen, $NombreImagen);
+      $Servicio->foto_4 = 'images/servicios/' . $NombreImagen;
+      }
+      
+      $Servicio->precio = $request->precio;
+
+      if ( $request->precio_a_convenir ) {
+        $Servicio->precio_a_convenir = 1;
+      }else{
+        $Servicio->precio_a_convenir = null;
+        $request->validate([
+          'precio' => 'required|integer'
+        ]);
+      }
+
+      $Servicio->update();
+
+      return redirect()->route('MostrarMisServicios')->with( 'ServicioModificado' , ' ' );
+      
     }
 }

@@ -51,6 +51,7 @@ Route::middleware(['auth', 'ControlarPerfilPrestador'])->group(function () {
   Route::get('/home/servicios','HomeController@MostrarMisServicios')->name('MostrarMisServicios');
   Route::post('/home/servicios/habilitar-deshabilitar','HomeController@HabilitarDeshabilitarServicio')->name('HabilitarDeshabilitarServicio');
   Route::get('/home/servicios/editar/{id}','HomeController@EditarServicio')->name('EditarServicio');
+  Route::post('/home/servicios/actualizando-servicio','HomeController@ModificarServicio')->name('ModificarServicio');
 });
 
 /*
