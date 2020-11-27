@@ -82,4 +82,22 @@ class HomeController extends Controller
       
       return view('AdminLTE.presupuestos_solicitados' , [ 'Presupuestos' => $Presupuestos ]);
     } 
+
+    public function ResponderSolicitudPresupuesto( Request $request ){
+
+      $request->validate([
+        'monto' => 'required|max:10',
+        'estado' => 'required'
+      ]);
+      
+      $Presupuesto = Presupuesto::findOrfail( $request->id_presupuesto );
+      
+      $Presupuesto->respuesta = $request->respuesta;
+      $Presupuesto->monto = $request->monto;
+      $Presupuesto->estado = $request->estado;
+      $Presupuesto->update();
+
+      return redirect()->route( 'MostrarPresupuestosSolicitados' )->with( 'Exito' , ' ' );
+
+    }
 }
