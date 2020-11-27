@@ -106,7 +106,7 @@ class HomeController extends Controller
       $Servicios = Servicio::withTrashed()
                             ->where('id_prestador', $id_prestador)
                             ->Join( 'categorias' , 'servicios.id_categoria' , '=' , 'categorias.id' )
-                            ->select('*', 'categorias.nombre as nombre_categoria')
+                            ->select('servicios.*', 'categorias.nombre as nombre_categoria')
                             ->get();
 
       return view('AdminLTE.mis_servicios' , ['Servicios' => $Servicios]);
@@ -129,5 +129,11 @@ class HomeController extends Controller
           return 'Deshabilitado';
         }
       }
+    }
+
+    public function EditarServicio($id){
+      $Servicio = Servicio::findOrfail($id);
+
+      return view( 'AdminLTE.editar_servicio', [ 'Servicio' => $Servicio] );
     }
 }

@@ -25,14 +25,14 @@
                     <tbody>
                         @foreach ($Servicios as $servicio)
                             <tr data-id=" {{ $servicio->id }} ">
-                                <td class="pt-3-half" style="background-image: url({{ asset($servicio->foto_1) }}); background-size: cover; background-position: center; repeat:no*repeat;">
+                                <td class="pt-3-half" style="background-image: url({{ asset($servicio->foto_1) }}); background-size: cover; background-position: center; repeat:no-repeat;">
                                 </td>
                                 <td class="pt-3-half"> {{$servicio->nombre}} </td>
                                 <td class="pt-3-half"> {{ \Illuminate\Support\Str::limit( $servicio->descripcion , 40) }} </td>
                                 <td class="pt-3-half"> {{ $servicio->nombre_categoria }} </td>
                                 <td class="pt-3-half"> {{ $servicio->precio ? '$'. $servicio->precio : 'Precio a convenir' }} </td>
                                 <td class="pt-3-half">
-                                    <a href="" class="btn btn-warning mx-4"> <i class="fa fa-edit"></i> </a>
+                                    <a href=" {{ route('EditarServicio', ['id' => $servicio->id]) }} " class="btn btn-warning mx-4"> <i class="fa fa-edit"></i> </a>
                                 </td>
                                 <td>
                                     <div class="switch">
