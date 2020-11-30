@@ -13,6 +13,7 @@ use App\Categoria;
 use App\Opinion;
 use App\Pregunta;
 use App\Presupuesto;
+use App\Notificacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -221,6 +222,13 @@ class ServicioController extends Controller
                                               ->select('*')
                                               ->orderBy('created_at', 'DESC')
                                               ->get();
+
+    Notificacion::create([
+      'user_id_notificar' => $request->id_prestador,
+      'user_id_trigger' => $request->id_usuario,
+      'id_evento' => 1,
+      'visto' => 0,
+      ]);
 
     return $ActualizarPreguntas;
   }

@@ -7,6 +7,7 @@ use  Illuminate\Support\Facades\Schema;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Route;
 use App\Categoria;
+use App\Notificacion;
 use Session;
 use Auth;
 
@@ -44,12 +45,20 @@ class AppServiceProvider extends ServiceProvider
             $view->with('Paquete',$Paquete)->with('CantidadServicios',$CantidadServicios );
         });
         
-        // view()->composer('Perfiles.home',function(View $view){
-        //   //Traer todas las categorias
-        //   $categorias = Categoria::all();
-        //   //Retornar
-        //   $view->with('Categorias',$categorias);
-        // });
+        view()->composer('*',function(View $view){
+            if ( Auth::user() ) {
+                $Notificaciones = Notificacion::where( 'user_id_notificar' , Auth::user()->id )
+                                            ->where('visto', 0)
+                                            ->Join( 'eventos' , 'notificacions.id_evento' , '=' , 'eventos.id' )
+                                            ->select('notificacions.*' , 'eventos.texto')
+                                            ->orderBy('id', 'desc')
+                                            ->get();
+                // if ( count($Notificaciones) ) {
+
+                // }                                       
+                $view->with( 'Notificaciones', $Notificaciones );
+            }
+        });
 
     }
 }

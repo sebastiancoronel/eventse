@@ -15,23 +15,28 @@
         <div class="header-notification-content flex-w js-pscroll">
             <ul id="servicios_carrito" class="header-notification-wrapitem w-full">
             @auth
-                
+                @forelse ($Notificaciones as $notificacion)
+                    
                 {{-- Notificacion --}}
                 <li class="header-notification-item flex-w flex-t m-b-12">
-                    
+
                     {{-- Titulo --}}
-                    <div class="header-notification-item-txt p-t-8">
-                        <a href="#" class="header-notification-item-name m-b-18 hov-cl1 trans-04">
-                           
-                        </a>
+                    <div class="">
+                        @if ($notificacion->id_evento == 1)
+                            <a href=" {{ route('MostrarPreguntasRecibidas') }} " target="blank" class="header-notification-item-name m-b-18 hov-cl1 trans-04">
+                                {{ $notificacion->texto }}
+                            </a>
+                        @endif
                         {{-- Info --}}
-                        <span class="header-notification-item-info">
-                            
+                        <span class="">
+                            {{ date( 'd/m/Y', strtotime($notificacion->created_at)) }}
                         </span>
                     </div>
                 </li>
                 <hr>
-                {{-- @endforeach --}}
+                @empty
+                    <span> No tienes notificaciones aun </span>
+                @endforelse
             @endauth
             </ul>
 

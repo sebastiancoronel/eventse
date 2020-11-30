@@ -32,6 +32,21 @@ class CreateServiciosTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
+        DB::table('servicios')->insert([
+            [
+                'nombre' => 'Salon Louis XV',
+                'descripcion' =>'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                'foto_1' => 'images/servicios/8R64IoYFDHpBzUb2cn0y.jpg',
+                'foto_2' => 'images/servicios/fn2VMkEssZywc2FdPMRI.jpg',
+                'foto_3' => 'images/servicios/JjJtjZ614StTSRaXqQf2.jpg',
+                'foto_4' => 'images/servicios/4CktBDfnAl0ITEkySJcb.jpg',
+                'precio' => null,
+                'precio_a_convenir' => 1,
+                'id_categoria' => 1
+                'id_prestador' => 1
+            ],
+        ]);
     }
 
     /**
