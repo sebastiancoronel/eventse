@@ -38,7 +38,31 @@ class CreateUsersTable extends Migration
                 'provincia' => 'Santiago del Estero',
                 'localidad' => 'Capital',
                 'telefono' => '3855826093',
+                'rol' => 'Prestador',
+                'password' => bcrypt('123456789')
+            ],
+
+            [
+                'name' => 'Administrador',
+                'lastname' => 'admin',
+                'email' => 'admin@gmail.com',
+                'dni' => '38000000',
+                'provincia' => 'Santiago del Estero',
+                'localidad' => 'Capital',
+                'telefono' => '3855000000',
                 'rol' => 'Administrador',
+                'password' => bcrypt('123456789')
+            ],
+
+            [
+                'name' => 'Cliente',
+                'lastname' => 'cliente',
+                'email' => 'cliente@gmail.com',
+                'dni' => '38111111',
+                'provincia' => 'Santiago del Estero',
+                'localidad' => 'Capital',
+                'telefono' => '3855111111',
+                'rol' => 'Cliente',
                 'password' => bcrypt('123456789')
             ],
         ]);

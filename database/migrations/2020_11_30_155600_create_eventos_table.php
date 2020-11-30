@@ -17,7 +17,7 @@ class CreateEventosTable extends Migration
             $table->increments('id');
             $table->string('tipo');
             $table->string('texto');
-            $table->integer('url_redirect');
+            $table->string('url_redirect');
             $table->timestamps();
         });
 
