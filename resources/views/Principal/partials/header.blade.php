@@ -100,7 +100,7 @@
                   <i class="zmdi zmdi-favorite"></i>
               </a> --}}
               {{-- Notificaciones --}}
-              <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-notification " data-notify="0">
+            <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-notification " data-notify="{{ count($Notificaciones) }}">
                   <i class="zmdi zmdi-notifications"></i>
               </a>
                 </div>

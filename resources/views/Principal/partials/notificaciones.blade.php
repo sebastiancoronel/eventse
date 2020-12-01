@@ -22,15 +22,13 @@
 
                     {{-- Titulo --}}
                     <div class="">
-                        @if ($notificacion->id_evento == 1)
-                            <a href=" {{ route('MostrarPreguntasRecibidas') }} " target="blank" class="header-notification-item-name m-b-18 hov-cl1 trans-04">
-                                {{ $notificacion->texto }}
-                            </a>
-                        @endif
-                        {{-- Info --}}
-                        <span class="">
-                            {{ date( 'd/m/Y', strtotime($notificacion->created_at)) }}
-                        </span>
+                    <a href="" data-notificacion="{{ $notificacion->id }}" data-url="{{ url($notificacion->url_redirect) }}" target="blank" class="header-notification-item-name m-b-18 hov-cl1 trans-04 link-notificacion">
+                            {{ $notificacion->texto }}
+                        </a>
+                    {{-- Info --}}
+                    <span class="">
+                        {{ date( 'd/m/Y', strtotime($notificacion->created_at)) }}
+                    </span>
                     </div>
                 </li>
                 <hr>
@@ -58,3 +56,28 @@
         </div>
     </div>
 </div>
+@push('js')
+    <script>
+        $(document).on( 'click' , '.link-notificacion' , function(e){
+            e.preventDefault();
+
+            var url = $(this).data('url');
+            var id_notificacion = $(this).data('notificacion');
+            
+            $.ajax({
+                type: 'POST',
+                url: '{{ url('/notificacion/visto') }}',
+                data: {
+                    id_notificacion,
+                    _token: '{{ csrf_token() }}'
+                },
+                error: function(x,y,z){
+                    console.log(x,y,z);
+                },
+                success: function(data){
+                    window.location.href = url;
+                }
+            });
+        });
+    </script>
+@endpush

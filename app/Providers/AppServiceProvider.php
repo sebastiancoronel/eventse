@@ -50,7 +50,7 @@ class AppServiceProvider extends ServiceProvider
                 $Notificaciones = Notificacion::where( 'user_id_notificar' , Auth::user()->id )
                                             ->where('visto', 0)
                                             ->Join( 'eventos' , 'notificacions.id_evento' , '=' , 'eventos.id' )
-                                            ->select('notificacions.*' , 'eventos.texto')
+                                            ->select('notificacions.*' , 'eventos.texto', 'eventos.url_redirect')
                                             ->orderBy('id', 'desc')
                                             ->get();
                 // if ( count($Notificaciones) ) {
