@@ -57,6 +57,8 @@
     </div>
 </div>
 @push('js')
+
+    {{-- Marcar notificacion como visto --}}
     <script>
         $(document).on( 'click' , '.link-notificacion' , function(e){
             e.preventDefault();

@@ -226,7 +226,7 @@ class ServicioController extends Controller
     Notificacion::create([
       'user_id_notificar' => $request->id_prestador,
       'user_id_trigger' => $request->id_usuario,
-      'id_evento' => 1,
+      'id_evento' => 1, //Pregunta
       'visto' => 0,
       ]);
 
@@ -322,49 +322,6 @@ class ServicioController extends Controller
     }
     return redirect()->route('MostrarPaquete');
 
-  }
-
-  public function EnviarSolicitudPresupuesto(Request $request){
-    //dd( $request->session()->all() );
-    //dd($request->all());
-
-    // $request->validate([
-    //   'desde' => 'required',
-    //   'hasta' => 'required',
-    //   'direccion' => 'required|max:100',
-    //   'barrio' => 'required|max:100',
-    //   'pregunta' => 'required'
-    // ]);
-    $Paquete = Session::get('Servicio');
-
-    foreach ($Paquete as $servicio) {
-      $id_prestador = Servicio::findOrfail($servicio['id_servicio'])->pluck('id_prestador')->first();
-
-      if (  key_exists( $servicio['id_servicio'] , $request->comentario_adicional )) { //La key representa el id de servicio y el valor es el comentario adicional o pregunta que se le hace al prestador.
-         $Pregunta = $request->comentario_adicional[ $servicio['id_servicio'] ];
-      }else{
-        return false;
-      }
-
-      Presupuesto::create([
-        'id_servicio' => $servicio['id_servicio'],
-        'id_prestador' => $id_prestador,
-        'user_id' => Auth::user()->id,
-        'fecha' => $request->fecha,
-        'hora_desde' => $request->desde,
-        'hora_hasta' => $request->hasta,
-        'direccion' => $request->direccion,
-        'barrio' => $request->barrio,
-        //'monto' => ,
-        'estado' => 'Aceptado',
-        'pregunta' => $Pregunta ,
-        //'respuesta' => ,
-        ]
-      );
-
-    }
-    //$request->session()->forget(['Servicio']);
-    return redirect()->route('Principal')->with( 'PresupuestoEnviado' , ' ' );
   }
   
   // public function MostrarPlanes(){

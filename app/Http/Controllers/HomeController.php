@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use auth;
+use App\Notificacion;
 use App\Categoria;
 use App\Prestador;
 use App\Servicio;
@@ -57,6 +58,13 @@ class HomeController extends Controller
       $Pregunta = Pregunta::findOrfail( $request->id_pregunta );
       $Pregunta->respuesta = $request->respuesta;
       $Pregunta->update();
+      
+      Notificacion::create([
+        'user_id_notificar' => $Pregunta->user_id,
+        'user_id_trigger' => $Pregunta->id_prestador,
+        'id_evento' => 4, //Respuesta a pregunta
+        'visto' => 0,
+        ]);
 
       return redirect()->route('MostrarPreguntasRecibidas')->with( 'Respondido' , ' ' );
       
@@ -85,23 +93,7 @@ class HomeController extends Controller
       return view('AdminLTE.presupuestos_solicitados' , [ 'Presupuestos' => $Presupuestos ]);
     } 
 
-    public function ResponderSolicitudPresupuesto( Request $request ){
-
-      $request->validate([
-        'monto' => 'required|max:10',
-        'estado' => 'required'
-      ]);
-      
-      $Presupuesto = Presupuesto::findOrfail( $request->id_presupuesto );
-      
-      $Presupuesto->respuesta = $request->respuesta;
-      $Presupuesto->monto = $request->monto;
-      $Presupuesto->estado = $request->estado;
-      $Presupuesto->update();
-
-      return redirect()->route( 'MostrarPresupuestosSolicitados' )->with( 'Exito' , ' ' );
-    }
-
+   
     public function MostrarMisServicios(){
       $id_prestador = Prestador::where( 'user_id' , Auth::user()->id )->pluck('id')->first();
       $Servicios = Servicio::withTrashed()

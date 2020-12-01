@@ -45,7 +45,7 @@ Route::middleware(['auth', 'ControlarPerfilPrestador'])->group(function () {
 
   // Presupuestos
   Route::get('/home/presupuestos-recibidos','HomeController@MostrarPresupuestosSolicitados')->name('MostrarPresupuestosSolicitados');
-  Route::post('/home/presupuestos-recibidos','HomeController@ResponderSolicitudPresupuesto')->name('ResponderSolicitudPresupuesto');
+  Route::post('/home/presupuestos-recibidos','PresupuestoController@ResponderSolicitudPresupuesto')->name('ResponderSolicitudPresupuesto');
 
   // Servicios
   Route::get('/home/servicios','HomeController@MostrarMisServicios')->name('MostrarMisServicios');
@@ -75,7 +75,7 @@ Route::middleware(['auth'])->group(function () {
   Route::post('/reservar/servicios-publicados/eliminando-del-paquete','ServicioController@EliminarDelPaquete')->name('EliminarDelPaquete');
 
   //Enviar solicitud de presupuesto
-  Route::post('/reservar/servicios-publicados/enviando-solicitud-presupuesto','ServicioController@EnviarSolicitudPresupuesto')->name('EnviarSolicitudPresupuesto');
+  Route::post('/reservar/servicios-publicados/enviando-solicitud-presupuesto','PresupuestoController@EnviarSolicitudPresupuesto')->name('EnviarSolicitudPresupuesto');
 
   //Almacenar visto en notificacion
   Route::post('/notificacion/visto','NotificacionController@AlmacenarVisto')->name('AlmacenarVisto');
