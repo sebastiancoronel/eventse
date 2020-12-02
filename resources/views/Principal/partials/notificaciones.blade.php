@@ -15,26 +15,28 @@
         <div class="header-notification-content flex-w js-pscroll">
             <ul id="servicios_carrito" class="header-notification-wrapitem w-full">
             @auth
-                @forelse ($Notificaciones as $notificacion)
-                    
-                {{-- Notificacion --}}
-                <li class="header-notification-item flex-w flex-t m-b-12">
+                @if ($Notificaciones)
+                    @forelse ($Notificaciones as $notificacion)
+                        
+                        {{-- Notificacion --}}
+                        <li class="header-notification-item flex-w flex-t m-b-12">
 
-                    {{-- Titulo --}}
-                    <div class="">
-                    <a href="" data-notificacion="{{ $notificacion->id }}" data-url="{{ url($notificacion->url_redirect) }}" target="blank" class="header-notification-item-name m-b-18 hov-cl1 trans-04 link-notificacion">
-                            {{ $notificacion->texto }}
-                        </a>
-                    {{-- Info --}}
-                    <span class="">
-                        {{ date( 'd/m/Y', strtotime($notificacion->created_at)) }}
-                    </span>
-                    </div>
-                </li>
-                <hr>
-                @empty
-                    <span> No tienes notificaciones aun </span>
-                @endforelse
+                            {{-- Titulo --}}
+                            <div class="">
+                            <a href="" data-notificacion="{{ $notificacion->id }}" data-url="{{ url($notificacion->url_redirect) }}" target="blank" class="header-notification-item-name m-b-18 hov-cl1 trans-04 link-notificacion">
+                                    {{ $notificacion->texto }}
+                                </a>
+                            {{-- Info --}}
+                            <span class="">
+                                {{ date( 'd/m/Y', strtotime($notificacion->created_at)) }}
+                            </span>
+                            </div>
+                        </li>
+                        <hr>
+                    @empty
+                        <span> No tienes notificaciones aun </span>
+                    @endforelse
+                @endif
             @endauth
             </ul>
 

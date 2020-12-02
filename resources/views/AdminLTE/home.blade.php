@@ -195,9 +195,9 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="" class="nav-link">
+                      <a href=" {{ route('MostrarRespuestasPresupuestos') }} " class="nav-link">
                         <i class="nav-icon"></i>
-                        <p> Recibidos </p>
+                        <p> Respuestas </p>
                       </a>
                     </li>
                   </ul>
@@ -349,9 +349,9 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href=" {{ route('MostrarRespuestasPresupuestos') }} " class="nav-link">
                       <i class="nav-icon"></i>
-                      <p> Recibidos </p>
+                      <p> Respuestas </p>
                     </a>
                   </li>
                 </ul>

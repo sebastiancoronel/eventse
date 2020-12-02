@@ -39,6 +39,7 @@ class HomeController extends Controller
       $id_prestador = Prestador::where( 'user_id' , Auth::user()->id )->pluck('id')->first();
 
       $Preguntas = Pregunta::where( 'preguntas.id_prestador' , $id_prestador )
+                            ->where('preguntas.respuesta' , null)
                             ->Join( 'users' , 'preguntas.user_id' , '=' , 'users.id' )
                             ->Join( 'servicios' , 'preguntas.id_servicio' , '=' , 'servicios.id' )
                             ->select('preguntas.*','users.id as user_id', 'users.name','users.lastname','servicios.nombre as nombre_servicio')

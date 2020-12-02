@@ -53,11 +53,12 @@ class AppServiceProvider extends ServiceProvider
                                             ->select('notificacions.*' , 'eventos.texto', 'eventos.url_redirect')
                                             ->orderBy('id', 'desc')
                                             ->get();
-                // if ( count($Notificaciones) ) {
 
-                // }                                       
-                $view->with( 'Notificaciones', $Notificaciones );
+            }else{
+                $Notificaciones = null;
             }
+            
+            $view->with( 'Notificaciones', $Notificaciones );
         });
 
     }

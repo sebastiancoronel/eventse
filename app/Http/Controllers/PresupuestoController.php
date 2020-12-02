@@ -61,26 +61,38 @@ class PresupuestoController extends Controller
         return redirect()->route('Principal')->with( 'PresupuestoEnviado' , ' ' );
     }
 
-      public function ResponderSolicitudPresupuesto( Request $request ){
+    public function ResponderSolicitudPresupuesto( Request $request ){
 
-        $request->validate([
-          'monto' => 'required|max:10',
-          'estado' => 'required'
-        ]);
-        
-        $Presupuesto = Presupuesto::findOrfail( $request->id_presupuesto );
-        $Presupuesto->respuesta = $request->respuesta;
-        $Presupuesto->monto = $request->monto;
-        $Presupuesto->estado = $request->estado;
-        $Presupuesto->update();
+      $request->validate([
+        'monto' => 'required|max:10',
+        'estado' => 'required'
+      ]);
+      
+      $Presupuesto = Presupuesto::findOrfail( $request->id_presupuesto );
+      $Presupuesto->respuesta = $request->respuesta;
+      $Presupuesto->monto = $request->monto;
+      $Presupuesto->estado = $request->estado;
+      $Presupuesto->update();
 
-        Notificacion::create([
-            'user_id_notificar' => $Presupuesto->user_id,
-            'user_id_trigger' => $Presupuesto->id_prestador,
-            'id_evento' => 5, //Respuesta presupuesto
-            'visto' => 0,
-            ]);
-  
-        return redirect()->route( 'MostrarPresupuestosSolicitados' )->with( 'Exito' , ' ' );
-      }
+      Notificacion::create([
+          'user_id_notificar' => $Presupuesto->user_id,
+          'user_id_trigger' => $Presupuesto->id_prestador,
+          'id_evento' => 5, //Respuesta presupuesto
+          'visto' => 0,
+          ]);
+
+      return redirect()->route( 'MostrarPresupuestosSolicitados' )->with( 'Exito' , ' ' );
+    }
+
+    public function MostrarRespuestasPresupuestos(){
+      $Presupuestos = Presupuesto::where( 'user_id', Auth::user()->id )
+                                  ->where('estado' , '!=' , 'Aceptado')
+                                  ->Join( 'servicios' , 'presupuestos.id_servicio' , '=' , 'servicios.id' )
+                                  ->select( 'presupuestos.*' ,'servicios.nombre', 'servicios.id as id_servicio' )
+                                  ->orderBy('updated_at', 'desc')
+                                  ->get();
+
+      return view('AdminLTE.respuestas_presupuestos', [ 'Presupuestos' => $Presupuestos ] );
+    }
+
 }

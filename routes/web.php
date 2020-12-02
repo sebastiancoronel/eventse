@@ -46,6 +46,7 @@ Route::middleware(['auth', 'ControlarPerfilPrestador'])->group(function () {
   // Presupuestos
   Route::get('/home/presupuestos-recibidos','HomeController@MostrarPresupuestosSolicitados')->name('MostrarPresupuestosSolicitados');
   Route::post('/home/presupuestos-recibidos','PresupuestoController@ResponderSolicitudPresupuesto')->name('ResponderSolicitudPresupuesto');
+  Route::post('/home/contrataciones','ReservaController@MostrarContrataciones')->name('MostrarContrataciones');
 
   // Servicios
   Route::get('/home/servicios','HomeController@MostrarMisServicios')->name('MostrarMisServicios');
@@ -85,6 +86,9 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/home/resumen','ClienteController@ClienteResumen')->name('ClienteResumen');
 
   Route::get('/home/respuestas-recibidas','HomeController@MostrarRespuestasRecibidas')->name('MostrarRespuestasRecibidas');
+
+  Route::get('/home/presupuestos-contestados','PresupuestoController@MostrarRespuestasPresupuestos')->name('MostrarRespuestasPresupuestos');
+  Route::post('/home/presupuestos-contestados/confirmar','ReservaController@ConfirmarContratacion')->name('ConfirmarContratacion');
 });
 
 /*

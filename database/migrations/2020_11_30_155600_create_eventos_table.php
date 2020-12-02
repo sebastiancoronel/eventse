@@ -37,7 +37,7 @@ class CreateEventosTable extends Migration
             [
                 'tipo' => 'Confirmacion',
                 'texto' => 'Tienes una confirmación de un presupuesto',
-                'url_redirect' => 'Falta'
+                'url_redirect' => '/home/contrataciones'
             ],
 
             [
@@ -49,7 +49,7 @@ class CreateEventosTable extends Migration
             [
                 'tipo' => 'Respuesta presupuesto',
                 'texto' => 'Te respondieron a tu solicitud de presupuesto',
-                'url_redirect' => 'Falta'
+                'url_redirect' => '/home/presupuestos-contestados'
             ],
 
 
