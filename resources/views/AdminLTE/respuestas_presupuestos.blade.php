@@ -17,13 +17,13 @@
                 </div>
                 <div class="col-md-6">
                     @if ( $presupuesto->estado == 'Disponible' )
-                        <span class="alert alert-success pull-right">
+                        <span class="alert alert-success pull-right text-uppercase">
                             <i class="zmdi zmdi-check-circle"></i> {{ $presupuesto->estado }}
                         </span>
                     @endif
 
                     @if ( $presupuesto->estado == 'No disponible' )
-                        <span class="alert alert-danger pull-right">
+                        <span class="alert alert-danger pull-right text-uppercase">
                             <i class="zmdi zmdi-close-circle"></i> {{ $presupuesto->estado }}
                         </span>
                     @endif
