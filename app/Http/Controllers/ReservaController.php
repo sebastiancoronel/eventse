@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Reserva;
 use Illuminate\Http\Request;
-
+use auth;
+use App\Reserva;
 use App\Presupuesto;
+use App\Notificacion;
+use App\Prestador;
 
 class ReservaController extends Controller
 {
     public function ConfirmarContratacion( Request $request ){
         $Presupuesto = Presupuesto::findOrfail( $request->id_presupuesto );
-
+        //dd($Presupuesto->id_prestador);
         Reserva::create([
             'fecha' => $Presupuesto->fecha,
             'hora_desde' => $Presupuesto->hora_desde,
@@ -32,11 +34,16 @@ class ReservaController extends Controller
         
         $Presupuesto->delete();
 
-        return redirect()->route('MostrarMisReservas')->with( 'ServicioContratado' , ' ');
+        return redirect()->route('MostrarReservasCliente')->with( 'ServicioContratado' , ' ');
     }
 
     public function MostrarReservasCliente(){
+        $Reservas = Reserva::where( 'user_id', Auth::user()->id )
+                            ->orderBy('id', 'desc')
+                            ->take(10)
+                            ->get();
 
+        return view('AdminLTE.reservas_cliente' , [ 'Reservas' => $Reservas ]);
     }
     
     public function MostrarReservasPrestador(){

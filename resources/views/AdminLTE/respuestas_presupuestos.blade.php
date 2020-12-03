@@ -46,17 +46,21 @@
 
             <div class="row mt-5">
                 {{-- Dirección --}}
-                <div class="col-lg-3 col-12">
+                <div class="col-lg-4 col-12">
                     <strong> Direccion: </strong> <span>{{ $presupuesto->direccion }}</span>
                 </div>
-                {{-- Respuesta --}}
-                <div class="col-lg-3 col-12">
-                    <strong> Respuesta: </strong> <span>{{ $presupuesto->respuesta }}</span>
-                </div>
+
                 {{-- Importe --}}
-                <div class="col-lg-3 col-12">
+                <div class="col-lg-4 col-12">
                     <strong> Precio Final: </strong> <span> $ {{ $presupuesto->monto }}</span>
                 </div>
+            </div>
+
+            <div class="row mt-5 alert alert-primary">
+              {{-- Respuesta --}}
+              <div class="col-lg-12 col-12">
+                <strong> Respuesta: </strong> <span>{{ $presupuesto->respuesta }}</span>
+              </div>
             </div>
         </div>
 

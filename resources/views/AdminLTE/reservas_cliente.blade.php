@@ -69,31 +69,12 @@
   @endif
 
   @push('js')
-    @if ( Session::has('Exito') )
+    @if ( Session::has('ServicioContratado') )
       <script>
         $(document).ready(function(){
-          swal( 'Listo!', ' ' , 'success' );
+          swal( 'Servicio contratado!', ' ' , 'success' );
         });
       </script>
     @endif
-    
-    <script>
-      $(document).on('change','.select_estado',function(){
-        if( $( '.select_estado option:selected' ).val() == 'No Disponible' ){
-          $('.div_monto').css('display','none');
-          $('#monto').val(0);
-        }else{
-          $('.div_monto').css('display','block');
-          $('#monto').val();
-        }
-      });
-    </script>
-
-    <script>
-      // Material Select Initialization
-      $(document).ready(function() {
-        $('.mdb-select').materialSelect();
-      });
-    </script>
   @endpush
 @endsection
