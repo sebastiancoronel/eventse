@@ -37,7 +37,7 @@ class HomeController extends Controller
 
     public function MostrarPreguntasRecibidas(){
       $id_prestador = Prestador::where( 'user_id' , Auth::user()->id )->pluck('id')->first();
-
+      
       $Preguntas = Pregunta::where( 'preguntas.id_prestador' , $id_prestador )
                             ->where('preguntas.respuesta' , null)
                             ->Join( 'users' , 'preguntas.user_id' , '=' , 'users.id' )
