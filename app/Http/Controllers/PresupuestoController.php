@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Presupuesto;
+use App\Prestador;
 use App\Servicio;
 use App\Notificacion;
 use Session;
@@ -23,10 +24,10 @@ class PresupuestoController extends Controller
         //   'pregunta' => 'required'
         // ]);
         $Paquete = Session::get('Servicio');
-    
         foreach ($Paquete as $servicio) {
-          $id_prestador = Servicio::findOrfail($servicio['id_servicio'])->pluck('id_prestador')->first();
-    
+          //dd($servicio['id_servicio']);
+          $id_prestador = Servicio::findOrfail($servicio['id_servicio'])->id_prestador;
+          
           if (  key_exists( $servicio['id_servicio'] , $request->comentario_adicional )) { //La key representa el id de servicio y el valor es el comentario adicional o pregunta que se le hace al prestador.
              $Pregunta = $request->comentario_adicional[ $servicio['id_servicio'] ];
           }else{
@@ -50,7 +51,7 @@ class PresupuestoController extends Controller
           );
         }
 
-        $User_notificar = Prestador::where( 'id' , $request->id_prestador )
+        $User_notificar = Prestador::where( 'id' , $id_prestador )
                                     ->pluck('user_id')
                                     ->first();                             
 
@@ -61,7 +62,8 @@ class PresupuestoController extends Controller
             'visto' => 0,
             ]);
 
-        //$request->session()->forget(['Servicio']); DESCOMENTAR ESTO PARA BORRAR EL CARRITO
+        $request->session()->forget(['Servicio']); //Borra el carrito
+
         return redirect()->route('Principal')->with( 'PresupuestoEnviado' , ' ' );
     }
 
