@@ -1,7 +1,7 @@
 @extends('AdminLTE.home')
 @section('content')
 <div class="dispositivo">
-  <h4 class="text-muted"> <i class="zmdi zmdi-assignment"></i> Respuestas de presupuestos</h4>
+  <h4 class="text-muted"> <i class="zmdi zmdi-calendar-note"></i> Mis reservas </h4>
   <hr>
   @if ( count($Reservas) )
     @foreach ( $Reservas as $reserva )
@@ -13,7 +13,7 @@
         <div class="card-header purple-gradient">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <h4> <a href=" {{ route('MostrarServicio', [ 'id' => $reserva->id_servicio ]) }} " class="text-white" target="blank"> {{ $reserva->nombre }} </a> </h4>
+                    <h4> <a href=" {{ route('MostrarServicio', [ 'id' => $reserva->id_servicio ]) }} " class="text-white" target="_blank"> {{ $reserva->nombre }} </a> </h4>
                 </div>
                 <div class="col-md-6">
                     @if ( $reserva->concretado == null )
@@ -22,9 +22,11 @@
                         </span>
                         @else
 
-                        <span class="alert alert-success pull-right text-uppercase">
-                            Entregado
-                        </span>
+                        <div class="alert alert bg-white pull-right text-uppercase">
+                          <span class="text-success">
+                            <i class="zmdi zmdi-calendar-check"></i> Entregado
+                          </span>
+                        </div>
                     @endif
                 </div>
             </div>

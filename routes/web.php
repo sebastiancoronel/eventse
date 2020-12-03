@@ -46,13 +46,16 @@ Route::middleware(['auth', 'ControlarPerfilPrestador'])->group(function () {
   // Presupuestos
   Route::get('/home/presupuestos-recibidos','HomeController@MostrarPresupuestosSolicitados')->name('MostrarPresupuestosSolicitados');
   Route::post('/home/presupuestos-recibidos','PresupuestoController@ResponderSolicitudPresupuesto')->name('ResponderSolicitudPresupuesto');
-  Route::post('/home/prestador/reservas','ReservaController@MostrarReservasPrestador')->name('MostrarReservasPrestador');
+  Route::get('/home/prestador/reservas','ReservaController@MostrarReservasPrestador')->name('MostrarReservasPrestador');
 
   // Servicios
   Route::get('/home/servicios','HomeController@MostrarMisServicios')->name('MostrarMisServicios');
   Route::post('/home/servicios/habilitar-deshabilitar','HomeController@HabilitarDeshabilitarServicio')->name('HabilitarDeshabilitarServicio');
   Route::get('/home/servicios/editar/{id}','HomeController@EditarServicio')->name('EditarServicio');
   Route::post('/home/servicios/actualizando-servicio','HomeController@ModificarServicio')->name('ModificarServicio');
+
+  //Reservas
+  Route::post('/home/reservas/reserva-concretada','ReservaController@MarcarComoEntregado')->name('MarcarComoEntregado');
 });
 
 /*
@@ -94,7 +97,7 @@ Route::middleware(['auth'])->group(function () {
 
 /*
 |--------------------------------------------------------------------------
-| Admin
+| Administrador
 |--------------------------------------------------------------------------
 */
 Route::get('admin', function(){

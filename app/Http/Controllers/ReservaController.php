@@ -39,6 +39,8 @@ class ReservaController extends Controller
 
     public function MostrarReservasCliente(){
         $Reservas = Reserva::where( 'user_id', Auth::user()->id )
+                            ->Join( 'servicios' , 'reservas.id_servicio' , '=' , 'servicios.id' )
+                            ->select( 'reservas.*' , 'servicios.nombre' , 'servicios.id as id_servicio' )
                             ->orderBy('id', 'desc')
                             ->take(10)
                             ->get();
@@ -49,10 +51,21 @@ class ReservaController extends Controller
     public function MostrarReservasPrestador(){
         $id_prestador = Prestador::where( 'user_id' , Auth::user()->id )->pluck('id')->first();
 
-        $Reservas = Reserva::where( 'id_prestador', $id_prestador )
-                                ->orderBy('id', 'desc')
-                                ->get();
+        $Reservas = Reserva::where( 'reservas.id_prestador', $id_prestador )
+                            ->Join( 'servicios' , 'reservas.id_servicio' , '=' , 'servicios.id' )
+                            ->select( 'reservas.*' , 'servicios.nombre' , 'servicios.id as id_servicio' )
+                            ->orderBy('id', 'desc')
+                            ->get();
         
         return view('AdminLTE.reservas_prestador' , [ 'Reservas' => $Reservas ]);
+    }
+
+    public function MarcarComoEntregado( Request $request ){
+        $Reserva = Reserva::findOrfail( $request->id_reserva );
+
+        $Reserva->concretado = 1;
+        $Reserva->update();
+
+        return redirect()->route('MostrarReservasPrestador')->with( 'Concretado' , ' ' );
     }
 }

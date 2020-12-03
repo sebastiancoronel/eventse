@@ -1,19 +1,19 @@
 @extends('AdminLTE.home')
 @section('content')
 <div class="dispositivo">
-  <h4 class="text-muted"> <i class="zmdi zmdi-assignment"></i> Respuestas de presupuestos</h4>
+  <h4 class="text-muted"> <i class="zmdi zmdi-calendar"></i> Reservas </h4>
   <hr>
   @if ( count($Reservas) )
     @foreach ( $Reservas as $reserva )
-    <form action="  " method="POST"> <!-- Puede valer para cancelar una reserva -->
+    <form action=" {{ route('MarcarComoEntregado') }} " method="POST"> 
       @csrf
-      <input hidden type="text" name="id_presupuesto" value=" {{ $reserva->id }} ">
+      <input hidden type="text" name="id_reserva" value=" {{ $reserva->id }} ">
 
       <div class="card">
-        <div class="card-header purple-gradient">
+        <div class="card-header peach-gradient">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <h4> <a href=" {{ route('MostrarServicio', [ 'id' => $reserva->id_servicio ]) }} " class="text-white" target="blank"> {{ $reserva->nombre }} </a> </h4>
+                    <h4> <a href=" {{ route('MostrarServicio', [ 'id' => $reserva->id_servicio ]) }} " class="text-dark" target="_blank"> {{ $reserva->nombre }} </a> </h4>
                 </div>
                 <div class="col-md-6">
                     @if ( $reserva->concretado == null )
@@ -22,9 +22,11 @@
                         </span>
                         @else
 
-                        <span class="alert alert-success pull-right text-uppercase">
-                            Entregado
-                        </span>
+                        <div class="alert alert bg-white pull-right text-uppercase">
+                          <span class="text-success">
+                            <i class="zmdi zmdi-calendar-check"></i> Entregado
+                          </span>
+                        </div>
                     @endif
                 </div>
             </div>
@@ -58,6 +60,11 @@
                 </div>
             </div>
         </div>
+        @if ( $reserva->concretado == null )
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary"> Entregado </button>  
+          </div>
+        @endif
       </div>
     </form>
     @endforeach
@@ -69,31 +76,12 @@
   @endif
 
   @push('js')
-    @if ( Session::has('Exito') )
+    @if ( Session::has('Concretado') )
       <script>
         $(document).ready(function(){
           swal( 'Listo!', ' ' , 'success' );
         });
       </script>
     @endif
-    
-    <script>
-      $(document).on('change','.select_estado',function(){
-        if( $( '.select_estado option:selected' ).val() == 'No Disponible' ){
-          $('.div_monto').css('display','none');
-          $('#monto').val(0);
-        }else{
-          $('.div_monto').css('display','block');
-          $('#monto').val();
-        }
-      });
-    </script>
-
-    <script>
-      // Material Select Initialization
-      $(document).ready(function() {
-        $('.mdb-select').materialSelect();
-      });
-    </script>
   @endpush
 @endsection
