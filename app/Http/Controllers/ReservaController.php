@@ -24,9 +24,13 @@ class ReservaController extends Controller
             'id_prestador' => $Presupuesto->id_prestador,
             'user_id' => $Presupuesto->user_id
             ]);
+        
+        $User_notificar = Prestador::where( 'id' , $Presupuesto->id_prestador )
+                                ->pluck('user_id')
+                                ->first();                             
 
         Notificacion::create([
-            'user_id_notificar' => $Presupuesto->id_prestador,
+            'user_id_notificar' => $User_notificar,
             'user_id_trigger' => $Presupuesto->user_id,
             'id_evento' => 3, //Confirmacion de prespuesto = Nueva reserva
             'visto' => 0,

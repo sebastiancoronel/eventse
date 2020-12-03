@@ -59,10 +59,14 @@ class HomeController extends Controller
       $Pregunta = Pregunta::findOrfail( $request->id_pregunta );
       $Pregunta->respuesta = $request->respuesta;
       $Pregunta->update();
+
+      $User_trigger = Prestador::where( 'id' , $Presupuesto->id_prestador )
+                                  ->pluck('user_id')
+                                  ->first();   
       
       Notificacion::create([
         'user_id_notificar' => $Pregunta->user_id,
-        'user_id_trigger' => $Pregunta->id_prestador,
+        'user_id_trigger' => $User_trigger,
         'id_evento' => 4, //Respuesta a pregunta
         'visto' => 0,
         ]);

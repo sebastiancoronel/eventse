@@ -135,10 +135,10 @@
                 </div>
 
                 <!-- Rol -->
-                <div class="form-check">
+                {{-- <div class="form-check">
                   <input type="checkbox" class="form-check-input" id="materialUnchecked" name="rol" value="1">
                   <label class="form-check-label" for="materialUnchecked">Registrarme como prestador de servicios</label>
-                </div>
+                </div> --}}
 
             <div class="text-center mt-5">
               <button type="submit" class="btn purple-gradient btn-lg waves-effect waves-light">{{ __('REGISTRARME') }}</button>

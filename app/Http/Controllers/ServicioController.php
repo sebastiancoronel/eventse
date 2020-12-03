@@ -223,8 +223,11 @@ class ServicioController extends Controller
                                               ->orderBy('created_at', 'DESC')
                                               ->get();
 
+    $User_notificar = Prestador::where( 'id' , $request->id_prestador )
+                                ->pluck('user_id')
+                                ->first();                                            
     Notificacion::create([
-      'user_id_notificar' => $request->id_prestador,
+      'user_id_notificar' => $User_notificar,
       'user_id_trigger' => $request->id_usuario,
       'id_evento' => 1, //Pregunta
       'visto' => 0,

@@ -50,8 +50,12 @@ class PresupuestoController extends Controller
           );
         }
 
+        $User_notificar = Prestador::where( 'id' , $request->id_prestador )
+                                    ->pluck('user_id')
+                                    ->first();                             
+
         Notificacion::create([
-            'user_id_notificar' => $id_prestador,
+            'user_id_notificar' => $User_notificar,
             'user_id_trigger' => Auth::user()->id,
             'id_evento' => 2, //Solicitud
             'visto' => 0,
@@ -74,9 +78,12 @@ class PresupuestoController extends Controller
       $Presupuesto->estado = $request->estado;
       $Presupuesto->update();
 
+      $User_trigger = Prestador::where( 'id' , $Presupuesto->id_prestador )
+                                ->pluck('user_id')
+                                ->first();                             
       Notificacion::create([
           'user_id_notificar' => $Presupuesto->user_id,
-          'user_id_trigger' => $Presupuesto->id_prestador,
+          'user_id_trigger' => $User_trigger,
           'id_evento' => 5, //Respuesta presupuesto
           'visto' => 0,
           ]);
