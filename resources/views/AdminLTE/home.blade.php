@@ -227,6 +227,15 @@
                           </p>
                         </a>
                       </li>
+
+                      <li class="nav-item has-treeview">
+                        <a href=" {{route('MostrarReservasCliente')}} " class="nav-link">
+                          <i class="nav-icon zmdi zmdi-format-subject"></i>
+                          <p>
+                            Mis Reservas
+                          </p>
+                        </a>
+                      </li>
                     @endif
 
                     @if ( Auth::user()->rol == 'Prestador' )

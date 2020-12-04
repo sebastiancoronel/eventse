@@ -42,9 +42,10 @@ class ReservaController extends Controller
     }
 
     public function MostrarReservasCliente(){
-        $Reservas = Reserva::where( 'user_id', Auth::user()->id )
+        $Reservas = Reserva::where( 'reservas.user_id', Auth::user()->id )
                             ->Join( 'servicios' , 'reservas.id_servicio' , '=' , 'servicios.id' )
-                            ->select( 'reservas.*' , 'servicios.nombre' , 'servicios.id as id_servicio' )
+                            ->Join( 'prestadors' , 'reservas.id_prestador' , '=' , 'prestadors.id' )
+                            ->select( 'reservas.*' , 'servicios.nombre' , 'servicios.id as id_servicio', 'prestadors.nombre as nombre_prestador' , 'prestadors.email' , 'prestadors.telefono' , 'prestadors.foto' )
                             ->orderBy('id', 'desc')
                             ->take(10)
                             ->get();
