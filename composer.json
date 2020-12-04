@@ -14,7 +14,8 @@
         "laravel/framework": "5.7.*",
         "laravel/installer": "^3.0",
         "laravel/tinker": "^1.0",
-        "laraveles/spanish": "^1.4"
+        "laraveles/spanish": "^1.4",
+        "nesbot/carbon": "^2.42"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
