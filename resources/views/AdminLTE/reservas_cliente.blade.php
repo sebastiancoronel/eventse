@@ -78,15 +78,15 @@
                     <div class="col-lg-8">
                       <div class="row">
                         <div class="col-lg-12 col-12">
-                          <strong> Prestador: </strong> <span> {{ $reserva->nombre_prestador }}</span>
+                          <span> {{ $reserva->nombre_prestador }}</span>
                         </div>
         
                         <div class="col-lg-12 my-2">
-                          <strong> E-mail: </strong> <span> {{ $reserva->email }}</span>
+                          <span> {{ $reserva->email }}</span>
                         </div>
         
                         <div class="col-lg-12">
-                          <strong> Teléfono: </strong> <span> {{ $reserva->telefono }}</span>
+                          <span> {{ $reserva->telefono }}</span>
                         </div>
                       </div>
                     </div>
