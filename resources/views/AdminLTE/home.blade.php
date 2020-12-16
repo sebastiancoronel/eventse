@@ -197,7 +197,7 @@
                           </li>
                         @endif
                         
-                        @if ( Auth::user()->rol == 'Cliente' )
+                        @if ( Auth::user()->rol != 'Administrador' )
                           <li class="nav-item">
                             <a href=" {{ route('MostrarRespuestasPresupuestos') }} " class="nav-link">
                               <i class="nav-icon"></i>
@@ -218,7 +218,7 @@
                       </li>
                     @endif
 
-                    @if ( Auth::user()->rol == 'Cliente' )
+                    @if ( Auth::user()->rol != 'Administrador' )
                       <li class="nav-item has-treeview">
                         <a href=" {{route('MostrarRespuestasRecibidas')}} " class="nav-link">
                           <i class="nav-icon zmdi zmdi-format-subject"></i>
@@ -293,7 +293,7 @@
                     @endif
 
                   <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                    <a href=" {{ route('CreateModificarDatos') }} " class="nav-link">
                       <i class="nav-icon zmdi zmdi-settings"></i>
                       <p>
                       Modificar datos
@@ -447,7 +447,7 @@
                   @endif
 
                   <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                    <a href=" {{ route('CreateModificarDatos') }} " class="nav-link">
                       <i class="nav-icon zmdi zmdi-settings"></i>
                       <p>
                       Modificar datos

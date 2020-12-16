@@ -94,6 +94,10 @@ Route::middleware(['auth'])->group(function () {
   Route::post('/home/presupuestos-contestados/confirmar','ReservaController@ConfirmarContratacion')->name('ConfirmarContratacion');
   Route::get('/home/cliente/reservas','ReservaController@MostrarReservasCliente')->name('MostrarReservasCliente');
   Route::post('/home/cliente/reservas/cancelar','ReservaController@CancelarReserva')->name('CancelarReserva');
+
+  // Modificar datos personales
+  Route::get('/home/modificar-datos','HomeController@CreateModificarDatos')->name('CreateModificarDatos');
+  Route::post('/home/modificar-datos/actualizar','HomeController@ActualizarDatosPersonales')->name('ActualizarDatosPersonales');
 });
 
 /*

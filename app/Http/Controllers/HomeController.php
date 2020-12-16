@@ -196,4 +196,14 @@ class HomeController extends Controller
       return redirect()->route('MostrarMisServicios')->with( 'ServicioModificado' , ' ' );
       
     }
+
+    public function CreateModificarDatos(){
+
+      return view('AdminLTE.modificar_datos');
+    }
+
+    public function ActualizarDatosPersonales(){
+
+    }
+    
 }
