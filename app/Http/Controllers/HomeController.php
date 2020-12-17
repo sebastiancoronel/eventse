@@ -11,6 +11,7 @@ use App\Prestador;
 use App\Servicio;
 use App\Pregunta;
 use App\Presupuesto;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -199,11 +200,43 @@ class HomeController extends Controller
 
     public function CreateModificarDatos(){
 
-      return view('AdminLTE.modificar_datos');
+      $User = User::where('id', Auth::user()->id )
+                  ->select('*')
+                  ->first();
+
+      $Prestador = Prestador::where('user_id', Auth::user()->id )
+                            ->select('*')
+                            ->first();
+      
+      return view('AdminLTE.modificar_datos', [ 'User' => $User, 'Prestador' => $Prestador]);
     }
 
-    public function ActualizarDatosPersonales(){
+    public function ActualizarDatosPersonales( Request $request ){
+      
+      $Prestador = Prestador::where('user_id', Auth::user()->id )->select('*')->first();
+      
+      if ($Prestador) {
+          $Prestador->nombre = $request->nombre_prestador;
+          $Prestador->email = $request->email_prestador;
+          $Prestador->telefono = $request->telefono_prestador;
 
+          if ( $request->hasFile('foto') ) {
+            $ImagenSubida = $request->file('foto');
+            $NombreImagen = Auth::user()->id . '.' . $ImagenSubida->getClientOriginalExtension();
+            $RutaImagen = public_path('/images/foto_perfil');
+            $ImagenSubida->move($RutaImagen, $NombreImagen);
+            $Prestador->foto = '/images/foto_perfil/' . $NombreImagen;
+            }
+
+          $Prestador->update();
+      }
+
+      $User = User::findOrfail( Auth::user()->id );
+      $User->email = $request->email_personal;
+      $User->telefono = $request->telefono_personal;
+      $User->update();
+
+      return redirect()->route('CreateModificarDatos')->with( 'DatosActualizados' , ' ' );
     }
     
 }
