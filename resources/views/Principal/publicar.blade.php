@@ -21,8 +21,7 @@
           /* Act on the event */
         });
       </script>
-    {{-- <div class="alert alert-success wow fadeIn">{{Session::get('message')}}
-</div> --}}
+    {{-- <div class="alert alert-success wow fadeIn">{{Session::get('message')}} </div> --}}
 @endif
 
   <div class="purple-gradient d-flex justify-content-center" style="height: 200px;">

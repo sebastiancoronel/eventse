@@ -5,7 +5,7 @@
         <div class="top-bar">
             <div class="content-topbar flex-sb-m h-full container">
                 <div class="left-top-bar">
-                    Sumá puntos contratando tu primer servicio <a href="#">haciendo click aqui</a>
+                    {{-- Sumá puntos contratando tu primer servicio <a href="#">haciendo click aqui</a> --}}
                 </div>
       @guest
         @if (Route::has('login'))
