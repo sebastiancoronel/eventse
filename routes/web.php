@@ -19,6 +19,9 @@ Route::get('/reservar/servicios-publicados','ServicioController@ServiciosPublica
 //Mostrar servicio
 Route::get('/reservar/servicios-publicados/{id}','ServicioController@MostrarServicio')->name('MostrarServicio');
 
+//Mostrar servicios por categoria
+Route::get('/categoria/{id}','CategoriaController@ServiciosPorCategoria')->name('ServiciosPorCategoria');
+
 //--- Preguntas
 Route::post('/reservar/servicios-publicados/almacenando-pregunta','ServicioController@AlmacenarPregunta')->name('AlmacenarPregunta')->middleware('auth');
 // Route::get('/reservar/servicios-publicados/almacenando-pregunta','ServicioController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('auth');  
