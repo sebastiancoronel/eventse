@@ -10,7 +10,7 @@
       <input hidden type="text" name="id_presupuesto" value=" {{ $presupuesto->id }} ">
 
       <div class="card">
-        <div class="card-header purple-gradient">
+        <div class="card-header {{ ( $presupuesto->estado == 'Sin respuesta' ? 'bg-danger' : 'purple-gradient' ) }} ">
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <h4> <a href=" {{ route('MostrarServicio', [ 'id' => $presupuesto->id_servicio ]) }} " class="text-white" target="blank"> {{ $presupuesto->nombre }} </a> </h4>
@@ -23,6 +23,12 @@
                     @endif
 
                     @if ( $presupuesto->estado == 'No disponible' )
+                        <span class="alert alert-danger pull-right text-uppercase">
+                            <i class="zmdi zmdi-close-circle"></i> {{ $presupuesto->estado }}
+                        </span>
+                    @endif
+
+                    @if ( $presupuesto->estado == 'Sin respuesta' )
                         <span class="alert alert-danger pull-right text-uppercase">
                             <i class="zmdi zmdi-close-circle"></i> {{ $presupuesto->estado }}
                         </span>

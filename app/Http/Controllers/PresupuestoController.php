@@ -95,25 +95,12 @@ class PresupuestoController extends Controller
     }
 
     public function MostrarRespuestasPresupuestos(){
-      $PresupuestosEvaluarVencidos = Presupuesto::where( 'user_id', Auth::user()->id )
-                                  ->where('estado' , '=' , 'Aceptado')
-                                  // ->Join( 'servicios' , 'presupuestos.id_servicio' , '=' , 'servicios.id' )
-                                  // ->select( 'presupuestos.*' ,'servicios.nombre', 'servicios.id as id_servicio' )
-                                  // ->orderBy('updated_at', 'desc')
-                                  ->get();
-      // dd($PresupuestosEvaluarVencidos);
-      $Hoy = Carbon::now();
-      foreach ($PresupuestosEvaluarVencidos as $presupuesto_evaluar_vencido) {
-        
-        $fecha_creacion = Carbon::parse($presupuesto_evaluar_vencido->created_at);
-        $fecha_vencimiento = $fecha_creacion->addDays(3);
-        if ( $Hoy > $fecha_vencimiento ) {
-          dd("Vencido" , $Hoy->format('d-m-Y') , "Vencio el: ",$fecha_vencimiento->format('d-m-Y') );
-        }
-        
-      }
-
-      // $date->format("d-m-Y");
+      $Presupuestos = Presupuesto::where( 'user_id', Auth::user()->id )
+                                                  // ->where('estado' , '=' , 'Aceptado')
+                                                  ->Join( 'servicios' , 'presupuestos.id_servicio' , '=' , 'servicios.id' )
+                                                  ->select( 'presupuestos.*' ,'servicios.nombre', 'servicios.id as id_servicio' )
+                                                  ->orderBy('updated_at', 'desc')
+                                                  ->get();
       
       return view('AdminLTE.respuestas_presupuestos', [ 'Presupuestos' => $Presupuestos ] );
     }
