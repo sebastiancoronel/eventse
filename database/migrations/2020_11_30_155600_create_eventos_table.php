@@ -58,6 +58,12 @@ class CreateEventosTable extends Migration
                 'url_redirect' => '/home/presupuestos-contestados'
             ],
 
+            [
+                'tipo' => 'Reserva cancelada',
+                'texto' => 'Un cliente canceló una reserva',
+                'url_redirect' => '/home/prestador/reservas'
+            ],
+
 
         ]);
     }
