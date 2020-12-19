@@ -52,6 +52,12 @@ class CreateEventosTable extends Migration
                 'url_redirect' => '/home/presupuestos-contestados'
             ],
 
+            [
+                'tipo' => 'Vencimiento presupuesto',
+                'texto' => 'No respondieron a tu solicitud de presupuesto a tiempo',
+                'url_redirect' => '/home/presupuestos-contestados'
+            ],
+
 
         ]);
     }
