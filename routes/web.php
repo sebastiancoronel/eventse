@@ -93,6 +93,7 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/home/presupuestos-contestados','PresupuestoController@MostrarRespuestasPresupuestos')->name('MostrarRespuestasPresupuestos');
   Route::post('/home/presupuestos-contestados/confirmar','ReservaController@ConfirmarContratacion')->name('ConfirmarContratacion');
   Route::get('/home/cliente/reservas','ReservaController@MostrarReservasCliente')->name('MostrarReservasCliente');
+  Route::post('/home/cliente/reservas/cancelar','ReservaController@CancelarReserva')->name('CancelarReserva');
 });
 
 /*
