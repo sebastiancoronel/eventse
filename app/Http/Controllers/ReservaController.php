@@ -56,10 +56,11 @@ class ReservaController extends Controller
     public function MostrarReservasPrestador(){
         $id_prestador = Prestador::where( 'user_id' , Auth::user()->id )->pluck('id')->first();
 
-        $Reservas = Reserva::where( 'reservas.id_prestador', $id_prestador )
+        $Reservas = Reserva::withTrashed()        
+                            ->where( 'reservas.id_prestador', $id_prestador )
                             ->Join( 'servicios' , 'reservas.id_servicio' , '=' , 'servicios.id' )
                             ->select( 'reservas.*' , 'servicios.nombre' , 'servicios.id as id_servicio' )
-                            ->orderBy('id', 'desc')
+                            ->orderBy('fecha', 'desc')
                             ->get();
         
         return view('AdminLTE.reservas_prestador' , [ 'Reservas' => $Reservas ]);
@@ -72,5 +73,20 @@ class ReservaController extends Controller
         $Reserva->update();
 
         return redirect()->route('MostrarReservasPrestador')->with( 'Concretado' , ' ' );
+    }
+
+    public function CancelarReserva( Request $request ){
+        $Reserva = Reserva::findOrfail($request->id_reserva);
+        $User_notificar = Prestador::where( 'id', $Reserva->id_prestador )->pluck('user_id')->first();
+        
+        Reserva::destroy($request->id_reserva);
+
+        Notificacion::create([
+            'user_id_notificar' => $User_notificar,
+            'user_id_trigger' => Auth::user()->id,
+            'id_evento' => 7, //Cancelar reserva
+            'visto' => 0,
+            ]);
+        return redirect()->route('MostrarReservasCliente')->with('ReservaCancelada',' ');
     }
 }

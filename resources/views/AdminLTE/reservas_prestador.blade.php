@@ -10,23 +10,28 @@
       <input hidden type="text" name="id_reserva" value=" {{ $reserva->id }} ">
 
       <div class="card">
-        <div class="card-header peach-gradient">
+      <div class="card-header {{ ( $reserva->deleted_at != null ? 'bg-danger' : 'peach-gradient' ) }}">
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <h4> <a href=" {{ route('MostrarServicio', [ 'id' => $reserva->id_servicio ]) }} " class="text-dark" target="_blank"> {{ $reserva->nombre }} </a> </h4>
                 </div>
                 <div class="col-md-6">
-                    @if ( $reserva->concretado == null )
+                    @if ( $reserva->concretado == null && $reserva->deleted_at == null )
                         <span class="alert alert bg-white text-dark pull-right text-uppercase">
                             Pendiente de entrega
                         </span>
                         @else
-
-                        <div class="alert alert bg-white pull-right text-uppercase">
-                          <span class="text-success">
-                            <i class="zmdi zmdi-calendar-check"></i> Entregado
+                        @if ($reserva->deleted_at != null)
+                          <span class="alert alert-danger pull-right text-uppercase">
+                            <i class="zmdi zmdi-close-circle"></i> Cancelado
                           </span>
-                        </div>
+                          @else
+                          <div class="alert alert bg-white pull-right text-uppercase">
+                            <span class="text-success">
+                              <i class="zmdi zmdi-calendar-check"></i> Entregado
+                            </span>
+                          </div>
+                        @endif
                     @endif
                 </div>
             </div>
@@ -60,7 +65,7 @@
                 </div>
             </div>
         </div>
-        @if ( $reserva->concretado == null )
+        @if ( $reserva->concretado == null && $reserva->deleted_at == null )
           <div class="card-footer">
             <button type="submit" class="btn btn-primary"> Entregado </button>  
           </div>
