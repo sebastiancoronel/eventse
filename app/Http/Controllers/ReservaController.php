@@ -55,7 +55,7 @@ class ReservaController extends Controller
     
     public function MostrarReservasPrestador(){
         $id_prestador = Prestador::where( 'user_id' , Auth::user()->id )->pluck('id')->first();
-
+        
         $Reservas = Reserva::withTrashed()        
                             ->where( 'reservas.id_prestador', $id_prestador )
                             ->Join( 'servicios' , 'reservas.id_servicio' , '=' , 'servicios.id' )
