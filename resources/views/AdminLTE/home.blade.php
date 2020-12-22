@@ -216,9 +216,19 @@
                           </p>
                         </a>
                       </li>
+
+                      <li class="nav-item has-treeview">
+                        <a href=" {{route('MostrarReservasPrestador')}} " class="nav-link">
+                          <i class="nav-icon zmdi zmdi-format-subject"></i>
+                          <p>
+                            Contrataciones
+                          </p>
+                        </a>
+                      </li>
+
                     @endif
 
-                    @if ( Auth::user()->rol != 'Administrador' )
+                    @if ( Auth::user()->rol == 'Cliente' )
                       <li class="nav-item has-treeview">
                         <a href=" {{route('MostrarRespuestasRecibidas')}} " class="nav-link">
                           <i class="nav-icon zmdi zmdi-format-subject"></i>
