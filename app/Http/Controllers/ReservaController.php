@@ -8,6 +8,7 @@ use App\Reserva;
 use App\Presupuesto;
 use App\Notificacion;
 use App\Prestador;
+use App\Opinion;
 
 class ReservaController extends Controller
 {
@@ -49,6 +50,12 @@ class ReservaController extends Controller
                             ->orderBy('id', 'desc')
                             ->take(10)
                             ->get();
+        
+        // $Opinion = Opinion::where('opinion', null)
+        //                     ->where( '' , '' );
+        //                     ->orderBy('name', 'desc')
+        //                     ->take(10)
+        //                     ->get();
 
         return view('AdminLTE.reservas_cliente' , [ 'Reservas' => $Reservas ]);
     }
@@ -72,6 +79,13 @@ class ReservaController extends Controller
         $Reserva->concretado = 1;
         $Reserva->update();
 
+        Notificacion::create([
+            'user_id_notificar' =>  $Reserva->user_id,
+            'user_id_trigger' => $Reserva->id_prestador,
+            'id_evento' => 8, //Confirmacion de prespuesto = Nueva reserva
+            'visto' => 0,
+            ]);
+
         return redirect()->route('MostrarReservasPrestador')->with( 'Concretado' , ' ' );
     }
 
@@ -88,5 +102,26 @@ class ReservaController extends Controller
             'visto' => 0,
             ]);
         return redirect()->route('MostrarReservasCliente')->with('ReservaCancelada',' ');
+    }
+
+    public function AgregarOpinion( Request $request ){
+        
+        $request->validate([
+            'opinion' => 'required|max:1000'
+        ]);
+
+        
+        Opinion::create([
+            'opinion' => $request->opinion,
+            'id_servicio' => $request->id_servicio,
+            'id_prestador' => $request->id_prestador,
+            'user_id' => Auth::user()->id,
+            ]);
+
+        $Reserva = Reserva::findOrfail($request->id_reserva);
+        $Reserva->opinion_agregada = 1;
+        $Reserva->update();
+        
+        return redirect()->route( 'MostrarReservasCliente' )->with( 'OpinionAgregada' , ' ' );
     }
 }

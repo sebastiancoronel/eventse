@@ -111,7 +111,8 @@
 
           </div>
         </div>
-        <div class="card-footer">
+        <hr>
+        <div class="card-footer bg-white">
           @if ( $reserva->concretado == null )
           <div class="pull-right">
             <form action="{{ route('CancelarReserva') }}" method="POST">
@@ -120,6 +121,22 @@
               <button type="submit" class="btn btn-danger"> Cancelar </button>
             </form>
           </div>
+          @else
+            @if ($reserva->opinion_agregada == null)
+              <h4 class="text-uppercase"> Agregar una opinión </h4>
+              <div class="md-form">
+                <form action="{{ route('AgregarOpinion') }}" method="POST">
+                  @csrf
+                  <input hidden type="text" name="id_reserva" value=" {{ $reserva->id }} ">
+                  <input hidden type="text" name="id_servicio" value=" {{ $reserva->id_servicio }} ">
+                  <input hidden type="text" name="id_prestador" value=" {{ $reserva->id_prestador }} ">
+                  <label for="opinion">Contános tu experiencia con este servicio</label>
+                  <input type="text" name="opinion" class="form-control" maxlength="1000" required>
+                  <div class="text-danger"> {{ $errors->first('opinion') }} </div>
+                  <button type="submit" class="btn btn-primary pull-right"> Enviar </button>
+                </form>
+              </div>
+            @endif
           @endif
         </div>
       </div>
@@ -144,6 +161,14 @@
       <script>
         $(document).ready(function(){
           swal( 'Reserva cancelada', ' ' , 'success' );
+        });
+      </script>
+    @endif
+
+    @if ( Session::has('OpinionAgregada') )
+      <script>
+        $(document).ready(function(){
+          swal( 'Gracias por tu opinión', ' ' , 'success' );
         });
       </script>
     @endif

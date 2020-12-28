@@ -64,6 +64,12 @@ class CreateEventosTable extends Migration
                 'url_redirect' => '/home/prestador/reservas'
             ],
 
+            [
+                'tipo' => 'Agregar opinion',
+                'texto' => 'Agregá un comentario de tu experiencia con este prestador',
+                'url_redirect' => '/home/cliente/reservas'
+            ],
+
 
         ]);
     }

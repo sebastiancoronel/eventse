@@ -10,8 +10,7 @@ class Reserva extends Model
     use SoftDeletes;
     protected $dates = ['deleted_at'];
     protected $table = 'reservas';
-    protected $fillable = ['nombre','fecha','hora_desde','hora_hasta','direccion','monto','id_servicio', 'id_prestador' ,'user_id'];
-    protected $guarded = ['id'];
+    protected $fillable = ['fecha','hora_desde','hora_hasta','direccion','monto','concretado','opinion_agregada', 'id_servicio' ,'id_prestador' , 'user_id'];
 
     //Relaciones
     public function servicios(){

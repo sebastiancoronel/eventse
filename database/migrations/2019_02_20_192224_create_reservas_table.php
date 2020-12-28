@@ -23,6 +23,7 @@ class CreateReservasTable extends Migration
             // $table->enum('tipo_pago',['Efectivo','Home Banking'])->nullable();
             // $table->enum('estado_pago',['Pagado','Pendiente'])->nullable();
             $table->boolean('concretado')->nullable();
+            $table->boolean('opinion_agregada')->nullable();
 
             $table->integer('id_servicio')->unsigned();
             $table->foreign('id_servicio')->references('id')->on('servicios');
