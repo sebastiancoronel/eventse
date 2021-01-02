@@ -38,18 +38,21 @@ class CaracteristicaController extends Controller
 
     }
 
-    public function EditarCaracteristica( Request $id ){
-        $Caracteristica = Caracteristica::withTrashed($id)->first();
-
+    public function EditarCaracteristica( $id ){
+        $Caracteristica = Caracteristica::withTrashed($id)->where( 'id' , $id )->first();
+        
         return view('AdminLTE.Admin.editar_caracteristica',[ 'Caracteristica' => $Caracteristica ] );
     }
 
     public function ActualizarCaracteristica( Request $request ){
+
         $Caracteristica = Caracteristica::where( 'id' ,$request->id )->select('*')->first();
+
+        $id_categoria = Caracteristica_por_categoria::where( 'id_caracteristica', $Caracteristica->id )->pluck('id_categoria')->first();
         $Caracteristica->nombre = $request->nombre;
         $Caracteristica->update();
 
-        return redirect()->route('CrearCaracteristicas', ['id' => $request->id] )->with('Success','Caracteristica actualizada');
+        return redirect()->route('CrearCaracteristicas', [ 'id' => $id_categoria ] )->with('Success','Caracteristica actualizada');
     }
 
 
