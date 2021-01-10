@@ -1,7 +1,7 @@
 @extends('AdminLTE.home')
 @section('content')
 <div class="dispositivo">
-  <h4 class="text-muted"> <i class="zmdi zmdi-calendar"></i> Reservas </h4>
+  <h4 class="text-muted"> <i class="zmdi zmdi-calendar"></i> Contrataciones </h4>
   <hr>
   @if ( count($Reservas) )
     @foreach ( $Reservas as $reserva )
