@@ -6,7 +6,7 @@
   @if ( count($Reservas) )
     @foreach ( $Reservas as $reserva )
       <div class="card">
-        <div class="card-header purple-gradient">
+        <div class="card-header bg-white">
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <h4> <a href=" {{ route('MostrarServicio', [ 'id' => $reserva->id_servicio ]) }} " class="text-white" target="_blank"> {{ $reserva->nombre }} </a> </h4>

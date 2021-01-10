@@ -10,7 +10,7 @@
       <input hidden type="text" name="id_reserva" value=" {{ $reserva->id }} ">
 
       <div class="card">
-      <div class="card-header {{ ( $reserva->deleted_at != null ? 'bg-danger' : 'peach-gradient' ) }}">
+      <div class="card-header {{ ( $reserva->deleted_at != null ? 'bg-danger' : 'bg-white' ) }}">
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <h4> <a href=" {{ route('MostrarServicio', [ 'id' => $reserva->id_servicio ]) }} " class="text-dark" target="_blank"> {{ $reserva->nombre }} </a> </h4>
