@@ -9,8 +9,8 @@
       @csrf
       <input hidden type="text" name="id_presupuesto" value=" {{ $presupuesto->id }} ">
 
-      <div class="card">
-        <div class="card-header {{ ( $presupuesto->estado == 'Sin respuesta' ? 'bg-danger' : 'purple-gradient' ) }} ">
+      <div class="card my-5">
+        <div class="card-header {{ ( $presupuesto->estado == 'Sin respuesta' ? 'bg-danger' : ( $presupuesto->estado == 'Aceptado' ? 'bg-white' : 'bg-success') ) }} ">
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <h4> <a href=" {{ route('MostrarServicio', [ 'id' => $presupuesto->id_servicio ]) }} " class="text-white" target="blank"> {{ $presupuesto->nombre }} </a> </h4>
@@ -31,6 +31,12 @@
                     @if ( $presupuesto->estado == 'Sin respuesta' )
                         <span class="alert alert-danger pull-right text-uppercase">
                             <i class="zmdi zmdi-close-circle"></i> {{ $presupuesto->estado }}
+                        </span>
+                    @endif
+
+                    @if ( $presupuesto->estado == 'Aceptado' )
+                        <span class="alert alert-secondary pull-right text-uppercase">
+                          Esperando respuesta
                         </span>
                     @endif
                 </div>
@@ -62,13 +68,23 @@
                 </div>
             </div>
 
-            <div class="row mt-5 alert alert-primary">
-              {{-- Respuesta --}}
-              <div class="col-lg-12 col-12">
-                <strong> Respuesta: </strong> <span>{{ $presupuesto->respuesta }}</span>
+          </div>
+          <div class="container">
+            @if ( $presupuesto->respuesta && $presupuesto->estado != 'Sin respuesta' )
+              <div class="col-lg-12 col-12 mt-5">
+                <strong> Tu: </strong> 
+                  <p class="mb-0 font-weight-light small grey lighten-2 p-2 rounded">
+                    {{$presupuesto->pregunta}}
+                  </p>
               </div>
-            </div>
-        </div>
+              <div class="col-lg-12 col-12 mt-3">
+                <strong> Prestador: </strong> 
+                  <p class="mb-0 font-weight-light small primary-color text-white p-2 rounded">
+                    {{$presupuesto->respuesta}}
+                  </p>
+              </div>
+            @endif
+          </div>
 
         <div class="card-footer">
           @if ($presupuesto->estado == 'Disponible')
@@ -78,6 +94,7 @@
           @endif
         </div>
       </div>
+      <hr>
     </form>
     @endforeach
   @else
