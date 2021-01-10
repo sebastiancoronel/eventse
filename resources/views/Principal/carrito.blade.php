@@ -59,19 +59,13 @@
 								<p class="stext-111 cl6 p-t-2">
 									Indicanos la direccion para enviar los servicios que requieran traslado
 								</p>
-								{{-- <div class="flex-w flex-t bor12 p-b-13">
-									<div class="size-208">
-										<span class="stext-110 cl2">
-											Subtotal:
-										</span>
+								<div class="flex-w flex-t bor12 p-b-13">
+									<div class="md-form">
+										<input id="sin_traslado" class="form-check-input" type="checkbox" name="sin_traslado" value="1">
+										<label class="form-check-label" for="sin_traslado"> Sin traslado </label>
 									</div>
 
-									<div class="size-209">
-										<span class="mtext-110 cl2">
-											$79.65
-										</span>
-									</div>
-								</div> --}}
+								</div>
 								<div class="flex-w flex-t bor12 p-t-15 p-b-30 mt-5">
 									<div class="size-208 w-full-ssm">
 										<span class="stext-110 cl2">
