@@ -75,9 +75,9 @@
                             <a href="{{route('ServiciosPublicados')}}">Reservar</a>
                         </li>
                         <!--class="label1" data-label1="hot"> Label "HOT" para poner arriba cuando haya alguna promo o algo asi-->
-                        <li>
+                        {{-- <li>
                             <a href="shoping-cart.html">Ofertas de la semana</a>
-                        </li>
+                        </li> --}}
 
                         <li>
                             <a href="{{route('Publicar')}}" style="color:#f40082;">Publicar</a>
