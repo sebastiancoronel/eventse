@@ -179,6 +179,7 @@
                   </li>
 
                   {{-- Presupuestos --}}
+                  @if (Auth::user()->rol != 'Administrador')
                   <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                       <i class="zmdi zmdi-assignment"></i>
@@ -187,26 +188,28 @@
                         <i class="right fas fa-angle-left"></i>
                       </p>
                     </a>
-                      <ul class="nav nav-treeview">
-                        @if ( Auth::user()->rol == 'Prestador' )
-                          <li class="nav-item">
-                            <a href=" {{ route('MostrarPresupuestosSolicitados') }} " class="nav-link">
-                              <i class="nav-icon"></i>
-                              <p> Solicitados </p>
-                            </a>
-                          </li>
-                        @endif
-                        
-                        @if ( Auth::user()->rol != 'Administrador' )
-                          <li class="nav-item">
-                            <a href=" {{ route('MostrarRespuestasPresupuestos') }} " class="nav-link">
-                              <i class="nav-icon"></i>
-                              <p> Respuestas </p>
-                            </a>
-                          </li>
-                        @endif
-                      </ul>
-                    </li>
+                    <ul class="nav nav-treeview">
+                      @if ( Auth::user()->rol == 'Prestador' )
+                        <li class="nav-item">
+                          <a href=" {{ route('MostrarPresupuestosSolicitados') }} " class="nav-link">
+                            <i class="nav-icon"></i>
+                            <p> Solicitados </p>
+                          </a>
+                        </li>
+                      @endif
+                      
+                      @if ( Auth::user()->rol != 'Administrador' )
+                        <li class="nav-item">
+                          <a href=" {{ route('MostrarRespuestasPresupuestos') }} " class="nav-link">
+                            <i class="nav-icon"></i>
+                            <p> Respuestas </p>
+                          </a>
+                        </li>
+                      @endif
+                    </ul>
+                  </li>
+                  @endif
+
                     @if ( Auth::user()->rol == 'Prestador' )
                       <li class="nav-item has-treeview">
                         <a href="{{ route('MostrarPreguntasRecibidas') }}" class="nav-link">
