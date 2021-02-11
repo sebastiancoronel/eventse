@@ -655,7 +655,7 @@
 	@if ( Session::has('PresupuestoEnviado') )
 		<script>
 			$(document).ready(function(){
-				swal( 'Listo!' , 'Enviamos tu presupuesto' , 'success' );
+				swal( 'Listo!' , 'Enviamos tu presupuesto, el prestador deberá responderte en las próximas 72hs' , 'success' );
 			});
 		</script>
 	@endif

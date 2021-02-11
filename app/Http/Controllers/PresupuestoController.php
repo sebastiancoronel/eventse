@@ -101,6 +101,7 @@ class PresupuestoController extends Controller
                                                   ->select( 'presupuestos.*' ,'servicios.nombre', 'servicios.id as id_servicio' )
                                                   ->orderBy('updated_at', 'desc')
                                                   ->get();
+                                                  
       
       return view('AdminLTE.respuestas_presupuestos', [ 'Presupuestos' => $Presupuestos ] );
     }

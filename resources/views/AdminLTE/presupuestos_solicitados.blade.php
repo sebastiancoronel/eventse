@@ -1,7 +1,15 @@
 @extends('AdminLTE.home')
 @section('content')
 <div class="dispositivo">
-  <h4 class="text-muted"> <i class="zmdi zmdi-assignment"></i> Solicitudes de presupuestos</h4>
+  <div class="row">
+    <div class="col-lg-6">
+      <h4 class="text-muted"> <i class="zmdi zmdi-assignment"></i> Solicitudes de presupuestos</h4>
+    </div>
+
+    <div class="col-lg-6">
+      <span class="text-muted"> <i class="fas fa-exclamation-circle"></i> Tienes un límite de 72hs para responder a cada solicitud</span>
+    </div>
+  </div>
   <hr>
   @if ( $errors->any() )
     <div class="text-danger"> {{ $errors->first('monto') }} </div>
@@ -15,6 +23,7 @@
       <div class="card">
         <div class="card-header">
           <h4> <a href=" {{ route('MostrarServicio', [ 'id' => $presupuesto->id_servicio ]) }} "> {{ $presupuesto->nombre }} </a> </h4>
+          <small> Enviado el: {{ date ('d-m-Y' , strtotime($presupuesto->created_at)) }} </small>
         </div>
         <div class="card-body">
           <div class="row">
@@ -33,8 +42,13 @@
 
           {{-- Dirección --}}
           <div class="row mt-5">
-            <div class="col-lg-12 col-12">
-              <strong> Direccion: </strong> <span>{{ $presupuesto->direccion }}</span>
+            <div class="col-lg-6 col-12">
+              <strong> Direccion: </strong> <span>{{ $presupuesto->direccion }} </span>
+            </div>
+
+            {{-- Barrio --}}
+            <div class="col-lg-6 col-12">
+              <strong> Barrio: </strong> <span>{{ $presupuesto->barrio }} </span>
             </div>
           </div>
 

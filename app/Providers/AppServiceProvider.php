@@ -69,6 +69,11 @@ class AppServiceProvider extends ServiceProvider
                                                         // ->select( 'presupuestos.*' ,'servicios.nombre', 'servicios.id as id_servicio' )
                                                         // ->orderBy('updated_at', 'desc')
                                                         ->get();
+
+                    $PresupuestosDisponiblesVencidos = Presupuesto::where( 'user_id', Auth::user()->id ) //Son los presupuestos que estan disponibles pero que el cliente no responde
+                                                                ->where('estado' , '=' , 'Disponible')
+                                                                ->get();
+                                                        
                     // dd($PresupuestosEvaluarVencidos);
                     $Hoy = Carbon::now();
     
@@ -77,7 +82,7 @@ class AppServiceProvider extends ServiceProvider
                         $fecha_creacion = Carbon::parse($presupuesto_evaluar_vencido->created_at);
                         $fecha_vencimiento = $fecha_creacion->addDays(3);
                         if ( $Hoy > $fecha_vencimiento ) {
-                        $presupuesto_evaluar_vencido->estado = 'Sin Respuesta';
+                        $presupuesto_evaluar_vencido->estado = 'Sin respuesta';
                         $presupuesto_evaluar_vencido->update();
     
                         Notificacion::create([
@@ -90,6 +95,27 @@ class AppServiceProvider extends ServiceProvider
                         // dd("Vencido" , $Hoy->format('d-m-Y') , "Vencio el: ",$fecha_vencimiento->format('d-m-Y') );
                         }
                     }
+
+                    // Para presupuestos disponibles que no son confirmados
+                    foreach ($PresupuestosDisponiblesVencidos as $presupuesto_disp_vencido) {
+    
+                        $fecha_creacion_disp = Carbon::parse($presupuesto_disp_vencido->created_at);
+                        $fecha_vencimiento_disp = $fecha_creacion_disp->addDays(3);
+                        if ( $Hoy > $fecha_vencimiento_disp ) {
+                        $presupuesto_disp_vencido->estado = 'Sin confirmar';
+                        $presupuesto_disp_vencido->update();
+                            
+                        //Si quiero notificar, deberia crear otro evento llamado "Vencimiento confirmacion" con su mensaje
+                        // Notificacion::create([
+                        //     'user_id_notificar' => Auth::user()->id,
+                        //     'user_id_trigger' => Auth::user()->id, //Se dispara solo pero no puede ser null este campo.
+                        //     'id_evento' => 6, //Respuesta presupuesto
+                        //     'visto' => 0,
+                        // ]);
+    
+                        }
+                    }
+
                 }
             }
             

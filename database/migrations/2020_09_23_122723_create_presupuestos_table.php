@@ -30,7 +30,7 @@ class CreatePresupuestosTable extends Migration
             $table->string('direccion');
             $table->string('barrio');
             $table->integer('monto')->nullable();
-            $table->enum('estado',['Aceptado','Disponible','No disponible','Sin respuesta']);
+            $table->enum('estado',['Aceptado','Disponible','No disponible','Sin respuesta','Sin confirmar']);
             $table->string('pregunta',1000)->nullable();
             $table->string('respuesta',1000)->nullable();
             $table->softDeletes();

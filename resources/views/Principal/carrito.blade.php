@@ -64,7 +64,6 @@
 										<input id="sin_traslado" class="form-check-input" type="checkbox" name="sin_traslado" value="1">
 										<label class="form-check-label" for="sin_traslado"> Sin traslado </label>
 									</div>
-
 								</div>
 								<div class="flex-w flex-t bor12 p-t-15 p-b-30 mt-5">
 									<div class="size-208 w-full-ssm">
@@ -80,13 +79,13 @@
 										</div>
 									{{-- Dirección --}}
 										<div class="bor8 bg0 m-b-12">
-											<textarea class="stext-111 cl8 plh3 size-111 p-lr-15" name="direccion" maxlength="100" id="" cols="30" rows="10" placeholder="Dirección" required></textarea>
+											<textarea class="stext-111 cl8 plh3 size-111 p-lr-15" name="direccion" maxlength="100" id="direccion" cols="30" rows="10" placeholder="Dirección" required></textarea>
 											<div class="text-danger"> {{ $errors->first('direccion') }} </div>
 										</div>
 
 									{{-- Barrio --}}
 										<div class="bor8 bg0 m-b-22">
-											<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="barrio" maxlength="100" placeholder="Barrio" required>
+											<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="barrio" maxlength="100" id="barrio" placeholder="Barrio" required>
 										</div>
 										<div class="text-danger"> {{ $errors->first('barrio') }} </div>
 									</div>
@@ -175,6 +174,27 @@
 			// 12 or 24 hour
 			twelvehour: false,
 		});
+	</script>
+
+	{{-- Sin traslado --}}
+	<script>
+		$(document).on('change','#sin_traslado',function(){
+		if ( $('#sin_traslado').is(':checked') ) {
+
+			$('#direccion').val('Sin traslado');
+			$('#barrio').val('Sin traslado');
+			$('#direccion').attr('readonly',true);
+			$('#barrio').attr('readonly',true);
+
+		}else{
+			$('#direccion').val('');
+			$('#barrio').val('');
+			$('#direccion').attr('readonly',false);
+			$('#barrio').attr('readonly',false);
+		}
+
+		});
+		
 	</script>
 @endpush
 @endsection
