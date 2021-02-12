@@ -14,7 +14,7 @@ class CategoriaController extends Controller
 {
     public function index(){
         $Categorias = Categoria::all();
-        $Servicios = Servicio::where( 'deleted_at' , '=' , null )->select('*')->get();
+        $Servicios = Servicio::where( 'deleted_at' , '=' , null )->select('*')->orderBy('created_at','desc')->get();
 
         $FiltrarServicios = Servicio::where( 'servicios.deleted_at' , null )
                           ->Join( 'categorias' , 'servicios.id_categoria' , '=' , 'categorias.id' )

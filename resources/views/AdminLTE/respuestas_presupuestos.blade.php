@@ -19,10 +19,12 @@
                   </div>
                   <div class="col-md-6">
                       @if ( $presupuesto->estado == 'Disponible' )
-                          <span class="alert alert-success pull-right text-uppercase">
+                          <span class="pull-right text-uppercase">
                               <i class="zmdi zmdi-check-circle"></i> {{ $presupuesto->estado }}
                           </span>
-                      @endif
+                          <br><br>
+                          <small class="pull-right"> Tienes 72hs a partir del {{ date( 'd-m-Y' , strtotime($presupuesto->updated_at)) }} para contratar el servicio </small>
+                      @endif 
 
                       @if ( $presupuesto->estado == 'No disponible' )
                           <span class="pull-right text-uppercase">
