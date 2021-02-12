@@ -11,11 +11,11 @@
 
         {{-- Header --}}
         <div class="card my-5">
-          <div class="card-header {{ ( $presupuesto->estado == 'Sin respuesta' ? 'bg-danger' : ( $presupuesto->estado == 'Aceptado' ? 'bg-white' : ( $presupuesto->estado == 'Sin confirmar' ? 'bg-info' : 'bg-success' ) ) ) }} ">
+          <div class="card-header {{ ( $presupuesto->estado == 'Sin respuesta' ? 'bg-danger' : ( $presupuesto->estado == 'Aceptado' ? 'bg-white' : ( $presupuesto->estado == 'Sin confirmar' ? 'bg-info' : ( $presupuesto->estado == 'No disponible' ? 'bg-danger' : 'bg-success' ) ) ) ) }} ">
               <div class="row align-items-center">
                   <div class="col-md-6">
                       <h4> <a href=" {{ route('MostrarServicio', [ 'id' => $presupuesto->id_servicio ]) }} " class="text-white" target="blank"> {{ $presupuesto->nombre }} </a> </h4>
-                      <small> Respondido el: {{ date ('d-m-Y' , strtotime($presupuesto->created_at)) }} </small>
+                      <small> Creado el: {{ date ('d-m-Y' , strtotime($presupuesto->created_at)) }} </small>
                   </div>
                   <div class="col-md-6">
                       @if ( $presupuesto->estado == 'Disponible' )
@@ -72,6 +72,11 @@
                 {{-- Dirección --}}
                 <div class="col-lg-4 col-12">
                     <strong> Direccion: </strong> <span>{{ $presupuesto->direccion }}</span>
+                </div>
+
+                {{-- Barrio --}}
+                <div class="col-lg-4 col-12">
+                  <strong> Barrio: </strong> <span>{{ $presupuesto->barrio }} </span>
                 </div>
 
                 {{-- Importe --}}

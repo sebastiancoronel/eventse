@@ -54,9 +54,9 @@
 
                 <div class="row mt-5">
                   {{-- Respuesta --}}
-                  <div class="col-lg-12 col-12">
+                  {{-- <div class="col-lg-12 col-12">
                     <strong> Respuesta: </strong> <span>{{ $reserva->respuesta }}</span>
-                  </div>
+                  </div> --}}
                 </div>
                 
               </div>

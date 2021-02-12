@@ -64,7 +64,23 @@ class CreateCategoriasTable extends Migration
           [
             'nombre' => 'Disfraces',
             'foto' => 'images/categorias/'
-          ]
+          ],
+          [
+            'nombre' => 'Cotillón',
+            'foto' => 'images/categorias/'
+          ],
+          [
+            'nombre' => 'Souvenirs & Manualidades',
+            'foto' => 'images/categorias/'
+          ],
+          [
+            'nombre' => 'Arreglos florales, centros de mesa y ramos de novia',
+            'foto' => 'images/categorias/'
+          ],
+          [
+            'nombre' => 'Bakers',
+            'foto' => 'images/categorias/'
+          ],
         ]);
     }//function up
 

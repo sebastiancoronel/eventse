@@ -90,6 +90,7 @@ class HomeController extends Controller
                                 ->where( 'estado' , 'Aceptado' )
                                 ->Join( 'servicios' , 'presupuestos.id_servicio' , '=' , 'servicios.id' )
                                 ->select( 'presupuestos.*' ,'servicios.nombre', 'servicios.id as id_servicio' )
+                                ->orderBy('created_at', 'asc')
                                 ->get();
       
       return view('AdminLTE.presupuestos_solicitados' , [ 'Presupuestos' => $Presupuestos ]);

@@ -56,9 +56,9 @@
                     <strong> Direccion: </strong> <span>{{ $reserva->direccion }}</span>
                 </div>
                 {{-- Respuesta --}}
-                <div class="col-lg-3 col-12">
+                {{-- <div class="col-lg-3 col-12">
                     <strong> Respuesta: </strong> <span>{{ $reserva->respuesta }}</span>
-                </div>
+                </div> --}}
                 {{-- Importe --}}
                 <div class="col-lg-3 col-12">
                     <strong> Precio Final: </strong> <span> $ {{ $reserva->monto }}</span>
