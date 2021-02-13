@@ -129,6 +129,30 @@
                     <input id="precio_a_convenir" class="form-check-input" type="checkbox" name="precio_a_convenir" {{ $Servicio->precio_a_convenir ? 'checked' : ' ' }} value="1">
                     <label class="" for="precio_a_convenir">Precio a convenir</label>
                 </div>
+
+                {{-- Caracteristicas --}}
+                <div class="form-check">
+                    @foreach ($Caracteristicas as $caracteristica)
+
+                        @if ( $CaracteristicasPorServicio->contains( 'id_caracteristica' , $caracteristica->id ) )
+                            
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input id="{{ $caracteristica->nombre }}" class="form-check-input" type="checkbox" name="caracteristica[]" checked value="{{ $caracteristica->id }}">
+                                <label class="form-check-label" for="{{ $caracteristica->nombre }}"> {{ $caracteristica->nombre }} </label>
+                            </div>
+                        </div>
+                        @else
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <input id="{{ $caracteristica->nombre }}" class="form-check-input" type="checkbox" name="caracteristica[]" value="{{ $caracteristica->id }}">
+                                    <label class="form-check-label" for="{{ $caracteristica->nombre }}"> {{ $caracteristica->nombre }} </label>
+                                </div>
+                            </div>
+                        @endif
+                        
+                    @endforeach
+                </div> 
     
             </div>
             <div class="card-footer">

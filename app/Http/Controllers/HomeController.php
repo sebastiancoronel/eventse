@@ -12,6 +12,8 @@ use App\Servicio;
 use App\Pregunta;
 use App\Presupuesto;
 use App\User;
+use App\Caracteristica_por_categoria;
+use App\CaracteristicasPorServicio;
 
 class HomeController extends Controller
 {
@@ -131,12 +133,27 @@ class HomeController extends Controller
       $Servicio = Servicio::withTrashed()
                             ->where('id', $id)
                             ->first();
+      
+      //Traer caracteristicas del servicio
+      $Caracteristicas = Caracteristica_por_categoria::where( 'id_categoria' , $Servicio->id_categoria )
+                                  ->Join( 'caracteristicas' , 'caracteristica_por_categorias.id_caracteristica' , '=' , 'caracteristicas.id' )
+                                  ->select('caracteristicas.*')
+                                  ->get();
 
-      return view( 'AdminLTE.editar_servicio', [ 'Servicio' => $Servicio] );
+      $CaracteristicasPorServicio = CaracteristicasPorServicio::where( 'id_servicio' , $Servicio->id )
+                                    ->select('*')
+                                    ->get();
+      
+      //dd($Caracteristicas , $CaracteristicasPorServicio);
+
+      $CaracteristicasDelServicio = array();
+      $Caracteristicas_Ids = array();
+
+      return view( 'AdminLTE.editar_servicio', [ 'Servicio' => $Servicio , 'Caracteristicas' => $Caracteristicas, 'CaracteristicasPorServicio' => $CaracteristicasPorServicio ] );
     }
 
     public function ModificarServicio( Request $request ){
-      // dd($request);
+      // dd($request->all());
       $request->validate([      
         'nombre' => 'required',
         'descripcion' => 'required',
@@ -147,46 +164,46 @@ class HomeController extends Controller
       $Servicio->descripcion = $request->descripcion;
 
       if ( $request->hasFile('foto_1') ) {
-      $random_string_1 = Str::random(20);
-      $Foto = $request->file('foto_1');
-      $NombreImagen = $random_string_1 . '.' . $Foto->getClientOriginalExtension();
-      $RutaImagen = public_path('images/servicios');
-      $Foto->move($RutaImagen, $NombreImagen);
-      $Servicio->foto_1 = 'images/servicios/' . $NombreImagen;
+        $random_string_1 = Str::random(20);
+        $Foto = $request->file('foto_1');
+        $NombreImagen = $random_string_1 . '.' . $Foto->getClientOriginalExtension();
+        $RutaImagen = public_path('images/servicios');
+        $Foto->move($RutaImagen, $NombreImagen);
+        $Servicio->foto_1 = 'images/servicios/' . $NombreImagen;
       }
 
       if ($request->hasFile('foto_2')) {
-      $random_string_2 = Str::random(20);
-      $Foto = $request->file('foto_2');
-      $NombreImagen = $random_string_2 . '.' . $Foto->getClientOriginalExtension();
-      $RutaImagen = public_path('images/servicios');
-      $Foto->move($RutaImagen, $NombreImagen);
-      $Servicio->foto_2 = 'images/servicios/' . $NombreImagen;
+        $random_string_2 = Str::random(20);
+        $Foto = $request->file('foto_2');
+        $NombreImagen = $random_string_2 . '.' . $Foto->getClientOriginalExtension();
+        $RutaImagen = public_path('images/servicios');
+        $Foto->move($RutaImagen, $NombreImagen);
+        $Servicio->foto_2 = 'images/servicios/' . $NombreImagen;
       }
 
       if ($request->hasFile('foto_3')) {
-      $random_string_3 = Str::random(20);
-      $Foto = $request->file('foto_3');
-      $NombreImagen = $random_string_3 . '.' . $Foto->getClientOriginalExtension();
-      $RutaImagen = public_path('images/servicios');
-      $Foto->move($RutaImagen, $NombreImagen);
-      $Servicio->foto_3 = 'images/servicios/' . $NombreImagen;
+        $random_string_3 = Str::random(20);
+        $Foto = $request->file('foto_3');
+        $NombreImagen = $random_string_3 . '.' . $Foto->getClientOriginalExtension();
+        $RutaImagen = public_path('images/servicios');
+        $Foto->move($RutaImagen, $NombreImagen);
+        $Servicio->foto_3 = 'images/servicios/' . $NombreImagen;
       }
 
       if( $request->hasFile('foto_4') ) {
-      $random_string_4 = Str::random(20);
-      $Foto = $request->file('foto_4');
-      $NombreImagen = $random_string_4 . '.' . $Foto->getClientOriginalExtension();
-      $RutaImagen = public_path('images/servicios');
-      $Foto->move($RutaImagen, $NombreImagen);
-      $Servicio->foto_4 = 'images/servicios/' . $NombreImagen;
+        $random_string_4 = Str::random(20);
+        $Foto = $request->file('foto_4');
+        $NombreImagen = $random_string_4 . '.' . $Foto->getClientOriginalExtension();
+        $RutaImagen = public_path('images/servicios');
+        $Foto->move($RutaImagen, $NombreImagen);
+        $Servicio->foto_4 = 'images/servicios/' . $NombreImagen;
       }
       
       $Servicio->precio = $request->precio;
 
       if ( $request->precio_a_convenir ) {
         $Servicio->precio_a_convenir = 1;
-      }else{
+        }else{
         $Servicio->precio_a_convenir = null;
         $request->validate([
           'precio' => 'required|integer'
@@ -194,6 +211,69 @@ class HomeController extends Controller
       }
 
       $Servicio->update();
+      
+      // Modificar las caracteristicas
+      if ($request->caracteristica) {
+        
+        $rows = CaracteristicasPorServicio::where('id_servicio', $Servicio->id)->select('id_caracteristica')->get(); //Trae las caracteristicas del servicio
+
+        foreach ($request->caracteristica as $value) {
+
+          //Si rows esta vacio almacena todo lo de request
+          if ($rows->isEmpty()) {
+            CaracteristicasPorServicio::create([
+              'id_servicio' => $Servicio->id, 
+              'id_caracteristica' => $value
+            ]);
+          }
+
+          foreach ($rows as $row) {
+            $existe = CaracteristicasPorServicio::where('id_servicio' , $Servicio->id)->where('id_caracteristica' , $value )->first(); //Ya tiene la caracteristica si no es nula
+            
+            if ( $existe == null ) { //Si no la tiene la crea
+
+              // dd("no existe en la BD y lo crea");
+              //Lo crea
+              $CaracteristicasPorServicio = CaracteristicasPorServicio::Create([
+                'id_servicio' => $Servicio->id, 
+                'id_caracteristica' => $value
+              ]);
+              
+            }
+          } //foreach $rows as $row
+        }
+
+        //Proceso borrar/desenmarcar
+        $Caracteristicas = Caracteristica_por_categoria::where( 'id_categoria' , $Servicio->id_categoria )
+                                                      ->Join( 'caracteristicas' , 'caracteristica_por_categorias.id_caracteristica' , '=' , 'caracteristicas.id' )
+                                                      ->select('caracteristicas.*')
+                                                      ->get();
+
+        $CaracteristicasDelServicio = CaracteristicasPorServicio::where( 'id_servicio' , $Servicio->id )
+                                                                ->select('*')
+                                                                ->get();
+        
+        $arrayEliminar = array();
+        foreach ( $Caracteristicas as $caracteristica ) {
+          if ( in_array( $caracteristica->id , $request->caracteristica ) ) {
+            continue;
+          }else{
+            //dd("no tiene el:", $caracteristica);
+            array_push( $arrayEliminar , $caracteristica->id );
+          }
+        }
+        //dd($arrayEliminar);
+        //Recorrer array e ir borrando
+        foreach ( $arrayEliminar as $item) {
+          if ( $Caracteristicas->contains( 'id' , $item )  ) {
+            // dd("borra", $item);
+            CaracteristicasPorServicio::where('id_servicio', $Servicio->id)->where( 'id_caracteristica' , $item )->delete();
+          }
+        }
+
+      }else{
+        CaracteristicasPorServicio::where('id_servicio', $Servicio->id)->delete();
+      } 
 
       return redirect()->route('MostrarMisServicios')->with( 'ServicioModificado' , ' ' );
       
