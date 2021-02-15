@@ -50,18 +50,19 @@ class PresupuestoController extends Controller
             //'respuesta' => ,
             ]
           );
+          
+          $User_notificar = Prestador::where( 'id' , $id_prestador )
+                                      ->pluck('user_id')
+                                      ->first();                             
+  
+          Notificacion::create([
+              'user_id_notificar' => $User_notificar,
+              'user_id_trigger' => Auth::user()->id,
+              'id_evento' => 2, //Solicitud
+              'visto' => 0,
+              ]);
         }
 
-        $User_notificar = Prestador::where( 'id' , $id_prestador )
-                                    ->pluck('user_id')
-                                    ->first();                             
-
-        Notificacion::create([
-            'user_id_notificar' => $User_notificar,
-            'user_id_trigger' => Auth::user()->id,
-            'id_evento' => 2, //Solicitud
-            'visto' => 0,
-            ]);
 
         $request->session()->forget(['Servicio']); //Borra el carrito
 
