@@ -66,14 +66,14 @@ class CategoriaController extends Controller
 
     public function EditarCategoria( Request $id ){
         
-        $Categoria = Categoria::findOrfail($id)->first();
+        $Categoria = Categoria::withTrashed()->findOrfail($id)->first();
 
         return view('AdminLTE.Admin.editar_categoria',[ 'Categoria' => $Categoria ]);
     }
 
     public function ActualizarCategoria( Request $request ){
 
-        $Categoria = Categoria::where( 'id' ,$request->id )->select('*')->first();
+        $Categoria = Categoria::withTrashed()->where( 'id' ,$request->id )->select('*')->first();
 
         if ( $request->hasFile('foto') ) {
             $random_string = Str::random(20);
