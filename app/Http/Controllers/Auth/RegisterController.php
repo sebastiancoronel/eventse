@@ -23,6 +23,14 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+    // public function showRegistrationForm()
+    // {
+    //     $path = storage_path() . "/json/ProvinciasLocalidades.json";
+    //     $ProvinciasLocalidadesJson = json_decode(file_get_contents($path),true);
+        
+    //     return view('auth.register' , ['ProvinciasLocalidadesJson'=>$ProvinciasLocalidadesJson]);
+    // }
+
     /**
      * Where to redirect users after registration.
      *

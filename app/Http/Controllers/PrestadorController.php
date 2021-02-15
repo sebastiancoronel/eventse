@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Auth;
 use App\Prestador;
+use App\User;
 use Illuminate\Http\Request;
 // use Illuminate\Support\Facades\Storage;
 
@@ -37,6 +38,12 @@ class PrestadorController extends Controller
       $Prestador->telefono = $request->telefono;
       $Prestador->user_id = Auth::user()->id;
       $Prestador->save();
+
+      // Cambiar rol del usuario a prestador
+      $User = User::findOrfail(Auth::user()->id);
+      $User->rol = 'Prestador';
+      $User->update();
+
     }
 
     return redirect()->route('Publicar')->with('PerfilCreado','Ya puedes empezar a publicar');
