@@ -31,6 +31,54 @@
 				<img src="images/icons/icon-close2.png" alt="CLOSE">
 			</button>
 
+			<form class="card flex-w p-l-15">
+				<div class="row card-body align-items-center">
+					<div class="col-lg-3">
+						<select id="categorias" class="custom-select" name="categoria" required>
+							<option value="" selected>¿Qúe buscas?</option>
+							@foreach ($Categorias as $categoria)
+							  <option value="{{ $categoria['id'] }}">{{$categoria['nombre']}}</option>
+							@endforeach
+						</select>
+					</div>
+
+					<div class="col-lg-3">
+						<select id="provincia" class="custom-select" name="provincia" required>
+							<option value="" selected>¿Donde?</option>
+							@foreach ($ProvinciasLocalidadesJson as $provincia)
+							  <option value="{{ $provincia['id'] }}">{{$provincia['nombre']}}</option>
+							@endforeach
+						</select>
+					</div>
+
+					<!-- Localidad -->
+					<div class="col-lg-3">
+						<select id="localidad" class="custom-select" name="localidad" required>
+						</select>
+						
+						@if ($errors->has('localidad'))
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $errors->first('localidad') }}</strong>
+							</span>
+						@endif
+					</div>
+					<div class="col-lg-3">
+						<button type="submit" class="btn btn bg1 stext-101 cl0 ">
+							Buscar
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	{{-- <!-- Modal Search original -->
+	<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+		<div class="container-search-header">
+			<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+				<img src="images/icons/icon-close2.png" alt="CLOSE">
+			</button>
+
 			<form class="wrap-search-header flex-w p-l-15">
 				<button class="flex-c-m trans-04">
 					<i class="zmdi zmdi-search"></i>
@@ -38,7 +86,7 @@
 				<input class="plh3" type="text" name="search" placeholder="Search...">
 			</form>
 		</div>
-	</div>
+	</div> --}}
 
 	<!-- Slider -->
 	<section class="section-slide d-none d-sm-block">
@@ -110,6 +158,7 @@
 		</div>
 	</div> --}}
 	<!--Fin SELECCION DE CATEGORIAS-->
+	
 	<div class="container my-5">
 		<div class="p-b-10">
 			<h3 class="ltext-103 cl5">
@@ -175,7 +224,7 @@
                     @endforeach
 				</div>
 
-				{{-- <div class="flex-w flex-c-m m-tb-10">
+				<div class="flex-w flex-c-m m-tb-10">
 					<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
 						<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
 						<i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
@@ -187,10 +236,10 @@
 						<i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
 						Buscar
 					</div>
-				</div> --}}
+				</div>
 
 				<!-- Search product -->
-				{{-- <div class="dis-none panel-search w-full p-t-10 p-b-15">
+				<div class="dis-none panel-search w-full p-t-10 p-b-15">
 					<div class="bor8 dis-flex p-l-15">
 						<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
 							<i class="zmdi zmdi-search"></i>
@@ -291,10 +340,10 @@
 							</ul>
 						</div>
 					</div>
-				</div> --}}
+				</div>
 			</div>
 
-			<div class="row isotope-grid" style="position: relative; height: 1717.38px;">
+			<div id="" class="row isotope-grid" style="position: relative; height: 1717.38px;">
                 @foreach ($FiltrarServicios as $filtrar_servicio)
                     <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$filtrar_servicio->nombre_categoria}}" style="position: absolute; left: 0%; top: 0px;">
                         <!-- Block2 -->
@@ -652,6 +701,7 @@
 	</div>
 </div>
 @push('js')
+
 	@if ( Session::has('PresupuestoEnviado') )
 		<script>
 			$(document).ready(function(){
@@ -659,6 +709,36 @@
 			});
 		</script>
 	@endif
+
+	<script>
+    //Select dinamico de provincias y localidades
+    $("#provincia").on('change', function() {
+        var provincia_id = $(this).val();
+        var nombre_provincia = $('#provincia option:selected').text();
+        $("#provincia_nombre").val(nombre_provincia);
+
+        console.log( provincia_id, nombre_provincia );
+        $.ajax({
+            type: 'GET',
+            url: '{{url('register/traer-localidades')}}',
+            data: {
+                
+                provincia_id,
+                _token: "{{csrf_token()}}"
+            },
+
+            error: function(x, y, z) {
+                console.log(x, y, z);
+            },
+            success: function(data) {
+                $("#localidad").empty();
+                $.each(data[2], function(index, value) {
+                    $("#localidad").append('<option value="' + value['nombre'] + '">' + value['nombre'] + '</option>');
+                });
+            },
+        });
+    });
+  </script>
 @endpush
 
 @endsection
