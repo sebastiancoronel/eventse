@@ -326,6 +326,21 @@ class ServicioController extends Controller
     return redirect()->route('MostrarPaquete');
 
   }
+
+  public function ResultadosBusqueda( Request $request){
+    
+    $Servicios = Servicio::where( 'id_categoria' , $request->categoria )
+    ->Join( 'prestadors' , 'servicios.id_prestador' , 'prestadors.id' )
+    ->Join( 'users' , 'prestadors.user_id' , 'users.id')
+    ->where('users.rol' , 'Prestador')
+    ->where( 'users.provincia' , $request->provincia_nombre )
+    ->where( 'users.localidad' , $request->localidad )
+    ->select('servicios.*')
+    ->get();
+
+    dd($Servicios->all());
+                          
+  }
   
   // public function MostrarPlanes(){
   //   return view('Ecommerce.planes_publicidad');

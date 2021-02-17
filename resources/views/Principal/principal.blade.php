@@ -31,10 +31,10 @@
 				<img src="images/icons/icon-close2.png" alt="CLOSE">
 			</button>
 
-			<form class="card flex-w p-l-15">
+			<form class="card flex-w p-l-15" action="{{ route('ResultadosBusqueda') }}" method="GET">
 				<div class="row card-body align-items-center">
 					<div class="col-lg-3">
-						<select id="categorias" class="custom-select" name="categoria" required>
+						<select id="categorias" class="custom-select stext-101 borde-bajo" name="categoria" required>
 							<option value="" selected>¿Qúe buscas?</option>
 							@foreach ($Categorias as $categoria)
 							  <option value="{{ $categoria['id'] }}">{{$categoria['nombre']}}</option>
@@ -43,7 +43,8 @@
 					</div>
 
 					<div class="col-lg-3">
-						<select id="provincia" class="custom-select" name="provincia" required>
+						<input hidden id="provincia_nombre" type="text" name="provincia_nombre" value="">
+						<select id="provincia" class="custom-select stext-101 borde-bajo" name="provincia" required>
 							<option value="" selected>¿Donde?</option>
 							@foreach ($ProvinciasLocalidadesJson as $provincia)
 							  <option value="{{ $provincia['id'] }}">{{$provincia['nombre']}}</option>
@@ -53,7 +54,8 @@
 
 					<!-- Localidad -->
 					<div class="col-lg-3">
-						<select id="localidad" class="custom-select" name="localidad" required>
+						<select id="localidad" class="custom-select stext-101 borde-bajo" name="localidad" required>
+							<option value="" selected> ¿Qué ciudad? </option>
 						</select>
 						
 						@if ($errors->has('localidad'))
@@ -89,7 +91,7 @@
 	</div> --}}
 
 	<!-- Slider -->
-	<section class="section-slide d-none d-sm-block">
+	<section class="section-slide d-none d-sm-block position-relative">
 		<div class="wrap-slick1">
 			<div class="slick1">
 				@forelse ($Categorias as $categoria)
@@ -116,13 +118,63 @@
 						</div>
 					</div>
 				</div>
+				
 				@empty
 
 				@endforelse
 			</div>
 		</div>
+		<!-- Buscador -->
+		{{-- <div class="card position-absolute buscador-slider">
+			
+			<form class="card-body flex-w p-l-15">
+				<div class="d-flex justify-content-center">
+					<span class="ltext-100 cl5"> ¡Tenés más de 9.000 proveedores para elegir! </span>
+				</div>
+				<div class="row card-body align-items-center">
+					<div class="col-lg-3">
+						<select id="categorias" class="custom-select stext-101 borde-bajo" name="categoria" required>
+							<option value="" selected>¿Qúe buscas?</option>
+							@foreach ($Categorias as $categoria)
+							<option value="{{ $categoria['id'] }}">{{$categoria['nombre']}}</option>
+							@endforeach
+						</select>
+					</div>
+	
+					<div class="col-lg-3">
+						<select id="provincia" class="custom-select stext-101 borde-bajo" name="provincia" required>
+							<option value="" selected>¿Donde?</option>
+							@foreach ($ProvinciasLocalidadesJson as $provincia)
+							<option value="{{ $provincia['id'] }}">{{$provincia['nombre']}}</option>
+							@endforeach
+						</select>
+					</div>
+	
+					<!-- Localidad -->
+					<div class="col-lg-3">
+						<select id="localidad" class="custom-select stext-101 borde-bajo" name="localidad" required>
+							<option value="" selected> ¿Qué ciudad? </option>
+						</select>
+						
+						@if ($errors->has('localidad'))
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $errors->first('localidad') }}</strong>
+							</span>
+						@endif
+					</div>
+					<div class="col-lg-3">
+						<button type="submit" class="btn btn bg1 stext-101 cl0 ">
+							Buscar
+						</button>
+					</div>
+				</div>
+			</form>
+		</div> --}}
+		<!-- Fin buscador -->
 	</section>
-	<!--Fin ZONA SERVICIOS PREMIUM-->
+	<!--Fin Slider-->
+
+	
 
 	<!--SELECCION DE CATEGORIAS-->
 	{{-- <div class="sec-banner bg0 p-b-50 mt-5">
@@ -158,6 +210,8 @@
 		</div>
 	</div> --}}
 	<!--Fin SELECCION DE CATEGORIAS-->
+
+	
 	
 	<div class="container my-5">
 		<div class="p-b-10">

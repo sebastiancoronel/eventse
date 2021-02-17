@@ -26,6 +26,9 @@ Route::get('/categoria/{id}','CategoriaController@ServiciosPorCategoria')->name(
 Route::post('/reservar/servicios-publicados/almacenando-pregunta','ServicioController@AlmacenarPregunta')->name('AlmacenarPregunta')->middleware('auth');
 // Route::get('/reservar/servicios-publicados/almacenando-pregunta','ServicioController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('auth');  
 
+// Busqueda
+Route::get('/busqueda','ServicioController@ResultadosBusqueda')->name('ResultadosBusqueda');
+
 /*
 |--------------------------------------------------------------------------
 | Auth + Perfil prestador
