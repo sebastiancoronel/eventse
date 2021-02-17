@@ -17,19 +17,22 @@
 </head>
 
   <body class="animsition">
-  @include('Principal.Partials.header')
+    @include('Principal.Partials.header')
 
-	@yield('content')
-	
-	<!-- Paquete -->
-	@include('Principal.Partials.paquete')
+    @yield('content')
+    
+    <!-- Paquete -->
+    @include('Principal.partials.paquete')
 
-	<!-- Notificaciones -->
-	@include('Principal.Partials.notificaciones')
+    <!-- Modal search -->
+    @include('Principal.partials.modal_search')
 
-	@include('Principal.partials.scripts')
-	
-	@stack('js')			
+    <!-- Notificaciones -->
+    @include('Principal.partials.notificaciones')
+
+    @include('Principal.partials.scripts')
+    
+    @stack('js')			
 	
 </body>
 </html>

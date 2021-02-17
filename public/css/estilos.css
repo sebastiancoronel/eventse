@@ -4,6 +4,11 @@
     left: 50%;
     right: 10px;
 }
+.buscador-resultados{
+    top: 160px;
+    left: 160px;
+    right: 160px;
+}
 /* Fondos */
 .background-img{
     height: 250px;

@@ -35,19 +35,26 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191); //AGREGUE ESTO POR EL ERROR DE TABLA Al HACER LA MIGRACION DE LA BASE DE DATOS
         
         view()->composer('*',function(View $view){
+            // Traer todas las categorias 
+            $Categorias = Categoria::all();
+
+            // Provincias & Localidades para la busqueda
+            $path = storage_path() . "/json/ProvinciasLocalidades.json";
+            $ProvinciasLocalidadesJson = json_decode(file_get_contents($path),true);
 
             $Paquete = Session::get('Servicio');
-            //dd($Paquete);
+
             if ( $Paquete != null ) {
                 $CantidadServicios = count($Paquete);
             }else{
                 $CantidadServicios = 0;
             }
 
-            $view->with('Paquete',$Paquete)->with('CantidadServicios',$CantidadServicios );
+            $view->with('Paquete',$Paquete)->with('CantidadServicios',$CantidadServicios)->with('Categorias' , $Categorias)->with( 'ProvinciasLocalidadesJson' , $ProvinciasLocalidadesJson );
         });
         
         view()->composer('*',function(View $view){
+
             // Traer Notificaciones
             if ( Auth::user() ) {
                 $Notificaciones = Notificacion::where( 'user_id_notificar' , Auth::user()->id )
@@ -61,6 +68,7 @@ class AppServiceProvider extends ServiceProvider
                 $Notificaciones = null;
             }
 
+            // Controlar y traer vencimientos
             if (Auth::user()) {
                 if ( Auth::user()->rol != 'Administrador' ) {
                     $PresupuestosEvaluarVencidos = Presupuesto::where( 'user_id', Auth::user()->id )

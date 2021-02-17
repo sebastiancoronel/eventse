@@ -30,11 +30,9 @@ class CategoriaController extends Controller
         $fecha->format("F"); // Inglés.
         $Mes = $fecha->formatLocalized('%B');// mes en idioma español
 
-        // Provincias & Localidades para la busqueda
-        $path = storage_path() . "/json/ProvinciasLocalidades.json";
-        $ProvinciasLocalidadesJson = json_decode(file_get_contents($path),true);
+        
 
-        return view('Principal.principal',[ 'Categorias' => $Categorias , 'Mes' => $Mes, 'Servicios' => $Servicios , 'FiltrarServicios' => $FiltrarServicios, 'ProvinciasLocalidadesJson' => $ProvinciasLocalidadesJson ]);
+        return view('Principal.principal',[ 'Categorias' => $Categorias , 'Mes' => $Mes, 'Servicios' => $Servicios , 'FiltrarServicios' => $FiltrarServicios ]);
     }
    
     public function CrearCategorias(){

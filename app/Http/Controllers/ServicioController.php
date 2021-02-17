@@ -328,18 +328,27 @@ class ServicioController extends Controller
   }
 
   public function ResultadosBusqueda( Request $request){
-    
+
+    $path = storage_path() . "/json/ProvinciasLocalidades.json";
+    $ProvinciasLocalidadesJson = json_decode(file_get_contents($path),true);
+
+    $Categorias = Categoria::all();
+    $Caracteristicas = Caracteristica_por_categoria::where('id_categoria', $request->categoria)
+    ->Join( 'caracteristicas' , 'caracteristica_por_categorias.id_caracteristica' , '=' , 'caracteristicas.id' )
+    ->select('caracteristicas.*')
+    ->get();
+
     $Servicios = Servicio::where( 'id_categoria' , $request->categoria )
     ->Join( 'prestadors' , 'servicios.id_prestador' , 'prestadors.id' )
     ->Join( 'users' , 'prestadors.user_id' , 'users.id')
     ->where('users.rol' , 'Prestador')
     ->where( 'users.provincia' , $request->provincia_nombre )
     ->where( 'users.localidad' , $request->localidad )
-    ->select('servicios.*')
+    ->select('servicios.*','users.provincia', 'users.localidad')
     ->get();
 
-    dd($Servicios->all());
-                          
+    return view( 'Principal.resultados_busqueda', [ 'Categorias' => $Categorias , 'ProvinciasLocalidadesJson' => $ProvinciasLocalidadesJson ,'Servicios' => $Servicios, 'Caracteristicas' => $Caracteristicas ] );
+
   }
   
   // public function MostrarPlanes(){
