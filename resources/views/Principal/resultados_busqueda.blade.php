@@ -11,8 +11,8 @@
             <h3 class="d-block d-sm-none text-uppercase text-white align-self-center text-center">Catering en Santiago del Estero</h3>
         </div>
 
-        {{-- Buscador --}}
-        <div class="d-none d-sm-block position-absolute buscador-resultados">
+        {{-- Buscador en medio --}}
+        {{-- <div class="d-none d-sm-block position-absolute buscador-resultados">
             <form class="card flex-w p-l-15" action="{{ route('ResultadosBusqueda') }}" method="GET">
                 <div class="row card-body align-items-center">
                     <div class="col-lg-3">
@@ -53,20 +53,56 @@
                     </div>
                 </div>
             </form>
-        </div>
+        </div> --}}
     </div>
 
-    <div class="row container" style="padding-top: 5rem;">
+    <div class="row container m-auto" style="padding-top: 5rem;">
         <div class="col-lg-3 col-12 pt-5">
-            <ul>
-                @foreach ($Caracteristicas as $caracteristica)
-                    <li> {{ $caracteristica->nombre }} </li>
-                @endforeach
+            <span>Prestaciones</span>
+            <ul class="mt-2">
+                @forelse ($Caracteristicas as $caracteristica)
+                    <input id="{{ $caracteristica->nombre }}" class="form-check-input" type="checkbox" name="caracteristica[]" value="{{ $caracteristica->id }}">
+                    <label class="form-check-label" for="{{ $caracteristica->nombre }}"> {{ $caracteristica->nombre }}</label>
+                    @empty
+                        Sin prestaciones
+                @endforelse
             </ul>
+            <hr>
+            <span> Provincia </span>
+            <select id="provincia_result" class="custom-select stext-101 sin-bordes" name="provincia" required>
+                <option value="" selected>¿Donde?</option>
+                @foreach ($ProvinciasLocalidadesJson as $provincia)
+                  <option value="{{ $provincia['id'] }}">{{$provincia['nombre']}}</option>
+                @endforeach
+            </select>
+            <hr>
+            <span>Localidad</span>
+            <div class="">
+                <select id="localidad_result" class="custom-select stext-101 sin-bordes" name="localidad" required>
+                    <option value="" selected> ¿Qué ciudad? </option>
+                </select>
+                
+                @if ($errors->has('localidad'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('localidad') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <hr>
+            <span>Precio</span>
+            
+            <input id="" class="form-check-input" type="radio" name="" value="">
+            <label class="form-check-label" for=""> $3000 a $9000</label>
+
+            <div class="">
+                <button type="submit" class="btn btn bg1 stext-101 cl0 ">
+                    Aplicar
+                </button>
+            </div>
         </div>
 
+        {{-- Resultados de la busqueda --}}
         <div class="col-lg-9 col-12 pt-5">
-            {{-- Resultados de la busqueda --}}
             <div class="row isotope-grid" style="position: relative; height: 1717.38px;">
                 @foreach ($Servicios as $servicio)
                     <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$servicio->nombre_categoria}}" style="position: absolute; left: 0%; top: 0px;">
@@ -110,7 +146,7 @@
                 @endforeach
                 
             </div> <!-- row isotope-grid -->
-        </div> <!-- columna-->
+        </div> <!-- col-->
     </div>
 
 
