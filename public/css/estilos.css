@@ -1,3 +1,9 @@
+/* Contenedores */
+.buscador-slider{
+    top: 25%;
+    left: 50%;
+    right: 10px;
+}
 /* Fondos */
 .background-img{
     height: 250px;
@@ -10,5 +16,13 @@
 .img-tabla{
     width: 20%;
     height: 20%;
+}
+
+/* Inputs */
+.borde-bajo{
+    border: 1px solid #717fe0;
+    border-left: 0px;
+    border-top: 0px;
+    border-right: 0px;
 }
 
