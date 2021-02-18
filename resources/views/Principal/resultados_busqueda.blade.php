@@ -63,8 +63,10 @@
             <span>Prestaciones</span>
             <ul class="mt-2">
                 @forelse ($Caracteristicas as $caracteristica)
+                <li>
                     <input id="{{ $caracteristica->nombre }}" class="form-check-input" type="checkbox" name="caracteristica[]" value="{{ $caracteristica->id }}">
                     <label class="form-check-label" for="{{ $caracteristica->nombre }}"> {{ $caracteristica->nombre }}</label>
+                </li>
                     @empty
                         Sin prestaciones
                 @endforelse
@@ -97,9 +99,17 @@
             </div>
             <hr>
             <span>Precio</span>
-            
-            <input id="" class="form-check-input" type="radio" name="" value="">
-            <label class="form-check-label" for=""> $3000 a $9000</label>
+
+            <div class="md-form">
+                <i class="zmdi zmdi-money prefix text-muted"></i>
+                <label class="active" for="minimo">Mínimo</label>
+                <input class="form-control" id="minimo" name="minimo" type="number" value="3700" min="3700" max="209800">
+            </div>
+            <div class="md-form">
+                <i class="zmdi zmdi-money prefix text-muted"></i>
+                <label class="active" for="maximo">Máximo</label>
+                <input class="form-control" id="maximo" name="maximo" type="number" value="209800" min="3700" max="209800">
+            </div>
 
             <div class="">
                 <button type="submit" class="btn btn bg1 stext-101 cl0 ">
@@ -124,7 +134,7 @@
                         </div>
         
                         <div class="block2-txt flex-w flex-t p-t-14">
-                            <div class="block2-txt-child1 flex-col-l ">
+                            <div class="flex-col-l ">
                             <a href="{{route('MostrarServicio',[ 'id' => $servicio  ])}}" class="text-left cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                 {{$servicio->nombre}}
                             </a>
@@ -155,16 +165,39 @@
             </div> <!-- row isotope-grid -->
         </div> <!-- col-->
     </div>
-
-
 </div>
 
 @push('js')
 <script>
-    // $("#provincia_result").on('ready', function() {
+    // Al cambiar de prov cambia localidad
+    $("#provincia_result").on('change', function() {
+        var provincia_id = $("#provincia_result").val();
+        var nombre_provincia = $('#provincia_result option:selected').text();
         
-        
-    // });
+        $("#provincia_nombre_result").val(nombre_provincia);
+      
+        $.ajax({
+            type: 'GET',
+            url: '{{url('register/traer-localidades')}}',
+            data: {
+            
+            provincia_id,
+            _token: "{{csrf_token()}}"
+            },
+    
+            error: function(x, y, z) {
+            console.log(x, y, z);
+            },
+            success: function(data) {
+            $("#localidad_result").empty();
+            $.each(data[2], function(index, value) {
+                $("#localidad_result").append('<option value="' + value['nombre'] + '" >' + value['nombre'] + '</option>');
+            });
+            },
+        }); 
+    });
+
+    // Autoseleccionar prov y loc donde se está buscando actualmente
     $(document).ready(function(){
 
         var provincia_id = $("#provincia_result").val();
@@ -193,6 +226,13 @@
             },
         });
     });
+</script>
+
+{{-- Tomar precio del input range --}}
+<script>
+function updateTextInput(val) {
+          document.getElementById('textInput').value=val; 
+}
 </script>
 @endpush
 @endsection
