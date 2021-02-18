@@ -6,9 +6,9 @@
     <div class="position-relative">
         {{-- Categoria y ciudad --}}
         <div class="purple-gradient d-flex justify-content-center" style="height: 200px;">
-            <h2 class="d-none d-sm-block text-uppercase text-white align-self-center">Catering en Santiago del Estero</h2>
+            <h2 class="d-none d-sm-block text-uppercase text-white align-self-center">{{$categ_result}} en {{$prov_result}} </h2>
             <!-- Movil -->
-            <h3 class="d-block d-sm-none text-uppercase text-white align-self-center text-center">Catering en Santiago del Estero</h3>
+            <h3 class="d-block d-sm-none text-uppercase text-white align-self-center text-center">{{$categ_result}} en {{$prov_result}}</h3>
         </div>
 
         {{-- Buscador en medio --}}
@@ -58,6 +58,8 @@
 
     <div class="row container m-auto" style="padding-top: 5rem;">
         <div class="col-lg-3 col-12 pt-5">
+
+            {{-- Caracteristicas --}}
             <span>Prestaciones</span>
             <ul class="mt-2">
                 @forelse ($Caracteristicas as $caracteristica)
@@ -68,15 +70,20 @@
                 @endforelse
             </ul>
             <hr>
+
+            {{-- Provincia --}}
             <span> Provincia </span>
             <select id="provincia_result" class="custom-select stext-101 sin-bordes" name="provincia" required>
-                <option value="" selected>¿Donde?</option>
+                {{-- <option value="" selected>¿Donde?</option> --}}
                 @foreach ($ProvinciasLocalidadesJson as $provincia)
-                  <option value="{{ $provincia['id'] }}">{{$provincia['nombre']}}</option>
+                  <option value="{{ $provincia['id'] }}" {{ $prov_result == $provincia['nombre'] ? 'selected' : '' }} >{{$provincia['nombre']}}</option>
                 @endforeach
             </select>
             <hr>
+
+            {{-- Localidad --}}
             <span>Localidad</span>
+            <input hidden type="text" name="loc_result" id="loc_result" value="{{ $loc_result }}">
             <div class="">
                 <select id="localidad_result" class="custom-select stext-101 sin-bordes" name="localidad" required>
                     <option value="" selected> ¿Qué ciudad? </option>
@@ -154,31 +161,37 @@
 
 @push('js')
 <script>
-    $("#provincia_result").on('change', function() {
-      var provincia_id = $(this).val();
-      var nombre_provincia = $('#provincia_result option:selected').text();
-      $("#provincia_nombre_result").val(nombre_provincia);
-  
-      console.log( provincia_id, nombre_provincia );
-      $.ajax({
-        type: 'GET',
-        url: '{{url('register/traer-localidades')}}',
-        data: {
-          
-          provincia_id,
-          _token: "{{csrf_token()}}"
-        },
-  
-        error: function(x, y, z) {
-          console.log(x, y, z);
-        },
-        success: function(data) {
-          $("#localidad_result").empty();
-          $.each(data[2], function(index, value) {
-            $("#localidad_result").append('<option value="' + value['nombre'] + '">' + value['nombre'] + '</option>');
-          });
-        },
-      });
+    // $("#provincia_result").on('ready', function() {
+        
+        
+    // });
+    $(document).ready(function(){
+
+        var provincia_id = $("#provincia_result").val();
+        var nombre_provincia = $('#provincia_result option:selected').text();
+        var nombre_localidad = $('#loc_result').val();
+        
+        $("#provincia_nombre_result").val(nombre_provincia);
+      
+        $.ajax({
+            type: 'GET',
+            url: '{{url('register/traer-localidades')}}',
+            data: {
+            
+            provincia_id,
+            _token: "{{csrf_token()}}"
+            },
+    
+            error: function(x, y, z) {
+            console.log(x, y, z);
+            },
+            success: function(data) {
+            $("#localidad_result").empty();
+            $.each(data[2], function(index, value) {
+                $("#localidad_result").append('<option value="' + value['nombre'] + '" '+ (nombre_localidad == value['nombre'] ? 'selected' : '' ) +' >' + value['nombre'] + '</option>');
+            });
+            },
+        });
     });
 </script>
 @endpush

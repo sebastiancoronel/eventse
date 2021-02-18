@@ -328,11 +328,17 @@ class ServicioController extends Controller
   }
 
   public function ResultadosBusqueda( Request $request){
-
+    
     $path = storage_path() . "/json/ProvinciasLocalidades.json";
     $ProvinciasLocalidadesJson = json_decode(file_get_contents($path),true);
 
+    // Para titulos
+    $categ_result =  Categoria::where( 'id' , $request->categoria )->pluck('nombre')->first();
+    $prov_result = $request->provincia_nombre;
+    $loc_result = $request->localidad;
+
     $Categorias = Categoria::all();
+
     $Caracteristicas = Caracteristica_por_categoria::where('id_categoria', $request->categoria)
     ->Join( 'caracteristicas' , 'caracteristica_por_categorias.id_caracteristica' , '=' , 'caracteristicas.id' )
     ->select('caracteristicas.*')
@@ -347,7 +353,13 @@ class ServicioController extends Controller
     ->select('servicios.*','users.provincia', 'users.localidad')
     ->get();
 
-    return view( 'Principal.resultados_busqueda', [ 'Categorias' => $Categorias , 'ProvinciasLocalidadesJson' => $ProvinciasLocalidadesJson ,'Servicios' => $Servicios, 'Caracteristicas' => $Caracteristicas ] );
+    return view( 'Principal.resultados_busqueda', [ 
+      'Categorias' => $Categorias , 'ProvinciasLocalidadesJson' => $ProvinciasLocalidadesJson ,
+      'Servicios' => $Servicios, 'Caracteristicas' => $Caracteristicas,
+      'categ_result' => $categ_result,
+      'prov_result' => $prov_result,
+      'loc_result' => $loc_result
+      ]);
 
   }
   
