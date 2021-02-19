@@ -108,7 +108,13 @@
                     </div>
                 </div>
                 <hr>
-    
+                
+                {{-- Filtrar por precio --}}
+                <div class="form-check">
+                    <input id="filtrar_precio" class="form-check-input" type="checkbox" name="filtrar_precio" value="">
+                    <label class="" for="filtrar_precio">Filtrar precio</label>
+                </div>
+
                 {{-- Precio --}}
                 <div class="bor10 p-3">
                     <span>Precio</span>
@@ -125,7 +131,7 @@
         
                     {{-- Precio a convenir --}}
                     <div class="form-check">
-                        <input id="precio_a_convenir" class="form-check-input" type="checkbox" name="precio_a_convenir" value="1">
+                        <input id="precio_a_convenir" class="form-check-input" type="checkbox" name="precio_a_convenir" value="">
                         <label class="" for="precio_a_convenir">Precio a convenir</label>
                     </div>
     
@@ -263,8 +269,13 @@
         let localidad = $('#localidad_result option:selected').text();
         let minimo = $('#minimo').val();
         let maximo = $('#maximo').val();
-        let precio_a_convenir = $('#precio_a_convenir').val();
-
+        var precio_a_convenir;
+        if ( $('#precio_a_convenir').is(':checked') ){
+            precio_a_convenir = 1;
+        }else{
+            precio_a_convenir = null;
+        }
+        
         let caracteristicas = []; 
         $("input[name='caracteristica']:checked").each(function(){
             caracteristicas.push(this.value);

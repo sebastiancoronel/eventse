@@ -368,7 +368,7 @@ class ServicioController extends Controller
   }
   
   public function FiltrarResultados( Request $request ){
-    //dd($request->all());
+    // dd($request->all());
     // $request->provincia; //ID
     // $request->localidad; //String
     // $request->minimo; //Numero
@@ -377,21 +377,21 @@ class ServicioController extends Controller
 
   //Estas variables estan en la funcion de arriba
     // Para titulos
-    $categ_result =  Categoria::where( 'id' , $request->categoria )->pluck('nombre')->first();
-    $prov_result = $request->provincia_nombre;
-    $loc_result = $request->localidad;
+    // $categ_result =  Categoria::where( 'id' , $request->categoria )->pluck('nombre')->first();
+    // $prov_result = $request->provincia_nombre;
+    // $loc_result = $request->localidad;
 
-    // Para prestaciones
-    $Caracteristicas = Caracteristica_por_categoria::where('id_categoria', $request->categoria)
-    ->Join( 'caracteristicas' , 'caracteristica_por_categorias.id_caracteristica' , '=' , 'caracteristicas.id' )
-    ->select('caracteristicas.*')
-    ->get();
+    // // Para prestaciones
+    // $Caracteristicas = Caracteristica_por_categoria::where('id_categoria', $request->categoria)
+    // ->Join( 'caracteristicas' , 'caracteristica_por_categorias.id_caracteristica' , '=' , 'caracteristicas.id' )
+    // ->select('caracteristicas.*')
+    // ->get();
 
-    $PrecioMax = Servicio::where( 'precio' , '!=', null )->where( 'id_categoria' , $request->categoria )->pluck('precio')->max();
-    $PrecioMin = Servicio::where( 'precio' , '!=', null )->where( 'id_categoria' , $request->categoria )->pluck('precio')->min();
+    // $PrecioMax = Servicio::where( 'precio' , '!=', null )->where( 'id_categoria' , $request->categoria )->pluck('precio')->max();
+    // $PrecioMin = Servicio::where( 'precio' , '!=', null )->where( 'id_categoria' , $request->categoria )->pluck('precio')->min();
 
-    // Id
-    $categoria_id = $request->categoria;
+    // // Id
+    // $categoria_id = $request->categoria;
   //Estas variables estan en la funcion de arriba
 
     $Servicios = array();
@@ -403,17 +403,17 @@ class ServicioController extends Controller
         ->where( 'servicios.deleted_at' , '=', null )
         ->Join( 'prestadors' , 'servicios.id_prestador' , 'prestadors.id' )
         ->Join( 'users' , 'prestadors.user_id' , 'users.id')
+        ->Join( 'caracteristicas_por_servicios' , 'servicios.id' , 'caracteristicas_por_servicios.id_servicio')
         ->where('users.rol' , 'Prestador')
         ->where( 'users.provincia' , $request->provincia )
         ->where( 'users.localidad' , $request->localidad )
-        ->Join( 'caracteristicas_por_servicios' , 'servicios.id' , 'caracteristicas_por_servicios.id_servicio')
-        ->where( 'caracteristicas_por_servicios.id_caracteristica' , $caracteristica ); //Problemas en encontrar servicios que tengan las caracteristicas elegidas.
-        //Si dos poseen la misma caracteristica solo trae uno. Debo rearmar el foreach y como buscar los servicios filtrados.
-        if ( $request->precio_a_convenir ){
-          //$query->where( 'precio_a_convenir' , $request->precio_a_convenir );
+        ->where( 'caracteristicas_por_servicios.id_caracteristica' , $caracteristica );
+
+        if ( $request->precio_a_convenir == 1 ){
+          $query->where( 'precio_a_convenir' , $request->precio_a_convenir );
         }else{
-          $query->where( 'precio' , 10950 );
-          //$query->whereBetween( 'precio' , [ $request->minimo , $request->maximo ] );
+          //$query->where( 'precio' , 10950 );
+          $query->whereBetween( 'precio' , [ $request->minimo , $request->maximo ] );
         }
     
         $servicio = $query->select('servicios.*')->first();
@@ -423,25 +423,31 @@ class ServicioController extends Controller
       }
 
     }else{
+
       $query = Servicio::where( 'id_categoria' , $request->categoria_id )
-        ->where( 'servicios.deleted_at' , '=', null )
-        ->Join( 'prestadors' , 'servicios.id_prestador' , 'prestadors.id' )
-        ->Join( 'users' , 'prestadors.user_id' , 'users.id')
-        ->where('users.rol' , 'Prestador')
-        ->where( 'users.provincia' , $request->provincia )
-        ->where( 'users.localidad' , $request->localidad );
+                        ->Join( 'prestadors' , 'servicios.id_prestador' , 'prestadors.id' )
+                        ->Join( 'users' , 'prestadors.user_id' , 'users.id')
+                        ->where( 'servicios.deleted_at' , '=', null )
+                        ->where('users.rol' , 'Prestador')
+                        ->where( 'users.provincia' , $request->provincia )
+                        ->where( 'users.localidad' , $request->localidad );
     
-        if ( $request->precio_a_convenir ){
-          $query->where( 'precio_a_convenir' , $request->precio_a_convenir );
-        }else{
-          $query->whereBetween( 'precio' , [ $request->minimo , $request->maximo ] );
-        }
-    
-        $servicio = $query->select('servicios.*')->first();
-        array_push( $Servicios , $servicio );
+      if ( $request->precio_a_convenir ){
+
+        $query->where( 'precio_a_convenir' , $request->precio_a_convenir );
+
+      }else{
+
+        // $query->where( 'precio' , 10950 );
+        $query->whereBetween( 'precio' , [ $request->minimo , $request->maximo ] );
+        
+      }
+  
+      $Servicios = $query->select('servicios.*')->get();
+      
     }
+
     
-    // dd($Servicios);
     return $Servicios;
     // return view( 'Principal.resultados_busqueda', [ 
     //   'Servicios' => $Servicios, 'Caracteristicas' => $Caracteristicas,
