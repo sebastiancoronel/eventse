@@ -368,7 +368,7 @@ class ServicioController extends Controller
   }
   
   public function FiltrarResultados( Request $request ){
-    //  dd($request->all());
+    //dd($request->all());
     // $request->provincia; //ID
     // $request->localidad; //String
     // $request->minimo; //Numero
@@ -393,15 +393,40 @@ class ServicioController extends Controller
     // Id
     $categoria_id = $request->categoria;
   //Estas variables estan en la funcion de arriba
+
+    $Servicios = array();
+    
     if ( $request->caracteristicas ) {
       foreach ($request->caracteristicas as $caracteristica) {
-        
-        $query = Servicio::where( 'id_categoria' , $request->categoria_id )
+
+        $query = Servicio::where( 'servicios.id_categoria' , $request->categoria_id )
         ->where( 'servicios.deleted_at' , '=', null )
         ->Join( 'prestadors' , 'servicios.id_prestador' , 'prestadors.id' )
         ->Join( 'users' , 'prestadors.user_id' , 'users.id')
+        ->where('users.rol' , 'Prestador')
+        ->where( 'users.provincia' , $request->provincia )
+        ->where( 'users.localidad' , $request->localidad )
         ->Join( 'caracteristicas_por_servicios' , 'servicios.id' , 'caracteristicas_por_servicios.id_servicio')
-        ->where( 'caracteristicas_por_servicios.id_caracteristica' , $caracteristica )
+        ->where( 'caracteristicas_por_servicios.id_caracteristica' , $caracteristica ); //Problemas en encontrar servicios que tengan las caracteristicas elegidas.
+        //Si dos poseen la misma caracteristica solo trae uno. Debo rearmar el foreach y como buscar los servicios filtrados.
+        if ( $request->precio_a_convenir ){
+          //$query->where( 'precio_a_convenir' , $request->precio_a_convenir );
+        }else{
+          $query->where( 'precio' , 10950 );
+          //$query->whereBetween( 'precio' , [ $request->minimo , $request->maximo ] );
+        }
+    
+        $servicio = $query->select('servicios.*')->first();
+        if ($servicio != null) {
+          array_push( $Servicios , $servicio );
+        }
+      }
+
+    }else{
+      $query = Servicio::where( 'id_categoria' , $request->categoria_id )
+        ->where( 'servicios.deleted_at' , '=', null )
+        ->Join( 'prestadors' , 'servicios.id_prestador' , 'prestadors.id' )
+        ->Join( 'users' , 'prestadors.user_id' , 'users.id')
         ->where('users.rol' , 'Prestador')
         ->where( 'users.provincia' , $request->provincia )
         ->where( 'users.localidad' , $request->localidad );
@@ -412,9 +437,8 @@ class ServicioController extends Controller
           $query->whereBetween( 'precio' , [ $request->minimo , $request->maximo ] );
         }
     
-        $Servicios = $query->select('servicios.*')->get();
-
-      }
+        $servicio = $query->select('servicios.*')->first();
+        array_push( $Servicios , $servicio );
     }
     
     // dd($Servicios);
