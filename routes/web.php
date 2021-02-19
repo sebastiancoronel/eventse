@@ -29,6 +29,9 @@ Route::post('/reservar/servicios-publicados/almacenando-pregunta','ServicioContr
 // Busqueda
 Route::get('/busqueda','ServicioController@ResultadosBusqueda')->name('ResultadosBusqueda');
 
+// Filtrar resultados
+Route::get('/busqueda/filtrado','ServicioController@FiltrarResultados')->name('FiltrarResultados');
+
 /*
 |--------------------------------------------------------------------------
 | Auth + Perfil prestador

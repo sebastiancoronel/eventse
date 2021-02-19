@@ -328,22 +328,24 @@ class ServicioController extends Controller
   }
 
   public function ResultadosBusqueda( Request $request){
-    
-    $path = storage_path() . "/json/ProvinciasLocalidades.json";
-    $ProvinciasLocalidadesJson = json_decode(file_get_contents($path),true);
 
     // Para titulos
     $categ_result =  Categoria::where( 'id' , $request->categoria )->pluck('nombre')->first();
     $prov_result = $request->provincia_nombre;
     $loc_result = $request->localidad;
 
-    $Categorias = Categoria::all();
-
+    // Para prestaciones
     $Caracteristicas = Caracteristica_por_categoria::where('id_categoria', $request->categoria)
     ->Join( 'caracteristicas' , 'caracteristica_por_categorias.id_caracteristica' , '=' , 'caracteristicas.id' )
     ->select('caracteristicas.*')
     ->get();
 
+    $PrecioMax = Servicio::where( 'precio' , '!=', null )->where( 'id_categoria' , $request->categoria )->pluck('precio')->max();
+    $PrecioMin = Servicio::where( 'precio' , '!=', null )->where( 'id_categoria' , $request->categoria )->pluck('precio')->min();
+
+    // Id
+    $categoria_id = $request->categoria;
+    // Resultado de la busqueda
     $Servicios = Servicio::where( 'id_categoria' , $request->categoria )
     ->Join( 'prestadors' , 'servicios.id_prestador' , 'prestadors.id' )
     ->Join( 'users' , 'prestadors.user_id' , 'users.id')
@@ -354,15 +356,75 @@ class ServicioController extends Controller
     ->get();
 
     return view( 'Principal.resultados_busqueda', [ 
-      'Categorias' => $Categorias , 'ProvinciasLocalidadesJson' => $ProvinciasLocalidadesJson ,
       'Servicios' => $Servicios, 'Caracteristicas' => $Caracteristicas,
       'categ_result' => $categ_result,
       'prov_result' => $prov_result,
-      'loc_result' => $loc_result
+      'loc_result' => $loc_result,
+      'PrecioMax' => $PrecioMax,
+      'PrecioMin' => $PrecioMin,
+      'categoria_id' => $categoria_id
       ]);
 
   }
   
+  public function FiltrarResultados( Request $request ){
+    // dd($request);
+    // $request->provincia; //ID
+    // $request->localidad; //String
+    // $request->minimo; //Numero
+    // $request->maximo; //Numero
+    // $request->precio_a_convenir; //1 or 0 require an IF
+
+  //Estas variables estan en la funcion de arriba
+    // Para titulos
+    $categ_result =  Categoria::where( 'id' , $request->categoria )->pluck('nombre')->first();
+    $prov_result = $request->provincia_nombre;
+    $loc_result = $request->localidad;
+
+    // Para prestaciones
+    $Caracteristicas = Caracteristica_por_categoria::where('id_categoria', $request->categoria)
+    ->Join( 'caracteristicas' , 'caracteristica_por_categorias.id_caracteristica' , '=' , 'caracteristicas.id' )
+    ->select('caracteristicas.*')
+    ->get();
+
+    $PrecioMax = Servicio::where( 'precio' , '!=', null )->where( 'id_categoria' , $request->categoria )->pluck('precio')->max();
+    $PrecioMin = Servicio::where( 'precio' , '!=', null )->where( 'id_categoria' , $request->categoria )->pluck('precio')->min();
+
+    // Id
+    $categoria_id = $request->categoria;
+  //Estas variables estan en la funcion de arriba
+  
+    $query = Servicio::where( 'id_categoria' , $request->categoria_id )
+    ->where( 'servicios.deleted_at' , '=', null )
+    ->Join( 'prestadors' , 'servicios.id_prestador' , 'prestadors.id' )
+    ->Join( 'users' , 'prestadors.user_id' , 'users.id')
+    ->where('users.rol' , 'Prestador')
+    ->where( 'users.provincia' , $request->provincia_filter )
+    ->where( 'users.localidad' , $request->localidad_filter );
+
+    if ( $request->precio_a_convenir ){
+      $query->where( 'precio_a_convenir' , $request->precio_a_convenir );
+    }else{
+      $query->whereBetween( 'precio' , [ $request->minimo , $request->maximo ] );
+    }
+
+    // if ($request->maximo && $request->minimo) { //Sospecho que esto este mal
+    //   $query->whereBetween( 'precio' , [ $request->minimo , $request->maximo ] );
+    // }
+    $Servicios = $query->select('servicios.*')->get();
+    
+    //dd($Servicios);
+
+    return view( 'Principal.resultados_busqueda', [ 
+      'Servicios' => $Servicios, 'Caracteristicas' => $Caracteristicas,
+      'categ_result' => $categ_result,
+      'prov_result' => $prov_result,
+      'loc_result' => $loc_result,
+      'PrecioMax' => $PrecioMax,
+      'PrecioMin' => $PrecioMin,
+      'categoria_id' => $categoria_id
+      ]);
+  }
   // public function MostrarPlanes(){
   //   return view('Ecommerce.planes_publicidad');
   // }

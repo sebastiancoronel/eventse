@@ -57,69 +57,90 @@
     </div>
 
     <div class="row container m-auto" style="padding-top: 5rem;">
-        <div class="col-lg-3 col-12 pt-5">
 
-            {{-- Caracteristicas --}}
-            <span>Prestaciones</span>
-            <ul class="mt-2">
-                @forelse ($Caracteristicas as $caracteristica)
-                <li>
-                    <input id="{{ $caracteristica->nombre }}" class="form-check-input" type="checkbox" name="caracteristica[]" value="{{ $caracteristica->id }}">
-                    <label class="form-check-label" for="{{ $caracteristica->nombre }}"> {{ $caracteristica->nombre }}</label>
-                </li>
-                    @empty
-                        Sin prestaciones
-                @endforelse
-            </ul>
-            <hr>
+        {{-- Filtros --}}
+        <div class="col-lg-3 col-12">
+            <form action="{{ route('FiltrarResultados') }}" method="GET">
+                <input hidden type="text" name="categoria_id" value="{{ $categoria_id }}">
+                <input hidden id="prov_filter" type="text" name="provincia_filter">
+                {{-- Caracteristicas --}}
+                <div class="bor10 p-3">
+                    <span>Prestaciones</span>
+                    <ul class="mt-2">
+                        @forelse ($Caracteristicas as $caracteristica)
+                        <li>
+                            <input id="{{ $caracteristica->nombre }}" class="form-check-input" type="checkbox" name="caracteristica[]" value="{{ $caracteristica->id }}">
+                            <label class="form-check-label" for="{{ $caracteristica->nombre }}"> {{ $caracteristica->nombre }}</label>
+                        </li>
+                            @empty
+                                Sin prestaciones
+                        @endforelse
+                    </ul>
+                </div>
+                <hr>
+    
+                {{-- Ubicacion --}}
+                <div class="bor10 p-3">
+                    {{-- Provincia --}}
+                    <span> Provincia </span>
+                    <select id="provincia_result" class="custom-select stext-101 sin-bordes" name="provincia_filter_id" required>
+                        {{-- <option value="" selected>¿Donde?</option> --}}
+                        @foreach ($ProvinciasLocalidadesJson as $provincia)
+                          <option value="{{ $provincia['id'] }}" {{ $prov_result == $provincia['nombre'] ? 'selected' : '' }} >{{$provincia['nombre']}}</option>
+                        @endforeach
+                    </select>
+                    <hr>
+        
+                    {{-- Localidad --}}
+                    <span>Localidad</span>
+                    <input hidden type="text" name="loc_result" id="loc_result" value="{{ $loc_result }}">
+                    <div class="">
+                        <select id="localidad_result" class="custom-select stext-101 sin-bordes" name="localidad_filter" required>
+                            <option value="" selected> ¿Qué ciudad? </option>
+                        </select>
+                        
+                        @if ($errors->has('localidad'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('localidad') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+                <hr>
+    
+                {{-- Precio --}}
+                <div class="bor10 p-3">
+                    <span>Precio</span>
+                    <div class="md-form">
+                        <i class="zmdi zmdi-money prefix text-muted"></i>
+                        <label class="active" for="minimo">Mínimo</label>
+                        <input class="form-control" id="minimo" name="minimo" type="number" value="{{ $PrecioMin }}" min="{{ $PrecioMin }}" max="{{ $PrecioMax }}">
+                    </div>
+                    <div class="md-form">
+                        <i class="zmdi zmdi-money prefix text-muted"></i>
+                        <label class="active" for="maximo">Máximo</label>
+                        <input class="form-control" id="maximo" name="maximo" type="number" value="{{ $PrecioMax }}" min="{{ $PrecioMin }}" max="{{ $PrecioMax }}">
+                    </div>
+        
+                    {{-- Precio a convenir --}}
+                    <div class="form-check">
+                        <input id="precio_a_convenir" class="form-check-input" type="checkbox" name="precio_a_convenir" value="1">
+                        <label class="" for="precio_a_convenir">Precio a convenir</label>
+                    </div>
+    
+                </div>
 
-            {{-- Provincia --}}
-            <span> Provincia </span>
-            <select id="provincia_result" class="custom-select stext-101 sin-bordes" name="provincia" required>
-                {{-- <option value="" selected>¿Donde?</option> --}}
-                @foreach ($ProvinciasLocalidadesJson as $provincia)
-                  <option value="{{ $provincia['id'] }}" {{ $prov_result == $provincia['nombre'] ? 'selected' : '' }} >{{$provincia['nombre']}}</option>
-                @endforeach
-            </select>
-            <hr>
+                <div class="mt-2">
+                    <button type="submit" class="btn btn bg1 stext-101 cl0 ">
+                        Aplicar
+                    </button>
+                </div>
+            </form>
 
-            {{-- Localidad --}}
-            <span>Localidad</span>
-            <input hidden type="text" name="loc_result" id="loc_result" value="{{ $loc_result }}">
-            <div class="">
-                <select id="localidad_result" class="custom-select stext-101 sin-bordes" name="localidad" required>
-                    <option value="" selected> ¿Qué ciudad? </option>
-                </select>
-                
-                @if ($errors->has('localidad'))
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('localidad') }}</strong>
-                    </span>
-                @endif
-            </div>
-            <hr>
-            <span>Precio</span>
-
-            <div class="md-form">
-                <i class="zmdi zmdi-money prefix text-muted"></i>
-                <label class="active" for="minimo">Mínimo</label>
-                <input class="form-control" id="minimo" name="minimo" type="number" value="3700" min="3700" max="209800">
-            </div>
-            <div class="md-form">
-                <i class="zmdi zmdi-money prefix text-muted"></i>
-                <label class="active" for="maximo">Máximo</label>
-                <input class="form-control" id="maximo" name="maximo" type="number" value="209800" min="3700" max="209800">
-            </div>
-
-            <div class="">
-                <button type="submit" class="btn btn bg1 stext-101 cl0 ">
-                    Aplicar
-                </button>
-            </div>
         </div>
 
         {{-- Resultados de la busqueda --}}
-        <div class="col-lg-9 col-12 pt-5">
+        <div class="col-lg-9 col-12">
             <div class="row isotope-grid" style="position: relative; height: 1717.38px;">
                 @foreach ($Servicios as $servicio)
                     <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$servicio->nombre_categoria}}" style="position: absolute; left: 0%; top: 0px;">
@@ -173,7 +194,8 @@
     $("#provincia_result").on('change', function() {
         var provincia_id = $("#provincia_result").val();
         var nombre_provincia = $('#provincia_result option:selected').text();
-        
+        $("#prov_filter").val(nombre_provincia);
+
         $("#provincia_nombre_result").val(nombre_provincia);
       
         $.ajax({
@@ -203,6 +225,8 @@
         var provincia_id = $("#provincia_result").val();
         var nombre_provincia = $('#provincia_result option:selected').text();
         var nombre_localidad = $('#loc_result').val();
+        
+        $("#prov_filter").val(nombre_provincia);
         
         $("#provincia_nombre_result").val(nombre_provincia);
       
