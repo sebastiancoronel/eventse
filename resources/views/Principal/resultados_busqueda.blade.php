@@ -60,8 +60,9 @@
 
         {{-- Filtros --}}
         <div class="col-lg-3 col-12">
-            <form action="{{ route('FiltrarResultados') }}" method="GET">
-                <input hidden type="text" name="categoria_id" value="{{ $categoria_id }}">
+            <form id="form_filtrar">
+                @csrf
+                <input hidden id="categoria_id" type="text" name="categoria_id" value="{{ $categoria_id }}">
                 <input hidden id="prov_filter" type="text" name="provincia_filter">
                 {{-- Caracteristicas --}}
                 <div class="bor10 p-3">
@@ -69,7 +70,7 @@
                     <ul class="mt-2">
                         @forelse ($Caracteristicas as $caracteristica)
                         <li>
-                            <input id="{{ $caracteristica->nombre }}" class="form-check-input" type="checkbox" name="caracteristica[]" value="{{ $caracteristica->id }}">
+                            <input id="{{ $caracteristica->nombre }}" class="form-check-input caracteristica" type="checkbox" name="caracteristica" value="{{ $caracteristica->id }}">
                             <label class="form-check-label" for="{{ $caracteristica->nombre }}"> {{ $caracteristica->nombre }}</label>
                         </li>
                             @empty
@@ -131,16 +132,15 @@
                 </div>
 
                 <div class="mt-2">
-                    <button type="submit" class="btn btn bg1 stext-101 cl0 ">
+                    <button type="button" class="btn btn bg1 stext-101 cl0" id="btn_aplicar">
                         Aplicar
                     </button>
                 </div>
             </form>
-
         </div>
 
         {{-- Resultados de la busqueda --}}
-        <div class="col-lg-9 col-12">
+        <div class="col-lg-9 col-12" id="resultados">
             <div class="row isotope-grid" style="position: relative; height: 1717.38px;">
                 @foreach ($Servicios as $servicio)
                     <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$servicio->nombre_categoria}}" style="position: absolute; left: 0%; top: 0px;">
@@ -254,9 +254,47 @@
 
 {{-- Tomar precio del input range --}}
 <script>
-function updateTextInput(val) {
-          document.getElementById('textInput').value=val; 
-}
+    
+    $(document).on('click','#btn_aplicar',function(e){
+
+        e.preventDefault();
+        let categoria_id = $('#categoria_id').val();
+        let provincia = $('#prov_filter').val();
+        let localidad = $('#localidad_result option:selected').text();
+        let minimo = $('#minimo').val();
+        let maximo = $('#maximo').val();
+        let precio_a_convenir = $('#precio_a_convenir').val();
+
+        let caracteristicas = []; 
+        $("input[name='caracteristica']:checked").each(function(){
+            caracteristicas.push(this.value);
+        });
+
+        // var form = document.getElementById('form_filtrar');
+        // var formData = new FormData(form);
+
+        $.ajax({
+            type: 'GET',
+            url: '{{url('/busqueda/filtrado')}}',
+            data: {
+                categoria_id,
+                provincia,
+                localidad,
+                minimo,
+                maximo,
+                precio_a_convenir,
+                caracteristicas,
+                _token: '{{ csrf_token() }}'
+            },
+            error: function( x, y, z ){
+                console.log(x,y,z);
+            },
+            success: function(data){
+                console.log(data);
+                // vacias #resultados y dibujar servicios, poner spinner etc..
+            }
+        });
+    });
 </script>
 @endpush
 @endsection
