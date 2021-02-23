@@ -110,28 +110,28 @@
                 <hr>
                 
                 {{-- Filtrar por precio --}}
-                <div class="form-check">
-                    <input id="filtrar_precio" class="form-check-input" type="checkbox" name="filtrar_precio" value="">
-                    <label class="" for="filtrar_precio">Filtrar precio</label>
+                <div class="md-form">
+                    <input class="form-check-input" id="precios_todos" type="checkbox" name="precios_todos" value="1" checked>
+                    <label class="" for="precios_todos">Todos los precios</label>
                 </div>
 
                 {{-- Precio --}}
-                <div class="bor10 p-3">
+                <div class="bor10 p-3" id="div_precio" style="opacity: 0.5;">
                     <span>Precio</span>
                     <div class="md-form">
                         <i class="zmdi zmdi-money prefix text-muted"></i>
                         <label class="active" for="minimo">Mínimo</label>
-                        <input class="form-control" id="minimo" name="minimo" type="number" value="{{ $PrecioMin }}" min="{{ $PrecioMin }}" max="{{ $PrecioMax }}">
+                        <input class="form-control" id="minimo" name="minimo" type="number" value="{{ $PrecioMin }}" min="{{ $PrecioMin }}" max="{{ $PrecioMax }}" disabled>
                     </div>
                     <div class="md-form">
                         <i class="zmdi zmdi-money prefix text-muted"></i>
                         <label class="active" for="maximo">Máximo</label>
-                        <input class="form-control" id="maximo" name="maximo" type="number" value="{{ $PrecioMax }}" min="{{ $PrecioMin }}" max="{{ $PrecioMax }}">
+                        <input class="form-control" id="maximo" name="maximo" type="number" value="{{ $PrecioMax }}" min="{{ $PrecioMin }}" max="{{ $PrecioMax }}" disabled>
                     </div>
         
                     {{-- Precio a convenir --}}
-                    <div class="form-check">
-                        <input id="precio_a_convenir" class="form-check-input" type="checkbox" name="precio_a_convenir" value="">
+                    <div class="md-form">
+                        <input id="precio_a_convenir" class="form-check-input" type="checkbox" name="precio_a_convenir" value="" disabled>
                         <label class="" for="precio_a_convenir">Precio a convenir</label>
                     </div>
     
@@ -196,6 +196,23 @@
 
 @push('js')
 <script>
+
+    //Habilitar - Deshabilitar filtro de precios
+    $(document).on('change','#precios_todos', function(){
+        if ( !this.checked) {
+            $("#div_precio").css("opacity","1");
+            $("#minimo").removeAttr('disabled');
+            $("#maximo").removeAttr('disabled');
+            $("#precio_a_convenir").removeAttr('disabled');
+            
+        } else {
+            $("#div_precio").css("opacity","0.5");
+            $("#minimo").attr('disabled', 'true');
+            $("#maximo").attr('disabled', 'true');
+            $("#precio_a_convenir").attr('disabled', 'true');
+        }
+    });
+
     // Al cambiar de prov cambia localidad
     $("#provincia_result").on('change', function() {
         var provincia_id = $("#provincia_result").val();
@@ -267,14 +284,23 @@
         let categoria_id = $('#categoria_id').val();
         let provincia = $('#prov_filter').val();
         let localidad = $('#localidad_result option:selected').text();
-        let minimo = $('#minimo').val();
-        let maximo = $('#maximo').val();
-        var precio_a_convenir;
+        let precios_todos;
+        let precio_a_convenir;
+        if ( $("#precios_todos").is(':checked') ) {
+            precios_todos = 1;
+        }else{
+            precios_todos = null;
+        }
+
         if ( $('#precio_a_convenir').is(':checked') ){
             precio_a_convenir = 1;
         }else{
             precio_a_convenir = null;
         }
+
+        let minimo = $('#minimo').val();
+        let maximo = $('#maximo').val();
+        
         
         let caracteristicas = []; 
         $("input[name='caracteristica']:checked").each(function(){
@@ -293,6 +319,7 @@
                 localidad,
                 minimo,
                 maximo,
+                precios_todos,
                 precio_a_convenir,
                 caracteristicas,
                 _token: '{{ csrf_token() }}'

@@ -375,50 +375,45 @@ class ServicioController extends Controller
     // $request->maximo; //Numero
     // $request->precio_a_convenir; //1 or 0 require an IF
 
-  //Estas variables estan en la funcion de arriba
-    // Para titulos
-    // $categ_result =  Categoria::where( 'id' , $request->categoria )->pluck('nombre')->first();
-    // $prov_result = $request->provincia_nombre;
-    // $loc_result = $request->localidad;
-
-    // // Para prestaciones
-    // $Caracteristicas = Caracteristica_por_categoria::where('id_categoria', $request->categoria)
-    // ->Join( 'caracteristicas' , 'caracteristica_por_categorias.id_caracteristica' , '=' , 'caracteristicas.id' )
-    // ->select('caracteristicas.*')
-    // ->get();
-
-    // $PrecioMax = Servicio::where( 'precio' , '!=', null )->where( 'id_categoria' , $request->categoria )->pluck('precio')->max();
-    // $PrecioMin = Servicio::where( 'precio' , '!=', null )->where( 'id_categoria' , $request->categoria )->pluck('precio')->min();
-
-    // // Id
-    // $categoria_id = $request->categoria;
-  //Estas variables estan en la funcion de arriba
-
     $Servicios = array();
     
     if ( $request->caracteristicas ) {
       foreach ($request->caracteristicas as $caracteristica) {
 
         $query = Servicio::where( 'servicios.id_categoria' , $request->categoria_id )
-        ->where( 'servicios.deleted_at' , '=', null )
+        ->Join( 'caracteristicas_por_servicios' , 'servicios.id' , 'caracteristicas_por_servicios.id_servicio')
         ->Join( 'prestadors' , 'servicios.id_prestador' , 'prestadors.id' )
         ->Join( 'users' , 'prestadors.user_id' , 'users.id')
-        ->Join( 'caracteristicas_por_servicios' , 'servicios.id' , 'caracteristicas_por_servicios.id_servicio')
-        ->where('users.rol' , 'Prestador')
-        ->where( 'users.provincia' , $request->provincia )
-        ->where( 'users.localidad' , $request->localidad )
-        ->where( 'caracteristicas_por_servicios.id_caracteristica' , $caracteristica );
 
-        if ( $request->precio_a_convenir == 1 ){
-          $query->where( 'precio_a_convenir' , $request->precio_a_convenir );
-        }else{
-          //$query->where( 'precio' , 10950 );
-          $query->whereBetween( 'precio' , [ $request->minimo , $request->maximo ] );
+        ->where( 'servicios.deleted_at' , '=', null )
+        ->where( 'caracteristicas_por_servicios.id_caracteristica' , $caracteristica )
+        ->where( 'users.provincia' , $request->provincia )
+        ->where( 'users.localidad' , $request->localidad );
+
+        if ( $request->precios_todos == 1 ) {
+
+          $Servicios = $query->select('servicios.*')->get();
+          return $Servicios;
+          // return "traje todos";
+
+          }else{
+            
+            if ( $request->precio_a_convenir == 1 ){
+              // return "precio a convenir seleccionado";
+              $query->where( 'precio_a_convenir' , $request->precio_a_convenir );
+              }else{
+                // return "Filtrar por rango de precios";
+              $query->whereBetween( 'precio' , [ $request->minimo , $request->maximo ] );
+            }
         }
-    
-        $servicio = $query->select('servicios.*')->first();
-        if ($servicio != null) {
-          array_push( $Servicios , $servicio );
+
+        $servicio = $query->select('servicios.nombre')->first();
+
+        if ( $servicio != null ) {
+          if ( !in_array( $servicio , $Servicios )) { // Si no lo agrego ya al array lo agrega
+            
+            array_push( $Servicios , $servicio );
+          }
         }
       }
 
@@ -438,7 +433,6 @@ class ServicioController extends Controller
 
       }else{
 
-        // $query->where( 'precio' , 10950 );
         $query->whereBetween( 'precio' , [ $request->minimo , $request->maximo ] );
         
       }
@@ -447,7 +441,6 @@ class ServicioController extends Controller
       
     }
 
-    
     return $Servicios;
     // return view( 'Principal.resultados_busqueda', [ 
     //   'Servicios' => $Servicios, 'Caracteristicas' => $Caracteristicas,

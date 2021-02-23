@@ -177,10 +177,10 @@
             if (this.checked) {
             $("#precio").val('');
             $("#div_precio").css("opacity","0.5");
-                $("#precio").attr('disabled', 'true');
+            $("#precio").attr('disabled', 'true');
             } else {
             $("#div_precio").css("opacity","1");
-                $("#precio").removeAttr('disabled');
+            $("#precio").removeAttr('disabled');
             }
 
             });
