@@ -149,7 +149,7 @@
         <div class="col-lg-9 col-12" id="resultados">
             <div class="row isotope-grid" style="position: relative; height: 1717.38px;">
                 @foreach ($Servicios as $servicio)
-                    <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$servicio->nombre_categoria}}" style="position: absolute; left: 0%; top: 0px;">
+                    <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item" style="position: absolute; left: 0%; top: 0px;">
                         <!-- Block2 -->
                         <div class="block2">
                         <div class="block2-pic hov-img0">
@@ -281,6 +281,7 @@
     $(document).on('click','#btn_aplicar',function(e){
 
         e.preventDefault();
+        $("#resultados").empty();
         let categoria_id = $('#categoria_id').val();
         let provincia = $('#prov_filter').val();
         let localidad = $('#localidad_result option:selected').text();
@@ -329,7 +330,43 @@
             },
             success: function(data){
                 console.log(data);
-                // vacias #resultados y dibujar servicios, poner spinner etc..
+                $.each( data , function( index , value ){
+
+                    var url = value['foto_1'];
+                    var asset = `{{ asset( `+  +` ) }}`;
+                    var foto = asset + url;
+
+                    var servicio = ` <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item" style="position: absolute; left: 0%; top: 0px;">
+                        <!-- Block2 -->
+                        <div class="block2">
+                            <div class="block2-pic hov-img0">
+                                <img src="`+ foto +`" alt="IMG-PRODUCT">
+        
+                                <a href=" {{route('MostrarServicio',[ 'id' => $servicio  ])}} " class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+                                    Reservar
+                                </a>
+                        </div>
+        
+                        <div class="block2-txt flex-w flex-t p-t-14">
+                            <div class="flex-col-l ">
+                            <a href="{{route('MostrarServicio',[ 'id' => $servicio  ])}}" class="text-left cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                `+ value['nombre'] +`
+                            </a>
+        
+                            <span class="stext-105 cl3">
+                            `+ ( value['precio'] != null ? value['precio'] : 'Precio a convenir') +`
+                            </span>
+                            <span class="mt-2">
+                                <i class="zmdi zmdi-pin"></i> <small> `+ value['localidad'] +` , `+ value['provincia'] +` </small>
+                            </span>
+                            </div>
+                        </div>
+                        </div>
+                    </div> `;
+
+                    $("#resultados").append(servicio);
+                } );
+                
             }
         });
     });

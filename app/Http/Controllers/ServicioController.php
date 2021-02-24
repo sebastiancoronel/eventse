@@ -392,7 +392,7 @@ class ServicioController extends Controller
 
         if ( $request->precios_todos == 1 ) {
 
-          $Servicios = $query->select('servicios.*')->get();
+          $Servicios = $query->select('servicios.*' , 'users.provincia' , 'users.localidad')->get();
           return $Servicios;
           // return "traje todos";
 
