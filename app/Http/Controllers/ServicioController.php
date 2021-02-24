@@ -391,23 +391,20 @@ class ServicioController extends Controller
         ->where( 'users.localidad' , $request->localidad );
 
         if ( $request->precios_todos == 1 ) {
-
           $Servicios = $query->select('servicios.*' , 'users.provincia' , 'users.localidad')->get();
           return $Servicios;
-          // return "traje todos";
 
           }else{
-            
+
             if ( $request->precio_a_convenir == 1 ){
-              // return "precio a convenir seleccionado";
               $query->where( 'precio_a_convenir' , $request->precio_a_convenir );
               }else{
-                // return "Filtrar por rango de precios";
+
               $query->whereBetween( 'precio' , [ $request->minimo , $request->maximo ] );
             }
         }
 
-        $servicio = $query->select('servicios.nombre')->first();
+        $servicio = $query->select('servicios.*')->first();
 
         if ( $servicio != null ) {
           if ( !in_array( $servicio , $Servicios )) { // Si no lo agrego ya al array lo agrega
@@ -420,37 +417,29 @@ class ServicioController extends Controller
     }else{
 
       $query = Servicio::where( 'id_categoria' , $request->categoria_id )
-                        ->Join( 'prestadors' , 'servicios.id_prestador' , 'prestadors.id' )
-                        ->Join( 'users' , 'prestadors.user_id' , 'users.id')
-                        ->where( 'servicios.deleted_at' , '=', null )
-                        ->where('users.rol' , 'Prestador')
-                        ->where( 'users.provincia' , $request->provincia )
-                        ->where( 'users.localidad' , $request->localidad );
-    
-      if ( $request->precio_a_convenir ){
+      ->Join( 'prestadors' , 'servicios.id_prestador' , 'prestadors.id' )
+      ->Join( 'users' , 'prestadors.user_id' , 'users.id')
+      ->where( 'servicios.deleted_at' , '=', null )
+      ->where( 'users.provincia' , $request->provincia )
+      ->where( 'users.localidad' , $request->localidad );
 
-        $query->where( 'precio_a_convenir' , $request->precio_a_convenir );
+      if ( $request->precios_todos == 1 ) {
+        $Servicios = $query->select('servicios.*' , 'users.provincia' , 'users.localidad')->get();
+        return $Servicios;
 
-      }else{
+        }else{
 
-        $query->whereBetween( 'precio' , [ $request->minimo , $request->maximo ] );
-        
+          if ( $request->precio_a_convenir == 1 ){
+            $query->where( 'precio_a_convenir' , $request->precio_a_convenir );
+            }else{
+
+            $query->whereBetween( 'precio' , [ $request->minimo , $request->maximo ] );
+          }
       }
-  
-      $Servicios = $query->select('servicios.*')->get();
-      
     }
 
     return $Servicios;
-    // return view( 'Principal.resultados_busqueda', [ 
-    //   'Servicios' => $Servicios, 'Caracteristicas' => $Caracteristicas,
-    //   'categ_result' => $categ_result,
-    //   'prov_result' => $prov_result,
-    //   'loc_result' => $loc_result,
-    //   'PrecioMax' => $PrecioMax,
-    //   'PrecioMin' => $PrecioMin,
-    //   'categoria_id' => $categoria_id
-    //   ]);
+
   }
   // public function MostrarPlanes(){
   //   return view('Ecommerce.planes_publicidad');
