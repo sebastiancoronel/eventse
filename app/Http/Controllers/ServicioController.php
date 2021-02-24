@@ -396,7 +396,7 @@ class ServicioController extends Controller
 
           }else{
 
-            if ( $request->precio_a_convenir == 1 ){
+            if ( $request->precio_a_convenir == 1 || $request->precio_a_convenir == null ){
               $query->where( 'precio_a_convenir' , $request->precio_a_convenir );
               }else{
 
@@ -423,9 +423,9 @@ class ServicioController extends Controller
       ->where( 'users.provincia' , $request->provincia )
       ->where( 'users.localidad' , $request->localidad );
 
-      if ( $request->precios_todos == 1 ) {
+      if ( $request->precios_todos == 1 && $request->precio_a_convenir == null  ) {
+
         $Servicios = $query->select('servicios.*' , 'users.provincia' , 'users.localidad')->get();
-        return $Servicios;
 
         }else{
 
@@ -437,7 +437,7 @@ class ServicioController extends Controller
           }
       }
     }
-
+    $Servicios = $query->select('servicios.*' , 'users.provincia' , 'users.localidad')->get();
     return $Servicios;
 
   }
