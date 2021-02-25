@@ -391,15 +391,18 @@ class ServicioController extends Controller
         ->where( 'users.localidad' , $request->localidad );
 
         if ( $request->precios_todos == 1 ) {
+
           $Servicios = $query->select('servicios.*' , 'users.provincia' , 'users.localidad')->get();
           return $Servicios;
 
           }else{
 
-            if ( $request->precio_a_convenir == 1 || $request->precio_a_convenir == null ){
+            if ( $request->precio_a_convenir == 1 ){
+              return "precio convenir = 1";
               $query->where( 'precio_a_convenir' , $request->precio_a_convenir );
-              }else{
 
+              }else{
+                
               $query->whereBetween( 'precio' , [ $request->minimo , $request->maximo ] );
             }
         }
@@ -423,7 +426,7 @@ class ServicioController extends Controller
       ->where( 'users.provincia' , $request->provincia )
       ->where( 'users.localidad' , $request->localidad );
 
-      if ( $request->precios_todos == 1 && $request->precio_a_convenir == null  ) {
+      if ( $request->precios_todos == 1 ) {
 
         $Servicios = $query->select('servicios.*' , 'users.provincia' , 'users.localidad')->get();
 
@@ -436,7 +439,9 @@ class ServicioController extends Controller
             $query->whereBetween( 'precio' , [ $request->minimo , $request->maximo ] );
           }
       }
+
     }
+    
     $Servicios = $query->select('servicios.*' , 'users.provincia' , 'users.localidad')->get();
     return $Servicios;
 
