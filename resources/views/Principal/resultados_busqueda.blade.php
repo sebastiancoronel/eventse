@@ -356,7 +356,7 @@
                                     </a>
             
                                     <span class="stext-105 cl3">
-                                    `+ ( value['precio'] != null ? value['precio'] : 'Precio a convenir') +`
+                                    `+ ( value['precio'] != null ? '$' + value['precio'] : 'Precio a convenir') +`
                                     </span>
 
                                     <span class="mt-2">
