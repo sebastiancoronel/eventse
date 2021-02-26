@@ -373,15 +373,15 @@ class ServicioController extends Controller
     $query = Servicio::where( 'servicios.id_categoria' , $request->categoria_id )
     ->Join( 'prestadors' , 'servicios.id_prestador' , 'prestadors.id' )
     ->Join( 'users' , 'prestadors.user_id' , 'users.id')
-    ->where( 'servicios.deleted_at' , '=', null )
+    // ->where( 'servicios.deleted_at' , '=', null )
     ->where( 'users.provincia' , $request->provincia )
     ->where( 'users.localidad' , $request->localidad );
 
     // Filtro precio
       if ( $request->precios_todos == 1 ) { //SE ESTA CLAVANDO AQUI PORQUE LEE PRIMERO EL CHECKBOX TODOS LOS PRECIOS
 
-        $query->select('servicios.*' , 'users.provincia' , 'users.localidad');
-
+        $query->select('servicios.*' , 'users.provincia' , 'users.localidad'); //LA COSA ES COMO BUSCO QUE SE CUMPLAN CUALQUIER PRECIO Y PRECIO A CONVENIR, con esto pareceria que se cumple pero no anda.
+        
         }else{
 
           if ( $request->precio_a_convenir == 1 ){
@@ -390,6 +390,7 @@ class ServicioController extends Controller
             }else{
             $query->whereBetween( 'precio' , [ $request->minimo , $request->maximo ] );
           }
+          
       }
     // Fin filtro precio
 
@@ -407,28 +408,32 @@ class ServicioController extends Controller
           $ServCaract = CaracteristicasPorServicio::where( 'id_servicio' , $ser_cat_zona->id )->get();
           array_push( $ServCaractArray , $ServCaract ); //$ServCaractArray devulve 3 array con 2 servicios dentro cada uno.
         }
+        
+        $bandera = 0;
 
         foreach ($ServCaractArray as $serv_caract_array) { //$serv_caract_array devuelve 2 objetos que son el mismo servicio con sus caracteristicas diferentes
           
-          if ( $requestLength == count($serv_caract_array) ) { //cant. caract. del request == cant. caract. del servicio ->Si se cumple recien evalua matches
+          foreach ($serv_caract_array as $serv_caract) { //$serv_caract es cada fila de los servicios con caracteristicas.
+            
+            if ( in_array( $serv_caract->id_caracteristica , $request->caracteristicas ) ) { //La caract. del servicio se encuentra en el request?
 
-            foreach ($serv_caract_array as $serv_caract) { //$serv_caract es cada fila de los servicios con caracteristicas.
+              // Guardo id servicio en una variable
+              $id_servicio = $serv_caract->id_servicio;
+              $bandera = 1;
+            }else{ //AL primer NO YA SALE
               
-              if ( in_array( $serv_caract->id_caracteristica , $request->caracteristicas ) ) {
-                //Pushear el servicio id
-                if ( in_array( $serv_caract->id_servicio , $Servicios ) ) {
-                  continue;
-                }else{
-                  array_push( $Servicios , $serv_caract->id_servicio );
-                }
-              }else{
-                unset($Servicios); // $Servicios is gone
-                $Servicios = array(); // $Servicios is here again
-                break;
-              }
+              $bandera = 0;
+              continue 2 ; //Esto deberia continuar por el siguiente elemento del array grande.
             }
+          } //Foreach chico
+          
+          // Fuera del foreach chico
+          if ($bandera = 0) {
+            break;
+          }else{
+            array_push( $Servicios , $id_servicio );
           }
-        }
+        } //Foreach Grande
 
         return $Servicios;
 
@@ -436,6 +441,7 @@ class ServicioController extends Controller
 
         return $ServCatZona;
       }
+    // Fin con caracteristicas
   }
 
 
