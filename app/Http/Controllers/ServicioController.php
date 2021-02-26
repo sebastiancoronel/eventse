@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use Auth;
 use Session;
 use App\Caracteristica_por_categoria;
@@ -369,83 +369,78 @@ class ServicioController extends Controller
   
   public function FiltrarResultados( Request $request ){
     // dd($request->all());
-    // $request->provincia; //ID
-    // $request->localidad; //String
-    // $request->minimo; //Numero
-    // $request->maximo; //Numero
-    // $request->precio_a_convenir; //1 or 0 require an IF
-
-    $Servicios = array();
     
-    if ( $request->caracteristicas ) {
-      foreach ($request->caracteristicas as $caracteristica) {
+    $query = Servicio::where( 'servicios.id_categoria' , $request->categoria_id )
+    ->Join( 'prestadors' , 'servicios.id_prestador' , 'prestadors.id' )
+    ->Join( 'users' , 'prestadors.user_id' , 'users.id')
+    ->where( 'servicios.deleted_at' , '=', null )
+    ->where( 'users.provincia' , $request->provincia )
+    ->where( 'users.localidad' , $request->localidad );
 
-        $query = Servicio::where( 'servicios.id_categoria' , $request->categoria_id )
-        ->Join( 'caracteristicas_por_servicios' , 'servicios.id' , 'caracteristicas_por_servicios.id_servicio')
-        ->Join( 'prestadors' , 'servicios.id_prestador' , 'prestadors.id' )
-        ->Join( 'users' , 'prestadors.user_id' , 'users.id')
+    // Filtro precio
+      if ( $request->precios_todos == 1 ) { //SE ESTA CLAVANDO AQUI PORQUE LEE PRIMERO EL CHECKBOX TODOS LOS PRECIOS
 
-        ->where( 'servicios.deleted_at' , '=', null )
-        ->where( 'caracteristicas_por_servicios.id_caracteristica' , $caracteristica )
-        ->where( 'users.provincia' , $request->provincia )
-        ->where( 'users.localidad' , $request->localidad );
-
-        if ( $request->precios_todos == 1 ) {
-
-          $Servicios = $query->select('servicios.*' , 'users.provincia' , 'users.localidad')->get();
-          return $Servicios;
-
-          }else{
-
-            if ( $request->precio_a_convenir == 1 ){
-              return "precio convenir = 1";
-              $query->where( 'precio_a_convenir' , $request->precio_a_convenir );
-
-              }else{
-                
-              $query->whereBetween( 'precio' , [ $request->minimo , $request->maximo ] );
-            }
-        }
-
-        $servicio = $query->select('servicios.*')->first();
-
-        if ( $servicio != null ) {
-          if ( !in_array( $servicio , $Servicios )) { // Si no lo agrego ya al array lo agrega
-            
-            array_push( $Servicios , $servicio );
-          }
-        }
-      }
-
-    }else{
-
-      $query = Servicio::where( 'id_categoria' , $request->categoria_id )
-      ->Join( 'prestadors' , 'servicios.id_prestador' , 'prestadors.id' )
-      ->Join( 'users' , 'prestadors.user_id' , 'users.id')
-      ->where( 'servicios.deleted_at' , '=', null )
-      ->where( 'users.provincia' , $request->provincia )
-      ->where( 'users.localidad' , $request->localidad );
-
-      if ( $request->precios_todos == 1 ) {
-
-        $Servicios = $query->select('servicios.*' , 'users.provincia' , 'users.localidad')->get();
+        $query->select('servicios.*' , 'users.provincia' , 'users.localidad');
 
         }else{
 
           if ( $request->precio_a_convenir == 1 ){
             $query->where( 'precio_a_convenir' , $request->precio_a_convenir );
-            }else{
 
+            }else{
             $query->whereBetween( 'precio' , [ $request->minimo , $request->maximo ] );
           }
       }
+    // Fin filtro precio
 
-    }
+    $ServCatZona = $query->select('servicios.*' , 'users.provincia' , 'users.localidad')->get();
     
-    $Servicios = $query->select('servicios.*' , 'users.provincia' , 'users.localidad')->get();
-    return $Servicios;
+    // Con caracteristicas
+      if ( $request->caracteristicas ) {
+        
+        $Servicios = array();
+        $ServCaractArray = array();
+        $requestLength = count($request->caracteristicas);
 
+        // Obtengo las caracteristicas por servicio de los servicios que cumplen con categoria y ubicacion dados.
+        foreach ( $ServCatZona as $ser_cat_zona ) {
+          $ServCaract = CaracteristicasPorServicio::where( 'id_servicio' , $ser_cat_zona->id )->get();
+          array_push( $ServCaractArray , $ServCaract ); //$ServCaractArray devulve 3 array con 2 servicios dentro cada uno.
+        }
+
+        foreach ($ServCaractArray as $serv_caract_array) { //$serv_caract_array devuelve 2 objetos que son el mismo servicio con sus caracteristicas diferentes
+          
+          if ( $requestLength == count($serv_caract_array) ) { //cant. caract. del request == cant. caract. del servicio ->Si se cumple recien evalua matches
+
+            foreach ($serv_caract_array as $serv_caract) { //$serv_caract es cada fila de los servicios con caracteristicas.
+              
+              if ( in_array( $serv_caract->id_caracteristica , $request->caracteristicas ) ) {
+                //Pushear el servicio id
+                if ( in_array( $serv_caract->id_servicio , $Servicios ) ) {
+                  continue;
+                }else{
+                  array_push( $Servicios , $serv_caract->id_servicio );
+                }
+              }else{
+                unset($Servicios); // $Servicios is gone
+                $Servicios = array(); // $Servicios is here again
+                break;
+              }
+            }
+          }
+        }
+
+        return $Servicios;
+
+      }else{ //Por aqui sale si no hay caracteristica clickeada
+
+        return $ServCatZona;
+      }
   }
+
+
+
+
   // public function MostrarPlanes(){
   //   return view('Ecommerce.planes_publicidad');
   // }

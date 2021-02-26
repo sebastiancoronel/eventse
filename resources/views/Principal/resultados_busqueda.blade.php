@@ -330,8 +330,14 @@
             },
             success: function(data){
                 console.log(data);
-                $.each( data , function( index , value ){
+                if ( data == '' ) {
 
+                    $("#resultados").append("<h4> Tu búsqueda no coincide con ningun servicio </h4>");
+                    
+                }else{
+
+                $.each( data , function( index , value ){
+                    
                     var url = value['foto_1'];
                     var asset = `{{ asset( `+  +` ) }}`;
                     var foto = asset + url;
@@ -370,6 +376,8 @@
 
                     $("#resultados").append(servicio);
                 } );
+
+                }
                 
             }
         });
