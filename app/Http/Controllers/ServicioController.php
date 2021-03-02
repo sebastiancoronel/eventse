@@ -440,13 +440,13 @@ class ServicioController extends Controller
         } //Foreach Grande
         
         //Aqui buscar los servicios por los id del array para mostrar toda la info en el front.
-        // $ServiciosFiltrados = array();
-        // foreach ( $ServCatZona as $serv_cat_zona ) {
-        //   if ( in_array( $serv_cat_zona->id , $Servicios ) ) {
-        //     array_push( $ServiciosFiltrados , $serv_cat_zona );
-        //   }
-        // }
-        return $Servicios;
+        $ServiciosFiltrados = array();
+        foreach ( $ServCatZona as $serv_cat_zona ) {
+          if ( in_array( $serv_cat_zona->id , $Servicios ) ) {
+            array_push( $ServiciosFiltrados , $serv_cat_zona );
+          }
+        }
+        return $ServiciosFiltrados;
 
       }else{ //Por aqui sale si no hay caracteristica clickeada
 
