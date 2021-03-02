@@ -6,7 +6,7 @@
     <div class="position-relative">
         {{-- Categoria y ciudad --}}
         <div class="purple-gradient d-flex justify-content-center" style="height: 200px;">
-            <h2 class="d-none d-sm-block text-uppercase text-white align-self-center">{{$categ_result}} en {{$prov_result}} </h2>
+            <h2 class="d-none d-sm-block text-uppercase text-white align-self-center">{{$categ_result}} en <span class="prov_titulo"> {{$prov_result}} </span> </h2>
             <!-- Movil -->
             <h3 class="d-block d-sm-none text-uppercase text-white align-self-center text-center">{{$categ_result}} en {{$prov_result}}</h3>
         </div>
@@ -329,15 +329,15 @@
                 console.log(x,y,z);
             },
             success: function(data){
-                console.log(data);
-                if ( data == '' ) {
+                console.log(data[0]);
+                if ( data[0] == '' ) {
 
                     $("#resultados").append("<h4> Tu búsqueda no coincide con ningun servicio </h4>");
                     
                 }else{
 
-                $.each( data , function( index , value ){
-                    
+                $.each( data[0] , function( index , value ){
+
                     var url = value['foto_1'];
                     var asset = `{{ asset( `+  +` ) }}`;
                     var foto = asset + url;
@@ -378,6 +378,9 @@
                 } );
 
                 }
+                // Cambia el nombre de la provincia en el h2 al filtrar por otra provincia.
+                $(".prov_titulo").empty();
+                $(".prov_titulo").append( data[1] );
                 
             }
         });
