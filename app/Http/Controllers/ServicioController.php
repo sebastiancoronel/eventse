@@ -446,11 +446,11 @@ class ServicioController extends Controller
             array_push( $ServiciosFiltrados , $serv_cat_zona );
           }
         }
-        return $ServiciosFiltrados;
+        return ([ $ServiciosFiltrados , $request->provincia , $request->localidad ]);
 
       }else{ //Por aqui sale si no hay caracteristica clickeada
 
-        return $ServCatZona;
+        return ([ $ServCatZona , $request->provincia , $request->localidad ]);
       }
     // Fin con caracteristicas
   }
