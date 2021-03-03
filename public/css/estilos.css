@@ -31,6 +31,13 @@
     border-right: 0px;
 }
 
+.borde-bajo-blanco{
+    border: 1px solid white;
+    border-left: 0px;
+    border-top: 0px;
+    border-right: 0px;
+}
+
 .sin-bordes{
     border-left: 0px;
     border-top: 0px;
