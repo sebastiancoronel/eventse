@@ -368,7 +368,7 @@ class ServicioController extends Controller
   }
   
   public function FiltrarResultados( Request $request ){
-    // dd($request->all());
+    //dd($request->all());
     
     $query = Servicio::where( 'servicios.id_categoria' , $request->categoria_id )
     ->Join( 'prestadors' , 'servicios.id_prestador' , 'prestadors.id' )
@@ -398,46 +398,75 @@ class ServicioController extends Controller
     
     // Con caracteristicas
       if ( $request->caracteristicas ) {
-        
+
         $Servicios = array();
         $ServCaractArray = array();
         $requestLength = count($request->caracteristicas);
 
+        
+        
         // Obtengo las caracteristicas por servicio de los servicios que cumplen con categoria y ubicacion dados.
         foreach ( $ServCatZona as $ser_cat_zona ) {
           $ServCaract = CaracteristicasPorServicio::where( 'id_servicio' , $ser_cat_zona->id )->get();
           array_push( $ServCaractArray , $ServCaract ); //$ServCaractArray devulve 3 array con 2 servicios dentro cada uno.
         }
-        
+
         $bandera = 0;
-        
-        foreach ($ServCaractArray as $serv_caract_array) { //$serv_caract_array devuelve 2 objetos que son el mismo servicio con sus caracteristicas diferentes
-          if ( $requestLength == count($serv_caract_array) ) {
+
+        // Tipo de búsqueda
+        if ( $request->tipo_busqueda == 'o' ) {
+          # Aqui muestra los servicios que tengan al menos una vez esas caracteristicas seleccionadas
+        //Busqueda por O
+          foreach ($ServCaractArray as $serv_caract_array) { //$serv_caract_array devuelve 2 objetos que son el mismo servicio con sus caracteristicas diferentes
+            
             foreach ($serv_caract_array as $serv_caract) { //$serv_caract es cada fila de los servicios con caracteristicas.
   
               foreach ( $request->caracteristicas as $caracteristica ) {
                 if ( $serv_caract_array->contains( 'id_caracteristica' , $caracteristica ) ) { //La caract. del servicio se encuentra en el request?
-                    // Guardo id servicio en una variable
-                    $id_servicio = $serv_caract->id_servicio;
-                    $bandera = 1;
-  
-                  }else{ //AL primer NO YA SALE
-                    
-                    $bandera = 0;
-                    continue 3 ; //Esto deberia continuar por el siguiente elemento del array grande.
-                  } 
+
+                  array_push( $Servicios , $serv_caract->id_servicio );
+
+                } 
               }//foreach caracteristica
+
             } //Foreach chico
-          }else{
-            continue;
+            
+          } //Foreach Grande
+        // Fin Busqueda por O
+        }else{
+
+          if ( $request->tipo_busqueda == 'y' ) {
+            # Aquí va el flujo normal para mostrar los servicios que cumplen con todas las caracteristicas.
+            foreach ($ServCaractArray as $serv_caract_array) { //$serv_caract_array devuelve 2 objetos que son el mismo servicio con sus caracteristicas diferentes
+              if ( $requestLength == count($serv_caract_array) ) {
+                foreach ($serv_caract_array as $serv_caract) { //$serv_caract es cada fila de los servicios con caracteristicas.
+      
+                  foreach ( $request->caracteristicas as $caracteristica ) {
+                    if ( $serv_caract_array->contains( 'id_caracteristica' , $caracteristica ) ) { //La caract. del servicio se encuentra en el request?
+                        // Guardo id servicio en una variable
+                        $id_servicio = $serv_caract->id_servicio;
+                        $bandera = 1;
+      
+                      }else{ //AL primer NO YA SALE
+                        
+                        $bandera = 0;
+                        continue 3 ; //Esto deberia continuar por el siguiente elemento del array grande.
+                      } 
+                  }//foreach caracteristica
+                } //Foreach chico
+              }else{
+                continue;
+              }
+              // Fuera del foreach chico
+              if ($bandera = 0) {
+                break;
+              }else{
+                array_push( $Servicios , $id_servicio );
+              }
+            } //Foreach Grande
           }
-          // Fuera del foreach chico
-          if ($bandera = 0) {
-            break;
-          }else{
-            array_push( $Servicios , $id_servicio );
-          }
-        } //Foreach Grande
+        }
+        
         
         //Aqui buscar los servicios por los id del array para mostrar toda la info en el front.
         $ServiciosFiltrados = array();
@@ -446,6 +475,7 @@ class ServicioController extends Controller
             array_push( $ServiciosFiltrados , $serv_cat_zona );
           }
         }
+
         return ([ $ServiciosFiltrados , $request->provincia , $request->localidad ]);
 
       }else{ //Por aqui sale si no hay caracteristica clickeada

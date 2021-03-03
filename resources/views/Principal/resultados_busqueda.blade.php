@@ -77,6 +77,15 @@
                                 Sin prestaciones
                         @endforelse
                     </ul>
+
+                    <div class="mt-5">
+                        <span> Tipo de búsqueda </span>
+                        <select id="tipo_busqueda" class="custom-select stext-101 sin-bordes" name="tipo_busqueda" required>
+                              <option value="y"> y </option>
+                              <option value="o"> o </option>
+                        </select>
+                    </div>
+
                 </div>
                 <hr>
     
@@ -282,6 +291,7 @@
 
         e.preventDefault();
         $("#resultados").empty();
+        let tipo_busqueda = $('#tipo_busqueda option:selected').text();
         let categoria_id = $('#categoria_id').val();
         let provincia = $('#prov_filter').val();
         let localidad = $('#localidad_result option:selected').text();
@@ -315,6 +325,7 @@
             type: 'GET',
             url: '{{url('/busqueda/filtrado')}}',
             data: {
+                tipo_busqueda,
                 categoria_id,
                 provincia,
                 localidad,
@@ -329,7 +340,8 @@
                 console.log(x,y,z);
             },
             success: function(data){
-                console.log(data[0]);
+                console.log(data);
+                //console.log(data[0]);
                 if ( data[0] == '' ) {
 
                     $("#resultados").append("<h4> Tu búsqueda no coincide con ningun servicio </h4>");
