@@ -157,7 +157,7 @@
         {{-- Resultados de la busqueda --}}
         <div class="col-lg-9 col-12">
             <div class="row isotope-grid" id="resultados" style="position: relative; height: 1717.38px;">
-                @foreach ($Servicios as $servicio)
+                @forelse ($Servicios as $servicio)
                     <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item" style="position: absolute; left: 0%; top: 0px;">
                         <!-- Block2 -->
                         <div class="block2">
@@ -196,7 +196,9 @@
                         </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                <h4> Tu búsqueda no coincide con ningun servicio </h4>
+                @endforelse
                 
             </div> <!-- row isotope-grid -->
         </div> <!-- col-->
@@ -340,6 +342,7 @@
                 console.log(x,y,z);
             },
             success: function(data){
+                $(window).scrollTop(200); //Desplaza hasta arriba
                 console.log(data);
                 //console.log(data[0]);
                 if ( data[0] == '' ) {
