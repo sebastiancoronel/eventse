@@ -485,8 +485,21 @@ class ServicioController extends Controller
     // Fin con caracteristicas
   }
 
+  public function BuscadorPublicados( Request $request){
 
+    $Servicios = Servicio::where('servicios.deleted_at', null)
+                          ->Join( 'prestadors' , 'servicios.id_prestador' , 'prestadors.id' )
+                          ->Join( 'users' , 'prestadors.user_id' , 'users.id' )
+                          ->Join( 'categorias' , 'servicios.id_categoria' , '=' , 'categorias.id' )
+                          ->where( 'users.provincia' , $request->provincia )
+                          ->where( 'users.localidad' , $request->localidad )
+                          ->select('servicios.*' , 'categorias.nombre as nombre_categoria','users.provincia', 'users.localidad')
+                          ->get();
 
+    $Categorias = Categoria::all();
+
+    return ( [$Servicios , $Categorias]);
+  }
 
   // public function MostrarPlanes(){
   //   return view('Ecommerce.planes_publicidad');

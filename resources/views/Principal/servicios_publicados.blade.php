@@ -39,7 +39,7 @@
                             @endif
                         </div>
                         <div class="col-lg-2 d-flex justify-content-start">
-                            <a type="button" style="font-size: 30px;">
+                            <a class="buscador_publicados" type="button" style="font-size: 30px;">
                                 <i class="zmdi zmdi-search"></i>
                             </a>
                         </div>
@@ -47,48 +47,13 @@
                 </form>
             </div>
         </div>
+
+        {{-- Servicios publicados --}}
         <div class="container">
             <div class="flex-w flex-sb-m p-b-52">
 
-                <!-- Buscar servicio por provincia y ciudad -->
-                {{-- <div class="panel-search w-full p-t-10 p-b-15">
-                    <form class="card flex-w p-l-15" action="{{ route('ResultadosBusqueda') }}" method="GET">
-                        <div class="row card-body align-items-center" style="background: #717fe0; color: white;">
-
-                            <!-- Provincia -->
-                            <div class="col-lg-5 d-flex justify-content-center">
-                                <input hidden id="provincia_nombre_reservar" type="text" name="provincia_nombre_reservar" value="">
-                                <select id="provincia_reservar" class="custom-select stext-101 borde-bajo-blanco" name="provincia_reservar" style="background: #717fe0; color: white;" required>
-                                    <option value="" selected>Provincia</option>
-                                    @foreach ($ProvinciasLocalidadesJson as $provincia)
-                                      <option value="{{ $provincia['id'] }}">{{$provincia['nombre']}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-            
-                            <!-- Localidad -->
-                            <div class="col-lg-5 d-flex justify-content-center">
-                                <select id="localidad_reservar" class="custom-select stext-101 borde-bajo-blanco" name="localidad_reservar" required style="background: #717fe0; color: white;">
-                                    <option value="" selected> ¿Qué ciudad? </option>
-                                </select>
-                                
-                                @if ($errors->has('localidad'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('localidad') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="col-lg-2 d-flex justify-content-start">
-                                <a type="button" style="font-size: 30px;">
-                                    <i class="zmdi zmdi-search"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                </div> --}}
-                
                 <!-- Filtro dinamico por categorias -->
-                <div class="flex-w flex-l-m filter-tope-group mt-5 pt-5 m-tb-10">
+                <div class="flex-w flex-l-m filter-tope-group mt-5 pt-5 m-tb-10 filtro_categorias">
                     <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
                         Todos los servicios
                     </button>
@@ -303,7 +268,7 @@
                 </div> --}}
             </div>
 
-            <div class="row isotope-grid" style="position: relative; height: 1717.38px;">
+            <div class="row isotope-grid servicios_publicados" style="position: relative; height: 1717.38px;">
                 @foreach ($Servicios as $servicio)
                     <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$servicio->nombre_categoria}}" style="position: absolute; left: 0%; top: 0px;">
                         <!-- Block2 -->
@@ -366,7 +331,7 @@
       var nombre_provincia = $('#provincia option:selected').text();
       $("#provincia_nombre_reservar").val(nombre_provincia);
   
-      console.log( provincia_id, nombre_provincia );
+      //console.log( provincia_id, nombre_provincia );
       $.ajax({
         type: 'GET',
         url: '{{url('register/traer-localidades')}}',
@@ -387,6 +352,86 @@
         },
       });
     });
+</script>
+
+{{-- Filtrar por provincia --}}
+<script>
+
+    $(document).on( 'click' , '.buscador_publicados' , function(){
+        
+        var provincia = $('#provincia_reservar option:selected').text();
+        var localidad = $('#localidad_reservar option:selected').text();
+
+        console.log(provincia , localidad);
+
+        $.ajax({
+            type: 'GET',
+            url: '{{'/busqueda/publicados'}}',
+            data: {
+                provincia,
+                localidad,
+                token: '{{csrf_token()}}'
+            },
+            error: function(x,y,z){
+                console.log(x,y,z);
+            },
+            success: function(data){
+                console.log(data);
+                $('.servicios_publicados').empty();
+
+                if ( data == '' ) {
+
+                    $(".servicios_publicados").append("<h4> Tu búsqueda no coincide con ningun servicio </h4>");
+
+                }else{
+                    $.each( data[0] , function(index,value){
+
+                        var url = value.foto_1;
+                        var asset = `{{ asset( `+  +` ) }}`;
+                        var foto = asset + url;
+
+                        var resultados = `<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item `+ value.nombre_categoria +`">
+                                <!-- Block2 -->
+                                <div class="block2">
+                                    <div class="block2-pic hov-img0">
+                                        <img src="`+ foto +`" alt="IMG-PRODUCT">
+
+                                        <a href="/reservar/servicios-publicados/`+ value.id +`" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+                                        Reservar
+                                        </a>
+                                    </div>
+
+                                    <div class="block2-txt flex-w flex-t p-t-14">
+                                        <div class="block2-txt-child1 flex-col-l ">
+                                        <a href="/reservar/servicios-publicados/`+ value.id +`" class="text-left cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                            `+ value.nombre +`
+                                        </a>
+
+                                        <span class="stext-105 cl3">
+                                            `+( value.precio != null ? '$' + value.precio : 'Precio a convenir' )+`
+                                        </span>
+                                        <span class="mt-2">
+                                            <i class="zmdi zmdi-pin"></i> <small> `+ value.localidad +` , `+ value.provincia +` </small>
+                                        </span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>`;
+
+                        $('.servicios_publicados').append(resultados);
+                        
+                    } );
+
+                    $('.servicios_publicados').isotope('reloadItems');
+                    $('.servicios_publicados').isotope('layout');
+
+                }
+            }
+        });
+
+    } );
+
 </script>
     
 @endpush
