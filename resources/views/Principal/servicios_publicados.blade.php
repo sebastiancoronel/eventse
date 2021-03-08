@@ -54,7 +54,7 @@
 
                 <!-- Filtro dinamico por categorias -->
                 <div class="flex-w flex-l-m filter-tope-group mt-5 pt-5 m-tb-10 filtro_categorias">
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
+                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 todos_los_servicios how-active1" data-filter="*">
                         Todos los servicios
                     </button>
                     @foreach ($Categorias as $categoria)
@@ -358,7 +358,7 @@
 <script>
 
     $(document).on( 'click' , '.buscador_publicados' , function(){
-        
+
         var provincia = $('#provincia_reservar option:selected').text();
         var localidad = $('#localidad_reservar option:selected').text();
 
@@ -377,6 +377,7 @@
             },
             success: function(data){
                 console.log(data);
+
                 $('.servicios_publicados').empty();
 
                 if ( data == '' ) {
@@ -390,7 +391,7 @@
                         var asset = `{{ asset( `+  +` ) }}`;
                         var foto = asset + url;
 
-                        var resultados = `<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item `+ value.nombre_categoria +`">
+                        var resultados = `<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item `+ value.nombre_categoria +`" >
                                 <!-- Block2 -->
                                 <div class="block2">
                                     <div class="block2-pic hov-img0">
@@ -419,13 +420,12 @@
                                 </div>
                             </div>`;
 
-                        $('.servicios_publicados').append(resultados);
+                            $('.servicios_publicados').append(resultados).isotope( 'appended', resultados ); 
+                        } );
                         
-                    } );
+                        $('.servicios_publicados').isotope('reloadItems').isotope('layout');
 
-                    $('.servicios_publicados').isotope('reloadItems');
-                    $('.servicios_publicados').isotope('layout');
-
+                        $('.todos_los_servicios'). click(); //Clickea la opcion todos los servicios porque sino aparecia desordenados los resultados
                 }
             }
         });

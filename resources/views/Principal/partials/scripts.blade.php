@@ -60,7 +60,8 @@
       });
     </script>
   <!--===============================================================================================-->
-    <script src="{{asset('vendor/isotope/isotope.pkgd.min.js')}}"></script>
+    {{-- <script src="{{asset('vendor/isotope/isotope.pkgd.min.js')}}"></script> --}}
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
   <!--===============================================================================================-->
     <script src="{{asset('vendor/sweetalert/sweetalert.min.js')}}"></script>
     {{-- <script>
