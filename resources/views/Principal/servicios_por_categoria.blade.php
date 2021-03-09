@@ -8,8 +8,47 @@
                     <span class="ml-4 align-self-center text-uppercase" style="font-size: 25px;">{{ $Categoria->nombre }}</span>
                 </div>
             </div>
+
+            
         </div>
     </div>
+
+    {{-- Buscador en medio --}}
+    {{-- <div class="d-none d-sm-block mt-2 container">
+        <form class="card flex-w p-l-15" action="{{ route('ResultadosBusqueda') }}" method="GET">
+            <div class="row card-body align-items-center" style="background: #717fe0; color: white;">
+
+                <!-- Provincia -->
+                <div class="col-lg-5 d-flex justify-content-center">
+                    <input hidden id="provincia_nombre_reservar" type="text" name="provincia_nombre_reservar" value="">
+                    <select id="provincia_reservar" class="custom-select stext-101 borde-bajo-blanco" name="provincia_reservar" style="background: #717fe0; color: white;" required>
+                        <option value="" selected>Provincia</option>
+                        @foreach ($ProvinciasLocalidadesJson as $provincia)
+                            <option value="{{ $provincia['id'] }}">{{$provincia['nombre']}}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <!-- Localidad -->
+                <div class="col-lg-5 d-flex justify-content-center">
+                    <select id="localidad_reservar" class="custom-select stext-101 borde-bajo-blanco" name="localidad_reservar" required style="background: #717fe0; color: white;">
+                        <option value="" selected> ¿Qué ciudad? </option>
+                    </select>
+                    
+                    @if ($errors->has('localidad'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('localidad') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="col-lg-2 d-flex justify-content-start">
+                    <a class="buscador_publicados" type="button" style="font-size: 30px;">
+                        <i class="zmdi zmdi-search"></i>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div> --}}
 
     {{-- Titulo móvil --}}
     <div class="purple-gradient col-md-4 text-white d-block d-sm-none" style="height: 10em;">
@@ -29,7 +68,7 @@
                         <img src="{{ asset($servicio->foto_1) }}" alt="IMG-PRODUCT">
     
                         <a href=" {{route('MostrarServicio',[ 'id' => $servicio  ])}} " class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
-                        Reservar
+                        Ver servicio
                         </a>
                     </div>
     

@@ -277,7 +277,7 @@
                             <img src="{{ asset($servicio->foto_1) }}" alt="IMG-PRODUCT">
 
                             <a href=" {{route('MostrarServicio',[ 'id' => $servicio  ])}} " class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
-                            Reservar
+                            Ver servicio
                             </a>
                         </div>
 
@@ -380,9 +380,9 @@
 
                 $('.servicios_publicados').empty();
 
-                if ( data == '' ) {
+                if ( data[0] == '' ) {
 
-                    $(".servicios_publicados").append("<h4> Tu búsqueda no coincide con ningun servicio </h4>");
+                    $(".servicios_publicados").append("<h4> No hay servicios publicados en esta zona </h4>");
 
                 }else{
                     $.each( data[0] , function(index,value){

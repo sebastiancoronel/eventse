@@ -56,12 +56,16 @@
 
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
 								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1" style="color: white;">
-									{{ $Mes }}
+									{{ $Mes }} {{ date('Y') }}
 								</h2>
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
-								<a href="{{ route('ServiciosPorCategoria', ['id' => $categoria->id ] ) }}" target="_blank" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+								{{-- <a href="{{ route('ServiciosPorCategoria', ['id' => $categoria->id ] ) }}" target="_blank" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+									<!-- Reservar ahora -->
+									Ir a {{ $categoria->nombre }}
+								</a> --}}
+								<a href="{{ route('ServiciosPublicados') }}" target="_blank" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 									Reservar ahora
 								</a>
 							</div>
@@ -356,7 +360,7 @@
                             <img src="{{ asset($filtrar_servicio->foto_1) }}" alt="IMG-PRODUCT">
 
                             <a href=" {{route('MostrarServicio',[ 'id' => $filtrar_servicio  ])}} " class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
-                            Reservar
+                            Ver servicio
                             </a>
                         </div>
 
