@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Servicio;
 use App\Categoria;
 use App\Caracteristica;
+use App\Reserva;
 use Carbon\Carbon;
 use App\Caracteristica_por_categoria;
 use Illuminate\Http\Request;
@@ -14,15 +15,9 @@ class CategoriaController extends Controller
 {
     public function index(){
         $Categorias = Categoria::all();
-        $Servicios = Servicio::where( 'deleted_at' , '=' , null )->select('*')->orderBy('created_at','desc')->get();
+        $UltimosAgregados = Servicio::where( 'deleted_at' , '=' , null )->select('*')->orderBy('created_at','desc')->get();
 
-        $FiltrarServicios = Servicio::where( 'servicios.deleted_at' , null )
-                          ->Join( 'categorias' , 'servicios.id_categoria' , '=' , 'categorias.id' )
-                          ->Join( 'prestadors' , 'servicios.id_prestador' , '=' , 'prestadors.id' )
-                          ->Join( 'users' , 'prestadors.user_id' , '=' , 'users.id' )
-                          ->select('servicios.*','categorias.nombre as nombre_categoria','users.provincia', 'users.localidad')
-                          ->get();
-
+        
         // Esto es para mostrar el nombre del mes actual en el slider grande
         setlocale(LC_ALL, 'es');
         $Hoy = Carbon::now();
@@ -30,9 +25,98 @@ class CategoriaController extends Controller
         $fecha->format("F"); // Inglés.
         $Mes = $fecha->formatLocalized('%B');// mes en idioma español
 
+        #Destacados deberia traer los servicios que superen 5, 10, 15, 20 y 25 contrataciones
+        #Buscar por id sevicio y concretado = 1 y contar cuantos tiene, si tiene mas de 10 y hasta 20 se muestra y asi para el resto.
+        $DestacadosX5 = array();
+        $DestacadosX10 = array();
+        $DestacadosX15 = array();
+        $DestacadosX20 = array();
+        $DestacadosX25 = array();
+
+        $Servicios = Servicio::where( 'deleted_at' , '=' , null )->get();
+        $Cantidad = 0;
+
+        // 5 a 10 Contrataciones
+        foreach ( $Servicios as $servicio ) {
+            
+            $ServiciosConcretados = Reserva::where( 'id_servicio' , $servicio->id )
+                                    ->where( 'concretado' , 1 )
+                                    ->get();
+            //dd($ServiciosConcretados);
+            $Cantidad = count($ServiciosConcretados);
+
+            if ( $Cantidad >= 5 && $Cantidad < 10) {
+                
+                $DestacadosX5 = $ServiciosConcretados;
+                break;
+            }
+            $Cantidad = 0;
+        }
+
+        // 10 a 15 Contrataciones
+        foreach ( $Servicios as $servicio ) {
+            
+            $ServiciosConcretados = Reserva::where( 'id_servicio' , $servicio->id )
+                                    ->where( 'concretado' , 1 )
+                                    ->get();
+            //dd($ServiciosConcretados);
+            $Cantidad = count($ServiciosConcretados);
+
+            if ( $Cantidad >= 10 && $Cantidad < 15) {
+                
+                $DestacadosX10 = $ServiciosConcretados;
+                break;
+            }
+            $Cantidad = 0;
+        }
+
+        // 15 a 20 Contrataciones
+        foreach ( $Servicios as $servicio ) {
+            
+            $ServiciosConcretados = Reserva::where( 'id_servicio' , $servicio->id )
+                                    ->where( 'concretado' , 1 )
+                                    ->get();
+            //dd($ServiciosConcretados);
+            $Cantidad = count($ServiciosConcretados);
+
+            if ( $Cantidad >= 15 && $Cantidad < 20) {
+                
+                $DestacadosX15 = $ServiciosConcretados;
+                break;
+            }
+            $Cantidad = 0;
+        }
+
+        // 20 a 25 Contrataciones
+        foreach ( $Servicios as $servicio ) {
+            
+            $ServiciosConcretados = Reserva::where( 'id_servicio' , $servicio->id )
+                                    ->where( 'concretado' , 1 )
+                                    ->get();
+            //dd($ServiciosConcretados);
+            $Cantidad = count($ServiciosConcretados);
+
+            if ( $Cantidad >= 20 && $Cantidad < 25 ) {
+                
+                $DestacadosX20 = $ServiciosConcretados;
+                break;
+            }
+            $Cantidad = 0;
+        }   
+        #FALTA CREAR VARIAS RESERAS CONCRETADAS PARA VER SI LLEVA CORRECTAMENTE AL FRONT Y SEGUN ESO DIBUJAR LA CANT DE ESTRELLAS
+        // dd( $DestacadosX5 , $DestacadosX10 , $DestacadosX15 , $DestacadosX20 , $DestacadosX25 );
+        $Destacados = Servicio::where( 'servicios.deleted_at' , null )
+                          ->Join( 'categorias' , 'servicios.id_categoria' , '=' , 'categorias.id' )
+                          ->Join( 'prestadors' , 'servicios.id_prestador' , '=' , 'prestadors.id' )
+                          ->Join( 'users' , 'prestadors.user_id' , '=' , 'users.id' )
+                          ->Join( 'reservas' , 'servicios.id' , '=' , 'reservas.id' )
+                          ->where( 'reservas.concretado' , 1 )
+                          ->select('servicios.*','categorias.nombre as nombre_categoria','users.provincia', 'users.localidad')
+                          ->get();
+        
         
 
-        return view('Principal.principal',[ 'Categorias' => $Categorias , 'Mes' => $Mes, 'Servicios' => $Servicios , 'FiltrarServicios' => $FiltrarServicios ]);
+        return view('Principal.principal',[ 'Categorias' => $Categorias , 'Mes' => $Mes, 'UltimosAgregados' => $UltimosAgregados , 'Destacados' => $Destacados ]);
     }
    
     public function CrearCategorias(){

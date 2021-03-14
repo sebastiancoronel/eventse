@@ -175,14 +175,14 @@
 	<div class="sec-banner bg0 p-b-50 mt-5">
 		<div class="container">
 			<div class="row">
-				@forelse ($Servicios as $servicio)
+				@forelse ($UltimosAgregados as $ultimo_agregado)
 					<div class="col-md-4 p-b-30">
 						<!-- Block1 -->
-						<div class="block1 wrap-pic-w background-img" style="background-image: url( '{{ asset($servicio->foto_1) }}' );">
-						<a href=" {{ route('MostrarServicio', ['id' => $servicio->id ] ) }} " target="_blank" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+						<div class="block1 wrap-pic-w background-img" style="background-image: url( '{{ asset($ultimo_agregado->foto_1) }}' );">
+						<a href=" {{ route('MostrarServicio', ['id' => $ultimo_agregado->id ] ) }} " target="_blank" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 								<div class="block1-txt-child1 flex-col-l">
 									<span class="block1-name ltext-102 trans-04 p-b-8" style="color: white;">
-										{{ $servicio->nombre }}
+										{{ $ultimo_agregado->nombre }}
 									</span>
 
 									<span class="block1-info stext-102 trans-04 text-uppercase" style="color: white;">
@@ -217,15 +217,15 @@
 			</div>
 
 			<div id="" class="row isotope-grid mt-5" style="position: relative; height: 1717.38px;">
-                @foreach ($FiltrarServicios as $filtrar_servicio)
-                    <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$filtrar_servicio->nombre_categoria}}" style="position: absolute; left: 0%; top: 0px;">
+                @foreach ($Destacados as $destacado)
+                    <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$destacado->nombre_categoria}}" style="position: absolute; left: 0%; top: 0px;">
                         <!-- Block2 -->
                         <div class="block2 bor10">
 							<div class="block2-pic hov-img0">
-								<div style="background-image: url({{ asset($filtrar_servicio->foto_1) }}); background-position: center; background-size: cover; height: 200px;"> </div>
-								{{-- <img src="{{ asset($filtrar_servicio->foto_1) }}" alt="IMG-PRODUCT"> --}}
+								<div style="background-image: url({{ asset($destacado->foto_1) }}); background-position: center; background-size: cover; height: 200px;"> </div>
+								{{-- <img src="{{ asset($destacado->foto_1) }}" alt="IMG-PRODUCT"> --}}
 
-								<a href=" {{route('MostrarServicio',[ 'id' => $filtrar_servicio  ])}} " class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								<a href=" {{route('MostrarServicio',[ 'id' => $destacado  ])}} " class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
 								Ver servicio
 								</a>
 							</div>
@@ -233,15 +233,15 @@
 							<div class="block2-txt flex-w flex-t p-t-14 mx-3">
 								<div class="row">
 									<div class="col-lg-12 col-12 text-center">
-										<a href="{{route('MostrarServicio',[ 'id' => $filtrar_servicio  ])}}" class="text-left cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-											{{ \Illuminate\Support\Str::limit($filtrar_servicio->nombre, 30) }}
+										<a href="{{route('MostrarServicio',[ 'id' => $destacado  ])}}" class="text-left cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+											{{ \Illuminate\Support\Str::limit($destacado->nombre, 30) }}
 										</a>
 									</div>
 
 									<div class="col-lg-12 col-12 text-center my-2">
 										<span class="stext-105 cl3">
-											@if ($filtrar_servicio->precio != null)
-											$ {{$filtrar_servicio->precio}}
+											@if ($destacado->precio != null)
+											$ {{$destacado->precio}}
 											@else
 											Precio a convenir
 											@endif
@@ -250,7 +250,7 @@
 
 									<div class="col-lg-12 col-12 text-center">
 										<span class="mt-2">
-											<i class="zmdi zmdi-pin"></i> <small> {{ $filtrar_servicio->localidad }} , {{ $filtrar_servicio->provincia }} </small>
+											<i class="zmdi zmdi-pin"></i> <small> {{ $destacado->localidad }} , {{ $destacado->provincia }} </small>
 										</span>
 									</div>
 									
@@ -277,7 +277,7 @@
 
 								<div class="text-center mt-3">
 									<small>
-										{{ \Illuminate\Support\Str::limit($filtrar_servicio->descripcion, 80) }}
+										{{ \Illuminate\Support\Str::limit($destacado->descripcion, 80) }}
 									</small>
 								</div>
 
