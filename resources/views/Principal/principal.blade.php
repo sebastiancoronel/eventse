@@ -207,7 +207,6 @@
 	<!--Fin Servicios-->
 
 	<hr>
-	<!-- Destacados -->
 	<section class="bg0 p-t-23 p-b-140">
 		<div class="container">
 			<div class="p-b-10 text-center">
@@ -215,17 +214,19 @@
 					Destacados
 				</h3>
 			</div>
-
+			
 			<div id="" class="row isotope-grid mt-5" style="position: relative; height: 1717.38px;">
-                @foreach ($Destacados as $destacado)
-                    <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$destacado->nombre_categoria}}" style="position: absolute; left: 0%; top: 0px;">
+
+				<!-- Destacados x5 -->
+                @foreach ($DestacadosX5 as $destacadoX5)
+                    <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$destacadoX5->nombre_categoria}}" style="position: absolute; left: 0%; top: 0px;">
                         <!-- Block2 -->
                         <div class="block2 bor10">
 							<div class="block2-pic hov-img0">
-								<div style="background-image: url({{ asset($destacado->foto_1) }}); background-position: center; background-size: cover; height: 200px;"> </div>
-								{{-- <img src="{{ asset($destacado->foto_1) }}" alt="IMG-PRODUCT"> --}}
+								<div style="background-image: url({{ asset($destacadoX5->foto_1) }}); background-position: center; background-size: cover; height: 200px;"> </div>
+								{{-- <img src="{{ asset($destacadoX5->foto_1) }}" alt="IMG-PRODUCT"> --}}
 
-								<a href=" {{route('MostrarServicio',[ 'id' => $destacado  ])}} " class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								<a href=" {{route('MostrarServicio',[ 'id' => $destacadoX5  ])}} " class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
 								Ver servicio
 								</a>
 							</div>
@@ -233,15 +234,15 @@
 							<div class="block2-txt flex-w flex-t p-t-14 mx-3">
 								<div class="row">
 									<div class="col-lg-12 col-12 text-center">
-										<a href="{{route('MostrarServicio',[ 'id' => $destacado  ])}}" class="text-left cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-											{{ \Illuminate\Support\Str::limit($destacado->nombre, 30) }}
+										<a href="{{route('MostrarServicio',[ 'id' => $destacadoX5  ])}}" class="text-left cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+											{{ \Illuminate\Support\Str::limit($destacadoX5->nombre, 30) }}
 										</a>
 									</div>
 
 									<div class="col-lg-12 col-12 text-center my-2">
 										<span class="stext-105 cl3">
-											@if ($destacado->precio != null)
-											$ {{$destacado->precio}}
+											@if ($destacadoX5->precio != null)
+											$ {{$destacadoX5->precio}}
 											@else
 											Precio a convenir
 											@endif
@@ -250,7 +251,281 @@
 
 									<div class="col-lg-12 col-12 text-center">
 										<span class="mt-2">
-											<i class="zmdi zmdi-pin"></i> <small> {{ $destacado->localidad }} , {{ $destacado->provincia }} </small>
+											<i class="zmdi zmdi-pin"></i> <small> {{ $destacadoX5->localidad }} , {{ $destacadoX5->provincia }} </small>
+										</span>
+									</div>
+									
+								</div>
+
+								<!-- Separador -->
+								<div class="bor10 mt-3" style="width: 100%; height: 1px;"></div>
+
+								<div class="text-center mt-3">
+									<span>
+										<i class="zmdi zmdi-star text-warning"></i>
+
+										{{-- Pienso establecer estrellas segun cantidad de contrataciones exitosas
+											+10 1 estrella +20 2 estrellas asi hasta +50 5 estrellas --}}
+										+5 contrataciones
+									</span>
+								</div>
+
+								<!-- Separador -->
+								<div class="bor10 mt-3" style="width: 100%; height: 1px;"></div>
+
+								<div class="text-center mt-3">
+									<small>
+										{{ \Illuminate\Support\Str::limit($destacadoX5->descripcion, 80) }}
+									</small>
+								</div>
+
+							</div>
+                        </div>
+                    </div>
+                @endforeach
+
+				<!-- Destacados x10 -->
+				@foreach ($DestacadosX10 as $destacadoX10)
+                    <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$destacadoX10->nombre_categoria}}" style="position: absolute; left: 0%; top: 0px;">
+                        <!-- Block2 -->
+                        <div class="block2 bor10">
+							<div class="block2-pic hov-img0">
+								<div style="background-image: url({{ asset($destacadoX10->foto_1) }}); background-position: center; background-size: cover; height: 200px;"> </div>
+								{{-- <img src="{{ asset($destacadoX10->foto_1) }}" alt="IMG-PRODUCT"> --}}
+
+								<a href=" {{route('MostrarServicio',[ 'id' => $destacadoX10  ])}} " class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								Ver servicio
+								</a>
+							</div>
+
+							<div class="block2-txt flex-w flex-t p-t-14 mx-3">
+								<div class="row">
+									<div class="col-lg-12 col-12 text-center">
+										<a href="{{route('MostrarServicio',[ 'id' => $destacadoX10  ])}}" class="text-left cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+											{{ \Illuminate\Support\Str::limit($destacadoX10->nombre, 30) }}
+										</a>
+									</div>
+
+									<div class="col-lg-12 col-12 text-center my-2">
+										<span class="stext-105 cl3">
+											@if ($destacadoX10->precio != null)
+											$ {{$destacadoX10->precio}}
+											@else
+											Precio a convenir
+											@endif
+										</span>
+									</div>
+
+									<div class="col-lg-12 col-12 text-center">
+										<span class="mt-2">
+											<i class="zmdi zmdi-pin"></i> <small> {{ $destacadoX10->localidad }} , {{ $destacadoX10->provincia }} </small>
+										</span>
+									</div>
+									
+								</div>
+
+								<!-- Separador -->
+								<div class="bor10 mt-3" style="width: 100%; height: 1px;"></div>
+
+								<div class="text-center mt-3">
+									<span>
+										<i class="zmdi zmdi-star text-warning"></i>
+										<i class="zmdi zmdi-star text-warning"></i>
+
+										{{-- Pienso establecer estrellas segun cantidad de contrataciones exitosas
+											+10 1 estrella +20 2 estrellas asi hasta +50 5 estrellas --}}
+										+10 contrataciones
+									</span>
+								</div>
+
+								<!-- Separador -->
+								<div class="bor10 mt-3" style="width: 100%; height: 1px;"></div>
+
+								<div class="text-center mt-3">
+									<small>
+										{{ \Illuminate\Support\Str::limit($destacadoX10->descripcion, 80) }}
+									</small>
+								</div>
+
+							</div>
+                        </div>
+                    </div>
+                @endforeach
+
+				<!-- Destacados x15 -->
+				@foreach ($DestacadosX15 as $destacadoX15)
+                    <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$destacadoX15->nombre_categoria}}" style="position: absolute; left: 0%; top: 0px;">
+                        <!-- Block2 -->
+                        <div class="block2 bor10">
+							<div class="block2-pic hov-img0">
+								<div style="background-image: url({{ asset($destacadoX15->foto_1) }}); background-position: center; background-size: cover; height: 200px;"> </div>
+								{{-- <img src="{{ asset($destacadoX15->foto_1) }}" alt="IMG-PRODUCT"> --}}
+
+								<a href=" {{route('MostrarServicio',[ 'id' => $destacadoX15  ])}} " class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								Ver servicio
+								</a>
+							</div>
+
+							<div class="block2-txt flex-w flex-t p-t-14 mx-3">
+								<div class="row">
+									<div class="col-lg-12 col-12 text-center">
+										<a href="{{route('MostrarServicio',[ 'id' => $destacadoX15  ])}}" class="text-left cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+											{{ \Illuminate\Support\Str::limit($destacadoX15->nombre, 30) }}
+										</a>
+									</div>
+
+									<div class="col-lg-12 col-12 text-center my-2">
+										<span class="stext-105 cl3">
+											@if ($destacadoX15->precio != null)
+											$ {{$destacadoX15->precio}}
+											@else
+											Precio a convenir
+											@endif
+										</span>
+									</div>
+
+									<div class="col-lg-12 col-12 text-center">
+										<span class="mt-2">
+											<i class="zmdi zmdi-pin"></i> <small> {{ $destacadoX15->localidad }} , {{ $destacadoX15->provincia }} </small>
+										</span>
+									</div>
+									
+								</div>
+
+								<!-- Separador -->
+								<div class="bor10 mt-3" style="width: 100%; height: 1px;"></div>
+
+								<div class="text-center mt-3">
+									<span>
+										<i class="zmdi zmdi-star text-warning"></i>
+										<i class="zmdi zmdi-star text-warning"></i>
+										<i class="zmdi zmdi-star text-warning"></i>
+
+										{{-- Pienso establecer estrellas segun cantidad de contrataciones exitosas
+											+10 1 estrella +20 2 estrellas asi hasta +50 5 estrellas --}}
+										+15 contrataciones
+									</span>
+								</div>
+
+								<!-- Separador -->
+								<div class="bor10 mt-3" style="width: 100%; height: 1px;"></div>
+
+								<div class="text-center mt-3">
+									<small>
+										{{ \Illuminate\Support\Str::limit($destacadoX15->descripcion, 80) }}
+									</small>
+								</div>
+
+							</div>
+                        </div>
+                    </div>
+                @endforeach
+
+				<!-- Destacados x20 -->
+				@foreach ($DestacadosX20 as $destacadoX20)
+                    <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$destacadoX20->nombre_categoria}}" style="position: absolute; left: 0%; top: 0px;">
+                        <!-- Block2 -->
+                        <div class="block2 bor10">
+							<div class="block2-pic hov-img0">
+								<div style="background-image: url({{ asset($destacadoX20->foto_1) }}); background-position: center; background-size: cover; height: 200px;"> </div>
+								{{-- <img src="{{ asset($destacadoX20->foto_1) }}" alt="IMG-PRODUCT"> --}}
+
+								<a href=" {{route('MostrarServicio',[ 'id' => $destacadoX20  ])}} " class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								Ver servicio
+								</a>
+							</div>
+
+							<div class="block2-txt flex-w flex-t p-t-14 mx-3">
+								<div class="row">
+									<div class="col-lg-12 col-12 text-center">
+										<a href="{{route('MostrarServicio',[ 'id' => $destacadoX20  ])}}" class="text-left cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+											{{ \Illuminate\Support\Str::limit($destacadoX20->nombre, 30) }}
+										</a>
+									</div>
+
+									<div class="col-lg-12 col-12 text-center my-2">
+										<span class="stext-105 cl3">
+											@if ($destacadoX20->precio != null)
+											$ {{$destacadoX20->precio}}
+											@else
+											Precio a convenir
+											@endif
+										</span>
+									</div>
+
+									<div class="col-lg-12 col-12 text-center">
+										<span class="mt-2">
+											<i class="zmdi zmdi-pin"></i> <small> {{ $destacadoX20->localidad }} , {{ $destacadoX20->provincia }} </small>
+										</span>
+									</div>
+									
+								</div>
+
+								<!-- Separador -->
+								<div class="bor10 mt-3" style="width: 100%; height: 1px;"></div>
+
+								<div class="text-center mt-3">
+									<span>
+										<i class="zmdi zmdi-star text-warning"></i>
+										<i class="zmdi zmdi-star text-warning"></i>
+										<i class="zmdi zmdi-star text-warning"></i>
+										<i class="zmdi zmdi-star text-warning"></i>
+
+										{{-- Pienso establecer estrellas segun cantidad de contrataciones exitosas
+											+10 1 estrella +20 2 estrellas asi hasta +50 5 estrellas --}}
+										+20 contrataciones
+									</span>
+								</div>
+
+								<!-- Separador -->
+								<div class="bor10 mt-3" style="width: 100%; height: 1px;"></div>
+
+								<div class="text-center mt-3">
+									<small>
+										{{ \Illuminate\Support\Str::limit($destacadoX20->descripcion, 80) }}
+									</small>
+								</div>
+
+							</div>
+                        </div>
+                    </div>
+                @endforeach
+
+				<!-- Destacados x20 -->
+				@foreach ($DestacadosX25 as $destacadoX25)
+                    <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$destacadoX25->nombre_categoria}}" style="position: absolute; left: 0%; top: 0px;">
+                        <!-- Block2 -->
+                        <div class="block2 bor10">
+							<div class="block2-pic hov-img0">
+								<div style="background-image: url({{ asset($destacadoX25->foto_1) }}); background-position: center; background-size: cover; height: 200px;"> </div>
+								{{-- <img src="{{ asset($destacadoX25->foto_1) }}" alt="IMG-PRODUCT"> --}}
+
+								<a href=" {{route('MostrarServicio',[ 'id' => $destacadoX25  ])}} " class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								Ver servicio
+								</a>
+							</div>
+
+							<div class="block2-txt flex-w flex-t p-t-14 mx-3">
+								<div class="row">
+									<div class="col-lg-12 col-12 text-center">
+										<a href="{{route('MostrarServicio',[ 'id' => $destacadoX25  ])}}" class="text-left cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+											{{ \Illuminate\Support\Str::limit($destacadoX25->nombre, 30) }}
+										</a>
+									</div>
+
+									<div class="col-lg-12 col-12 text-center my-2">
+										<span class="stext-105 cl3">
+											@if ($destacadoX25->precio != null)
+											$ {{$destacadoX25->precio}}
+											@else
+											Precio a convenir
+											@endif
+										</span>
+									</div>
+
+									<div class="col-lg-12 col-12 text-center">
+										<span class="mt-2">
+											<i class="zmdi zmdi-pin"></i> <small> {{ $destacadoX25->localidad }} , {{ $destacadoX25->provincia }} </small>
 										</span>
 									</div>
 									
@@ -266,9 +541,10 @@
 										<i class="zmdi zmdi-star text-warning"></i>
 										<i class="zmdi zmdi-star text-warning"></i>
 										<i class="zmdi zmdi-star text-warning"></i>
+
 										{{-- Pienso establecer estrellas segun cantidad de contrataciones exitosas
 											+10 1 estrella +20 2 estrellas asi hasta +50 5 estrellas --}}
-										+100 contrataciones
+										+25 contrataciones
 									</span>
 								</div>
 
@@ -277,7 +553,7 @@
 
 								<div class="text-center mt-3">
 									<small>
-										{{ \Illuminate\Support\Str::limit($destacado->descripcion, 80) }}
+										{{ \Illuminate\Support\Str::limit($destacadoX25->descripcion, 80) }}
 									</small>
 								</div>
 
