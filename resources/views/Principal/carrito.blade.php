@@ -11,32 +11,52 @@
 						<div class="m-l-25 m-r--38 m-lr-0-xl">
 							<!-- Item 1 -->
 							@if ($Paquete)
-								@foreach ($Paquete as $servicio)
-									<div class="row container">
+								@foreach ($Paquete as $key_serv => $servicio)
+
+								
+								<div class="row container">
 										{{-- <div class="col-md-3">
 											<img class="img-fluid" src="{{asset('images/castillo2.webp')}}" alt="IMG">
 										</div> --}}
 										<div class="row col-md-6">
 											<span class="col-md-12"> {{ $servicio['NombreServicio'] }} </span>
-												<small class="col-md-12 text-primary mt-2">Agregar un comentario</small>
 										</div>
+										
 										<div class="col-md-3">
 											@if ( $servicio['Precio'] != 'Precio a convenir' )
-												$ {{ $servicio['Precio'] }}
+											$ {{ $servicio['Precio'] }}
 											@else
-												{{ $servicio['Precio'] }}
+											{{ $servicio['Precio'] }}
 											@endif
 											<span>
 												{{-- <small class="text-success">Presupuestado</small> --}}
 											</span>
 										</div>
-
+										
 										<div class="col-md-3" data-id="{{ $servicio['id_servicio'] }}">
 											<button type="button" class="flex-c-m stext-101 cl2 size-100 bg8 bor13 hov-btn4 p-lr-15 trans-04 pointer m-tb-5 eliminar-del-paquete">
 												Eliminar
 											</button>
 										</div>
+										
+										<!-- Separador -->
+										<div class="bor10 my-3" style="width: 100%; height: 1px;"></div>
 
+										<span class="font-weight-bold"> ¿ Que prestaciones quiere para su servicio ? </span class="font-weight-bold">
+										
+										<div class="form-row mt-4">
+											@foreach ( $TodasLasCaracteristicas as $key_caract => $caracteristicas )
+												@if ( $key_serv == $key_caract )
+													@foreach ($caracteristicas as $caracteristica)
+													<div class="col-md-4">
+														<input class="form-check-input" id="{{ $caracteristica['nombre'] }}" name="caracteristicas[]" type="checkbox">
+														<label class="form-check-label" for="{{ $caracteristica['nombre'] }}"> {{ $caracteristica['nombre'] }} </label>
+													</div>
+													@endforeach
+												@endif
+											@endforeach
+										</div>
+										<small class="col-md-12 text-primary my-4">Agregar un comentario</small>
 										<div class="bor8 bg0 m-b-12">
 											<textarea class="stext-111 cl8 plh3 size-111 p-lr-15 h-100" name="comentario_adicional[{{ $servicio['id_servicio'] }}]" maxlength="500" cols="100" rows="5"></textarea>
 										</div>

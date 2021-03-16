@@ -263,11 +263,11 @@ class ServicioController extends Controller
       array_push( $TodasLasCaracteristicas , $CaracteristicasPorServicio );
       
     }
-    dd($TodasLasCaracteristicas);
+    // dd($TodasLasCaracteristicas);
 
 
     
-    return view('Principal.carrito' , [ 'Caracteristicas' => $Caracteristicas ] );
+    return view('Principal.carrito' , [ 'TodasLasCaracteristicas' => $TodasLasCaracteristicas ] );
   }
 
   public function AgregarAlPaquete( Request $request ){
