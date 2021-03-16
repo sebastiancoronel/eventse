@@ -216,7 +216,7 @@ class CategoriaController extends Controller
 
     }
 
-    public function EliminarCategoria( Request $request ){ //FALTA BORRAR LOS SERVICIOS EN CASCADA
+    public function EliminarCategoria( Request $request ){
 
         if ( $request->switch_categoria == 'Habilitar') {
             $Categoria = Categoria::withTrashed()

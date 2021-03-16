@@ -237,9 +237,37 @@ class ServicioController extends Controller
   }
 
   public function MostrarPaquete(){
-    $Paquete = Session::get('Servicio');
+    $Paquete = Session::get('Servicio'); //Ver si puedo usar esto o esta tomando la variable $Paquete de AppServiceProvider
+    // dd($Paquete);
+
+    $Servicios = array();
+    $TodasLasCaracteristicas = array();
+    foreach ( $Paquete as $servicio_paquete ){
+      
+      $Servicio = Servicio::where('id', $servicio_paquete['id_servicio'] )->first();
+      array_push( $Servicios , $Servicio );
+
+    }
+
+    //Falta armar un array que contenga arrays de las caracteristicas con las que cuenta cada servicios, por cada servicio del paquete y traer el nombre de cada una.
+    //Creo que lo de arriba ya está :D
+    #Va a haber que hacer una tabla caracteristicas por presupuestos. Sino agregar el nombre de las caracteristicas seleccionadas al input del comentario adicional.
+
+    foreach ( $Servicios as $servicio ) {
+      
+      $CaracteristicasPorServicio = CaracteristicasPorServicio::where( 'id_servicio' , $servicio->id )
+                                  ->Join( 'caracteristicas' , 'caracteristicas_por_servicios.id_caracteristica' , '=' , 'caracteristicas.id' ) 
+                                  ->select('caracteristicas.nombre')
+                                  ->get();
+
+      array_push( $TodasLasCaracteristicas , $CaracteristicasPorServicio );
+      
+    }
+    dd($TodasLasCaracteristicas);
+
+
     
-    return view('Principal.carrito');
+    return view('Principal.carrito' , [ 'Caracteristicas' => $Caracteristicas ] );
   }
 
   public function AgregarAlPaquete( Request $request ){

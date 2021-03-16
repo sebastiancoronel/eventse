@@ -491,7 +491,7 @@
                     </div>
                 @endforeach
 
-				<!-- Destacados x20 -->
+				<!-- Destacados x25 -->
 				@foreach ($DestacadosX25 as $destacadoX25)
                     <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$destacadoX25->nombre_categoria}}" style="position: absolute; left: 0%; top: 0px;">
                         <!-- Block2 -->
