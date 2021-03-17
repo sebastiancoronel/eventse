@@ -49,7 +49,7 @@
 												@if ( $key_serv == $key_caract )
 													@foreach ($caracteristicas as $caracteristica)
 													<div class="col-md-4">
-														<input class="form-check-input" id="{{ $caracteristica['nombre'] }}" name="caracteristicas[]" type="checkbox">
+														<input class="form-check-input" id="{{ $caracteristica['nombre'] }}" name="caracteristicas[{{	 $servicio['id_servicio'] }}][]" type="checkbox" value="{{ $caracteristica['id'] }}">
 														<label class="form-check-label" for="{{ $caracteristica['nombre'] }}"> {{ $caracteristica['nombre'] }} </label>
 													</div>
 													@endforeach

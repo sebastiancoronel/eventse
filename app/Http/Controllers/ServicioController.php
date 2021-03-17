@@ -257,7 +257,7 @@ class ServicioController extends Controller
       
       $CaracteristicasPorServicio = CaracteristicasPorServicio::where( 'id_servicio' , $servicio->id )
                                   ->Join( 'caracteristicas' , 'caracteristicas_por_servicios.id_caracteristica' , '=' , 'caracteristicas.id' ) 
-                                  ->select('caracteristicas.nombre')
+                                  ->select('caracteristicas.*')
                                   ->get();
 
       array_push( $TodasLasCaracteristicas , $CaracteristicasPorServicio );
