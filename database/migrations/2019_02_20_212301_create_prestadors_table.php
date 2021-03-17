@@ -44,6 +44,26 @@ class CreatePrestadorsTable extends Migration
                 'user_id' => 1,
                 
             ],
+            [
+                'nombre' => 'Dream Days',
+                'foto' => '/images/foto_perfil/4.jpg',
+                // 'provincia' => 'Santiago Del Estero',
+                // 'Localidad' => 'Santiago Del Estero',
+                'email' => 'dreamdays@hotmail.com',
+                'telefono' => '3855896321',
+                'user_id' => 4,
+                
+            ],
+            [
+                'nombre' => 'Ardeluna Producciones',
+                'foto' => '/images/foto_perfil/5.jpg',
+                // 'provincia' => 'Santiago Del Estero',
+                // 'Localidad' => 'Santiago Del Estero',
+                'email' => 'ardeluna@hotmail.com',
+                'telefono' => '3851963899',
+                'user_id' => 5,
+                
+            ],
 
         ]);
     }

@@ -8,13 +8,14 @@ use App\Presupuesto;
 use App\Prestador;
 use App\Servicio;
 use App\Notificacion;
+use App\CaracteristicasPorPresupuesto;
 use Session;
 use Auth;
 use Carbon\Carbon;
 class PresupuestoController extends Controller
 {
     public function EnviarSolicitudPresupuesto(Request $request){
-        //dd( $request->session()->all() );
+        // dd( $request->session()->all() );
         //dd($request->all());
     
         // $request->validate([
@@ -22,11 +23,11 @@ class PresupuestoController extends Controller
         //   'hasta' => 'required',
         //   'direccion' => 'required|max:100',
         //   'barrio' => 'required|max:100',
-        //   'pregunta' => 'required'
         // ]);
+
         $Paquete = Session::get('Servicio');
         foreach ($Paquete as $servicio) {
-          //dd($servicio['id_servicio']);
+
           $id_prestador = Servicio::findOrfail($servicio['id_servicio'])->id_prestador;
           
           if (  key_exists( $servicio['id_servicio'] , $request->comentario_adicional )) { //La key representa el id de servicio y el valor es el comentario adicional o pregunta que se le hace al prestador.
@@ -35,7 +36,7 @@ class PresupuestoController extends Controller
             return false;
           }
     
-          Presupuesto::create([
+         $Presupuesto = Presupuesto::create([
             'id_servicio' => $servicio['id_servicio'],
             'id_prestador' => $id_prestador,
             'user_id' => Auth::user()->id,
@@ -50,21 +51,35 @@ class PresupuestoController extends Controller
             //'respuesta' => ,
             ]
           );
+  
+            foreach ($request->caracteristicas as $id_servicio => $caract_por_serv) {
+              if ($id_servicio == $servicio['id_servicio'] ) {
+                foreach ($caract_por_serv as $caracteristica) {
+                  CaracteristicasPorPresupuesto::create([
+                    'id_presupuesto' => $Presupuesto->id,
+                    'id_servicio' => $id_servicio,
+                    'id_caracteristica' => $caracteristica
+                  ]);
+                }
+                
+              }
+    
+            }
           
           $User_notificar = Prestador::where( 'id' , $id_prestador )
-                                      ->pluck('user_id')
-                                      ->first();                             
-  
+          ->pluck('user_id')
+          ->first(); 
+
           Notificacion::create([
-              'user_id_notificar' => $User_notificar,
-              'user_id_trigger' => Auth::user()->id,
-              'id_evento' => 2, //Solicitud
-              'visto' => 0,
-              ]);
+            'user_id_notificar' => $User_notificar,
+            'user_id_trigger' => Auth::user()->id,
+            'id_evento' => 2, //Solicitud
+            'visto' => 0,
+          ]);
         }
 
 
-        $request->session()->forget(['Servicio']); //Borra el carrito
+        // $request->session()->forget(['Servicio']); //Borra el carrito
 
         return redirect()->route('Principal')->with( 'PresupuestoEnviado' , ' ' );
     }

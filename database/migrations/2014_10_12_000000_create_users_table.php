@@ -36,7 +36,7 @@ class CreateUsersTable extends Migration
                 'email' => 'seba_c94@hotmail.com',
                 'dni' => '38365229',
                 'provincia' => 'Santiago del Estero',
-                'localidad' => 'Capital',
+                'localidad' => 'Santiago del Estero',
                 'telefono' => '3855826093',
                 'rol' => 'Prestador',
                 'password' => bcrypt('123456789')
@@ -48,7 +48,7 @@ class CreateUsersTable extends Migration
                 'email' => 'admin@gmail.com',
                 'dni' => '38000000',
                 'provincia' => 'Santiago del Estero',
-                'localidad' => 'Capital',
+                'localidad' => 'Santiago del Estero',
                 'telefono' => '3855000000',
                 'rol' => 'Administrador',
                 'password' => bcrypt('123456789')
@@ -60,9 +60,33 @@ class CreateUsersTable extends Migration
                 'email' => 'cliente@gmail.com',
                 'dni' => '38111111',
                 'provincia' => 'Santiago del Estero',
-                'localidad' => 'Capital',
+                'localidad' => 'Santiago del Estero',
                 'telefono' => '3855111111',
                 'rol' => 'Cliente',
+                'password' => bcrypt('123456789')
+            ],
+
+            [
+                'name' => 'Prestador',
+                'lastname' => 'numero 2',
+                'email' => 'prestador2@gmail.com',
+                'dni' => '30365229',
+                'provincia' => 'Santiago Del Estero',
+                'localidad' => 'Quimili',
+                'telefono' => '3855129799',
+                'rol' => 'Prestador',
+                'password' => bcrypt('123456789')
+            ],
+
+            [
+                'name' => 'Prestador',
+                'lastname' => 'numero 3',
+                'email' => 'prestador3@gmail.com',
+                'dni' => '22336999',
+                'provincia' => 'Cordoba',
+                'localidad' => 'Villa Carlos Paz',
+                'telefono' => '351649798',
+                'rol' => 'Prestador',
                 'password' => bcrypt('123456789')
             ],
         ]);

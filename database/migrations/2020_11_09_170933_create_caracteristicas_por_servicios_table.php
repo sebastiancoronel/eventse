@@ -24,6 +24,109 @@ class CreateCaracteristicasPorServiciosTable extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
+        DB::table('caracteristicas_por_servicios')->insert([
+            [
+                'id_servicio' => 6,
+                'id_caracteristica' => 9
+
+            ],
+            [
+                'id_servicio' => 6,
+                'id_caracteristica' => 10
+
+            ],
+            [
+                'id_servicio' => 8,
+                'id_caracteristica' => 16
+
+            ],
+            [
+                'id_servicio' => 5,
+                'id_caracteristica' => 13
+
+            ],
+            [
+                'id_servicio' => 7,
+                'id_caracteristica' => 15
+
+            ],
+            [
+                'id_servicio' => 5,
+                'id_caracteristica' => 15
+
+            ],
+            [
+                'id_servicio' => 1,
+                'id_caracteristica' => 5
+
+            ],
+            [
+                'id_servicio' => 1,
+                'id_caracteristica' => 3
+
+            ],
+            [
+                'id_servicio' => 1,
+                'id_caracteristica' => 7
+
+            ],
+            [
+                'id_servicio' => 1,
+                'id_caracteristica' => 1
+
+            ],
+            [
+                'id_servicio' => 8,
+                'id_caracteristica' => 17
+
+            ],
+            [
+                'id_servicio' => 8,
+                'id_caracteristica' => 20
+
+            ],
+            [
+                'id_servicio' => 8,
+                'id_caracteristica' => 22
+
+            ],
+            [
+                'id_servicio' => 9,
+                'id_caracteristica' => 24
+
+            ],
+            [
+                'id_servicio' => 9,
+                'id_caracteristica' => 25
+
+            ],
+            [
+                'id_servicio' => 9,
+                'id_caracteristica' => 26
+
+            ],
+            [
+                'id_servicio' => 9,
+                'id_caracteristica' => 28
+
+            ],
+            [
+                'id_servicio' => 7,
+                'id_caracteristica' => 13
+
+            ],
+            [
+                'id_servicio' => 10,
+                'id_caracteristica' => 14
+
+            ],
+            [
+                'id_servicio' => 10,
+                'id_caracteristica' => 15
+
+            ]
+        ]);
     }
 
     /**

@@ -14,6 +14,7 @@ use App\Presupuesto;
 use App\User;
 use App\Caracteristica_por_categoria;
 use App\CaracteristicasPorServicio;
+use App\CaracteristicasPorPresupuesto;
 
 class HomeController extends Controller
 {
@@ -91,11 +92,23 @@ class HomeController extends Controller
                                 ->where( 'monto' , null )
                                 ->where( 'estado' , 'Aceptado' )
                                 ->Join( 'servicios' , 'presupuestos.id_servicio' , '=' , 'servicios.id' )
-                                ->select( 'presupuestos.*' ,'servicios.nombre', 'servicios.id as id_servicio' )
+                                ->select( 'presupuestos.*' ,'servicios.nombre', 'servicios.id as id_servicio')
                                 ->orderBy('created_at', 'asc')
                                 ->get();
-      
-      return view('AdminLTE.presupuestos_solicitados' , [ 'Presupuestos' => $Presupuestos ]);
+
+      $CaracteristicasPorPresupuestos = array();
+      foreach ($Presupuestos as $presupuesto) {
+
+        $Caracteristicas = CaracteristicasPorPresupuesto::Join( 'caracteristicas' , 'caracteristicas_por_presupuestos.id_caracteristica' , '=' , 'caracteristicas.id' )
+                                          ->where( 'caracteristicas_por_presupuestos.id_presupuesto' , $presupuesto->id )
+                                          ->select('caracteristicas.*', 'caracteristicas_por_presupuestos.id_servicio')
+                                          ->get();
+                                          
+        array_push( $CaracteristicasPorPresupuestos , $Caracteristicas );
+        }
+        // dd($CaracteristicasPorPresupuestos);
+
+      return view('AdminLTE.presupuestos_solicitados' , [ 'Presupuestos' => $Presupuestos , 'CaracteristicasPorPresupuestos' => $CaracteristicasPorPresupuestos ]);
     } 
 
    

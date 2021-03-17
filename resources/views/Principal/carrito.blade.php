@@ -12,56 +12,61 @@
 							<!-- Item 1 -->
 							@if ($Paquete)
 								@foreach ($Paquete as $key_serv => $servicio)
-
-								
-								<div class="row container">
-										{{-- <div class="col-md-3">
-											<img class="img-fluid" src="{{asset('images/castillo2.webp')}}" alt="IMG">
-										</div> --}}
-										<div class="row col-md-6">
-											<span class="col-md-12"> {{ $servicio['NombreServicio'] }} </span>
+									<div class="bor10 p-5 mb-4">
+										<div class="row container">
+											{{-- <div class="col-md-3">
+												<img class="img-fluid" src="{{asset('')}}" alt="IMG">
+											</div> --}}
+											<div class="row col-md-6">
+												<span class="col-md-12"> {{ $servicio['NombreServicio'] }} </span>
+											</div>
+											
+											<div class="col-md-3">
+												@if ( $servicio['Precio'] != 'Precio a convenir' )
+												$ {{ $servicio['Precio'] }}
+												@else
+												{{ $servicio['Precio'] }}
+												@endif
+												<span>
+													{{-- <small class="text-success">Presupuestado</small> --}}
+												</span>
+											</div>
+											
+											<div class="col-md-3" data-id="{{ $servicio['id_servicio'] }}">
+												<button type="button" class="flex-c-m stext-101 cl2 size-100 bg8 bor13 hov-btn4 p-lr-15 trans-04 pointer m-tb-5 eliminar-del-paquete">
+													Eliminar
+												</button>
+											</div>
+											
+											<!-- Separador -->
+											<div class="bor10 my-3" style="width: 100%; height: 1px;"></div>
+	
+											<span class="font-weight-bold"> ¿ Que prestaciones desea incluir en este servicio ? </span class="font-weight-bold">
+											
 										</div>
 										
-										<div class="col-md-3">
-											@if ( $servicio['Precio'] != 'Precio a convenir' )
-											$ {{ $servicio['Precio'] }}
-											@else
-											{{ $servicio['Precio'] }}
-											@endif
-											<span>
-												{{-- <small class="text-success">Presupuestado</small> --}}
-											</span>
-										</div>
-										
-										<div class="col-md-3" data-id="{{ $servicio['id_servicio'] }}">
-											<button type="button" class="flex-c-m stext-101 cl2 size-100 bg8 bor13 hov-btn4 p-lr-15 trans-04 pointer m-tb-5 eliminar-del-paquete">
-												Eliminar
-											</button>
-										</div>
-										
-										<!-- Separador -->
-										<div class="bor10 my-3" style="width: 100%; height: 1px;"></div>
-
-										<span class="font-weight-bold"> ¿ Que prestaciones quiere para su servicio ? </span class="font-weight-bold">
-										
+										<!-- Caracteristicas -->
 										<div class="form-row mt-4">
 											@foreach ( $TodasLasCaracteristicas as $key_caract => $caracteristicas )
 												@if ( $key_serv == $key_caract )
 													@foreach ($caracteristicas as $caracteristica)
-													<div class="col-md-4">
-														<input class="form-check-input" id="{{ $caracteristica['nombre'] }}" name="caracteristicas[{{	 $servicio['id_servicio'] }}][]" type="checkbox" value="{{ $caracteristica['id'] }}">
-														<label class="form-check-label" for="{{ $caracteristica['nombre'] }}"> {{ $caracteristica['nombre'] }} </label>
+													<div class="col-lg-4">
+														<input class="form-check-input" id="{{ $caracteristica['nombre'] }}_{{ $servicio['id_servicio'] }}" name="caracteristicas[{{	 $servicio['id_servicio'] }}][]" type="checkbox" value="{{ $caracteristica['id'] }}">
+														<label class="form-check-label" for="{{ $caracteristica['nombre'] }}_{{ $servicio['id_servicio'] }}"> {{ $caracteristica['nombre'] }} </label>
 													</div>
 													@endforeach
 												@endif
 											@endforeach
 										</div>
-										<small class="col-md-12 text-primary my-4">Agregar un comentario</small>
-										<div class="bor8 bg0 m-b-12">
-											<textarea class="stext-111 cl8 plh3 size-111 p-lr-15 h-100" name="comentario_adicional[{{ $servicio['id_servicio'] }}]" maxlength="500" cols="100" rows="5"></textarea>
+	
+										<div class="col-md-12 text-primary my-4">
+											<small class="">Agregar un comentario</small>
+											<div class="bor8 bg0 m-b-12">
+												<textarea class="stext-111 cl8 plh3 size-111 p-lr-15 h-100" name="comentario_adicional[{{ $servicio['id_servicio'] }}]" maxlength="500" cols="100" rows="5"></textarea>
+											</div>
+	
 										</div>
 									</div>
-									<hr>
 								@endforeach
 							@else
 							<span class=""> No tienes servicios en tu paquete aún </span>

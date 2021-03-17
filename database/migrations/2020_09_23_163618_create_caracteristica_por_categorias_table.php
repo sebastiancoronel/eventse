@@ -58,6 +58,106 @@ class CreateCaracteristicaPorCategoriasTable extends Migration
                 'id_categoria' => 1,
                 'id_caracteristica' => 8
             ],
+            [
+                'id_categoria' => 12,
+                'id_caracteristica' => 9
+            ],
+            [
+                'id_categoria' => 12,
+                'id_caracteristica' => 10
+            ],
+            [
+                'id_categoria' => 12,
+                'id_caracteristica' => 11
+            ],
+            [
+                'id_categoria' => 12,
+                'id_caracteristica' => 12
+            ],
+            [
+                'id_categoria' => 5,
+                'id_caracteristica' => 13
+            ],
+            [
+                'id_categoria' => 5,
+                'id_caracteristica' => 14
+            ],
+            [
+                'id_categoria' => 5,
+                'id_caracteristica' => 15
+            ],
+            [
+                'id_categoria' => 7,
+                'id_caracteristica' => 16
+            ],
+            [
+                'id_categoria' => 7,
+                'id_caracteristica' => 17
+            ],
+            [
+                'id_categoria' => 7,
+                'id_caracteristica' => 18
+            ],
+            [
+                'id_categoria' => 7,
+                'id_caracteristica' => 19
+            ],
+            [
+                'id_categoria' => 7,
+                'id_caracteristica' => 20
+            ],
+            [
+                'id_categoria' => 7,
+                'id_caracteristica' => 21
+            ],
+            [
+                'id_categoria' => 7,
+                'id_caracteristica' => 22
+            ],
+            [
+                'id_categoria' => 7,
+                'id_caracteristica' => 23
+            ],
+            [
+                'id_categoria' => 9,
+                'id_caracteristica' => 24
+            ],
+            [
+                'id_categoria' => 9,
+                'id_caracteristica' => 25
+            ],
+            [
+                'id_categoria' => 9,
+                'id_caracteristica' => 26
+            ],
+            [
+                'id_categoria' => 9,
+                'id_caracteristica' => 27
+            ],
+            [
+                'id_categoria' => 9,
+                'id_caracteristica' => 28
+            ],
+            [
+                'id_categoria' => 9,
+                'id_caracteristica' => 29
+            ],
+            [
+                'id_categoria' => 9,
+                'id_caracteristica' => 30
+            ],
+            [
+                'id_categoria' => 9,
+                'id_caracteristica' => 31
+            ],
+            [
+                'id_categoria' => 5,
+                'id_caracteristica' => 32
+            ],
+            [
+                'id_categoria' => 5,
+                'id_caracteristica' => 33
+            ]
             
         ]);
     }

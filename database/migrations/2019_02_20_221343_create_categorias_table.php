@@ -54,32 +54,16 @@ class CreateCategoriasTable extends Migration
             'foto' => 'images/categorias/musicaDj2.jpg'
           ],
           [
-            'nombre' => 'Shows & Bandas',
+            'nombre' => 'Shows',
             'foto' => 'images/categorias/bandas1.jpg'
           ],
           [
-            'nombre' => 'Fotógrafía y ediciones',
-            'foto' => 'images/categorias/'
+            'nombre' => 'Fotografía',
+            'foto' => 'images/categorias/3qD0wt6esgBVP5CLlvLJ.jpg'
           ],
           [
-            'nombre' => 'Disfraces',
-            'foto' => 'images/categorias/'
-          ],
-          [
-            'nombre' => 'Cotillón',
-            'foto' => 'images/categorias/'
-          ],
-          [
-            'nombre' => 'Souvenirs & Manualidades',
-            'foto' => 'images/categorias/'
-          ],
-          [
-            'nombre' => 'Arreglos florales, centros de mesa y ramos de novia',
-            'foto' => 'images/categorias/'
-          ],
-          [
-            'nombre' => 'Bakers',
-            'foto' => 'images/categorias/'
+            'nombre' => 'Magos',
+            'foto' => 'images/categorias/upGc3R6IQRBT1EREQfYK.jpg'
           ],
         ]);
     }//function up

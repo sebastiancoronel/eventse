@@ -17,80 +17,94 @@
   @endif
   @if ( count($Presupuestos) )
     @foreach ( $Presupuestos as $presupuesto )
-    <form action=" {{ route('ResponderSolicitudPresupuesto') }} " method="POST">
-      @csrf
-      <input hidden type="text" name="id_presupuesto" value=" {{ $presupuesto->id }} ">
-      <div class="card">
-        <div class="card-header">
-          <h4> <a href=" {{ route('MostrarServicio', [ 'id' => $presupuesto->id_servicio ]) }} "> {{ $presupuesto->nombre }} </a> </h4>
-          <small> Enviado el: {{ date ('d-m-Y' , strtotime($presupuesto->created_at)) }} </small>
-        </div>
-        <div class="card-body">
-          <div class="row">
+      <form action=" {{ route('ResponderSolicitudPresupuesto') }} " method="POST">
+        @csrf
+        <input hidden type="text" name="id_presupuesto" value=" {{ $presupuesto->id }} ">
+        <div class="card">
+          <div class="card-header">
+            <h4> <a href=" {{ route('MostrarServicio', [ 'id' => $presupuesto->id_servicio ]) }} "> {{ $presupuesto->nombre }} </a> </h4>
+            <small> Enviado el: {{ date ('d-m-Y' , strtotime($presupuesto->created_at)) }} </small>
+          </div>
+          <div class="card-body">
+            <div class="row">
 
-            {{-- Fecha - Desde - Hasta --}}
-            <div class="col-lg-4 col-12">
-              <strong> Fecha: </strong><span>{{ date( 'd-m-Y' , strtotime($presupuesto->fecha)) }}</span>
+              {{-- Fecha - Desde - Hasta --}}
+              <div class="col-lg-4 col-12">
+                <strong> Fecha: </strong><span>{{ date( 'd-m-Y' , strtotime($presupuesto->fecha)) }}</span>
+              </div>
+              <div class="col-lg-4 col-12">
+                <strong> Desde: </strong><span>{{ date( 'H:i' , strtotime($presupuesto->hora_desde)) }}</span>
+              </div>
+              <div class="col-lg-4 col-12">
+                <strong> Hasta: </strong><span>{{ date( 'H:i' , strtotime($presupuesto->hora_hasta)) }}</span>
+              </div>
             </div>
-            <div class="col-lg-4 col-12">
-              <strong> Desde: </strong><span>{{ date( 'H:i' , strtotime($presupuesto->hora_desde)) }}</span>
+
+            {{-- Dirección --}}
+            <div class="row mt-5">
+              <div class="col-lg-6 col-12">
+                <strong> Direccion: </strong> <span>{{ $presupuesto->direccion }} </span>
+              </div>
+
+              {{-- Barrio --}}
+              <div class="col-lg-6 col-12">
+                <strong> Barrio: </strong> <span>{{ $presupuesto->barrio }} </span>
+              </div>
             </div>
-            <div class="col-lg-4 col-12">
-              <strong> Hasta: </strong><span>{{ date( 'H:i' , strtotime($presupuesto->hora_hasta)) }}</span>
+
+            {{-- Caracteristicas incluidas --}}
+            <div class="row mt-5">
+              <div class="col-lg-12 col-12">
+                <strong> Prestaciones solicitadas: </strong> 
+                @foreach ( $CaracteristicasPorPresupuestos as $caracteristicas_array )
+                  @foreach ($caracteristicas_array as $caracteristica )
+                    @if ( $caracteristica->id_servicio == $presupuesto->id_servicio )
+                      <span>{{ $caracteristica->nombre }} - </span>
+                    @endif
+                  @endforeach
+                @endforeach
+              </div>
+            </div>
+
+            {{-- Aclaraciones --}}
+            <div class="row mt-5">
+              <div class="col-lg-12 col-12">
+                <strong> Aclaración: </strong> <span>{{ $presupuesto->pregunta }}</span>
+              </div>
+            </div>
+          </div>
+          
+          {{-- Estado --}}
+          <div class="d-flex justify-content-end">
+            <select class="mdb-select md-form select_estado w-50" name="estado" required>
+              <option value="" disabled selected>Estado</option>
+              <option value="Disponible">Disponible</option>
+              <option value="No Disponible">No disponible</option>
+            </select>
+          </div>
+          
+          {{-- Importe --}}
+          <div class="d-flex justify-content-end">
+            <div class="md-form w-50 div_monto">
+              <i class="fas fa-dollar prefix"></i>
+              <input type="number" id="monto" name="monto" class="form-control" length="10" value="">
+              <label for="monto">Monto</label>
             </div>
           </div>
 
-          {{-- Dirección --}}
-          <div class="row mt-5">
-            <div class="col-lg-6 col-12">
-              <strong> Direccion: </strong> <span>{{ $presupuesto->direccion }} </span>
-            </div>
+          <div class="card-footer">
+            @if ($presupuesto->respuesta == null)
+              <div class="bor8 bg0 m-b-12">
+                <textarea class="stext-111 cl8 plh3 size-111 p-lr-15 h-100" name="respuesta" maxlength="1000" cols="100" rows="2" placeholder="Escribir respuesta a la aclaración"></textarea>
+              </div>
 
-            {{-- Barrio --}}
-            <div class="col-lg-6 col-12">
-              <strong> Barrio: </strong> <span>{{ $presupuesto->barrio }} </span>
-            </div>
-          </div>
-
-          {{-- Respuesta --}}
-          <div class="row mt-5">
-            <div class="col-lg-12 col-12">
-              <strong> Aclaración: </strong> <span>{{ $presupuesto->pregunta }}</span>
-            </div>
+              <div class="pull-right">
+                <button type="submit" class="btn btn-success">Responder</button>
+              </div>
+            @endif
           </div>
         </div>
-        
-        {{-- Estado --}}
-        <div class="d-flex justify-content-end">
-          <select class="mdb-select md-form select_estado w-50" name="estado" required>
-            <option value="" disabled selected>Estado</option>
-            <option value="Disponible">Disponible</option>
-            <option value="No Disponible">No disponible</option>
-          </select>
-        </div>
-        
-        {{-- Importe --}}
-        <div class="d-flex justify-content-end">
-          <div class="md-form w-50 div_monto">
-            <i class="fas fa-dollar prefix"></i>
-            <input type="number" id="monto" name="monto" class="form-control" length="10" value="">
-            <label for="monto">Monto</label>
-          </div>
-        </div>
-
-        <div class="card-footer">
-          @if ($presupuesto->respuesta == null)
-            <div class="bor8 bg0 m-b-12">
-              <textarea class="stext-111 cl8 plh3 size-111 p-lr-15 h-100" name="respuesta" maxlength="1000" cols="100" rows="2" placeholder="Escribir respuesta a la aclaración"></textarea>
-            </div>
-
-            <div class="pull-right">
-              <button type="submit" class="btn btn-success">Responder</button>
-            </div>
-          @endif
-        </div>
-      </div>
-    </form>
+      </form>
     @endforeach
   @else
     <!-- Si no hay respuestas -->
