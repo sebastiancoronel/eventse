@@ -61,9 +61,7 @@ class PresupuestoController extends Controller
                     'id_caracteristica' => $caracteristica
                   ]);
                 }
-                
               }
-    
             }
           
           $User_notificar = Prestador::where( 'id' , $id_prestador )
@@ -79,7 +77,7 @@ class PresupuestoController extends Controller
         }
 
 
-        // $request->session()->forget(['Servicio']); //Borra el carrito
+        $request->session()->forget(['Servicio']); //Borra el carrito
 
         return redirect()->route('Principal')->with( 'PresupuestoEnviado' , ' ' );
     }
@@ -113,13 +111,38 @@ class PresupuestoController extends Controller
     public function MostrarRespuestasPresupuestos(){
       $Presupuestos = Presupuesto::where( 'user_id', Auth::user()->id )
                                                   // ->where('estado' , '=' , 'Aceptado')
+                                                  ->where( 'presupuestos.deleted_at' , null )
                                                   ->Join( 'servicios' , 'presupuestos.id_servicio' , '=' , 'servicios.id' )
                                                   ->select( 'presupuestos.*' ,'servicios.nombre', 'servicios.id as id_servicio' )
                                                   ->orderBy('updated_at', 'desc')
                                                   ->get();
-                                                  
+
+      $CaracteristicasPorPresupuestos = array();
+      foreach ($Presupuestos as $presupuesto) {
+
+        $Caracteristicas = CaracteristicasPorPresupuesto::Join( 'caracteristicas' , 'caracteristicas_por_presupuestos.id_caracteristica' , '=' , 'caracteristicas.id' )
+                                          ->where( 'caracteristicas_por_presupuestos.id_presupuesto' , $presupuesto->id )
+                                          ->select('caracteristicas.*', 'caracteristicas_por_presupuestos.id_servicio')
+                                          ->get();
+                                          
+        array_push( $CaracteristicasPorPresupuestos , $Caracteristicas );
+      }
       
-      return view('AdminLTE.respuestas_presupuestos', [ 'Presupuestos' => $Presupuestos ] );
+      return view('AdminLTE.respuestas_presupuestos', [ 'Presupuestos' => $Presupuestos , 'CaracteristicasPorPresupuestos' => $CaracteristicasPorPresupuestos ] );
     }
+
+    public function LimpiarPresupNoDisp( Request $request ){
+        
+      $Presupuestos = Presupuesto::where('user_id', $request->user_id )->where( 'estado' , 'No disponible' )
+                                  ->get();
+
+      foreach ( $Presupuestos as $presupuesto ) {
+          
+          $presupuesto->delete();
+
+      }
+
+      return redirect()->route('MostrarRespuestasPresupuestos');
+  }
 
 }

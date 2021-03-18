@@ -19,6 +19,7 @@ class CreateReservasTable extends Migration
             $table->time('hora_desde');
             $table->time('hora_hasta');
             $table->string('direccion');
+            $table->string('barrio');
             $table->integer('monto');
             // $table->enum('tipo_pago',['Efectivo','Home Banking'])->nullable();
             // $table->enum('estado_pago',['Pagado','Pendiente'])->nullable();

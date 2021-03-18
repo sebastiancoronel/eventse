@@ -13,13 +13,15 @@ use App\Opinion;
 class ReservaController extends Controller
 {
     public function ConfirmarContratacion( Request $request ){
+
         $Presupuesto = Presupuesto::findOrfail( $request->id_presupuesto );
-        //dd($Presupuesto->id_prestador);
+        
         Reserva::create([
             'fecha' => $Presupuesto->fecha,
             'hora_desde' => $Presupuesto->hora_desde,
             'hora_hasta' => $Presupuesto->hora_hasta,
             'direccion' => $Presupuesto->direccion,
+            'barrio' => $Presupuesto->barrio,
             'monto' => $Presupuesto->monto,
             'id_servicio' => $Presupuesto->id_servicio,
             'id_prestador' => $Presupuesto->id_prestador,
@@ -40,6 +42,15 @@ class ReservaController extends Controller
         $Presupuesto->delete();
 
         return redirect()->route('MostrarReservasCliente')->with( 'ServicioContratado' , ' ');
+    }
+
+    public function RechazarRespuestaPresupuesto( Request $request ){
+        
+        $Presupuesto = Presupuesto::findOrfail( $request->id_presupuesto );
+        $Presupuesto->delete();
+
+        return redirect()->route('MostrarRespuestasPresupuestos')->with('rechazado', ' ');
+           
     }
 
     public function MostrarReservasCliente(){
@@ -102,6 +113,14 @@ class ReservaController extends Controller
             'visto' => 0,
             ]);
         return redirect()->route('MostrarReservasCliente')->with('ReservaCancelada',' ');
+    }
+
+    public function ReservaNoEntregada( Request $request ){
+        
+        $Reserva = Reserva::findOrfail($request->id_reserva);
+        $Reserva->delete();
+
+        return redirect()->route('MostrarReservasPrestador')->with('ReservaNoEntregada',' ');
     }
 
     public function AgregarOpinion( Request $request ){

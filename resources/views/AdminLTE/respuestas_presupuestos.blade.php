@@ -1,7 +1,21 @@
 @extends('AdminLTE.home')
 @section('content')
 <div class="dispositivo">
-  <h4 class="text-muted"> <i class="zmdi zmdi-assignment"></i> Respuestas de presupuestos</h4>
+  <div class="row">
+    <div class="col-lg-6">
+      <h4 class="text-muted"> <i class="zmdi zmdi-assignment"></i> Respuestas de presupuestos </h4>
+    </div>
+
+    <div class="col-lg-6 text-right">
+      <a class="btn btn-light" href="/home/presupuestos-contestados/limpiar-presup-no-disp" onclick=" event.preventDefault(); document.getElementById('limpiar-form').submit(); "> <i class="fas fa-broom"></i> Limpiar no disponibles </a>
+    </div>
+
+    <form id="limpiar-form" action="{{ route('LimpiarPresupNoDisp') }}" method="POST">
+      @csrf
+      <input hidden type="text" name="user_id" value="{{ Auth::user()->id }}">
+    </form>
+
+  </div>
   <hr>
   @if ( count($Presupuestos) )
     @foreach ( $Presupuestos as $presupuesto )
@@ -10,7 +24,7 @@
         <input hidden type="text" name="id_presupuesto" value=" {{ $presupuesto->id }} ">
 
         {{-- Header --}}
-        <div class="card my-5">
+        <div class="card card-outline card-primary my-5">
           <div class="card-header {{ ( $presupuesto->estado == 'Sin respuesta' ? 'bg-danger' : ( $presupuesto->estado == 'Aceptado' ? 'bg-white' : ( $presupuesto->estado == 'Sin confirmar' ? 'bg-info' : ( $presupuesto->estado == 'No disponible' ? 'bg-danger' : 'bg-success' ) ) ) ) }} ">
               <div class="row align-items-center">
                   <div class="col-md-6">
@@ -58,14 +72,17 @@
             {{-- Fecha - Desde - Hasta --}}
             <div class="row">
               <div class="col-lg-4 col-12">
+                <i class="zmdi zmdi-calendar-alt text-primary"></i>
                   <strong> Fecha: </strong><span>{{ date( 'd-m-Y' , strtotime($presupuesto->fecha)) }}</span>
               </div>
 
               <div class="col-lg-4 col-12">
+                <i class="zmdi zmdi-alarm text-primary"></i>
                   <strong> Desde: </strong><span>{{ date( 'H:i' , strtotime($presupuesto->hora_desde)) }}</span>
               </div>
 
               <div class="col-lg-4 col-12">
+                <i class="zmdi zmdi-alarm text-primary"></i>
                   <strong> Hasta: </strong><span>{{ date( 'H:i' , strtotime($presupuesto->hora_hasta)) }}</span>
               </div>
             </div>
@@ -73,13 +90,33 @@
             <div class="row mt-5">
                 {{-- Dirección --}}
                 <div class="col-lg-4 col-12">
+                  <i class="zmdi zmdi-pin text-danger"></i>
                     <strong> Direccion: </strong> <span>{{ $presupuesto->direccion }}</span>
                 </div>
 
                 {{-- Barrio --}}
                 <div class="col-lg-4 col-12">
+                  <i class="zmdi zmdi-pin text-danger"></i>
                   <strong> Barrio: </strong> <span>{{ $presupuesto->barrio }} </span>
                 </div>
+
+                {{-- Caracteristicas incluidas --}}
+                <div class="row mt-5">
+                  <div class="col-lg-12 col-12">
+                    <i class="zmdi zmdi-apps"></i>
+                    <strong> Prestaciones solicitadas: </strong> 
+                    @foreach ( $CaracteristicasPorPresupuestos as $caracteristicas_array )
+                      @foreach ($caracteristicas_array as $caracteristica )
+                        @if ( $caracteristica->id_servicio == $presupuesto->id_servicio )
+
+                        <button class="btn btn-primary" disabled> {{ $caracteristica->nombre }} </button>
+
+                        @endif
+                      @endforeach
+                    @endforeach
+                  </div>
+                </div>
+
 
                 {{-- Importe --}}
                 <div class="col-lg-4 col-12">
@@ -93,30 +130,42 @@
             @if ( $presupuesto->respuesta && $presupuesto->estado != 'Sin respuesta' )
               <div class="col-lg-12 col-12 mt-5">
                 <strong> Tu: </strong> 
-                  <p class="mb-0 font-weight-light small grey lighten-2 p-2 rounded">
+                  <p class="mb-0 font-weight-light grey lighten-2 p-2 rounded">
                     {{$presupuesto->pregunta}}
                   </p>
               </div>
               <div class="col-lg-12 col-12 mt-3">
                 <strong> Prestador: </strong> 
-                  <p class="mb-0 font-weight-light small primary-color text-white p-2 rounded">
+                  <p class="mb-0 font-weight-light primary-color text-white p-2 rounded">
                     {{$presupuesto->respuesta}}
                   </p>
               </div>
             @endif
           </div>
 
-          {{-- Boton contratar --}}
           <div class="card-footer">
             @if ($presupuesto->estado == 'Disponible')
+              {{-- Boton contratar --}}
               <div class="pull-right">
                 <button type="submit" class="btn btn-primary"> Contratar </button>
               </div>
+
+              {{-- Boton cancelar --}}
+              <div class="pull-right">
+                <a href="/home/presupuestos-contestados/rechazar" class="btn btn-danger" onclick=" event.preventDefault(); document.getElementById('rechazar-form-{{$presupuesto->id}}').submit(); "> Rechazar </a>
+              </div>
+
             @endif
           </div>
         </div>
         <hr>
       </form>
+
+      <form id="rechazar-form-{{$presupuesto->id}}" action="{{ route('RechazarRespuestaPresupuesto') }}" method="POST">
+        @csrf
+        <input hidden type="text" name="id_presupuesto" value="{{ $presupuesto->id }}">
+      </form>
+      
     @endforeach
   @else
     <!-- Si no hay respuestas -->
@@ -132,7 +181,15 @@
           swal( 'Listo!', ' ' , 'success' );
         });
       </script>
-    @endif
+    @endif 
+
+    @if ( Session::has('rechazado') )
+      <script>
+        $(document).ready(function(){
+          swal( 'Presupuesto cancelado', ' ' , 'success' );
+        });
+      </script>
+    @endif 
     
     <script>
       $(document).on('change','.select_estado',function(){

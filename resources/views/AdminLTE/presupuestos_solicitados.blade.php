@@ -20,22 +20,24 @@
       <form action=" {{ route('ResponderSolicitudPresupuesto') }} " method="POST">
         @csrf
         <input hidden type="text" name="id_presupuesto" value=" {{ $presupuesto->id }} ">
-        <div class="card">
+        <div class="card card-outline card-primary">
           <div class="card-header">
             <h4> <a href=" {{ route('MostrarServicio', [ 'id' => $presupuesto->id_servicio ]) }} "> {{ $presupuesto->nombre }} </a> </h4>
             <small> Enviado el: {{ date ('d-m-Y' , strtotime($presupuesto->created_at)) }} </small>
           </div>
-          <div class="card-body">
+          <div class="card-body bor10">
             <div class="row">
-
               {{-- Fecha - Desde - Hasta --}}
               <div class="col-lg-4 col-12">
+                <i class="zmdi zmdi-calendar-alt text-primary"></i>
                 <strong> Fecha: </strong><span>{{ date( 'd-m-Y' , strtotime($presupuesto->fecha)) }}</span>
               </div>
               <div class="col-lg-4 col-12">
+                <i class="zmdi zmdi-alarm text-primary"></i>
                 <strong> Desde: </strong><span>{{ date( 'H:i' , strtotime($presupuesto->hora_desde)) }}</span>
               </div>
               <div class="col-lg-4 col-12">
+                <i class="zmdi zmdi-alarm text-primary"></i>
                 <strong> Hasta: </strong><span>{{ date( 'H:i' , strtotime($presupuesto->hora_hasta)) }}</span>
               </div>
             </div>
@@ -43,11 +45,13 @@
             {{-- Dirección --}}
             <div class="row mt-5">
               <div class="col-lg-6 col-12">
+                <i class="zmdi zmdi-pin text-danger"></i>
                 <strong> Direccion: </strong> <span>{{ $presupuesto->direccion }} </span>
               </div>
 
               {{-- Barrio --}}
               <div class="col-lg-6 col-12">
+                <i class="zmdi zmdi-pin text-danger"></i>
                 <strong> Barrio: </strong> <span>{{ $presupuesto->barrio }} </span>
               </div>
             </div>
@@ -55,11 +59,14 @@
             {{-- Caracteristicas incluidas --}}
             <div class="row mt-5">
               <div class="col-lg-12 col-12">
+                <i class="zmdi zmdi-apps"></i>
                 <strong> Prestaciones solicitadas: </strong> 
                 @foreach ( $CaracteristicasPorPresupuestos as $caracteristicas_array )
                   @foreach ($caracteristicas_array as $caracteristica )
                     @if ( $caracteristica->id_servicio == $presupuesto->id_servicio )
-                      <span>{{ $caracteristica->nombre }} - </span>
+
+                    <button class="btn btn-primary" disabled> {{ $caracteristica->nombre }} </button>
+
                     @endif
                   @endforeach
                 @endforeach
@@ -69,6 +76,7 @@
             {{-- Aclaraciones --}}
             <div class="row mt-5">
               <div class="col-lg-12 col-12">
+                <i class="zmdi zmdi-info text-info"></i>
                 <strong> Aclaración: </strong> <span>{{ $presupuesto->pregunta }}</span>
               </div>
             </div>

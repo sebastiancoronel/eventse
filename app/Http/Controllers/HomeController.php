@@ -106,6 +106,18 @@ class HomeController extends Controller
                                           
         array_push( $CaracteristicasPorPresupuestos , $Caracteristicas );
         }
+
+        // Borrar notificaciones de presupuestos una vez que entro en la vista.
+
+        // $Notificaciones = Notificacion::where( 'user_id_notificar' , Auth::user()->id )->where( 'id_evento' , 2  )->where( 'visto' , 0 )->get();
+
+        // foreach ($Notificaciones as $notificacion ) {
+          
+        //   $notificacion->visto = 1;
+        //   $notificacion->update();
+
+        // }
+
         // dd($CaracteristicasPorPresupuestos);
 
       return view('AdminLTE.presupuestos_solicitados' , [ 'Presupuestos' => $Presupuestos , 'CaracteristicasPorPresupuestos' => $CaracteristicasPorPresupuestos ]);

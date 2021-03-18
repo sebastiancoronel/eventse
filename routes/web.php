@@ -60,6 +60,8 @@ Route::middleware(['auth', 'ControlarPerfilPrestador'])->group(function () {
   Route::post('/home/presupuestos-recibidos','PresupuestoController@ResponderSolicitudPresupuesto')->name('ResponderSolicitudPresupuesto');
   Route::get('/home/prestador/reservas','ReservaController@MostrarReservasPrestador')->name('MostrarReservasPrestador');
 
+  // Route::post('/home/prestador/reservas/limpiar-reservas-canceladas','ReservaController@LimpiarReservasCanceladas')->name('LimpiarReservasCanceladas');
+
   // Servicios
   Route::get('/home/servicios','HomeController@MostrarMisServicios')->name('MostrarMisServicios');
   Route::post('/home/servicios/habilitar-deshabilitar','HomeController@HabilitarDeshabilitarServicio')->name('HabilitarDeshabilitarServicio');
@@ -104,6 +106,12 @@ Route::middleware(['auth'])->group(function () {
 
   Route::get('/home/presupuestos-contestados','PresupuestoController@MostrarRespuestasPresupuestos')->name('MostrarRespuestasPresupuestos');
   Route::post('/home/presupuestos-contestados/confirmar','ReservaController@ConfirmarContratacion')->name('ConfirmarContratacion');
+  Route::post('/home/presupuestos-contestados/no-entregado','ReservaController@ReservaNoEntregada')->name('ReservaNoEntregada');
+  
+  Route::post('/home/presupuestos-contestados/rechazar','ReservaController@RechazarRespuestaPresupuesto')->name('RechazarRespuestaPresupuesto');
+
+  Route::post('/home/presupuestos-contestados/limpiar-presup-no-disp','PresupuestoController@LimpiarPresupNoDisp')->name('LimpiarPresupNoDisp');
+
   Route::get('/home/cliente/reservas','ReservaController@MostrarReservasCliente')->name('MostrarReservasCliente');
   Route::post('/home/cliente/reservas/cancelar','ReservaController@CancelarReserva')->name('CancelarReserva');
   //Agregar opinion

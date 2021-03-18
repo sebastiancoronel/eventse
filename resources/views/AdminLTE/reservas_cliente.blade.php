@@ -5,7 +5,7 @@
   <hr>
   @if ( count($Reservas) )
     @foreach ( $Reservas as $reserva )
-      <div class="card">
+      <div class="card mb-5">
         <div class="card-header bg-white">
             <div class="row align-items-center">
                 <div class="col-md-6">
@@ -32,22 +32,32 @@
               <div class="row">
                 {{-- Fecha - Desde - Hasta --}}
                 <div class="col-lg-4 col-12">
+                  <i class="zmdi zmdi-calendar-alt text-primary"></i>
                     <strong> Fecha: </strong><span>{{ date( 'd-m-Y' , strtotime($reserva->fecha)) }}</span>
                 </div>
                 <div class="col-lg-4 col-12">
+                  <i class="zmdi zmdi-alarm text-primary"></i>
                     <strong> Desde: </strong><span>{{ date( 'H:i' , strtotime($reserva->hora_desde)) }}</span>
                 </div>
                 <div class="col-lg-4 col-12">
+                  <i class="zmdi zmdi-alarm text-primary"></i>
                     <strong> Hasta: </strong><span>{{ date( 'H:i' , strtotime($reserva->hora_hasta)) }}</span>
                 </div>
 
                 <div class="row mt-5">
                     {{-- Dirección --}}
-                    <div class="col-lg-6 col-12">
+                    <div class="col-lg-3 col-12">
+                      <i class="zmdi zmdi-pin text-danger"></i>
                         <strong> Direccion: </strong> <span>{{ $reserva->direccion }} </span>
                     </div>
+
+                    <div class="col-lg-3 col-12">
+                      <i class="zmdi zmdi-pin text-danger"></i>
+                      <strong> Barrio: </strong> <span>{{ $reserva->barrio }} </span>
+                    </div>
+
                     {{-- Importe --}}
-                    <div class="col-lg-6 col-12">
+                    <div class="col-lg-3 col-12">
                         <strong> Precio Final: </strong> <span> $ {{ $reserva->monto }}</span>
                     </div>
                 </div>
@@ -66,7 +76,7 @@
               <div class="text-muted">
                 <div class="row">
                   <div class="col-lg-4 col-12">
-                    <div class="rounded-circle" style=" width: 5rem; height: 5rem; background-image: url( '{{ asset($reserva->foto) }}' ); background-size: cover; background-position:center; background-repeat: no-repeat;">
+                    <div class="rounded-circle" style=" width: 5rem; height: 5rem; background-image: url( '{{ asset($reserva->foto) }}' ); background-size: contain; background-position:center; background-repeat: no-repeat;">
                     </div>
                   </div>
 

@@ -87,14 +87,15 @@
 
                 <!-- Icon header - Buscar - Carrito de compras - Favoritos -->
                 <div class="wrap-icon-header flex-w flex-r-m">
+                    {{-- <small>Búsqueda avanzada</small> --}}
                     <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-                        <small>Búsqueda avanzada</small>
                         <i class="zmdi zmdi-search"></i>
                     </div>
 
                     {{-- Carrito --}}
                     <div id="carrito_escritorio" class="icon-header-item icon-header-noti cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-cart" data-notify="{{ $CantidadServicios }}"> 
-                        <i class="zmdi zmdi-shopping-cart"></i>
+                        {{-- <i class="zmdi zmdi-shopping-cart"></i> --}}
+                        <img src=" {{asset('images/box1.png')}} " style=" width: 26px; height: 26px; " alt="">
                     </div>
 
                     {{-- Favoritos --}}
