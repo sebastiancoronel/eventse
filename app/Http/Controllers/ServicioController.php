@@ -31,6 +31,7 @@ class ServicioController extends Controller
                           ->Join( 'categorias' , 'servicios.id_categoria' , '=' , 'categorias.id' )
                           ->Join( 'prestadors' , 'servicios.id_prestador' , '=' , 'prestadors.id' )
                           ->Join( 'users' , 'prestadors.user_id' , '=' , 'users.id' )
+                          ->where( 'moderado' , 1 )
                           ->select('servicios.*','categorias.nombre as nombre_categoria','users.provincia', 'users.localidad')
                           ->get();
     
@@ -185,6 +186,7 @@ class ServicioController extends Controller
 
     $Servicio->id_categoria = $request->id_categoria;
     $Servicio->id_prestador = $Prestador->id;
+    $Servicio->moderado = 0;
     $Servicio->save();
 
     if ($request->caracteristica) {
@@ -201,7 +203,7 @@ class ServicioController extends Controller
     $RandomKey = array_rand( $ClasesDeFondoEnGradiente, 1 );
     $ClaseRandom = $ClasesDeFondoEnGradiente[$RandomKey];
 
-    return redirect()->route('ServicioPublicadoConExito')->with('Success','Servicio publicado con éxito')->with('ClaseRandom',$ClaseRandom);
+    return redirect()->route('ServicioPublicadoConExito')->with('Success','Servicio creado con éxito. Te avisaremos cuando sea aprobada por el administrador')->with('ClaseRandom',$ClaseRandom);
   }
 
   public function ServicioPublicadoConExito(){
@@ -378,6 +380,7 @@ class ServicioController extends Controller
     ->Join( 'prestadors' , 'servicios.id_prestador' , 'prestadors.id' )
     ->Join( 'users' , 'prestadors.user_id' , 'users.id')
     ->where('users.rol' , 'Prestador')
+    ->where('servicios.moderado' , 1)
     ->where( 'users.provincia' , $request->provincia_nombre )
     ->where( 'users.localidad' , $request->localidad )
     ->select('servicios.*','users.provincia', 'users.localidad')
@@ -402,6 +405,7 @@ class ServicioController extends Controller
     ->Join( 'prestadors' , 'servicios.id_prestador' , 'prestadors.id' )
     ->Join( 'users' , 'prestadors.user_id' , 'users.id')
     // ->where( 'servicios.deleted_at' , '=', null )
+    ->where('servicios.moderado' , 1)
     ->where( 'users.provincia' , $request->provincia )
     ->where( 'users.localidad' , $request->localidad );
 
@@ -519,6 +523,7 @@ class ServicioController extends Controller
                           ->Join( 'prestadors' , 'servicios.id_prestador' , 'prestadors.id' )
                           ->Join( 'users' , 'prestadors.user_id' , 'users.id' )
                           ->Join( 'categorias' , 'servicios.id_categoria' , '=' , 'categorias.id' )
+                          ->where('servicios.moderado' , 1)
                           ->where( 'users.provincia' , $request->provincia )
                           ->where( 'users.localidad' , $request->localidad )
                           ->select('servicios.*' , 'categorias.nombre as nombre_categoria','users.provincia', 'users.localidad')
@@ -527,6 +532,12 @@ class ServicioController extends Controller
     $Categorias = Categoria::all();
 
     return ( [$Servicios , $Categorias]);
+  }
+
+  public function ListarServiciosModerar(){
+
+    return view('AdminLTE.Admin.moderar');
+
   }
 
   // public function MostrarPlanes(){

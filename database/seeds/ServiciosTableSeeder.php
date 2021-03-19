@@ -21,6 +21,7 @@ class ServiciosTableSeeder extends Seeder
             'foto_4' => 'images/servicios/Yt1WHdkkkLJejw7bz5Ys.PNG',
             'precio' => null,
             'precio_a_convenir' => 1,
+            'moderado' => 1,
             'id_categoria' => 1,
             'id_prestador' => 1
         ]);
@@ -34,6 +35,7 @@ class ServiciosTableSeeder extends Seeder
             'foto_4' => 'images/servicios/ao6BSPRPanGNijDN1Yyo.PNG',
             'precio' => null,
             'precio_a_convenir' => 1,
+            'moderado' => 1,
             'id_categoria' => 1,
             'id_prestador' => 1
         ]);
@@ -47,6 +49,7 @@ class ServiciosTableSeeder extends Seeder
             'foto_4' => 'images/servicios/sNv4z8R9eGsXjMiYbInm.PNG',
             'precio' => 6000,
             'precio_a_convenir' => null,
+            'moderado' => 1,
             'id_categoria' => 3,
             'id_prestador' => 1
         ]);
@@ -60,6 +63,7 @@ class ServiciosTableSeeder extends Seeder
             'foto_4' => 'images/servicios/xkDX3k1g0PPJaJHafkGn.PNG',
             'precio' => null,
             'precio_a_convenir' => 1,
+            'moderado' => 1,
             'id_categoria' => 4,
             'id_prestador' => 1
         ]);
@@ -73,6 +77,7 @@ class ServiciosTableSeeder extends Seeder
             'foto_4' => 'images/servicios/FC2Iji7VfDYRskObjioJ.jpg',
             'precio' => null,
             'precio_a_convenir' => 1,
+            'moderado' => 1,
             'id_categoria' => 5,
             'id_prestador' => 1
         ]);
@@ -88,6 +93,7 @@ class ServiciosTableSeeder extends Seeder
             'foto_4' => 'images/servicios/XVUA4W5EuktMNZtsA14N.jpg',
             'precio' => 15000,
             'precio_a_convenir' => null,
+            'moderado' => 1,
             'id_categoria' => 12,
             'id_prestador' => 1
         ]);
@@ -101,6 +107,7 @@ class ServiciosTableSeeder extends Seeder
             'foto_4' => 'images/servicios/xCODWyhzWfCdSItiiGnb.PNG',
             'precio' => 10900,
             'precio_a_convenir' => null,
+            'moderado' => 1,
             'id_categoria' => 5,
             'id_prestador' => 1
         ]);
@@ -114,6 +121,7 @@ class ServiciosTableSeeder extends Seeder
             'foto_4' => 'images/servicios/lZql0QYcswXP2JDKutAL.PNG',
             'precio' => null,
             'precio_a_convenir' => 1,
+            'moderado' => 1,
             'id_categoria' => 7,
             'id_prestador' => 2
         ]);
@@ -131,6 +139,7 @@ class ServiciosTableSeeder extends Seeder
             'foto_4' => 'images/servicios/PH4Ervcr6ihaQLrtROEO.jpg',
             'precio' => null,
             'precio_a_convenir' => 1,
+            'moderado' => 1,
             'id_categoria' => 9,
             'id_prestador' => 3
         ]);
@@ -144,6 +153,7 @@ class ServiciosTableSeeder extends Seeder
             'foto_4' => 'images/servicios/Ga1EAdl9RGUaBu3f12n3.jpg',
             'precio' => null,
             'precio_a_convenir' => 1,
+            'moderado' => 1,
             'id_categoria' => 5,
             'id_prestador' => 1
         ]);

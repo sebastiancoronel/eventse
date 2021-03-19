@@ -147,5 +147,8 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/home/caracteristicas/editar/{id}', 'CaracteristicaController@EditarCaracteristica')->name('EditarCaracteristica');
   Route::post('/home/caracteristicas/actualizar', 'CaracteristicaController@ActualizarCaracteristica')->name('ActualizarCaracteristica');
   Route::post('/home/caracteristicas/habilitar-deshabilitar', 'CaracteristicaController@HabilitarDeshabilitarCaracteristica')->name('HabilitarDeshabilitarCaracteristica');
+
+  // Moderaciones
+  Route::get('/home/moderar', 'ServicioController@ListarServiciosModerar')->name('ListarServiciosModerar');
   
 });
