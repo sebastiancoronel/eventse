@@ -536,9 +536,29 @@ class ServicioController extends Controller
 
   public function ListarServiciosModerar(){
 
-    return view('AdminLTE.Admin.moderar');
+    $ServiciosSinModerar = Servicio::where( 'moderado' , 0 )->Join( 'prestadors' , 'servicios.id_prestador' , '=' , 'prestadors.id' )
+    ->select('servicios.*' , 'prestadors.nombre as nombre_prestador')->get();
+    return view('AdminLTE.Admin.moderar' , [ 'ServiciosSinModerar' => $ServiciosSinModerar ] );
 
   }
+
+  public function MostrarNoModeradoModal( Request $request ){
+
+    $Servicio = Servicio::findOrfail( $request->id_servicio );
+
+    $CaracteristicasDelServicio = array();
+      
+
+    $Caracteristicas = CaracteristicasPorServicio::where( 'caracteristicas_por_servicios.id_servicio' , $Servicio->id )
+                                      ->Join( 'caracteristicas' , 'caracteristicas_por_servicios.id_caracteristica' , '=' , 'caracteristicas.id' )
+                                      ->select('caracteristicas.nombre')
+                                      ->get();
+    
+
+    
+    return( [ $Servicio , $Caracteristicas ] );
+  }
+
 
   // public function MostrarPlanes(){
   //   return view('Ecommerce.planes_publicidad');

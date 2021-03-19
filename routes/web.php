@@ -150,5 +150,6 @@ Route::middleware(['auth'])->group(function () {
 
   // Moderaciones
   Route::get('/home/moderar', 'ServicioController@ListarServiciosModerar')->name('ListarServiciosModerar');
+  Route::get('/home/moderar/ver-servicio-sin-moderar', 'ServicioController@MostrarNoModeradoModal')->name('MostrarNoModeradoModal');
   
 });
