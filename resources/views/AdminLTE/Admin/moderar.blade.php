@@ -8,8 +8,9 @@
             <table class="table table-bordered table-responsive-md table-striped text-center tabla-caracteristicas" servicio-id=""> <!-- servicio-id Puede servir para identificar al servicio.. ya veremos -->
                 <thead>
                     <tr>
-                        <th>Servicio</th>
-                        <th>Prestador</th>
+                        <th class="font-weight-bold">Servicio</th>
+                        <th class="font-weight-bold">Prestador</th>
+                        <th class="font-weight-bold">Detalles</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -17,8 +18,7 @@
                         <tr data-id=" {{ $serv_sin_moderar->id }} ">
                             <td> {{ $serv_sin_moderar->nombre }} </td>
                             <td> {{ $serv_sin_moderar->nombre_prestador }} </td>
-                            <td class="row">
-                                {{-- <a href=" {{ route('MostrarServicioSinModerar', ['id' => $serv_sin_moderar->id]) }} " class="btn btn-primary mx-4"> <i class="fa fa-eye"></i> </a> --}}
+                            <td>
                                 <button class="btn btn-primary mx-4 boton-ver-servicio" data-toggle="modal" data-target="#ver-no-moderado"> <i class="fa fa-eye"></i> </button>
                             </td>
                         </tr>
@@ -42,17 +42,24 @@
           </button>
         </div>
         <div class="modal-body">
-          
+            
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal"> Rechazar </button>
-          <button type="button" class="btn btn-primary"> Moderar </button>
+            <form action=" {{ route('AprobarServicio') }} " method="POST">
+                <input hidden type="text" name="id_servicio" id="id_servicio_a_moderar" value="">
+                @csrf
+                <button type="submit" class="btn btn-primary"> Moderar </button>
+            </form>
+
+            <form action=" {{ route('RechazarServicio') }} " method="POST">
+                <input hidden type="text" name="id_servicio" id="id_servicio_a_rechazar" value="">
+                @csrf
+                <button type="submit" class="btn btn-danger"> Rechazar </button>
+            </form>
         </div>
       </div>
     </div>
   </div>
-
-  
 
 @push('js')
 
@@ -61,8 +68,6 @@
         
         var id_servicio = $(this).closest('tr').data('id');
         
-        console.log(id_servicio);
-
         $.ajax({
 
             type: 'GET',
@@ -77,6 +82,11 @@
             success: function(data){
 
                 $('.modal-body').empty();
+
+                $('#id_servicio_a_moderar').val( data[0].id );
+                $('#id_servicio_a_rechazar').val( data[0].id );
+                console.log($('#id_servicio_a_rechazar').val( ))
+
                 var asset = `{{ asset( `+  +` ) }}`;
 
                 var url = data[0].foto_1;
@@ -198,7 +208,7 @@
                     </div>
 
                 </div>
-
+                
                 `;
             
 
@@ -217,7 +227,15 @@
 
     } );
 </script>
-    
+
+@if ( Session::has('ServicioAprobado') )
+    <script>
+        $(document).ready(function(){
+            swal( 'Listo!', ' Servicio aprobado con éxito ' , 'success');
+        });
+    </script>
+@endif
+
 @endpush
 
 @endsection

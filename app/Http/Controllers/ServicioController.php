@@ -559,6 +559,25 @@ class ServicioController extends Controller
     return( [ $Servicio , $Caracteristicas ] );
   }
 
+  public function AprobarServicio( Request $request ){
+
+    $Servicio =  Servicio::findOrfail($request->id_servicio);
+    $Servicio->moderado = 1;
+    $Servicio->update();
+
+    //Crear una notificacion
+
+    return redirect()->route('ListarServiciosModerar')->with( 'ServicioAprobado' , ' ' );
+       
+
+  }
+
+  public function RechazarServicio( Request $request ){
+
+    return $request;
+
+  }
+
 
   // public function MostrarPlanes(){
   //   return view('Ecommerce.planes_publicidad');
