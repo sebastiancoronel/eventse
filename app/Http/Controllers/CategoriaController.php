@@ -15,7 +15,10 @@ class CategoriaController extends Controller
 {
     public function index(){
         $Categorias = Categoria::all();
-        $UltimosAgregados = Servicio::where( 'deleted_at' , '=' , null )->select('*')->orderBy('created_at','desc')->get();
+        $UltimosAgregados = Servicio::where( 'deleted_at' , '=' , null )
+                                    ->where( 'moderado' , 1 )
+                                    ->where( 'aprobado' , 1 )
+                                    ->select('*')->orderBy('created_at','desc')->get();
 
         
         // Esto es para mostrar el nombre del mes actual en el slider grande
@@ -33,7 +36,10 @@ class CategoriaController extends Controller
         $DestacadosX20 = array();
         $DestacadosX25 = array();
 
-        $Servicios = Servicio::where( 'deleted_at' , '=' , null )->get();
+        $Servicios = Servicio::where( 'deleted_at' , '=' , null )
+                            ->where( 'moderado' , 1 )
+                            ->where( 'aprobado' , 1 )
+                            ->get();
         $Cantidad = 0;
 
         // 5 a 10 Contrataciones

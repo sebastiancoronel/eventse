@@ -246,11 +246,15 @@ class ServicioController extends Controller
 
     $Servicios = array();
     $TodasLasCaracteristicas = array();
-    foreach ( $Paquete as $servicio_paquete ){
-      
-      $Servicio = Servicio::where('id', $servicio_paquete['id_servicio'] )->first();
-      array_push( $Servicios , $Servicio );
 
+    if ( $Paquete ) {
+      
+      foreach ( $Paquete as $servicio_paquete ){
+        
+        $Servicio = Servicio::where('id', $servicio_paquete['id_servicio'] )->first();
+        array_push( $Servicios , $Servicio );
+  
+      }
     }
 
     //Falta armar un array que contenga arrays de las caracteristicas con las que cuenta cada servicios, por cada servicio del paquete y traer el nombre de cada una.

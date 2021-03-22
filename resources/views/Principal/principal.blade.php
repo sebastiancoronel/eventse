@@ -199,7 +199,7 @@
 						</div>
 					</div>
 				@empty
-					<div> No hay categorias creadas</div>	
+					<div class="m-auto"> No se crearon servicios </div>	
 				@endforelse
 			</div>
 		</div>
