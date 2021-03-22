@@ -70,6 +70,18 @@ class CreateEventosTable extends Migration
                 'url_redirect' => '/home/cliente/reservas'
             ],
 
+            [
+                'tipo' => 'Servicio aprobado',
+                'texto' => 'Tu servicio fue moderado y aprobado',
+                'url_redirect' => '/home/servicios'
+            ],
+
+            [
+                'tipo' => 'Servicio rechazado',
+                'texto' => 'Tu servicio fue moderado y rechazado',
+                'url_redirect' => '/home/servicios'
+            ],
+
 
         ]);
     }

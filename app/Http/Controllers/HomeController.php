@@ -128,8 +128,10 @@ class HomeController extends Controller
       $id_prestador = Prestador::where( 'user_id' , Auth::user()->id )->pluck('id')->first();
       $Servicios = Servicio::withTrashed()
                             ->where('id_prestador', $id_prestador)
+                            ->where('moderado', 1)
                             ->Join( 'categorias' , 'servicios.id_categoria' , '=' , 'categorias.id' )
                             ->select('servicios.*', 'categorias.nombre as nombre_categoria')
+                            ->orderBy('moderado','asc')
                             ->get();
 
       return view('AdminLTE.mis_servicios' , ['Servicios' => $Servicios]);
@@ -235,6 +237,8 @@ class HomeController extends Controller
         ]);
       }
 
+      $Servicio->moderado = 0;
+      $Servicio->aprobado = 0;
       $Servicio->update();
       
       // Modificar las caracteristicas

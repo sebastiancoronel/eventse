@@ -2,6 +2,7 @@
 @section('content')
 <div class="dispositivo">
     <h4 class="text-muted">Mis servicios</h4>
+
     <hr>
     <div class="card">
         {{-- <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Mis servicios</h3> --}}
@@ -12,13 +13,15 @@
                 <table class="table table-bordered table-responsive-md table-striped text-center">
                     <thead>
                         <tr>
-                            <th class="text-center">Foto</th>
-                            <th class="text-center">Nombre</th>
-                            <th class="text-center">Descripción</th>
-                            <th class="text-center">Categoría</th>
-                            <th class="text-center">Precio</th>
-                            <th class="text-center">Editar</th>
-                            <th class="text-center">Habilitar/Deshabilitar</th>
+                            <th class=" font-weight-bold text-center">Foto</th>
+                            <th class=" font-weight-bold text-center">Nombre</th>
+                            {{-- <th class="text-center">Descripción</th> --}}
+                            <th class=" font-weight-bold text-center">Categoría</th>
+                            <th class=" font-weight-bold text-center">Precio</th>
+                            <th class=" font-weight-bold text-center">Editar</th>
+                            <th class=" font-weight-bold text-center">Habilitar/Deshabilitar</th>
+                            {{-- <th class=" font-weight-bold text-center"> Moderado </th> --}}
+                            <th class=" font-weight-bold text-center"> Estado </th>
                         </tr>
                     </thead>
 
@@ -28,7 +31,7 @@
                                 <td class="pt-3-half" style="background-image: url({{ asset($servicio->foto_1) }}); background-size: cover; background-position: center; repeat:no-repeat;">
                                 </td>
                                 <td class="pt-3-half"> {{$servicio->nombre}} </td>
-                                <td class="pt-3-half"> {{ \Illuminate\Support\Str::limit( $servicio->descripcion , 40) }} </td>
+                                {{-- <td class="pt-3-half"> {{ \Illuminate\Support\Str::limit( $servicio->descripcion , 40) }} </td> --}}
                                 <td class="pt-3-half"> {{ $servicio->nombre_categoria }} </td>
                                 <td class="pt-3-half"> {{ $servicio->precio ? '$'. $servicio->precio : 'Precio a convenir' }} </td>
                                 <td class="pt-3-half">
@@ -42,6 +45,29 @@
                                         </label>
                                     </div>
                                 </td>
+
+                                {{-- Moderado  --}}
+                                {{-- @if ( $servicio->moderado == 1 && $servicio->aprobado == 0 )
+                                    <td>
+                                        <span> <i class="zmdi zmdi-close text-danger"></i> No </span>
+                                    </td>
+                                @else
+                                    <td>    
+                                        <span> <i class="zmdi zmdi-check text-success"></i> Si </span>
+                                    </td>
+                                @endif --}}
+                                
+                                {{-- Detalles --}}
+                                @if ( $servicio->moderado == 1 && $servicio->aprobado == 0 )
+                                    <td class="bg-danger">
+                                        <span> Debes revisar el contenido </span>
+                                    </td>
+                                @else
+                                    <td class="bg-success">
+                                        <span> Moderado y aprobado </span>
+                                    </td>
+
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>
@@ -87,7 +113,7 @@
     @if ( Session::has('ServicioModificado') )
         <script>
             $(document).ready(function(){
-                swal( 'Listo!', ' Servicio modificado ' , 'success');
+                swal( 'Listo!', ' Servicio modificado. Te avisaremos cuando los cambios sean aprobados por el administrador ' , 'success'); 
             });
         </script>
     @endif

@@ -236,6 +236,14 @@
     </script>
 @endif
 
+@if ( Session::has('ServicioRechazado') )
+    <script>
+        $(document).ready(function(){
+            swal( 'Listo!', ' Servicio rechazado con éxito ' , 'success');
+        });
+    </script>
+@endif
+
 @endpush
 
 @endsection

@@ -32,6 +32,7 @@ class ServicioController extends Controller
                           ->Join( 'prestadors' , 'servicios.id_prestador' , '=' , 'prestadors.id' )
                           ->Join( 'users' , 'prestadors.user_id' , '=' , 'users.id' )
                           ->where( 'moderado' , 1 )
+                          ->where( 'aprobado' , 1 )
                           ->select('servicios.*','categorias.nombre as nombre_categoria','users.provincia', 'users.localidad')
                           ->get();
     
@@ -187,6 +188,7 @@ class ServicioController extends Controller
     $Servicio->id_categoria = $request->id_categoria;
     $Servicio->id_prestador = $Prestador->id;
     $Servicio->moderado = 0;
+    $Servicio->aprobado = 0;
     $Servicio->save();
 
     if ($request->caracteristica) {
@@ -381,6 +383,7 @@ class ServicioController extends Controller
     ->Join( 'users' , 'prestadors.user_id' , 'users.id')
     ->where('users.rol' , 'Prestador')
     ->where('servicios.moderado' , 1)
+    ->where( 'servicios.aprobado' , 1 )
     ->where( 'users.provincia' , $request->provincia_nombre )
     ->where( 'users.localidad' , $request->localidad )
     ->select('servicios.*','users.provincia', 'users.localidad')
@@ -406,6 +409,7 @@ class ServicioController extends Controller
     ->Join( 'users' , 'prestadors.user_id' , 'users.id')
     // ->where( 'servicios.deleted_at' , '=', null )
     ->where('servicios.moderado' , 1)
+    ->where('servicios.aprobado' , 1)
     ->where( 'users.provincia' , $request->provincia )
     ->where( 'users.localidad' , $request->localidad );
 
@@ -524,6 +528,7 @@ class ServicioController extends Controller
                           ->Join( 'users' , 'prestadors.user_id' , 'users.id' )
                           ->Join( 'categorias' , 'servicios.id_categoria' , '=' , 'categorias.id' )
                           ->where('servicios.moderado' , 1)
+                          ->where('servicios.aprobado' , 1)
                           ->where( 'users.provincia' , $request->provincia )
                           ->where( 'users.localidad' , $request->localidad )
                           ->select('servicios.*' , 'categorias.nombre as nombre_categoria','users.provincia', 'users.localidad')
@@ -536,7 +541,8 @@ class ServicioController extends Controller
 
   public function ListarServiciosModerar(){
 
-    $ServiciosSinModerar = Servicio::where( 'moderado' , 0 )->Join( 'prestadors' , 'servicios.id_prestador' , '=' , 'prestadors.id' )
+    $ServiciosSinModerar = Servicio::where( 'moderado' , 0 )->where( 'aprobado' , 0 )
+    ->Join( 'prestadors' , 'servicios.id_prestador' , '=' , 'prestadors.id' )
     ->select('servicios.*' , 'prestadors.nombre as nombre_prestador')->get();
     return view('AdminLTE.Admin.moderar' , [ 'ServiciosSinModerar' => $ServiciosSinModerar ] );
 
@@ -563,9 +569,18 @@ class ServicioController extends Controller
 
     $Servicio =  Servicio::findOrfail($request->id_servicio);
     $Servicio->moderado = 1;
+    $Servicio->aprobado = 1;
     $Servicio->update();
 
+    $user_notificar = Prestador::where( 'id' , $Servicio->id_prestador )->pluck('prestadors.user_id')->first();
+
     //Crear una notificacion
+    Notificacion::create([
+      'user_id_notificar' => $user_notificar,
+      'user_id_trigger' => Auth::user()->id,
+      'id_evento' => 9, //Servicio aprobado
+      'visto' => 0,
+      ]);
 
     return redirect()->route('ListarServiciosModerar')->with( 'ServicioAprobado' , ' ' );
        
@@ -574,7 +589,23 @@ class ServicioController extends Controller
 
   public function RechazarServicio( Request $request ){
 
-    return $request;
+    
+    $Servicio =  Servicio::findOrfail($request->id_servicio);
+    $Servicio->moderado = 1;
+    $Servicio->aprobado = 0;
+    $Servicio->update();
+
+    $user_notificar = Prestador::where( 'id' , $Servicio->id_prestador )->pluck('prestadors.user_id')->first();
+
+    //Crear una notificacion
+    Notificacion::create([
+      'user_id_notificar' => $user_notificar,
+      'user_id_trigger' => Auth::user()->id,
+      'id_evento' => 10, //Servicio rechazado
+      'visto' => 0,
+      ]);
+
+    return redirect()->route('ListarServiciosModerar')->with( 'ServicioRechazado' , ' ' );
 
   }
 
