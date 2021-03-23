@@ -56,6 +56,14 @@
               </div>
             </div>
 
+            {{-- Precio --}}
+            {{-- <div class="row mt-5">
+              <div class="col-lg-6 col-12">
+                <i class="zmdi zmdi-pin text-danger"></i>
+                <strong> Monto publicado: </strong> <span>{{ $presupuesto->monto }} </span>
+              </div>
+            </div> --}}
+
             {{-- Caracteristicas incluidas --}}
             <div class="row mt-5">
               <div class="col-lg-12 col-12">

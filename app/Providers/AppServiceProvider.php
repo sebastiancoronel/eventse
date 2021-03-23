@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191); //AGREGUE ESTO POR EL ERROR DE TABLA Al HACER LA MIGRACION DE LA BASE DE DATOS
         
         view()->composer('*',function(View $view){
-            // Traer todas las categorias 
+            // Traer todas las categorias - Se usa en el buscador avanzado
             $Categorias = Categoria::all();
 
             // Provincias & Localidades para la busqueda

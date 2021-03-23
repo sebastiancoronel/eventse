@@ -38,7 +38,7 @@ class ServiciosTableSeeder extends Seeder
             'precio_a_convenir' => 1,
             'moderado' => 0,
             'aprobado' => 0,
-            'id_categoria' => 1,
+            'id_categoria' => 2,
             'id_prestador' => 1
         ]);
 

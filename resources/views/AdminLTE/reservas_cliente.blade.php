@@ -28,7 +28,7 @@
         </div>
         <div class="card-body">
           <div class="row">
-            <div class="col-lg-6 col-12">
+            <div class="col-lg-8 col-12">
               <div class="row">
                 {{-- Fecha - Desde - Hasta --}}
                 <div class="col-lg-4 col-12">
@@ -46,18 +46,18 @@
 
                 <div class="row mt-5">
                     {{-- Dirección --}}
-                    <div class="col-lg-3 col-12">
+                    <div class="col-lg-4 col-12">
                       <i class="zmdi zmdi-pin text-danger"></i>
                         <strong> Direccion: </strong> <span>{{ $reserva->direccion }} </span>
                     </div>
 
-                    <div class="col-lg-3 col-12">
+                    <div class="col-lg-4 col-12">
                       <i class="zmdi zmdi-pin text-danger"></i>
                       <strong> Barrio: </strong> <span>{{ $reserva->barrio }} </span>
                     </div>
 
                     {{-- Importe --}}
-                    <div class="col-lg-3 col-12">
+                    <div class="col-lg-4 col-12">
                         <strong> Precio Final: </strong> <span> $ {{ $reserva->monto }}</span>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
               </div>
             </div>
 
-            <div class="col-lg-6 col-12 border p-4">
+            <div class="col-lg-4 col-12 border p-4">
               <div class="text-muted">
                 <div class="row">
                   <div class="col-lg-4 col-12">

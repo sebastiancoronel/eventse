@@ -8,15 +8,28 @@
         @csrf
         <input hidden type="text" name="id_servicio" id="" value=" {{ $Servicio->id }} ">
         <div class="card">
-            @if ( $Servicio->deleted_at == null )
-            <div class="card-header bg-success">
-                <span class="text-uppercase"> Servicio habilitado </span>
-            </div>
-            @else
-                <div class="card-header bg-danger">
-                    <span class="text-uppercase"> Servicio deshabilitado </span>
+            <div class="card-header">
+                <div class="row">
+                    {{-- <div class="col-lg-6">
+                        @if ( $Servicio->deleted_at == null )
+                            <span class="text-uppercase"> <i class="zmdi zmdi-circle text-success"></i> Habilitado </span>
+                        @else
+                            <span class="text-uppercase"> <i class="zmdi zmdi-circle text-danger"></i> Deshabilitado </span>
+                        @endif
+                    </div> --}}
+
+                    <div class="col-lg-6">
+                        @if ( $Servicio->aprobado == 1 )
+                            <span class="text-uppercase"> <i class="zmdi zmdi-check text-success"></i> Servicio aprobado </span> 
+                        @else
+                            <span class="text-uppercase"> <i class="zmdi zmdi-close text-danger"></i> Debes revisar el contenido de la publicación </span>
+                        @endif
+                    </div>
                 </div>
-            @endif
+
+
+            </div>
+
             <div class="card-body">
                 {{-- Fotos --}}
                 <div class="mt-5">

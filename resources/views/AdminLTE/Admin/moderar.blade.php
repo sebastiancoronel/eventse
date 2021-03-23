@@ -36,7 +36,7 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header bg-warning">
-          <h5 class="modal-title"> <i class="zmdi zmdi-alert-triangle"></i> Aprobar </h5>
+          <h5 class="modal-title"> <i class="zmdi zmdi-alert-triangle"></i> Pendiente de moderación </h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

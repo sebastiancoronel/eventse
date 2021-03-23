@@ -44,7 +44,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($Categorias as $categoria)
+                    @forelse ($CategoriasGestionar as $categoria)
                         <tr class="text-center" data-id=" {{ $categoria->id }} ">
                             <td> {{ $categoria->nombre }} </td>
                             <td class="w-50"> <img class="img-fluid img-tabla" src="{{ asset($categoria->foto) }}" alt="{{ asset($categoria->foto) }}"> </td>
@@ -64,7 +64,7 @@
                             </td>
                         </tr>
                     @empty
-                        
+
                     @endforelse
                 </tbody>
             </table>

@@ -164,11 +164,12 @@ class CategoriaController extends Controller
     }
    
     public function CrearCategorias(){
-        $Categorias = Categoria::withTrashed()
+
+        $CategoriasGestionar = Categoria::withTrashed() //Se llama asi porque en AppServiceProvider se usa otra variable llamada Categorias
                                 ->select('*')
                                 ->get();
-
-        return view('AdminLTE.Admin.crear_categorias',[ 'Categorias' => $Categorias ]);
+        
+        return view('AdminLTE.Admin.crear_categorias',[ 'CategoriasGestionar' => $CategoriasGestionar ]);
     }
 
     public function AlmacenarCategoria( Request $request ){
