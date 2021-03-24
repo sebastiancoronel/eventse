@@ -538,6 +538,9 @@
       
       </div>
     </body>
+    
+    <!-- Modal search -->
+    @include('Principal.partials.modal_search')
 
   @include('Principal.Partials.scripts')
   @stack('js')
