@@ -152,7 +152,7 @@
             <div id="div_precio" class="col-12 col-md-3 md-form my-5">
                 <i class="zmdi zmdi-money prefix"></i>
                 <label for="precio">Precio</label>
-            <input id="precio" class="form-control" type="number" name="precio" value="{{old('precio')}}">
+            <input id="precio" class="form-control" type="number" name="precio" value="{{old('precio')}}" maxlength="8">
                 <div class="text-danger"> {{ $errors->first('precio') }} </div>
             </div>
 

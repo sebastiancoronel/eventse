@@ -181,7 +181,7 @@ class ServicioController extends Controller
       $Servicio->precio_a_convenir = 1;
     }else{
       $request->validate([
-        'precio' => 'required|integer'
+        'precio' => 'required|integer|max:99999999'
       ]);
     }
 

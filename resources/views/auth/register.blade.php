@@ -29,7 +29,7 @@
                 <div class="md-form">
                   <i class="zmdi zmdi-account prefix text-muted"></i>
                     <label class="active" for="name">Nombre</label>
-                      <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                      <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" maxlength="60" required autofocus>
                       @if ($errors->has('name'))
                         <span class="invalid-feedback" role="alert">
                           <strong>{{ $errors->first('name') }}</strong>
@@ -41,7 +41,7 @@
                 <div class="md-form">
                   <i class="zmdi zmdi-account prefix text-muted"></i>
                     <label class="active" for="lastname">Apellido</label>
-                        <input id="lastname" type="text" class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ old('lastname') }}" required autofocus>
+                        <input id="lastname" type="text" class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ old('lastname') }}" maxlength="60" required autofocus>
                         @if ($errors->has('lastname'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('lastname') }}</strong>
@@ -65,7 +65,7 @@
                 <div class="md-form">
                   <i class="zmdi zmdi-account-box prefix text-muted"></i>
                   <label class="active" for="dni">{{ __('DNI') }}</label>
-                  <input id="dni" type="text" class="form-control{{ $errors->has('dni') ? ' is-invalid' : '' }}" name="dni" value="{{ old('dni') }}" required>
+                  <input id="dni" type="text" class="form-control{{ $errors->has('dni') ? ' is-invalid' : '' }}" name="dni" value="{{ old('dni') }}" maxlength="8" required>
                   @if ($errors->has('dni'))
                       <span class="invalid-feedback" role="alert">
                           <strong>{{ $errors->first('dni') }}</strong>
