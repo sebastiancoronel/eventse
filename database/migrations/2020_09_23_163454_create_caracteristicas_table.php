@@ -54,6 +54,30 @@ class CreateCaracteristicasTable extends Migration
             ['nombre' => 'Shows de salsa y odaliscas' ],
             ['nombre' => 'Servicio de pizzas' ],
             ['nombre' => 'Fuente de chocolate' ],
+            // Juegos 34 al 42
+            ['nombre' => 'Inflables' ],
+            ['nombre' => 'Peloteros' ],
+            ['nombre' => 'Plaza blanda' ],
+            ['nombre' => 'Cama elastica' ],
+            ['nombre' => 'Metegoles' ],
+            ['nombre' => 'Inflables acuaticos' ],
+            ['nombre' => 'Mesa de ping pong' ],
+            ['nombre' => 'Mesa de tejo' ],
+            ['nombre' => 'Deslizables' ],
+            // Mobiliario 43 al 47
+            ['nombre' => 'Puf luminoso' ],
+            ['nombre' => 'Living para niños - 10 invitados' ],
+            ['nombre' => 'Living para adultos - 10 invitados' ],
+            ['nombre' => 'Mesas y sillas vestidas' ],
+            ['nombre' => 'Gazebos' ],
+            // Iluminación 48 al 54
+            ['nombre' => 'Laser'],
+            ['nombre' => 'Luz led'],
+            ['nombre' => 'Neon'],
+            ['nombre' => 'Esfera espejada'],
+            ['nombre' => 'Luz robotica'],
+            ['nombre' => 'Luz negra'],
+            ['nombre' => 'Esfera led'],
             
         ]);
     }

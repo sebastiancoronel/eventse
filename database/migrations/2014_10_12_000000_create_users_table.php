@@ -78,17 +78,17 @@ class CreateUsersTable extends Migration
                 'password' => bcrypt('123456789')
             ],
 
-            [
-                'name' => 'Prestador',
-                'lastname' => 'numero 3',
-                'email' => 'prestador3@gmail.com',
-                'dni' => '22336999',
-                'provincia' => 'Cordoba',
-                'localidad' => 'Villa Carlos Paz',
-                'telefono' => '351649798',
-                'rol' => 'Prestador',
-                'password' => bcrypt('123456789')
-            ],
+            // [
+            //     'name' => 'Prestador',
+            //     'lastname' => 'numero 3',
+            //     'email' => 'prestador3@gmail.com',
+            //     'dni' => '22336999',
+            //     'provincia' => 'Cordoba',
+            //     'localidad' => 'Villa Carlos Paz',
+            //     'telefono' => '351649798',
+            //     'rol' => 'Prestador',
+            //     'password' => bcrypt('123456789')
+            // ],
         ]);
     }
 

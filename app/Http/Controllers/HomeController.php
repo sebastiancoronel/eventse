@@ -123,7 +123,6 @@ class HomeController extends Controller
       return view('AdminLTE.presupuestos_solicitados' , [ 'Presupuestos' => $Presupuestos , 'CaracteristicasPorPresupuestos' => $CaracteristicasPorPresupuestos ]);
     } 
 
-   
     public function MostrarMisServicios(){
       $id_prestador = Prestador::where( 'user_id' , Auth::user()->id )->pluck('id')->first();
       $Servicios = Servicio::withTrashed()
@@ -342,6 +341,8 @@ class HomeController extends Controller
       }
 
       $User = User::findOrfail( Auth::user()->id );
+      $User->name = $request->nombre_user;
+      $User->lastname = $request->apellido_user;
       $User->email = $request->email_personal;
       $User->telefono = $request->telefono_personal;
       $User->update();
