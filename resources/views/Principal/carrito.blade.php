@@ -11,6 +11,7 @@
 						<div class="m-l-25 m-r--38 m-lr-0-xl">
 							<!-- Item 1 -->
 							@if ($Paquete)
+							{{-- {{ dd($Paquete) }} --}}
 								@foreach ($Paquete as $key_serv => $servicio)
 									<div class="bor10 p-5 mb-4">
 										<div class="row container">
@@ -48,6 +49,7 @@
 										<!-- Caracteristicas -->
 										<div class="form-row mt-4">
 											@foreach ( $TodasLasCaracteristicas as $key_caract => $caracteristicas )
+											{{-- {{ dd( $key_serv , $key_caract ) }} --}}
 												@if ( $key_serv == $key_caract )
 													@foreach ($caracteristicas as $caracteristica)
 													<div class="col-lg-4">
