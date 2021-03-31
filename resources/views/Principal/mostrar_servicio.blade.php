@@ -567,7 +567,7 @@
 					console.log(data);
 					$('#textarea_pregunta').val('');
 					if ( data.error ) {
-						swal('Error!','No puedes reservar servicios siendo administrador','error');
+						swal('Error!','No puedes hacer preguntas siendo administrador','error');
 						return false;						
 					}
 
