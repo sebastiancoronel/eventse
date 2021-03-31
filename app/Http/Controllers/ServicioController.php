@@ -214,6 +214,12 @@ class ServicioController extends Controller
 
   public function AlmacenarPregunta(Request $request){
 
+    if ( Auth::user()->rol == 'Administrador' ) {
+
+      return ( ['error' => 'AgregarPaqueteDenegado']);
+
+    }
+
     $Pregunta = New Pregunta;
     $Pregunta->id_prestador = $request->id_prestador;
     $Pregunta->id_servicio = $request->id_servicio;
@@ -241,8 +247,9 @@ class ServicioController extends Controller
   }
 
   public function MostrarPaquete(){
+
     $Paquete = Session::get('Servicio'); //Ver si puedo usar esto o esta tomando la variable $Paquete de AppServiceProvider
-    // dd($Paquete);
+    //dd($Paquete);
 
     $Servicios = array();
     $TodasLasCaracteristicas = array();
@@ -271,7 +278,8 @@ class ServicioController extends Controller
       array_push( $TodasLasCaracteristicas , $CaracteristicasPorServicio );
       
     }
-    // dd($TodasLasCaracteristicas);
+    //dd( $Paquete , $TodasLasCaracteristicas); //Las llaves del paquete no se acomodan cuando se elimina el servicio. Ver si yo le doy ese numero o lo puse para 
+    //que sea algun id
 
 
     
@@ -281,8 +289,20 @@ class ServicioController extends Controller
   public function AgregarAlPaquete( Request $request ){
     // $Session = Session::all();
     // dd($Session);
+    if ( Auth::user()->rol == 'Administrador' ) {
+
+      return redirect()->route('MostrarServicio', [ 'id' => $request->id_servicio ])->with( 'AgregarPaqueteDenegado',' ' );
+
+    }
 
     $Servicio = Servicio::findOrfail( $request->id_servicio );
+
+    // Controlar que no se agregue su propio servicio
+    $Prestador = Prestador::where( 'user_id' , Auth::user()->id )->first();
+    
+    if ( $Servicio->id_prestador == $Prestador->id ) {
+      return redirect()->route('MostrarServicio', [ 'id' => $request->id_servicio ])->with( 'AutoReservaDenegada',' ' );
+    }
 
     $id_servicio = $request->id_servicio;
     $NombreServicio = $Servicio->nombre;
@@ -351,14 +371,15 @@ class ServicioController extends Controller
               unset($Paquete[$key_str]); //Borramos el item usando la key que convertimos en string
           }
       }
+
+      $Paquete = array_values($Paquete); //Reordena las keys
       $request->session()->put('Servicio', $Paquete); //Guarda el array modificado en Session nuevamente.
 
       $Paquete = Session::get('Servicio'); //Trae lo nuevo de session para mostrar
-      
-      
     }else{
       $Paquete = null;
     }
+
     return redirect()->route('MostrarPaquete');
 
   }
