@@ -122,8 +122,8 @@ class ServicioController extends Controller
   public function AlmacenarServicio( Request $request ){
 
     $request->validate([      
-      'nombre' => 'required',
-      'descripcion' => 'required',
+      'nombre' => 'required|max:200',
+      'descripcion' => 'required|max:2000',
       'foto_1' => 'required',
       'foto_2' => 'required',
       'foto_3' => 'required',
