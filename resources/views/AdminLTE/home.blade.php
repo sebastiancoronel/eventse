@@ -180,140 +180,153 @@
 
                   {{-- Presupuestos --}}
                   @if (Auth::user()->rol != 'Administrador')
-                  <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                      <i class="zmdi zmdi-assignment"></i>
-                      <p>
-                        Presupuestos
-                        <i class="right fas fa-angle-left"></i>
-                      </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                      @if ( Auth::user()->rol == 'Prestador' )
-                        <li class="nav-item">
-                          <a href=" {{ route('MostrarPresupuestosSolicitados') }} " class="nav-link">
-                            <i class="nav-icon"></i>
-                            <p> Solicitados </p>
+                    <li class="nav-item has-treeview">
+                      <a href="#" class="nav-link">
+                        <i class="zmdi zmdi-assignment"></i>
+                        <p>
+                          Presupuestos
+                          <i class="right fas fa-angle-left"></i>
+                        </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                        @if ( Auth::user()->rol == 'Prestador' )
+                          <li class="nav-item">
+                            <a href=" {{ route('MostrarPresupuestosSolicitados') }} " class="nav-link">
+                              <i class="nav-icon"></i>
+                              <p> Solicitados </p>
+                            </a>
+                          </li>
+                        @endif
+                        
+                        @if ( Auth::user()->rol != 'Administrador' )
+                          <li class="nav-item">
+                            <a href=" {{ route('MostrarRespuestasPresupuestos') }} " class="nav-link">
+                              <i class="nav-icon"></i>
+                              <p> Respuestas </p>
+                            </a>
+                          </li>
+                        @endif
+                      </ul>
+                    </li>
+                  @endif
+                  
+                  {{-- Preguntas --}}
+                  @if (Auth::user()->rol != 'Administrador')
+                    <li class="nav-item has-treeview">
+                      <a href="#" class="nav-link">
+                        <i class="zmdi zmdi-assignment"></i>
+                        <p>
+                          Preguntas
+                          <i class="right fas fa-angle-left"></i>
+                        </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                        @if ( Auth::user()->rol == 'Prestador' )
+                          <li class="nav-item has-treeview">
+                            <a href="{{ route('MostrarPreguntasRecibidas') }}" class="nav-link">
+                              <i class="nav-icon zmdi zmdi-format-subject"></i>
+                              <p>
+                                Preguntas recibidas
+                              </p>
+                            </a>
+                          </li>
+                        @endif
+
+                        <li class="nav-item has-treeview">
+                          <a href=" {{route('MostrarRespuestasRecibidas')}} " class="nav-link">
+                            <i class="nav-icon zmdi zmdi-format-subject"></i>
+                            <p>
+                              Respuestas recibidas
+                            </p>
                           </a>
                         </li>
-                      @endif
-                      
-                      @if ( Auth::user()->rol != 'Administrador' )
-                        <li class="nav-item">
-                          <a href=" {{ route('MostrarRespuestasPresupuestos') }} " class="nav-link">
-                            <i class="nav-icon"></i>
-                            <p> Respuestas </p>
-                          </a>
-                        </li>
-                      @endif
-                    </ul>
-                  </li>
+                      </ul>
+                    </li>
                   @endif
 
-                    @if ( Auth::user()->rol == 'Prestador' )
+                  @if ( Auth::user()->rol != 'Administrador' )
+                    <li class="nav-item has-treeview">
+                      <a href=" {{route('MostrarReservasPrestador')}} " class="nav-link">
+                        <i class="nav-icon zmdi zmdi-format-subject"></i>
+                        <p>
+                          Contrataciones
+                        </p>
+                      </a>
+                    </li>
+
+                    <li class="nav-item has-treeview">
+                      <a href=" {{route('MostrarReservasCliente')}} " class="nav-link">
+                        <i class="nav-icon zmdi zmdi-format-subject"></i>
+                        <p>
+                          Mis Reservas
+                        </p>
+                      </a>
+                    </li>
+                  @endif
+
+                  @if ( Auth::user()->rol == 'Prestador' )
+                    <li class="nav-item has-treeview">
+                      <a href=" {{route('MostrarMisServicios')}} " class="nav-link">
+                        <i class="nav-icon zmdi zmdi-format-subject"></i>
+                        <p>
+                          Publicaciones
+                        </p>
+                      </a>
+                    </li>
+                  @endif
+
+                  {{-- Admin --}}
+                  @if ( Auth::check() )
+                    @if ( Auth::user()->rol == 'Administrador' )
+                      <!-- Categorías -->
                       <li class="nav-item has-treeview">
-                        <a href="{{ route('MostrarPreguntasRecibidas') }}" class="nav-link">
-                          <i class="nav-icon zmdi zmdi-format-subject"></i>
+                        <a href="#" class="nav-link">
+                          <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
                           <p>
-                            Preguntas
+                            Categorías
+                            <i class="right fas fa-angle-left"></i>
+                          </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                          <li class="nav-item">
+                            <a href="{{route('CrearCategorias')}}" class="nav-link">
+                              <i class="nav-icon"></i>
+                              <p>Gestionar</p>
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+
+                      <!-- Moderaciones -->
+                      <li class="nav-item has-treeview">
+                        <a href="{{route('ListarServiciosModerar')}}" class="nav-link">
+                          <i class="nav-icon zmdi zmdi-eye"></i>
+                          <p>
+                            Moderar
                           </p>
                         </a>
                       </li>
 
-                      <li class="nav-item has-treeview">
-                        <a href=" {{route('MostrarReservasPrestador')}} " class="nav-link">
-                          <i class="nav-icon zmdi zmdi-format-subject"></i>
+                      <!-- Características -->
+                      {{-- <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                          <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
                           <p>
-                            Contrataciones
+                            Características
+                            <i class="right fas fa-angle-left"></i>
                           </p>
                         </a>
-                      </li>
-
+                        <ul class="nav nav-treeview">
+                          <li class="nav-item">
+                            <a href="{{route('CrearCaracteristicas')}}" class="nav-link">
+                              <i class="nav-icon"></i>
+                              <p>Gestionar</p>
+                            </a>
+                          </li>
+                        </ul>
+                      </li> --}}
                     @endif
-
-                    @if ( Auth::user()->rol == 'Cliente' )
-                      <li class="nav-item has-treeview">
-                        <a href=" {{route('MostrarRespuestasRecibidas')}} " class="nav-link">
-                          <i class="nav-icon zmdi zmdi-format-subject"></i>
-                          <p>
-                            Respuestas
-                          </p>
-                        </a>
-                      </li>
-
-                      <li class="nav-item has-treeview">
-                        <a href=" {{route('MostrarReservasCliente')}} " class="nav-link">
-                          <i class="nav-icon zmdi zmdi-format-subject"></i>
-                          <p>
-                            Mis Reservas
-                          </p>
-                        </a>
-                      </li>
-                    @endif
-
-                    @if ( Auth::user()->rol == 'Prestador' )
-                      <li class="nav-item has-treeview">
-                        <a href=" {{route('MostrarMisServicios')}} " class="nav-link">
-                          <i class="nav-icon zmdi zmdi-format-subject"></i>
-                          <p>
-                            Publicaciones
-                          </p>
-                        </a>
-                      </li>
-                    @endif
-
-                    {{-- Admin --}}
-                    @if ( Auth::check() )
-                      @if ( Auth::user()->rol == 'Administrador' )
-                        <!-- Categorías -->
-                        <li class="nav-item has-treeview">
-                          <a href="#" class="nav-link">
-                            <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
-                            <p>
-                              Categorías
-                              <i class="right fas fa-angle-left"></i>
-                            </p>
-                          </a>
-                          <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                              <a href="{{route('CrearCategorias')}}" class="nav-link">
-                                <i class="nav-icon"></i>
-                                <p>Gestionar</p>
-                              </a>
-                            </li>
-                          </ul>
-                        </li>
-
-                        <!-- Moderaciones -->
-                        <li class="nav-item has-treeview">
-                          <a href="{{route('ListarServiciosModerar')}}" class="nav-link">
-                            <i class="nav-icon zmdi zmdi-eye"></i>
-                            <p>
-                              Moderar
-                            </p>
-                          </a>
-                        </li>
-
-                        <!-- Características -->
-                        {{-- <li class="nav-item has-treeview">
-                          <a href="#" class="nav-link">
-                            <i class="nav-icon zmdi zmdi zmdi-case-check"></i>
-                            <p>
-                              Características
-                              <i class="right fas fa-angle-left"></i>
-                            </p>
-                          </a>
-                          <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                              <a href="{{route('CrearCaracteristicas')}}" class="nav-link">
-                                <i class="nav-icon"></i>
-                                <p>Gestionar</p>
-                              </a>
-                            </li>
-                          </ul>
-                        </li> --}}
-                      @endif
-                    @endif
+                  @endif
 
                   <li class="nav-item has-treeview">
                     <a href=" {{ route('CreateModificarDatos') }} " class="nav-link">
