@@ -564,10 +564,16 @@
 				},
 		
 				success: function(data){
+					console.log(data);
 					$('#textarea_pregunta').val('');
+					if ( data.error ) {
+						swal('Error!','No puedes reservar servicios siendo administrador','error');
+						return false;						
+					}
+
 					swal('Listo!','Su pregunta fue realizada con éxito','success');
 
-					console.log(data);
+					
 					$('#mostrar_preguntas').empty();
 
 					$.each(data, function(index, value) {
@@ -648,12 +654,29 @@
 		</script>
 	@endif
 
-	@if ( Session::has('Agregado') )
+	@if ( Session::has('Agregado') ) 
 		<script>
 			$(document).ready(function(){
 				swal('Listo!','Servicio agregado al paquete con éxito','success');
 			});
 		</script>
 	@endif
+
+	@if ( Session::has('AgregarPaqueteDenegado') )
+		<script>
+			$(document).ready(function(){
+				swal('Error!','No puedes reservar servicios siendo administrador','error');
+			});
+		</script>
+	@endif
+
+	@if ( Session::has('AutoReservaDenegada') )
+		<script>
+			$(document).ready(function(){
+				swal('Error!','No puedes reservarte a vos mismo','error');
+			});
+		</script>
+	@endif
+
 @endpush
 @endsection
