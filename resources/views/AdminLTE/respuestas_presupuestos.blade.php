@@ -100,29 +100,29 @@
                   <strong> Barrio: </strong> <span>{{ $presupuesto->barrio }} </span>
                 </div>
 
-                {{-- Caracteristicas incluidas --}}
-                <div class="row mt-5">
-                  <div class="col-lg-12 col-12">
-                    <i class="zmdi zmdi-apps"></i>
-                    <strong> Prestaciones solicitadas: </strong> 
-                    @foreach ( $CaracteristicasPorPresupuestos as $caracteristicas_array )
-                      @foreach ($caracteristicas_array as $caracteristica )
-                        @if ( $caracteristica->id_servicio == $presupuesto->id_servicio )
-
-                        <button class="btn btn-primary" disabled> {{ $caracteristica->nombre }} </button>
-
-                        @endif
-                      @endforeach
-                    @endforeach
-                  </div>
-                </div>
-
-
                 {{-- Importe --}}
                 <div class="col-lg-4 col-12">
-                    <strong> Precio Final: </strong> <span> $ {{ $presupuesto->monto }}</span>
-                </div>
+                  <strong> Precio Final: </strong> <span> $ {{ $presupuesto->monto }}</span>
+              </div>
             </div>
+            
+            {{-- Caracteristicas incluidas --}}
+            <div class="row mt-5">
+              <div class="col-lg-12 col-12">
+                <i class="zmdi zmdi-apps"></i>
+                <strong> Prestaciones solicitadas: </strong> 
+                @foreach ( $CaracteristicasPorPresupuestos as $caracteristicas_array )
+                  @foreach ($caracteristicas_array as $caracteristica )
+                    @if ( $caracteristica->id_servicio == $presupuesto->id_servicio )
+
+                    <button class="btn btn-primary" disabled> {{ $caracteristica->nombre }} </button>
+
+                    @endif
+                  @endforeach
+                @endforeach
+              </div>
+            </div>
+
           </div>
 
           {{-- Info adicional cliente + info adicional del prestador --}}
