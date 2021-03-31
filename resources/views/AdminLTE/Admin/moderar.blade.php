@@ -48,7 +48,7 @@
             <form action=" {{ route('AprobarServicio') }} " method="POST">
                 <input hidden type="text" name="id_servicio" id="id_servicio_a_moderar" value="">
                 @csrf
-                <button type="submit" class="btn btn-primary"> Moderar </button>
+                <button type="submit" class="btn btn-primary"> Aprobar </button>
             </form>
 
             <form action=" {{ route('RechazarServicio') }} " method="POST">
