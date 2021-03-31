@@ -47,15 +47,15 @@
 
                 <h5> Datos personales </h5>
                 <hr>
-                {{-- <div class="md-form">
+                <div class="md-form">
                     <label class="active" for="nombre">Nombre</label>
-                    <input id="nombre" type="text" class="form-control" style="background-color: #f5f5f5;" readonly value="{{ $User->name }}">
+                    <input id="nombre" type="text" name="nombre_user" class="form-control" value="{{ $User->name }}">
                 </div>
 
                 <div class="md-form">
                     <label class="active" for="apellido">Apellido</label>
-                    <input id="apellido" type="text" class="form-control" style="background-color: #f5f5f5;" readonly value="{{ $User->lastname }}">
-                </div> --}}
+                    <input id="apellido" type="text" name="apellido_user" class="form-control" value="{{ $User->lastname }}">
+                </div>
 
                 <div class="md-form">
                     <label class="active" for="email">Email</label>
