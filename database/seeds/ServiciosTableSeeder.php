@@ -150,7 +150,7 @@ class ServiciosTableSeeder extends Seeder
             'moderado' => 0,
             'aprobado' => 0,
             'id_categoria' => 9,
-            'id_prestador' => 3
+            'id_prestador' => 2
         ]);
 
         Servicio::create([ 
