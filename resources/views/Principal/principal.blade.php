@@ -873,10 +873,18 @@
 </div>
 @push('js')
 
-	@if ( Session::has('PresupuestoEnviado') )
+	@if ( Session::has('PresupuestoEnviado') ) 
 		<script>
 			$(document).ready(function(){
 				swal( 'Listo!' , 'Enviamos tu presupuesto, el prestador deberá responderte en las próximas 72hs' , 'success' );
+			});
+		</script>
+	@endif
+
+	@if ( Session::has('AdminNoPublica') )
+		<script>
+			$(document).ready(function(){
+				swal( 'Error!' , 'No puedes publicar con un perfil de administrador' , 'error' );
 			});
 		</script>
 	@endif
