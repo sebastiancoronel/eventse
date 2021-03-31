@@ -51,7 +51,8 @@ class PresupuestoController extends Controller
             //'respuesta' => ,
             ]
           );
-  
+
+          if ($request->caracteristicas) {
             foreach ($request->caracteristicas as $id_servicio => $caract_por_serv) {
               if ($id_servicio == $servicio['id_servicio'] ) {
                 foreach ($caract_por_serv as $caracteristica) {
@@ -63,6 +64,7 @@ class PresupuestoController extends Controller
                 }
               }
             }
+          }
           
           $User_notificar = Prestador::where( 'id' , $id_prestador )
           ->pluck('user_id')
