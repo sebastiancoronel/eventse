@@ -20,6 +20,7 @@
                             <input hidden id="provincia_nombre_reservar" type="text" name="provincia_nombre_reservar" value="">
                             <select id="provincia_reservar" class="custom-select stext-101 borde-bajo-blanco" name="provincia_reservar" style="background: #717fe0; color: white;" required>
                                 <option value="" selected>Provincia</option>
+                                <option value="">Todos</option>
                                 @foreach ($ProvinciasLocalidadesJson as $provincia)
                                     <option value="{{ $provincia['id'] }}">{{$provincia['nombre']}}</option>
                                 @endforeach
@@ -362,6 +363,9 @@
         var provincia = $('#provincia_reservar option:selected').text();
         var localidad = $('#localidad_reservar option:selected').text();
 
+        if ( provincia == 'Todos' ) {
+            window.location.reload();
+        }
         console.log(provincia , localidad);
 
         $.ajax({
