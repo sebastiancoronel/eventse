@@ -11,6 +11,10 @@ class PrestadorController extends Controller
 {
 
   public function CrearPerfilEmpresa(){
+
+    // if ( Auth::user()->rol == 'Administrador' ) {
+    //   return redirect()->route('Principal')->with( 'AdminNoPublica' , ' ');
+    // }
     return view('Perfiles.Empresa.crear_perfil_empresa');
   }
 
