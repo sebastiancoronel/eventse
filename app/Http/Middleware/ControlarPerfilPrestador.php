@@ -17,6 +17,9 @@ class ControlarPerfilPrestador
      */
     public function handle($request, Closure $next)
     {
+      if ( Auth::user()->rol == 'Administrador' ) {
+        return redirect()->route('Principal')->with( 'AdminNoPublica' , ' ');
+      }
       //Buscar al prestador/cliente y preguntar si tiene todos los datos completos. Si los tiene pasa sino no.
       $Prestador = Prestador::where( 'user_id', Auth::user()->id )
                             ->select('*')
