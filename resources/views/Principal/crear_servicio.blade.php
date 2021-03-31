@@ -122,6 +122,7 @@
                 <div class="col md-form">
                     <label for="nombre">Nombre</label>
                     <input class="form-control" type="text" name="nombre" value=" {{old('nombre')}} " maxlength="200" required>
+                    <div class="text-danger"> {{ $errors->first('nombre') }} </div>
                 </div>
             </div>
 
