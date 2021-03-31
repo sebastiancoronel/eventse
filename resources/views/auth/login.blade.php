@@ -67,11 +67,11 @@
                   <a href="{{route('register')}}" style="color:#6c7ae0;"> o registrate aquí</a>
                 </div> --}}
                 <br>
-                @if (Route::has('password.request'))
+                {{-- @if (Route::has('password.request'))
                     <a class="btn btn-link" href="{{ route('password.request') }}" style="color:#6c7ae0;">
                         {{ __('¿No recuerdas tu contraseña?') }}
                     </a>
-                @endif
+                @endif --}}
               </div>
             </form>
             <!-- Login form -->
