@@ -135,7 +135,7 @@ class PresupuestoController extends Controller
 
     public function LimpiarPresupNoDisp( Request $request ){
         
-      $Presupuestos = Presupuesto::where('user_id', $request->user_id )->where( 'estado' , 'No disponible' )
+      $Presupuestos = Presupuesto::where('user_id', $request->user_id )->where( 'estado' , 'No disponible' )->orWhere( 'estado' , 'Sin respuesta' )
                                   ->get();
 
       foreach ( $Presupuestos as $presupuesto ) {
