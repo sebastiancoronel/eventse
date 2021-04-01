@@ -300,8 +300,10 @@ class ServicioController extends Controller
     // Controlar que no se agregue su propio servicio
     $Prestador = Prestador::where( 'user_id' , Auth::user()->id )->first();
     
-    if ( $Servicio->id_prestador == $Prestador->id ) {
-      return redirect()->route('MostrarServicio', [ 'id' => $request->id_servicio ])->with( 'AutoReservaDenegada',' ' );
+    if ($Prestador) {
+      if ( $Servicio->id_prestador == $Prestador->id ) {
+        return redirect()->route('MostrarServicio', [ 'id' => $request->id_servicio ])->with( 'AutoReservaDenegada',' ' );
+      }
     }
 
     $id_servicio = $request->id_servicio;
