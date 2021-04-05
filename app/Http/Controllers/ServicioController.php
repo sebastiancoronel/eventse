@@ -388,6 +388,15 @@ class ServicioController extends Controller
 
   public function ResultadosBusqueda( Request $request){
 
+    // Mostrar caracteristicas seleccionadas checkeadas
+    if ( $request->caracteristicas ) {
+      $caract_elegidas = array();
+      foreach ( $request->caracteristicas as $caracteristica ) {
+        $nombreCaract = Caracteristica::where( 'id' , $caracteristica )->pluck('nombre')->first();
+        array_push( $caract_elegidas , $nombreCaract );
+      }
+    }
+
     // Para titulos
     $categ_result =  Categoria::where( 'id' , $request->categoria )->pluck('nombre')->first();
     $prov_result = $request->provincia_nombre;
@@ -404,8 +413,9 @@ class ServicioController extends Controller
 
     // Id
     $categoria_id = $request->categoria;
+
     // Resultado de la busqueda
-    $Servicios = Servicio::where( 'id_categoria' , $request->categoria )
+    $ServCatZona = Servicio::where( 'servicios.id_categoria' , $request->categoria )
     ->Join( 'prestadors' , 'servicios.id_prestador' , 'prestadors.id' )
     ->Join( 'users' , 'prestadors.user_id' , 'users.id')
     ->where('users.rol' , 'Prestador')
@@ -416,15 +426,86 @@ class ServicioController extends Controller
     ->select('servicios.*','users.provincia', 'users.localidad')
     ->get();
 
-    return view( 'Principal.resultados_busqueda', [ 
-      'Servicios' => $Servicios, 'Caracteristicas' => $Caracteristicas,
-      'categ_result' => $categ_result,
-      'prov_result' => $prov_result,
-      'loc_result' => $loc_result,
-      'PrecioMax' => $PrecioMax,
-      'PrecioMin' => $PrecioMin,
-      'categoria_id' => $categoria_id
-      ]);
+    // Con caracteristicas
+    if ( $request->caracteristicas ) {
+
+      $Servicios = array();
+      $ServCaractArray = array();
+      $requestLength = count($request->caracteristicas);
+      
+      // Obtengo las caracteristicas por servicio de los servicios que cumplen con categoria y ubicacion dados.
+      foreach ( $ServCatZona as $ser_cat_zona ) {
+        $ServCaract = CaracteristicasPorServicio::where( 'id_servicio' , $ser_cat_zona->id )->get();
+        array_push( $ServCaractArray , $ServCaract ); //$ServCaractArray devulve 3 array con 2 servicios dentro cada uno.
+      }
+
+      $bandera = 0;
+
+      foreach ($ServCaractArray as $serv_caract_array) { //$serv_caract_array devuelve 2 objetos que son el mismo servicio con sus caracteristicas diferentes
+        if ( $requestLength == count($serv_caract_array) ) {
+          foreach ($serv_caract_array as $serv_caract) { //$serv_caract es cada fila de los servicios con caracteristicas.
+
+            foreach ( $request->caracteristicas as $caracteristica ) {
+              if ( $serv_caract_array->contains( 'id_caracteristica' , $caracteristica ) ) { //La caract. del servicio se encuentra en el request?
+                  // Guardo id servicio en una variable
+                  $id_servicio = $serv_caract->id_servicio;
+                  $bandera = 1;
+
+                }else{ //AL primer NO YA SALE
+                  
+                  $bandera = 0;
+                  continue 3 ; //Esto deberia continuar por el siguiente elemento del array grande.
+                } 
+            }//foreach caracteristica
+          } //Foreach chico
+        }else{
+          continue;
+        }
+        // Fuera del foreach chico
+        if ($bandera = 0) {
+          break;
+        }else{
+          array_push( $Servicios , $id_servicio );
+        }
+      } //Foreach Grande
+      
+      
+      //Aqui busca los servicios por los id del array para mostrar toda la info en el front.
+      $ServiciosFiltrados = array();
+      foreach ( $ServCatZona as $serv_cat_zona ) {
+        if ( in_array( $serv_cat_zona->id , $Servicios ) ) {
+          array_push( $ServiciosFiltrados , $serv_cat_zona );
+        }
+      }
+      
+      return view( 'Principal.resultados_busqueda', [ 
+        'Servicios' => $ServiciosFiltrados, 
+        'Caracteristicas' => $Caracteristicas,
+        'categ_result' => $categ_result,
+        'prov_result' => $prov_result,
+        'loc_result' => $loc_result,
+        'PrecioMax' => $PrecioMax,
+        'PrecioMin' => $PrecioMin,
+        'categoria_id' => $categoria_id,
+        'caract_elegidas' => $caract_elegidas
+        ]);
+    }else{ //Sin caracteristica
+      
+      $caract_elegidas = array();
+      return view( 'Principal.resultados_busqueda', [ 
+        'Servicios' => $ServCatZona, 
+        'Caracteristicas' => $Caracteristicas,
+        'categ_result' => $categ_result,
+        'prov_result' => $prov_result,
+        'loc_result' => $loc_result,
+        'PrecioMax' => $PrecioMax,
+        'PrecioMin' => $PrecioMin,
+        'categoria_id' => $categoria_id,
+        'caract_elegidas' => $caract_elegidas
+        ]);
+
+    }
+  // Fin con caracteristicas
 
   }
   
@@ -531,7 +612,7 @@ class ServicioController extends Controller
         }
         
         
-        //Aqui buscar los servicios por los id del array para mostrar toda la info en el front.
+        //Aqui busca los servicios por los id del array para mostrar toda la info en el front.
         $ServiciosFiltrados = array();
         foreach ( $ServCatZona as $serv_cat_zona ) {
           if ( in_array( $serv_cat_zona->id , $Servicios ) ) {

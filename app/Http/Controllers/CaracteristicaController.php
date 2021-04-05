@@ -87,4 +87,13 @@ class CaracteristicaController extends Controller
             }
         }        
     }
+
+    public function TraerCaracteristicas( Request $request ){
+        $Caracteristicas = Caracteristica_por_categoria::where( 'id_categoria' , $request->id_categoria )
+                            ->Join( 'caracteristicas' , 'caracteristica_por_categorias.id_caracteristica' , '=' , 'caracteristicas.id' )
+                            ->select('caracteristicas.nombre as nombre_caracteristica', 'caracteristicas.deleted_at','caracteristicas.id as id_caracteristica','caracteristicas.id as id_caracteristica')
+                            ->get();
+        
+        return $Caracteristicas;
+    }
 }

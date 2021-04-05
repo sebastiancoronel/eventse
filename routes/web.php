@@ -27,6 +27,8 @@ Route::post('/reservar/servicios-publicados/almacenando-pregunta','ServicioContr
 // Route::get('/reservar/servicios-publicados/almacenando-pregunta','ServicioController@ActualizarPreguntasAjax')->name('ActualizarPreguntasAjax')->middleware('auth');  
 
 // Busqueda
+Route::get('/busqueda/traer-caracteristicas','CaracteristicaController@TraerCaracteristicas')->name('TraerCaracteristicas');
+
 Route::get('/busqueda','ServicioController@ResultadosBusqueda')->name('ResultadosBusqueda');
 
 // Filtrar resultados ( Buscador avanzado )

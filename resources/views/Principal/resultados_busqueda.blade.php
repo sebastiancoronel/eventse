@@ -10,51 +10,13 @@
             <!-- Movil -->
             <h3 class="d-block d-sm-none text-uppercase text-white align-self-center text-center">{{$categ_result}} en {{$prov_result}}</h3>
         </div>
-
-        {{-- Buscador en medio --}}
-        {{-- <div class="d-none d-sm-block position-absolute buscador-resultados">
-            <form class="card flex-w p-l-15" action="{{ route('ResultadosBusqueda') }}" method="GET">
-                <div class="row card-body align-items-center">
-                    <div class="col-lg-3">
-                        <select id="categorias_result" class="custom-select stext-101 borde-bajo" name="categoria" required>
-                            <option value="" selected>¿Qúe buscas?</option>
-                            @foreach ($Categorias as $categoria)
-                              <option value="{{ $categoria['id'] }}">{{$categoria['nombre']}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-    
-                    <div class="col-lg-3">
-                        <input hidden id="provincia_nombre_result" type="text" name="provincia_nombre" value="">
-                        <select id="provincia_result" class="custom-select stext-101 borde-bajo" name="provincia" required>
-                            <option value="" selected>¿Donde?</option>
-                            @foreach ($ProvinciasLocalidadesJson as $provincia)
-                              <option value="{{ $provincia['id'] }}">{{$provincia['nombre']}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-    
-                    <!-- Localidad -->
-                    <div class="col-lg-3">
-                        <select id="localidad_result" class="custom-select stext-101 borde-bajo" name="localidad" required>
-                            <option value="" selected> ¿Qué ciudad? </option>
-                        </select>
-                        
-                        @if ($errors->has('localidad'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('localidad') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                    <div class="col-lg-3">
-                        <button type="submit" class="btn btn bg1 stext-101 cl0 ">
-                            Buscar
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div> --}}
     </div>
+
+    {{-- <div class="container">
+        @foreach ($caract_elegidas as $caract)
+            <button class="btn btn-primary" disabled> {{ $caract }} </button>
+        @endforeach
+    </div> --}}
 
     <div class="row container m-auto" style="padding-top: 5rem;">
 
@@ -70,8 +32,8 @@
                     <ul class="mt-2">
                         @forelse ($Caracteristicas as $caracteristica)
                         <li>
-                            <input id="{{ $caracteristica->nombre }}" class="form-check-input caracteristica" type="checkbox" name="caracteristica" value="{{ $caracteristica->id }}">
-                            <label class="form-check-label" for="{{ $caracteristica->nombre }}"> {{ $caracteristica->nombre }}</label>
+                            <input id="{{ $caracteristica->nombre }}" class="form-check-input caracteristica" type="checkbox" name="caracteristica" value="{{ $caracteristica->id }}" {{ in_array( $caracteristica->nombre , $caract_elegidas ) ? 'checked' : ' ' }} >
+                            <label class="form-check-label" for="{{ $caracteristica->nombre }}"> {{ $caracteristica->nombre }} </label>
                         </li>
                             @empty
                                 Sin prestaciones

@@ -5,9 +5,10 @@
     right: 10px;
 }
 .buscador-resultados{
-    top: 160px;
+    top: 100px;
     left: 160px;
     right: 160px;
+    height: auto;
 }
 /* Fondos */
 .background-img{
