@@ -138,18 +138,9 @@ class CategoriaController extends Controller
             }
             $Cantidad = 0;
         }
-        #FALTA CREAR VARIAS RESERAS CONCRETADAS PARA VER SI LLEVA CORRECTAMENTE AL FRONT Y SEGUN ESO DIBUJAR LA CANT DE ESTRELLAS
+        
         // dd( $DestacadosX5 , $DestacadosX10 , $DestacadosX15 , $DestacadosX20 , $DestacadosX25 );
-
-        // $Destacados = Servicio::where( 'servicios.deleted_at' , null )
-        //                   ->Join( 'categorias' , 'servicios.id_categoria' , '=' , 'categorias.id' )
-        //                   ->Join( 'prestadors' , 'servicios.id_prestador' , '=' , 'prestadors.id' )
-        //                   ->Join( 'users' , 'prestadors.user_id' , '=' , 'users.id' )
-        //                   ->select('servicios.*','categorias.nombre as nombre_categoria','users.provincia', 'users.localidad')
-        //                   ->get();
         
-        
-
         return view('Principal.principal',[ 
         'Categorias' => $Categorias , 
         'Mes' => $Mes, 
