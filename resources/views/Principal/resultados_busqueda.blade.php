@@ -49,8 +49,17 @@
                     </div>
 
                 </div>
+
+                {{-- Destacados --}}
                 <hr>
-    
+                <div class="bor10 p-3">
+                    <div class="md-form">
+                        <input id="servicios_destacados" class="form-check-input" type="checkbox" name="servicios_destacados" value="" {{ $destacados == 1 ? 'checked' : ' ' }} >
+                        <label class="" for="servicios_destacados"> Servicios destacados </label>
+                    </div>
+                </div>
+                <hr>
+
                 {{-- Ubicacion --}}
                 <div class="bor10 p-3">
                     {{-- Provincia --}}
@@ -282,6 +291,12 @@
             caracteristicas.push(this.value);
         });
 
+        let destacados;
+        if ( $('#servicios_destacados').is(':checked') ){
+            destacados = 1;
+        }else{
+            destacados = null;
+        }
         // var form = document.getElementById('form_filtrar');
         // var formData = new FormData(form);
 
@@ -298,6 +313,7 @@
                 precios_todos,
                 precio_a_convenir,
                 caracteristicas,
+                destacados,
                 _token: '{{ csrf_token() }}'
             },
             error: function( x, y, z ){
