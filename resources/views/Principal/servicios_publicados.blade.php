@@ -13,8 +13,8 @@
             <div class="d-none d-sm-block card flex-w p-l-15 position-absolute buscador-resultados">
                 <form class="" action="{{ route('ResultadosBusqueda') }}" method="GET">
                     <div class="row card-body align-items-center">
-                        <i class="fas fa-concierge-bell"></i>
 
+                        <i class="fas fa-concierge-bell"></i>
                         {{-- Categoria --}}
                         <div class="col-lg-3">
                             <select id="categorias" class="custom-select stext-101 borde-bajo" name="categoria" required>
@@ -63,6 +63,13 @@
                     <h5 hidden class="titulo-servicios"> <i class="far fa-check-square"></i> Servicios </h5>
                     <div class="form-row my-4 caracteristicas-busqueda">
                         
+                    </div>
+                    <hr>
+
+                    <!-- Servicios destacados -->
+                    <div class="my-4">
+                        <input class="form-check-input" id="servicios_destacados" name="destacados" type="checkbox" value="1">
+                        <label class="form-check-label" for="servicios_destacados"> Servicios destacados </label>
                     </div>
                 </form>
 
