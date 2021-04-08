@@ -97,8 +97,9 @@ Route::middleware(['auth'])->group(function () {
   //Enviar solicitud de presupuesto
   Route::post('/reservar/servicios-publicados/enviando-solicitud-presupuesto','PresupuestoController@EnviarSolicitudPresupuesto')->name('EnviarSolicitudPresupuesto');
 
-  //Almacenar visto en notificacion
+  //Notificaciones
   Route::post('/notificacion/visto','NotificacionController@AlmacenarVisto')->name('AlmacenarVisto');
+  Route::post('/notificacion/marcar-como-leidas','NotificacionController@MarcarComoLeidas')->name('MarcarComoLeidas');
 
   // ADMIN LTE
   Route::get('/home', 'HomeController@index')->name('home');

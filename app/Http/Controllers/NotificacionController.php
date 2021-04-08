@@ -16,4 +16,17 @@ class NotificacionController extends Controller
         return;
 
     }
+
+    public function MarcarComoLeidas( Request $request ){
+        
+        $Notificaciones = Notificacion::where( 'user_id_notificar' , $request->user_id )->where( 'visto' , 0 )->get();
+
+        foreach ($Notificaciones as $notificacion ) {
+          
+          $notificacion->visto = 1;
+          $notificacion->update();
+
+        }
+
+    }
 }

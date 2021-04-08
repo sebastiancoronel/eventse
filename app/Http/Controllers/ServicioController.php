@@ -534,29 +534,29 @@ class ServicioController extends Controller
 
         if ( $request->destacados ) {
           
-        // Busqueda de destacados
-          foreach ( $ServCatZona as $servicio ) {
+          // Busqueda de destacados
+            foreach ( $ServCatZona as $servicio ) {
+                
+              $ReservasConcretadas = Reserva::where( 'id_servicio' , $servicio->id )
+                                      ->where( 'concretado' , 1 )
+                                      ->get();
               
-            $ReservasConcretadas = Reserva::where( 'id_servicio' , $servicio->id )
-                                    ->where( 'concretado' , 1 )
-                                    ->get();
-            
-            $Cantidad = count($ReservasConcretadas);
+              $Cantidad = count($ReservasConcretadas);
 
-            if ( $Cantidad >= 5 && $Cantidad < 25) {
-                $servicio_concretado = Servicio::where( 'servicios.deleted_at' , null )
-                                                ->where( 'servicios.id' , $servicio->id )
-                                                ->Join( 'categorias' , 'servicios.id_categoria' , '=' , 'categorias.id' )
-                                                ->Join( 'prestadors' , 'servicios.id_prestador' , '=' , 'prestadors.id' )
-                                                ->Join( 'users' , 'prestadors.user_id' , '=' , 'users.id' )
-                                                ->select('servicios.*','categorias.nombre as nombre_categoria','users.provincia', 'users.localidad')
-                                                ->first();
+              if ( $Cantidad >= 5 && $Cantidad < 25) {
+                  $servicio_concretado = Servicio::where( 'servicios.deleted_at' , null )
+                                                  ->where( 'servicios.id' , $servicio->id )
+                                                  ->Join( 'categorias' , 'servicios.id_categoria' , '=' , 'categorias.id' )
+                                                  ->Join( 'prestadors' , 'servicios.id_prestador' , '=' , 'prestadors.id' )
+                                                  ->Join( 'users' , 'prestadors.user_id' , '=' , 'users.id' )
+                                                  ->select('servicios.*','categorias.nombre as nombre_categoria','users.provincia', 'users.localidad')
+                                                  ->first();
 
-                array_push( $ServiciosFiltrados , $servicio_concretado );
+                  array_push( $ServiciosFiltrados , $servicio_concretado );
+              }
+              $Cantidad = 0;
             }
-            $Cantidad = 0;
-          }
-        // Fin busqueda de destacados
+          // Fin busqueda de destacados
         
         $caract_elegidas = array();
         return view( 'Principal.resultados_busqueda', [ 

@@ -34,7 +34,7 @@
                         </li>
                         <hr>
                     @empty
-                        <span> No tienes notificaciones aun </span>
+                        <span> No tienes notificaciones </span>
                     @endforelse
                 @endif
             @endauth
@@ -46,9 +46,14 @@
                 </div> --}}
 
                 <div class="header-notification-buttons flex-w w-full">
-                    {{-- <a href="shoping-notification.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-                        Ver todas / marcar como leidas
-                    </a> --}}
+                    <input hidden id="user_id_notificaciones" type="text" value="{{ Auth::user()->id }}">
+                    <button id="MarcarComoLeidas" href="" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+                        Marcar como leidas
+                    </button>
+                    
+                    {{-- <form hidden id="MarcarComoLeidas" action="{{ route('MarcarComoLeidas',[ 'user_id' => Auth::user()->id ]) }}" method="POST">
+                        @csrf
+                    </form> --}}
 
                     {{-- <a href="shoping-notification.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
                         Continuar compra
@@ -84,4 +89,29 @@
             });
         });
     </script>
+
+    {{-- Marcar notificaciones como leídas --}}
+    <script>
+        $(document).on( 'click' , '#MarcarComoLeidas' , function(e){
+            
+            var user_id = $('#user_id_notificaciones').val();
+
+            $.ajax({
+                type: 'POST',
+                url: '{{ url('/notificacion/marcar-como-leidas') }}',
+                data: {
+                    user_id,
+                    _token: '{{ csrf_token() }}'
+                },
+                error: function(x,y,z){
+                    console.log(x,y,z);
+                },
+                success: function(data){
+                    window.location.reload();
+                }
+            });
+
+        });
+    </script>
+
 @endpush
