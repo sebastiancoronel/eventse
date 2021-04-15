@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Reserva;
+use App\Opinion;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,30 +13,115 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
-        // DB::table('provincias')->insert(['nombre' => 'Buenos Aires']);
-        // DB::table('provincias')->insert(['nombre' => 'Catamarca']);
-        // DB::table('provincias')->insert(['nombre' => 'Chaco']);
-        // DB::table('provincias')->insert(['nombre' => 'Chubut']);
-        // DB::table('provincias')->insert(['nombre' => 'Córdoba']);
-        // DB::table('provincias')->insert(['nombre' => 'Corrientes']);
-        // DB::table('provincias')->insert(['nombre' => 'Entre Ríos']);
-        // DB::table('provincias')->insert(['nombre' => 'Formosa']);
-        // DB::table('provincias')->insert(['nombre' => 'Jujuy']);
-        // DB::table('provincias')->insert(['nombre' => 'La Pampa']);
-        // DB::table('provincias')->insert(['nombre' => 'La Rioja']);
-        // DB::table('provincias')->insert(['nombre' => 'Mendoza']);
-        // DB::table('provincias')->insert(['nombre' => 'Misiones']);
-        // DB::table('provincias')->insert(['nombre' => 'Neuquén']);
-        // DB::table('provincias')->insert(['nombre' => 'Río Negro']);
-        // DB::table('provincias')->insert(['nombre' => 'Salta']);
-        // DB::table('provincias')->insert(['nombre' => 'San Juan']);
-        // DB::table('provincias')->insert(['nombre' => 'San Luis']);
-        // DB::table('provincias')->insert(['nombre' => 'Santa Cruz']);
-        // DB::table('provincias')->insert(['nombre' => 'Santa Fe']);
-        // DB::table('provincias')->insert(['nombre' => 'Santiago del Estero']);
-        // DB::table('provincias')->insert(['nombre' => 'Tierra del Fuego']);
-        // DB::table('provincias')->insert(['nombre' => 'Tucumán']);
+        // Ardeluna producciones 5 estrellas
+        Reserva::create([ 
+            'fecha' => '2021-04-14',
+            'hora_desde' => '02:00:00',
+            'hora_hasta' => '07:00:00',
+            'direccion' => 'Soler 68',
+            'barrio' => 'Belgrano',
+            'monto' => 7000,
+            'concretado' => 1,
+            'opinion_agregada' => 1,
+            'id_servicio' => 9,
+            'id_prestador' => 3,
+            'user_id' => 6
+        ]);
+
+        Opinion::create([ 
+            'opinion' => 'Exelente servicio! 100% recomendable',
+            'id_servicio' => 9,
+            'id_prestador' => 3,
+            'user_id' => 6
+        ]);
+        
+        Reserva::create([ 
+            'fecha' => '2021-04-14',
+            'hora_desde' => '02:00:00',
+            'hora_hasta' => '07:00:00',
+            'direccion' => 'Soler 68',
+            'barrio' => 'Belgrano',
+            'monto' => 7000,
+            'concretado' => 1,
+            'opinion_agregada' => 1,
+            'id_servicio' => 9,
+            'id_prestador' => 3,
+            'user_id' => 7
+        ]);
+
+        Opinion::create([ 
+            'opinion' => 'Me encantó el show y el trato con el prestador exelente.',
+            'id_servicio' => 9,
+            'id_prestador' => 3,
+            'user_id' => 7
+        ]);
+
+        Reserva::create([ 
+            'fecha' => '2021-04-14',
+            'hora_desde' => '02:00:00',
+            'hora_hasta' => '07:00:00',
+            'direccion' => 'Soler 68',
+            'barrio' => 'Belgrano',
+            'monto' => 7000,
+            'concretado' => 1,
+            'opinion_agregada' => 1,
+            'id_servicio' => 9,
+            'id_prestador' => 3,
+            'user_id' => 8
+        ]);
+
+        Opinion::create([ 
+            'opinion' => 'Buen balance entre precio y calidad del espectáculo',
+            'id_servicio' => 9,
+            'id_prestador' => 3,
+            'user_id' => 8
+        ]);
+
+        Reserva::create([ 
+            'fecha' => '2021-04-14',
+            'hora_desde' => '02:00:00',
+            'hora_hasta' => '07:00:00',
+            'direccion' => 'Soler 68',
+            'barrio' => 'Belgrano',
+            'monto' => 7000,
+            'concretado' => 1,
+            'opinion_agregada' => 1,
+            'id_servicio' => 9,
+            'id_prestador' => 3,
+            'user_id' => 9
+        ]);
+
+        Opinion::create([ 
+            'opinion' => 'Hubo una pequeña demora pero el show fue incrible. Ya fijamos fecha para otra fiesta!',
+            'id_servicio' => 9,
+            'id_prestador' => 3,
+            'user_id' => 9
+        ]);
+
+        Reserva::create([ 
+            'fecha' => '2021-04-14',
+            'hora_desde' => '02:00:00',
+            'hora_hasta' => '07:00:00',
+            'direccion' => 'Soler 68',
+            'barrio' => 'Belgrano',
+            'monto' => 7000,
+            'concretado' => 1,
+            'opinion_agregada' => 1,
+            'id_servicio' => 9,
+            'id_prestador' => 3,
+            'user_id' => 10
+        ]);
+
+        Opinion::create([ 
+            'opinion' => 'Muy buen servicio!',
+            'id_servicio' => 9,
+            'id_prestador' => 3,
+            'user_id' => 10
+        ]);
+        // Fin Ardeluna producciones 5 estrellas
+
+        // 
+
     }
     
 }

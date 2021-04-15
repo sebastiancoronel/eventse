@@ -21,6 +21,7 @@ class CreateCaracteristicasTable extends Migration
         });
 
         DB::table('caracteristicas')->insert([
+            // Salones
             ['nombre' => 'Mozos y camareras' ],
             ['nombre' => 'Proyector' ],
             ['nombre' => 'Maquina de humo' ],
@@ -29,13 +30,16 @@ class CreateCaracteristicasTable extends Migration
             ['nombre' => 'Servicio de pizzas' ],
             ['nombre' => 'Pinta caritas' ],
             ['nombre' => 'Bolsitas' ],
+            // Magos
             ['nombre' => 'Shows de magia infantil' ],
             ['nombre' => 'Magia con cartas' ],
             ['nombre' => 'Show de escapismo' ],
             ['nombre' => 'Magia con animales' ],
+            // Catering
             ['nombre' => 'Servicio de lunch' ],
             ['nombre' => 'Mozos y camareras' ],
             ['nombre' => 'Coffee break' ],
+            // Ornamentacion
             ['nombre' => 'Arreglos florales' ],
             ['nombre' => 'Centros de mesa' ],
             ['nombre' => 'Detalles y recuerdos' ],
@@ -44,6 +48,7 @@ class CreateCaracteristicasTable extends Migration
             ['nombre' => 'Manteleria' ],
             ['nombre' => 'Guirnaldas' ],
             ['nombre' => 'Biombos' ],
+            // shows
             ['nombre' => 'Música en vivo' ],
             ['nombre' => 'Circo' ],
             ['nombre' => 'Shows aéreos' ],
@@ -52,6 +57,7 @@ class CreateCaracteristicasTable extends Migration
             ['nombre' => 'Conductores' ],
             ['nombre' => 'Batucadas y coreografías' ],
             ['nombre' => 'Shows de salsa y odaliscas' ],
+            // Continua Catering
             ['nombre' => 'Servicio de pizzas' ],
             ['nombre' => 'Fuente de chocolate' ],
             // Juegos 34 al 42
@@ -78,6 +84,45 @@ class CreateCaracteristicasTable extends Migration
             ['nombre' => 'Luz robotica'],
             ['nombre' => 'Luz negra'],
             ['nombre' => 'Esfera led'],
+            // Capacidades 55 al 61
+            ['nombre' => 'Hasta 30 personas'],
+            ['nombre' => 'Hasta 60 personas'],
+            ['nombre' => 'Hasta 90 personas'],
+            ['nombre' => 'Hasta 120 personas'],
+            ['nombre' => 'Hasta 150 personas'],
+            ['nombre' => 'Hasta 180 personas'],
+            ['nombre' => 'Hasta 200 personas'],
+            // Animacion 62 al 70
+            ['nombre' => 'Animacion musical'],
+            ['nombre' => 'Animacion infantil'],
+            ['nombre' => 'Animacion para adultos'],
+            ['nombre' => 'Danza'],
+            ['nombre' => 'Juegos coreográficos'],
+            ['nombre' => 'Humor'],
+            ['nombre' => 'Musical'],
+            ['nombre' => 'Teatro'],
+            ['nombre' => 'Magia'],
+            //Fotografia 63 al 73
+            ['nombre' => 'Books XV'],
+            ['nombre' => 'Books casamientos'],
+            ['nombre' => 'Eventos sociales'],
+            ['nombre' => 'Corporativo'],
+            ['nombre' => 'Preboda'],
+            ['nombre' => 'Postboda'],
+            ['nombre' => 'Álbum digital'],
+            ['nombre' => 'Mini álbumes'],
+            ['nombre' => 'Fotografías en alta resolución'],
+            ['nombre' => 'Negativos'],
+            ['nombre' => 'Blue-ray o DVD con fotografías'],
+            // Musica-Djs 74 al 80
+            ['nombre' => 'Pantalla 100 pulgadas'],
+            ['nombre' => 'Karaoke'],
+            ['nombre' => 'Ambientacion DMX'],
+            ['nombre' => 'Luces móviles'],
+            ['nombre' => 'Pista de baile'],
+            ['nombre' => 'Video y proyección'],
+            ['nombre' => 'Video y proyección'],
+            
             
         ]);
     }
