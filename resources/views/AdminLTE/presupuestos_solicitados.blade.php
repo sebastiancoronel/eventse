@@ -22,8 +22,20 @@
         <input hidden type="text" name="id_presupuesto" value=" {{ $presupuesto->id }} ">
         <div class="card card-outline card-primary">
           <div class="card-header">
-            <h4> <a href=" {{ route('MostrarServicio', [ 'id' => $presupuesto->id_servicio ]) }} "> {{ $presupuesto->nombre }} </a> </h4>
-            <small> Enviado el: {{ date ('d-m-Y' , strtotime($presupuesto->created_at)) }} </small>
+
+            <div class="pull-left">
+              <h4> <a href=" {{ route('MostrarServicio', [ 'id' => $presupuesto->id_servicio ]) }} "> {{ $presupuesto->nombre }} </a> </h4>
+              <small> Enviado el: {{ date ('d-m-Y' , strtotime($presupuesto->created_at)) }} </small>
+            </div>
+
+            <div class="pull-right">
+              @if ( $presupuesto->precio_servicio != null )
+                  <h4> $ {{ $presupuesto->precio_servicio }} </h4>
+                  @else
+                    <h4> Precio a convenir </h4>
+              @endif
+            </div>
+
           </div>
           <div class="card-body bor10">
             <div class="row">

@@ -37,8 +37,6 @@ class CreatePrestadorsTable extends Migration
             [
                 'nombre' => 'JumpZone',
                 'foto' => '/images/foto_perfil/1.png',
-                // 'provincia' => 'Santiago Del Estero',
-                // 'Localidad' => 'Santiago Del Estero',
                 'email' => 'jumpzoneinflables@gmail.com',
                 'telefono' => '3855000000',
                 'user_id' => 1,
@@ -47,8 +45,6 @@ class CreatePrestadorsTable extends Migration
             [
                 'nombre' => 'Dream Days',
                 'foto' => '/images/foto_perfil/4.jpg',
-                // 'provincia' => 'Santiago Del Estero',
-                // 'Localidad' => 'Santiago Del Estero',
                 'email' => 'dreamdays@hotmail.com',
                 'telefono' => '3855896321',
                 'user_id' => 4,
@@ -58,8 +54,6 @@ class CreatePrestadorsTable extends Migration
             [
                 'nombre' => 'Ardeluna Producciones',
                 'foto' => '/images/foto_perfil/5.jpg',
-                // 'provincia' => 'Santiago Del Estero',
-                // 'Localidad' => 'Santiago Del Estero',
                 'email' => 'ardeluna@hotmail.com',
                 'telefono' => '3851963899',
                 'user_id' => 5,
@@ -105,7 +99,7 @@ class CreatePrestadorsTable extends Migration
             [
                 'nombre' => 'Bendito Living',
                 'foto' => '/images/foto_perfil/10.jpg',
-                'email' => 'GranBecker@hotmail.com',
+                'email' => 'BenditoLiving@hotmail.com',
                 'telefono' => '3851782429',
                 'user_id' => 15,
                 
@@ -141,7 +135,7 @@ class CreatePrestadorsTable extends Migration
             [
                 'nombre' => 'Rufino Eventos',
                 'foto' => '/images/foto_perfil/14.png',
-                'email' => 'mini_disco@hotmail.com',
+                'email' => 'rufino_eventos@hotmail.com',
                 'telefono' => '3851782144',
                 'user_id' => 19,
                 
@@ -159,7 +153,7 @@ class CreatePrestadorsTable extends Migration
             [
                 'nombre' => 'Cantantes Liricos',
                 'foto' => '/images/foto_perfil/16.jpg',
-                'email' => '123_cumbia@hotmail.com',
+                'email' => 'Liricos@hotmail.com',
                 'telefono' => '3741787890',
                 'user_id' => 21,
                 

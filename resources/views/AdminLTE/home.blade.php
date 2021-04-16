@@ -245,14 +245,16 @@
                   @endif
 
                   @if ( Auth::user()->rol != 'Administrador' )
-                    <li class="nav-item has-treeview">
-                      <a href=" {{route('MostrarReservasPrestador')}} " class="nav-link">
-                        <i class="nav-icon zmdi zmdi-format-subject"></i>
-                        <p>
-                          Contrataciones
-                        </p>
-                      </a>
-                    </li>
+                    @if ( Auth::user()->rol == 'Prestador' )
+                      <li class="nav-item has-treeview">
+                        <a href=" {{route('MostrarReservasPrestador')}} " class="nav-link">
+                          <i class="nav-icon zmdi zmdi-format-subject"></i>
+                          <p>
+                            Contrataciones
+                          </p>
+                        </a>
+                      </li>
+                    @endif
 
                     <li class="nav-item has-treeview">
                       <a href=" {{route('MostrarReservasCliente')}} " class="nav-link">

@@ -69,7 +69,7 @@ class CreateUsersTable extends Migration
             [
                 'name' => 'Prestador',
                 'lastname' => 'numero 2',
-                'email' => 'prestador@gmail.com',
+                'email' => 'prestador2@gmail.com',
                 'dni' => '30365229',
                 'provincia' => 'Santiago Del Estero',
                 'localidad' => 'Santiago del Estero',
@@ -81,7 +81,7 @@ class CreateUsersTable extends Migration
             [
                 'name' => 'Prestador',
                 'lastname' => 'numero 3',
-                'email' => 'prestador2@gmail.com',
+                'email' => 'prestador3@gmail.com',
                 'dni' => '22336999',
                 'provincia' => 'Cordoba',
                 'localidad' => 'Villa Carlos Paz',

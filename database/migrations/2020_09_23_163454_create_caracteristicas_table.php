@@ -21,7 +21,7 @@ class CreateCaracteristicasTable extends Migration
         });
 
         DB::table('caracteristicas')->insert([
-            // Salones
+            // Salones 1 al 8
             ['nombre' => 'Mozos y camareras' ],
             ['nombre' => 'Proyector' ],
             ['nombre' => 'Maquina de humo' ],
@@ -30,16 +30,16 @@ class CreateCaracteristicasTable extends Migration
             ['nombre' => 'Servicio de pizzas' ],
             ['nombre' => 'Pinta caritas' ],
             ['nombre' => 'Bolsitas' ],
-            // Magos
+            // Magos 9 al 12
             ['nombre' => 'Shows de magia infantil' ],
             ['nombre' => 'Magia con cartas' ],
             ['nombre' => 'Show de escapismo' ],
             ['nombre' => 'Magia con animales' ],
-            // Catering
+            // Catering 13 al 15
             ['nombre' => 'Servicio de lunch' ],
             ['nombre' => 'Mozos y camareras' ],
             ['nombre' => 'Coffee break' ],
-            // Ornamentacion
+            // Ornamentacion 16 al 23
             ['nombre' => 'Arreglos florales' ],
             ['nombre' => 'Centros de mesa' ],
             ['nombre' => 'Detalles y recuerdos' ],
@@ -48,7 +48,7 @@ class CreateCaracteristicasTable extends Migration
             ['nombre' => 'Manteleria' ],
             ['nombre' => 'Guirnaldas' ],
             ['nombre' => 'Biombos' ],
-            // shows
+            // shows 24 al 31
             ['nombre' => 'Música en vivo' ],
             ['nombre' => 'Circo' ],
             ['nombre' => 'Shows aéreos' ],
@@ -102,7 +102,7 @@ class CreateCaracteristicasTable extends Migration
             ['nombre' => 'Musical'],
             ['nombre' => 'Teatro'],
             ['nombre' => 'Magia'],
-            //Fotografia 63 al 73
+            //Fotografia 71 al 81
             ['nombre' => 'Books XV'],
             ['nombre' => 'Books casamientos'],
             ['nombre' => 'Eventos sociales'],
@@ -114,15 +114,13 @@ class CreateCaracteristicasTable extends Migration
             ['nombre' => 'Fotografías en alta resolución'],
             ['nombre' => 'Negativos'],
             ['nombre' => 'Blue-ray o DVD con fotografías'],
-            // Musica-Djs 74 al 80
+            // Musica-Djs 82 al 87
             ['nombre' => 'Pantalla 100 pulgadas'],
             ['nombre' => 'Karaoke'],
             ['nombre' => 'Ambientacion DMX'],
             ['nombre' => 'Luces móviles'],
             ['nombre' => 'Pista de baile'],
             ['nombre' => 'Video y proyección'],
-            ['nombre' => 'Video y proyección'],
-            
             
         ]);
     }

@@ -73,7 +73,7 @@ class ServiciosTableSeeder extends Seeder
         ]);
 
         Servicio::create([ 
-            'nombre' => 'Servicio de Catering para 100 personas',
+            'nombre' => 'Servicio de Catering para 90 personas',
             'descripcion' => 'Servicios que ofrece:  Para que vivan esa anhelada fecha como se lo merecen y sin estrés, la empresa les ofrece ocuparse hasta del más mínimo detalle de su celebración. Es por eso que les ofrecen todos los servicios necesarios para realizar un exitoso evento, entre ellos se destacan:  Servicio de event planner Catering de primer nivel Sonido e iluminación Ambientación y decoración Atención de personal calificado Alquiler de vajilla, mantelería y mobiliario',
             'foto_1' => 'images/servicios/RI9hkrfjHJsLe8lIjvaf.jpg',
             'foto_2' => 'images/servicios/OqwFHpIzBzTspIYfp2A2.jpg',

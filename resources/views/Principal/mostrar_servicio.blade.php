@@ -261,15 +261,34 @@
 									<ul class="p-lr-28 p-lr-15-sm">
 										@foreach ($CaracteristicasDelServicio as $caracteristica_del_servicio)
 											@foreach ($caracteristica_del_servicio as $nombre => $Si_o_No)
-											<li class="flex-w flex-t p-b-7">
-												<span class="stext-102 cl3 size-205">
-													{{ $nombre }}: 
-												</span>
-	
-												<span class="stext-102 cl6 size-206">
-													{{ $Si_o_No }}
-												</span>
-											</li>
+
+												@if ( Illuminate\Support\Str::contains($nombre, ['Hasta','personas']) && $Si_o_No == "SI" )
+													<li class="flex-w flex-t p-b-7">
+														<span class="stext-102 cl3 size-205">
+															{{ $nombre }}: 
+														</span>
+			
+														<span class="stext-102 cl6 size-206">
+															{{ $Si_o_No }}
+														</span>
+													</li>
+												@else
+													@php
+														$caracteristica = Illuminate\Support\Str::contains($nombre, ['Hasta','personas']);
+													@endphp
+													@if ($caracteristica == false)
+														<li class="flex-w flex-t p-b-7">
+															<span class="stext-102 cl3 size-205">
+																{{ $nombre }}: 
+															</span>
+				
+															<span class="stext-102 cl6 size-206">
+																{{ $Si_o_No }}
+															</span>
+														</li>
+													@endif
+
+												@endif
 											@endforeach
 										@endforeach
 

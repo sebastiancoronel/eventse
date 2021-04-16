@@ -92,7 +92,7 @@ class HomeController extends Controller
                                 ->where( 'monto' , null )
                                 ->where( 'estado' , 'Aceptado' )
                                 ->Join( 'servicios' , 'presupuestos.id_servicio' , '=' , 'servicios.id' )
-                                ->select( 'presupuestos.*' ,'servicios.nombre', 'servicios.id as id_servicio')
+                                ->select( 'presupuestos.*' ,'servicios.nombre', 'servicios.id as id_servicio', 'servicios.precio as precio_servicio', 'servicios.precio_a_convenir')
                                 ->orderBy('created_at', 'asc')
                                 ->get();
 

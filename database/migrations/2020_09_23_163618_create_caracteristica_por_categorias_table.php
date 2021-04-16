@@ -497,31 +497,27 @@ class CreateCaracteristicaPorCategoriasTable extends Migration
             ],
             [
                 'id_categoria' => 8,
-                'id_caracteristica' => 74
+                'id_caracteristica' => 82
             ],
             [
                 'id_categoria' => 8,
-                'id_caracteristica' => 75
+                'id_caracteristica' => 83
             ],
             [
                 'id_categoria' => 8,
-                'id_caracteristica' => 76
+                'id_caracteristica' => 84
             ],
             [
                 'id_categoria' => 8,
-                'id_caracteristica' => 77
+                'id_caracteristica' => 85
             ],
             [
                 'id_categoria' => 8,
-                'id_caracteristica' => 78
+                'id_caracteristica' => 86
             ],
             [
                 'id_categoria' => 8,
-                'id_caracteristica' => 79
-            ],
-            [
-                'id_categoria' => 8,
-                'id_caracteristica' => 80
+                'id_caracteristica' => 87
             ],
             
             //Shows
@@ -592,77 +588,8 @@ class CreateCaracteristicaPorCategoriasTable extends Migration
                 'id_categoria' => 9,
                 'id_caracteristica' => 61
             ],
+
             // Fotografia
-
-            [
-                'id_categoria' => 10,
-                'id_caracteristica' => 55
-            ],
-            [
-                'id_categoria' => 10,
-                'id_caracteristica' => 56
-            ],
-            [
-                'id_categoria' => 10,
-                'id_caracteristica' => 57
-            ],
-            [
-                'id_categoria' => 10,
-                'id_caracteristica' => 58
-            ],
-            [
-                'id_categoria' => 10,
-                'id_caracteristica' => 59
-            ],
-            [
-                'id_categoria' => 10,
-                'id_caracteristica' => 60
-            ],
-            [
-                'id_categoria' => 10,
-                'id_caracteristica' => 61
-            ],
-
-            [
-                'id_categoria' => 10,
-                'id_caracteristica' => 63
-            ],
-
-            [
-                'id_categoria' => 10,
-                'id_caracteristica' => 64
-            ],
-
-            [
-                'id_categoria' => 10,
-                'id_caracteristica' => 65
-            ],
-
-            [
-                'id_categoria' => 10,
-                'id_caracteristica' => 66
-            ],
-
-            [
-                'id_categoria' => 10,
-                'id_caracteristica' => 67
-            ],
-
-            [
-                'id_categoria' => 10,
-                'id_caracteristica' => 68
-            ],
-
-            [
-                'id_categoria' => 10,
-                'id_caracteristica' => 69
-            ],
-
-            [
-                'id_categoria' => 10,
-                'id_caracteristica' => 70
-            ],
-
             [
                 'id_categoria' => 10,
                 'id_caracteristica' => 71
@@ -676,6 +603,46 @@ class CreateCaracteristicaPorCategoriasTable extends Migration
             [
                 'id_categoria' => 10,
                 'id_caracteristica' => 73
+            ],
+
+            [
+                'id_categoria' => 10,
+                'id_caracteristica' => 74
+            ],
+
+            [
+                'id_categoria' => 10,
+                'id_caracteristica' => 75
+            ],
+
+            [
+                'id_categoria' => 10,
+                'id_caracteristica' => 76
+            ],
+
+            [
+                'id_categoria' => 10,
+                'id_caracteristica' => 77
+            ],
+
+            [
+                'id_categoria' => 10,
+                'id_caracteristica' => 78
+            ],
+
+            [
+                'id_categoria' => 10,
+                'id_caracteristica' => 79
+            ],
+
+            [
+                'id_categoria' => 10,
+                'id_caracteristica' => 80
+            ],
+
+            [
+                'id_categoria' => 10,
+                'id_caracteristica' => 81
             ],
 
             //Magos
