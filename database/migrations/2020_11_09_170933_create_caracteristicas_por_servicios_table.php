@@ -656,6 +656,39 @@ class CreateCaracteristicasPorServiciosTable extends Migration
                 ],
             // Fin 29 - Show de Cantantes Líricos
 
+            // 30 - Show de Cantantes Líricos
+                [
+                    'id_servicio' => 30,
+                    'id_caracteristica' => 48
+
+                ],
+
+                [
+                    'id_servicio' => 30,
+                    'id_caracteristica' => 49
+
+                ],
+
+                [
+                    'id_servicio' => 30,
+                    'id_caracteristica' => 51
+
+                ],
+
+                [
+                    'id_servicio' => 30,
+                    'id_caracteristica' => 53
+
+                ],
+
+                [
+                    'id_servicio' => 30,
+                    'id_caracteristica' => 52
+
+                ],
+                
+            // Fin 30 - Show de Cantantes Líricos
+
         ]);
     }
 

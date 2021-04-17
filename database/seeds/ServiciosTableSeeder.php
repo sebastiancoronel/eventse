@@ -254,7 +254,7 @@ class ServiciosTableSeeder extends Seeder
             
             Consolas Digitales, Controladores DMX, cableado y todo lo necesario para tu evento.',
             'foto_1' => 'images/servicios/aura1.jpg',
-            'foto_2' => 'images/servicios/aura2.jpg',
+            'foto_2' => 'images/servicios/aura2.jpeg',
             'foto_3' => 'images/servicios/aura3.jpg',
             'foto_4' => 'images/servicios/aura4.jpg',
             'precio' => 8000,
@@ -572,6 +572,22 @@ class ServiciosTableSeeder extends Seeder
             'aprobado' => 1,
             'id_categoria' => 9,
             'id_prestador' => 14
+        ]);
+
+        Servicio::create([ 
+            'nombre' => 'AEI Iluminacion para todo tipo de eventos',
+            'descripcion' => 'La luz, un elemento fundamental en cualquier evento, y al que no siempre le damos la importancia necesaria; por eso, desde Alquiler Muebles Eventos ponemos a tu disposición nuestro servicio de Alquiler de Luces para Eventos.
+            Podéis sorprender a todos vuestros invitados con guirnaldas de bombillas, como las de verbena de los pueblos, queda de cine.',
+            'foto_1' => 'images/servicios/AEIiluminacion1.jpg',
+            'foto_2' => 'images/servicios/AEIiluminacion2.jpg',
+            'foto_3' => 'images/servicios/AEIiluminacion3.jpg',
+            'foto_4' => 'images/servicios/AEIiluminacion4.jpg',
+            'precio' => 8700,
+            'precio_a_convenir' => null,
+            'moderado' => 1,
+            'aprobado' => 1,
+            'id_categoria' => 6,
+            'id_prestador' => 17
         ]);
 
     }

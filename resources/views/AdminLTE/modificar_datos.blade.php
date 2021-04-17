@@ -12,7 +12,7 @@
                     <h5> Datos de empresa </h5>
                     <hr>
                     
-                    <form action="" method="POST">
+                    {{-- <form action="" method="POST"> --}}
                         <div class="mb-4">
                             <div class="text-center">
                                 <!-- Vista previa imagen -->
@@ -42,7 +42,7 @@
                             <label class="active" for="telefono">Teléfono</label>
                             <input id="telefono" type="number" class="form-control" name="telefono_prestador" value="{{ $Prestador->telefono }}" required>
                         </div>
-                    </form>
+                    {{-- </form> --}}
                 @endif
 
                 <h5> Datos personales </h5>

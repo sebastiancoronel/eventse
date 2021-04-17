@@ -18,7 +18,7 @@ class CategoriaController extends Controller
         $UltimosAgregados = Servicio::where( 'deleted_at' , '=' , null )
                                     ->where( 'moderado' , 1 )
                                     ->where( 'aprobado' , 1 )
-                                    ->select('*')->orderBy('id','asc')->take(9)->get();
+                                    ->select('*')->orderBy('id','desc')->take(9)->get();
 
         
         // Esto es para mostrar el nombre del mes actual en el slider grande

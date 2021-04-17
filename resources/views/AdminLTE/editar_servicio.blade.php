@@ -119,13 +119,13 @@
     
                 {{-- Nombre --}}
                 <div class="md-form">
-                    <input type="text" id="form1" name="nombre" class="form-control" value="{{ $Servicio->nombre }}">
+                    <input type="text" id="form1" name="nombre" class="form-control" value="{{ $Servicio->nombre }}" required>
                     <label for="form1" class="active">Nombre</label>
                 </div>
     
                 {{-- Descripción --}}
                 <div class="md-form">
-                    <input type="text" id="form1" name="descripcion" class="form-control" value="{{ $Servicio->descripcion }}">
+                    <input type="text" id="form1" name="descripcion" class="form-control" value="{{ $Servicio->descripcion }}" required>
                     <label for="form1" class="active">Descripcion</label>
                 </div>
     

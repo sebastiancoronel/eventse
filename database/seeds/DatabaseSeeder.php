@@ -623,6 +623,70 @@ class DatabaseSeeder extends Seeder
             ]);
         // Fin Catering para 90 personas
 
+        // Dream Days Servicio de decoracion opiniones
+            Opinion::create([ 
+                'opinion' => 'Me gustaron mucho los arreglos que hicieron y como quedó el lugar. Lo recomiendo',
+                'id_servicio' => 8,
+                'id_prestador' => 2,
+                'user_id' => 9
+            ]);
+
+            Opinion::create([ 
+                'opinion' => 'Todo quedó muy bien decorado y muy lindo. Seguro los tendré en cuenta para la próxima.',
+                'id_servicio' => 8,
+                'id_prestador' => 2,
+                'user_id' => 10
+            ]);
+        // Fin Dream Days Servicio de decoracion opiniones
+
+        // Concept Fotografía opiniones
+            Opinion::create([ 
+                'opinion' => 'Las fotos quedaron increíbles! muy profesionales',
+                'id_servicio' => 13,
+                'id_prestador' => 5,
+                'user_id' => 7
+            ]);
+
+            Opinion::create([ 
+                'opinion' => 'Pésimo servicio, no cumplieron con los pedidos ni la cantidad de fotos fué la esperada',
+                'id_servicio' => 13,
+                'id_prestador' => 5,
+                'user_id' => 8
+            ]);
+        // Fin Concept Fotografía opiniones
+
+        // Mobiliario tipo living - mesas + pufs
+            Opinion::create([ 
+                'opinion' => 'El mobiliario vino en mal estado y me cobraron por un puf no rompimos',
+                'id_servicio' => 19,
+                'id_prestador' => 8,
+                'user_id' => 6
+            ]);
+
+            Opinion::create([ 
+                'opinion' => 'Fueron muy impuntuales',
+                'id_servicio' => 19,
+                'id_prestador' => 8,
+                'user_id' => 9
+            ]);
+        // Fin Mobiliario tipo living - mesas + pufs
+
+        // Servicio de Dj Disc Jockey
+            Opinion::create([ 
+                'opinion' => 'Muy buen servicio, la calidad del sonido espectacular!',
+                'id_servicio' => 22,
+                'id_prestador' => 10,
+                'user_id' => 6
+            ]);
+
+            Opinion::create([ 
+                'opinion' => 'Muy bueno, se quedó mas de las horas pactadas.',
+                'id_servicio' => 22,
+                'id_prestador' => 10,
+                'user_id' => 10
+            ]);
+        // Fin Servicio de Dj Disc Jockey
+
     }
     
 }
