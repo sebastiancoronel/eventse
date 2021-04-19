@@ -215,6 +215,15 @@ class ServicioController extends Controller
 
   public function AlmacenarPregunta(Request $request){
 
+    $Prestador = Servicio::where( 'servicios.id' , $request->id_servicio )
+    ->Join( 'prestadors' , 'servicios.id_prestador' , '=' , 'prestadors.id' )
+    ->where('prestadors.user_id', Auth::user()->id )->first();
+
+    
+    if ( $Prestador ) {
+      return ( ['servicio_propio' => 'NoPuedesPreguntarte']);
+    }
+
     if ( Auth::user()->rol == 'Administrador' ) {
 
       return ( ['error' => 'AgregarPaqueteDenegado']);

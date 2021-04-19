@@ -590,6 +590,11 @@
 						return false;						
 					}
 
+					if ( data.servicio_propio ) {
+						swal('Error!','No puedes hacerte preguntas a vos mismo','error');
+						return false;						
+					}
+
 					swal('Listo!','Su pregunta fue realizada con éxito','success');
 
 					
